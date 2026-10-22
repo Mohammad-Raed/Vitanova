@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^python -c 'from pathlib import Path; p=next\\(p for p in Path\\(\"\\.\"\\)\\.glob\\(\"\\*\\.html\"\\) if \"Lectures 7\" in p\\.name\\); print\\(repr\\(p\\.name\\)\\); print\\(\"bytes:\", p\\.stat\\(\\)\\.st_size\\); text=p\\.read_text\\(encoding=\"utf-8\"\\); print\\(\"lines:\", len\\(text\\.splitlines\\(\\)\\)\\); print\\(\"head:\", repr\\(text\\[:800\\]\\)\\); print\\(\"body count:\", text\\.count\\(\"<body\"\\)\\); print\\(\"homepage links:\", text\\.count\\(\"href=\\\\\"index\\.html\\\\\"\"\\)\\); print\\(\"MCQ-like count:\", text\\.lower\\(\\)\\.count\\(\"mcq\"\\), \"question markers:\", text\\.count\\(\"question\"\\)\\)'$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
