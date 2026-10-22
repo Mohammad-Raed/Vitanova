@@ -1,0 +1,464 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>MSS Pathology Revision</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: Lavender Study design system. Gradient header, sticky nav, 980px main, summary cards then quiz per lecture. */
+:root{
+  --bg:#faf8ff;--card:#ffffff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+  --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+  --ln:#3a3057;--soft:#2b2347;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--card)}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding-block:48px 36px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0;text-wrap:balance}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+main{max-width:980px;margin:0 auto;padding-block:12px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu);text-wrap:balance}
+h3{margin:18px 0 6px;font-size:18px}
+.card h3{margin-top:0}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0;min-width:0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px max(16px,env(safe-area-inset-left,0px))}
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+.sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+:root[data-theme="dark"] .sc,:root[data-theme="dark"] th{color:#17122a}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .sc,:root:not([data-theme="light"]) th{color:#17122a}}
+:focus-visible{outline:2px solid var(--pu);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header>
+  <small>FACULTY OF MEDICINE · AL-BALQA APPLIED UNIVERSITY</small>
+  <h1>MSS Pathology High-Yield Revision</h1>
+  <p>Lectures 1–3: skeletal muscle disorders, non-neoplastic bone disease, arthritis</p>
+  <p>Quick summary of each lecture, then MCQs to test it</p>
+</header>
+<nav>
+  <a href="#muscle">1 · Muscle</a><a href="#quiz-m">Muscle MCQs</a>
+  <a href="#bone">2 · Bone</a><a href="#quiz-b">Bone MCQs</a>
+  <a href="#arth">3 · Arthritis</a><a href="#quiz-a">Arthritis MCQs</a>
+</nav>
+
+<main>
+
+<!-- ============ LECTURE 1 ============ -->
+<section id="muscle">
+  <div class="k">Lecture 1 · Disorders of skeletal muscle</div>
+  <h2>Normal muscle and patterns of injury</h2>
+  <div class="g">
+    <div class="card"><h3>Motor unit</h3>
+      <ul><li>One <b>lower motor neuron</b> + its <b>axon</b></li><li><b>Neuromuscular junctions</b></li><li>The muscle fibres it supplies (all <b>type I</b> or all <b>type II</b>)</li></ul></div>
+    <div class="card"><h3>Fibre types</h3>
+      <ul><li><span class="tag">Type I</span> slow myosin heavy chain, aerobic, high mitochondria, red, <b>MYH7</b></li><li><span class="tag">Type II</span> fast myosin, anaerobic, high glycogen, pale, <b>MYH2/4/1</b></li><li>ATPase pH 9.4: type I <b>light</b>, type II <b>dark</b></li><li>Anti-slow MHC stains type I brown; anti-fast MHC stains type II brown</li></ul></div>
+    <div class="card"><h3>Normal histology</h3>
+      <ul><li>Uniform <b>polygonal</b> myofibres</li><li><b>Peripheral</b> nuclei</li><li>Fascicles with scant connective tissue</li><li>Normal = <b>checkerboard</b> of type I and II</li></ul>
+      <div class="note"><b>Clue:</b> central nuclei + variable fibre size = injury or degeneration.</div></div>
+  </div>
+
+  <h3>Myopathic vs neurogenic</h3>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Myopathic (primary muscle disease)</th><th>Neurogenic (denervation)</th></tr>
+    <tr><td>Problem site</td><td>Muscle fibre itself; nerve and NMJ normal</td><td>Lower motor neuron or axon</td></tr>
+    <tr><td>Hallmark</td><td><b>Segmental necrosis</b> and regeneration of single fibres</td><td><b>Grouped atrophy</b>, then <b>fibre type grouping</b></td></tr>
+    <tr><td>Distribution</td><td>Scattered, not uniform (normal fibre next to abnormal)</td><td>Whole motor unit affected together</td></tr>
+    <tr><td>Inflammation</td><td>Inflammatory cells infiltrate necrotic fibres</td><td>Absent</td></tr>
+    <tr><td>Checkerboard</td><td>Preserved</td><td>Lost</td></tr>
+  </table></div>
+  <div class="card"><div class="flow"><span>Axon / neuron damaged</span><i>→</i><span>Grouped atrophy</span><i>→</i><span>Reinnervation by neighbouring neuron</span><i>→</i><span>Fibre type switch</span><i>→</i><span>Fibre type grouping (larger motor unit)</span></div></div>
+</section>
+
+<section id="dystro">
+  <div class="k">Inherited vs acquired</div>
+  <h2>Dystrophinopathies: Duchenne and Becker</h2>
+  <div class="g">
+    <div class="card"><h3>Inherited</h3><ul><li><b>Muscular dystrophies:</b> normal at birth, progressive injury</li><li><b>Congenital muscular dystrophies:</b> progressive, early onset</li><li><b>Congenital myopathies:</b> present in infancy, static or improving</li></ul></div>
+    <div class="card"><h3>Acquired (mainly adults)</h3><ul><li>Inflammatory myopathies</li><li>Toxic muscle injury</li><li>Postinfectious rhabdomyolysis</li><li>Muscle infarction in diabetes</li></ul></div>
+    <div class="card"><h3>Dystrophin</h3><ul><li><b>X-linked</b> DMD gene, <b>Xp21</b>: males affected, females carriers</li><li>427 kD; stabilises the <b>sarcolemma</b> in the dystrophin-glycoprotein complex</li><li>Present in skeletal and cardiac muscle, brain, peripheral nerves</li></ul></div>
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Duchenne (DMD)</th><th>Becker (BMD)</th></tr>
+    <tr><td>Mutation</td><td>Deletion or frameshift</td><td>Point mutation</td></tr>
+    <tr><td>Dystrophin</td><td>Little or none</td><td>Decreased or altered</td></tr>
+    <tr><td>IHC</td><td>Complete absence of membrane staining</td><td>Segmental / incomplete staining</td></tr>
+    <tr><td>Onset</td><td>2–5 years</td><td>5–15 years</td></tr>
+    <tr><td>Wheelchair</td><td>About 10 years</td><td>After 16 years</td></tr>
+    <tr><td>Outcome</td><td>Cardiorespiratory death, 3rd–4th decade</td><td>Many near-normal lifespan</td></tr>
+    <tr><td>Frequency</td><td>More common (1:5000 male births)</td><td>Less common</td></tr>
+  </table></div>
+  <div class="g">
+    <div class="card"><h3>Morphology</h3><ul><li>Ongoing necrosis and regeneration, marked size variation</li><li>Progressive replacement by <b>fat and fibrosis</b></li><li><b>Calf pseudohypertrophy:</b> early fibre hypertrophy, later fat and fibrosis</li><li>Cardiomyopathy in both</li></ul></div>
+    <div class="card"><h3>Clinical course</h3><div class="flow"><span>Pelvic girdle</span><i>→</i><span>Shoulder girdle</span><i>→</i><span>Distal, cardiac, respiratory</span></div>
+      <ul><li>Waddling gait, stair difficulty, <b>Gower’s sign</b></li><li><b>CK very high early</b>, falls later as muscle is lost</li><li>Death: respiratory failure, pneumonia, cardiac decompensation</li><li>Cognitive impairment may occur</li></ul></div>
+  </div>
+</section>
+
+<section id="inflam">
+  <div class="k">Acquired disease</div>
+  <h2>Inflammatory myopathies</h2>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Polymyositis</th><th>Dermatomyositis</th><th>Inclusion body myositis</th></tr>
+    <tr><td>Sex / age</td><td>Females</td><td>Females; most common in children; adults often paraneoplastic (15–30%)</td><td>Males; over 60 years</td></tr>
+    <tr><td>Weakness</td><td>Proximal, symmetrical</td><td>Proximal, symmetrical + <b>skin rash</b></td><td>Proximal and distal, <b>asymmetrical</b></td></tr>
+    <tr><td>Mechanism</td><td><b>CD8+ T cells</b>, MHC class I on myofibres</td><td>Humoral: autoantibodies (<b>Mi-2</b>, p155, p140); CD4 T cells</td><td>Degenerative; inflammation is secondary</td></tr>
+    <tr><td>Histology</td><td><b>Endomysial</b> infiltrate, fibre necrosis then regeneration</td><td><b>Perifascicular</b> and paraseptal atrophy</td><td><b>Rimmed vacuoles</b>: tau, β-amyloid, TDP-43</td></tr>
+    <tr><td>Treatment</td><td>Steroids / immunosuppressants work</td><td>Steroids; treat underlying tumour if paraneoplastic</td><td>Poor response to immunosuppression</td></tr>
+  </table></div>
+  <div class="note"><b>High-yield summary:</b> neurogenic = grouped atrophy and fibre type grouping; myopathic = segmental necrosis. DMD = no dystrophin, Xp21, calf pseudohypertrophy, high CK. Polymyositis = CD8 endomysial; dermatomyositis = perifascicular atrophy and rash, screen for cancer in older adults; IBM = older male, rimmed vacuoles, steroid resistant.</div>
+</section>
+
+<section id="quiz-m">
+  <div class="k">Test yourself · Lecture 1</div>
+  <h2>Skeletal muscle MCQs</h2>
+  <div id="qbox-m"></div>
+  <div class="sc" id="sc-m"></div>
+  <button class="r" id="rs-m" type="button">Reset</button>
+</section>
+
+<!-- ============ LECTURE 2 ============ -->
+<section id="bone">
+  <div class="k">Lecture 2 · Non-neoplastic diseases of bone</div>
+  <h2>Bone structure and remodelling</h2>
+  <div class="g">
+    <div class="card"><h3>Matrix</h3><ul><li><b>Osteoid (35%):</b> type I collagen</li><li><b>Mineral (65%):</b> hydroxyapatite, gives hardness</li><li>Cells: osteoblasts, osteocytes, osteoclasts</li></ul></div>
+    <div class="card"><h3>Woven vs lamellar</h3><ul><li><b>Woven:</b> rapid, disorganised, cellular, weak. Normal in fetus and fracture repair; <b>always abnormal</b> in adults and children over 2–3 years</li><li><b>Lamellar:</b> slow, parallel collagen fibres</li></ul></div>
+    <div class="card"><h3>Ossification</h3><ul><li>Long bone: <b>endochondral</b>, medullary cavity</li><li>Flat bone: <b>intramembranous</b>, no medullary cavity</li></ul></div>
+  </div>
+  <div class="card"><h3>RANKL / RANK / OPG</h3>
+    <div class="flow"><span>Osteoblast RANKL</span><i>→</i><span>RANK on precursor</span><i>→</i><span>NF-κB</span><i>→</i><span>Osteoclast formation and survival</span></div>
+    <ul><li><b>OPG</b> is a decoy receptor from osteoblasts that blocks RANKL. Raised by <b>WNT</b> (LRP5/6), BMPs, estrogen, testosterone.</li><li><b>RANKL</b> is raised by <b>PTH, vitamin D, IL-1, glucocorticoids</b>.</li><li>The <b>OPG : RANKL ratio</b> sets bone resorption.</li></ul></div>
+</section>
+
+<section id="metab">
+  <div class="k">Metabolic bone disease</div>
+  <h2>Osteoporosis, hyperparathyroidism, rickets</h2>
+  <div class="g">
+    <div class="card"><h3>Definitions (DXA T-score)</h3><ul><li><span class="tag">Osteopenia</span> −1 to −2.5</li><li><span class="tag">Osteoporosis</span> −2.5 or lower</li><li>Peak bone mass in young adulthood; loss about 0.7% per year from the 4th decade</li></ul></div>
+    <div class="card"><h3>Primary types</h3><ul><li><b>Senile:</b> low turnover; weak osteoblasts, low activity, low calcium and vitamin D</li><li><b>Postmenopausal:</b> high turnover; estrogen loss → IL-1, IL-6, TNF → ↑RANKL, ↓OPG</li><li>Secondary: endocrine, GI, corticosteroids</li></ul></div>
+    <div class="card"><h3>Clinical and diagnosis</h3><ul><li>Vertebral fractures, height loss, kyphoscoliosis; femoral neck fracture → <b>PE, pneumonia</b></li><li>Radiographs only show it after <b>30–40%</b> loss</li><li>Calcium, phosphorus, ALP are <b>normal</b></li><li>Use <b>DXA</b> or QCT</li></ul></div>
+  </div>
+  <div class="note"><b>Treatment:</b> exercise, calcium, vitamin D, <b>bisphosphonates</b> (↓osteoclast activity), <b>denosumab</b> (anti-RANKL), hormone therapy.</div>
+  <div class="g">
+    <div class="card"><h3>Hyperparathyroidism</h3><ul><li>Primary: adenoma, hyperplasia, carcinoma</li><li>Secondary: <b>chronic kidney disease</b> (low active vitamin D, low calcium)</li><li>Tertiary also exists</li><li>↑ Osteoclast activity → osteopenia → osteoporosis</li></ul></div>
+    <div class="card"><h3>Rickets and osteomalacia</h3><ul><li>Defective <b>mineralisation</b>, unmineralised osteoid accumulates</li><li>Vitamin D deficiency or abnormal metabolism → low calcium → secondary hyperparathyroidism</li><li><b>Rickets</b> (children): bowed legs</li><li><b>Osteomalacia</b> (adults): fractures</li></ul></div>
+  </div>
+</section>
+
+<section id="paget">
+  <div class="k">Increased but unsound bone</div>
+  <h2>Paget disease of bone</h2>
+  <div class="card"><div class="flow"><span>Osteolytic</span><i>→</i><span>Mixed osteoclastic–osteoblastic</span><i>→</i><span>Osteosclerotic (quiescent)</span></div></div>
+  <div class="g">
+    <div class="card"><h3>Epidemiology and cause</h3><ul><li>Late adulthood; common in Western Europe and Australasia; rare in Asian, African, Middle Eastern descent</li><li><b>SQSTM1</b> mutations (50% familial, 10% sporadic) ↑NF-κB</li><li>Activating RANK or inactivating OPG mutations (juvenile Paget)</li><li>Possible viral trigger (measles / RNA virus)</li></ul></div>
+    <div class="card"><h3>Morphology</h3><ul><li><b>Mosaic pattern</b> of lamellar bone with woven bone, prominent cement lines: <b>pathognomonic</b></li><li>Thick bone with poor structural stability</li></ul></div>
+    <div class="card"><h3>Clinical</h3><ul><li>85% <b>polyostotic</b>, 15% monostotic; axial skeleton and proximal femur</li><li>Often asymptomatic; <b>↑ALP</b> with normal calcium</li><li><b>Chalk-stick fractures</b>, secondary OA, <b>leontiasis ossea</b>, platybasia, spinal compression</li><li><b>Secondary osteosarcoma:</b> under 1% overall, 5–10% in severe polyostotic disease</li><li>Treatment: calcitonin, bisphosphonates</li></ul></div>
+  </div>
+</section>
+
+<section id="osteomy">
+  <div class="k">Infection of bone and marrow</div>
+  <h2>Osteomyelitis</h2>
+  <div class="card tbl"><table>
+    <tr><th>Setting</th><th>Where / how</th></tr>
+    <tr><td>Child over 1 year</td><td>Hematogenous to long-bone <b>metaphysis</b> (sluggish hairpin capillaries; physis is an avascular barrier)</td></tr>
+    <tr><td>Infant under 1 year</td><td>Transphyseal vessels allow spread to <b>epiphysis and joint</b> (septic arthritis)</td></tr>
+    <tr><td>Adult</td><td>Vertebrae and discs; also contiguous spread (diabetic foot) or direct implantation (open fracture, surgery)</td></tr>
+  </table></div>
+  <div class="g">
+    <div class="card"><h3>Organisms</h3><ul><li><b>Staphylococcus aureus:</b> 50–75%</li><li>E. coli, Pseudomonas, Klebsiella: urinary tract infection, IV drug use</li><li>Group B strep and E. coli: neonates</li><li><b>Salmonella:</b> sickle cell disease</li><li>20–40% have no organism isolated</li></ul></div>
+    <div class="card"><h3>Morphology</h3><ul><li>Neutrophils, bone and marrow necrosis, subperiosteal abscess, draining sinus</li><li><b>Sequestrum:</b> dead bone</li><li><b>Involucrum:</b> reactive new bone around it</li></ul></div>
+    <div class="card"><h3>Clinical</h3><ul><li>Fever, chills, leukocytosis, throbbing pain</li><li>X-ray: <b>lytic focus with sclerotic rim</b></li><li>Biopsy and culture to identify the organism</li><li>Antibiotics + surgical drainage</li></ul></div>
+  </div>
+  <div class="g">
+    <div class="card"><h3>Chronic osteomyelitis</h3><p>Causes: delayed diagnosis, extensive necrosis, poor treatment, weak host defences. Complications: flare-ups, pathologic fracture, <b>secondary amyloidosis</b>, endocarditis, sepsis, <b>squamous cell carcinoma in the sinus tract</b>, sarcoma.</p></div>
+    <div class="card"><h3>Mycobacterial and Pott disease</h3><p>1–3% of TB patients have bone disease, usually blood-borne and solitary. <b>Pott disease</b> is tuberculous spondylitis: disc and vertebral destruction, kyphosis or scoliosis, cord compression. The spine is involved in 40%.</p></div>
+  </div>
+  <div class="note"><b>High-yield summary:</b> woven bone in an adult is abnormal. Postmenopausal osteoporosis = ↑RANKL, normal labs. Paget = mosaic pattern, ↑ALP, chalk-stick fractures. Osteomyelitis = S. aureus, metaphysis in children, sequestrum inside involucrum.</div>
+</section>
+
+<section id="quiz-b">
+  <div class="k">Test yourself · Lecture 2</div>
+  <h2>Bone disease MCQs</h2>
+  <div id="qbox-b"></div>
+  <div class="sc" id="sc-b"></div>
+  <button class="r" id="rs-b" type="button">Reset</button>
+</section>
+
+<!-- ============ LECTURE 3 ============ -->
+<section id="arth">
+  <div class="k">Lecture 3 · Arthritis</div>
+  <h2>Joints and osteoarthritis versus rheumatoid arthritis</h2>
+  <div class="g">
+    <div class="card"><h3>Joint types</h3><ul><li><b>Solid (nonsynovial):</b> fibrous and cartilaginous</li><li><b>Synovial:</b> joint space, wide motion</li></ul></div>
+    <div class="card"><h3>Synovial lining</h3><ul><li><span class="tag">Type A</span> macrophage-like</li><li><span class="tag">Type B</span> fibroblast-like; makes <b>hyaluronic acid</b></li><li><b>No basement membrane</b>: easy exchange with blood</li></ul></div>
+    <div class="card"><h3>Main arthritides</h3><p>OA (most common), RA, juvenile idiopathic arthritis, seronegative spondyloarthropathies, infectious arthritis, crystal arthritis (gout, pseudogout).</p></div>
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Osteoarthritis</th><th>Rheumatoid arthritis</th></tr>
+    <tr><td>Nature</td><td>Degenerative; cartilage wear and failed repair</td><td>Autoimmune, nonsuppurative proliferative synovitis</td></tr>
+    <tr><td>Who</td><td>Over 50; female more than male; 40% over 70</td><td>Women, 4th–5th decade</td></tr>
+    <tr><td>Pattern</td><td><b>Asymmetric</b>, few joints: hips, knees, lumbar and cervical spine, DIP, PIP, first CMC</td><td><b>Symmetric</b> polyarticular: hands, feet, wrists, <b>MCP and PIP</b>, ankles, knees</td></tr>
+    <tr><td>Stiffness</td><td>Pain worse with use</td><td>Marked stiffness on waking or after inactivity</td></tr>
+    <tr><td>Key lesion</td><td>Fibrillation, <b>eburnation</b>, subchondral cysts, <b>osteophytes</b>, joint mice</td><td><b>Pannus</b>, villous synovial hypertrophy, lymphoid aggregates</td></tr>
+    <tr><td>Nodes / deformity</td><td><b>Heberden</b> (DIP) and Bouchard (PIP) nodes</td><td>Ulnar deviation, <b>swan-neck</b>, <b>boutonnière</b></td></tr>
+    <tr><td>Ankylosis</td><td><b>No</b></td><td>Fibrous then <b>bony ankylosis</b></td></tr>
+    <tr><td>Extra-articular</td><td>None</td><td>Nodules, lung disease, vasculitis, amyloidosis</td></tr>
+    <tr><td>Treatment</td><td>Weight loss, NSAIDs, intra-articular steroid, arthroplasty</td><td>Steroids, methotrexate, <b>TNF antagonists</b></td></tr>
+  </table></div>
+  <div class="g">
+    <div class="card"><h3>OA pathogenesis</h3><div class="flow"><span>Chondrocyte injury</span><i>→</i><span>↑ water, ↓ proteoglycan</span><i>→</i><span>MMPs degrade type II collagen</span><i>→</i><span>Chondrocyte loss, subchondral damage</span></div>
+      <p>Cytokines TGF-β, TNF, PGE₂ and NO contribute. Chronic low-grade synovitis drives progression. Secondary OA is only about 5% and occurs in younger people.</p></div>
+    <div class="card"><h3>RA pathogenesis</h3><ul><li>Genes (about 50%): <b>HLA-DRB1</b>, PTPN22</li><li>Environment (smoking, infection) → <b>citrullination</b> of self proteins</li><li><b>CD4+ Th17 / Th1</b> cells (IL-17, IFN-γ, RANKL)</li><li>Macrophages: <b>TNF</b> and IL-1; TNF is the key target</li></ul></div>
+  </div>
+  <div class="g">
+    <div class="card"><h3>RA serology and imaging</h3><ul><li><b>ACPA</b> positive in 70%, highly specific</li><li><b>RF</b> positive in 80%, also in healthy elderly and other diseases</li><li>X-ray: effusion, juxta-articular osteopenia, erosions, narrowed space</li></ul></div>
+    <div class="card"><h3>Rheumatoid nodules</h3><p>Subcutaneous (forearm, elbows, occiput, lumbosacral). Histology: <b>necrotizing granuloma</b>. Rarely lung nodules or interstitial lung disease.</p></div>
+    <div class="card"><h3>Risks of therapy</h3><p>Long-term TNF antagonists raise infection risk, especially <b>TB</b>. Deaths relate to vasculitis, amyloidosis, GI bleeding (NSAIDs) and infection (immunosuppression).</p></div>
+  </div>
+</section>
+
+<section id="spa">
+  <div class="k">Seronegative spondyloarthropathies</div>
+  <h2>Enthesitis, sacroiliac joints and HLA-B27</h2>
+  <div class="card"><div class="flow"><span>RF negative</span><i>·</i><span>Enthesitis</span><i>·</i><span>Sacroiliac involvement</span><i>·</i><span>HLA-B27 (MHC I)</span><i>·</i><span>Ankylosis</span><i>·</i><span>CD8+ T cells</span></div></div>
+  <div class="g">
+    <div class="card"><h3>Ankylosing spondylitis</h3><ul><li>Prototype; <b>young males</b> (2nd–3rd decade)</li><li>Low back pain, spinal immobility, sacroiliac ankylosis</li><li>About <b>90% HLA-B27</b>; peripheral joints in one-third</li><li>Treatment: NSAIDs, anti-IL-17, TNF inhibitors</li></ul></div>
+    <div class="card"><h3>Reactive arthritis</h3><ul><li>Triad: <b>arthritis, nongonococcal urethritis/cervicitis, conjunctivitis</b></li><li>Men in 20s–30s; 60–80% HLA-B27</li><li>After Chlamydia or GI infection (Shigella, Salmonella, Yersinia, Campylobacter)</li><li><b>Asymmetric oligoarthritis</b> of ankles, knees, feet</li></ul></div>
+  </div>
+</section>
+
+<section id="crystal">
+  <div class="k">Crystal-induced arthritis</div>
+  <h2>Gout and pseudogout</h2>
+  <div class="g">
+    <div class="card"><h3>Uric acid metabolism</h3><ul><li>End product of <b>purine</b> breakdown; <b>xanthine oxidase</b> makes it (allopurinol target)</li><li><b>PRPP synthetase</b> overactivity: overproduction</li><li><b>HGPRT</b> deficiency (salvage pathway): overproduction; complete loss = <b>Lesch-Nyhan</b>, X-linked</li><li>Excretion: 70% urine, 30% gut; proximal tubule reabsorbs</li></ul></div>
+    <div class="card"><h3>Causes of hyperuricemia</h3><ul><li><b>Primary:</b> reduced renal excretion (URAT1, GLUT9) is most common; overproduction is a minority</li><li><b>Secondary:</b> cell turnover (chemotherapy, tumour lysis, haemolysis), kidney disease, <b>thiazide / loop diuretics</b></li></ul></div>
+    <div class="card"><h3>Why only some get gout</h3><p>Urate above 6.8 mg/dL is <b>necessary but not sufficient</b>; only about 10% develop gout, usually after 20–30 years. Risks: male, menopause, alcohol, obesity, genes, renal failure.</p></div>
+  </div>
+  <div class="card"><h3>Mechanism</h3><div class="flow"><span>Urate crystals</span><i>→</i><span>Macrophage <b>NLRP3 inflammasome</b></span><i>→</i><span>IL-1β</span><i>→</i><span>Neutrophil influx and lysis</span><i>→</i><span>Acute arthritis</span></div></div>
+  <div class="card"><h3>Four stages</h3><div class="tl">
+    <div><b>1</b>Asymptomatic hyperuricemia (puberty in men, after menopause in women)</div>
+    <div><b>2</b>Acute arthritis: sudden severe pain, usually monoarticular, <b>50% first MTP joint</b> (podagra)</div>
+    <div><b>3</b>Intercritical period: symptom-free; attacks recur and become polyarticular if untreated</div>
+    <div><b>4</b>Chronic tophaceous gout: about 12 years later; tophi, joint destruction, pannus</div>
+  </div>
+  <p><b>Gouty nephropathy:</b> urate in the renal medulla; stones and pyelonephritis. <b>Tophus:</b> urate aggregate with fibroblasts, mononuclear and giant cells.</p></div>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Gout</th><th>Pseudogout (CPPD)</th></tr>
+    <tr><td>Crystal</td><td>Monosodium urate</td><td>Calcium pyrophosphate</td></tr>
+    <tr><td>Shape</td><td><b>Needle</b></td><td><b>Rhomboid</b></td></tr>
+    <tr><td>Polarised light</td><td><b>Negatively</b> birefringent</td><td><b>Positively</b> birefringent</td></tr>
+    <tr><td>Who</td><td>Males, over 30; menopausal women</td><td>Over 50, male = female</td></tr>
+    <tr><td>Cause</td><td>Hyperuricemia</td><td>Sporadic; hereditary (<b>ANKH</b>); hyperparathyroidism, hemochromatosis, diabetes</td></tr>
+    <tr><td>Sites</td><td>First MTP</td><td>Knees, then wrists, elbows, shoulders, ankles</td></tr>
+    <tr><td>Severity</td><td>Intense</td><td>Usually milder</td></tr>
+    <tr><td>Treatment</td><td>NSAIDs, <b>allopurinol</b>, colchicine prophylaxis, lifestyle</td><td>Supportive; nothing stops crystal formation</td></tr>
+  </table></div>
+  <div class="note"><b>High-yield summary:</b> OA = no ankylosis, Heberden nodes; RA = ACPA, pannus, TNF, MCP/PIP. HLA-B27 = sacroiliitis and enthesitis. Gout = needle, negative, NLRP3, podagra, allopurinol. CPPD = rhomboid, positive, over 50.</div>
+</section>
+
+<section id="quiz-a">
+  <div class="k">Test yourself · Lecture 3</div>
+  <h2>Arthritis MCQs</h2>
+  <div id="qbox-a"></div>
+  <div class="sc" id="sc-a"></div>
+  <button class="r" id="rs-a" type="button">Reset</button>
+</section>
+
+</main>
+<footer>Revision notes from Pathology lectures 1–3 by Dr. Shifaa’ Al Qa’qa’, Al-Balqa Applied University.</footer>
+
+<script>
+/* [question, [options], correctIndex, explanation]; options are shuffled when rendered */
+var QZ = {
+m: [
+["Which of the following correctly describes a motor unit?",["One lower motor neuron, its axon and neuromuscular junctions, and the muscle fibres it supplies","Several lower motor neurons supplying one fibre","A mixture of type I and type II fibres from one neuron","One muscle fascicle with its blood supply"],0,"A motor unit is one lower motor neuron with its axon, NMJs and fibres, all of the same type."],
+["On an ATPase stain at pH 9.4, normal skeletal muscle shows:",["A checkerboard of light type I and dark type II fibres","Grouped dark fibres only","Uniform light staining","Dark type I and light type II fibres in clusters"],0,"Normal muscle has a random checkerboard; type I are light and type II dark at pH 9.4."],
+["A biopsy is stained with anti-slow myosin heavy chain antibody. Which fibres stain brown?",["Type I fibres, with high mitochondrial density and fatigue resistance","Type II fibres, with high glycolytic capacity","All fibres equally","Only regenerating fibres"],0,"Slow MHC (MYH7) marks type I fibres. Anti-fast MHC marks type II."],
+["Which finding is characteristic of normal skeletal muscle?",["Uniform polygonal fibres with peripheral nuclei","Central nuclei with marked size variation","Endomysial fibrosis and fat replacement","Grouped atrophy"],0,"Central nuclei and size variation signal injury or degeneration."],
+["Segmental necrosis and regeneration of individual fibres, with inflammatory cells, points to:",["A myopathic process","A neurogenic process","A normal ageing change","A neuromuscular junction disorder"],0,"Scattered segmental necrosis with regeneration is the myopathic pattern. Neurogenic disease shows grouped atrophy."],
+["A patient with lower motor neuron damage later shows fibres of one type clustered together. What explains this?",["Surviving neurons reinnervated denervated fibres and imposed their fibre type","Random regeneration of satellite cells","Autoimmune attack on type II fibres","Loss of dystrophin from the sarcolemma"],0,"Reinnervation produces fibre type grouping and larger motor units, replacing the checkerboard."],
+["Grouped atrophy on biopsy best indicates:",["Neurogenic disease","Duchenne muscular dystrophy","Polymyositis","Dermatomyositis"],0,"All fibres of a denervated motor unit atrophy together."],
+["Congenital myopathies differ from congenital muscular dystrophies because they:",["Present in infancy with defects that stay static or improve","Always appear after adulthood","Progress rapidly to death","Are always acquired"],0,"Congenital myopathies tend to be static or improve; dystrophies progress."],
+["Dystrophin’s main function is to:",["Stabilise the sarcolemma as part of the dystrophin-glycoprotein complex","Release calcium from the sarcoplasmic reticulum","Generate ATP in mitochondria","Open acetylcholine receptors"],0,"Absent dystrophin leaves the sarcolemma fragile, causing necrosis."],
+["Which describes the inheritance of Duchenne muscular dystrophy?",["X-linked, DMD gene at Xp21, affecting males","Autosomal dominant, chromosome 17","Autosomal recessive, chromosome 5","Mitochondrial, maternal"],0,"Males are affected; females are usually asymptomatic carriers."],
+["A 4-year-old boy has a frameshift mutation in the DMD gene. The most likely result is:",["Little or no dystrophin production","Altered dystrophin in normal amounts","Excess dystrophin","Increased slow myosin"],0,"Deletion or frameshift gives Duchenne; point mutations with altered dystrophin give Becker."],
+["Which comparison of DMD and BMD is correct?",["BMD has later onset, slower progression and better prognosis","BMD starts at 2–5 years and DMD at 5–15","They have identical severity","DMD preserves dystrophin and BMD abolishes it"],0,"DMD begins at 2–5 years with wheelchair use by about 10; BMD begins at 5–15 with many near-normal lifespans."],
+["Dystrophin immunohistochemistry shows segmental, incomplete membrane staining. The diagnosis is most likely:",["Becker muscular dystrophy","Duchenne muscular dystrophy","Normal muscle","Inclusion body myositis"],0,"Duchenne shows complete absence; Becker shows partial staining."],
+["Calf pseudohypertrophy in Duchenne is caused by:",["Early fibre hypertrophy, then replacement by fat and endomysial fibrosis","True increase in muscle fibre number","Edema from inflammation","Deposition of amyloid"],0,"The calf looks bulky but the muscle is weak because contractile tissue is replaced."],
+["A 5-year-old climbs up his own thighs to stand and has a waddling gait. Weakness typically spreads:",["Pelvic girdle, then shoulder girdle, then distal muscles","Distal, then shoulder, then pelvic","Facial, then extraocular, then distal","Respiratory, then pelvic, then shoulder"],0,"Gower’s sign reflects proximal pelvic weakness first."],
+["Serum creatine kinase in Duchenne muscular dystrophy is:",["Very high early, then falling as muscle is lost","Low throughout","Normal early, high late","Always normal"],0,"Early necrosis releases CK; late disease has little muscle left to leak it."],
+["The usual cause of death in Duchenne muscular dystrophy is:",["Respiratory insufficiency, pneumonia or cardiac decompensation","Renal failure","Hepatic failure","Intracranial haemorrhage"],0,"Respiratory and cardiac muscle are progressively involved, with cardiomyopathy."],
+["Which is an acquired disorder of skeletal muscle?",["Diabetic muscle infarction","Becker muscular dystrophy","Emery-Dreifuss dystrophy","Congenital myopathy"],0,"Acquired causes include inflammatory myopathies, toxins, rhabdomyolysis and diabetic infarction."],
+["Polymyositis is best explained by:",["CD8+ T cells recognising antigens on MHC class I of myofibres","Antibodies against acetylcholine receptors","IgE-mediated mast cell activation","CD4+ T cells with MHC class II on all myofibres"],0,"Endomysial CD8 infiltrates attack myofibres; steroids are usually effective."],
+["A 58-year-old woman has proximal weakness and a rash, and biopsy shows perifascicular atrophy. What must be excluded?",["Underlying malignancy","Duchenne muscular dystrophy","Myasthenia gravis","Rickets"],0,"Adult dermatomyositis is paraneoplastic in about 15–30%. Anti-Mi-2 antibodies are associated."],
+["A 72-year-old man has slow, asymmetric proximal and distal weakness unresponsive to steroids. Biopsy would show:",["Rimmed vacuoles with tau, amyloid and TDP-43","Absent dystrophin staining","Perifascicular atrophy","Grouped atrophy only"],0,"This is inclusion body myositis, a degenerative disorder with secondary inflammation."],
+["Which inflammatory myopathy is the most common in children?",["Dermatomyositis","Polymyositis","Inclusion body myositis","Duchenne muscular dystrophy"],0,"Juvenile dermatomyositis is the common childhood form."]
+],
+b: [
+["Woven bone found in an adult biopsy most likely indicates:",["A bone abnormality or disease","Normal remodelling","Normal ageing","Lamellar bone repair"],0,"Woven bone is normal only in fetuses, young children and fracture repair."],
+["The organic part of bone matrix (osteoid) is mainly:",["Type I collagen","Type II collagen","Hydroxyapatite","Elastin"],0,"Osteoid is 35% type I collagen; hydroxyapatite is the 65% mineral."],
+["Which molecule is a decoy receptor that blocks RANK-RANKL interaction?",["Osteoprotegerin (OPG)","M-CSF","PTH","NF-κB"],0,"OPG from osteoblasts reduces osteoclast formation."],
+["Which factor increases RANKL expression?",["Glucocorticoids","Estrogen","WNT signalling","Bone morphogenetic proteins"],0,"PTH, vitamin D, IL-1 and glucocorticoids raise RANKL. WNT, BMPs and sex hormones raise OPG."],
+["Which T-score defines osteoporosis?",["−2.5 or lower","−1.0 to −2.5","−0.5","Above 0"],0,"Osteopenia is −1 to −2.5; osteoporosis is −2.5 or below."],
+["The main mechanism of postmenopausal osteoporosis is:",["Estrogen loss raising inflammatory cytokines, RANKL, and osteoclast activity","Impaired mineralisation from vitamin D deficiency","Excess osteoclast apoptosis","Increased OPG production"],0,"It is a high-turnover osteoporosis."],
+["Senile osteoporosis is characterised by:",["Low turnover with reduced osteoblast activity","High turnover","Defective mineralisation","Increased osteoid"],0,"Older osteoblasts proliferate and synthesise less and respond poorly to growth factors."],
+["Plain radiographs reliably detect osteoporosis only after bone loss of about:",["30–40%","5%","10%","75%"],0,"DXA or QCT are used earlier."],
+["In osteoporosis, serum calcium, phosphorus and alkaline phosphatase are typically:",["Normal","Low calcium","High ALP","High phosphorus"],0,"Abnormal values should prompt a search for another diagnosis."],
+["Denosumab acts by:",["Blocking RANKL, preventing osteoclast activation","Increasing OPG breakdown","Stimulating osteoblasts","Inhibiting xanthine oxidase"],0,"It is an anti-RANKL antibody. Bisphosphonates also reduce osteoclast activity."],
+["Defective mineralisation with excess unmineralised osteoid in children produces:",["Rickets","Osteoporosis","Paget disease","Osteopetrosis"],0,"The adult counterpart is osteomalacia, with fractures."],
+["Secondary hyperparathyroidism most commonly follows:",["Chronic kidney disease","Parathyroid adenoma","Parathyroid carcinoma","Hyperthyroidism"],0,"Low active vitamin D lowers calcium and raises PTH. Parathyroid adenoma causes primary disease."],
+["The three phases of Paget disease in order are:",["Osteolytic, mixed, osteosclerotic","Osteosclerotic, mixed, osteolytic","Mixed, osteolytic, osteosclerotic","Osteoblastic, osteolytic, quiescent"],0,"Resorption first, then mixed activity, then a quiescent sclerotic phase."],
+["Which genetic alteration is most associated with Paget disease?",["SQSTM1 mutation increasing NF-κB activity","Dystrophin deletion","HGPRT deficiency","Collagen type I deletion"],0,"SQSTM1 is found in 50% of familial and 10% of sporadic cases."],
+["Which histologic finding is pathognomonic for Paget disease?",["Mosaic pattern of lamellar bone with woven bone","Sequestrum surrounded by involucrum","Hairpin capillaries","Rimmed vacuoles"],0,"Prominent cement lines join haphazard units of lamellar bone."],
+["A 65-year-old has an incidental raised ALP, normal calcium, and a thickened pelvis with bowing of the femur. The most likely diagnosis is:",["Paget disease of bone","Osteoporosis","Osteomalacia","Primary hyperparathyroidism"],0,"Increased but disordered bone with high ALP and normal calcium is typical. Skull, spine and femur are common."],
+["Which malignancy complicates a small proportion of Paget disease?",["Osteosarcoma","Multiple myeloma","Ewing sarcoma","Chondroma"],0,"Under 1% overall, and 5–10% in severe polyostotic disease."],
+["The most common cause of pyogenic osteomyelitis is:",["Staphylococcus aureus","Salmonella","Pseudomonas","Haemophilus influenzae"],0,"S. aureus accounts for 50–75% of cases."],
+["Hematogenous osteomyelitis in a 6-year-old most often involves the:",["Metaphysis of a long bone","Epiphysis","Vertebral body","Skull"],0,"Slow, turbulent hairpin capillaries in the metaphysis, with the physis acting as a barrier, favour bacterial seeding."],
+["In a patient with sickle cell disease, which organism is a classic cause of osteomyelitis?",["Salmonella","Neisseria gonorrhoeae","Group B Streptococcus","Haemophilus influenzae"],0,"Salmonella is characteristic of sickle cell disease."],
+["In osteomyelitis, the sequestrum is:",["Dead bone","Reactive new bone around dead bone","A subperiosteal abscess","A draining sinus"],0,"The involucrum is the reactive bone that encases it."],
+["Pott disease is:",["Tuberculous spondylitis","Pyogenic osteomyelitis of the tibia","A sickle cell bone infarct","Syphilitic periostitis"],0,"The spine is involved in 40% of mycobacterial osteomyelitis, causing kyphosis and cord compression."],
+["Chronic osteomyelitis may be complicated by squamous cell carcinoma arising in:",["The draining sinus tract","The sequestrum","The growth plate","The marrow cavity"],0,"Other complications include amyloidosis, sepsis, endocarditis and sarcoma."]
+],
+a: [
+["Type B synoviocytes:",["Resemble fibroblasts and synthesise hyaluronic acid","Are specialised macrophages","Form a basement membrane","Produce type II collagen"],0,"Type A are macrophage-like. The synovial lining has no basement membrane."],
+["The most common joint disease is:",["Osteoarthritis","Rheumatoid arthritis","Gout","Reactive arthritis"],0,"OA affects about 40% of people over 70."],
+["Primary osteoarthritis typically:",["Starts after 50, insidiously, in a few joints","Starts in childhood","Is symmetric and polyarticular","Is autoimmune"],0,"Secondary OA is only about 5% and affects younger people."],
+["The initiating event in osteoarthritis is:",["Chondrocyte injury with matrix change","Autoantibody formation","Urate crystal deposition","Synovial proliferation with pannus"],0,"Early matrix shows ↑water and ↓proteoglycan."],
+["Which enzymes degrade the type II collagen network in OA?",["Matrix metalloproteinases","Xanthine oxidase","Carbonic anhydrase","HGPRT"],0,"TGF-β induces MMPs; TNF, prostaglandins and NO also contribute."],
+["Polished ivory-like subchondral bone in OA is called:",["Eburnation","Pannus","Sequestrum","Tophus"],0,"It reflects subchondral sclerosis once cartilage is lost."],
+["Prominent osteophytes at the distal interphalangeal joints are:",["Heberden nodes","Bouchard nodes","Rheumatoid nodules","Tophi"],0,"Bouchard nodes are at the proximal interphalangeal joints."],
+["Which feature distinguishes OA from RA?",["Ankylosis does not occur in OA","Symmetric MCP involvement","Pannus formation","Positive ACPA"],0,"RA can progress to fibrous then bony ankylosis."],
+["Rheumatoid arthritis most commonly affects:",["Women in the fourth to fifth decade","Young men","Children under 5","Men over 70"],0,"It is a chronic autoimmune synovitis."],
+["Which genetic association is linked to ACPA-positive RA?",["HLA-DRB1","HLA-B27","HLA-DQ2","HLA-B51"],0,"HLA-B27 is for spondyloarthropathies."],
+["The synovial pannus in RA is:",["Edematous synovium with inflammatory cells, granulation tissue and fibroblasts growing over cartilage","A crystal deposit","Dead bone","A subchondral cyst"],0,"It erodes cartilage and bone and can bridge joints."],
+["Which joints are typically involved in RA?",["Symmetric hands and feet, MCP and PIP joints","Asymmetric weight-bearing joints","The sacroiliac joints only","The first MTP joint only"],0,"Morning stiffness is prominent."],
+["Which antibody is most specific for RA?",["Anti-citrullinated protein antibody (ACPA)","Rheumatoid factor","Anti-Mi-2","Anti-dystrophin"],0,"RF is also found in healthy elderly people and in other autoimmune diseases and infections."],
+["Histologically, rheumatoid nodules resemble:",["Necrotizing granulomas","Tophi","Osteophytes","Lymphoma"],0,"They occur in subcutaneous tissue and rarely the lung."],
+["Swan-neck and boutonnière deformities are seen in:",["Rheumatoid arthritis","Osteoarthritis","Gout","Ankylosing spondylitis"],0,"Ulnar deviation is also typical."],
+["A patient with RA on long-term TNF antagonist therapy is at higher risk of:",["Tuberculosis reactivation","Hypothyroidism","Osteoporosis only","Lesch-Nyhan syndrome"],0,"Anti-TNF treatment is not curative and must be continued to avoid flares."],
+["Which combination is characteristic of seronegative spondyloarthropathies?",["Enthesitis, sacroiliac involvement, HLA-B27, RF negative","Pannus, RF positive, symmetric hand arthritis","Urate crystals, hyperuricemia","Subchondral cysts, osteophytes"],0,"A CD8+ T cell response is proposed."],
+["A 25-year-old man has low back pain, spinal stiffness and sacroiliac fusion. The strongest association is:",["HLA-B27","HLA-DRB1","ACPA","Anti-dsDNA"],0,"About 90% of ankylosing spondylitis patients are HLA-B27 positive."],
+["Reactive arthritis consists of arthritis plus:",["Nongonococcal urethritis or cervicitis, and conjunctivitis","Rash and photosensitivity","Uveitis and renal stones","Pericarditis and pleuritis"],0,"It follows genitourinary (Chlamydia) or GI infection."],
+["Allopurinol inhibits:",["Xanthine oxidase","HGPRT","PRPP synthetase","URAT1"],0,"Xanthine oxidase converts hypoxanthine and xanthine to uric acid."],
+["Complete absence of HGPRT causes:",["Lesch-Nyhan syndrome with hyperuricemia and neurologic features","Pseudogout","Ankylosing spondylitis","Duchenne dystrophy"],0,"It is X-linked and rare."],
+["The most common cause of primary gout is:",["Reduced renal excretion of uric acid","Overproduction from HGPRT deficiency","Tumour lysis","Vitamin D deficiency"],0,"Transporter problems (URAT1, GLUT9) increase proximal tubular reabsorption."],
+["Which statement about hyperuricemia and gout is correct?",["Urate above 6.8 mg/dL is necessary but not sufficient; about 10% develop gout","Everyone with hyperuricemia develops gout","Gout occurs without hyperuricemia","Gout appears within a year of hyperuricemia"],0,"Gout usually appears after 20–30 years of hyperuricemia."],
+["Which pathway links urate crystals to acute inflammation?",["NLRP3 inflammasome activation with IL-1β release","Complement-mediated B cell killing only","IgE cross-linking","CD8 T cell cytotoxicity"],0,"The same pathway operates in pseudogout."],
+["Acute gout most often first affects the:",["First metatarsophalangeal joint","Sacroiliac joint","Distal interphalangeal joint","Hip"],0,"This presentation is called podagra."],
+["Urate crystals under polarised light are:",["Needle-shaped and negatively birefringent","Rhomboid and positively birefringent","Needle-shaped and positively birefringent","Rhomboid and negatively birefringent"],0,"Calcium pyrophosphate crystals are rhomboid and positively birefringent."],
+["CPPD (pseudogout) is associated with:",["Hyperparathyroidism, hemochromatosis, diabetes, and ANKH mutations","Thiazide diuretics","Tumour lysis syndrome","Chlamydia infection"],0,"It affects adults over 50, equally in men and women, and most often the knees."]
+]
+};
+
+function shuffled(n){
+  var a=[],i,j,t;
+  for(i=0;i<n;i++)a.push(i);
+  for(i=n-1;i>0;i--){j=Math.floor(Math.random()*(i+1));t=a[i];a[i]=a[j];a[j]=t;}
+  return a;
+}
+
+function Quiz(key){
+  var data=QZ[key];
+  var box=document.getElementById("qbox-"+key);
+  var bar=document.getElementById("sc-"+key);
+  var reset=document.getElementById("rs-"+key);
+  var score,done;
+
+  function update(){
+    bar.textContent=done<data.length
+      ? "Score "+score+" / "+data.length+" · answered "+done
+      : "Finished: "+score+" / "+data.length+" ("+Math.round(score/data.length*100)+"%)";
+  }
+
+  function render(){
+    box.textContent="";
+    score=0;done=0;
+    data.forEach(function(item,qi){
+      var q=document.createElement("div");q.className="q";
+      var p=document.createElement("p");p.textContent=(qi+1)+". "+item[0];q.appendChild(p);
+      var ex=document.createElement("div");ex.className="ex";ex.textContent=item[3];
+      var order=shuffled(item[1].length);
+      var btns=[];
+      var locked=false;
+      order.forEach(function(orig,pos){
+        var b=document.createElement("button");
+        b.type="button";b.className="o";
+        b.textContent=String.fromCharCode(65+pos)+". "+item[1][orig];
+        b.addEventListener("click",function(){
+          if(locked)return;
+          locked=true;done++;
+          if(orig===item[2]){b.classList.add("ok");score++;}
+          else{
+            b.classList.add("no");
+            btns.forEach(function(x){if(x.o===item[2])x.b.classList.add("ok");});
+          }
+          ex.style.display="block";
+          update();
+        });
+        btns.push({b:b,o:orig});
+        q.appendChild(b);
+      });
+      q.appendChild(ex);
+      box.appendChild(q);
+    });
+    update();
+  }
+
+  reset.addEventListener("click",function(){
+    render();
+    document.getElementById("quiz-"+key).scrollIntoView();
+  });
+  render();
+}
+
+Quiz("m");Quiz("b");Quiz("a");
+</script>
+
+</body></html>
