@@ -21,8 +21,9 @@
   nav.className = 'vn-lecture-navigation';
   nav.setAttribute('aria-label', 'Lecture navigation');
 
-  function link(label, href, disabled) {
+  function link(label, href, className, disabled) {
     const anchor = document.createElement('a');
+    anchor.className = className;
     anchor.textContent = label;
     anchor.href = href || '#';
     if (disabled) {
@@ -32,11 +33,25 @@
     return anchor;
   }
 
+  const context = document.createElement('div');
+  context.className = 'vn-lecture-context';
+  context.setAttribute('aria-label', 'Current lecture');
+  [current.system, current.exam, current.subject, current.lectureLabel].forEach((part) => {
+    const item = document.createElement('span');
+    item.textContent = part;
+    context.append(item);
+  });
+  const controls = document.createElement('div');
+  controls.className = 'vn-lecture-controls';
+  controls.append(
+    link('← Previous', previous?.file, 'vn-previous', !previous),
+    link('Next →', next?.file, 'vn-next', !next)
+  );
   nav.append(
-    link('← Previous Lecture', previous?.file, !previous),
-    link('← Subject Checklist', `index.html#${current.category}`, false),
-    link('← Vitanova Learning Hub', 'index.html', false),
-    link('Next Lecture →', next?.file, !next)
+    link('✦ Vitanova', 'index.html', 'vn-home', false),
+    link(`← Back to ${current.subject}`, `index.html#${current.category}`, 'vn-subject', false),
+    context,
+    controls
   );
 
   document.querySelectorAll('a[href]').forEach((anchor) => {

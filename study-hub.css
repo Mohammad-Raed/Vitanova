@@ -24,6 +24,7 @@ body{min-width:320px;transition:background-color .2s ease,color .2s ease}
 .progress-note{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
 .storage-warning{margin-top:8px;color:#ffb9a9}
 #cards.grid{gap:12px}
+#hub-main.is-dashboard #cards.grid{grid-template-columns:minmax(0,1fr)}
 .category-card{min-height:0;padding:20px;border-radius:14px;transition:border-color .18s ease,transform .18s ease,background-color .18s ease}
 .category-card:hover{border-color:var(--purple);transform:translateY(-2px)}
 .category-card h3{margin:10px 0 6px;font-size:19px}
