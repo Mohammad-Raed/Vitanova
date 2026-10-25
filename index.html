@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="study-shared.css">
 <link rel="stylesheet" href="study-hub.css">
 </style></head><body>
-<header><div class="brand">✦ VITANOVA LEARNING HUB</div><h1>Welcome to Vitanova</h1><p>Your home for lectures, learning resources, and interactive study materials.<br>Choose an artifact below to get started.</p><div class="pill">One place for every resource</div></header>
-<main><div id="back-area"></div><div class="heading"><div><div class="eyebrow">YOUR LIBRARY</div><h2 id="page-title">Explore artifacts</h2></div><div class="count" id="count"></div></div><section id="dashboard-overview" class="dashboard-overview" hidden></section><div id="cards" class="grid"></div></main><footer>Vitanova Learning Hub · Study resources · Progress is saved locally in this browser and may be lost if website data is cleared.</footer>
+<header id="site-header" class="is-home"><div id="hero-content"><div class="brand">✦ VITANOVA LEARNING HUB</div><h1>Welcome to Vitanova</h1><p>Your home for lectures, learning resources, and interactive study materials.<br>Choose an artifact below to get started.</p><div class="pill">One place for every resource</div></div><div id="compact-header" hidden><div class="compact-nav"><a class="compact-brand" href="#home">✦ Vitanova</a><nav id="breadcrumbs" aria-label="Breadcrumb"></nav></div></div></header>
+<main id="hub-main"><div class="heading"><div><div class="eyebrow">YOUR LIBRARY</div><h2 id="page-title">Explore artifacts</h2><p id="page-subtitle" class="page-subtitle"></p></div><div class="count" id="count"></div></div><section id="dashboard-overview" class="dashboard-overview" hidden></section><div id="cards" class="grid"></div></main><footer>Vitanova Learning Hub · Study resources · Progress saved on this device. Browser data can be cleared.</footer>
 <script src="study-data.js"></script><script src="study-progress.js"></script>
 <script>
 const categories = {
@@ -14,13 +14,13 @@ const categories = {
  'mss-final':[['anatomy','Anatomy','🦴'],['pharmacology','Pharmacology','💊'],['physiology','Physiology','❤️'],['pathology','Pathology','🔬'],['microbiology','Microbiology','🦠'],['biochemistry','Biochemistry','🧪']]
 };
 const views={
- home:{title:'Explore your artifacts',parent:null,cards:[['MSS System','Midterm, final, and past papers, organized by subject.','mss','🦴','SYSTEM'],['Immunology','Full slide explanations, AI summaries and MCQs.','immunology','🧬','SYSTEM']]},
- mss:{title:'MSS System',parent:'home',cards:[['Midterm Summary + AI MCQs','Study materials organized by subject.','mss-mid','📘','MIDTERM'],['Final Summary + AI MCQs','Study materials organized by subject.','mss-final','📗','FINAL'],['Past Papers','Midterm and final question collections.','mss-past','📝','PAST PAPERS']]},
- immunology:{title:'Immunology',parent:'home',cards:[['Midterm','Full slide explanations + AI summaries and MCQs.','immunology-mid','🧬','MIDTERM'],['Final','Full slide explanations + AI summaries and MCQs.','immunology-final','🧬','FINAL']]},
- 'mss-past':{title:'MSS Past Papers',parent:'mss',cards:[['Midterm Questions','Past-paper questions for the midterm.','mss-past-mid','📝','PAST PAPERS'],['Final Questions','Past-paper questions for the final.','mss-past-final','📝','PAST PAPERS']]}
+ home:{title:'Explore your artifacts',parent:null,subtitle:'Choose a system to browse its study resources.',cards:[['MSS System','Midterm, final, and past-paper study resources.','mss','🦴','SYSTEM'],['Immunology','Midterm and final immunology study resources.','immunology','🧬','SYSTEM']]},
+ mss:{title:'MSS System',parent:'home',subtitle:'Choose an exam period or browse past papers.',cards:[['Midterm Summary + AI MCQs','Lecture summaries and questions for the midterm.','mss-mid','📘','MIDTERM'],['Final Summary + AI MCQs','Lecture summaries and questions for the final.','mss-final','📗','FINAL'],['Past Papers','Practice papers from previous MSS examinations.','mss-past','📝','PAST PAPERS']]},
+ immunology:{title:'Immunology',parent:'home',subtitle:'Choose the exam period you are preparing for.',cards:[['Midterm','Immunology resources for the midterm examination.','immunology-mid','🧬','MIDTERM'],['Final','Immunology resources for the final examination.','immunology-final','🧬','FINAL']]},
+ 'mss-past':{title:'MSS Past Papers',parent:'mss',subtitle:'Choose an exam period to browse past papers.',cards:[['Midterm Questions','Past-paper questions for the MSS midterm examination.','mss-past-mid','📝','PAST PAPERS'],['Final Questions','Past-paper questions for the MSS final examination.','mss-past-final','📝','PAST PAPERS']]}
 };
 for(const [exam,subjects] of Object.entries(categories)){
- views[exam]={title:(exam==='mss-mid'?'MSS Midterm':'MSS Final')+' · Choose a subject',parent:'mss',cards:subjects.map(([id,title,icon])=>[title,'Browse '+title.toLowerCase()+' lectures and quizzes.',exam+'-'+id,icon,'SUBJECT'])};
+ views[exam]={title:(exam==='mss-mid'?'MSS Midterm':'MSS Final')+' · Choose a subject',parent:'mss',subtitle:'Choose a subject to view its lecture resources.',cards:subjects.map(([id,title,icon])=>[title,'Browse the available '+title.toLowerCase()+' study resources.',exam+'-'+id,icon,'SUBJECT'])};
  for(const [id,title] of subjects)views[exam+'-'+id]={title:(exam==='mss-mid'?'MSS Midterm':'MSS Final')+' · '+title,parent:exam,category:exam+'-'+id};
 }
 for(const id of ['immunology-mid','immunology-final'])views[id]={title:'Immunology · '+(id.endsWith('mid')?'Midterm':'Final'),parent:'immunology',category:id};
