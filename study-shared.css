@@ -1,0 +1,10 @@
+/* Shared study controls; lecture content keeps its original page styling. */
+:root[data-theme="light"]{--bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;--pu:#6b4c93;--te:#128a7c;--ln:#e3dcf0;--soft:#f1ecfa;--txt:var(--tx);--muted:var(--mu);--purple:var(--pu);--mint:var(--te);--line:var(--ln)}
+:root[data-theme="dark"]{--bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;--pu:#a98bd6;--te:#3dbfae;--ln:#3a3057;--soft:#2b2347;--txt:var(--tx);--muted:var(--mu);--purple:var(--pu);--mint:var(--te);--line:var(--ln)}
+body{transition:background-color .2s ease,color .2s ease}
+.vn-lecture-navigation{max-width:980px;margin:14px auto;padding:0 16px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.vn-lecture-navigation a,.vn-theme-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 14px;border:1px solid var(--ln);border-radius:10px;background:var(--card);color:var(--pu);font:600 14px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;cursor:pointer;transition:background-color .18s ease,border-color .18s ease,transform .18s ease}
+.vn-lecture-navigation a:hover,.vn-theme-toggle:hover{background:var(--soft);border-color:var(--pu);transform:translateY(-1px)}
+.vn-lecture-navigation a[aria-disabled="true"]{opacity:.5;pointer-events:none}
+.vn-theme-toggle{position:fixed;right:14px;bottom:14px;z-index:10;box-shadow:0 4px 18px #20163524}
+@media(max-width:560px){.vn-lecture-navigation{gap:6px}.vn-lecture-navigation a{flex:1 1 42%;font-size:13px}.vn-theme-toggle{right:10px;bottom:10px}}
