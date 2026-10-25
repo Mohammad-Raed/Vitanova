@@ -39,7 +39,7 @@ window.VitanovaLectures = [
   {
     id: 'mss-mid-pharmacology-01-03', system: 'MSS', exam: 'Midterm', subject: 'Pharmacology',
     category: 'mss-mid-pharmacology', lectureLabel: 'Lectures 1–3', order: 1,
-    title: 'Pharmacology', description: 'Compare psoriasis therapies, rheumatoid arthritis drugs, and skeletal muscle relaxants through drug-focused high-yield notes and scored quizzes for all three lectures.',
+    title: 'Psoriasis, Anti-Rheumatoid Drugs & Muscle Relaxants', description: 'Compare psoriasis therapies, rheumatoid arthritis drugs, and skeletal muscle relaxants through drug-focused high-yield notes and scored quizzes for all three lectures.',
     file: 'MSS-Midterm-Pharmacology-Lectures-1-3-AI-Summary-MCQs.html', icon: '💊'
   },
   {
