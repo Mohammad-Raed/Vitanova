@@ -162,7 +162,8 @@ function render() {
     const targetView = views[card.to];
     const targetLectures = targetView?.category ? lectures.filter((lecture) => lecture.category === targetView.category) : [];
     const completed = targetLectures.filter((lecture) => progressStore.isCompleted(targetView.category, lecture.id)).length;
-    const completion = targetView?.category ? `<span class="category-progress">${completed}/${targetLectures.length} completed</span>` : '';
+    const completion = targetView?.category && targetLectures.length
+      ? `<span class="category-progress">${completed}/${targetLectures.length} completed</span>` : '';
     return `<article class="card category-card">
     <div class="icon">${esc(card.icon)}</div><span class="tag">${esc(card.tag)}</span><h3>${esc(card.title)}</h3>
     <p>${esc(card.description)}</p>${completion}<a class="action" href="#${encodeURIComponent(card.to)}">Explore →</a></article>`;
