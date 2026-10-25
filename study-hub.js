@@ -81,7 +81,7 @@ function renderDashboard(view, key) {
     ? `${sample.system} ${sample.exam} · ${sample.subject} lecture resources.`
     : 'No lectures uploaded yet. Resources will appear here when added.';
   countElement.textContent = `${categoryLectures.length} ${categoryLectures.length === 1 ? 'lecture resource' : 'lecture resources'}`;
-  overviewElement.hidden = false;
+  overviewElement.hidden = categoryLectures.length === 0;
   overviewElement.innerHTML = `<div class="progress-topline"><div><span class="eyebrow">YOUR PROGRESS</span><p id="progress-count">0 of 0 lecture resources completed</p></div>
     <strong id="completion-percent">0%</strong></div>
     <progress id="completion-progress" max="100" value="0" aria-label="0% complete" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></progress>
@@ -138,8 +138,9 @@ function renderBreadcrumbs(key) {
 }
 
 function render() {
-  const key = decodeURIComponent(location.hash.slice(1)) || 'home';
-  const view = views[key] || views.home;
+  const requestedKey = decodeURIComponent(location.hash.slice(1)) || 'home';
+  const key = views[requestedKey] ? requestedKey : 'home';
+  const view = views[key];
   const isHome = key === 'home';
   siteHeader.classList.toggle('is-home', isHome);
   siteHeader.classList.toggle('is-internal', !isHome);
