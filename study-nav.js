@@ -4,6 +4,13 @@
   const current = lectures.find((lecture) => lecture.file === currentFile);
   if (!current) return;
 
+  if (!document.querySelector('link[href="study-shared.css"]')) {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = 'study-shared.css';
+    document.head.append(stylesheet);
+  }
+
   const ordered = lectures
     .filter((lecture) => lecture.system === current.system && lecture.exam === current.exam && lecture.subject === current.subject)
     .sort((left, right) => left.order - right.order);

@@ -44,7 +44,7 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
 .o.no{background:#d64545;color:#fff;border-color:#d64545}
 .ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
 #sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
-</style></head><body>
+</style><link rel="stylesheet" href="study-shared.css"></head><body>
   <a href="index.html" style="display:inline-block;margin:20px;padding:12px 20px;background:#8b6bc6;color:white;text-decoration:none;border-radius:10px;font-family:Arial,sans-serif;font-weight:bold;">← Vitanova Learning Hub</a><a href="index.html#mss-mid-anatomy" onclick="if(history.length>1){history.back();return false;}" style="display:inline-block;margin:20px;padding:12px 20px;background:#8b6bc6;color:white;text-decoration:none;border-radius:10px;font-family:Arial,sans-serif;font-weight:bold;">← Back</a>
 <header><small>AL-BALQA APPLIED UNIVERSITY · MSS ANATOMY</small><h1>Lectures 7 &amp; 8 Revision</h1><p>Upper limb joints II · Pectoral, back &amp; scapular muscles · Axilla</p></header>
 <nav><a href="#l7">Lecture 7</a><a href="#l8">Lecture 8</a><a href="#hy">High-yield</a><a href="#qz7">Quiz 7</a><a href="#qz8">Quiz 8</a></nav>
@@ -176,4 +176,4 @@ function upd(){document.getElementById("sc").textContent="Score "+ok+" / "+done+
 function build(id,A){const c=document.getElementById(id);A.forEach((a,i)=>{const d=document.createElement("div");d.className="q";const p=document.createElement("p");p.textContent=(i+1)+". "+a[0];d.appendChild(p);const ex=document.createElement("div");ex.className="ex";ex.textContent=a[3];a[1].forEach((t,j)=>{const b=document.createElement("button");b.className="o";b.textContent=t;b.onclick=()=>{if(d.dataset.l)return;d.dataset.l="1";done++;if(j===a[2])ok++;else b.classList.add("no");d.children[1+a[2]].classList.add("ok");ex.style.display="block";upd()};d.appendChild(b)});d.appendChild(ex);c.appendChild(d)})}
 function init(){done=0;ok=0;["c7","c8"].forEach(x=>document.getElementById(x).innerHTML="");build("c7",Q7);build("c8",Q8);upd()}
 document.getElementById("rs").onclick=init;init();
-</script></body></html>
+</script><script src="study-data.js"></script><script src="study-nav.js"></script></body></html>
