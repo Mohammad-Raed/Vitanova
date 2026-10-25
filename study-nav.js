@@ -65,7 +65,7 @@
     }
   });
 
-  const insertionPoint = document.querySelector('nav, main, header');
+  const insertionPoint = document.querySelector('header') || document.querySelector('nav, main');
   if (insertionPoint) insertionPoint.before(nav);
   else document.body.prepend(nav);
 
