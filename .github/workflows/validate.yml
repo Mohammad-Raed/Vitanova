@@ -1,0 +1,29 @@
+name: Validate Vitanova
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 tools/validate_site.py
+      - run: python3 tools/refresh_question_bank.py --check
+      - run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - run: node --test tests/*.test.cjs
+      - name: Install browser test tools outside the checkout
+        run: |
+          npm install --prefix "$RUNNER_TEMP/vitanova-browser" playwright
+          "$RUNNER_TEMP/vitanova-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Browser regressions
+        run: |
+          NODE_PATH="$RUNNER_TEMP/vitanova-browser/node_modules" node tests/browser.cjs

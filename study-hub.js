@@ -1,200 +1,110 @@
-const progressStore = window.VitanovaStudyProgress;
-const pageTitle = document.getElementById('page-title');
-const cardsElement = document.getElementById('cards');
-const countElement = document.getElementById('count');
-const overviewElement = document.getElementById('dashboard-overview');
-const subtitleElement = document.getElementById('page-subtitle');
-const siteHeader = document.getElementById('site-header');
-const heroContent = document.getElementById('hero-content');
-const compactHeader = document.getElementById('compact-header');
-const breadcrumbs = document.getElementById('breadcrumbs');
-const hubMain = document.getElementById('hub-main');
-const lectures = window.VitanovaLectures || [];
-
-function esc(value) {
-  return String(value).replace(/[&<>"']/g, (character) => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-  }[character]));
-}
-
-function applyTheme(theme, button) {
-  document.documentElement.dataset.theme = theme;
-  button.textContent = theme === 'dark' ? '☀ Light' : '☾ Dark';
-  try { window.localStorage.setItem('vitanova:theme:v1', theme); } catch { /* Theme still works for this page. */ }
-}
-
-function renderThemeButton() {
-  const button = document.createElement('button');
-  button.className = 'vn-theme-toggle';
-  button.type = 'button';
-  button.title = 'Toggle light and dark theme';
-  button.setAttribute('aria-label', button.title);
-  let theme;
-  try { theme = window.localStorage.getItem('vitanova:theme:v1'); } catch { theme = null; }
-  if (theme !== 'light' && theme !== 'dark') {
-    theme = window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+/* Registry-driven navigation and manual lecture progress. No lecture open marks completion. */
+(function () {
+  'use strict';
+  const lectures = window.VitanovaLectures || [];
+  const progress = window.VitanovaStudyProgress;
+  const storage = window.VitanovaStorage;
+  const $ = (id) => document.getElementById(id);
+  const cards = $('cards');
+  const views = window.VitanovaViews || {};
+  const esc=(value)=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fileHref=(file)=>encodeURIComponent(file);
+  let current='home', query='', completion='all';
+  function route() { try { return decodeURIComponent(location.hash.slice(1).split('?')[0]) || 'home'; } catch { return 'home'; } }
+  function ordered(items) { return [...items].sort((a,b)=>a.order-b.order||a.id.localeCompare(b.id)); }
+  function done(lecture) { return progress?.isCompleted(lecture.category,lecture.id) === true; }
+  function matches(lecture) {
+    const haystack=[lecture.title,lecture.system,lecture.exam,lecture.subject,lecture.lectureLabel,lecture.description].join(' ').toLowerCase();
+    return query.toLowerCase().trim().split(/\s+/).every(term=>haystack.includes(term)) && (completion==='all'||done(lecture)===(completion==='completed'));
   }
-  applyTheme(theme, button);
-  button.addEventListener('click', () => applyTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark', button));
-  document.body.append(button);
-}
-
-function updateOverview(category) {
-  const categoryLectures = lectures.filter((lecture) => lecture.category === category);
-  const completed = categoryLectures.filter((lecture) => progressStore.isCompleted(category, lecture.id)).length;
-  const total = categoryLectures.length;
-  const percentage = total ? Math.round(completed / total * 100) : 0;
-  const completedElement = document.getElementById('completed-count');
-  const totalElement = document.getElementById('total-count');
-  const percentElement = document.getElementById('completion-percent');
-  const summaryElement = document.getElementById('progress-count');
-  const progressElement = document.getElementById('completion-progress');
-  if (completedElement) completedElement.textContent = String(completed);
-  if (totalElement) totalElement.textContent = String(total);
-  if (percentElement) percentElement.textContent = `${percentage}%`;
-  if (summaryElement) summaryElement.textContent = `${completed} of ${total} ${total === 1 ? 'lecture resource' : 'lecture resources'} completed`;
-  if (progressElement) {
-    progressElement.value = percentage;
-    progressElement.setAttribute('aria-label', `${percentage}% complete`);
-    progressElement.setAttribute('aria-valuenow', String(percentage));
+  function breadcrumbs(key) {
+    const chain=[]; const seen=new Set();
+    while (key && views[key] && !seen.has(key)) { seen.add(key); chain.unshift(key); key=views[key].parent; }
+    $('breadcrumbs').innerHTML=chain.map((id,i)=>`${i?'<span aria-hidden="true">/</span>':''}<a href="#${encodeURIComponent(id)}"${i===chain.length-1?' aria-current="page"':''}>${esc(id==='home'?'Home':views[id].title)}</a>`).join('');
   }
-  categoryLectures.forEach((lecture) => {
-    const row = document.querySelector(`[data-resource-id="${CSS.escape(lecture.id)}"]`);
-    if (!row) return;
-    const done = progressStore.isCompleted(category, lecture.id);
-    row.classList.toggle('is-complete', done);
-    const status = row.querySelector('.resource-status');
-    const checkbox = row.querySelector('input[type="checkbox"]');
-    if (status) status.textContent = done ? 'Completed' : 'Not completed';
-    if (checkbox) checkbox.checked = done;
+  function overview(category) {
+    const list=lectures.filter(l=>l.category===category), count=list.filter(done).length;
+    const pct=list.length?Math.round(100*count/list.length):0;
+    $('dashboard-overview').innerHTML=`<div class="progress-topline"><div><span class="eyebrow">YOUR PROGRESS</span><p id="progress-count">${count} of ${list.length} lecture resources completed</p></div><strong id="completion-percent">${pct}%</strong></div><progress id="completion-progress" max="100" value="${pct}" aria-label="${pct}% complete"></progress><p class="progress-note">Mark completion yourself. Opening a lecture never changes progress.</p>`;
+    $('dashboard-overview').hidden=!list.length;
+  }
+  function drawLectures(items) {
+    const visible=ordered(items).filter(matches);
+    $('search-summary').textContent=`${visible.length} of ${items.length} lecture resources shown`;
+    cards.innerHTML=visible.length ? visible.map(lecture=>`<article class="study-resource${done(lecture)?' is-complete':''}" data-resource-id="${esc(lecture.id)}"><label class="completion-control"><input type="checkbox" ${done(lecture)?'checked':''} aria-label="Mark ${esc(lecture.lectureLabel+' '+lecture.title)} completed"></label><div class="resource-main"><div class="resource-meta"><span class="resource-kicker">${esc(lecture.lectureLabel)}</span><span class="resource-status">${done(lecture)?'Completed':'Not completed'}</span></div><h3><a href="${esc(fileHref(lecture.file))}">${esc(lecture.title)}</a></h3><p>${esc(lecture.description)}</p>${current==='search'?`<small class="resource-context">${esc(lecture.system+' · '+lecture.exam+' · '+lecture.subject)}</small>`:''}</div><a class="resource-open" href="${esc(fileHref(lecture.file))}" aria-label="Open ${esc(lecture.title)}">Open <span aria-hidden="true">→</span></a></article>`).join('') : `<div class="empty">${items.length?'No lectures match these filters. Try another search or completion filter.':'No lectures uploaded yet. New resources will appear here when added.'}</div>`;
+    if (views[current]?.category && views[current]?.cards?.length) cards.insertAdjacentHTML('beforeend', '<section class="more-subjects"><h3>More subjects</h3>'+views[current].cards.map(([title,,to])=>`<a class="resource-open" href="#${encodeURIComponent(to)}">${esc(title)} →</a>`).join(' ')+'</section>');
+  }
+  function descendants(key) {
+    const view=views[key];
+    return [...(view?.category ? lectures.filter(l=>l.category===view.category) : []),...(view?.cards||[]).flatMap(card=>descendants(card[2]))];
+  }
+  function drawCards(view) {
+    cards.innerHTML=(view.cards||[]).map(([title,description,to,icon,tag])=>{
+      const list=descendants(to), completed=list.filter(done).length;
+      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${list.length?`${list.length} lecture ${list.length===1?'resource':'resources'} · ${completed} completed`:'Resources coming soon'}</span><a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
+    }).join('');
+    $('count').textContent=descendants(current).length+' lecture resources';
+  }
+  function recent() {
+    const host=$('continue-studying'); host.hidden=true;
+    let record; try { record=storage?.read('vitanova:recent:v1',null)||JSON.parse(localStorage.getItem('vitanova:recent:v1')); } catch { return; }
+    const lecture=lectures.find(l=>l.id===record?.lectureId); if(!lecture)return;
+    const hash=typeof record.hash==='string'&&/^#[a-zA-Z][\w:.-]*$/.test(record.hash)?record.hash:'';
+    host.innerHTML=`<div><span class="eyebrow">CONTINUE STUDYING</span><p>${esc(lecture.title)}</p><small>${esc(lecture.system+' · '+lecture.subject+' · '+lecture.lectureLabel)}</small></div><a class="resource-open" href="${esc(fileHref(lecture.file)+hash)}">Continue →</a>`;
+    host.hidden=false;
+  }
+  function render() {
+    const requested=route(); current=views[requested]?requested:'home'; const view=views[current];
+    cards.className='grid'; $('continue-studying').hidden=true;
+    const isHome=current==='home';
+    $('site-header').classList.toggle('is-home',isHome); $('site-header').classList.toggle('is-internal',!isHome);
+    $('hero-content').hidden=!isHome; $('compact-header').hidden=isHome;
+    $('hub-main').classList.toggle('is-dashboard',Boolean(view.category)||current==='search');
+    breadcrumbs(current);
+    $('page-eyebrow').textContent=['saved','mistakes'].includes(current)?'YOUR REVISION':current==='backup'?'YOUR DATA':'YOUR LIBRARY';
+    $('page-title').textContent=view.title; $('page-subtitle').textContent=view.subtitle||'';
+    $('dashboard-overview').hidden=true; $('lecture-filters').hidden=!(view.category||current==='search');
+    if (view.category||current==='search') {
+      const items=view.category?lectures.filter(l=>l.category===view.category):lectures;
+      if(view.category) {
+        const sample=items[0]; $('page-subtitle').textContent=sample?`${sample.system} · ${sample.exam} · ${sample.subject}`:'No lectures uploaded yet.';
+        overview(view.category);
+      }
+      $('count').textContent=items.length+' lecture resources'; drawLectures(items);
+    } else if (current==='saved'||current==='mistakes') {
+      const params=new URLSearchParams(location.hash.split('?')[1]||'');
+      window.VitanovaSaved?.render(cards,$('count'),{mode:current==='mistakes'?'mistakes':'saved',lectureId:params.get('lecture')||undefined});
+    } else if (current==='backup') { $('count').textContent='Local data only'; window.VitanovaBackup?.mount(cards); }
+    else {drawCards(view); if(isHome)recent();}
+    document.title=(isHome?'':view.title+' · ')+'Vitanova Learning Hub';
+    document.querySelectorAll('.hub-links a').forEach(a=>{if(a.hash==='#'+current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    if(storage && !storage.isAvailable())storage.warning();
+  }
+  cards.addEventListener('change',event=>{
+    const checkbox=event.target.closest('input[type="checkbox"]'), row=checkbox?.closest('[data-resource-id]'); if(!row)return;
+    const lecture=lectures.find(l=>l.id===row.dataset.resourceId); if(!lecture)return;
+    const success=progress.setCompleted(lecture.category,lecture.id,checkbox.checked);
+    const view=views[current]; if(view.category)overview(view.category);
+    row.classList.toggle('is-complete',checkbox.checked); row.querySelector('.resource-status').textContent=checkbox.checked?'Completed':'Not completed';
+    if(completion!=='all')drawLectures(view.category?lectures.filter(l=>l.category===view.category):lectures);
+    if(!success)storage?.warning('Progress could not be saved permanently in this browser. Export a backup before leaving.');
   });
-}
-
-function renderDashboard(view, key) {
-  const category = view.category;
-  const categoryLectures = lectures
-    .filter((lecture) => lecture.category === category)
-    .sort((left, right) => left.order - right.order);
-  const sample = categoryLectures[0];
-  pageTitle.textContent = sample ? sample.subject : emptyCategoryTitle(key, view);
-  subtitleElement.textContent = sample
-    ? `${sample.system} ${sample.exam} · ${sample.subject} lecture resources.`
-    : 'No lectures uploaded yet. Resources will appear here when added.';
-  countElement.textContent = `${categoryLectures.length} ${categoryLectures.length === 1 ? 'lecture resource' : 'lecture resources'}`;
-  overviewElement.hidden = categoryLectures.length === 0;
-  overviewElement.innerHTML = `<div class="progress-topline"><div><span class="eyebrow">YOUR PROGRESS</span><p id="progress-count">0 of 0 lecture resources completed</p></div>
-    <strong id="completion-percent">0%</strong></div>
-    <progress id="completion-progress" max="100" value="0" aria-label="0% complete" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></progress>
-    <p class="progress-note">Progress saved on this device</p>`;
-
-  if (!categoryLectures.length) {
-    cardsElement.innerHTML = '<div class="empty">No lectures uploaded yet.</div>';
-    return;
-  }
-  cardsElement.innerHTML = categoryLectures.map((lecture) => {
-    const done = progressStore.isCompleted(category, lecture.id);
-    const href = encodeURI(lecture.file).replace(/#/g, '%23').replace(/\?/g, '%3F').replace(/&/g, '%26');
-    return `<article class="study-resource${done ? ' is-complete' : ''}" data-resource-id="${esc(lecture.id)}">
-      <label class="completion-control"><input type="checkbox" ${done ? 'checked' : ''} aria-label="Mark ${esc(lecture.lectureLabel)} ${esc(lecture.title)} completed"><span class="checkmark" aria-hidden="true"></span></label>
-      <div class="resource-main"><div class="resource-meta"><span class="resource-kicker">${esc(lecture.lectureLabel)}</span><span class="resource-status" aria-live="polite">${done ? 'Completed' : 'Not completed'}</span></div>
-      <h3><a href="${esc(href)}">${esc(lecture.title)}</a></h3><p>${esc(lecture.description)}</p></div>
-      <a class="resource-open" href="${esc(href)}">Open <span aria-hidden="true">→</span></a>
-    </article>`;
-  }).join('');
-  updateOverview(category);
-}
-
-function emptyCategoryTitle(key, view) {
-  if (key.startsWith('immunology-')) return 'Immunology';
-  return view.title.split(' · ').pop();
-}
-
-function breadcrumbLabel(key) {
-  if (key === 'home') return 'Vitanova';
-  if (key === 'mss') return 'MSS';
-  if (key === 'mss-mid') return 'Midterm';
-  if (key === 'mss-final') return 'Final';
-  if (key === 'mss-past') return 'Past Papers';
-  if (key === 'mss-past-mid') return 'Midterm';
-  if (key === 'mss-past-final') return 'Final';
-  if (key === 'immunology') return 'Immunology';
-  if (key === 'immunology-mid') return 'Midterm';
-  if (key === 'immunology-final') return 'Final';
-  const lecture = lectures.find((item) => item.category === views[key]?.category);
-  return lecture?.subject || views[key]?.title.split(' · ').pop() || key;
-}
-
-function renderBreadcrumbs(key) {
-  const chain = [];
-  let current = key;
-  while (current && views[current]) {
-    chain.unshift(current);
-    current = views[current].parent;
-  }
-  breadcrumbs.innerHTML = chain.map((route, index) => {
-    const currentPage = index === chain.length - 1;
-    return `${index ? '<span class="breadcrumb-separator" aria-hidden="true">/</span>' : ''}<a href="#${encodeURIComponent(route)}"${currentPage ? ' aria-current="page"' : ''}>${esc(breadcrumbLabel(route))}</a>`;
-  }).join('');
-}
-
-function render() {
-  const requestedKey = decodeURIComponent(location.hash.slice(1)) || 'home';
-  const key = views[requestedKey] ? requestedKey : 'home';
-  const view = views[key];
-  const isHome = key === 'home';
-  siteHeader.classList.toggle('is-home', isHome);
-  siteHeader.classList.toggle('is-internal', !isHome);
-  heroContent.hidden = !isHome;
-  compactHeader.hidden = isHome;
-  hubMain.classList.toggle('is-dashboard', Boolean(view.category));
-  renderBreadcrumbs(key);
-  pageTitle.textContent = view.title;
-  subtitleElement.textContent = view.subtitle || '';
-  overviewElement.hidden = true;
-
-  if (view.category) {
-    renderDashboard(view, key);
-    return;
-  }
-
-  const cards = view.cards.map(([title, description, to, icon, tag]) => ({ title, description, to, icon, tag }));
-  countElement.textContent = `${cards.length} ${cards.length === 1 ? 'resource' : 'resources'}`;
-  cardsElement.innerHTML = cards.length ? cards.map((card) => {
-    const targetView = views[card.to];
-    const targetLectures = targetView?.category ? lectures.filter((lecture) => lecture.category === targetView.category) : [];
-    const completed = targetLectures.filter((lecture) => progressStore.isCompleted(targetView.category, lecture.id)).length;
-    const completion = targetView?.category && targetLectures.length
-      ? `<span class="category-progress">${completed}/${targetLectures.length} completed</span>` : '';
-    return `<article class="card category-card">
-    <div class="icon">${esc(card.icon)}</div><span class="tag">${esc(card.tag)}</span><h3>${esc(card.title)}</h3>
-    <p>${esc(card.description)}</p>${completion}<a class="action" href="#${encodeURIComponent(card.to)}">Explore →</a></article>`;
-  }).join('')
-    : '<div class="empty">No resources uploaded here yet.</div>';
-}
-
-cardsElement.addEventListener('change', (event) => {
-  const checkbox = event.target.closest('input[type="checkbox"]');
-  const row = checkbox?.closest('[data-resource-id]');
-  if (!checkbox || !row) return;
-  const key = decodeURIComponent(location.hash.slice(1)) || 'home';
-  const category = views[key]?.category;
-  if (!category) return;
-  const saved = progressStore.setCompleted(category, row.dataset.resourceId, checkbox.checked);
-  updateOverview(category);
-  let notice = document.getElementById('progress-save-notice');
-  if (!saved) {
-    if (!notice) {
-      notice = document.createElement('p');
-      notice.id = 'progress-save-notice';
-      notice.className = 'progress-note storage-warning';
-      overviewElement.append(notice);
+  $('lecture-search').addEventListener('input',event=>{query=event.target.value; const view=views[current]; drawLectures(view.category?lectures.filter(l=>l.category===view.category):lectures);});
+  $('completion-filter').addEventListener('change',event=>{completion=event.target.value;const view=views[current];drawLectures(view.category?lectures.filter(l=>l.category===view.category):lectures);});
+  function savedCount(){const count=window.VitanovaBookmarks?.count()||0;$('saved-count').textContent=count?`(${count})`:'';}
+  window.addEventListener('vitanova:bookmarks-changed',savedCount);
+  window.addEventListener('storage',()=>{render();savedCount();});
+  window.addEventListener('hashchange',()=>{query='';completion='all';$('lecture-search').value='';$('completion-filter').value='all';render();$('page-title').tabIndex=-1;$('page-title').focus({preventScroll:true});window.scrollTo(0,0);});
+  const toggle=document.createElement('button'); toggle.className='vn-theme-toggle';toggle.type='button';toggle.setAttribute('aria-label','Toggle light and dark theme');
+  let theme;try{const raw=localStorage.getItem('vitanova:theme:v1');theme=['dark','light'].includes(raw)?raw:JSON.parse(raw);}catch{}
+  function apply(value){document.documentElement.dataset.theme=value;toggle.textContent=value==='dark'?'☀ Light':'☾ Dark';try{localStorage.setItem('vitanova:theme:v1',value);}catch{storage?.warning();}}
+  apply(['dark','light'].includes(theme)?theme:'dark'); toggle.addEventListener('click',()=>apply(document.documentElement.dataset.theme==='dark'?'light':'dark'));document.body.append(toggle);
+  window.addEventListener('vitanova:storage-changed',event=>{
+    if(event.detail?.external || event.detail?.imported?.includes('theme')){
+      let imported;try{imported=localStorage.getItem('vitanova:theme:v1');}catch{}
+      const value=['dark','light'].includes(imported)?imported:'dark';
+      document.documentElement.dataset.theme=value;toggle.textContent=value==='dark'?'☀ Light':'☾ Dark';
     }
-    notice.textContent = 'This browser could not save progress. The change may not persist after leaving this page.';
-  } else if (notice) {
-    notice.remove();
-  }
-});
-
-window.addEventListener('hashchange', render);
-render();
-renderThemeButton();
+  });
+  render();savedCount();
+})();

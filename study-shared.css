@@ -18,3 +18,22 @@ body{background:var(--bg);color:var(--tx);transition:background-color .2s ease,c
 .vn-lecture-navigation + header h1{font-size:clamp(26px,4vw,42px)}
 .vn-theme-toggle{position:fixed;right:14px;bottom:14px;z-index:10;box-shadow:0 4px 18px #20163524}
 @media(max-width:720px){.vn-lecture-navigation{grid-template-columns:1fr 1fr;gap:4px 8px;padding:6px 12px}.vn-lecture-navigation .vn-home{grid-column:1;grid-row:1}.vn-lecture-navigation .vn-subject{grid-column:2;grid-row:1;justify-self:end}.vn-lecture-context{grid-column:1/-1;grid-row:2;justify-content:flex-start;overflow-x:auto}.vn-lecture-controls{grid-column:1/-1;grid-row:3;justify-content:flex-end}.vn-lecture-navigation + header{padding-block:26px 20px}.vn-lecture-navigation + header h1{font-size:clamp(25px,7vw,34px)}.vn-theme-toggle{right:10px;bottom:10px}}
+/* Accessible controls and table scrolling on narrow lecture layouts. */
+html{scroll-padding-top:75px}
+body{overflow-wrap:break-word}
+body>header,body>nav{max-width:100%}
+body>main{width:100%}
+main,section,.card,.tbl,.g>*{min-width:0}
+.tbl{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.vn-lecture-navigation{box-sizing:border-box;grid-template-columns:auto auto minmax(0,1fr) auto auto auto;padding-inline:max(12px,calc((100vw - 1080px)/2));max-width:100%;gap:5px}
+.vn-lecture-context{gap:5px;flex-wrap:wrap;white-space:normal;overflow:visible}
+.vn-lecture-controls [aria-disabled]{opacity:.45;padding:6px 8px;font-size:12px;white-space:nowrap}
+.vn-lecture-navigation a{overflow-wrap:anywhere}
+.vn-theme-toggle{background:var(--card);border-color:var(--ln)}
+.vn-back-to-top{position:fixed;left:12px;bottom:12px;z-index:9;background:var(--card);color:var(--pu);border:1px solid var(--ln);border-radius:8px;padding:6px 10px;text-decoration:none;font:600 12px/1.5 system-ui,sans-serif;box-shadow:0 4px 18px #20163524}
+:focus-visible{outline:3px solid var(--te);outline-offset:3px}
+.vn-storage-warning{font:13px/1.5 system-ui,sans-serif;padding:12px 18px;background:var(--soft);color:var(--tx);border:1px solid var(--ln);margin:0}
+@media(max-width:900px){.vn-lecture-navigation{display:flex;flex-wrap:wrap;gap:4px 8px}.vn-lecture-context{order:3;flex-basis:100%;justify-content:flex-start}.vn-lecture-controls{margin-left:auto}.vn-lecture-navigation .vn-bookmarks-link{font-size:12px}.vn-lecture-navigation .vn-subject{white-space:normal}}
+@media(max-width:450px){.vn-lecture-navigation{padding:6px 10px}.vn-lecture-navigation a{font-size:11px;padding:5px 6px}.vn-lecture-context{font-size:10px}.vn-lecture-controls{gap:0}.vn-lecture-controls a,.vn-lecture-controls [aria-disabled]{font-size:11px;padding:5px}.g{grid-template-columns:minmax(0,1fr)!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{transition:none!important;animation:none!important}}
+@media(max-width:600px){.tl div{display:block}.tl div>b{min-width:0}.tl div>b:first-child{display:inline-block;min-width:24px;margin-right:8px}}

@@ -1,0 +1,31 @@
+/* Personal mixed-question revision dashboard; inherits Vitanova site tokens. */
+.vn-saved-host{display:block!important}
+.vn-saved-toolbar{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;margin-bottom:20px}
+.vn-saved-intro p{color:var(--muted);font-size:14px;line-height:1.55;margin:8px 0 16px}
+.vn-saved-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.vn-saved-tools label{font-size:13px;font-weight:700;color:var(--muted)}
+.vn-saved-tools select,.vn-saved-tools button{font:650 13px system-ui,sans-serif;border:1px solid var(--line);background:var(--bg);color:var(--txt);border-radius:10px;padding:10px 13px;min-height:40px}
+.vn-saved-tools button{cursor:pointer}.vn-saved-tools button:hover{border-color:var(--purple)}
+.vn-saved-stats{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:17px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.vn-saved-stats strong{color:var(--mint);font-size:14px}
+.vn-saved-list{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.vn-review-question{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--card);min-width:0}
+.vn-review-source{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;color:var(--mint);font-size:11px;font-weight:750;letter-spacing:.04em}
+.vn-review-question h3{font-size:17px;line-height:1.5;color:var(--txt);margin:13px 0 15px}
+.vn-review-options{display:grid;gap:8px}
+.vn-review-option{width:100%;display:flex;text-align:left;align-items:start;gap:11px;padding:12px 14px;min-height:45px;border:1px solid var(--line);background:var(--bg);color:var(--txt);border-radius:11px;font:inherit;font-size:14px;line-height:1.45;cursor:pointer}
+.vn-review-option:not([disabled]):hover{border-color:var(--purple);background:var(--card)}
+.vn-review-option[disabled]{cursor:default;opacity:.8}.vn-review-option.is-correct{border-color:#45bd89;background:color-mix(in srgb,var(--bg),#45bd89 18%);opacity:1}.vn-review-option.is-wrong{border-color:#e96b6b;background:color-mix(in srgb,var(--bg),#e96b6b 13%);opacity:1}
+.vn-review-letter{font-weight:800;flex:0 0 20px;color:var(--purple)}
+.vn-review-explanation{margin-top:13px;padding:12px 15px;border:1px solid var(--line);border-left:3px solid var(--mint);border-radius:9px;background:var(--bg);font-size:13px;line-height:1.55;color:var(--txt)}
+.vn-review-explanation strong{color:var(--mint)}.vn-review-explanation p{margin:6px 0 0;color:var(--muted)}
+.vn-review-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);margin-top:15px;padding-top:13px}
+.vn-review-footer a{font-size:12px;font-weight:700;color:var(--purple);text-decoration:none}.vn-review-footer a:hover{text-decoration:underline}
+.vn-review-remove{border:0;background:transparent;color:var(--muted);cursor:pointer;padding:5px 0;font:600 12px system-ui,sans-serif}.vn-review-remove:hover{color:var(--txt);text-decoration:underline}
+.vn-saved-empty{padding:42px 24px;text-align:center;border:1px dashed var(--line);border-radius:16px;background:var(--card);color:var(--muted)}
+.vn-saved-empty>span{font-size:35px;color:var(--purple)}.vn-saved-empty h3{color:var(--txt);margin:7px 0}.vn-saved-empty p{font-size:14px;line-height:1.5}.vn-saved-empty a{display:inline-block;margin-top:10px;color:var(--mint);font-weight:700}
+.vn-saved-storage-warning{color:#ffbca9}
+.vn-saved-tools :focus-visible,.vn-review-option:focus-visible,.vn-review-remove:focus-visible,.vn-review-footer a:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+@media(max-width:620px){.vn-saved-toolbar{padding:15px}.vn-review-question{padding:15px}.vn-saved-tools select{min-width:150px;flex:1}.vn-review-source{font-size:10px}}
+.vn-saved-tools label{display:grid;gap:.4rem;font-size:.8rem;font-weight:650;min-width:0}.vn-saved-tools select{max-width:240px;min-width:0}.vn-review-question{min-width:0;overflow-wrap:anywhere}.vn-saved-host button:focus-visible,.vn-saved-host select:focus-visible{outline:3px solid #60dfce;outline-offset:3px}.vn-saved-host button,.vn-saved-host select{font:inherit}.vn-review-explanation{scroll-margin-top:1rem}.vn-mistake-panel{max-width:1100px;margin:16px auto;padding:0 16px}.vn-mistake-panel[hidden]{display:none}.vn-review-options .vn-review-option{white-space:normal;text-align:left}.vn-saved-tools{align-items:end}.vn-saved-toolbar p{line-height:1.6}.vn-saved-host .vn-saved-empty{margin:0}.vn-review-question h3{line-height:1.6}@media(max-width:600px){.vn-saved-tools{display:grid;grid-template-columns:1fr 1fr;gap:12px}.vn-saved-tools select{width:100%;max-width:100%}.vn-review-source,.vn-review-footer{align-items:start;gap:10px;flex-wrap:wrap}.vn-saved-toolbar,.vn-review-question{padding:16px}.vn-review-option{min-height:44px}}@media(prefers-reduced-motion:reduce){.vn-saved-host *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.vn-review-explanation:focus,.vn-saved-empty h3:focus{outline:3px solid var(--mint,#128a7c);outline-offset:4px}.vn-saved-tools select:disabled{opacity:.8;cursor:default}

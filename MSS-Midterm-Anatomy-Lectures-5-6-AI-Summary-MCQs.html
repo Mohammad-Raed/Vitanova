@@ -44,7 +44,7 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
 .o.no{background:#d64545;color:#fff;border-color:#d64545}
 .ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
 #sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
-</style><link rel="stylesheet" href="study-shared.css"></head><body>
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
 	<a href="index.html" style="display:inline-block;margin:20px;padding:12px 20px;background:#8b6bc6;color:white;text-decoration:none;border-radius:10px;font-family:Arial,sans-serif;font-weight:bold;">← Vitanova Learning Hub</a><a href="index.html#mss-mid-anatomy" onclick="if(history.length>1){history.back();return false;}" style="display:inline-block;margin:20px;padding:12px 20px;background:#8b6bc6;color:white;text-decoration:none;border-radius:10px;font-family:Arial,sans-serif;font-weight:bold;">← Back</a>
 <header><small>MSS · ANATOMY · AL-BALQA’ APPLIED UNIVERSITY</small><h1>Upper Limb: Bones &amp; Joints</h1><p>Lecture 5 (Bones) and Lecture 6 (Joints): quick revision, lab links, MCQs</p></header>
 <nav><a href="#b">L5 Bones</a><a href="#bl">L5 Lab links</a><a href="#j">L6 Joints</a><a href="#jl">L6 Lab links</a><a href="#hy">High-yield</a><a href="#q5">Quiz L5</a><a href="#q6">Quiz L6</a></nav>
@@ -184,4 +184,4 @@ function upd(){document.getElementById('sc').textContent='Score: '+ok+' / '+tot+
 function mk(id,arr){var box=document.getElementById(id);box.innerHTML='';arr.forEach(function(a,i){var d=document.createElement('div');d.className='q';d.innerHTML='<p>'+(i+1)+'. '+a[0]+'</p>';var ex=document.createElement('div');ex.className='ex';ex.textContent=a[3];a[1].forEach(function(t,j){var b=document.createElement('button');b.className='o';b.textContent=t;b.onclick=function(){if(d.dataset.l)return;d.dataset.l=1;tot++;if(j==a[2]){b.classList.add('ok');ok++}else{b.classList.add('no');d.children[a[2]+1].classList.add('ok')}ex.style.display='block';upd()};d.appendChild(b)});d.appendChild(ex);box.appendChild(d)})}
 function init(){ok=0;tot=0;mk('b5',Q5);mk('b6',Q6);upd()}
 document.getElementById('rs').onclick=init;init();
-</script><script src="study-data.js"></script><script src="study-nav.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

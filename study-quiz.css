@@ -1,0 +1,16 @@
+/* Bookmarks appear below the original answer/explanation; quizzes remain untouched. */
+.vn-bookmark-toggle {
+  display: inline-flex;align-items:center;gap:6px;margin:12px 0 0;
+  padding:7px 12px;border-radius:10px;border:1px solid var(--ln, #5a456d);
+  background:var(--card, #2a1e40);color:var(--pu, #b49adb);
+  font:600 13px/1.3 system-ui,-apple-system,Segoe UI,sans-serif;
+  cursor:pointer;max-width:100%;text-align:left;
+}
+.vn-bookmark-toggle:hover {border-color:var(--pu, #b49adb);filter:brightness(1.08)}
+.vn-bookmark-toggle[aria-pressed="true"] {background:var(--soft, #372749);border-color:var(--pu, #b49adb)}
+.vn-bookmark-toggle:focus-visible,.vn-bookmarks-link:focus-visible {outline:3px solid var(--te, #49d2b7);outline-offset:3px}
+.vn-bookmarks-link{color:var(--pu, #b99ae2);text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap;padding:6px 10px;border-radius:10px;border:1px solid var(--ln, #453254)}
+.vn-bookmarks-link:hover{background:var(--soft, #332549)}
+.vn-storage-warning{margin:8px;padding:10px;border-radius:8px;background:#743c38;color:white;font:14px/1.4 system-ui,sans-serif}
+@media(max-width:640px){.vn-bookmarks-link{font-size:11px;padding:5px 8px}}
+.vn-redo-mistakes{font:inherit;border:1px solid #9e7acb;border-radius:9px;padding:8px 11px;color:inherit;background:transparent;cursor:pointer}.vn-redo-mistakes:focus-visible,.vn-bookmark-toggle:focus-visible{outline:3px solid #36bfaf;outline-offset:3px}.vn-storage-warning{margin:8px;padding:12px;border:1px solid #b79041;border-radius:8px;background:#fff0ca;color:#533a00;font:14px/1.6 system-ui,sans-serif}
