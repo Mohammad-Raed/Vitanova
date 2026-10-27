@@ -40,7 +40,7 @@ Data stays on this browser and origin; it does not sync between devices. Changin
 | `study-backup.js` | Validated JSON import/export |
 | `tools/` | Non-executing data reader, registration, regeneration, validation |
 
-There are currently 10 lectures and 378 extracted questions. Counts are checked from the actual registry and sources, not hardcoded in the interface. Lecture medical content and original quiz implementations remain the source of truth.
+There are currently 14 lectures and 499 extracted questions. Counts are checked from the actual registry and sources, not hardcoded in the interface. Lecture medical content and original quiz implementations remain the source of truth.
 
 ## Add a lecture
 

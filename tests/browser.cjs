@@ -10,7 +10,7 @@ const base = process.env.BASE_URL || process.env.VITANOVA_TEST_URL || 'http://12
 const server = (process.env.BASE_URL || process.env.VITANOVA_TEST_URL) ? null : spawn('python3', ['-m', 'http.server', '8765', '--bind', '127.0.0.1', '--directory', root], { stdio: 'ignore' });
 let checks = 0;
 function check(condition, message) { assert.ok(condition, message); checks++; }
-const normalize = x => String(x).replace(/^\s*[A-Z]\.\s*/, '').replace(/\s+/g, ' ').trim();
+const normalize = x => String(x).replace(/^\s*[A-Z][.)]\s*/, '').replace(/\s+/g, ' ').trim();
 async function untilServer() {
   for (let attempt = 0; attempt < 60; attempt++) {
     try { if ((await fetch(base + '/index.html')).ok) return; } catch {}
@@ -66,7 +66,7 @@ async function main() {
     check(!await page.locator('.study-resource input[type="checkbox"]').first().isChecked(), 'Subjects keep independent progress');
     await goto('index.html#search');
     await page.locator('#lecture-search').fill('brachial');
-    check(await page.locator('.study-resource').count() === 1, 'Search matches topic and title');
+    check(await page.locator('.study-resource').count() === lectures.filter(l=>[l.title,l.description,l.system,l.exam,l.subject,l.lectureLabel].join(' ').toLowerCase().includes('brachial')).length, 'Search returns all matching lecture topics and titles');
     await page.locator('#lecture-search').fill('Immunology Midterm');
     check(await page.locator('.study-resource').count() === 1, 'Search matches system and exam');
     await goto('index.html#mss-mid-anatomy');
@@ -102,7 +102,7 @@ async function main() {
       check(await page.locator('.vn-bookmark-toggle[aria-pressed="true"]').count() === count, lecture.id + ': all bookmark buttons save');
       const answered = await page.evaluate(() => {
         const byId = new Map(VitanovaQuestionBank.map(question => [question.id, question]));
-        const plain = value => String(value).replace(/^\s*[A-Z]\.\s*/, '').replace(/\s+/g, ' ').trim();
+        const plain = value => String(value).replace(/^\s*[A-Z][.)]\s*/, '').replace(/\s+/g, ' ').trim();
         return [...document.querySelectorAll('.q')].map(block => {
           const q = byId.get(block.dataset.vnQuestionId);
           const options = [...block.querySelectorAll('button.o')];
@@ -120,7 +120,7 @@ async function main() {
       check(await page.locator('.vn-bookmark-toggle[aria-pressed="true"]').count() === count, lecture.id + ': bookmarks survive quiz reset');
       const wrong = await page.evaluate(() => {
         const byId = new Map(VitanovaQuestionBank.map(q => [q.id,q]));
-        const plain = value => String(value).replace(/^\s*[A-Z]\.\s*/, '').replace(/\s+/g, ' ').trim();
+        const plain = value => String(value).replace(/^\s*[A-Z][.)]\s*/, '').replace(/\s+/g, ' ').trim();
         return [...document.querySelectorAll('.q')].map(block => {
           const q=byId.get(block.dataset.vnQuestionId);
           const button=[...block.querySelectorAll('button.o')].find(option=>plain(option.textContent)!==plain(q.options[q.answer]));
@@ -247,7 +247,9 @@ async function main() {
     try {
       for(const name of fs.readdirSync(root)) if(/\.(html|js|css)$/.test(name)) fs.copyFileSync(path.join(root,name),path.join(fixtureRoot,name));
       const source=path.join(fixtureRoot,'input.html');
-      fs.writeFileSync(source,`<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>MSS Midterm Anatomy Lecture 13</title><style>.ex{display:none}.ok{color:green}.no{color:red}</style></head><body><header><h1>Synthetic integration fixture</h1></header><main><div id="quiz"></div><button class="r" onclick="build()">Reset</button><div id="sc"></div></main><script>const Q=[["Which test option is correct?",["First option","Second option"],1,"The second option is the test answer."]];function build(){quiz.innerHTML='';Q.forEach(q=>{const block=document.createElement('div');block.className='q';const p=document.createElement('p');p.textContent='1. '+q[0];block.append(p);q[1].forEach((text,i)=>{const button=document.createElement('button');button.className='o';button.textContent=text;button.onclick=()=>{if(block.dataset.done)return;block.dataset.done=1;button.classList.add(i===q[2]?'ok':'no');block.querySelectorAll('.o')[q[2]].classList.add('ok');block.querySelector('.ex').style.display='block';sc.textContent='Score: '+(i===q[2]?1:0)+' / 1';};block.append(button)});const ex=document.createElement('div');ex.className='ex';ex.textContent=q[3];block.append(ex);quiz.append(block)});sc.textContent='Score: 0 / 1'}build();</script></body></html>`);
+      const lastAnatomy=lectures.filter(l=>l.category==='mss-mid-anatomy').sort((a,b)=>b.order-a.order)[0];
+      const fixtureNumber=Math.max(...lectures.filter(l=>l.category==='mss-mid-anatomy').flatMap(l=>l.lectureLabel.match(/\d+/g).map(Number)))+1;
+      fs.writeFileSync(source,`<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1"><title>MSS Midterm Anatomy Lecture ${fixtureNumber}</title><style>.ex{display:none}.ok{color:green}.no{color:red}</style></head><body><header><h1>Synthetic integration fixture</h1></header><main><div id="quiz"></div><button class="r" onclick="build()">Reset</button><div id="sc"></div></main><script>const Q=[["Which test option is correct?",["First option","Second option"],1,"The second option is the test answer."]];function build(){quiz.innerHTML='';Q.forEach(q=>{const block=document.createElement('div');block.className='q';const p=document.createElement('p');p.textContent='1. '+q[0];block.append(p);q[1].forEach((text,i)=>{const button=document.createElement('button');button.className='o';button.textContent=text;button.onclick=()=>{if(block.dataset.done)return;block.dataset.done=1;button.classList.add(i===q[2]?'ok':'no');block.querySelectorAll('.o')[q[2]].classList.add('ok');block.querySelector('.ex').style.display='block';sc.textContent='Score: '+(i===q[2]?1:0)+' / 1';};block.append(button)});const ex=document.createElement('div');ex.className='ex';ex.textContent=q[3];block.append(ex);quiz.append(block)});sc.textContent='Score: 0 / 1'}build();</script></body></html>`);
       const register=spawnSync('python3',['-c',`import argparse,json,sys;from pathlib import Path;sys.path.insert(0,sys.argv[1]);from add_lecture import run;root=Path(sys.argv[2]);args=argparse.Namespace(file=str(root/'input.html'),system=None,exam=None,subject=None,lectures=None,title=None,description=None,id=None,dry_run=False);row,count,changes=run(args,root);print(json.dumps(row))`,path.join(root,'tools'),fixtureRoot],{encoding:'utf8'});
       check(register.status===0,'Actual lecture registration succeeds for browser fixture: '+register.stderr);
       const fixture=JSON.parse(register.stdout.trim());
@@ -255,7 +257,7 @@ async function main() {
       await goto(fixtureBase+encodeURIComponent(fixture.file));
       await page.locator('.vn-bookmark-toggle').waitFor();
       check(await page.locator('.vn-lecture-navigation').count()===1,'New lecture inherits shared navigation below a GitHub Pages style subpath');
-      check(decodeURIComponent(await page.locator('.vn-previous').getAttribute('href'))===lectures.find(l=>l.id==='mss-mid-anatomy-11-12').file,'New lecture joins Previous/Next ordering automatically');
+      check(decodeURIComponent(await page.locator('.vn-previous').getAttribute('href'))===lastAnatomy.file,'New lecture joins Previous/Next ordering automatically');
       await page.locator('.vn-bookmark-toggle').click();
       await page.reload();
       check(await page.locator('.vn-bookmark-toggle').getAttribute('aria-pressed')==='true','Newly registered MCQ inherits persistent bookmarks');
