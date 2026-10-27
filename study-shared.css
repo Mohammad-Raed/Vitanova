@@ -36,4 +36,20 @@ main,section,.card,.tbl,.g>*{min-width:0}
 @media(max-width:900px){.vn-lecture-navigation{display:flex;flex-wrap:wrap;gap:4px 8px}.vn-lecture-context{order:3;flex-basis:100%;justify-content:flex-start}.vn-lecture-controls{margin-left:auto}.vn-lecture-navigation .vn-bookmarks-link{font-size:12px}.vn-lecture-navigation .vn-subject{white-space:normal}}
 @media(max-width:450px){.vn-lecture-navigation{padding:6px 10px}.vn-lecture-navigation a{font-size:11px;padding:5px 6px}.vn-lecture-context{font-size:10px}.vn-lecture-controls{gap:0}.vn-lecture-controls a,.vn-lecture-controls [aria-disabled]{font-size:11px;padding:5px}.g{grid-template-columns:minmax(0,1fr)!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{transition:none!important;animation:none!important}}
+/* Shared reading aids keep the original lecture structure and content visible. */
+.vn-lecture-page main p{line-height:1.75}
+.vn-lecture-page main li{line-height:1.7}
+.vn-lecture-page table{line-height:1.6}
+.vn-clarification,.vn-abbreviations{margin:20px 0;padding:16px 18px;border:1px solid var(--ln);border-radius:12px;background:var(--card);color:var(--tx);font-size:14px;line-height:1.75;overflow-wrap:anywhere}
+.vn-clarification{border-left:3px solid var(--te);background:color-mix(in srgb,var(--card),var(--te) 4%)}
+.vn-clarification h3,.vn-abbreviations h2,.vn-abbreviations h3{margin:0 0 10px;font-size:16px;line-height:1.5;color:var(--tx)}
+.vn-clarification p:first-child,.vn-abbreviations p:first-child{margin-top:0}
+.vn-clarification p:last-child,.vn-abbreviations p:last-child{margin-bottom:0}
+.vn-abbreviations dl{display:grid;grid-template-columns:minmax(65px,auto) minmax(0,1fr);gap:6px 16px;margin:10px 0 0}
+.vn-abbreviations dt{font-weight:700;color:var(--pu)}
+.vn-abbreviations dd{margin:0;min-width:0}
+.vn-abbreviations summary{font-weight:700;cursor:pointer;color:var(--pu)}
+.vn-lecture-page abbr[title]{text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+.vn-lecture-navigation .vn-theme-toggle{position:static;box-shadow:none;min-height:32px;font-size:11px;padding:5px 8px}
+@media(max-width:550px){.vn-clarification,.vn-abbreviations{padding:14px;font-size:13px}.vn-abbreviations dl{gap:6px 11px;grid-template-columns:minmax(50px,auto) minmax(0,1fr)}}
 @media(max-width:600px){.tl div{display:block}.tl div>b{min-width:0}.tl div>b:first-child{display:inline-block;min-width:24px;margin-right:8px}}

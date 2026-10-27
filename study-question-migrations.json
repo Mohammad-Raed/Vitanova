@@ -1,0 +1,790 @@
+{
+  "version": 1,
+  "corrections": [
+    {
+      "lectureId": "mss-mid-anatomy-01-02",
+      "questionId": "mss-mid-anatomy-01-02-f8a3749d8eb015a6",
+      "contentFingerprint": "mss-mid-anatomy-01-02-57d42100f67a3c50",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "Which is NOT a connection of the ear cavity?",
+        "explanation": "The ear cavity connects to the outside (EAM), cranial cavity (IAM) and pharynx (Eustachian tube)."
+      },
+      "after": {
+        "question": "Which opening is NOT one of the passages associated with the ear and petrous temporal region?",
+        "explanation": "The external acoustic meatus ends at the tympanic membrane. The internal acoustic meatus carries cranial nerves VII and VIII; the auditory (Eustachian) tube connects the middle ear to the nasopharynx. These are different ear regions, not one openly communicating cavity. Foramen rotundum transmits the maxillary nerve to the pterygopalatine fossa."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-01-02",
+      "questionId": "mss-mid-anatomy-01-02-a12f2fbb7adb8bcf",
+      "contentFingerprint": "mss-mid-anatomy-01-02-0ee918f55ea0d91c",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "The two halves of the mandible fuse at the symphysis menti by:",
+        "options": [
+          "Birth",
+          "End of the 1st year",
+          "5 years",
+          "Puberty"
+        ],
+        "explanation": "Fusion occurs by the end of year 1; the angle at birth is obtuse."
+      },
+      "after": {
+        "question": "The two halves of the mandible normally unite at the mandibular symphysis during:",
+        "options": [
+          "Fetal life before birth",
+          "The first 1–2 years",
+          "Around 5 years",
+          "Puberty"
+        ],
+        "explanation": "The two halves normally unite during the first 1–2 years; fusion timing varies. The neonatal mandibular angle is relatively obtuse."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-01-02",
+      "questionId": "mss-mid-anatomy-01-02-eae682d69b98233c",
+      "contentFingerprint": "mss-mid-anatomy-01-02-eae682d69b98233c",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Anterior ~18 months; posterior within the 1st year."
+      },
+      "after": {
+        "explanation": "The anterior fontanelle often closes around 18 months, with normal variation; the posterior fontanelle usually closes by about 2 months."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-01-02",
+      "questionId": "mss-mid-anatomy-01-02-ead716cebcc776af",
+      "contentFingerprint": "mss-mid-anatomy-01-02-ead716cebcc776af",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "It is the only synovial joint of the skull."
+      },
+      "after": {
+        "explanation": "The temporomandibular joint (TMJ) is a paired synovial joint combining hinge and gliding movements. It is the main movable articulation of the facial skeleton; the auditory ossicles also have small synovial joints."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-01-02",
+      "questionId": "mss-mid-anatomy-01-02-dd4739f6eff70d85",
+      "contentFingerprint": "mss-mid-anatomy-01-02-65104ceb2e377096",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "Which muscle protrudes the mandible and begins opening?",
+        "explanation": "It pulls the neck of the mandible and disc forward."
+      },
+      "after": {
+        "question": "Which muscle protrudes the mandible and assists anterior translation during wide mouth opening?",
+        "explanation": "The lateral pterygoid helps pull the condyle–disc complex anteriorly. Early opening mainly involves rotation in the lower TMJ compartment, with translation contributing as opening increases."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-10933b54806f12fd",
+      "contentFingerprint": "mss-mid-anatomy-03-04-10933b54806f12fd",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Plus 5 fused sacral and about 4 fused coccygeal vertebrae."
+      },
+      "after": {
+        "explanation": "There are also 5 sacral vertebrae that normally fuse, and usually 4 coccygeal vertebrae; coccygeal number and fusion vary."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-647fc22ee370c03d",
+      "contentFingerprint": "mss-mid-anatomy-03-04-647fc22ee370c03d",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Thoracic and sacral are primary (fetal). Cervical forms at ~4 months, lumbar at ~1 year."
+      },
+      "after": {
+        "explanation": "Thoracic and sacral curves are primary fetal curves. Cervical and lumbar curves develop with head control and upright posture; timing varies with development."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-3cc413bbcb9847d4",
+      "contentFingerprint": "mss-mid-anatomy-03-04-c02880fab1f4d34a",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "Excessive convexity of the lumbar curve is called:",
+        "options": [
+          "Kyphosis",
+          "Scoliosis",
+          "Lordosis",
+          "Spondylosis"
+        ],
+        "explanation": "Kyphosis is excessive concavity; scoliosis is lateral deviation."
+      },
+      "after": {
+        "question": "An excessive increase in the anterior convexity of the normal lumbar curve is called:",
+        "options": [
+          "Thoracic hyperkyphosis",
+          "Scoliosis",
+          "Lumbar hyperlordosis",
+          "Spondylosis"
+        ],
+        "explanation": "Lumbar lordosis is the normal anteriorly convex curve; an excessive curve is hyperlordosis. Hyperkyphosis exaggerates posterior convexity, usually in the thoracic region. Scoliosis is a lateral curve, usually with vertebral rotation."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-5b1dae728202bd5b",
+      "contentFingerprint": "mss-mid-anatomy-03-04-5b1dae728202bd5b",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The nucleus is the gelatinous centre; discs are thickest in cervical and lumbar regions."
+      },
+      "after": {
+        "explanation": "The nucleus pulposus is the gelatinous centre. The annulus fibrosus has concentric lamellae. Lumbar discs are thickest in absolute size; disc height relative to vertebral-body height also affects mobility."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-245c168b26f3b789",
+      "contentFingerprint": "mss-mid-anatomy-03-04-245c168b26f3b789",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The nucleus sits posteriorly and the posterior annulus is weaker."
+      },
+      "after": {
+        "explanation": "Lower lumbar discs commonly herniate posterolaterally. A typical L4–L5 posterolateral herniation can affect the traversing L5 root, while L5–S1 can affect S1; foraminal herniations may affect an exiting root instead."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-da9d167edccb986b",
+      "contentFingerprint": "mss-mid-anatomy-03-04-b75f066fe6907a22",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "Which cervical vertebra’s transverse foramen does not transmit the vertebral artery?",
+        "explanation": "The artery usually enters at C6; C7 foramen carries only small veins."
+      },
+      "after": {
+        "question": "Which cervical vertebra’s transverse foramen usually does NOT transmit the vertebral artery?",
+        "explanation": "The vertebral artery usually enters the transverse foramen at C6 and ascends through C6–C1. C7 normally transmits veins rather than the artery, but arterial entry variants occur."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-dff4c88d8dbfc5ea",
+      "contentFingerprint": "mss-mid-anatomy-03-04-1f2ed298111265d9",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "In an adult the spinal cord ends at about:",
+        "options": [
+          "T12",
+          "L2",
+          "L4",
+          "S2"
+        ],
+        "explanation": "In a newborn it ends at L4; dura and arachnoid end at S2."
+      },
+      "after": {
+        "question": "In a typical adult, the conus medullaris ends near which vertebral level?",
+        "options": [
+          "T8–T9",
+          "L1–L2",
+          "L4–L5",
+          "S2"
+        ],
+        "explanation": "The adult conus usually ends near L1–L2, with individual variation; in newborns it is usually near L2–L3. The dural and arachnoid sacs extend farther inferiorly, usually to S2."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-ee0db5c30fdcf15a",
+      "contentFingerprint": "mss-mid-anatomy-03-04-ee0db5c30fdcf15a",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The posterior longitudinal ligament is the weak, narrow one."
+      },
+      "after": {
+        "explanation": "The anterior longitudinal ligament is broad and limits excessive extension. The posterior longitudinal ligament lies behind the vertebral bodies and is narrower over the lumbar bodies; calling it simply weak omits its stabilising role."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-abb3abe0ac94dba8",
+      "contentFingerprint": "mss-mid-anatomy-03-04-a60f452a9d4b0e33",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "Why is nerve encroachment commoner in lower lumbar levels?",
+        "options": [
+          "IVF narrows while nerves enlarge",
+          "IVF widens L1→L5",
+          "Discs are thinnest",
+          "Cord is longer"
+        ],
+        "explanation": "IVF stenosis increases from L1 to L5."
+      },
+      "after": {
+        "question": "Which change can compress a lumbar nerve root in a narrowed intervertebral foramen?",
+        "options": [
+          "Disc protrusion or degenerative bony overgrowth",
+          "Widening of the foramen alone",
+          "An increase in cerebrospinal fluid volume alone",
+          "Normal cervical-curve development"
+        ],
+        "explanation": "Disc protrusion or degenerative changes can narrow the intervertebral foramen or lateral recess. Compression is not explained by a universal normal decrease in foraminal size at each lower level."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-647b024bcf28078f",
+      "contentFingerprint": "mss-mid-anatomy-03-04-01c424afc10edeef",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "Zygapophysial joint orientation at T12–L1 and L5–S1 is:",
+        "options": [
+          "Coronal, sagittal",
+          "Sagittal, coronal",
+          "Both sagittal",
+          "Both coronal"
+        ],
+        "explanation": "Facets rotate from sagittal to coronal down the lumbar spine."
+      },
+      "after": {
+        "question": "The general change in lumbar facet-joint orientation from upper to lower lumbar levels is:",
+        "options": [
+          "More coronal to more sagittal",
+          "More sagittal to more coronal",
+          "Exactly sagittal at every level",
+          "Exactly coronal at every level"
+        ],
+        "explanation": "Lumbar facets are generally more sagittally oriented at upper levels and become more coronal toward the lumbosacral junction. Individual orientation varies; the lower facets help resist forward translation."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-a5c822e24743fb24",
+      "contentFingerprint": "mss-mid-anatomy-03-04-ccca092c0b999923",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "options": [
+          "The cord ends there",
+          "It is above the cistern",
+          "The cistern lies below the cord end (L2)",
+          "Discs are thinnest"
+        ],
+        "explanation": "The lumbar cistern (L2–S2) holds CSF without cord risk."
+      },
+      "after": {
+        "options": [
+          "The cord ends there",
+          "It is above the cistern",
+          "These interspaces usually lie below the adult conus medullaris",
+          "Discs are thinnest"
+        ],
+        "explanation": "The lumbar subarachnoid space below the conus contains cerebrospinal fluid and the cauda equina. L3–L4 or L4–L5 are usual adult sampling sites below the typical L1–L2 conus; this anatomical relation does not make the procedure risk-free."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-1b9a0bc43d3f2208",
+      "contentFingerprint": "mss-mid-anatomy-03-04-1b9a0bc43d3f2208",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The hiatus is where the S4–S5 laminae do not meet."
+      },
+      "after": {
+        "explanation": "The sacral hiatus results from non-fusion of the lowest sacral laminae, usually S5 and sometimes S4."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-03-04",
+      "questionId": "mss-mid-anatomy-03-04-3018d85675cf1871",
+      "contentFingerprint": "mss-mid-anatomy-03-04-1d086ccfae0487f1",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "Intrinsic back muscles are supplied by:",
+        "explanation": "Extrinsic superficial muscles come from anterior rami."
+      },
+      "after": {
+        "question": "Most intrinsic (deep) back muscles receive motor supply from:",
+        "explanation": "Most intrinsic back muscles receive posterior rami. Trapezius is an important exception to the simplified rule for superficial extrinsic muscles: its motor supply is the accessory nerve (cranial nerve XI), with cervical contributions."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-05-06",
+      "questionId": "mss-mid-anatomy-05-06-2de829c19a2fd368",
+      "contentFingerprint": "mss-mid-anatomy-05-06-2de829c19a2fd368",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The ulna does not take part in the wrist joint."
+      },
+      "after": {
+        "explanation": "The ulna does not articulate directly with the carpal bones at the radiocarpal joint: an articular disc separates the ulnar head from the proximal carpal row. It still contributes to the distal radioulnar joint and wrist stability."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-05-06",
+      "questionId": "mss-mid-anatomy-05-06-06977da9b7103db2",
+      "contentFingerprint": "mss-mid-anatomy-05-06-06977da9b7103db2",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Slide 6."
+      },
+      "after": {
+        "explanation": "The sternoclavicular joint has saddle-shaped articular surfaces but permits movement in several planes, including elevation/depression, protraction/retraction and axial rotation."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-05-06",
+      "questionId": "mss-mid-anatomy-05-06-c79a72693b2e8dc0",
+      "contentFingerprint": "mss-mid-anatomy-05-06-c79a72693b2e8dc0",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Posterior: right brachiocephalic artery, left brachiocephalic vein, left common carotid. Marked “most important”."
+      },
+      "after": {
+        "explanation": "The left brachiocephalic vein crosses posterior to the manubrial region. Other brachiocephalic vessels and deeper root-of-neck structures are nearby; exact relations differ on the right and left."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-05-06",
+      "questionId": "mss-mid-anatomy-05-06-767c24f45e9e8492",
+      "contentFingerprint": "mss-mid-anatomy-05-06-767c24f45e9e8492",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "It has an incomplete wedge-shaped disc."
+      },
+      "after": {
+        "explanation": "The acromioclavicular joint is a synovial plane joint. Its intra-articular disc may be incomplete or absent; it is not a complete disc in every person."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-05-06",
+      "questionId": "mss-mid-anatomy-05-06-e4edb446545f2df6",
+      "contentFingerprint": "mss-mid-anatomy-05-06-be4bc24aad0e0ade",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "Shoulder separation results from tearing of the:",
+        "explanation": "Severe fall; the acromion is thrust beneath the lateral clavicle."
+      },
+      "after": {
+        "question": "A high-grade acromioclavicular (shoulder) separation disrupts the AC ligaments and which additional ligament complex?",
+        "explanation": "A high-grade acromioclavicular separation also disrupts the coracoclavicular ligaments, allowing the scapula and upper limb to drop relative to the clavicle. Lower-grade injuries may involve the AC ligaments alone."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-05-06",
+      "questionId": "mss-mid-anatomy-05-06-fa05b914ed5ed39e",
+      "contentFingerprint": "mss-mid-anatomy-05-06-fa05b914ed5ed39e",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Posterior dislocation is rare and follows direct violence."
+      },
+      "after": {
+        "explanation": "Anterior-inferior dislocation is the commonest pattern. Posterior dislocation is less common and may follow seizures, electrical injury or trauma; it is not limited to direct violence."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-07-08",
+      "questionId": "mss-mid-anatomy-07-08-f110c3d9dd92f960",
+      "contentFingerprint": "mss-mid-anatomy-07-08-555c277e026dfe67",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "The carrying angle in females is about:",
+        "explanation": "170° male, 167° female; opens laterally and disappears in full flexion."
+      },
+      "after": {
+        "question": "Using the lecture’s supplementary-angle convention, the angle between the female arm and forearm is about:",
+        "explanation": "The course’s 167° supplementary angle corresponds to about 13° of lateral carrying-angle deviation. Carrying angles vary between individuals; the forearm deviates laterally in extension and supination."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-07-08",
+      "questionId": "mss-mid-anatomy-07-08-cc1f7debd848816b",
+      "contentFingerprint": "mss-mid-anatomy-07-08-5e2938fc7300773f",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "Pronation and supination occur mainly at:",
+        "options": [
+          "Elbow",
+          "Proximal radioulnar joint",
+          "Wrist",
+          "Midcarpal joint"
+        ],
+        "explanation": "Handwritten: not the elbow; the radial head rotates."
+      },
+      "after": {
+        "question": "Which joints act together during forearm pronation and supination?",
+        "options": [
+          "Elbow",
+          "Proximal and distal radioulnar joints",
+          "Wrist",
+          "Midcarpal joint"
+        ],
+        "explanation": "The radial head rotates at the proximal radioulnar joint while the distal radius moves around the ulna at the distal radioulnar joint. These movements are distinct from elbow hinge flexion and extension."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-07-08",
+      "questionId": "mss-mid-anatomy-07-08-5404a531d5600f46",
+      "contentFingerprint": "mss-mid-anatomy-07-08-5404a531d5600f46",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The grabbing movement at the saddle joint."
+      },
+      "after": {
+        "explanation": "Opponens pollicis turns the thumb pad toward the other fingertips at the first carpometacarpal saddle joint. Opposition is more specific than gripping in general."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-07-08",
+      "questionId": "mss-mid-anatomy-07-08-fbfba86fc70fc860",
+      "contentFingerprint": "mss-mid-anatomy-07-08-d4522ebb63a16c55",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "In winged scapula the medial border moves:",
+        "options": [
+          "Medially and anteriorly",
+          "Laterally and posteriorly",
+          "Superiorly",
+          "Inferiorly"
+        ],
+        "explanation": "Away from the thoracic wall."
+      },
+      "after": {
+        "question": "In medial scapular winging from long thoracic nerve injury, the medial border becomes prominent:",
+        "options": [
+          "Medially and anteriorly",
+          "Posteriorly, away from the thoracic wall",
+          "Superiorly",
+          "Inferiorly"
+        ],
+        "explanation": "Serratus anterior weakness allows the medial border and inferior angle to project posteriorly; prominence is accentuated by pushing against a wall."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-07-08",
+      "questionId": "mss-mid-anatomy-07-08-f53b5fef233ececa",
+      "contentFingerprint": "mss-mid-anatomy-07-08-2ef74fa5ca7dac79",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "Which muscle initiates abduction (0–15°)?",
+        "explanation": "Deltoid takes over 15–90°."
+      },
+      "after": {
+        "question": "Which muscle is classically emphasised in the initiation of shoulder abduction?",
+        "explanation": "Supraspinatus contributes strongly to initiation, while deltoid becomes the major abductor. Their activity overlaps rather than switching abruptly at 15°."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-07-08",
+      "questionId": "mss-mid-anatomy-07-08-d8ae2e4c8139f76c",
+      "contentFingerprint": "mss-mid-anatomy-07-08-f925e26e3c8efb78",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "The lateral wall of the axilla is formed by:",
+        "options": [
+          "Subscapularis and teres major",
+          "Coracobrachialis and biceps in the bicipital groove",
+          "Serratus anterior and ribs",
+          "Pec major"
+        ],
+        "explanation": "Medial wall = ribs + serratus anterior."
+      },
+      "after": {
+        "question": "Which description best identifies the lateral wall of the axilla?",
+        "options": [
+          "Subscapularis and teres major",
+          "Intertubercular sulcus of the humerus, with coracobrachialis and the short head of biceps alongside it",
+          "Serratus anterior and ribs",
+          "Pec major"
+        ],
+        "explanation": "The narrow bony lateral wall is the intertubercular sulcus. Coracobrachialis and the short head of biceps lie alongside it; the long-head biceps tendon occupies the sulcus. The medial wall consists of ribs/intercostals and serratus anterior."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-09-10",
+      "questionId": "mss-mid-anatomy-09-10-9f9435c80faec0f5",
+      "contentFingerprint": "mss-mid-anatomy-09-10-9f9435c80faec0f5",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "It pierces the medial septum with the superior ulnar collateral artery and has no arm branches."
+      },
+      "after": {
+        "explanation": "It pierces the medial septum with the superior ulnar collateral artery. It normally gives no major muscular or cutaneous branches in the arm; small vascular or articular branches may occur."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-09-10",
+      "questionId": "mss-mid-anatomy-09-10-f50dc2ea47062eab",
+      "contentFingerprint": "mss-mid-anatomy-09-10-4dec2d7cc239c1eb",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "The trunks pass between:",
+        "explanation": "Then behind the subclavian artery."
+      },
+      "after": {
+        "question": "The roots of the brachial plexus emerge between which muscles before forming trunks?",
+        "explanation": "The roots emerge between anterior and middle scalene muscles and form trunks in the lower neck. The plexus runs mainly superior/posterior to the subclavian artery toward the first rib and axilla."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-09-10",
+      "questionId": "mss-mid-anatomy-09-10-75dab76af64b8eed",
+      "contentFingerprint": "mss-mid-anatomy-09-10-75dab76af64b8eed",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Axillary and radial are extensors from posterior divisions."
+      },
+      "after": {
+        "explanation": "The posterior divisions form the posterior cord, which gives the axillary and radial nerves. Their muscle actions are not all extension: the axillary nerve also supplies deltoid, a shoulder abductor."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-09-10",
+      "questionId": "mss-mid-anatomy-09-10-91649a39d1a7b682",
+      "contentFingerprint": "mss-mid-anatomy-09-10-77f223064877607b",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "How many groups of axillary lymph nodes are there?",
+        "explanation": "Anterior, posterior, lateral, central, infraclavicular and apical."
+      },
+      "after": {
+        "question": "In the lecture’s classification that counts infraclavicular nodes separately, how many lymph-node groups are listed?",
+        "explanation": "The lecture lists six: anterior, posterior, lateral, central, infraclavicular, and apical. Many anatomical references instead describe five main axillary groups and discuss infraclavicular/deltopectoral nodes separately; the count depends on the stated classification."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-11-12",
+      "questionId": "mss-mid-anatomy-11-12-b05c3992de078336",
+      "contentFingerprint": "mss-mid-anatomy-11-12-f51263437e01a8b8",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "question": "Which thumb muscle is supplied by the ulnar nerve?",
+        "options": [
+          "Opponens pollicis",
+          "Abductor pollicis brevis",
+          "Flexor pollicis brevis",
+          "Adductor pollicis"
+        ],
+        "explanation": "Adductor pollicis = deep ulnar; the other three thenar muscles = median."
+      },
+      "after": {
+        "question": "Which listed thumb muscle is supplied by the deep branch of the ulnar nerve?",
+        "options": [
+          "Opponens pollicis",
+          "Abductor pollicis brevis",
+          "Extensor pollicis longus",
+          "Adductor pollicis"
+        ],
+        "explanation": "Adductor pollicis is supplied by the deep ulnar branch. Opponens pollicis and abductor pollicis brevis receive the recurrent median branch; extensor pollicis longus receives the posterior interosseous nerve. Flexor pollicis brevis was excluded as a distractor because its deep head commonly has ulnar supply."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-11-12",
+      "questionId": "mss-mid-anatomy-11-12-18c2f18ee0d2a52c",
+      "contentFingerprint": "mss-mid-anatomy-11-12-48f26fd82bb0f393",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "question",
+        "explanation"
+      ],
+      "before": {
+        "question": "How many hand muscles does the ulnar nerve supply?",
+        "explanation": "1 superficial (palmaris brevis) + 14 deep."
+      },
+      "after": {
+        "question": "Under this lecture’s convention of counting four palmar interossei, how many hand muscles are listed as ulnar-supplied?",
+        "explanation": "The lecture counts one superficial-branch muscle (palmaris brevis) and 14 deep-branch muscles, including four palmar and four dorsal interossei. Other references count three palmar interossei, and some muscles have dual or variable supply, so 15 is a course convention rather than a universal total."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-11-12",
+      "questionId": "mss-mid-anatomy-11-12-f946b95cbbee6e6a",
+      "contentFingerprint": "mss-mid-anatomy-11-12-7272e8f4bc97624c",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "options",
+        "explanation"
+      ],
+      "before": {
+        "options": [
+          "Through pronator teres and between FDS and FDP",
+          "Behind the medial epicondyle",
+          "Between two heads of FCU",
+          "Through supinator"
+        ],
+        "explanation": "The ulnar nerve is the one between FCU heads."
+      },
+      "after": {
+        "options": [
+          "Between the two heads of pronator teres, then between flexor digitorum superficialis and profundus",
+          "Behind the medial epicondyle",
+          "Between two heads of FCU",
+          "Through supinator"
+        ],
+        "explanation": "The median nerve usually passes between the humeral and ulnar heads of pronator teres and then between flexor digitorum superficialis and flexor digitorum profundus. The ulnar nerve enters between the two heads of flexor carpi ulnaris."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-11-12",
+      "questionId": "mss-mid-anatomy-11-12-f8c735dd4a25788f",
+      "contentFingerprint": "mss-mid-anatomy-11-12-f8c735dd4a25788f",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "The deep branch pierces supinator (posterior interosseous nerve)."
+      },
+      "after": {
+        "explanation": "The deep branch passes through supinator near the proximal radius and continues beyond the muscle as the posterior interosseous nerve."
+      }
+    },
+    {
+      "lectureId": "mss-mid-anatomy-11-12",
+      "questionId": "mss-mid-anatomy-11-12-64213b7d70fe45e5",
+      "contentFingerprint": "mss-mid-anatomy-11-12-64213b7d70fe45e5",
+      "reason": "Correct ambiguous or inaccurate lecture wording; align the question with the clarified summary.",
+      "changedFields": [
+        "explanation"
+      ],
+      "before": {
+        "explanation": "Also ECRL; the rest are supplied by the posterior interosseous nerve."
+      },
+      "after": {
+        "explanation": "Brachioradialis and extensor carpi radialis longus receive radial branches before the terminal division. Supinator receives the deep radial branch; extensor digitorum and extensor indicis receive the posterior interosseous nerve after it emerges from supinator."
+      }
+    }
+  ]
+}

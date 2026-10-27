@@ -195,6 +195,30 @@ def build_bank(root=ROOT, lectures=None, sources=None):
     lectures = lectures if lectures is not None else registry(root)
     oldpath = root/'study-questions-data.js'
     previous = read_assignment(oldpath,'VitanovaQuestionBank') if oldpath.exists() else []
+    previous_by_id = {row['id']: row for row in previous}
+    # Clinical corrections require an explicit editorial record. Retain the permanent
+    # question identity rather than guessing that similarly worded questions match.
+    correction_path = root/'study-question-migrations.json'
+    corrections = []
+    if correction_path.exists():
+        payload = json.loads(correction_path.read_text(encoding='utf-8'))
+        if not isinstance(payload,dict) or payload.get('version') != 1 or not isinstance(payload.get('corrections'),list):
+            raise ValueError('Invalid question correction manifest')
+        corrections = payload['corrections']
+    replacements = {}
+    permanent_ids = set()
+    for correction in corrections:
+        if not isinstance(correction,dict) or not all(isinstance(correction.get(key),str) and correction[key].strip() for key in ('lectureId','questionId','contentFingerprint','reason')):
+            raise ValueError('Each question correction needs a lecture, permanent ID, content fingerprint and reason')
+        fingerprint, ident = correction['contentFingerprint'], correction['questionId']
+        prefix = correction['lectureId']+'-'
+        if not fingerprint.startswith(prefix) or not ident.startswith(prefix):
+            raise ValueError('Question correction crosses lecture identities')
+        if fingerprint in replacements or ident in permanent_ids:
+            raise ValueError('Duplicate or ambiguous question correction')
+        replacements[fingerprint] = correction
+        permanent_ids.add(ident)
+    applied = set()
     oldbycontent = {}
     for row in previous:
         identity = (row['lectureId'],row['question'],tuple(sorted(row['options'])),row['options'][row['answer']])
@@ -205,9 +229,30 @@ def build_bank(root=ROOT, lectures=None, sources=None):
         if source is None: source=(root/lecture['file']).read_text(encoding='utf-8')
         rows=extract(lecture,source)
         for row in rows:
+            fingerprint = row['id']
+            correction = replacements.get(fingerprint)
+            if correction:
+                row['id'] = correction['questionId']
+                row['legacyIds'].append(fingerprint)
+                previous_row = previous_by_id.get(row['id'])
+                if previous_row:
+                    row['legacyIds'].extend(previous_row.get('legacyIds',[]))
+                applied.add(fingerprint)
             identity=(row['lectureId'],row['question'],tuple(sorted(row['options'])),row['options'][row['answer']])
             row['legacyIds']=sorted((set(row['legacyIds'])|oldbycontent.get(identity,set()))-{row['id']})
         bank.extend(rows)
+    unused = set(replacements)-applied
+    if unused:
+        raise ValueError('Question correction fingerprint no longer matches the lecture; review the manifest: '+', '.join(sorted(unused)))
+    ids = [row['id'] for row in bank]
+    if len(set(ids)) != len(ids):
+        raise ValueError('Question correction produces duplicate permanent IDs')
+    aliases = {}
+    for row in bank:
+        for alias in [row['id']]+row['legacyIds']:
+            if alias in aliases and aliases[alias] != row['id']:
+                raise ValueError('Question correction creates ambiguous bookmark aliases')
+            aliases[alias] = row['id']
     return bank
 
 def bank_text(bank):

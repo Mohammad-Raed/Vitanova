@@ -80,4 +80,8 @@ Browser tests exercise the original quiz templates, persistence, navigation, sha
 
 Keep `index.html`, the lecture HTML files, shared assets, and generated question bank together at the GitHub Pages site root. No bundling or generated distribution folder is required. Existing legacy HTML redirect pages are retained to preserve shared links. Shared links and navigation also work under a GitHub Pages project subpath.
 
-Review changes and run the checks before committing. Publishing remains a separate, user-authorized step. This update does not commit, push, or deploy the site.
+Review changes and run the checks before committing. Publishing remains a separate, user-authorized step. Publication is performed only after user authorization.
+
+## Editorial corrections
+
+See [the content review](docs/CONTENT_REVIEW.md). Reviewed question corrections are recorded in `study-question-migrations.json`; keep this file with the source. Regeneration uses it to retain permanent bookmark identities when question wording or answers are corrected.

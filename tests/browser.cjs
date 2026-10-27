@@ -39,6 +39,15 @@ async function main() {
     const lectures = await page.evaluate(() => window.VitanovaLectures);
     const bank = await page.evaluate(() => window.VitanovaQuestionBank);
     check(lectures.length > 0 && bank.length > 0, 'Actual lecture registry and question bank loaded');
+    check(await page.locator('#study-snapshot').isVisible(), 'Overview displays the study snapshot');
+    await page.setViewportSize({width:390,height:844});
+    const menu=page.locator('#study-menu-toggle');
+    check(await menu.getAttribute('aria-expanded')==='false','Mobile study menu starts collapsed');
+    await menu.click();
+    check(await menu.getAttribute('aria-expanded')==='true','Mobile study menu opens');
+    await page.keyboard.press('Escape');
+    check(await menu.getAttribute('aria-expanded')==='false','Escape closes mobile study menu');
+    await page.setViewportSize({width:1280,height:900});
     await page.evaluate(() => localStorage.clear());
     await goto('index.html#mss-mid-anatomy');
     check(await page.locator('.study-resource').count() === 6, 'Anatomy checklist contains six resources');
