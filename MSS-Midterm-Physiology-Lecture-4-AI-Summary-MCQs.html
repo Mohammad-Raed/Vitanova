@@ -1,0 +1,403 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<title>MSS Lecture 4 Revision</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{
+  --bg:#faf8ff;--card:#ffffff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+  --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+  --ln:#3a3057;--soft:#2b2347;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding-block:48px 36px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding-block:8px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover,nav a:focus-visible{background:var(--soft);outline:none}
+main{max-width:980px;margin:0 auto;padding-block:12px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu);text-wrap:balance}
+h3{margin:18px 0 6px;font-size:18px}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0;min-width:0}
+.g .card h3:first-child{margin-top:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+button.r:focus-visible,.o:focus-visible{outline:2px solid var(--pu);outline-offset:2px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px 16px}
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+#sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+</style>
+
+<header>
+  <small>AL-BALQA APPLIED UNIVERSITY &middot; MUSCULOSKELETAL SYSTEM</small>
+  <h1>Lecture 4: Somatic Reflexes</h1>
+  <p>Spinal reflexes, sensorimotor integration and receptor potentials</p>
+  <p>High-yield revision of the full slide set, followed by an MCQ bank</p>
+</header>
+
+<nav>
+  <a href="#flow">Big picture</a>
+  <a href="#transduction">Transduction</a>
+  <a href="#anatomy">Spinal cord</a>
+  <a href="#receptors">Proprioceptors</a>
+  <a href="#stretch">Stretch reflex</a>
+  <a href="#control">Controlling it</a>
+  <a href="#gto">Golgi tendon</a>
+  <a href="#poly">Polysynaptic</a>
+  <a href="#hy">High-yield</a>
+  <a href="#quiz">Quiz</a>
+</nav>
+
+<main>
+
+<section id="flow">
+  <div class="k">Big picture</div>
+  <h2>From stimulus to reflex</h2>
+  <div class="card">
+    <div class="flow"><span>Stimulus</span><i>→</i><span>Sensory transduction</span><i>→</i><span>Afferent transmission</span><i>→</i><span>Synapse(s)</span><i>→</i><span>Motor output (efferent)</span></div>
+    <p>The same afferent input also travels up to the brain, so <b>sensation and perception</b> run in parallel with the reflex.</p>
+  </div>
+  <div class="note"><b>Definition:</b> a <b>somatic reflex</b> is an automatic response produced by <b>skeletal muscle contraction</b> without conscious effort, for example withdrawing from a painful stimulus.</div>
+</section>
+
+<section id="transduction">
+  <div class="k">Sensory transduction</div>
+  <h2>Receptor potentials</h2>
+  <div class="g">
+    <div class="card">
+      <h3>What happens</h3>
+      <ul>
+        <li>A stimulus changes receptor <b>permeability</b>, usually opening channels so that <b>Na⁺ enters</b> and the receptor depolarizes.</li>
+        <li>The result is a <b>graded receptor potential</b>.</li>
+        <li>It has <b>no refractory period</b>, so rapid successive stimuli can <b>summate</b>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Stimulus strength coding</h3>
+      <div class="flow"><span>Stronger stimulus</span><i>→</i><span>Bigger permeability change</span><i>→</i><span>Larger receptor potential</span><i>→</i><span>Higher AP <b>frequency</b></span><i>→</i><span>More neurotransmitter released</span></div>
+      <p>Strength is coded by <b>firing rate</b>, not by AP size.</p>
+    </div>
+  </div>
+
+  <h3>Two receptor designs</h3>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Specialized afferent ending</th><th>Separate receptor cell</th></tr>
+    <tr><td>Examples</td><td>Meissner corpuscle, Pacinian corpuscle</td><td>Merkel disk receptor</td></tr>
+    <tr><td>What the receptor is</td><td>Modified end of the afferent neuron itself</td><td>A specialized epithelial cell next to the afferent</td></tr>
+    <tr><td>Sequence</td><td>Stimulus → Na⁺ entry → receptor potential → local current opens voltage-gated Na⁺ channels → AP</td><td>Stimulus → Na⁺ entry → opens voltage-gated Ca²⁺ channels → Ca²⁺ triggers exocytosis → transmitter opens chemically gated channels on afferent → Na⁺ entry → AP</td></tr>
+  </table></div>
+
+  <h3>Where is the action potential initiated?</h3>
+  <div class="g">
+    <div class="card"><span class="tag">Afferent neuron</span><p>At the <b>peripheral end, next to the receptor</b>.</p></div>
+    <div class="card"><span class="tag">Interneuron</span><span class="tag">Efferent neuron</span><p>At the <b>axon hillock</b>, the start of the axon beside the cell body.</p></div>
+  </div>
+</section>
+
+<section id="anatomy">
+  <div class="k">Anatomy review</div>
+  <h2>The spinal cord in cross section</h2>
+  <div class="card tbl"><table>
+    <tr><th>Structure</th><th>Key point</th></tr>
+    <tr><td>White matter</td><td>Axons of ascending and descending neurons</td></tr>
+    <tr><td>Gray matter</td><td>Neuron cell bodies and glia inside the cord</td></tr>
+    <tr><td>Dorsal root</td><td><b>Afferent (sensory)</b> axons entering the cord; cell bodies sit in the <b>dorsal root ganglion</b></td></tr>
+    <tr><td>Ventral root</td><td><b>Efferent (motor)</b> axons exiting the cord to muscle</td></tr>
+    <tr><td>Dorsal horn</td><td>Sensory processing</td></tr>
+    <tr><td>Ventral horn</td><td>Motor output (motoneuron cell bodies)</td></tr>
+  </table></div>
+  <div class="note"><b>Remember:</b> the cord is not just a highway to and from the brain. It integrates reflexes by itself.</div>
+</section>
+
+<section id="receptors">
+  <div class="k">Muscle receptors</div>
+  <h2>Proprioceptors</h2>
+  <div class="note"><b>Proprioception</b> is awareness of limb and body position in space, plus the strength and contractions during movement.</div>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Muscle spindle</th><th>Golgi tendon organ (GTO)</th></tr>
+    <tr><td>Senses</td><td>Muscle <b>length</b> (static and dynamic stretch)</td><td>Muscle <b>tension</b> (force)</td></tr>
+    <tr><td>Arrangement</td><td>In <b>parallel</b> with muscle fibres</td><td>In <b>series</b> with muscle fibres</td></tr>
+    <tr><td>Afferent</td><td><b>Ia</b> (dynamic, change in length) and <b>II</b> (static length)</td><td><b>Ib</b>, slightly smaller than Ia</td></tr>
+    <tr><td>Activated by</td><td>Stretch</td><td>Muscle force, for example during contraction</td></tr>
+    <tr><td>Efferent control</td><td>Intrafusal fibres driven by <b>gamma motoneurons</b></td><td>None</td></tr>
+  </table></div>
+
+  <h3>Muscle spindle structure</h3>
+  <div class="g">
+    <div class="card"><ul>
+      <li><b>Intrafusal fibres</b> wrapped by sensory endings.</li>
+      <li><b>Ia fibres</b> respond to <u>change</u> in length.</li>
+      <li><b>Group II fibres</b> carry static length.</li>
+      <li>Large-diameter, <b>myelinated</b> afferents.</li>
+    </ul></div>
+    <div class="card"><ul>
+      <li>Intrafusal fibres are innervated by <b>gamma motoneurons</b>.</li>
+      <li><b>Extrafusal</b> fibres (the bulk of the muscle) are innervated by <b>alpha motoneurons</b>.</li>
+      <li>Gamma input sets spindle tension and therefore <b>sensitivity</b>.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="stretch">
+  <div class="k">Group Ia reflex</div>
+  <h2>The stretch reflex</h2>
+  <p>Also called the <b>monosynaptic reflex</b>, <b>tendon tap reflex</b> or <b>knee jerk</b> (patellar tendon reflex).</p>
+  <div class="card">
+    <div class="flow"><span>Tap patellar tendon</span><i>→</i><span>Quadriceps spindle stretched</span><i>→</i><span>Ia afferent to cord</span><i>→</i><span>1 synapse on alpha motoneuron</span><i>→</i><span>Quadriceps contracts</span></div>
+  </div>
+  <div class="g">
+    <div class="card">
+      <h3>Circuit</h3>
+      <ul>
+        <li>Spindles detect stretch → CNS (afferent).</li>
+        <li>Motoneurons of the <b>stretched muscle and synergists</b> are activated (efferent).</li>
+        <li><b>Antagonists are inhibited</b> via an inhibitory interneuron (disynaptic). In the knee jerk the <b>hamstring</b> is inhibited.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Facts to know</h3>
+      <ul>
+        <li>Almost all muscles show a stretch reflex; the patellar one is just convenient.</li>
+        <li><b>Graded</b>: a harder tap gives a larger response, up to a point.</li>
+        <li>Ia axon collaterals also travel up to the brain.</li>
+        <li>Electrical stimulation of the nerve produces the <b>H reflex</b> (Hoffmann).</li>
+        <li>Normal movement of the limb also elicits it, not only a tap.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note"><b>Function:</b> rapid correction of unexpected muscle stretch (can stop you falling) and sensory feedback that helps activate muscles during movement. It is a <b>negative feedback</b> loop: contraction relieves the stretch and spindle firing falls.</div>
+</section>
+
+<section id="control">
+  <div class="k">Gain control</div>
+  <h2>How can the stretch reflex be controlled?</h2>
+  <div class="card tbl"><table>
+    <tr><th>Site</th><th>Mechanism</th></tr>
+    <tr><td>1. Sensory afferent (spindle)</td><td><b>Gamma motoneurons</b> adjust intrafusal tension. More gamma activity means higher spindle tone, sensitivity and output.</td></tr>
+    <tr><td>2. The synapse</td><td><b>Presynaptic inhibition</b>: GABA-ergic <b>axo-axonal</b> synapses reduce transmitter release from the afferent terminal.</td></tr>
+    <tr><td>3. The motoneuron</td><td>Greater excitability gives a larger response (more recruitment, more APs). Example: the <b>Jendrassik manoeuvre</b> adds background excitation and enhances the reflex.</td></tr>
+  </table></div>
+
+  <h3>Alpha-gamma coactivation</h3>
+  <div class="card">
+    <ul>
+      <li>If only alpha motoneurons fire, the extrafusal muscle shortens and the spindle goes <b>slack</b>, so Ia fibres fall silent.</li>
+      <li>Firing <b>alpha and gamma together</b> keeps the spindle taut and responsive across a range of muscle lengths.</li>
+    </ul>
+  </div>
+
+  <h3>Presynaptic inhibition in one example</h3>
+  <div class="card">
+    <p>Terminal A excites cell C. Inhibitory terminal B sits on terminal A. Stimulating <b>A + B</b> gives <b>no EPSP</b> in C, but stimulating <b>D + B</b> still produces an EPSP, because B acts only on A. It silences one input without touching the others.</p>
+  </div>
+
+  <h3>Postsynaptic summation (revision)</h3>
+  <div class="g">
+    <div class="card"><span class="tag">Temporal</span><p>The same input fires again before the first EPSP has died away, so the EPSPs add.</p></div>
+    <div class="card"><span class="tag">Spatial</span><p>Two or more different excitatory inputs fire together and their EPSPs add. An EPSP plus an IPSP cancel.</p></div>
+  </div>
+</section>
+
+<section id="gto">
+  <div class="k">Group Ib reflex</div>
+  <h2>Golgi tendon organs</h2>
+  <div class="card">
+    <ul>
+      <li>When the GTO is stretched (usually by muscle contraction), <b>collagen fibres compress the Ib axon</b> and its firing rate rises.</li>
+      <li><b>At rest:</b> Ib input <b>inhibits</b> motoneurons of the same muscle through Ib inhibitory interneurons, roughly the opposite of the stretch reflex.</li>
+      <li>The old idea was that this <b>protects muscle</b> from excessive force. That view is <b>outdated</b>.</li>
+    </ul>
+  </div>
+  <div class="note"><b>State-dependent reflex reversal:</b> during <b>locomotion</b> the Ib inhibitory interneurons are inhibited and Ib <b>excitatory</b> interneurons are facilitated (McCrea and colleagues). The Ib action on extensor motoneurons flips from inhibition to excitation, reinforcing motor activity and force production.</div>
+  <div class="card">
+    <h3>Why is it complicated?</h3>
+    <p>Ib interneurons also receive input from <b>muscle spindles, joint receptors, cutaneous receptors and descending pathways</b>. So the effect is <b>inhibitory at rest and excitatory during action</b>.</p>
+  </div>
+  <div class="note"><b>Proprioceptive reflexes in movement:</b> stretch reflexes correct unexpected length changes. Spindle and GTO afferents together give ongoing feedback that reinforces or modifies the motor pattern, for example when you stumble.</div>
+</section>
+
+<section id="poly">
+  <div class="k">Polysynaptic reflexes</div>
+  <h2>Withdrawal and crossed extension</h2>
+
+  <h3>Flexion withdrawal reflex</h3>
+  <div class="card">
+    <div class="flow"><span>Painful stimulus</span><i>→</i><span>Nociceptor</span><i>→</i><span>Afferent via dorsal root</span><i>→</i><span>Interneuron(s) in cord</span><i>→</i><span>Flexor motoneurons fire</span><i>→</i><span>Limb withdrawn</span></div>
+    <ul>
+      <li>At least <b>disynaptic</b>, possibly polysynaptic.</li>
+      <li>Activates <b>flexors of the whole limb</b> and <b>inhibits extensors</b> (elbow example: biceps contracts, triceps relaxes).</li>
+      <li>The cord also sends the signal up an <b>ascending pathway</b> for pain perception.</li>
+      <li>The reflex happens <b>before you perceive the pain</b>.</li>
+    </ul>
+  </div>
+
+  <h3>Crossed extension reflex</h3>
+  <div class="card">
+    <ul>
+      <li>Starts <b>at the same time</b> as a leg withdrawal reflex.</li>
+      <li><b>Contralateral</b> effect: nociceptive afferent → interneuron(s) → <b>opposite-side extensor</b> motoneurons.</li>
+      <li>Activates contralateral <b>extensors</b>, inhibits contralateral <b>flexors</b>.</li>
+      <li>Result: the opposite leg extends and <b>supports body weight</b> so the injured leg can lift. It stops you falling when you step on something sharp.</li>
+    </ul>
+  </div>
+
+  <h3>Controlling di- and polysynaptic reflexes</h3>
+  <div class="card tbl"><table>
+    <tr><th>Site</th><th>Comment</th></tr>
+    <tr><td>Afferent</td><td>Possibly, but not like spindle gamma control</td></tr>
+    <tr><td>Synapses</td><td>For example presynaptic inhibition</td></tr>
+    <tr><td>Interneurons</td><td><b>Extra control site</b> compared with the monosynaptic reflex. Inhibiting an interneuron reduces transmission through the pathway.</td></tr>
+    <tr><td>Motoneuron</td><td>Excitability changes the reflex size</td></tr>
+  </table></div>
+</section>
+
+<section id="hy">
+  <div class="k">High-yield summary</div>
+  <h2>Last-minute checklist</h2>
+  <div class="g">
+    <div class="card"><h3>Transduction</h3><ul>
+      <li>Receptor potential is <b>graded</b> with <b>no refractory period</b>.</li>
+      <li>Stronger stimulus → higher <b>AP frequency</b>.</li>
+      <li>Afferent AP starts at the <b>peripheral end</b>; interneuron and efferent AP at the <b>axon hillock</b>.</li>
+    </ul></div>
+    <div class="card"><h3>Cord</h3><ul>
+      <li><b>Dorsal</b> = afferent. <b>Ventral</b> = efferent.</li>
+      <li>Gray matter has cell bodies; white matter has axons.</li>
+    </ul></div>
+    <div class="card"><h3>Spindle</h3><ul>
+      <li><b>Parallel</b>, senses <b>length</b>, Ia (change) and II (static).</li>
+      <li>Intrafusal ← <b>gamma</b>; extrafusal ← <b>alpha</b>.</li>
+      <li>Alpha-gamma coactivation prevents slack.</li>
+    </ul></div>
+    <div class="card"><h3>GTO</h3><ul>
+      <li><b>Series</b>, senses <b>tension</b>, Ib afferent.</li>
+      <li>Inhibitory at rest, <b>excitatory in locomotion</b>.</li>
+      <li>The &ldquo;protective&rdquo; role is outdated.</li>
+    </ul></div>
+    <div class="card"><h3>Stretch reflex</h3><ul>
+      <li><b>Monosynaptic</b> to the same muscle; antagonist inhibited via an interneuron.</li>
+      <li>Controlled at spindle (gamma), synapse (presynaptic inhibition) and motoneuron (Jendrassik).</li>
+    </ul></div>
+    <div class="card"><h3>Polysynaptic</h3><ul>
+      <li>Withdrawal: ipsilateral flexors on, extensors off, before pain is felt.</li>
+      <li>Crossed extension: contralateral extensors on, flexors off.</li>
+      <li>Interneurons add a control site.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="k">Test yourself</div>
+  <h2>MCQ bank</h2>
+  <p style="color:var(--mu)">Tap an answer. The correct option turns green and the explanation appears. Options reshuffle each time you reset.</p>
+  <div id="qs"></div>
+  <div id="sc">Score: 0 / 0</div>
+  <div style="text-align:center"><button class="r" id="rs" type="button">Reset</button></div>
+</section>
+
+</main>
+
+<footer>MSS Physiology &middot; Lecture 4 revision &middot; built from the lecture slides</footer>
+
+<script>
+var Q=[
+["What best describes a receptor potential?",["An all-or-none spike followed by a refractory period","A graded depolarization with no refractory period","A hyperpolarization that propagates along the axon","A potential generated only at the axon hillock"],1,"Receptor potentials are graded and have no refractory period, so rapid stimuli can summate."],
+["As stimulus strength increases, what changes in the afferent fibre?",["The amplitude of each action potential","The duration of the refractory period","The frequency of action potentials","The resting membrane potential"],2,"Stronger stimulus gives a larger receptor potential and a higher AP frequency. AP size stays the same (all-or-none)."],
+["Which receptor uses a separate receptor cell that releases neurotransmitter onto the afferent ending?",["Pacinian corpuscle","Meissner corpuscle","Merkel disk receptor","Muscle spindle Ia ending"],2,"Merkel disk receptors are separate cells: Ca²⁺ entry triggers transmitter release, which depolarizes the afferent. Meissner and Pacinian corpuscles are specialized afferent endings."],
+["Where is the action potential initiated in an afferent neuron?",["At the axon hillock near the cell body","In the dorsal root ganglion","At the peripheral end, next to the receptor","At the afferent terminals in the cord"],2,"Afferent APs start at the peripheral end beside the receptor. Interneurons and efferents start APs at the axon hillock."],
+["Where is the action potential initiated in an efferent (motor) neuron?",["Axon hillock","Neuromuscular junction","Dorsal root","Receptor ending"],0,"Efferent neurons and interneurons initiate APs at the axon hillock."],
+["Which statement about the spinal roots is correct?",["The ventral root carries afferent axons into the cord","The dorsal root carries efferent axons out of the cord","The dorsal root carries afferent axons into the cord","Both roots carry only motor axons"],2,"Dorsal = afferent (sensory) in; ventral = efferent (motor) out."],
+["Where are the cell bodies of afferent neurons located?",["Ventral horn","Dorsal root ganglion","White matter","Ventral root"],1,"Afferent cell bodies lie in the dorsal root ganglion. Motoneuron cell bodies are in the ventral horn."],
+["Golgi tendon organs are arranged ____ with muscle fibres and report ____.",["in parallel; length","in series; tension","in parallel; tension","in series; length"],1,"GTOs are in series and sense tension (force). Spindles are in parallel and sense length."],
+["Intrafusal muscle fibres are innervated by:",["Alpha motoneurons","Gamma motoneurons","Ib afferents","Inhibitory interneurons only"],1,"Gamma motoneurons innervate intrafusal fibres and set spindle sensitivity. Alpha motoneurons innervate extrafusal fibres."],
+["Which spindle afferent is particularly sensitive to the rate of change of muscle length?",["Group Ia","Group Ib","Group II","Gamma efferent"],0,"Ia fibres respond to change in length. Group II fibres convey static length."],
+["How many synapses lie between the Ia afferent and the alpha motoneuron of the same muscle in the knee jerk?",["None","One","Two","Three or more"],1,"The stretch reflex arc to the homonymous muscle is monosynaptic."],
+["In the patellar tendon reflex, which muscle is inhibited?",["Quadriceps","Hamstrings","Both","Neither"],1,"The quadriceps is stretched and contracts. The hamstring antagonist is inhibited through an inhibitory interneuron (reciprocal inhibition)."],
+["Which neuron fires to contract the extrafusal fibres in a stretch reflex?",["Muscle spindle gamma motoneuron","Muscle alpha motoneuron","Golgi tendon organ neuron","Muscle spindle sensory neuron"],1,"The alpha motoneuron drives extrafusal fibres. Gamma motoneurons drive intrafusal fibres."],
+["What is the main functional benefit of the stretch reflex?",["Rapid correction of unexpected muscle stretch","Producing pain perception","Relaxing the agonist muscle","Increasing Golgi tendon organ firing"],0,"The stretch reflex quickly corrects unanticipated changes in muscle length and can prevent a fall."],
+["Why are alpha and gamma motoneurons activated together during a contraction?",["To inhibit the antagonist","To keep spindles taut and responsive as the muscle shortens","To stop Ib afferent firing","To prevent presynaptic inhibition"],1,"Without gamma activity the spindle goes slack when the muscle shortens and Ia fibres go silent."],
+["Increasing gamma motoneuron activity will:",["Reduce spindle sensitivity","Abolish the stretch reflex","Increase spindle tone and sensitivity","Convert Ia fibres to Ib fibres"],2,"More gamma drive tightens the intrafusal fibres, raising sensitivity and output."],
+["Terminal B (GABAergic) synapses on excitatory terminal A, which excites cell C. Terminal D also excites C. What happens when D and B are stimulated together?",["No EPSP in C","An EPSP is produced in C","An IPSP is produced in C","C is hyperpolarized below rest"],1,"B only inhibits terminal A (presynaptic inhibition), so D still produces its EPSP in C."],
+["Presynaptic inhibition of the Ia afferent is mediated by:",["Glycinergic axodendritic synapses","GABAergic axo-axonal synapses","Cholinergic neuromuscular junctions","Gamma motoneuron collaterals"],1,"GABAergic axo-axonal synapses reduce transmitter release from the afferent terminal."],
+["The Jendrassik manoeuvre enhances the reflex mainly by:",["Increasing motoneuron excitability","Silencing the Ia afferent","Blocking presynaptic inhibition in the muscle","Stretching the Golgi tendon organ"],0,"It adds background excitation to the motoneurons, so the same stretch gives a larger response."],
+["At rest, activation of Golgi tendon organs causes:",["Excitation of the same muscle's motoneurons","Inhibition of the same muscle's motoneurons","Gamma motoneuron firing","No spinal effect"],1,"At rest, Ib input inhibits the motoneurons of the muscle it comes from through Ib inhibitory interneurons."],
+["What happens to the Ib reflex on extensor motoneurons when walking begins?",["It stays inhibitory","It is reversed to excitation","It disappears completely","It becomes presynaptic only"],1,"State-dependent reversal: Ib inhibitory interneurons are inhibited and excitatory ones are facilitated, reinforcing force production."],
+["Ib inhibitory interneurons receive input from which sources?",["Tendon organs only","Tendon organs, spindles, joint and cutaneous receptors, and descending pathways","Gamma motoneurons only","Dorsal horn nociceptors only"],1,"This convergence is why the Golgi tendon reflex is complicated."],
+["In the elbow withdrawal reflex from a hot object, what happens?",["Biceps relaxes and triceps contracts","Biceps contracts and triceps relaxes","Both contract","Both relax"],1,"Excitatory interneurons drive biceps (flexor) motoneurons; inhibitory interneurons relax the triceps antagonist."],
+["The flexion withdrawal reflex occurs:",["After conscious pain perception","Before pain perception","Only if the brain is intact","Only when the stimulus is cold"],1,"The reflex is spinal and happens before the ascending signal produces the sensation of pain."],
+["In the crossed extension reflex, what happens in the contralateral limb?",["Flexors contract and extensors relax","Extensors contract and flexors relax","Both flexors and extensors relax","No change"],1,"The opposite limb extends to support body weight while the injured limb is withdrawn."],
+["Which feature gives di- and polysynaptic reflexes an extra control site compared with the monosynaptic reflex?",["The motoneuron","The afferent","Interneurons","The muscle spindle"],2,"Interneurons can be excited or inhibited, altering transmission through the reflex pathway."],
+["Which receptor is activated by muscle force during contraction, while the spindle may go slack?",["Muscle spindle","Golgi tendon organ","Merkel disk","Pacinian corpuscle"],1,"GTOs sense tension generated by contraction. A spindle can unload when the muscle shortens."],
+["Two different excitatory inputs fire at the same time and bring the postsynaptic cell to threshold. This is:",["Temporal summation","Spatial summation","Presynaptic inhibition","EPSP-IPSP cancellation"],1,"Simultaneous activity of different excitatory inputs is spatial summation. The same input repeated quickly is temporal summation."]
+];
+var qs=document.getElementById("qs"),sc=document.getElementById("sc");
+var score=0,done=0;
+function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function build(){
+  qs.innerHTML="";score=0;done=0;upd();
+  Q.forEach(function(item,n){
+    var opts=item[1].map(function(t,i){return{t:t,c:i===item[2]};});
+    shuf(opts);
+    var box=document.createElement("div");box.className="q";
+    var p=document.createElement("p");p.textContent=(n+1)+". "+item[0];box.appendChild(p);
+    var ex=document.createElement("div");ex.className="ex";ex.textContent=item[3];
+    var btns=[];
+    opts.forEach(function(o){
+      var b=document.createElement("button");b.type="button";b.className="o";b.textContent=o.t;
+      b.addEventListener("click",function(){
+        if(box.getAttribute("data-done"))return;
+        box.setAttribute("data-done","1");done++;
+        if(o.c){score++;b.classList.add("ok");}else{b.classList.add("no");}
+        btns.forEach(function(x){if(x.o.c)x.b.classList.add("ok");});
+        ex.style.display="block";upd();
+      });
+      btns.push({b:b,o:o});box.appendChild(b);
+    });
+    box.appendChild(ex);qs.appendChild(box);
+  });
+}
+function upd(){sc.textContent="Score: "+score+" / "+done+"  ("+Q.length+" questions)";}
+document.getElementById("rs").addEventListener("click",function(){build();document.getElementById("quiz").scrollIntoView();});
+build();
+</script>
+
+<script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
