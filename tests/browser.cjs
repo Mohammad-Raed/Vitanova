@@ -42,6 +42,7 @@ async function main() {
     check(await page.locator('#study-snapshot').isVisible(), 'Overview displays the study snapshot');
     await page.setViewportSize({width:390,height:844});
     const menu=page.locator('#study-menu-toggle');
+    await page.waitForFunction(() => document.getElementById('study-menu-toggle').getAttribute('aria-expanded') === 'false');
     check(await menu.getAttribute('aria-expanded')==='false','Mobile study menu starts collapsed');
     await menu.click();
     check(await menu.getAttribute('aria-expanded')==='true','Mobile study menu opens');
@@ -50,16 +51,17 @@ async function main() {
     await page.setViewportSize({width:1280,height:900});
     await page.evaluate(() => localStorage.clear());
     await goto('index.html#mss-mid-anatomy');
-    check(await page.locator('.study-resource').count() === 6, 'Anatomy checklist contains six resources');
+    const anatomyCount = lectures.filter(lecture => lecture.category === 'mss-mid-anatomy').length;
+    check(await page.locator('.study-resource').count() === anatomyCount, 'Anatomy checklist matches registry');
     await page.locator('.study-resource input[type="checkbox"]').first().check();
     check(page.url().endsWith('#mss-mid-anatomy'), 'Checking progress does not navigate');
-    check(await page.locator('#completion-percent').textContent() === '17%', 'Progress rounds one of six to 17%');
+    check(await page.locator('#completion-percent').textContent() === Math.round(100/anatomyCount)+'%', 'Progress rounds one of all registered Anatomy resources');
     await page.reload();
     check(await page.locator('.study-resource input[type="checkbox"]').first().isChecked(), 'Completion persists after refresh');
     await page.locator('#completion-filter').selectOption('completed');
     check(await page.locator('.study-resource').count() === 1, 'Completed filter includes checked resource');
     await page.locator('#completion-filter').selectOption('incomplete');
-    check(await page.locator('.study-resource').count() === 5, 'Incomplete filter excludes checked resource');
+    check(await page.locator('.study-resource').count() === anatomyCount-1, 'Incomplete filter excludes checked resource');
     await goto('index.html#mss-mid-physiology');
     check(!await page.locator('.study-resource input[type="checkbox"]').first().isChecked(), 'Subjects keep independent progress');
     await goto('index.html#search');
@@ -263,7 +265,7 @@ async function main() {
       await page.locator('#vn-mistake-panel [data-answer="1"]').click();
       check((await page.locator('#vn-mistake-panel #vn-saved-score').textContent()).includes('1 correct'),'New lecture revision uses original extracted answer');
       await goto(fixtureBase+'index.html#mss-mid-anatomy');
-      check(await page.locator('.study-resource').count()===7,'New lecture automatically joins its subject checklist');
+      check(await page.locator('.study-resource').count()===anatomyCount+1,'New lecture automatically joins its subject checklist');
       await page.locator('.study-resource[data-resource-id="'+fixture.id+'"] input').check();
       await page.reload();
       check(await page.locator('.study-resource[data-resource-id="'+fixture.id+'"] input').isChecked(),'New lecture inherits persistent manual completion');

@@ -59,5 +59,23 @@ window.VitanovaLectures = [
     category: 'immunology-mid', lectureLabel: 'Lecture 1', order: 1,
     title: 'Foundations of Medical Immunology', description: 'Innate and adaptive immunity, antigen recognition, memory, tolerance, and vaccination.',
     file: 'Immunology-Midterm-Lecture-1-Foundations-High-Yield-Summary-MCQs.html', icon: '🧬'
-  }
-];
+  },
+  {
+    id: 'mss-mid-microbiology-01-02', system: 'MSS', exam: 'Midterm', subject: 'Microbiology',
+    category: 'mss-mid-microbiology', lectureLabel: 'Lectures 1 & 2', order: 1,
+    title: 'Skin Infections & Anaerobes', description: 'Bacterial skin infections, virulence, anaerobic pathogens, and clinical management.',
+    file: 'MSS-Midterm-Microbiology-Lectures-1-2-AI-Summary-MCQs.html', icon: '🦠'
+  },
+  {
+    id: 'mss-mid-physiology-04', system: 'MSS', exam: 'Midterm', subject: 'Physiology',
+    category: 'mss-mid-physiology', lectureLabel: 'Lecture 4', order: 4,
+    title: 'Somatic Reflexes', description: 'Sensory transduction, muscle spindles, spinal reflexes, and proprioception.',
+    file: 'MSS-Midterm-Physiology-Lecture-4-AI-Summary-MCQs.html', icon: '❤️'
+  },
+  {
+    id: 'mss-mid-anatomy-14-15', system: 'MSS', exam: 'Midterm', subject: 'Anatomy',
+    category: 'mss-mid-anatomy', lectureLabel: 'Lectures 14 & 15', order: 14,
+    title: 'Lower Limb Bones & Hip, SI and Foot Joints', description: 'Pelvic and lower-limb bones, hip stability, sacroiliac and foot joints.',
+    file: 'MSS-Midterm-Anatomy-Lectures-14-15-AI-Summary-MCQs.html', icon: '🦴'
+  },
+]; 

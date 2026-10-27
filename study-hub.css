@@ -131,3 +131,9 @@ a.snapshot-card .snapshot-detail{color:var(--mint)}
 @media(max-width:1100px) and (min-width:901px){.hub-shell{grid-template-columns:202px minmax(0,1fr)}.study-sidebar{padding-inline:10px}#study-snapshot{gap:8px}.snapshot-card{padding:13px 11px}.snapshot-label{font-size:10px}}
 @media(max-width:900px){.hub-shell{display:block}.study-sidebar{position:static;height:auto;padding:14px 18px;border-right:0;border-bottom:1px solid var(--line);overflow:visible}.sidebar-header{padding:0}#study-menu-toggle{display:inline-flex}#study-menu{display:none}.study-sidebar.is-open #study-menu{display:block}.sidebar-description{margin:16px 8px}.sidebar-caption{margin-top:18px}.sidebar-note{margin-top:16px;padding-top:12px}.study-sidebar .hub-links{grid-template-columns:repeat(2,minmax(0,1fr));font-size:12px}#sidebar-systems{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-workspace #hero-content{padding:35px 20px 36px}.hub-workspace #compact-header{padding-block:16px}}
 @media(max-width:650px){#study-snapshot{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:24px}.snapshot-card{padding:13px 14px}.snapshot-detail{font-size:10px}.hub-workspace #hero-content p{font-size:14px}.hub-workspace h1{font-size:36px}.hub-workspace #compact-header{padding-inline:16px}.study-sidebar .hub-links{gap:3px}}
+
+/* Welcome banner: calm, readable prayer reminder */
+.hero-dua{max-width:620px;margin:24px auto 0;padding:16px 22px;border:1px solid rgba(201,232,227,.28);border-radius:16px;background:rgba(255,255,255,.065);box-shadow:0 10px 35px rgba(0,0,0,.08)}
+.hero-dua .dua-kicker{font-size:12px;font-weight:650;color:#c9e8e3;letter-spacing:.025em}
+#hero-content .hero-dua .dua-text{font-family:Tahoma,'Noto Naskh Arabic',serif;font-size:clamp(17px,2.5vw,22px);line-height:1.9;color:#fff;margin:5px 0 0;text-wrap:balance}
+@media(max-width:600px){.hero-dua{margin-top:20px;padding:12px 14px}}

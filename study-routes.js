@@ -2,7 +2,7 @@
 (function () {
   const lectures = window.VitanovaLectures || [];
   const views = {
-    home: {title:'Explore your library', parent:null, subtitle:'Choose a system to browse its study resources.', cards:[['MSS System','Midterm, final, and past-paper study resources.','mss','🦴','SYSTEM'],['Immunology','Midterm and final immunology study resources.','immunology','🧬','SYSTEM']]},
+    home: {title:'Explore file library', parent:null, subtitle:'Choose a system to browse its study resources.', cards:[['MSS System','Midterm, final, and past-paper study resources.','mss','🦴','SYSTEM'],['Immunology','Midterm and final immunology study resources.','immunology','🧬','SYSTEM']]},
     mss: {title:'MSS System', parent:'home', cards:[['Midterm Summary + AI MCQs','Lecture summaries and questions for the midterm.','mss-mid','📘','MIDTERM'],['Final Summary + AI MCQs','Lecture summaries and questions for the final.','mss-final','📗','FINAL'],['Past Papers','Practice papers from previous MSS examinations.','mss-past','📝','PAST PAPERS']]},
     immunology: {title:'Immunology', parent:'home', cards:[['Midterm','Immunology resources for the midterm examination.','immunology-mid','🧬','MIDTERM'],['Final','Immunology resources for the final examination.','immunology-final','🧬','FINAL']]},
     'mss-past': {title:'MSS Past Papers', parent:'mss', cards:[['Midterm Questions','Past-paper questions for the MSS midterm.','mss-past-mid','📝','PAST PAPERS'],['Final Questions','Past-paper questions for the MSS final.','mss-past-final','📝','PAST PAPERS']]},
