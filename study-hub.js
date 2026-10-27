@@ -45,7 +45,7 @@
     const completed=lectures.filter(done).length;
     const saved=window.VitanovaBookmarks?.count()||0;
     const mistakes=window.VitanovaMistakes?.count()||0;
-    host.innerHTML=`<div class="snapshot-card"><span class="snapshot-label">Your library</span><strong>${lectures.length}<small> lectures</small></strong><span class="snapshot-detail">Across ${new Set(lectures.map(l=>l.system)).size} systems</span></div><div class="snapshot-card"><span class="snapshot-label">Completed</span><strong>${completed}<small> / ${lectures.length}</small></strong><span class="snapshot-detail">Marked complete by you</span></div><a class="snapshot-card" href="#saved"><span class="snapshot-label">Saved questions</span><strong>${saved}</strong><span class="snapshot-detail">Your personal revision collection <span aria-hidden="true">→</span></span></a><a class="snapshot-card" href="#mistakes"><span class="snapshot-label">Mistakes to revisit</span><strong>${mistakes}</strong><span class="snapshot-detail">Practise until you feel confident <span aria-hidden="true">→</span></span></a>`;
+    host.innerHTML=`<div class="snapshot-card"><span class="snapshot-label">Explore file library</span><strong>${lectures.length}<small> lectures</small></strong><span class="snapshot-detail">Across ${new Set(lectures.map(l=>l.system)).size} systems</span></div><div class="snapshot-card"><span class="snapshot-label">Completed</span><strong>${completed}<small> / ${lectures.length}</small></strong><span class="snapshot-detail">Marked complete by you</span></div><a class="snapshot-card" href="#saved"><span class="snapshot-label">Saved questions</span><strong>${saved}</strong><span class="snapshot-detail">Your personal revision collection <span aria-hidden="true">→</span></span></a><a class="snapshot-card" href="#mistakes"><span class="snapshot-label">Mistakes to revisit</span><strong>${mistakes}</strong><span class="snapshot-detail">Practise until you feel confident <span aria-hidden="true">→</span></span></a>`;
   }
   function sidebarSystems() {
     const ancestors=new Set();let key=current;
@@ -78,7 +78,7 @@
     $('hero-content').hidden=!isHome; $('compact-header').hidden=isHome;
     $('hub-main').classList.toggle('is-dashboard',Boolean(view.category)||current==='search');
     breadcrumbs(current);
-    $('page-eyebrow').textContent=['saved','mistakes'].includes(current)?'YOUR REVISION':current==='backup'?'YOUR DATA':'YOUR LIBRARY';
+    $('page-eyebrow').textContent=['saved','mistakes'].includes(current)?'YOUR REVISION':current==='backup'?'YOUR DATA':'EXPLORE FILE LIBRARY';
     $('page-title').textContent=view.title; $('page-subtitle').textContent=view.subtitle||'';
     $('dashboard-overview').hidden=true; $('lecture-filters').hidden=!(view.category||current==='search');
     if (view.category||current==='search') {
