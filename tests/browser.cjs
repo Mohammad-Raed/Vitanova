@@ -265,7 +265,7 @@ async function main() {
       await page.locator('#vn-mistake-panel [data-answer="1"]').click();
       check((await page.locator('#vn-mistake-panel #vn-saved-score').textContent()).includes('1 correct'),'New lecture revision uses original extracted answer');
       await goto(fixtureBase+'index.html#mss-mid-anatomy');
-      check(await page.locator('.study-resource').count()===7,'New lecture automatically joins its subject checklist');
+      check(await page.locator('.study-resource').count()===anatomyCount+1,'New lecture automatically joins its subject checklist');
       await page.locator('.study-resource[data-resource-id="'+fixture.id+'"] input').check();
       await page.reload();
       check(await page.locator('.study-resource[data-resource-id="'+fixture.id+'"] input').isChecked(),'New lecture inherits persistent manual completion');
