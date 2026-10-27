@@ -42,6 +42,7 @@ async function main() {
     check(await page.locator('#study-snapshot').isVisible(), 'Overview displays the study snapshot');
     await page.setViewportSize({width:390,height:844});
     const menu=page.locator('#study-menu-toggle');
+    await page.waitForFunction(() => document.getElementById('study-menu-toggle').getAttribute('aria-expanded') === 'false');
     check(await menu.getAttribute('aria-expanded')==='false','Mobile study menu starts collapsed');
     await menu.click();
     check(await menu.getAttribute('aria-expanded')==='true','Mobile study menu opens');
