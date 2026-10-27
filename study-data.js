@@ -59,7 +59,7 @@ window.VitanovaLectures = [
     category: 'immunology-mid', lectureLabel: 'Lecture 1', order: 1,
     title: 'Foundations of Medical Immunology', description: 'Innate and adaptive immunity, antigen recognition, memory, tolerance, and vaccination.',
     file: 'Immunology-Midterm-Lecture-1-Foundations-High-Yield-Summary-MCQs.html', icon: '🧬'
-  }
+  },
   {
     id: 'mss-mid-microbiology-01-02', system: 'MSS', exam: 'Midterm', subject: 'Microbiology',
     category: 'mss-mid-microbiology', lectureLabel: 'Lectures 1 & 2', order: 1,
