@@ -52,15 +52,17 @@
     while(key&&views[key]&&!ancestors.has(key)){ancestors.add(key);key=views[key].parent;}
     $('sidebar-systems').innerHTML=(views.home?.cards||[]).map(([title,,to,icon])=>{
       const list=descendants(to), completed=list.filter(done).length;
+      const paperSummary=['mss-past','mss-past-mid'].includes(to)&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
       return `<a href="#${encodeURIComponent(to)}"${ancestors.has(to)?' aria-current="page"':''}><span class="sidebar-system-icon" aria-hidden="true">${esc(icon)}</span><span>${esc(title)}<small>${completed} / ${list.length} completed</small></span></a>`;
     }).join('');
   }
   function drawCards(view) {
     cards.innerHTML=(view.cards||[]).map(([title,description,to,icon,tag])=>{
       const list=descendants(to), completed=list.filter(done).length;
-      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${list.length?`${list.length} lecture ${list.length===1?'resource':'resources'} · ${completed} completed`:'Resources coming soon'}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${list.length} lectures completed"></progress>`:''}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
+      const paperSummary=['mss-past','mss-past-mid'].includes(to)&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
+      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${paperSummary|| (list.length?`${list.length} lecture ${list.length===1?'resource':'resources'} · ${completed} completed`:'Resources coming soon')}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${list.length} lectures completed"></progress>`:''}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
     }).join('');
-    $('count').textContent=descendants(current).length+' lecture resources';
+    $('count').textContent=current==='mss-past'?'Midterm question collection':descendants(current).length+' lecture resources';
   }
   function recent() {
     const host=$('continue-studying'); host.hidden=true;
@@ -72,6 +74,7 @@
   }
   function render() {
     const requested=route(); current=views[requested]?requested:'home'; const view=views[current];
+    cards._vnRevisionCleanup?.();cards._vnRevisionCleanup=null;
     cards.className='grid'; $('continue-studying').hidden=true;
     const isHome=current==='home';
     $('site-header').classList.toggle('is-home',isHome); $('site-header').classList.toggle('is-internal',!isHome);
@@ -81,7 +84,8 @@
     $('page-eyebrow').textContent=['saved','mistakes'].includes(current)?'YOUR REVISION':current==='backup'?'YOUR DATA':'EXPLORE FILE LIBRARY';
     $('page-title').textContent=view.title; $('page-subtitle').textContent=view.subtitle||'';
     $('dashboard-overview').hidden=true; $('lecture-filters').hidden=!(view.category||current==='search');
-    if (view.category||current==='search') {
+    if(view.pastPaper){window.VitanovaSaved.render(cards,$('count'),{collection:'past-paper'});}
+    else if (view.category||current==='search') {
       const items=view.category?lectures.filter(l=>l.category===view.category):lectures;
       if(view.category) {
         const sample=items[0]; $('page-subtitle').textContent=sample?`${sample.system} · ${sample.exam} · ${sample.subject}`:'No lectures uploaded yet.';
@@ -114,7 +118,7 @@
   window.addEventListener('vitanova:mistakes-changed',studyOverview);
   window.addEventListener('vitanova:progress-changed',()=>{studyOverview();sidebarSystems();if(!views[current]?.category&&views[current]?.cards)drawCards(views[current]);});
   window.addEventListener('storage',()=>{render();savedCount();});
-  window.addEventListener('hashchange',()=>{query='';completion='all';$('lecture-search').value='';$('completion-filter').value='all';render();$('page-title').tabIndex=-1;$('page-title').focus({preventScroll:true});window.scrollTo(0,0);});
+  window.addEventListener('hashchange',()=>{query='';completion='all';$('lecture-search').value='';$('completion-filter').value='all';render();if(!(views[route()]?.pastPaper&&new URLSearchParams(location.hash.split('?')[1]||'').has('question'))){$('page-title').tabIndex=-1;$('page-title').focus({preventScroll:true});window.scrollTo(0,0);}});
   const menuButton=$('study-menu-toggle'),sidebar=document.querySelector('.study-sidebar'),mobileMenu=window.matchMedia('(max-width:900px)');
   function setMenu(open){sidebar.classList.toggle('is-open',open);menuButton.setAttribute('aria-expanded',String(!mobileMenu.matches||open));}
   menuButton.addEventListener('click',()=>setMenu(!sidebar.classList.contains('is-open')));

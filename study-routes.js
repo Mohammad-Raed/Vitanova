@@ -22,6 +22,7 @@
     views['immunology-'+exam] = {title:'Immunology · '+(exam==='mid'?'Midterm':'Final'),parent:'immunology',category:'immunology-'+exam};
     views['mss-past-'+exam] = {title:exam==='mid'?'Midterm':'Final',parent:'mss-past',category:'mss-past-'+exam};
   }
+  views['mss-past-mid']={title:'MSS Midterm Past Papers',parent:'mss-past',pastPaper:true,subtitle:'Choose subjects and practise all recalled questions using the supplied exam keys.'};
   const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   // New systems and subjects are derived from the registry, keeping empty standard categories.
   for (const lecture of lectures) {

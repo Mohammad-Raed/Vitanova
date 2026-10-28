@@ -18,6 +18,7 @@ jobs:
           node-version: '22'
       - run: python3 tools/validate_site.py
       - run: python3 tools/refresh_question_bank.py --check
+      - run: python3 tools/build_past_papers.py --check
       - run: python3 tests/content_review.py
       - run: python3 -m unittest discover -s tests -p 'test_*.py'
       - run: node --test tests/*.test.cjs
@@ -28,3 +29,4 @@ jobs:
       - name: Browser regressions
         run: |
           NODE_PATH="$RUNNER_TEMP/vitanova-browser/node_modules" node tests/browser.cjs
+          NODE_PATH="$RUNNER_TEMP/vitanova-browser/node_modules" node tests/past-papers.browser.cjs

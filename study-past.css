@@ -1,0 +1,17 @@
+/* Recalled papers share the existing revision components and visual tokens. */
+.vn-past-subjects{border:1px solid var(--ln);border-radius:12px;padding:14px;margin:16px 0;display:flex;gap:10px 18px;flex-wrap:wrap;min-width:0}
+.vn-past-subjects legend{color:var(--te);font-weight:700;padding:0 6px}
+.vn-past-subjects>div{flex-basis:100%;display:flex;gap:10px}
+.vn-past-subjects label{display:flex;align-items:center;gap:6px;font-size:14px;flex-wrap:wrap}
+.vn-past-subjects input{accent-color:var(--te);width:18px;height:18px}
+.vn-past-subjects small{color:var(--mu);font-size:11px}
+.vn-past-subjects button{border:1px solid var(--ln);border-radius:7px;background:var(--bg);color:var(--tx);padding:6px 10px;cursor:pointer}
+.vn-provenance{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:6px;margin:8px 0}
+.vn-source-badge{font-size:11px;border:1px solid var(--ln);color:var(--te);background:var(--soft);border-radius:20px;padding:4px 8px;overflow-wrap:anywhere}
+.vn-editorial-label{font-size:12px;color:var(--mu);border-left:2px solid var(--te);padding-left:8px}
+.vn-source-details{border-top:1px solid var(--ln);margin-top:14px;padding-top:10px;color:var(--mu);font-size:13px}
+.vn-source-details summary{cursor:pointer;color:var(--pu);padding:4px 0}
+.vn-source-details pre{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:inherit;background:var(--bg);padding:12px;border-radius:8px}
+.vn-review-issue{border-left:3px solid var(--or,#df9868);padding:12px;background:var(--soft);line-height:1.7}
+.vn-saved-tools input[type=search]{width:100%;min-width:0;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:8px;padding:11px;font:inherit}
+@media(max-width:500px){.vn-source-badge{font-size:10px}.vn-provenance{justify-content:flex-start}.vn-past-subjects{display:block}.vn-past-subjects label{padding:6px 0}.vn-past-subjects>div{margin-bottom:8px}}

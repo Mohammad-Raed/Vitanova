@@ -85,3 +85,13 @@ Review changes and run the checks needed for the affected material before commit
 ## Editorial corrections
 
 See [the content review](docs/CONTENT_REVIEW.md). Reviewed question corrections are recorded in `study-question-migrations.json`; keep this file with the source. Regeneration uses it to retain permanent bookmark identities when question wording or answers are corrected.
+
+## MSS Midterm recalled papers
+
+Open MSS → Past Papers → Midterm. All **92 recalled appearances** remain separate, including repetitions. **89 MCQs** use the supplied paper key; three answer-only recalls retain “All the above” without invented choices. They are visible and bookmarkable but not numerically scored. Routine editorial details are collapsed; source paper badges remain.
+
+Choose one/multiple subjects, search, filter by paper, shuffle, reset attempts, bookmark, or redo mistakes. Central bookmarks and existing backups include all paper IDs. Past papers never count as completed lectures.
+
+See docs/past-papers/EXTRACTION_AUDIT.md, EDITORIAL_REVIEW.md, NEEDS_REVIEW.md and ADDING_PAPERS.md. Rebuild using `python3 tools/build_past_papers.py`; validate with `--check` and run `node tests/past-papers.browser.cjs` alongside the standard checks.
+
+Publication of this update was explicitly authorized by the user.

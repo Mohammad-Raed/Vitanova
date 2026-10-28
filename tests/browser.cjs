@@ -37,7 +37,7 @@ async function main() {
   try {
     await goto('index.html');
     const lectures = await page.evaluate(() => window.VitanovaLectures);
-    const bank = await page.evaluate(() => window.VitanovaQuestionBank);
+    const bank = await page.evaluate(() => window.VitanovaQuestionBank.filter(q=>q.kind!=='past-paper'));
     check(lectures.length > 0 && bank.length > 0, 'Actual lecture registry and question bank loaded');
     check(await page.locator('#study-snapshot').isVisible(), 'Overview displays the study snapshot');
     await page.setViewportSize({width:390,height:844});
