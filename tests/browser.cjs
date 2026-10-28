@@ -68,7 +68,7 @@ async function main() {
     await page.locator('#lecture-search').fill('brachial');
     check(await page.locator('.study-resource').count() === lectures.filter(l=>[l.title,l.description,l.system,l.exam,l.subject,l.lectureLabel].join(' ').toLowerCase().includes('brachial')).length, 'Search returns all matching lecture topics and titles');
     await page.locator('#lecture-search').fill('Immunology Midterm');
-    check(await page.locator('.study-resource').count() === 1, 'Search matches system and exam');
+    check(await page.locator('.study-resource').count() === lectures.filter(l=>l.system==='Immunology' && l.exam==='Midterm').length, 'Search matches system and exam');
     await goto('index.html#mss-mid-anatomy');
     await page.locator('.study-resource input[type="checkbox"]').first().uncheck();
     await page.reload();
@@ -106,7 +106,7 @@ async function main() {
         return [...document.querySelectorAll('.q')].map(block => {
           const q = byId.get(block.dataset.vnQuestionId);
           const options = [...block.querySelectorAll('button.o')];
-          const correct = options.find(button => plain(button.textContent) === plain(q.options[q.answer]));
+          const correct = options.find(button => plain(button.textContent) === String(q.options[q.answer]).replace(/\s+/g, ' ').trim());
           if (!correct) return {id:q.id, correct:false};
           correct.click();
           return {id:q.id,correct:correct.classList.contains('ok') && !block.querySelector('.no'),explanation:getComputedStyle(block.querySelector('.ex')).display !== 'none'};
@@ -123,7 +123,7 @@ async function main() {
         const plain = value => String(value).replace(/^\s*[A-Z][.)]\s*/, '').replace(/\s+/g, ' ').trim();
         return [...document.querySelectorAll('.q')].map(block => {
           const q=byId.get(block.dataset.vnQuestionId);
-          const button=[...block.querySelectorAll('button.o')].find(option=>plain(option.textContent)!==plain(q.options[q.answer]));
+          const button=[...block.querySelectorAll('button.o')].find(option=>plain(option.textContent)!==String(q.options[q.answer]).replace(/\s+/g, ' ').trim());
           button.click();
           return button.classList.contains('no') && !!block.querySelector('.ok') && getComputedStyle(block.querySelector('.ex')).display !== 'none';
         });
