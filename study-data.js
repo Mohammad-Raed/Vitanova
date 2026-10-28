@@ -125,8 +125,8 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 1",
     "order": 1,
-    "title": "Foundations of Medical Immunology",
-    "description": "Innate and adaptive immunity, antigen recognition, memory, tolerance, and vaccination.",
+    "title": "Course Introduction",
+    "description": "Course structure, objectives, assessment, attendance, and study guidance.",
     "file": "Immunology-Midterm-Lecture-1-Foundations-High-Yield-Summary-MCQs.html",
     "icon": "🧬"
   },
@@ -180,6 +180,58 @@ window.VitanovaLectures = [
     "title": "Nerve Injuries of the Upper Limb",
     "description": "Median, radial, ulnar, axillary, and brachial plexus injury patterns.",
     "file": "MSS-Midterm-Anatomy-Lecture-13-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-02",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 2",
+    "order": 2,
+    "title": "Immunity Overview",
+    "description": "Innate and adaptive immunity, humoral and cellular defence, memory, and tolerance.",
+    "file": "Immunology-Midterm-Lecture-2-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-03",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 3",
+    "order": 3,
+    "title": "Barriers & Microbial Sensing",
+    "description": "Physical, chemical, and microbial barriers, pattern recognition, and microbial sensing.",
+    "file": "Immunology-Midterm-Lecture-3-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-04",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 4",
+    "order": 4,
+    "title": "Phagocytes & Inflammation",
+    "description": "Phagocytosis, recruitment, microbial killing, inflammation, fever, and complement.",
+    "file": "Immunology-Midterm-Lecture-4-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-05",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 5",
+    "order": 5,
+    "title": "Innate Cells & Introduction to Adaptive Immunity",
+    "description": "Cytokines, innate cells, adaptive phases, and the B-cell receptor, with a separate note-taker bonus.",
+    "file": "Immunology-Midterm-Lecture-5-AI-Summary-MCQs.html",
     "icon": "📘"
   }
 ];

@@ -1,0 +1,344 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Immunology Lecture 2 · Immunity Overview</title><style>
+:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+  :root:not([data-theme="light"]) .sc,:root:not([data-theme="light"]) nav a.on{color:#17122a}
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+  --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+  --ln:#3a3057;--soft:#2b2347;
+}
+:root[data-theme="dark"] .sc,:root[data-theme="dark"] nav a.on{color:#17122a}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px max(20px,env(safe-area-inset-right)) 36px max(20px,env(safe-area-inset-left));text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+nav a.on{background:var(--pu);color:#fff}
+main{max-width:980px;margin:0 auto;padding:12px max(16px,env(safe-area-inset-right)) 60px max(16px,env(safe-area-inset-left))}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+h4{margin:12px 0 4px;font-size:16px;color:var(--pu)}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.tag.x{color:var(--or)}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+.sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+/* site additions (same tokens) */
+.sub{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.sub a{font-size:13px;font-weight:600;color:var(--pu);text-decoration:none;background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:2px 10px;cursor:pointer}
+.sub a:hover{border-color:var(--pu)}
+.js .lec{display:none}
+.js .lec.on{display:block}
+.lec>.lead{color:var(--mu);margin:2px 0 0}
+.qh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+
+.sub a:focus-visible{outline:3px solid var(--te);outline-offset:3px} @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<a class="skip-link" href="#lecture-main">Skip to content</a>
+<header><small>IMMUNOLOGY · MIDTERM · LECTURE 2</small><h1>Immunity Overview</h1><p>Full explanations · High-yield summary · Practice MCQs</p></header>
+<nav aria-label="Lecture sections"><a href="#l2-exp">Explanation</a><a href="#l2-sum">High-yield summary</a><a href="#l2-quiz">Practice MCQs</a><a href="#source-notes">Source notes</a></nav><main id="lecture-main">
+<section id="lec2" class="lec" data-n="2">
+  <div class="k">Session 2 · Course “Lecture 1” slides 1–20</div>
+  <h2>Introduction to immunity</h2>
+  <p class="lead">The whole immune system in one lecture: definitions, four lines of defence, innate vs adaptive, humoral vs cell-mediated, memory and tolerance.</p>
+  <div class="sub"><a href="#l2-exp">1. Explanation</a><a href="#l2-sum">2. High-yield summary</a><a href="#l2-quiz">3. Practice MCQs</a></div>
+
+  <div id="l2-exp">
+    <div class="k" style="margin-top:22px">Part 1</div><h2>Explanation</h2>
+
+    <h3>Objectives</h3>
+    <ul>
+      <li>Define immunity, antigen, epitope, antibody, serology and vaccination.</li>
+      <li>Place the 1st and 2nd lines (innate) and the 3rd and 4th lines (adaptive) of defence.</li>
+      <li>Contrast innate and adaptive immunity; humoral and cell-mediated immunity; active and passive immunity.</li>
+      <li>Explain specificity, diversity, memory and self-tolerance.</li>
+      <li>Trace key milestones from Jenner to 2026 and map the course ahead.</li>
+    </ul>
+
+    <h3>Why the immune system matters</h3>
+    <div class="g">
+      <div class="card"><h4>Defends against microbes</h4>Viruses, bacteria, fungi and parasites.</div>
+      <div class="card"><h4>Watches for tumour cells</h4>Recognises and removes them.</div>
+      <div class="card"><h4>Can cause problems</h4>Transplant rejection, and antibodies against biologic drugs.</div>
+      <div class="card"><h4>Recognises almost anything</h4>Antibodies can bind proteins, polysaccharides, lipids, nucleic acids and small chemicals (<b>haptens</b>).</div>
+      <div class="card"><h4>Clean-up and repair</h4>Clears dead cells and supports tissue repair.</div>
+      <div class="card"><h4>Can turn on self</h4>Autoimmune disease affects about 1 in 10 people (Conrad et al., <i>Lancet</i> 2023).</div>
+    </div>
+
+    <h3>Key definitions</h3>
+    <div class="card tbl"><table>
+      <tr><th>Term</th><th>Meaning on the slide</th></tr>
+      <tr><td>Immunity</td><td>Resistance to disease (e.g. HBV vaccine → protective anti-HBs antibodies).</td></tr>
+      <tr><td>Immunology</td><td>Study of host responses to foreign (and self) substances.</td></tr>
+      <tr><td>Antigen</td><td>Any molecule recognised by an antibody or T-cell receptor. Haptens need a carrier.</td></tr>
+      <tr><td>Immunogen</td><td>An antigen that can <b>induce</b> a response.</td></tr>
+      <tr><td>Epitope (antigenic determinant)</td><td>The small part of an antigen bound by one antibody.</td></tr>
+      <tr><td>Antibody (immunoglobulin)</td><td>Glycoprotein secreted by plasma cells (which derive from B lymphocytes).</td></tr>
+      <tr><td>Serology</td><td>Antigen–antibody testing of serum (e.g. HBsAg, anti-HIV).</td></tr>
+      <tr><td>Vaccination</td><td>Deliberate exposure to antigen to induce protective immunity.</td></tr>
+    </table></div>
+    <div class="note"><b>Clarifying a confusing pair:</b> every <b>immunogen</b> is an <b>antigen</b>, but not every antigen is an immunogen. An antigen is anything an antibody or TCR can bind; an immunogen is one that actually triggers a response. A hapten is the classic example of an antigen that is not an immunogen on its own.</div>
+
+    <h3>Four lines of defence</h3>
+    <div class="card tbl"><table>
+      <tr><th>Line</th><th>What it is</th><th>Part of</th></tr>
+      <tr><td>1</td><td>Physical and chemical barriers: skin, mucous membranes and their secretions.</td><td>Innate</td></tr>
+      <tr><td>2</td><td>Phagocytic cells. Encapsulated bacteria can evade phagocytosis and get past this line.</td><td>Innate</td></tr>
+      <tr><td>3</td><td>Humoral immunity: antibodies target extracellular bacteria and help overcome the capsule by enhancing phagocytosis.</td><td>Adaptive</td></tr>
+      <tr><td>4</td><td>Cell-mediated immunity: T lymphocytes handle intracellular pathogens by activating infected-cell defences.</td><td>Adaptive</td></tr>
+    </table></div>
+    <div class="note"><b>Flag:</b> the slide shows a graphic labelling lymphocytes. The note-taker adds that NK cells and innate lymphoid cells are lymphocytes that still belong to <i>innate</i> immunity, which matters because “lymphocyte” does not automatically mean “adaptive”.</div>
+
+    <h3>Innate immunity</h3>
+    <ul>
+      <li>Present in healthy individuals and <b>ready before infection</b>; acts within minutes to hours.</li>
+      <li>Recognises <b>PAMPs</b> (pathogen-associated patterns on microbes) and <b>DAMPs</b> (from damaged cells) through pattern-recognition receptors such as <b>Toll-like receptors</b>.</li>
+      <li>Components: epithelial barriers and antimicrobial peptides; phagocytes (neutrophils, macrophages); dendritic cells, NK cells, innate lymphoid cells; complement; inflammatory cytokines (TNF, IL-1, IL-6).</li>
+      <li>It is generally described as having no memory, <b>although “trained immunity” shows that innate cells can be reprogrammed</b>.</li>
+    </ul>
+    <h4>The splinter story (slide 7)</h4>
+    <div class="flow"><span>Splinter breaks the skin</span><i>→</i><span>Same response to any bacterium that enters</span><i>→</i><span>Starts within minutes; inflammation within hours</span><i>→</i><span>A second splinter triggers the same response</span></div>
+    <p>The point: the innate response does not change with experience. The second splinter gets the same reaction as the first.</p>
+
+    <h3>Adaptive immunity</h3>
+    <ul>
+      <li>Responds to microbes or antigens that enter tissues; carried out by <b>B cells and T cells</b> and their products.</li>
+      <li>Distinguishes closely related molecules (very <b>specific</b>).</li>
+      <li>Takes days (about 5–7) to reach its peak; protection results from prior experience with the antigen.</li>
+      <li><b>Jenner:</b> material from cowpox lesions protected a boy against smallpox. This was the first vaccine (<i>vacca</i> = cow) and showed antigen specificity, a slower first response and long-lived memory.</li>
+    </ul>
+    <div class="note"><b>Flag:</b> the slide says “about 5–7 days to peak” here, while the memory slide gives a “lag of 5–10 days” for the primary response. These measure different things (time to peak vs delay before the response begins) and neither is explained in detail, so use the number that matches the slide you are looking at.</div>
+    <p>The slide’s timeline graphic of immunology milestones is not available as text, so dates are not repeated here.</p>
+
+    <h3>Innate vs adaptive</h3>
+    <div class="card tbl"><table>
+      <tr><th></th><th>Innate</th><th>Adaptive</th></tr>
+      <tr><td>Speed</td><td>Minutes–hours</td><td>Days on first exposure</td></tr>
+      <tr><td>Recognises</td><td>Conserved microbial patterns</td><td>Individual epitopes, highly specific</td></tr>
+      <tr><td>Receptors</td><td>Germline-encoded PRRs (e.g. TLRs)</td><td>Rearranged BCR/TCR (~10⁷–10⁹ clones)</td></tr>
+      <tr><td>Memory</td><td>None (trained immunity aside)</td><td>Yes: faster, stronger on re-exposure</td></tr>
+      <tr><td>Cells</td><td>Neutrophils, macrophages, DCs, NK, mast cells</td><td>B and T lymphocytes</td></tr>
+      <tr><td>Molecules</td><td>Complement, cytokines, antimicrobial peptides</td><td>Antibodies, cytokines</td></tr>
+    </table></div>
+
+    <h3>Dendritic cells: the bridge, and the three signals</h3>
+    <ul>
+      <li><b>Antigen-presenting cells (APCs)</b> process antigens and present them on MHC molecules to activate T lymphocytes. Main types: dendritic cells, macrophages, B lymphocytes.</li>
+      <li>Dendritic cells sit in tissues and migrate through lymphatics to lymph nodes.</li>
+      <li><b>MHC class I → CD8⁺ T cells; MHC class II → CD4⁺ T cells.</b></li>
+    </ul>
+    <h4>Naïve T cells need three signals</h4>
+    <div class="flow"><span>1 · TCR binds peptide–MHC (specificity)</span><i>→</i><span>2 · Co-stimulation (B7–CD28)</span><i>→</i><span>3 · Cytokines direct the type of response</span></div>
+    <p>Clinical links on the slide: HLA matching in transplantation, and checkpoint inhibitors that act on these signals.</p>
+
+    <h3>Humoral immunity (B cells and antibodies)</h3>
+    <ul>
+      <li>Antibodies are produced by B lymphocytes → plasma cells and travel in blood and mucosal fluids.</li>
+      <li>They act mainly against <b>extracellular microbes and microbial toxins</b>.</li>
+      <li>Functions: <b>neutralisation</b> of viruses and toxins; <b>opsonisation</b> for phagocytosis; <b>complement activation</b>; <b>ADCC</b> by NK cells.</li>
+    </ul>
+    <div class="card tbl"><table>
+      <tr><th>Isotype</th><th>Key point on the slide</th></tr>
+      <tr><td>IgM</td><td>First to appear</td></tr>
+      <tr><td>IgG</td><td>Main antibody; crosses the placenta</td></tr>
+      <tr><td>IgA</td><td>Mucosa, breast milk</td></tr>
+      <tr><td>IgE</td><td>Allergy, helminths</td></tr>
+      <tr><td>IgD</td><td>Naïve B-cell receptor</td></tr>
+    </table></div>
+    <div class="note"><b>Why antibodies are not enough alone:</b> the lecturer pointed out (per the note-taker) that antibodies cannot kill an antigen that sits <i>inside</i> cells. That is the job of T cells, which is the next part.</div>
+
+    <h3>Cell-mediated immunity (T cells)</h3>
+    <ul>
+      <li>Does not act through antibodies. Targets <b>intracellular microbes</b> (viruses, <i>Mycobacterium tuberculosis</i>) and <b>tumour cells</b>.</li>
+      <li><b>CD4⁺ helper T cells</b> secrete cytokines: <b>Th1</b> activate macrophages; <b>Th2</b> eosinophils; <b>Th17</b> neutrophils; <b>Tfh</b> help B cells make high-affinity antibodies.</li>
+      <li><b>CD8⁺ cytotoxic T cells</b> kill infected or tumour cells using perforin and granzymes.</li>
+      <li><b>Regulatory T cells (Tregs)</b> restrain responses and protect self.</li>
+    </ul>
+
+    <h3>Active vs passive immunity</h3>
+    <div class="card tbl"><table>
+      <tr><th></th><th>Active</th><th>Passive</th></tr>
+      <tr><td>Who makes antibodies/T cells?</td><td>The host makes its own</td><td>Pre-formed antibodies are transferred</td></tr>
+      <tr><td>Source</td><td>Infection or vaccination</td><td>Natural or artificial</td></tr>
+      <tr><td>Onset</td><td>Slow (days–weeks)</td><td>Immediate</td></tr>
+      <tr><td>Duration</td><td>Long-lasting, with memory</td><td>Short (weeks–months), no memory</td></tr>
+      <tr><td>Examples</td><td>MMR, HBV, HPV vaccines; mRNA COVID-19 vaccines; RSV vaccines (older adults, pregnancy)</td><td>Natural: maternal IgG across the placenta, IgA in milk. Artificial: HBIG, rabies immunoglobulin, antivenom, nirsevimab (long-acting RSV antibody for infants)</td></tr>
+    </table></div>
+    <div class="note"><b>Memory trick from the slide:</b> Active = your body makes antibodies. Passive = you receive ready-made antibodies. Natural = without medical administration. Artificial = through medical intervention.</div>
+
+    <h3>Clonal selection and diversity</h3>
+    <ul>
+      <li>About <b>10⁷–10⁹ distinct lymphocyte clones</b> together recognise a vast range of antigens.</li>
+      <li>Diversity is generated by <b>V(D)J gene recombination</b>.</li>
+      <li>Each clone carries receptors for <b>one epitope</b>; antigen binds and activates only the matching clone.</li>
+      <li>Activation gives <b>effector cells</b> (clear the antigen) and <b>memory cells</b> (persist).</li>
+      <li>Clinical links: <b>RAG</b> gene defects → <b>SCID</b>; CAR-T cells receive engineered specificity.</li>
+      <li><b>Naïve cells:</b> mature lymphocytes that have not yet met their antigen. <b>Memory cells:</b> long-lived cells formed after earlier exposure that respond faster and more strongly.</li>
+    </ul>
+
+    <h3>Primary vs secondary response</h3>
+    <div class="card tbl"><table>
+      <tr><th></th><th>Primary (first exposure)</th><th>Secondary (re-exposure)</th></tr>
+      <tr><td>Cells</td><td>Naïve lymphocytes</td><td>Memory lymphocytes</td></tr>
+      <tr><td>Lag</td><td>5–10 days</td><td>1–3 days</td></tr>
+      <tr><td>Antibody</td><td>Mainly IgM; modest peak</td><td>Mainly IgG; higher affinity</td></tr>
+      <tr><td>Size/duration</td><td>—</td><td>10–100× greater and longer-lasting</td></tr>
+    </table></div>
+    <p>Clinical uses: booster doses, and IgM vs IgG serology to tell a recent from a past infection.</p>
+
+    <h3>Self-tolerance</h3>
+    <ul>
+      <li>Strongly self-reactive lymphocytes are deleted in the <b>thymus (T cells)</b> and <b>bone marrow (B cells)</b>.</li>
+      <li>In the periphery, tolerance is maintained by <b>anergy, deletion and suppression by regulatory T cells (FOXP3 Tregs)</b>.</li>
+      <li>Failure → autoimmune disease (e.g. type 1 diabetes, rheumatoid arthritis, SLE, MS).</li>
+      <li><b>AIRE</b> defect → <b>APS-1</b>; <b>FOXP3</b> defect → <b>IPEX</b>.</li>
+      <li>The slide marks a Nobel Prize in Physiology or Medicine to Brunkow, Ramsdell and Sakaguchi for discoveries on peripheral immune tolerance (regulatory T cells).</li>
+    </ul>
+
+    <h3>When immunity goes wrong: four categories</h3>
+    <div class="g">
+      <div class="card"><h4>Hypersensitivity</h4>Too much response to harmless antigens.</div>
+      <div class="card"><h4>Autoimmunity</h4>Loss of self-tolerance.</div>
+      <div class="card"><h4>Immunodeficiency</h4>Absent or weak responses.</div>
+      <div class="card"><h4>Immunoproliferative disease</h4>Malignant immune cells.</div>
+    </div>
+
+    <h3>Milestones on the slides</h3>
+    <ul>
+      <li>Personalised cancer vaccines in phase 3.</li>
+      <li>Checkpoint inhibitors release T-cell brakes on tumours.</li>
+      <li>CAR-T cells: leukaemia, myeloma, and lupus trials.</li>
+      <li>RSV protection for infants (nirsevimab).</li>
+    </ul>
+    <div class="note"><b>Flag:</b> the note-taker’s link to “10 MSQS” (a Gemini share link) and several spoken comments are not reproduced here. The lecturer reportedly said everything in the slides is required, and that parts mentioned in passing will be explained in later lectures.</div>
+  </div>
+
+  <div id="l2-sum">
+    <div class="k" style="margin-top:34px">Part 2</div><h2>High-yield summary</h2>
+    <div class="card"><ul>
+      <li><b>Immunity</b> = resistance to disease; <b>antigen</b> = anything an antibody/TCR binds; <b>immunogen</b> = antigen that induces a response; <b>epitope</b> = the part bound by one antibody; <b>serology</b> = antigen–antibody testing of serum.</li>
+      <li><b>Lines 1–2 = innate</b> (barriers, phagocytes); <b>lines 3–4 = adaptive</b> (humoral, cell-mediated).</li>
+      <li><b>Innate:</b> minutes–hours, germline PRRs (TLRs), recognises PAMPs/DAMPs, no memory (trained immunity aside). <b>Adaptive:</b> days, rearranged BCR/TCR (~10⁷–10⁹ clones), memory.</li>
+      <li><b>Dendritic cells</b> bridge the two. <b>MHC I → CD8</b>, <b>MHC II → CD4</b>. Three signals: TCR–peptide–MHC, co-stimulation (B7–CD28), cytokines.</li>
+      <li><b>Humoral</b> = B cells/antibodies vs extracellular microbes and toxins (neutralise, opsonise, activate complement, ADCC). IgM first; IgG main and crosses the placenta; IgA mucosa/milk; IgE allergy/helminths; IgD naïve BCR.</li>
+      <li><b>Cell-mediated</b> = T cells vs intracellular microbes and tumours. Th1 → macrophages; Th2 → eosinophils; Th17 → neutrophils; Tfh → B cells; CD8 → perforin/granzyme killing; Treg → restraint.</li>
+      <li><b>Active</b> = own response, slow, long, memory (vaccines). <b>Passive</b> = ready-made antibody, immediate, short, no memory (maternal IgG, IgA milk, HBIG, rabies Ig, antivenom, nirsevimab).</li>
+      <li><b>Primary:</b> lag 5–10 d, IgM. <b>Secondary:</b> lag 1–3 d, IgG, 10–100× greater and longer-lasting.</li>
+      <li><b>Tolerance:</b> central (thymus/bone marrow) + peripheral (anergy, deletion, Tregs). AIRE → APS-1; FOXP3 → IPEX; RAG → SCID.</li>
+      <li><b>Four failures:</b> hypersensitivity, autoimmunity, immunodeficiency, immunoproliferative disease.</li>
+    </ul></div>
+  </div>
+
+  <div id="l2-quiz">
+    <div class="k" style="margin-top:34px">Part 3</div><h2>Practice MCQs</h2>
+    <p class="lead">Click an option to answer. Explanations appear after you choose.</p>
+    <div class="quiz" data-n="2"></div>
+  </div>
+</section>
+<details id="source-notes" class="card"><summary>Source notes: session numbering, missing slides, and extra material</summary>  <div class="note"><b>Flag – how the five sessions map to the slides.</b> The attached PDFs are named “lectures 1-2”, “lectures 3-4” and “Lecture 5”, but the slides inside them are numbered by the <i>course</i>, not by your sessions. This guide follows the order in which the material actually appears:
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Session (this guide)</th><th>Slides it covers</th></tr>
+    <tr><td>1</td><td>Course Introduction (slides 1–14)</td></tr>
+    <tr><td>2</td><td>Course “Lecture 1” (slides 1–20): introduction to immunity</td></tr>
+    <tr><td>3</td><td>Course “Lecture 2”, slides 1–7: barriers and microbial sensing</td></tr>
+    <tr><td>4</td><td>Course “Lecture 2”, slides 8–15: phagocytosis, recruitment, killing, inflammation, fever, acute-phase proteins, complement</td></tr>
+    <tr><td>5</td><td>Course “Lecture 2”, slides 16–20 (cytokines and innate cells) + course “Lecture 3”, slides 1–4 (start of adaptive immunity)</td></tr>
+  </table></div>
+  <div class="note"><b>Flag – missing slides.</b> Only slides 1–4 of course “Lecture 3” (19 slides) were provided, so the end of session 5 stops at the B-cell receptor. This guide does not cover T-cell receptors in depth, B-cell T-dependent/independent responses, helper-subset details, memory duration or the two clinical cases that the Lecture 3 objectives list. Inside the slides, “Lecture 3” or “Lecture 5” refers to <i>course</i> lectures, not to your session numbers.</div>
+
+  <h3>How the material is marked</h3>
+  <ul>
+    <li>Content without a label comes from the lecturer’s slides.</li>
+    <li><span class="tag x">Extra</span> marks content that appears only in the note-taker’s added pages (First Aid / Kaplan / UWorld style notes) and not on the lecturer’s slides. It is shown separately so you can tell which is which.</li>
+    <li><span class="tag x">Flag</span> boxes point out places where the slides are unclear, inconsistent or wrong. Nothing was guessed to fill those gaps.</li>
+    <li>MCQs are original questions written from the slide content. Answer positions are shuffled every time the page loads, and each page has its own score bar and reset button.</li>
+  </ul>
+
+</details>
+</main><footer>Vitanova · Immunology Lecture 2 · Based on the supplied guide. Extra material is labelled separately; confirm exam scope with your lecturer.</footer>
+<script>const Q={"2": [["A molecule is recognised by an antibody but does not by itself trigger an immune response. Which term fits best?", ["Antigen that is not an immunogen", "Immunogen", "Epitope", "Opsonin"], 0, "All immunogens are antigens, but not all antigens are immunogens. Haptens are the classic example that need a carrier."], ["What is an epitope?", ["The small part of an antigen bound by one antibody", "A cytokine made by T cells", "The constant region of an antibody", "A receptor on neutrophils"], 0, "An epitope (antigenic determinant) is the small part of an antigen bound by one antibody."], ["Which test is an example of serology?", ["Measuring HBsAg or anti-HIV in serum", "Counting neutrophils in a blood film", "Measuring body temperature", "Skin biopsy for cancer"], 0, "Serology is antigen–antibody testing of serum, with HBsAg and anti-HIV as the examples on the slide."], ["Which cells produce antibodies?", ["Plasma cells derived from B lymphocytes", "CD8⁺ T cells", "Neutrophils", "NK cells"], 0, "Antibodies are glycoproteins secreted by plasma cells, which derive from B lymphocytes."], ["Which line of defence consists of phagocytic cells?", ["Line 2", "Line 1", "Line 3", "Line 4"], 0, "Line 1 = barriers, line 2 = phagocytes (both innate), line 3 = humoral, line 4 = cell-mediated (adaptive)."], ["Encapsulated bacteria that evade phagocytosis are best handled by which line of defence?", ["Line 3 – antibodies that enhance phagocytosis", "Line 1 – skin", "Line 4 – cytotoxic T cells", "Neither; they are untouchable"], 0, "The slide says antibodies (humoral immunity, line 3) help overcome the capsule by enhancing phagocytosis."], ["A person gets a splinter. A second splinter weeks later triggers exactly the same response. This illustrates:", ["Innate immunity, with no memory", "Adaptive immunity with memory", "Passive immunity", "Self-tolerance"], 0, "The splinter story shows the innate response is the same each time, starting within minutes with inflammation within hours."], ["Pattern-recognition receptors such as TLRs recognise:", ["PAMPs and DAMPs", "Individual epitopes with high specificity", "MHC class II only", "Idiotypes of the BCR"], 0, "Innate cells sense PAMPs on microbes and DAMPs from damaged cells through PRRs like TLRs."], ["Which statement about “trained immunity” fits the slide?", ["Innate cells can be reprogrammed despite no classic memory", "Adaptive memory does not exist", "It is another name for passive immunity", "It only occurs in plasma cells"], 0, "The slide notes that innate immunity is generally non-memory, although trained immunity shows innate cells can be reprogrammed."], ["Which feature belongs to adaptive, not innate, immunity?", ["Rearranged BCR/TCR giving about 10⁷–10⁹ clones", "Germline-encoded receptors", "Complement proteins only", "Starts within minutes"], 0, "Adaptive receptors are rearranged by V(D)J recombination. Innate receptors are germline-encoded."], ["MHC class II molecules present peptide to which cell?", ["CD4⁺ T cells", "CD8⁺ T cells", "NK cells", "Neutrophils"], 0, "MHC class I → CD8⁺ T cells; MHC class II → CD4⁺ T cells."], ["Which is signal 2 for a naïve T cell?", ["Co-stimulation (B7–CD28)", "TCR binding to peptide–MHC", "Cytokines directing the response", "Complement binding"], 0, "Signal 1 = TCR–peptide–MHC, signal 2 = co-stimulation (B7–CD28), signal 3 = cytokines."], ["Which antibody isotype is first to appear in a primary response?", ["IgM", "IgG", "IgA", "IgE"], 0, "IgM appears first; IgG dominates later and in the secondary response."], ["Which isotype crosses the placenta?", ["IgG", "IgA", "IgM", "IgE"], 0, "IgG is the main antibody and is the one that crosses the placenta."], ["Which Th subset activates macrophages?", ["Th1", "Th2", "Th17", "Tfh"], 0, "Th1 activate macrophages; Th2 eosinophils; Th17 neutrophils; Tfh help B cells make high-affinity antibodies."], ["Which T-cell subset helps B cells make high-affinity antibodies?", ["Tfh", "Th1", "CD8⁺ cytotoxic", "Th17"], 0, "Tfh (follicular helper) cells help B cells make high-affinity antibodies."], ["A child receives rabies immunoglobulin after a bite. This is:", ["Artificial passive immunity", "Natural active immunity", "Artificial active immunity", "Natural passive immunity"], 0, "Ready-made antibodies given medically are artificial passive immunity. Passive protection is immediate but short-lived, without memory."], ["Which example is natural passive immunity?", ["IgA in breast milk", "MMR vaccine", "HBV vaccine", "Recovery from measles"], 0, "Maternal IgG across the placenta and IgA in milk are natural passive immunity."], ["Which of the following is true of the secondary response compared with the primary response?", ["Lag of 1–3 days, mainly IgG, 10–100× greater", "Lag of 5–10 days, mainly IgM", "Lag of 1–3 days, mainly IgM", "No memory cells involved"], 0, "Memory lymphocytes give a lag of 1–3 days with mainly higher-affinity IgG, 10–100× greater and longer-lasting."], ["Mutation of the RAG genes would most directly lead to:", ["SCID", "IPEX", "APS-1", "Hereditary angioedema"], 0, "RAG genes drive V(D)J recombination. RAG defects → SCID."], ["A defect in FOXP3 causes which condition?", ["IPEX", "APS-1", "SCID", "CGD"], 0, "FOXP3 defect (regulatory T cells) → IPEX; AIRE defect → APS-1."], ["Which mechanism is part of PERIPHERAL tolerance?", ["Anergy, deletion and suppression by Tregs", "Deletion in the thymus", "Negative selection in bone marrow", "V(D)J recombination"], 0, "Strongly self-reactive cells are deleted centrally (thymus for T, bone marrow for B); peripheral tolerance uses anergy, deletion and Treg suppression."], ["Which failure of immunity is defined as “too much response to harmless antigens”?", ["Hypersensitivity", "Autoimmunity", "Immunodeficiency", "Immunoproliferative disease"], 0, "Hypersensitivity = overreaction to harmless antigens; autoimmunity = loss of self-tolerance; immunodeficiency = absent/weak response; immunoproliferative = malignant immune cells."]]};var QUIZ=Q;</script><script>(function(){
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a}
+  function mount(box){
+    var data=QUIZ[box.getAttribute('data-n')]||[];
+    var score=0,done=0;
+    var bar=document.createElement('div');bar.className='sc';
+    var rb=document.createElement('button');rb.className='r';rb.type='button';rb.textContent='Reset quiz';
+    function upd(){bar.textContent='Score: '+score+' / '+done+' answered · '+data.length+' questions'}
+    function build(){
+      box.innerHTML='';score=0;done=0;
+      data.forEach(function(d,qi){
+        var opts=d[1].map(function(t,i){return{t:t,c:i===d[2]}});
+        shuffle(opts);
+        var q=document.createElement('div');q.className='q';
+        var p=document.createElement('p');p.textContent=(qi+1)+'. '+d[0];q.appendChild(p);
+        var ex=document.createElement('div');ex.className='ex';ex.textContent=d[3];
+        var btns=[];
+        opts.forEach(function(o,i){
+          var b=document.createElement('button');b.type='button';b.className='o';
+          b.textContent=String.fromCharCode(65+i)+') '+o.t;
+          b.addEventListener('click',function(){
+            if(q.getAttribute('data-l'))return;q.setAttribute('data-l','1');
+            btns.forEach(function(x,k){if(opts[k].c)x.classList.add('ok')});
+            if(o.c)score++;else b.classList.add('no');
+            done++;ex.style.display='block';upd();
+          });
+          btns.push(b);q.appendChild(b);
+        });
+        q.appendChild(ex);box.appendChild(q);
+      });
+      box.appendChild(bar);box.appendChild(rb);upd();
+    }
+    rb.addEventListener('click',function(){build();box.scrollIntoView({behavior:'smooth'})});
+    build();
+  }
+  var boxes=document.querySelectorAll('.quiz');
+  for(var i=0;i<boxes.length;i++)mount(boxes[i]);
+
+})();</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

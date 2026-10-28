@@ -1,0 +1,346 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Immunology Lecture 5 · Innate Cells & Introduction to Adaptive Immunity</title><style>
+:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+  :root:not([data-theme="light"]) .sc,:root:not([data-theme="light"]) nav a.on{color:#17122a}
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+  --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+  --ln:#3a3057;--soft:#2b2347;
+}
+:root[data-theme="dark"] .sc,:root[data-theme="dark"] nav a.on{color:#17122a}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px max(20px,env(safe-area-inset-right)) 36px max(20px,env(safe-area-inset-left));text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+nav a.on{background:var(--pu);color:#fff}
+main{max-width:980px;margin:0 auto;padding:12px max(16px,env(safe-area-inset-right)) 60px max(16px,env(safe-area-inset-left))}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+h4{margin:12px 0 4px;font-size:16px;color:var(--pu)}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.tag.x{color:var(--or)}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+.sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+/* site additions (same tokens) */
+.sub{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.sub a{font-size:13px;font-weight:600;color:var(--pu);text-decoration:none;background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:2px 10px;cursor:pointer}
+.sub a:hover{border-color:var(--pu)}
+.js .lec{display:none}
+.js .lec.on{display:block}
+.lec>.lead{color:var(--mu);margin:2px 0 0}
+.qh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+
+.sub a:focus-visible{outline:3px solid var(--te);outline-offset:3px} @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<a class="skip-link" href="#lecture-main">Skip to content</a>
+<header><small>IMMUNOLOGY · MIDTERM · LECTURE 5</small><h1>Innate Cells &amp; Introduction to Adaptive Immunity</h1><p>Full explanations · High-yield summary · Practice MCQs</p></header>
+<nav aria-label="Lecture sections"><a href="#l5-exp">Explanation</a><a href="#l5-sum">High-yield summary</a><a href="#l5-quiz">Practice MCQs</a><a href="#source-notes">Source notes</a><a href="#appendix">Bonus appendix</a></nav><main id="lecture-main">
+<section id="lec5" class="lec" data-n="5">
+  <div class="k">Session 5 · Course “Lecture 2” slides 16–20 and “Lecture 3” slides 1–4</div>
+  <h2>Cytokines, innate cells and the start of adaptive immunity</h2>
+  <p class="lead">Cytokines, the innate cells in detail, a summary timeline of innate immunity, then the first slides of adaptive immunity (phases and the B-cell receptor).</p>
+  <div class="sub"><a href="#l5-exp">1. Explanation</a><a href="#l5-sum">2. High-yield summary</a><a href="#l5-quiz">3. Practice MCQs</a></div>
+
+  <div id="l5-exp">
+    <div class="k" style="margin-top:22px">Part 1</div><h2>Explanation</h2>
+
+    <h3>Cytokines: messengers of natural immunity</h3>
+    <p>Cytokines are small secreted proteins that carry messages between cells, locally or systemically. <b>Families:</b> interleukins (IL), interferons (IFN), chemokines, tumour necrosis factor (TNF). The note-taker stresses that a cytokine only passes information; the target cell is free to respond or not. <span class="tag x">Extra</span></p>
+    <div class="card tbl"><table>
+      <tr><th>Cytokine</th><th>Key action (memorise)</th></tr>
+      <tr><td>TNF and IL-1</td><td>Activate endothelium; cause fever</td></tr>
+      <tr><td>IL-6</td><td>Fever and acute-phase proteins (CRP, procalcitonin)</td></tr>
+      <tr><td>CXCL8 (IL-8)</td><td>Recruits neutrophils</td></tr>
+      <tr><td>IL-12</td><td>Activates NK cells → IFN-γ → macrophage activation</td></tr>
+      <tr><td>Type I IFN (α, β)</td><td>Antiviral state; activates NK cells</td></tr>
+    </table></div>
+    <ul>
+      <li><b>Too much = cytokine storm:</b> sepsis, CAR-T cytokine release syndrome, severe COVID-19.</li>
+      <li><b>Blocking drugs:</b> anti-TNF (screen for latent TB first), anakinra (IL-1), tocilizumab (IL-6 receptor).</li>
+    </ul>
+    <div class="note"><b>Why TB screening?</b> Blocking TNF can reactivate latent TB, so patients are screened first. (The same link is made in the note-taker’s MCQ answer key.)</div>
+
+    <h3>Phagocytes: neutrophils and macrophages</h3>
+    <div class="g">
+      <div class="card"><h4>Neutrophil (PMN)</h4><ul>
+        <li>40–75% of blood leukocytes; multilobed nucleus; granules full of killing enzymes.</li>
+        <li>First to arrive; die within hours–days → <b>pus</b> (dead neutrophils).</li>
+        <li>Best against bacteria and fungi.</li>
+        <li><b>Neutropenia:</b> &lt;1.5 × 10⁹/L; &lt;0.5 = severe, with high infection risk.</li></ul></div>
+      <div class="card"><h4>Monocyte → macrophage</h4><ul>
+        <li>Monocytes are 2–10% of leukocytes; they enter tissues and mature into macrophages.</li>
+        <li>Arrive later and live long; extra weapons (NO).</li>
+        <li>Secrete TNF, IL-1, IL-6 and present antigen to T cells.</li>
+        <li>Inflammatory (M1) or repair (M2) states.</li>
+        <li>Tissue names: <b>Kupffer cells</b> (liver), <b>alveolar macrophages</b> (lung), <b>microglia</b> (brain), <b>osteoclasts</b> (bone).</li></ul></div>
+    </div>
+    <div class="note"><b>Flag:</b> the white-cell chart on the slide shows neutrophils at about 60% (the others: lymphocytes about 30%, monocytes about 6%, eosinophils about 3%, basophils about 1%), while the text says 40–75%. 60% sits inside that range; the chart shows a typical value and the text the normal range. The slide’s “the Marines / the Army” labels, and the note-taker’s ranking of phagocyte power and statement that monocytes are the largest circulating WBCs, are extras, not slide facts. <span class="tag x">Extra</span></div>
+
+    <h3>Eosinophils, basophils, mast cells and NK cells</h3>
+    <div class="card tbl"><table>
+      <tr><th>Cell</th><th>Key facts</th></tr>
+      <tr><td>Eosinophil</td><td>1–6% of leukocytes; bilobed nucleus; red granules (major basic protein). Kill helminths; drive asthma and allergy; weak phagocytes. Targeted by anti-IL-5 drugs (<b>mepolizumab</b>).</td></tr>
+      <tr><td>Basophil and mast cell</td><td>Basophils &lt;1% in blood; mast cells live in tissues. IgE bound to <b>FcεRI</b> → allergen cross-links it → histamine release. Allergy and anaphylaxis (measure <b>serum tryptase</b>).</td></tr>
+      <tr><td>NK cell</td><td>5–15% of blood lymphocytes; no antigen-specific receptor. Kills cells that have lost MHC I (<b>“missing self”</b>); kills antibody-coated cells (<b>ADCC via CD16</b>); secretes IFN-γ to activate macrophages.</td></tr>
+    </table></div>
+    <p><span class="tag x">Extra</span> The note-taker’s summary adds: dendritic cells capture and present antigen to naïve T cells and are the most important APCs for starting primary T-cell responses; NK cells use perforin and granzymes to induce apoptosis; mast-cell degranulation causes vasodilation and increased vascular permeability.</p>
+
+    <h3>The innate timeline (summary slide)</h3>
+    <div class="flow"><span>Barriers come first</span><i>→</i><span>Innate response within hours (PRRs, phagocytes, complement, cytokines, fever, acute-phase proteins)</span><i>→</i><span>Hand-off to adaptive immunity (dendritic cells carry antigen to lymph nodes; innate cytokines steer B and T cells)</span></div>
+    <p>CRP and procalcitonin measure the innate response. Breaches (burns, lines, surgery) open the door to sepsis.</p>
+
+    <h2 style="margin-top:34px">Start of adaptive immunity (course “Lecture 3”, slides 1–4)</h2>
+    <div class="note"><b>Flag:</b> only slides 1–4 of this 19-slide lecture were provided. The remaining objectives listed below (T-independent/dependent B responses, germinal centre, helper subsets, memory duration, age, two clinical cases) are not covered by the slides you have.</div>
+
+    <h3>Objectives</h3>
+    <ul>
+      <li>Describe the six phases of an adaptive response and their timing.</li>
+      <li>Compare B-cell and T-cell receptors and the antigens they recognise.</li>
+      <li>Explain T-independent and T-dependent B-cell responses and the germinal centre.</li>
+      <li>Describe CD4 helper subsets and cytotoxic T cells, and match them to microbes.</li>
+      <li>Explain how long memory lasts, imprinting, and how vaccine platforms use memory.</li>
+      <li>Relate adaptive immunity to age and work through two clinical cases.</li>
+    </ul>
+    <p>Why adaptive immunity? It is the third and fourth line of defence. Most viruses and some bacteria such as TB live inside cells and escape the innate system, so adaptive immunity is needed.</p>
+
+    <h3>The six phases of an adaptive response</h3>
+    <div class="card tbl"><table>
+      <tr><th>Phase</th><th>What happens (slide details)</th></tr>
+      <tr><td>1 · Recognition</td><td>Rare naïve clones (about 1 in 10⁵–10⁶) meet antigen in lymph nodes or spleen.</td></tr>
+      <tr><td>2 · Activation</td><td>Antigen plus co-stimulation plus cytokines (details in a later lecture).</td></tr>
+      <tr><td>3 · Expansion</td><td>CD8 clones can grow 10⁴–10⁵-fold, peaking around day 7–10.</td></tr>
+      <tr><td>4 · Effector phase</td><td>Antibody, cytokines and killing clear the microbe.</td></tr>
+      <tr><td>5 · Contraction</td><td>About 90% of effector cells die by apoptosis once antigen falls.</td></tr>
+      <tr><td>6 · Memory</td><td>A larger, faster, longer-lived pool remains.</td></tr>
+    </table></div>
+    <div class="note"><b>Flag:</b> the slide shows the six phases as a graphic, and the extracted text gives the details above without phase names for each. The numbered names are the standard order. Failed contraction (FAS defects) → <b>autoimmune lymphoproliferative syndrome (ALPS)</b>. The lecturer gave times for each step, which are not all visible in the text.</div>
+
+    <h3>The B-cell receptor (BCR)</h3>
+    <div class="flow"><span>B lymphocyte</span><i>→</i><span>Plasma cell</span><i>→</i><span>Antibodies (a factory for every antibody type)</span></div>
+    <ul>
+      <li>The BCR is <b>membrane immunoglobulin (IgM and IgD on naïve cells)</b> plus <b>Igα/Igβ (CD79a/b)</b>, which carry the ITAM signalling motifs.</li>
+      <li>The Ig tail is too short to signal, so Igα/Igβ transmit the activation signal into the cell.</li>
+      <li>Every BCR on one B cell binds the <b>same epitope</b>.</li>
+      <li>B cells recognise <b>native antigen</b>: proteins, polysaccharides, lipids or nucleic acids, with <b>no MHC needed</b>.</li>
+      <li>Membrane Ig can also be released (secreted) into the blood and bind antigen.</li>
+    </ul>
+    <h4>CD21–CD19–CD81 co-receptor</h4>
+    <ul>
+      <li>CD21 binds complement fragment <b>C3d</b> attached to antigen. This brings antigen closer to the BCR and strongly lowers the activation threshold.</li>
+      <li>The CD19/CD21/CD81 complex amplifies the signal.</li>
+      <li><b>EBV</b> uses CD21 (CR2) to enter B cells and can contribute to B-cell lymphoproliferative disorders and some lymphomas.</li>
+      <li><b>CD19 CAR-T</b> cells and anti-CD79b <b>polatuzumab</b> treat B-cell lymphoma.</li>
+    </ul>
+
+    <h3>B-cell vs T-cell receptors <span class="tag x">Extra</span></h3>
+    <p>The note-taker’s external table compares BCRs and TCRs. In keeping with the slides: BCRs bind native antigen and can be secreted, whereas T cells recognise peptides presented on MHC.</p>
+    <div class="note"><b>Flag:</b> the note-taker’s T-versus-B table has some garbled, duplicated rows, and a “self-reactivity: No/No” row that is unclear. Neither is used here. Also, the note-taker’s Ig-structure picture calls the unique shape of the antigen-binding pocket an “isotype”. That is incorrect: the unique binding-site shape is the <b>idiotype</b>, while the isotype is the heavy-chain class (IgM, IgG, …).</div>
+  </div>
+
+  <div id="l5-sum">
+    <div class="k" style="margin-top:34px">Part 2</div><h2>High-yield summary</h2>
+    <div class="card"><ul>
+      <li><b>Cytokines:</b> TNF + IL-1 → endothelial activation, fever; IL-6 → fever and acute-phase proteins; CXCL8 → neutrophils; IL-12 → NK cells → IFN-γ → macrophages; type I IFN → antiviral state.</li>
+      <li><b>Cytokine storm:</b> sepsis, CAR-T cytokine release, severe COVID-19. <b>Drugs:</b> anti-TNF (screen latent TB), anakinra (IL-1), tocilizumab (IL-6R).</li>
+      <li><b>Neutrophils:</b> 40–75%; first responders; pus; neutropenia &lt;1.5 × 10⁹/L, severe &lt;0.5.</li>
+      <li><b>Macrophages:</b> from monocytes (2–10%); TNF/IL-1/IL-6; antigen presentation; M1/M2; Kupffer (liver), alveolar (lung), microglia (brain), osteoclasts (bone).</li>
+      <li><b>Eosinophils:</b> helminths, asthma/allergy, MBP; mepolizumab (anti-IL-5).</li>
+      <li><b>Basophils/mast cells:</b> IgE–FcεRI → histamine; anaphylaxis → serum tryptase.</li>
+      <li><b>NK cells:</b> no antigen-specific receptor; missing self (lost MHC I), ADCC via CD16, IFN-γ.</li>
+      <li><b>Innate timeline:</b> barriers → innate response (hours) → hand-off to adaptive via dendritic cells.</li>
+      <li><b>Adaptive phases:</b> naïve clone frequency ≈ 1 in 10⁵–10⁶; CD8 expansion 10⁴–10⁵-fold, peak day 7–10; about 90% contraction by apoptosis; memory pool remains; failed contraction (FAS) → ALPS.</li>
+      <li><b>BCR:</b> membrane IgM/IgD + Igα/Igβ (ITAMs); recognises native antigen without MHC; one specificity per B cell. <b>CD21</b> binds C3d; CD19–CD21–CD81 lowers threshold; EBV enters via CD21; CD19 CAR-T and polatuzumab (anti-CD79b) for B-cell lymphoma.</li>
+    </ul></div>
+  </div>
+
+  <div id="l5-quiz">
+    <div class="k" style="margin-top:34px">Part 3</div><h2>Practice MCQs</h2>
+    <p class="lead">Click an option to answer. Explanations appear after you choose.</p>
+    <div class="quiz" data-n="5"></div>
+  </div>
+</section>
+<section id="appendix" class="lec" data-n="6">
+  <div class="k">Bonus · note-taker’s added pages</div>
+  <h2>Preview: receptor diversity, selection, MHC and lymphoid organs</h2>
+  <p class="lead">These topics appear only on the note-taker’s extra pages (First Aid / Kaplan / UWorld style) inside your files, not on the lecturer’s slides you were given. They preview later lectures, so treat them as <span class="tag x">Extra</span> and expect more detail from the lecturer later. The note-taker says the molecular details need not be memorised, only the idea.</p>
+  <div class="sub"><a href="#ap-exp">1. Explanation</a><a href="#ap-sum">2. High-yield summary</a><a href="#ap-quiz">3. Practice MCQs</a></div>
+
+  <div id="ap-exp">
+    <div class="k" style="margin-top:22px">Part 1</div><h2>Explanation</h2>
+
+    <h3>Antigen receptors and Ig structure</h3>
+    <ul>
+      <li>Antibodies (immunoglobulins) are Y-shaped proteins. The <b>N-terminal variable domain</b> forms the antigen-binding pocket and differs between antibodies; the <b>C-terminal constant domain</b> is the same within an isotype. Complement binds in the constant region, and Fc receptors on macrophages and neutrophils bind it too.</li>
+      <li>B-cell signalling complex: Igα and Igβ, with CD19 and CD21 as co-receptors. T cells use the CD3 complex; the TCR has α and β chains.</li>
+    </ul>
+    <div class="note"><b>Flag (error in the note-taker’s page):</b> it says the unique 3D shape of the binding pocket is called the “isotype”. The unique binding shape is the <b>idiotype</b>; isotype = the class of the constant region.</div>
+
+    <h3>How millions of receptors are made from limited genes</h3>
+    <div class="card tbl"><table>
+      <tr><th>Mechanism</th><th>What it does</th></tr>
+      <tr><td>V(D)J recombination</td><td>Recombinase joins variable (V), diversity (D) and joining (J) gene segments at random. In the heavy chain, D–J joins first, then V; light chains have no D segment. Defects (e.g. RAG) → SCID.</td></tr>
+      <tr><td>TdT</td><td>Terminal deoxynucleotidyl transferase randomly inserts nucleotides at the junctions (N-nucleotide addition), per the page mainly during heavy-chain rearrangement.</td></tr>
+      <tr><td>Allelic exclusion</td><td>Only one of the two inherited alleles is expressed, so each cell has one receptor specificity. If the first allele makes a non-functional receptor, the cell tries the second.</td></tr>
+    </table></div>
+    <p>Because the process is random, some products are non-functional and some react with self, which is why <b>selection</b> follows.</p>
+
+    <h3>Selection of lymphocytes</h3>
+    <ul>
+      <li><b>Primary lymphoid organs</b> (where lymphocytes develop): bone marrow (B cells) and thymus (T cells). <b>Secondary lymphoid organs</b> (sites of antigen exposure): spleen, lymph nodes, MALT.</li>
+      <li><b>B cells:</b> cells with too high an affinity for normal self molecules are deleted in the bone marrow (clonal deletion) or inactivated in the periphery (anergy).</li>
+      <li><b>T cells:</b> precursors travel from the bone marrow to the thymus cortex as double-positive (CD4⁺CD8⁺) cells. <b>Positive selection</b> (cortex) requires weak binding to self-MHC; cells that cannot bind die by apoptosis. Survivors go to the medulla for <b>negative selection</b>: strong binding to self antigen → apoptosis. The page says about 95% undergo apoptosis. The MHC type recognised decides whether the cell becomes CD4 (helper) or CD8 (cytotoxic).</li>
+    </ul>
+    <div class="note"><b>Flag:</b> the page links AIRE with negative selection of self antigens. This agrees with the slides’ statement that an AIRE defect causes APS-1, but the page’s mnemonic is not reproduced here. DiGeorge syndrome is also written next to the thymus picture without explanation.</div>
+
+    <h3>MHC I vs MHC II</h3>
+    <div class="card tbl"><table>
+      <tr><th></th><th>MHC I</th><th>MHC II</th></tr>
+      <tr><td>Genes</td><td>HLA-A, B, C</td><td>HLA-DP, DQ, DR</td></tr>
+      <tr><td>Found on</td><td>All nucleated cells (including APCs)</td><td>APCs only: macrophages, dendritic cells (Langerhans), B cells</td></tr>
+      <tr><td>Presents to</td><td>CD8⁺ T cells</td><td>CD4⁺ T cells</td></tr>
+    </table></div>
+
+    <h3>Lymphocyte recirculation and lymphoid organs</h3>
+    <ul>
+      <li>Mature naïve lymphocytes recirculate through lymph nodes, spleen and MALT to maximise their chance of meeting antigen.</li>
+      <li><b>Lymph node</b> = filter of tissues. B cells live in <b>follicles</b> (outer cortex): primary follicles are dense, secondary follicles are pale and have a <b>germinal centre</b> (where activation happens). T cells live in the <b>paracortex</b>. Macrophages in the medulla handle antigen.</li>
+      <li><b>Spleen</b> = filter of blood. The marginal zone lies between white and red pulp and contains macrophages.</li>
+    </ul>
+
+    <h3>Immunogen, antigen and hapten</h3>
+    <ul>
+      <li>An immunogen must be recognised as foreign, have some chemical complexity, and a large molecular weight.</li>
+      <li>B cells can recognise almost any chemical; T cells recognise only peptides presented in the groove of an MHC molecule.</li>
+      <li>A <b>hapten</b> is a small molecule that cannot induce a response alone but can when coupled to a carrier protein (e.g. penicillin).</li>
+      <li>The response is against an <b>epitope</b>, not the whole structure. One epitope can be shared by more than one microorganism, which explains cross-reactivity and some false-positive serology.</li>
+    </ul>
+  </div>
+
+  <div id="ap-sum">
+    <div class="k" style="margin-top:34px">Part 2</div><h2>High-yield summary</h2>
+    <div class="card"><ul>
+      <li>Variable domain = antigen binding (idiotype); constant domain = class (isotype), complement and Fc receptor binding.</li>
+      <li>Diversity: V(D)J recombination + TdT N-nucleotides; allelic exclusion → one specificity per cell. RAG defect → SCID.</li>
+      <li>B cells: bone marrow deletion or anergy. T cells: thymic cortex positive selection (weak self-MHC binding), medulla negative selection (strong self binding → apoptosis).</li>
+      <li>MHC I (A, B, C; all nucleated cells; CD8) vs MHC II (DP, DQ, DR; APCs; CD4).</li>
+      <li>Primary lymphoid organs: bone marrow, thymus. Secondary: spleen, lymph nodes, MALT.</li>
+      <li>Lymph node: follicles (B), paracortex (T). Spleen filters blood.</li>
+      <li>Hapten + carrier → immunogenic (penicillin).</li>
+    </ul></div>
+  </div>
+
+  <div id="ap-quiz">
+    <div class="k" style="margin-top:34px">Part 3</div><h2>Practice MCQs</h2>
+    <p class="lead">Click an option to answer. Explanations appear after you choose.</p>
+    <div class="quiz" data-n="6"></div>
+  </div>
+</section>
+<details id="source-notes" class="card"><summary>Source notes: session numbering, missing slides, and extra material</summary>  <div class="note"><b>Flag – how the five sessions map to the slides.</b> The attached PDFs are named “lectures 1-2”, “lectures 3-4” and “Lecture 5”, but the slides inside them are numbered by the <i>course</i>, not by your sessions. This guide follows the order in which the material actually appears:
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Session (this guide)</th><th>Slides it covers</th></tr>
+    <tr><td>1</td><td>Course Introduction (slides 1–14)</td></tr>
+    <tr><td>2</td><td>Course “Lecture 1” (slides 1–20): introduction to immunity</td></tr>
+    <tr><td>3</td><td>Course “Lecture 2”, slides 1–7: barriers and microbial sensing</td></tr>
+    <tr><td>4</td><td>Course “Lecture 2”, slides 8–15: phagocytosis, recruitment, killing, inflammation, fever, acute-phase proteins, complement</td></tr>
+    <tr><td>5</td><td>Course “Lecture 2”, slides 16–20 (cytokines and innate cells) + course “Lecture 3”, slides 1–4 (start of adaptive immunity)</td></tr>
+  </table></div>
+  <div class="note"><b>Flag – missing slides.</b> Only slides 1–4 of course “Lecture 3” (19 slides) were provided, so the end of session 5 stops at the B-cell receptor. This guide does not cover T-cell receptors in depth, B-cell T-dependent/independent responses, helper-subset details, memory duration or the two clinical cases that the Lecture 3 objectives list. Inside the slides, “Lecture 3” or “Lecture 5” refers to <i>course</i> lectures, not to your session numbers.</div>
+
+  <h3>How the material is marked</h3>
+  <ul>
+    <li>Content without a label comes from the lecturer’s slides.</li>
+    <li><span class="tag x">Extra</span> marks content that appears only in the note-taker’s added pages (First Aid / Kaplan / UWorld style notes) and not on the lecturer’s slides. It is shown separately so you can tell which is which.</li>
+    <li><span class="tag x">Flag</span> boxes point out places where the slides are unclear, inconsistent or wrong. Nothing was guessed to fill those gaps.</li>
+    <li>MCQs are original questions written from the slide content. Answer positions are shuffled every time the page loads, and each page has its own score bar and reset button.</li>
+  </ul>
+
+</details>
+</main><footer>Vitanova · Immunology Lecture 5 · Based on the supplied guide. Extra material is labelled separately; confirm exam scope with your lecturer.</footer>
+<script>const Q={"5": [["Which cytokine mainly drives hepatic production of CRP?", ["IL-6", "IL-12", "CXCL8", "IFN-γ"], 0, "IL-6 drives fever and acute-phase proteins such as CRP and procalcitonin."], ["Which cytokine recruits neutrophils?", ["CXCL8 (IL-8)", "IL-12", "Type I IFN", "IL-5"], 0, "CXCL8 (IL-8) is the neutrophil-recruiting chemokine."], ["IL-12 activates NK cells, which then release:", ["IFN-γ", "IL-5", "IgE", "Histamine"], 0, "IL-12 activates NK cells → IFN-γ → macrophage activation."], ["Which cytokines induce an antiviral state?", ["Type I interferons (α, β)", "IL-1 and TNF", "IL-6", "CXCL8"], 0, "Type I IFN (α, β) induces an antiviral state and activates NK cells."], ["Before starting anti-TNF therapy, a patient should be screened for:", ["Latent tuberculosis", "Helminth infection", "Asthma", "Hepatitis A"], 0, "TNF blockade can reactivate latent TB."], ["Which drug blocks IL-6 receptor signalling?", ["Tocilizumab", "Anakinra", "Mepolizumab", "Natalizumab"], 0, "Tocilizumab blocks IL-6R; anakinra blocks IL-1."], ["Which condition is an example of excessive cytokine release listed on the slide?", ["CAR-T cytokine release syndrome", "Hereditary angioedema", "CGD", "Asplenia"], 0, "Cytokine storm examples: sepsis, CAR-T cytokine release syndrome, severe COVID-19."], ["A neutrophil count of 0.4 × 10⁹/L is:", ["Severe neutropenia with high infection risk", "Mild neutropenia", "Normal", "Eosinophilia"], 0, "Neutropenia is <1.5 × 10⁹/L; below 0.5 is severe."], ["Pus is mainly composed of:", ["Dead neutrophils", "Plasma cells", "Eosinophils", "NK cells"], 0, "Neutrophils die within hours to days, forming pus."], ["Which cells are tissue macrophages of the liver?", ["Kupffer cells", "Microglia", "Alveolar macrophages", "Osteoclasts"], 0, "Kupffer = liver; microglia = brain; alveolar = lung; osteoclasts = bone."], ["Microglia are macrophages of the:", ["Brain", "Liver", "Lung", "Bone"], 0, "Microglia are the brain’s resident macrophages."], ["Which cytokines do macrophages secrete?", ["TNF, IL-1, IL-6", "IL-5 only", "IgE and IgG", "Perforin and granzymes"], 0, "Macrophages secrete TNF, IL-1 and IL-6, and present antigen to T cells."], ["Which cell is targeted by mepolizumab?", ["Eosinophil (via anti-IL-5)", "Basophil", "NK cell", "Neutrophil"], 0, "Mepolizumab is an anti-IL-5 drug; IL-5 acts on eosinophils."], ["Which cell kills helminths using major basic protein?", ["Eosinophil", "Mast cell", "Neutrophil", "Monocyte"], 0, "Eosinophils have red granules with major basic protein and kill helminths."], ["Which receptor binds IgE on mast cells?", ["FcεRI", "CD16", "CD21", "CD79"], 0, "IgE bound to FcεRI; allergen cross-linking → histamine release."], ["Which lab test is helpful after anaphylaxis, reflecting mast-cell activation?", ["Serum tryptase", "DHR flow cytometry", "Procalcitonin", "ESR"], 0, "Mast-cell activation is assessed by serum tryptase."], ["An NK cell kills a target that has lost MHC class I. This is called:", ["Missing self recognition", "Opsonisation", "Co-stimulation", "Clonal deletion"], 0, "NK cells kill cells that lack MHC I (“missing self”)."], ["Which NK-cell receptor allows ADCC?", ["CD16", "CD21", "CD79b", "CD19"], 0, "NK cells kill antibody-coated cells via CD16 (ADCC)."], ["Which cell is the best antigen-presenting cell for starting primary T-cell responses (according to the note-taker’s summary)?", ["Dendritic cell", "Neutrophil", "Eosinophil", "Basophil"], 0, "This comes from the note-taker’s added summary: dendritic cells are the key APCs for initiating primary T-cell responses and carry antigen to lymph nodes."], ["Approximately what fraction of effector cells die once antigen falls?", ["About 90%", "About 10%", "About 50%", "None"], 0, "The contraction phase removes about 90% of effector cells by apoptosis."], ["Failure of contraction because of FAS defects causes:", ["Autoimmune lymphoproliferative syndrome (ALPS)", "SCID", "CGD", "IPEX"], 0, "FAS defects → ALPS."], ["Roughly how large can CD8 T-cell clones expand?", ["10⁴–10⁵-fold, peaking around day 7–10", "2–3-fold within hours", "10-fold on day 1", "No expansion"], 0, "The slide gives 10⁴–10⁵-fold growth, peaking about day 7–10."], ["What is the approximate frequency of a given naïve clone?", ["About 1 in 10⁵–10⁶", "About 1 in 10", "About 1 in 100", "About 1 in 10⁹ lymphocytes"], 0, "Rare naïve clones (about 1 in 10⁵–10⁶) meet antigen in lymph nodes or spleen."], ["Which molecules transmit the signal from the BCR into the cell?", ["Igα/Igβ (CD79a/b)", "CD16", "CD21 only", "MHC class II"], 0, "The Ig tail is too short, so Igα/Igβ with ITAMs signal."], ["Which statement about the BCR is correct?", ["It sees native antigen without MHC; each B cell has one specificity", "It needs MHC presentation", "One B cell carries many different specificities", "CD21 binds CRP"], 0, "B cells recognise native antigen directly; every BCR on one B cell binds the same epitope; CD21 binds C3d."], ["CD21 on B cells binds which molecule?", ["Complement fragment C3d", "C5a", "IgG", "CRP"], 0, "CD21 binds C3d on antigen, lowering the activation threshold."], ["Which virus uses CD21 to enter B cells?", ["Epstein–Barr virus (EBV)", "Rabies virus", "HIV", "RSV"], 0, "EBV uses CD21 (CR2) to infect B cells."], ["A drug that targets CD79b for B-cell lymphoma is:", ["Polatuzumab", "Mepolizumab", "Natalizumab", "Eculizumab"], 0, "Anti-CD79b polatuzumab and CD19 CAR-T treat B-cell lymphoma."]], "6": [["The unique shape of the antigen-binding pocket of an antibody is its:", ["Idiotype", "Isotype", "Allotype only", "Fc region"], 0, "The idiotype is the unique binding-site shape. Isotype is the heavy-chain class."], ["Which part of an immunoglobulin binds complement and Fc receptors?", ["Constant region", "Variable region", "Antigen-binding pocket", "Idiotype"], 0, "The constant (C-terminal) domain mediates complement binding and Fc receptor binding."], ["Which enzyme complex joins V, D and J gene segments?", ["Recombinase (RAG)", "Reverse transcriptase", "DNA polymerase III", "Catalase"], 0, "V(D)J recombination uses recombinase. RAG defects cause SCID."], ["In the heavy chain, which segments join first?", ["D and J", "V and D", "V and J", "C and V"], 0, "D–J joining happens first, then V joins. Light chains have no D segment."], ["Which enzyme adds random nucleotides at V, D and J junctions?", ["TdT", "RAG", "Perforin", "Lysozyme"], 0, "Terminal deoxynucleotidyl transferase adds N-nucleotides without a template."], ["Allelic exclusion ensures that:", ["Each lymphocyte expresses one receptor specificity", "Both alleles are expressed", "Receptors are germline-encoded", "TdT is inactive"], 0, "Only one allele is expressed; if the first rearrangement is non-functional, the second allele is tried."], ["Where does positive selection of T cells occur?", ["Thymic cortex", "Thymic medulla", "Lymph node paracortex", "Spleen"], 0, "Positive selection occurs in the cortex; negative selection in the medulla."], ["T cells with high affinity for self antigen in the thymic medulla undergo:", ["Apoptosis", "Positive selection", "Class switching", "Anergy in the spleen"], 0, "Negative selection removes strongly self-reactive T cells by apoptosis."], ["Which cells express MHC class II?", ["APCs (macrophages, dendritic cells, B cells)", "All nucleated cells", "Red blood cells", "Platelets only"], 0, "MHC II is on APCs only; MHC I is on all nucleated cells."], ["MHC class I molecules present peptides to:", ["CD8⁺ T cells", "CD4⁺ T cells", "B cells", "NK cells only"], 0, "MHC I → CD8⁺; MHC II → CD4⁺."], ["Which are primary lymphoid organs?", ["Bone marrow and thymus", "Spleen and lymph nodes", "MALT and spleen", "Lymph nodes and thymus"], 0, "Primary: bone marrow and thymus. Secondary: spleen, lymph nodes, MALT."], ["In a lymph node, T cells mainly reside in the:", ["Paracortex", "Follicle", "Germinal centre", "Capsule"], 0, "B cells live in follicles; T cells in the paracortex."], ["A small molecule like penicillin triggers an immune response only after binding to a protein. It is a:", ["Hapten", "Superantigen", "Adjuvant", "Opsonin"], 0, "Haptens cannot induce a response alone but can when coupled to a carrier protein."]]};var QUIZ=Q;</script><script>(function(){
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a}
+  function mount(box){
+    var data=QUIZ[box.getAttribute('data-n')]||[];
+    var score=0,done=0;
+    var bar=document.createElement('div');bar.className='sc';
+    var rb=document.createElement('button');rb.className='r';rb.type='button';rb.textContent='Reset quiz';
+    function upd(){bar.textContent='Score: '+score+' / '+done+' answered · '+data.length+' questions'}
+    function build(){
+      box.innerHTML='';score=0;done=0;
+      data.forEach(function(d,qi){
+        var opts=d[1].map(function(t,i){return{t:t,c:i===d[2]}});
+        shuffle(opts);
+        var q=document.createElement('div');q.className='q';
+        var p=document.createElement('p');p.textContent=(qi+1)+'. '+d[0];q.appendChild(p);
+        var ex=document.createElement('div');ex.className='ex';ex.textContent=d[3];
+        var btns=[];
+        opts.forEach(function(o,i){
+          var b=document.createElement('button');b.type='button';b.className='o';
+          b.textContent=String.fromCharCode(65+i)+') '+o.t;
+          b.addEventListener('click',function(){
+            if(q.getAttribute('data-l'))return;q.setAttribute('data-l','1');
+            btns.forEach(function(x,k){if(opts[k].c)x.classList.add('ok')});
+            if(o.c)score++;else b.classList.add('no');
+            done++;ex.style.display='block';upd();
+          });
+          btns.push(b);q.appendChild(b);
+        });
+        q.appendChild(ex);box.appendChild(q);
+      });
+      box.appendChild(bar);box.appendChild(rb);upd();
+    }
+    rb.addEventListener('click',function(){build();box.scrollIntoView({behavior:'smooth'})});
+    build();
+  }
+  var boxes=document.querySelectorAll('.quiz');
+  for(var i=0;i<boxes.length;i++)mount(boxes[i]);
+
+})();</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

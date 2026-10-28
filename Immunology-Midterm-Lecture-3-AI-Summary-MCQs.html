@@ -1,0 +1,253 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Immunology Lecture 3 · Barriers & Microbial Sensing</title><style>
+:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+  :root:not([data-theme="light"]) .sc,:root:not([data-theme="light"]) nav a.on{color:#17122a}
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+  --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+  --ln:#3a3057;--soft:#2b2347;
+}
+:root[data-theme="dark"] .sc,:root[data-theme="dark"] nav a.on{color:#17122a}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px max(20px,env(safe-area-inset-right)) 36px max(20px,env(safe-area-inset-left));text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+nav a.on{background:var(--pu);color:#fff}
+main{max-width:980px;margin:0 auto;padding:12px max(16px,env(safe-area-inset-right)) 60px max(16px,env(safe-area-inset-left))}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+h4{margin:12px 0 4px;font-size:16px;color:var(--pu)}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.tag.x{color:var(--or)}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+.sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+/* site additions (same tokens) */
+.sub{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.sub a{font-size:13px;font-weight:600;color:var(--pu);text-decoration:none;background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:2px 10px;cursor:pointer}
+.sub a:hover{border-color:var(--pu)}
+.js .lec{display:none}
+.js .lec.on{display:block}
+.lec>.lead{color:var(--mu);margin:2px 0 0}
+.qh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+
+.sub a:focus-visible{outline:3px solid var(--te);outline-offset:3px} @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<a class="skip-link" href="#lecture-main">Skip to content</a>
+<header><small>IMMUNOLOGY · MIDTERM · LECTURE 3</small><h1>Barriers &amp; Microbial Sensing</h1><p>Full explanations · High-yield summary · Practice MCQs</p></header>
+<nav aria-label="Lecture sections"><a href="#l3-exp">Explanation</a><a href="#l3-sum">High-yield summary</a><a href="#l3-quiz">Practice MCQs</a><a href="#source-notes">Source notes</a></nav><main id="lecture-main">
+<section id="lec3" class="lec" data-n="3">
+  <div class="k">Session 3 · Course “Lecture 2” slides 1–7</div>
+  <h2>Innate immunity: barriers and sensing</h2>
+  <p class="lead">Components and cells of innate immunity, the barriers that keep microbes out, a burn-patient case, and how innate cells sense microbes.</p>
+  <div class="sub"><a href="#l3-exp">1. Explanation</a><a href="#l3-sum">2. High-yield summary</a><a href="#l3-quiz">3. Practice MCQs</a></div>
+
+  <div id="l3-exp">
+    <div class="k" style="margin-top:22px">Part 1</div><h2>Explanation</h2>
+
+    <h3>Objectives of this lecture (full list)</h3>
+    <ul>
+      <li>Describe physical, chemical and microbial barriers at each portal of entry.</li>
+      <li>Explain how innate cells sense microbes and are recruited into tissues.</li>
+      <li>Outline phagocytosis and the mechanisms phagocytes use to kill microbes.</li>
+      <li>Describe inflammation, fever and the acute-phase response; interpret CRP and procalcitonin.</li>
+      <li>Summarise complement pathways and key innate cytokines, including drugs that target them.</li>
+      <li>Compare the roles of neutrophils, macrophages, eosinophils, mast cells and NK cells.</li>
+    </ul>
+    <p>Sessions 3, 4 and 5 of this guide cover these objectives in order.</p>
+
+    <h3>What innate immunity is made of</h3>
+    <div class="g">
+      <div class="card"><h4>External barriers</h4>Skin and other barriers, plus internal defences (cells and soluble molecules such as CRP and complement).</div>
+      <div class="card"><h4>Cells</h4>Phagocytes (neutrophils, monocytes/macrophages); also eosinophils, basophils, mast cells, dendritic cells, NK cells and innate lymphoid cells (ILCs).</div>
+      <div class="card"><h4>Soluble molecules</h4>Complement, acute-phase proteins, cytokines, antimicrobial peptides.</div>
+      <div class="card"><h4>Timing</h4>Ready at birth; responds in minutes to hours. Innate signals start and steer the adaptive response.</div>
+    </div>
+    <ul>
+      <li><b>G-CSF (filgrastim)</b> – granulocyte colony-stimulating factor – stimulates the bone marrow to make neutrophils and restores them after chemotherapy.</li>
+      <li>Where cells mature: NK cells and B cells in the bone marrow; T cells in the thymus.</li>
+      <li>The note-taker adds that innate cells carry germline-encoded receptors, which are fast and recognise certain microbes (for example specific viruses). <span class="tag x">Extra</span></li>
+    </ul>
+
+    <h3>Barriers: keeping microbes out</h3>
+    <div class="card tbl"><table>
+      <tr><th>Site</th><th>Defence</th></tr>
+      <tr><td>Skin</td><td>Keratinised layers, tight junctions, shedding, sebum fatty acids, acidic pH (about 5)</td></tr>
+      <tr><td>Respiratory tract</td><td>Mucus, cilia (mucociliary escalator), cough and sneeze reflexes</td></tr>
+      <tr><td>Gut</td><td>Gastric acid (pH 1–3), bile, peristalsis, Paneth-cell defensins</td></tr>
+      <tr><td>Urinary / genital</td><td>Urine flushing; lactobacilli keep vaginal pH about 4</td></tr>
+      <tr><td>Eyes, mouth</td><td>Tears and saliva rich in lysozyme</td></tr>
+    </table></div>
+    <p><b>When barriers are breached:</b> burns, IV catheters, urinary catheters, intubation and surgery all open the door to infection.</p>
+    <div class="note"><b>Clarification:</b> the note-taker points out that most bacteria cannot tolerate an acidic environment, yet <i>H. pylori</i> survives in the highly acidic stomach as an exception. <span class="tag x">Extra</span></div>
+
+    <h3>Chemical and microbial barriers</h3>
+    <ul>
+      <li><b>Lysozyme</b> (tears and saliva) digests peptidoglycan in bacterial cell walls.</li>
+      <li><b>Defensins and cathelicidin (LL-37)</b> disrupt microbial membranes.</li>
+      <li>Acidic or low-pH sites (stomach, urine, vagina, skin) slow bacterial growth.</li>
+      <li><b>Mucociliary escalator</b> traps and sweeps microbes out; impaired in cystic fibrosis and by smoking.</li>
+      <li><b>Normal microbiota</b> occupy space, use nutrients and make bacteriocins. Antibiotics disturb it → <i>Candida</i> overgrowth and <i>C. difficile</i> colitis.</li>
+      <li>2026: approved microbiota therapies (Rebyota, Vowst) prevent recurrent <i>C. difficile</i>.</li>
+    </ul>
+    <div class="note"><b>Flag:</b> the slide includes a small cell-wall picture labelled thick = Gram-positive, thin = Gram-negative (to illustrate where lysozyme acts). The note-taker marks one slide part as “not important”; it is not reproduced here.</div>
+
+    <h3>Case: burns and sepsis</h3>
+    <div class="card"><p>A man is transferred to a burn unit after a helicopter crash with multiple injuries, including third-degree burns over 65% of his body. Within 3 days he develops fever, chills, hypotension and tachycardia. <i>Pseudomonas aeruginosa</i> grows from the burn wound and blood cultures.</p>
+    <div class="tbl"><table>
+      <tr><th>Question</th><th>Slide answer</th></tr>
+      <tr><td>Which defence failed?</td><td>Skin barrier lost, plus burn-induced immune suppression</td></tr>
+      <tr><td>Why <i>Pseudomonas</i>?</td><td>Opportunist, forms biofilms, drug-resistant</td></tr>
+      <tr><td>What next, and what is the priority?</td><td>Sepsis → cultures, antipseudomonal antibiotics within 1 hour, fluids, wound excision</td></tr>
+    </table></div></div>
+    <p>The note-taker adds that skin flora and opportunists take advantage once the skin is damaged and then invade the body. <span class="tag x">Extra</span></p>
+
+    <h3>How innate cells sense microbes</h3>
+    <p>White blood cells recognise microbes using <b>receptors</b>. Each receptor sits where its microbe is found: on the cell surface or inside the cell. This is an important slide.</p>
+    <div class="card tbl"><table>
+      <tr><th>Receptor</th><th>Senses</th></tr>
+      <tr><td>TLR4</td><td>LPS</td></tr>
+      <tr><td>TLR2</td><td>Lipoproteins</td></tr>
+      <tr><td>TLR5</td><td>Flagellin</td></tr>
+      <tr><td>TLR3, 7, 8, 9</td><td>Viral and bacterial nucleic acids (inside the cell)</td></tr>
+      <tr><td>RIG-I</td><td>Viral RNA</td></tr>
+      <tr><td>cGAS–STING</td><td>DNA</td></tr>
+      <tr><td>NOD-like receptors (e.g. NLRP3)</td><td>Form the inflammasome: caspase-1 → active IL-1β; triggered by microbes and by urate crystals (gout)</td></tr>
+    </table></div>
+    <ul>
+      <li><b>NF-κB</b> → inflammatory cytokines; <b>IRFs</b> → type I interferons.</li>
+      <li><b>NLRP3 mutations → CAPS</b> (treated with IL-1 blockade).</li>
+      <li><b>TLR9 agonist CpG</b> is a vaccine adjuvant (Heplisav-B).</li>
+    </ul>
+    <div class="note"><b>Flag:</b> “inflammasome” is not named in the extracted slide text; it is the standard name for the NLR/caspase-1 complex described by the slide’s “caspase-1 → active IL-1β” line. The note-taker tells you to memorise this slide and that the lecture ends after it for this part (“end of lecture 3”).</div>
+  </div>
+
+  <div id="l3-sum">
+    <div class="k" style="margin-top:34px">Part 2</div><h2>High-yield summary</h2>
+    <div class="card"><ul>
+      <li>Innate immunity is ready at birth and acts in minutes to hours; it consists of barriers, cells (neutrophils, monocytes/macrophages, DCs, mast cells, eosinophils, basophils, NK cells, ILCs) and molecules (complement, acute-phase proteins, cytokines, antimicrobial peptides).</li>
+      <li>G-CSF (filgrastim) restores neutrophils after chemotherapy.</li>
+      <li>Barriers: skin (keratin, sebum, pH ≈ 5), mucus and cilia, gastric acid (pH 1–3), urine flushing, vaginal pH ≈ 4, lysozyme in tears and saliva.</li>
+      <li>Lysozyme digests peptidoglycan; defensins and LL-37 disrupt membranes; mucociliary clearance is impaired in cystic fibrosis and smoking.</li>
+      <li>Normal flora protect; antibiotics → <i>Candida</i>, <i>C. difficile</i>.</li>
+      <li>Burn case: lost skin barrier → <i>Pseudomonas</i> sepsis → cultures, antipseudomonal antibiotics within 1 h, fluids, wound excision.</li>
+      <li>TLR4 = LPS; TLR2 = lipoproteins; TLR5 = flagellin; TLR3/7/8/9 = nucleic acids; RIG-I = viral RNA; cGAS–STING = DNA.</li>
+      <li>NLRP3 → caspase-1 → IL-1β (also urate/gout); mutations → CAPS (IL-1 blockade).</li>
+      <li>NF-κB → inflammatory cytokines; IRFs → type I IFN; CpG (TLR9) = adjuvant in Heplisav-B.</li>
+    </ul></div>
+  </div>
+
+  <div id="l3-quiz">
+    <div class="k" style="margin-top:34px">Part 3</div><h2>Practice MCQs</h2>
+    <p class="lead">Click an option to answer. Explanations appear after you choose.</p>
+    <div class="quiz" data-n="3"></div>
+  </div>
+</section>
+<details id="source-notes" class="card"><summary>Source notes: session numbering, missing slides, and extra material</summary>  <div class="note"><b>Flag – how the five sessions map to the slides.</b> The attached PDFs are named “lectures 1-2”, “lectures 3-4” and “Lecture 5”, but the slides inside them are numbered by the <i>course</i>, not by your sessions. This guide follows the order in which the material actually appears:
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Session (this guide)</th><th>Slides it covers</th></tr>
+    <tr><td>1</td><td>Course Introduction (slides 1–14)</td></tr>
+    <tr><td>2</td><td>Course “Lecture 1” (slides 1–20): introduction to immunity</td></tr>
+    <tr><td>3</td><td>Course “Lecture 2”, slides 1–7: barriers and microbial sensing</td></tr>
+    <tr><td>4</td><td>Course “Lecture 2”, slides 8–15: phagocytosis, recruitment, killing, inflammation, fever, acute-phase proteins, complement</td></tr>
+    <tr><td>5</td><td>Course “Lecture 2”, slides 16–20 (cytokines and innate cells) + course “Lecture 3”, slides 1–4 (start of adaptive immunity)</td></tr>
+  </table></div>
+  <div class="note"><b>Flag – missing slides.</b> Only slides 1–4 of course “Lecture 3” (19 slides) were provided, so the end of session 5 stops at the B-cell receptor. This guide does not cover T-cell receptors in depth, B-cell T-dependent/independent responses, helper-subset details, memory duration or the two clinical cases that the Lecture 3 objectives list. Inside the slides, “Lecture 3” or “Lecture 5” refers to <i>course</i> lectures, not to your session numbers.</div>
+
+  <h3>How the material is marked</h3>
+  <ul>
+    <li>Content without a label comes from the lecturer’s slides.</li>
+    <li><span class="tag x">Extra</span> marks content that appears only in the note-taker’s added pages (First Aid / Kaplan / UWorld style notes) and not on the lecturer’s slides. It is shown separately so you can tell which is which.</li>
+    <li><span class="tag x">Flag</span> boxes point out places where the slides are unclear, inconsistent or wrong. Nothing was guessed to fill those gaps.</li>
+    <li>MCQs are original questions written from the slide content. Answer positions are shuffled every time the page loads, and each page has its own score bar and reset button.</li>
+  </ul>
+
+</details>
+</main><footer>Vitanova · Immunology Lecture 3 · Based on the supplied guide. Extra material is labelled separately; confirm exam scope with your lecturer.</footer>
+<script>const Q={"3": [["Which agent restores neutrophil numbers after chemotherapy?", ["G-CSF (filgrastim)", "Mepolizumab", "Natalizumab", "Eculizumab"], 0, "G-CSF stimulates the bone marrow to produce neutrophils."], ["Where do T cells mature?", ["Thymus", "Bone marrow", "Spleen", "Lymph node"], 0, "T cells mature in the thymus; NK and B cells mature in the bone marrow."], ["Which of the following is a component of innate immunity?", ["Complement proteins", "Antibodies produced after vaccination", "Memory B cells", "Memory T cells"], 0, "Complement, acute-phase proteins, cytokines and antimicrobial peptides are innate soluble molecules."], ["What is the main role of lysozyme?", ["Digest peptidoglycan in bacterial cell walls", "Neutralise viruses", "Present antigen to T cells", "Raise body temperature"], 0, "Lysozyme in tears and saliva digests peptidoglycan."], ["Defensins and cathelicidin (LL-37) work by:", ["Disrupting microbial membranes", "Producing IgA", "Opsonising capsules", "Blocking TLR4"], 0, "They are antimicrobial peptides that disrupt microbial membranes."], ["Which is a defence of the stomach against ingested bacteria?", ["Gastric acid at pH 1–3", "Mucociliary escalator", "Sebum fatty acids", "Lactobacilli keeping pH ≈ 4"], 0, "Gastric acid (pH 1–3), bile, peristalsis and Paneth-cell defensins protect the gut."], ["The mucociliary escalator is impaired in:", ["Cystic fibrosis and smoking", "Neutropenia", "Asplenia", "Burns only"], 0, "The slide lists cystic fibrosis and smoking as impairing mucociliary clearance."], ["Which organism pair is linked to antibiotic disturbance of normal flora?", ["Candida overgrowth and C. difficile colitis", "Pseudomonas and TB", "H. influenzae and N. meningitidis", "Aspergillus and Serratia"], 0, "Antibiotics disturb the microbiota, allowing Candida overgrowth and C. difficile colitis."], ["Microbiota therapies approved to prevent recurrent infection target which organism?", ["C. difficile", "P. aeruginosa", "M. tuberculosis", "S. aureus"], 0, "Rebyota and Vowst are named for preventing recurrent C. difficile."], ["In the burn case, which defence failed first?", ["The skin barrier", "Complement", "Antibody production", "Thymic selection"], 0, "The skin barrier was lost, with burn-induced immune suppression."], ["Which organism grew from the burn wound and blood cultures?", ["Pseudomonas aeruginosa", "Staphylococcus epidermidis", "Neisseria meningitidis", "Streptococcus pyogenes"], 0, "The case describes Pseudomonas aeruginosa, an opportunist that forms biofilms and is often drug-resistant."], ["What is the priority management step in the burn sepsis case?", ["Cultures and antipseudomonal antibiotics within 1 hour, fluids and wound excision", "Antiviral therapy only", "Vaccination", "Wait for culture results before treating"], 0, "The slide lists cultures, antipseudomonal antibiotics within 1 h, fluids and wound excision."], ["Which TLR recognises LPS?", ["TLR4", "TLR2", "TLR5", "TLR9"], 0, "TLR4 = LPS; TLR2 = lipoproteins; TLR5 = flagellin."], ["Flagellin is sensed by:", ["TLR5", "TLR4", "RIG-I", "cGAS–STING"], 0, "TLR5 detects bacterial flagellin."], ["Which receptor senses viral RNA in the cytosol?", ["RIG-I", "TLR4", "TLR2", "NLRP3"], 0, "RIG-I detects viral RNA; cGAS–STING senses DNA."], ["Which pathway senses cytosolic DNA?", ["cGAS–STING", "TLR5", "RIG-I", "TLR2"], 0, "cGAS–STING is the DNA-sensing pathway on the slide."], ["Caspase-1 activation by NLRP3 leads to production of:", ["Active IL-1β", "IFN-γ", "IL-5", "IgE"], 0, "NLR activation → caspase-1 → active IL-1β; triggered by microbes and urate crystals (gout)."], ["A patient has recurrent fevers and inflammation due to an NLRP3 gain-of-function mutation. Which treatment fits?", ["IL-1 blockade", "Anti-IL-5", "Anti-TNF only for latent TB", "C5 inhibitor"], 0, "NLRP3 mutations cause CAPS, treated with IL-1 blockade."], ["NF-κB activation mainly results in:", ["Inflammatory cytokines", "Type I interferons", "Antibody class switching", "Neutrophil apoptosis"], 0, "NF-κB → inflammatory cytokines; IRFs → type I interferons."], ["Heplisav-B contains an adjuvant that stimulates which receptor?", ["TLR9 (CpG)", "TLR4", "TLR5", "TLR2"], 0, "The TLR9 agonist CpG is the vaccine adjuvant in Heplisav-B."]]};var QUIZ=Q;</script><script>(function(){
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a}
+  function mount(box){
+    var data=QUIZ[box.getAttribute('data-n')]||[];
+    var score=0,done=0;
+    var bar=document.createElement('div');bar.className='sc';
+    var rb=document.createElement('button');rb.className='r';rb.type='button';rb.textContent='Reset quiz';
+    function upd(){bar.textContent='Score: '+score+' / '+done+' answered · '+data.length+' questions'}
+    function build(){
+      box.innerHTML='';score=0;done=0;
+      data.forEach(function(d,qi){
+        var opts=d[1].map(function(t,i){return{t:t,c:i===d[2]}});
+        shuffle(opts);
+        var q=document.createElement('div');q.className='q';
+        var p=document.createElement('p');p.textContent=(qi+1)+'. '+d[0];q.appendChild(p);
+        var ex=document.createElement('div');ex.className='ex';ex.textContent=d[3];
+        var btns=[];
+        opts.forEach(function(o,i){
+          var b=document.createElement('button');b.type='button';b.className='o';
+          b.textContent=String.fromCharCode(65+i)+') '+o.t;
+          b.addEventListener('click',function(){
+            if(q.getAttribute('data-l'))return;q.setAttribute('data-l','1');
+            btns.forEach(function(x,k){if(opts[k].c)x.classList.add('ok')});
+            if(o.c)score++;else b.classList.add('no');
+            done++;ex.style.display='block';upd();
+          });
+          btns.push(b);q.appendChild(b);
+        });
+        q.appendChild(ex);box.appendChild(q);
+      });
+      box.appendChild(bar);box.appendChild(rb);upd();
+    }
+    rb.addEventListener('click',function(){build();box.scrollIntoView({behavior:'smooth'})});
+    build();
+  }
+  var boxes=document.querySelectorAll('.quiz');
+  for(var i=0;i<boxes.length;i++)mount(boxes[i]);
+
+})();</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

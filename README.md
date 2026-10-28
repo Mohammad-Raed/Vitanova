@@ -40,7 +40,7 @@ Data stays on this browser and origin; it does not sync between devices. Changin
 | `study-backup.js` | Validated JSON import/export |
 | `tools/` | Non-executing data reader, registration, regeneration, validation |
 
-There are currently 14 lectures and 499 extracted questions. Counts are checked from the actual registry and sources, not hardcoded in the interface. Lecture medical content and original quiz implementations remain the source of truth.
+There are currently 18 lecture resources and 612 extracted questions. Counts are checked from the actual registry and sources, not hardcoded in the interface. Lecture medical content and original quiz implementations remain the source of truth.
 
 ## Add a lecture
 
@@ -80,7 +80,7 @@ Browser tests exercise the original quiz templates, persistence, navigation, sha
 
 Keep `index.html`, the lecture HTML files, shared assets, and generated question bank together at the GitHub Pages site root. No bundling or generated distribution folder is required. Existing legacy HTML redirect pages are retained to preserve shared links. Shared links and navigation also work under a GitHub Pages project subpath.
 
-Review changes and run the checks before committing. Publishing remains a separate, user-authorized step. Publication is performed only after user authorization.
+Review changes and run the checks needed for the affected material before committing. The user has given standing permission to commit, push, and publish routine material uploads automatically unless they specify otherwise. Unrelated feature releases still follow their own authorized scope.
 
 ## Editorial corrections
 

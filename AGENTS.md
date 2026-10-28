@@ -10,4 +10,4 @@ Vitanova is a static HTML/CSS/JavaScript study hub hosted on GitHub Pages. Keep 
 - Regenerate the question bank from lecture sources; do not hand-edit compiled MCQ text.
 - Run `python3 tools/validate_site.py`, Python tooling tests, Node storage tests, and browser regressions described in `README.md`. Report unrun checks honestly.
 - Use escaped text/DOM APIs for data and validate imported JSON. No secrets or student backups in the repository.
-- Do not commit, push, or deploy until the user has reviewed the changes and authorized it.
+- Standing user authorization (2026-10-28): routine material uploads should be integrated, checked as needed, committed, pushed to main, and published live automatically unless the user specifies otherwise. Do not request repeat publication approval for these uploads. This does not grant blanket approval for unrelated feature releases or destructive changes.
