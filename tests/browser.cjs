@@ -102,11 +102,12 @@ async function main() {
       check(await page.locator('.vn-bookmark-toggle[aria-pressed="true"]').count() === count, lecture.id + ': all bookmark buttons save');
       const answered = await page.evaluate(() => {
         const byId = new Map(VitanovaQuestionBank.map(question => [question.id, question]));
-        const plain = value => String(value).replace(/^\s*[A-Z][.)]\s*/, '').replace(/\s+/g, ' ').trim();
+        const plain = value => String(value).replace(/\s+/g, ' ').trim();
+        const matches = (displayed, answer) => [plain(displayed), plain(displayed).replace(/^[A-Z][.)]\s*/, '')].includes(plain(answer));
         return [...document.querySelectorAll('.q')].map(block => {
           const q = byId.get(block.dataset.vnQuestionId);
           const options = [...block.querySelectorAll('button.o')];
-          const correct = options.find(button => plain(button.textContent) === String(q.options[q.answer]).replace(/\s+/g, ' ').trim());
+          const correct = options.find(button => matches(button.textContent, q.options[q.answer]));
           if (!correct) return {id:q.id, correct:false};
           correct.click();
           return {id:q.id,correct:correct.classList.contains('ok') && !block.querySelector('.no'),explanation:getComputedStyle(block.querySelector('.ex')).display !== 'none'};
@@ -120,10 +121,11 @@ async function main() {
       check(await page.locator('.vn-bookmark-toggle[aria-pressed="true"]').count() === count, lecture.id + ': bookmarks survive quiz reset');
       const wrong = await page.evaluate(() => {
         const byId = new Map(VitanovaQuestionBank.map(q => [q.id,q]));
-        const plain = value => String(value).replace(/^\s*[A-Z][.)]\s*/, '').replace(/\s+/g, ' ').trim();
+        const plain = value => String(value).replace(/\s+/g, ' ').trim();
+        const matches = (displayed, answer) => [plain(displayed), plain(displayed).replace(/^[A-Z][.)]\s*/, '')].includes(plain(answer));
         return [...document.querySelectorAll('.q')].map(block => {
           const q=byId.get(block.dataset.vnQuestionId);
-          const button=[...block.querySelectorAll('button.o')].find(option=>plain(option.textContent)!==String(q.options[q.answer]).replace(/\s+/g, ' ').trim());
+          const button=[...block.querySelectorAll('button.o')].find(option=>!matches(option.textContent, q.options[q.answer]));
           button.click();
           return button.classList.contains('no') && !!block.querySelector('.ok') && getComputedStyle(block.querySelector('.ex')).display !== 'none';
         });
