@@ -114,7 +114,7 @@ async function main() {
         });
       });
       check(answered.every(item => item.correct && item.explanation), lecture.id + ': every correct answer preserves feedback/explanation');
-      const scores = await page.locator('.sc,#sc,[id^="sc-"]').allTextContents();
+      const scores = await page.locator('.sc,#sc,#sc3,#sc4,[id^="sc-"]').allTextContents();
       check(scores.length > 0 && scores.reduce((sum,text) => sum + Number(text.match(/(?:Score|Finished)[: ]+(\d+)/)?.[1] || 0),0) === count, lecture.id + ': original scores count all correct answers');
       await reset();
       check(await page.locator('.q .ok,.q .no').count() === 0, lecture.id + ': reset clears original answer feedback');

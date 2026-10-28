@@ -233,5 +233,18 @@ window.VitanovaLectures = [
     "description": "Cytokines, innate cells, adaptive phases, and the B-cell receptor, with a separate note-taker bonus.",
     "file": "Immunology-Midterm-Lecture-5-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-mid-physiology-03-04-full",
+    "system": "MSS",
+    "exam": "Midterm",
+    "subject": "Physiology",
+    "category": "mss-mid-physiology",
+    "lectureLabel": "Lectures 3–4",
+    "order": 3,
+    "title": "Sensory Receptors, Touch and Spinal Reflexes — Full Explanation",
+    "description": "Full explanations for Lectures 3–4: touch and muscle receptors, somatic reflexes and somatosensory integration, with high-yield summaries, rapid recall and MCQs.",
+    "file": "MSS-Midterm-Physiology-Lectures-3-4-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];

@@ -68,6 +68,10 @@
   }
   function start() {
     enhance(); addControls();
+    // In-place quiz resets allow a fresh attempt without counting repeat clicks.
+    document.addEventListener("vitanova:question-reset", (event) => {
+      if (event.target.matches?.(".q")) answered.delete(event.target);
+    });
     // Capture before native handlers mark their question as locked, without altering their score/reset flow.
     document.addEventListener('click', (event) => {
       const option = event.target.closest('button.o'); if (!option) return;

@@ -40,7 +40,7 @@ Data stays on this browser and origin; it does not sync between devices. Changin
 | `study-backup.js` | Validated JSON import/export |
 | `tools/` | Non-executing data reader, registration, regeneration, validation |
 
-There are currently 18 lecture resources and 612 extracted questions. Counts are checked from the actual registry and sources, not hardcoded in the interface. Lecture medical content and original quiz implementations remain the source of truth.
+There are currently 19 lecture resources and 674 extracted questions. Counts are checked from the actual registry and sources, not hardcoded in the interface. Lecture medical content and original quiz implementations remain the source of truth.
 
 ## Add a lecture
 
@@ -97,3 +97,5 @@ See docs/past-papers/EXTRACTION_AUDIT.md, EDITORIAL_REVIEW.md, NEEDS_REVIEW.md a
 Publication of this update was explicitly authorized by the user.
 
 Past-paper session controls collapse with **Study selected questions** or when you answer a question. The compact summary and **Change selection** button retain access to filters; score, Shuffle and Reset stay visible. Multiple subjects can be selected before applying. Reopening controls does not erase answers.
+
+Physiology Lectures 3–4 also have a separate **Full Explanation** resource under MSS → Midterm → Physiology, covering sensory receptors, touch, spinal reflexes and somatosensory integration, with 62 MCQs. Existing summary resources and student records remain available.

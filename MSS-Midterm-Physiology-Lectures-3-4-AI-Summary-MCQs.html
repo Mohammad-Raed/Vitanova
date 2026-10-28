@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MSS Physiology: Lectures 3 and 4</title>
+<style>
+:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px 20px 36px;text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px 12px;white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+nav a.sep{border-left:1px solid var(--ln);border-radius:0;margin-left:6px;padding-left:14px;color:var(--te)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 60px}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+/* Quiz */
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+#sc3,#sc4{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+/* Extensions in the same style */
+details.topic>summary{cursor:pointer;list-style:none;display:flex;gap:10px;align-items:center;font-weight:700;font-size:18px}
+details.topic>summary::-webkit-details-marker{display:none}
+details.topic>summary::before{content:"+";color:var(--or);font-weight:700;min-width:16px;text-align:center}
+details.topic[open]>summary::before{content:"\2212"}
+details.topic.is-done>summary::after{content:"studied";margin-left:auto;font-size:12px;font-weight:700;color:var(--te);border:1px solid var(--ln);background:var(--soft);padding:1px 9px;border-radius:10px}
+details.topic>.body{margin-top:8px}
+details.topic h4{margin:14px 0 4px;font-size:15px;color:var(--pu)}
+.done{display:block;margin-top:12px;font-size:14px;color:var(--mu);cursor:pointer}
+.done input{margin-right:8px;accent-color:var(--or)}
+button.gh{background:var(--soft);color:var(--pu);border:1px solid var(--ln);border-radius:10px;padding:6px 12px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;margin:4px 6px 4px 0}
+button.gh:hover{border-color:var(--pu)}
+.bar{height:10px;background:var(--soft);border:1px solid var(--ln);border-radius:10px;overflow:hidden;margin:6px 0 2px}
+.bar i{display:block;height:100%;width:0;background:var(--or);transition:width .3s}
+.mu{color:var(--mu);font-size:14px}
+.fcw{margin:8px 0}
+.fcw .o{font-weight:600}
+.fcw .ex{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;color:var(--tx)}
+.final{display:none;margin-top:10px}
+</style>
+<link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head>
+<body>
+<header>
+  <small>MUSCULOSKELETAL SYSTEM &middot; PHYSIOLOGY</small>
+  <h1>Sensory Receptors, Touch and Spinal Reflexes</h1>
+  <p>Lecture 3: Touch and muscle receptors &nbsp;|&nbsp; Lecture 4: Somatic reflexes and somatosensory integration</p>
+  <p>Full breakdown, high-yield summaries, rapid recall and MCQs</p>
+</header>
+<nav>
+  <a href="#home">Overview</a>
+  <a class="sep" href="#l3-break">L3 Breakdown</a>
+  <a href="#l3-sum">L3 Summary</a>
+  <a href="#l3-rev">L3 Revision</a>
+  <a href="#l3-quiz">L3 Quiz</a>
+  <a class="sep" href="#l4-break">L4 Breakdown</a>
+  <a href="#l4-sum">L4 Summary</a>
+  <a href="#l4-rev">L4 Revision</a>
+  <a href="#l4-quiz">L4 Quiz</a>
+</nav>
+<main>
+
+<section id="home">
+  <div class="k">Start here</div>
+  <h2>Overview and progress</h2>
+  <div class="g">
+    <div class="card">
+      <h3>Lecture 3</h3>
+      <div class="mu">Touch and muscle receptors: muscle spindle, gamma motoneurons, fibre types, four touch receptors, rate coding, receptive fields, dermatomes, homunculus.</div>
+      <div class="bar"><i id="pb3"></i></div>
+      <div class="mu" id="pt3">0% complete</div>
+    </div>
+    <div class="card">
+      <h3>Lecture 4</h3>
+      <div class="mu">Somatic reflexes: receptor potentials, action potential initiation sites, stretch reflex, Golgi tendon reflex, withdrawal and crossed extension, reflex control.</div>
+      <div class="bar"><i id="pb4"></i></div>
+      <div class="mu" id="pt4">0% complete</div>
+    </div>
+  </div>
+  <div class="note"><b>How to use this page:</b> open each topic card in the breakdown, tick <b>Mark as studied</b> when done, use the summary and rapid-recall cards for revision, then test yourself with the quiz. Progress counts studied topics plus answered quiz questions and is remembered in this browser when storage is available.</div>
+  <div class="card">
+    <h3>The big picture shared by both lectures</h3>
+    <div class="flow"><span>Stimulus</span><i>→</i><span>Sensory transduction</span><i>→</i><span>Sensory transmission (afferent)</span><i>→</i><span>Synapse(s)</span><i>→</i><span>Motor output (efferents)</span></div>
+    <div class="flow"><span>Stimulus</span><i>→</i><span>Transduction</span><i>→</i><span>Transmission</span><i>→</i><span>Sensation and perception</span></div>
+    <p class="mu">Lecture 3 covers the front end of this chain (the receptors and the fibres that carry their signals to the cortex). Lecture 4 covers how receptors turn stimuli into signals and how the spinal cord uses them to drive reflexes.</p>
+  </div>
+</section>
+
+<!-- ===================== LECTURE 3 ===================== -->
+<section id="l3-break">
+  <div class="k">Lecture 3 &middot; Touch and muscle receptors</div>
+  <h2>Full breakdown</h2>
+  <p class="mu">Every slide point is covered below. Notes marked “Lecturer’s note” come from the annotations on the slides.</p>
+  <div><button class="gh" data-open="3">Expand all</button><button class="gh" data-close="3">Collapse all</button></div>
+
+<details class="card topic" data-id="l3-1" data-lec="3"><summary>1. Objectives and the four attributes of a stimulus</summary><div class="body">
+<p>After this lecture you should be able to describe muscle spindle afferents and what they respond to; define <b>proprioception</b>, <b>dermatome</b>, <b>intrafusal muscle fibre</b> and <b>gamma-motoneuron</b>; explain how fine touch is transduced and the role of <b>rate coding</b>; explain <b>rapidly vs slowly adapting</b> afferents; describe what each touch receptor detects and how its location affects its receptive field; and locate the <b>sensory homunculus</b> and explain why it is distorted.</p>
+<div class="flow"><span>Stimulus</span><i>→</i><span>Sensory transduction</span><i>→</i><span>Sensory transmission (afferent)</span><i>→</i><span>Synapse(s)</span><i>→</i><span>Motor output (efferents)</span><i>/</i><span>Sensation, perception</span></div>
+<h4>The 4 attributes of any stimulus</h4>
+<ul>
+<li><b>Modality</b>: what kind of stimulus it is (touch, pain, stretch…). Decided by which receptor type is activated.</li>
+<li><b>Intensity</b>: how strong it is. Signalled by the firing rate.</li>
+<li><b>Location</b>: where it is. Signalled by which receptors (and receptive fields) are activated.</li>
+<li><b>Duration</b>: how long it lasts. Signalled by the time course of firing.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-2" data-lec="3"><summary>2. Classification of sensory receptors (Table 21-1)</summary><div class="body">
+<p>Receptors are grouped by the system, the kind of stimulus and the receptor class. The two highlighted in this lecture are <b>touch</b> and <b>proprioception</b>; both are mechanoreceptors.</p>
+<div class="tbl"><table>
+<tr><th>System</th><th>Modality</th><th>Stimulus</th><th>Receptor class</th><th>Receptor cells</th></tr>
+<tr><td>Visual</td><td>Vision</td><td>Light (photons)</td><td>Photoreceptor</td><td>Rods and cones</td></tr>
+<tr><td>Auditory</td><td>Hearing</td><td>Sound (pressure waves)</td><td>Mechanoreceptor</td><td>Hair cells in cochlea</td></tr>
+<tr><td>Vestibular</td><td>Head motion</td><td>Gravity, acceleration, head motion</td><td>Mechanoreceptor</td><td>Hair cells in vestibular labyrinths</td></tr>
+<tr><td>Somatosensory: touch</td><td>Touch</td><td>Skin deformation and motion</td><td>Mechanoreceptor</td><td>Skin</td></tr>
+<tr><td>Somatosensory: proprioception</td><td>Proprioception</td><td>Muscle length, muscle force, joint angle</td><td>Mechanoreceptor</td><td>Muscle spindles and joint capsules</td></tr>
+<tr><td>Somatosensory: pain</td><td>Pain</td><td>Noxious thermal, mechanical, chemical</td><td>Thermo-, mechano- and chemoreceptor</td><td>All tissues except CNS</td></tr>
+<tr><td>Somatosensory: itch</td><td>Itch</td><td>Histamine</td><td>Chemoreceptor</td><td>Skin</td></tr>
+<tr><td>Visceral (not painful)</td><td>Visceral</td><td>Wide range</td><td>Thermo-, mechano- and chemoreceptor</td><td>GI tract, bladder, lungs</td></tr>
+<tr><td>Gustatory</td><td>Taste</td><td>Chemicals</td><td>Chemoreceptor</td><td>Taste buds</td></tr>
+<tr><td>Olfactory</td><td>Smell</td><td>Odorants</td><td>Chemoreceptor</td><td>Olfactory sensory neurons</td></tr>
+</table></div>
+<div class="note"><b>Proprioception</b> = the sense of muscle length, muscle force and joint angle, i.e. awareness of where your limbs and body parts are in space and how strongly muscles are contracting.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-3" data-lec="3"><summary>3. Muscle receptors: the big picture</summary><div class="body">
+<p>Muscle and tendon contain specialized sensory receptors that detect changes in <b>muscle length</b>, <b>tendon tension</b> and <b>joint angles</b>.</p>
+<ul>
+<li><b>Muscle spindle</b>: detects stretch in the muscle. It is kept “contracted” (taut) by gamma motoneurons.</li>
+<li><b>Golgi tendon organ</b>: detects tension in the tendon (covered in detail in Lecture 4).</li>
+<li><b>Joint capsule receptors</b>: report joint angle.</li>
+</ul>
+<h4>The “adjusters”: gamma motoneurons</h4>
+<ul>
+<li>Gamma neurons carry instructions from the spinal cord to the muscle spindle.</li>
+<li>They attach to the <b>contractile ends</b> of the intrafusal fibres. When activated, the ends contract.</li>
+<li>That pulls the <b>middle sensory region</b> taut, keeping it sensitive to stretch.</li>
+<li><b>Why it matters:</b> when a muscle shortens, its spindle could go slack and stop detecting changes properly.</li>
+</ul>
+<h4>The sensory fibres of the spindle</h4>
+<ul>
+<li><b>Ia fibres</b> wrap around the central region of the intrafusal fibres. They detect <b>how much</b> the muscle is stretched <b>and how quickly</b> its length is changing, are especially sensitive to sudden stretch, send information very fast to the spinal cord and are key to the stretch reflex.</li>
+<li><b>Group II fibres</b> also detect stretch within the spindle but mainly report the <b>current muscle length</b>, especially in sustained stretch. They are <b>not</b> sensitive to the speed of stretch. They support posture and the sense of limb position.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-4" data-lec="3"><summary>4. Structure of the muscle spindle</summary><div class="body">
+<p>The muscle spindle is a specialized sensory organ lying <b>within</b> skeletal muscle, parallel to the ordinary (extrafusal) fibres. A <b>capsule</b> surrounds a bundle of thin <b>intrafusal muscle fibres</b>.</p>
+<ul>
+<li><b>Intrafusal fibres</b> are wrapped by the endings of sensory nerves.</li>
+<li><b>Ia sensory fibres</b>: particularly sensitive to muscle stretch, i.e. a <u>change</u> in length.</li>
+<li><b>Group II sensory fibres</b>: convey the static length of the muscle.</li>
+<li>Large-diameter myelinated afferent fibres.</li>
+<li>Intrafusal fibres are innervated by <b>gamma-motoneurons</b> (efferent, causing contraction of the intrafusal fibre ends).</li>
+</ul>
+<h4>Types of intrafusal fibre (Fig 35-3)</h4>
+<ul>
+<li><b>Dynamic nuclear bag fibre</b> and <b>static nuclear bag fibre</b>.</li>
+<li><b>Nuclear chain fibres</b>.</li>
+<li>Both Ia and II endings wrap these fibres; there is a <b>static</b> and a <b>dynamic</b> gamma motor neuron (see topic 6).</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-5" data-lec="3"><summary>5. How the spindle transduces stretch (Fig 22-6)</summary><div class="body">
+<p>The muscle spindle is the principal receptor mediating proprioception. It is excited by stretch of the muscle.</p>
+<div class="flow"><span>Muscle is stretched</span><i>→</i><span>Intrafusal fibre stretches the sensory ending</span><i>→</i><span>Stretch-sensitive ion channels open</span><i>→</i><span>Current flows in (depolarization)</span><i>→</i><span>Receptor potential → action potentials in Ia fibre</span></div>
+<ul>
+<li>Stretch-sensitive channels in the sensory nerve terminals are <b>linked to the cytoskeleton by the protein spectrin</b>, so stretching the membrane pulls them open.</li>
+<li>The <b>depolarizing receptor potential</b> in a group Ia fibre is proportional to <b>both the velocity and the amplitude</b> of muscle stretch. Bigger/faster stretch gives a bigger receptor potential (the graph shows larger curves for greater stretch).</li>
+<li>When stretch is <b>maintained at a fixed length</b>, the receptor potential <b>decays to a lower value</b> (this is the dynamic part dropping to the steady part).</li>
+<li><b>Single-channel recordings (patch clamp):</b> with no pressure the channel opens only sporadically and briefly; as suction (pressure) increases the channel opens <b>more often and stays open longer</b>, letting <b>more current</b> in and producing <b>more depolarization</b>.</li>
+</ul>
+<div class="note"><b>Link to Lecture 4:</b> a bigger receptor potential leads to a higher action potential rate in the afferent (rate coding).</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-6" data-lec="3"><summary>6. Gamma motoneurons and alpha-gamma co-activation</summary><div class="body">
+<p>Gamma motoneurons <b>regulate spindle length</b> so the spindle stays responsive over a range of muscle lengths.</p>
+<ol>
+<li><b>Sustained stretch of the muscle:</b> Ia fibres fire (they sense the pull).</li>
+<li><b>Only alpha motoneurons stimulated:</b> the main (extrafusal) muscle shortens, the spindle goes <b>slack</b>, and Ia firing falls silent during the contraction. The spindle did not detect anything even though the muscle contracted.</li>
+<li><b>Alpha and gamma stimulated together:</b> the intrafusal ends also contract, the spindle stays taut, stretch-sensitive channels stay open, and Ia firing is “filled in” throughout the contraction.</li>
+</ol>
+<div class="note"><b>Increased spindle tone = increased sensitivity and output.</b></div>
+<h4>Two types of gamma neuron (Fig 35-3)</h4>
+<div class="tbl"><table>
+<tr><th>Gamma type</th><th>Makes the spindle more sensitive to…</th><th>Effect on Ia firing</th></tr>
+<tr><td>Static gamma</td><td>How <b>long</b> the muscle is</td><td>Firing stays high during static stretch and does not decrease</td></tr>
+<tr><td>Dynamic gamma</td><td>How <b>fast</b> the muscle is getting longer</td><td>Exaggerated response to the dynamic (changing) phase of stretch</td></tr>
+</table></div>
+<p class="mu"><b>Lecturer’s note:</b> the doctor said you do not need to know the two gamma types in detail, but she explained them.</p>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-7" data-lec="3"><summary>7. Classification of sensory fibres (Tables 35-1 and 22-1)</summary><div class="body">
+<p>Muscle afferents are classified by <b>fibre diameter</b> (groups I to IV); skin afferents by <b>conduction velocity</b> (A-alpha, A-beta, A-delta, C).</p>
+<div class="tbl"><table>
+<tr><th>Type</th><th>Axon</th><th>Receptor</th><th>Sensitive to</th></tr>
+<tr><td>Ia</td><td>12–20 µm myelinated</td><td>Primary spindle ending</td><td>Muscle length and rate of change of length</td></tr>
+<tr><td>Ib</td><td>12–20 µm myelinated</td><td>Golgi tendon organ</td><td>Muscle tension</td></tr>
+<tr><td>II</td><td>6–12 µm myelinated</td><td>Secondary spindle ending</td><td>Muscle length (little rate sensitivity)</td></tr>
+<tr><td>II</td><td>6–12 µm myelinated</td><td>Non-spindle endings</td><td>Deep pressure</td></tr>
+<tr><td>III</td><td>2–6 µm myelinated</td><td>Free nerve endings</td><td>Pain, chemical stimuli, temperature (important for physiological responses to exercise)</td></tr>
+<tr><td>IV</td><td>0.5–2 µm non-myelinated</td><td>Free nerve endings</td><td>Pain, chemical stimuli, temperature</td></tr>
+</table></div>
+<div class="tbl"><table>
+<tr><th>Fibre class</th><th>Muscle nerve</th><th>Cutaneous nerve</th><th>Diameter (µm)</th><th>Conduction velocity (m/s)</th></tr>
+<tr><td>Myelinated, large</td><td>I</td><td>A-alpha</td><td>12–20</td><td>72–120</td></tr>
+<tr><td>Myelinated, medium</td><td>II</td><td>A-beta</td><td>6–12</td><td>36–72</td></tr>
+<tr><td>Myelinated, small</td><td>III</td><td>A-delta</td><td>1–6</td><td>4–36</td></tr>
+<tr><td>Unmyelinated</td><td>IV</td><td>C</td><td>0.2–1.5</td><td>0.4–2.0</td></tr>
+</table></div>
+<div class="note"><b>Rule:</b> increasing myelinated fibre diameter increases conduction speed.<br><b>Lecturer’s note (why are Ia, Ib, II big and fast?):</b> they carry important information about body position, which must reach the CNS very quickly to protect the body, for example from falling.</div>
+<p class="mu">Sensory fibres from muscle are classified by diameter, whereas those from skin are classified by conduction velocity. The doctor did not read the second table in detail.</p>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-8" data-lec="3"><summary>8. Touch: the four mechanoreceptors</summary><div class="body">
+<p>Touch is sensed by <b>mechanoreceptors in the skin</b> that respond to skin deformation and motion. Four types convey touch (Fig 21-1, 23-1).</p>
+<div class="tbl"><table>
+<tr><th>Receptor</th><th>Class</th><th>Depth</th><th>Receptive field</th><th>Adaptation</th><th>Best at sensing</th></tr>
+<tr><td>Meissner corpuscle</td><td>RA1</td><td>Superficial (base of epidermis, 0.5–1.0 mm below surface)</td><td>Small, precise</td><td>Rapid</td><td>Stroking, flutter, frictional forces (clothing on skin, grip slipping)</td></tr>
+<tr><td>Merkel cell / disc</td><td>SA1</td><td>Superficial (same level as Meissner)</td><td>Small, precise</td><td>Slow</td><td>Pressure, texture, fine detail (two-point discrimination)</td></tr>
+<tr><td>Pacinian corpuscle</td><td>RA2</td><td>Deep (dermis and deeper tissues)</td><td>Large</td><td>Rapid</td><td>Vibration</td></tr>
+<tr><td>Ruffini ending</td><td>SA2</td><td>Deep (dermis and deeper tissues)</td><td>Large</td><td>Slow</td><td>Skin stretch</td></tr>
+</table></div>
+<ul>
+<li><b>RA</b> = rapidly adapting; <b>SA</b> = slowly adapting; type 1 = superficial/small field; type 2 = deep/large field.</li>
+<li>The <b>two superficial receptors</b> (Meissner, Merkel) give <b>finer discrimination</b>: smallest receptive fields and most sensitive to pressure from a small probe, so the most precise localization of touch.</li>
+<li>Lecturer’s note: the last two (Pacinian, Ruffini) are further from the surface and detect changes in pressure.</li>
+<li>Anatomy: Meissner corpuscles border each papillary ridge; Merkel cells form dense bands around sweat-gland ducts along the ridges. <b>RA1 and SA1 fibres branch</b>, so each fibre innervates several nearby receptor organs; <b>RA2 and SA2 fibres</b> each innervate only <b>one</b> receptor organ.</li>
+<li>All four receptors are innervated by <b>large-diameter myelinated fibres</b>.</li>
+</ul>
+<h4>How combinations feel</h4>
+<ul>
+<li>Firing of <b>all four</b> receptors: the sensation of <b>contact with an object</b>.</li>
+<li>Selective activation of <b>Merkel and Ruffini</b>: steady <b>pressure</b> on the skin above the receptor.</li>
+<li>The same firing patterns in <b>Meissner and Pacinian</b> only: tingling sensation of <b>vibration</b>.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-9" data-lec="3"><summary>9. Rapidly vs slowly adapting receptors; the Pacinian corpuscle</summary><div class="body">
+<p><b>The structure of the receptor determines its adaptation properties.</b></p>
+<div class="tbl"><table>
+<tr><th></th><th>Rapidly adapting (Meissner, Pacinian)</th><th>Slowly adapting (Merkel, Ruffini)</th></tr>
+<tr><td>Response to constant pressure</td><td>Burst at the <b>start</b> (and at the end), then silent</td><td>Keeps firing for as long as pressure lasts (“non-adapting”)</td></tr>
+<tr><td>Signals</td><td>Changes: onset, offset and the <i>rate</i> at which pressure is applied or removed</td><td>Sustained pressure, shape and size of objects</td></tr>
+</table></div>
+<h4>Why Pacinian corpuscles adapt rapidly (Fig 21-10)</h4>
+<ul>
+<li>It is a rapidly adapting mechanoreceptor found in skin, joint capsules and the mesentery of the abdominal wall. It has many concentric, fluid-filled <b>lamellae of connective tissue</b> forming a capsule around the nerve terminal.</li>
+<li>When a stimulus first presses, the capsule deforms and compresses the terminal, opening stretch-sensitive channels: response at stimulus onset (one or two APs).</li>
+<li>During <b>steady pressure</b> the capsule changes shape and the outer lamellae are compressed, <b>absorbing the static load</b>; deformation no longer reaches the inner core, so the nerve goes silent.</li>
+<li>When pressure is <b>removed</b>, the capsule resumes its shape; the tissue movement stimulates the terminal again: the <b>“off” response</b>.</li>
+<li>Rapid movements pass through the lamellae to the nerve terminal. A <b>110 Hz vibration</b> gives a receptor potential and an AP for each vibratory cycle, so Pacinian corpuscles are <b>sensitive to vibration</b>.</li>
+</ul>
+<div class="note"><b>Lecturer’s note:</b> pressing on the receptor lets ions flow in through channels; then the receptor “gets used to” the pressure, ions stop entering, and you stop feeling it. Pacinian corpuscles detect changes in pressure (e.g. vibration) very well. A steady, blunt stimulus gives fewer spikes than a changing one.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-10" data-lec="3"><summary>10. Rate coding: intensity, duration, timing (Fig 21-8)</summary><div class="body">
+<p><b>Rate coding:</b> the higher the stimulus intensity, the more action potentials per second.</p>
+<ul>
+<li><b>Intensity</b> is signalled by the firing rate of individual receptors; <b>duration</b> by the time course of firing.</li>
+<li><b>Slowly adapting receptor:</b> responds as long as pressure is applied. The <b>total number of action potentials</b> during the stimulus is proportional to the amount of pressure. Firing is higher at first contact than during steady pressure.</li>
+<li><b>Rapidly adapting receptor:</b> responds at the beginning and end of the stimulus, signalling the <b>rate</b> at which the probe is applied and removed; silent when pressure is maintained at a fixed amplitude. <b>Rapid motion</b> evokes a brief burst of high-frequency spikes; <b>slow motion</b> evokes a longer-lasting, low-frequency train.</li>
+<li>When the probe is removed from the skin, spike activity ceases.</li>
+</ul>
+<h4>Where the four attributes come from</h4>
+<ul>
+<li><b>Modality:</b> which receptor type fires.</li>
+<li><b>Location:</b> the spatial distribution of the population of activated receptors; each receptor fires only if the stimulus falls in its <b>receptive field</b>.</li>
+<li><b>Intensity:</b> firing rate. <b>Timing:</b> time course of firing.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-11" data-lec="3"><summary>11. SA1 fibres encode shape and size (Fig 23-7)</summary><div class="body">
+<p>Slowly adapting type 1 (SA1) fibres encode the <b>shape and size of objects</b> touching the hand.</p>
+<ul>
+<li>The area of contact determines the firing rate and the number of SA1 fibres stimulated.</li>
+<li>A small, sharply pointed probe concentrates all force in a small area: a <b>small population fires intensely</b>.</li>
+<li>A medium probe excites more receptors, but the spread of force lowers peak firing; it feels less sharp.</li>
+<li>A large round probe excites many receptors across the finger at <b>low rates</b>; the sensation is diffuse.</li>
+<li>During steady pressure the firing rate is proportional to the <b>curvature</b> of the probe. The highest rates come from the smallest probe; the weakest from flat or gently rounded probes.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Probe curvature (1/in)</th><th>0 (flat)</th><th>2</th><th>2.7</th><th>4</th><th>8</th><th>16 (smallest)</th></tr>
+<tr><td>Firing rate (impulses/s)</td><td>2.0</td><td>4.3</td><td>8.3</td><td>11.3</td><td>17.0</td><td>23.7</td></tr>
+</table></div>
+<div class="note"><b>Lecturer’s note:</b> firing rate increases if the object is smaller in diameter, because a thinner object produces more pressure on the skin. Higher intensity gives a higher firing rate.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-12" data-lec="3"><summary>12. Receptive fields and two-point discrimination</summary><div class="body">
+<p>The <b>receptive field</b> of a sensory neuron is the spatial domain where stimulation excites or inhibits that neuron. For a touch neuron it is the skin region where gentle touch evokes action potentials, and it includes all the receptive endings and terminal branches of that sensory fibre.</p>
+<ul>
+<li>If a single fibre is stimulated electrically with a microelectrode, the person feels touch localized to its receptive field. The area where the sensation arises is the <b>perceptive field</b>.</li>
+<li>A patch of skin contains <b>many overlapping receptive fields</b>, so sensations shift smoothly from one neuron to the next.</li>
+<li>Axon terminals of sensory neurons in the CNS are arranged <b>somatotopically</b> (an orderly map of the body).</li>
+<li><b>More overlapping fields at a location means finer ability to tell where the touch is</b> (lecturer’s note). This is measured by <b>two-point discrimination</b>.</li>
+</ul>
+<h4>Two-point discrimination (Fig 23-5)</h4>
+<ul>
+<li>The two-point threshold is the <b>minimum distance at which two stimuli are felt as distinct</b>.</li>
+<li>About <b>2 mm</b> on the fingers; up to about <b>10 mm</b> on the palm; about <b>40 mm</b> on the arm, thigh and back.</li>
+<li>The thresholds match the <b>diameters of receptive fields</b> in those regions.</li>
+<li>The <b>greatest discriminative capacity</b> is in the <b>fingertips, lips and tongue</b> (smallest receptive fields). The hand is far better than the back; the front of the body generally has better two-point discrimination than the back.</li>
+</ul>
+<div class="note"><b>Clinical/research link:</b> it is possible to stimulate an afferent nerve to simulate touch at a specific receptor site in people with a prosthesis or spinal cord injury.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-13" data-lec="3"><summary>13. Fine touch and proprioception use large myelinated fibres (Table 22-2)</summary><div class="body">
+<div class="tbl"><table>
+<tr><th>Receptor</th><th>Fibre group</th><th>Fibre name</th><th>Modality</th></tr>
+<tr><td>Meissner corpuscle</td><td>A-alpha, beta</td><td>RA1</td><td>Stroking, flutter</td></tr>
+<tr><td>Merkel disk receptor</td><td>A-alpha, beta</td><td>SA1</td><td>Pressure, texture</td></tr>
+<tr><td>Pacinian corpuscle</td><td>A-alpha, beta</td><td>RA2</td><td>Vibration</td></tr>
+<tr><td>Ruffini ending</td><td>A-alpha, beta</td><td>SA2</td><td>Skin stretch</td></tr>
+<tr><td>Hair (tylotrich, guard)</td><td>A-alpha, beta</td><td>G1, G2</td><td>Stroking, fluttering</td></tr>
+<tr><td>Hair-down</td><td>A-delta</td><td>D</td><td>Light stroking</td></tr>
+<tr><td>Field</td><td>A-alpha, beta</td><td>F</td><td>Skin stretch</td></tr>
+<tr><td>C mechanoreceptor</td><td>C</td><td>–</td><td>Stroking, erotic touch</td></tr>
+<tr><td>Cool receptors</td><td>A-delta</td><td>III</td><td>Skin cooling (&lt;25 °C)</td></tr>
+<tr><td>Warm receptors</td><td>C</td><td>IV</td><td>Skin warming (&gt;35 °C)</td></tr>
+<tr><td>Heat nociceptors</td><td>A-delta</td><td>III</td><td>Hot temperature (&gt;45 °C)</td></tr>
+<tr><td>Cold nociceptors</td><td>C</td><td>IV</td><td>Cold temperature (&lt;5 °C)</td></tr>
+<tr><td>Mechanical nociceptors</td><td>A-delta</td><td>III</td><td>Sharp, pricking pain</td></tr>
+<tr><td>Thermal-mechanical (heat)</td><td>A-delta</td><td>III</td><td>Burning pain</td></tr>
+<tr><td>Thermal-mechanical (cold)</td><td>C</td><td>IV</td><td>Freezing pain</td></tr>
+<tr><td>Polymodal nociceptors</td><td>C</td><td>IV</td><td>Slow, burning pain</td></tr>
+<tr><td>Muscle spindle primary</td><td>A-alpha</td><td>Ia</td><td>Muscle length and speed</td></tr>
+<tr><td>Muscle spindle secondary</td><td>A-beta</td><td>II</td><td>Muscle stretch</td></tr>
+<tr><td>Golgi tendon organ</td><td>A-alpha</td><td>Ib</td><td>Muscle contraction</td></tr>
+<tr><td>Joint capsule receptors</td><td>A-beta</td><td>II</td><td>Joint angle</td></tr>
+<tr><td>Stretch-sensitive free endings</td><td>A-delta</td><td>III</td><td>Excess stretch or force</td></tr>
+</table></div>
+<div class="note"><b>Key point:</b> fine touch and proprioception are mediated by <b>large-diameter myelinated fibres (A-alpha and A-beta)</b>, the most used fibres for touch and proprioception. The thin ones (A-delta, C) carry pain and temperature.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-14" data-lec="3"><summary>14. The dorsal root ganglion cell and how sensory fibres travel</summary><div class="body">
+<p>The <b>dorsal root ganglion neuron</b> is the primary sensory receptor cell of the somatosensory system (Fig 22-1).</p>
+<ul>
+<li>Its <b>cell body lies in a dorsal root ganglion</b> next to the spinal cord.</li>
+<li>Its axon has <b>two branches</b>: one goes to the periphery, where its specialized terminal holds the receptor for a particular form of stimulus energy; the other goes to the spinal cord or brain stem, where the afferent signals are processed.</li>
+<li>Afferent fibres enter via the <b>dorsal root</b> (to the dorsal horn); efferent fibres leave via the <b>ventral root</b>; both travel together in a spinal nerve. The signal first reaches the <b>dorsal horn</b>.</li>
+</ul>
+<div class="flow"><span>Receptor in skin/muscle</span><i>→</i><span>Afferent axon</span><i>→</i><span>Cell body in dorsal root ganglion</span><i>→</i><span>Dorsal root</span><i>→</i><span>Dorsal horn</span></div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-15" data-lec="3"><summary>15. Dermatomes (Fig 22-9)</summary><div class="body">
+<div class="note"><b>Definition:</b> a dermatome is the area of skin (and deeper tissues) supplied mainly by sensory fibres from <b>one spinal nerve (dorsal) root</b>.</div>
+<ul>
+<li>The dermatomes of the <b>31 pairs</b> of dorsal root nerves are projected on to the body surface and labelled by the foramen through which each nerve enters the spinal cord.</li>
+<li>Roots: <b>8 cervical (C), 12 thoracic (T), 5 lumbar (L), 5 sacral (S) and a single coccygeal</b>, numbered rostrocaudally in each division of the vertebral column.</li>
+<li><b>C1 has no dorsal root</b>, only a ventral (motor) root.</li>
+<li>Facial skin, cornea, scalp, dura and intra-oral regions are supplied by the ophthalmic (I), maxillary (II) and mandibular (III) divisions of the <b>trigeminal nerve (cranial nerve V)</b>.</li>
+<li><b>Clinical use:</b> dermatome maps are an important diagnostic tool to locate injury to the spinal cord and dorsal roots. If a particular root is injured, you get numbness in its dermatome.</li>
+<li>Boundaries are <b>less distinct</b> than maps show, because the axons of one dorsal root come from several peripheral nerves, and each peripheral nerve gives fibres to several adjacent dorsal roots (overlap).</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-16" data-lec="3"><summary>16. Ascending pathways (Fig 22-11; not required now)</summary><div class="body">
+<div class="note"><b>The slide marks the cortical anatomy as “Not required now”.</b> The doctor explained the dorsal column pathway only briefly. Read for understanding.</div>
+<h4>Dorsal column–medial lemniscal system (touch and limb proprioception)</h4>
+<div class="flow"><span>Large myelinated afferent</span><i>→</i><span>Branches: one to spinal grey matter, one up the <b>ipsilateral dorsal column</b></span><i>→</i><span>Medulla (gracile/cuneate nuclei)</span><i>→</i><span>Second-order fibres <b>cross the midline</b></span><i>→</i><span>Medial lemniscus</span><i>→</i><span>Thalamus (ventral posterior nuclei)</span><i>→</i><span>Primary somatosensory cortex</span></div>
+<h4>Anterolateral system (pain, itch, temperature, visceral)</h4>
+<ul>
+<li>Carried by <b>small-diameter myelinated and unmyelinated</b> fibres that end in the dorsal horn.</li>
+<li>The information <b>crosses the midline within the spinal cord</b> and ascends in the contralateral anterolateral system to brain stem and thalamus.</li>
+<li>Fibres ending in the brain stem form the spinoreticular and spinomesencephalic tracts; the rest form the spinothalamic tract.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l3-17" data-lec="3"><summary>17. The cerebral cortex and the sensory homunculus</summary><div class="body">
+<ul>
+<li>The <b>postcentral gyrus</b> lies immediately behind the <b>central sulcus</b> in the <b>parietal lobe</b>.</li>
+<li>It is the <b>primary sensory (somatosensory) cortex</b> and is organized <b>somatotopically</b>: the “<b>sensory homunculus</b>”.</li>
+<li><i>Homunculus</i> is Latin for “little human”: the body parts are represented over the cortical surface.</li>
+<li>Some areas are <b>over- or under-represented</b>. Representation depends on <b>how many receptors</b> a body region has (receptor density), not on its physical size. Lips, tongue and fingers occupy large areas; trunk and legs occupy small areas.</li>
+<li>The <b>right body is represented on the left cortex</b> (and vice versa).</li>
+<li>For contrast, the primary motor cortex lies in front of the central sulcus.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+</section>
+
+<section id="l3-sum">
+  <div class="k">Lecture 3 &middot; Exam notes</div>
+  <h2>High-yield summary</h2>
+  <div class="g">
+    <div class="card"><h3>Definitions</h3><ul>
+      <li><b>Proprioception:</b> muscle length, muscle force, joint angle.</li>
+      <li><b>Intrafusal fibre:</b> thin fibre inside the spindle; innervated by gamma motoneurons.</li>
+      <li><b>Dermatome:</b> skin (and deeper tissue) supplied by one dorsal root.</li>
+      <li><b>Receptive field:</b> area where stimulation excites or inhibits that neuron.</li>
+      <li><b>Rate coding:</b> higher intensity gives more APs per second.</li></ul></div>
+    <div class="card"><h3>Spindle</h3><ul>
+      <li>In <b>parallel</b> with muscle fibres; detects <b>stretch</b>.</li>
+      <li><b>Ia:</b> length + rate of change; big, fast; stretch reflex.</li>
+      <li><b>II:</b> static length; posture.</li>
+      <li><b>Gamma:</b> keeps spindle taut; alpha-gamma co-activation prevents slack.</li>
+      <li>Static gamma: length. Dynamic gamma: speed.</li></ul></div>
+    <div class="card"><h3>Transduction</h3><ul>
+      <li>Stretch-sensitive channels linked to cytoskeleton (spectrin).</li>
+      <li>More stretch/pressure: channels open more often and longer: more depolarization.</li>
+      <li>Receptor potential proportional to velocity and amplitude of stretch.</li>
+      <li>Fixed-length stretch: receptor potential decays to a lower value.</li></ul></div>
+    <div class="card"><h3>Touch receptors</h3><ul>
+      <li><b>Meissner RA1:</b> superficial, small field, flutter/slip.</li>
+      <li><b>Merkel SA1:</b> superficial, small field, pressure/texture/shape.</li>
+      <li><b>Pacinian RA2:</b> deep, large field, vibration.</li>
+      <li><b>Ruffini SA2:</b> deep, large field, skin stretch.</li></ul></div>
+    <div class="card"><h3>Fibres</h3><ul>
+      <li>Ia and Ib 12–20 µm, II 6–12 µm, III 2–6 µm, IV 0.5–2 µm unmyelinated.</li>
+      <li>Larger diameter: faster (A-alpha 72–120 m/s; A-beta 36–72; A-delta 4–36; C 0.4–2).</li>
+      <li>Fine touch and proprioception: A-alpha and A-beta.</li></ul></div>
+    <div class="card"><h3>Cortex and spinal anatomy</h3><ul>
+      <li>Cell body in <b>dorsal root ganglion</b>; enters dorsal horn.</li>
+      <li>31 spinal nerve pairs: 8 C, 12 T, 5 L, 5 S, 1 Co; C1 has no dorsal root.</li>
+      <li>Homunculus in <b>postcentral gyrus</b>; distortion = receptor density; right body on left cortex.</li></ul></div>
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Compare</th><th>Rapidly adapting</th><th>Slowly adapting</th></tr>
+    <tr><td>Receptors</td><td>Meissner, Pacinian</td><td>Merkel, Ruffini</td></tr>
+    <tr><td>Firing during steady pressure</td><td>Onset and offset only</td><td>Sustained</td></tr>
+    <tr><td>Encodes</td><td>Changes, vibration, slip</td><td>Pressure, shape, size, stretch</td></tr>
+  </table></div>
+  <div class="note"><b>Key values:</b> two-point threshold about 2 mm (fingers), 10 mm (palm), 40 mm (arm, thigh, back). SA1 firing for the smallest probe 23.7 impulses/s vs 2.0 for a flat probe. Pacinian response to 110 Hz vibration: one AP per cycle.</div>
+</section>
+
+<section id="l3-rev">
+  <div class="k">Lecture 3 &middot; Active recall</div>
+  <h2>Rapid revision</h2>
+  <p class="mu">Click a question to reveal the answer. Try to answer out loud first.</p>
+  <div id="fc3"></div>
+</section>
+
+<section id="l3-quiz">
+  <div class="k">Lecture 3 &middot; Test yourself</div>
+  <h2>Practice MCQs</h2>
+  <p class="mu">Includes the 20 practice questions from the lecture sheet plus extra questions to cover the whole lecture.</p>
+  <div id="qz3"></div>
+  <div id="sc3">Score: 0 / 0</div>
+  <div><button class="r" id="rs3">Reset quiz</button> <button class="gh" id="rw3">Retry incorrect only</button></div>
+  <div class="note final" id="fn3"></div>
+</section>
+
+<!-- ===================== LECTURE 4 ===================== -->
+<section id="l4-break">
+  <div class="k">Lecture 4 &middot; Somatic reflexes and somatosensory integration</div>
+  <h2>Full breakdown</h2>
+  <p class="mu">Spinal reflexes and sensorimotor integration, plus receptor potentials.</p>
+  <div><button class="gh" data-open="4">Expand all</button><button class="gh" data-close="4">Collapse all</button></div>
+
+<details class="card topic" data-id="l4-1" data-lec="4"><summary>1. Objectives and the sensory-to-motor chain</summary><div class="body">
+<p>After this session you should be able to: describe how a stimulus is <b>transduced</b>; explain what a <b>receptor potential</b> is and its characteristics; describe the difference between an action potential in an <b>afferent fibre</b> vs an <b>interneuron or efferent nerve</b>; describe the <b>reflex arc</b> and function of proprioceptive reflexes from <b>muscle spindle afferents</b> and <b>Golgi tendon organs</b>; describe a <b>polysynaptic spinal reflex</b> and the reflex arc and function of the <b>flexion withdrawal</b> and <b>crossed extension</b> reflexes; and describe how the <b>gain of reflexes</b> can be controlled.</p>
+<div class="flow"><span>Stimulus</span><i>→</i><span>Sensory transduction</span><i>→</i><span>Sensory transmission (afferent)</span><i>→</i><span>Synapse(s)</span><i>→</i><span>Motor output (efferents)</span><i>=</i><span>Reflex</span></div>
+<p>The same chain leads to <b>sensation and perception</b> when the signal also ascends to the brain. A reflex is the version that ends in a motor output.</p>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-2" data-lec="4"><summary>2. Sensory transduction and the receptor potential</summary><div class="body">
+<p>A stimulus alters the receptor’s <b>permeability</b>, producing a <b>graded receptor potential</b>.</p>
+<ul>
+<li>Stimulation usually opens channels, giving an <b>inward flux of Na⁺</b> that <b>depolarizes</b> the receptor membrane.</li>
+<li>Receptor potentials have <b>no refractory period</b>, so <b>summation</b> of rapidly successive stimuli is possible.</li>
+</ul>
+<h4>Coding of stimulus strength (Fig 6-3)</h4>
+<div class="flow"><span>Stronger stimulus</span><i>→</i><span>Greater permeability change</span><i>→</i><span>Larger receptor potential</span><i>→</i><span>Higher rate of APs in the afferent</span><i>→</i><span>More neurotransmitter at afferent terminals</span></div>
+<ul>
+<li>In the figure, a second, larger stimulus gives a larger receptor potential, more frequent spikes in the afferent fibre and more transmitter release at the terminals.</li>
+<li>The receptor potential stays up during the stimulus and then returns to rest when the stimulus goes off; the AP train follows its size.</li>
+<li>Figure-focus question: an acid-monitoring neuron would fire more if body fluid became too acidic (stronger stimulus), and less if too alkaline, assuming it is excited by acid.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-3" data-lec="4"><summary>3. Receptor potential to action potential (Fig 6-1)</summary><div class="body">
+<h4>(a) Receptor is a specialized afferent ending (e.g. Meissner, Pacinian)</h4>
+<ol>
+<li>Stimulus opens <b>stimulus-sensitive channels</b> (non-specific cation); net Na⁺ entry gives the <b>receptor potential</b>.</li>
+<li>Local current flow between the depolarized ending and the adjacent region opens <b>voltage-gated Na⁺ channels</b>.</li>
+<li>Na⁺ entry <b>initiates an action potential</b> in the afferent fibre, which self-propagates to the CNS.</li>
+</ol>
+<h4>(b) Receptor is a separate cell (e.g. Merkel disc)</h4>
+<ol>
+<li>Stimulus opens stimulus-sensitive channels; Na⁺ entry gives a receptor potential in the receptor cell.</li>
+<li>The local depolarization opens <b>voltage-gated Ca²⁺ channels</b>.</li>
+<li>Ca²⁺ entry triggers <b>exocytosis of neurotransmitter</b>.</li>
+<li>Neurotransmitter binds <b>chemically gated receptor-channels</b> on the afferent ending, letting Na⁺ in.</li>
+<li>The resulting depolarization opens voltage-gated Na⁺ channels in the adjacent region.</li>
+<li>Na⁺ entry initiates an AP in the afferent fibre that propagates to the CNS.</li>
+</ol>
+<div class="note"><b>Difference:</b> in (a) the receptor potential is produced in the afferent ending itself; in (b) a separate receptor cell must release transmitter onto the afferent first.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-4" data-lec="4"><summary>4. Where action potentials start (Fig 6-2)</summary><div class="body">
+<div class="tbl"><table>
+<tr><th>Neuron</th><th>Site of AP initiation</th><th>Direction of propagation</th></tr>
+<tr><td>Afferent neuron</td><td>The <b>peripheral end next to the receptor</b></td><td>Towards the cell body and CNS</td></tr>
+<tr><td>Interneuron</td><td>The <b>axon hillock</b> (start of the axon next to the cell body)</td><td>Away from the cell body along the axon</td></tr>
+<tr><td>Efferent neuron</td><td>The <b>axon hillock</b></td><td>Away from the cell body to the effector</td></tr>
+</table></div>
+<p>Remember: in interneurons and efferent neurons, APs are initiated at the axon hillock; in an afferent neuron the initiation site is right next to the receptor.</p>
+<h4>Receptor potential vs action potential</h4>
+<div class="tbl"><table>
+<tr><th>Feature</th><th>Receptor potential</th><th>Action potential in afferent</th></tr>
+<tr><td>Type</td><td>Graded; size follows stimulus strength</td><td>Frequency (rate) follows stimulus strength</td></tr>
+<tr><td>Refractory period</td><td>None, so summation is possible</td><td>Present (self-propagating spike)</td></tr>
+<tr><td>Produced by</td><td>Stimulus-sensitive channels (Na⁺ in)</td><td>Voltage-gated Na⁺ channels</td></tr>
+</table></div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-5" data-lec="4"><summary>5. Spinal cord anatomy review (Fig 5-24)</summary><div class="body">
+<ul>
+<li><b>White matter:</b> axons of descending or ascending neurons.</li>
+<li><b>Gray matter:</b> neurons and glia living within the cord.</li>
+<li><b>Dorsal roots:</b> afferent (sensory) axons <b>entering</b> the cord. The cell bodies of afferent neurons are in the <b>dorsal root ganglion</b>.</li>
+<li><b>Ventral roots:</b> efferent (motor) axons <b>exiting</b> the cord. Cell bodies of efferent neurons are in the gray matter.</li>
+<li><b>Dorsal horn:</b> sensory processing. <b>Ventral horn:</b> motor output.</li>
+<li>Afferent and efferent fibres are enclosed together within a <b>spinal nerve</b>.</li>
+<li><b>Interneurons</b> in the gray matter link afferents to efferents.</li>
+</ul>
+<div class="note">The spinal cord is not just a highway carrying messages up and down to and from the brain; it does much more, including reflex integration.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-6" data-lec="4"><summary>6. Somatic reflexes and the reflex arc</summary><div class="body">
+<p><b>Somatic reflexes</b> are automatic responses brought about by <b>skeletal muscle contraction</b> that take place <b>without conscious effort</b>. Example: protective reflexes to withdraw from painful stimuli.</p>
+<h4>Components of a reflex arc (Fig 8.26)</h4>
+<div class="flow"><span>Receptor</span><i>→</i><span>Afferent pathway</span><i>→</i><span>Integrating centre (spinal cord)</span><i>→</i><span>Efferent pathway</span><i>→</i><span>Effector (muscle)</span></div>
+<ul>
+<li><b>Monosynaptic</b> reflex: one synapse between afferent and motoneuron.</li>
+<li><b>Disynaptic / polysynaptic</b> reflex: one or more interneurons are inserted.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-7" data-lec="4"><summary>7. Muscle proprioceptors: spindles and Golgi tendon organs</summary><div class="body">
+<div class="tbl"><table>
+<tr><th></th><th>Muscle spindle</th><th>Golgi tendon organ</th></tr>
+<tr><td>Senses</td><td>Stretch; changes in muscle <b>length</b></td><td><b>Tension</b> (force)</td></tr>
+<tr><td>Arrangement</td><td>In <b>parallel</b> with muscle fibres</td><td>In <b>series</b> with muscle fibres</td></tr>
+<tr><td>Reports</td><td>Static and dynamic length (stretch)</td><td>Total tension in the muscle</td></tr>
+<tr><td>Afferent</td><td>Ia and II</td><td>Ib</td></tr>
+<tr><td>Efferent control</td><td>Gamma motoneurons innervate intrafusal fibres and regulate sensitivity</td><td>None; activated by muscle force (e.g. during contraction)</td></tr>
+</table></div>
+<p><b>Proprioception</b> = awareness of the position of limbs and body parts in space and of the strength and contraction during movement. Spindle and Golgi tendon organ afferents contribute to this but also drive <b>reflexes</b>.</p>
+<h4>Spindle recap (as in Lecture 3)</h4>
+<ul>
+<li>Spindle = intrafusal fibres wrapped by sensory endings; Ia sensitive to <b>change</b> in length; group II convey <b>static length</b>; large-diameter myelinated afferents; intrafusal fibres innervated by gamma motoneurons.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-8" data-lec="4"><summary>8. The monosynaptic stretch reflex (knee jerk)</summary><div class="body">
+<p>Other names: <b>stretch reflex, tendon tap reflex, knee-jerk reflex, patellar tendon reflex, monosynaptic reflex, group Ia reflex</b>.</p>
+<div class="flow"><span>Tap on patellar tendon</span><i>→</i><span>Quadriceps stretched</span><i>→</i><span>Muscle spindles stretched (Ia afferent fires)</span><i>→</i><span>Ia synapses directly on alpha motoneuron in cord</span><i>→</i><span>Quadriceps (extensor) contracts</span></div>
+<ol>
+<li>Muscle spindles detect stretch and send APs to the CNS (afferent).</li>
+<li>The Ia afferent <b>excites alpha motoneurons</b> of the stretched muscle <b>and its synergists</b> (efferent).</li>
+<li>The Ia afferent also activates an <b>inhibitory interneuron</b> that <b>inhibits the antagonists</b> (this part is disynaptic/polysynaptic).</li>
+</ol>
+<h4>The load-on-the-arm example (Fig 13.3)</h4>
+<ol>
+<li>A load is added to the muscle.</li>
+<li>Muscle and spindle stretch as the arm extends; spindle afferents fire more frequently.</li>
+<li>Reflex contraction through alpha motoneurons restores arm position and prevents damage from over-stretching. As the muscle contracts, afferent firing <b>decreases</b>: <b>negative feedback</b>.</li>
+</ol>
+<div class="note"><b>Figure question answer:</b> the neuron that fires to contract the extrafusal fibres is the <b>muscle alpha motor neuron</b> (option a).</div>
+<h4>Points about the stretch reflex</h4>
+<ul>
+<li>Almost <b>all muscles</b> have a stretch reflex; the patellar tendon/quadriceps is just convenient to test.</li>
+<li>It is <b>graded</b>: a harder tap gives a larger response (up to a point).</li>
+<li>It occurs <b>in addition to</b> other actions of the large-diameter fibres, e.g. travelling up the cord to higher centres (axon collaterals are abundant in the nervous system).</li>
+<li>It can be elicited by <b>electrical stimulation of the peripheral nerve</b>: then called the <b>H reflex</b> (after Hoffmann).</li>
+<li>In daily life it is elicited by <b>moving the limb</b>.</li>
+</ul>
+<h4>Uses of the stretch reflex</h4>
+<ul>
+<li>Rapid correction of <b>unexpected muscle stretch</b> (can prevent you from falling).</li>
+<li>Sensory feedback from muscles helps <b>activate</b> them during movement.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-9" data-lec="4"><summary>9. Controlling the stretch reflex: spindle (gamma), synapse, motoneuron</summary><div class="body">
+<div class="flow"><span>Sensory afferent (muscle spindle)</span><i>→</i><span>Synapse in spinal cord</span><i>→</i><span>Motoneuron (efferent)</span></div>
+<p>The monosynaptic arc has three sites where the “gain” of the reflex can be changed.</p>
+<h4>1. The sensory afferent (muscle spindle)</h4>
+<ul>
+<li>Spindle excitability is controlled by the nervous system through <b>gamma motoneurons</b> to the intrafusal fibres.</li>
+<li>Tension in the intrafusal fibres sets spindle sensitivity. <b>More gamma activity gives higher spindle tone and sensitivity, so more transduction and output.</b></li>
+<li>If the extrafusal muscle shortens with alpha activity alone, the spindle goes slack and Ia fibres become unresponsive; <b>co-activating alpha and gamma</b> keeps the spindle responsive (Ia response “filled in”).</li>
+</ul>
+<h4>2. The synapse: presynaptic inhibition</h4>
+<ul>
+<li>Controls the strength of the connection between the afferent and the motoneuron.</li>
+<li>Due to <b>GABAergic axo-axonal synapses</b> on the afferent terminal, which <b>decrease the transmitter released</b> from the presynaptic terminal.</li>
+</ul>
+<h4>3. The motoneuron</h4>
+<ul>
+<li>If motoneurons are more excitable, the same stretch gives a <b>larger contraction</b> (new motoneurons are recruited, others fire more APs).</li>
+<li>Example: the <b>Jendrassik manoeuvre</b> gives background excitation to leg motoneurons and increases the stretch reflex.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-10" data-lec="4"><summary>10. Postsynaptic potentials and presynaptic inhibition (Figs 4-16, 4-17)</summary><div class="body">
+<h4>Revision of postsynaptic potentials (Fig 4-16)</h4>
+<div class="tbl"><table>
+<tr><th>Situation</th><th>What happens</th></tr>
+<tr><td>(a) No summation</td><td>A second EPSP arriving after the first has died off has the same size; threshold is not reached.</td></tr>
+<tr><td>(b) Temporal summation</td><td>A second EPSP before the first dies off adds onto it; may bring the cell to threshold.</td></tr>
+<tr><td>(c) Spatial summation</td><td>Simultaneous EPSPs from two or more excitatory inputs (Ex1 + Ex2) sum and may reach threshold.</td></tr>
+<tr><td>(d) EPSP–IPSP cancellation</td><td>Simultaneous excitatory (Ex1) and inhibitory (In1) input cancel; no change in potential.</td></tr>
+</table></div>
+<p class="mu">In reality many EPSPs must sum to reach threshold; the figure simplifies to two. A neuron simulator link (Neuronify) is given for practice.</p>
+<h4>Presynaptic inhibition (Fig 4-17)</h4>
+<ul>
+<li>Excitatory terminal A ends on cell C and is itself innervated by <b>inhibitory terminal B</b>.</li>
+<li>Stimulating A alone gives an EPSP in C. Stimulating A and B together <b>prevents release</b> from A, so <b>no EPSP</b> appears in C.</li>
+<li>It <b>selectively</b> depresses input from A without suppressing other excitatory inputs: stimulating D still gives an EPSP even with B active, because B only inhibits A.</li>
+<li>Figure-focus question (D innervated by excitatory terminal E): by the same logic, stimulating E and D together would <b>increase</b> release from D and give a larger EPSP in C (presynaptic facilitation).</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-11" data-lec="4"><summary>11. Jendrassik manoeuvre</summary><div class="body">
+<p>A way to <b>enhance reflex testing</b> by adding background excitation to motoneurons, so the reflex is larger and easier to see.</p>
+<div class="tbl"><table>
+<tr><th>Reflex being tested</th><th>Reinforcing action (from the slide)</th></tr>
+<tr><td>Lower extremity (e.g. patellar)</td><td>Interlock the fingers and pull the elbows apart</td></tr>
+<tr><td>Upper extremity (e.g. biceps)</td><td>Cross the ankles and attempt to abduct (pull apart) the legs</td></tr>
+</table></div>
+<p>The effort in a distant muscle group raises the excitability of the motoneurons for the tested muscle, which is why the response grows (control site number 3).</p>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-12" data-lec="4"><summary>12. Golgi tendon organs and Ib reflexes</summary><div class="body">
+<p>Golgi tendon organs are <b>tension receptors</b> in series with the muscle fibres; their afferents are <b>group Ib</b> (slightly smaller than Ia spindle afferents). They are activated by <b>muscle force</b>, e.g. during contraction.</p>
+<h4>Receptor mechanism (Fig 35-6a)</h4>
+<p>When the tendon organ is stretched (usually by muscle contraction), the <b>Ib afferent axon is compressed by collagen fibres</b> and its firing rate increases.</p>
+<h4>Classical reflex action (at rest)</h4>
+<ul>
+<li>Activation at rest leads to <b>inhibition of motoneurons</b> innervating the <b>same muscle</b> (roughly the opposite of the stretch reflex), through <b>Ib inhibitory interneurons</b>.</li>
+<li>In the figure Ib input inhibits the same muscle and synergists, and excites the antagonist.</li>
+<li>It was therefore thought to <b>protect muscle from damage</b> by excessive force.</li>
+</ul>
+<div class="note"><b>The “protection” idea is outdated.</b> Dr McCrea and colleagues (University of Manitoba) showed <b>excitatory Golgi tendon reflexes during locomotion</b>, which reinforce motor activity and increase muscle force production.</div>
+<h4>State-dependent reflex reversal (Fig 35-7)</h4>
+<div class="tbl"><table>
+<tr><th>State</th><th>Interneurons</th><th>Effect on ankle extensor motoneuron</th></tr>
+<tr><td>Resting</td><td>Ib inhibitory interneurons active</td><td><b>Hyperpolarization</b> (inhibition)</td></tr>
+<tr><td>Walking</td><td>Ib inhibitory interneurons <b>inhibited</b>; excitatory interneurons <b>facilitated</b> by the command system for walking</td><td><b>Depolarization</b> (about 4 mV in the record): an excitatory Ib pathway opens</td></tr>
+</table></div>
+<h4>Why the Golgi tendon reflex is complicated</h4>
+<p>Ib inhibitory interneurons receive input not only from tendon organs but also from <b>muscle spindles, joint and cutaneous receptors and descending pathways</b> (convergence).</p>
+<h4>Proprioceptive reflexes during movement</h4>
+<ul>
+<li>Stretch reflexes allow rapid correction of unanticipated changes in muscle length (this can keep you from falling).</li>
+<li>Both Golgi tendon organ and spindle afferents give ongoing feedback, <b>reinforce</b> the motor pattern and can <b>alter</b> it if appropriate (e.g. stumbling).</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-13" data-lec="4"><summary>13. Flexion withdrawal reflex</summary><div class="body">
+<p>Also called the flexion reflex or withdrawal reflex. Example: touching a hot pot (Fig 8.26).</p>
+<ol>
+<li>A painful heat stimulus activates <b>thermal pain receptors</b> in the finger.</li>
+<li>APs are generated in the <b>afferent pathway</b> and travel to the spinal cord through the <b>dorsal root</b>.</li>
+<li>The <b>spinal cord is the integrating centre</b>, stimulating:
+  <ul><li><b>Excitatory interneurons</b> that excite efferent motoneurons to the <b>biceps</b> (flexor).</li>
+  <li><b>Inhibitory interneurons</b> that inhibit efferent motoneurons to the <b>triceps</b> (extensor).</li>
+  <li>Interneurons that are part of the <b>ascending pathway to the brain</b>.</li></ul></li>
+<li>One efferent pathway makes the biceps contract; the other relaxes the triceps, preventing counterproductive contraction of the antagonist.</li>
+<li>The biceps are the effectors; flexion of the elbow <b>pulls the hand away</b>, completing the reflex arc.</li>
+</ol>
+<ul>
+<li>Arc: nociceptive afferent → interneuron(s) → motoneurons; <b>at least disynaptic, maybe polysynaptic</b>.</li>
+<li>Result: <b>flexor motoneurons of the whole limb activated</b>, extensor motoneurons inhibited, extremity rapidly moved away (protective).</li>
+<li>It runs <b>in addition to</b> the ascending pathways that give pain perception, but <b>the reflex occurs before the perception of pain</b>.</li>
+</ul>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-14" data-lec="4"><summary>14. Crossed extension reflex</summary><div class="body">
+<p><b>Question on the slide:</b> what would happen if you had a flexion withdrawal reflex in your leg? If the injured leg lifted and nothing supported the body on the other side, you would fall. The crossed extension reflex prevents this.</p>
+<div class="flow"><span>Pain receptor in foot (e.g. nail)</span><i>→</i><span>Nociceptive afferent</span><i>→</i><span>Interneuron(s) in cord</span><i>→</i><span>Ipsilateral: flexors on, extensors off</span><i>/</i><span>Contralateral: extensors on, flexors off</span></div>
+<ul>
+<li>Activated <b>simultaneously</b> whenever a flexion withdrawal is started in a leg.</li>
+<li><b>Crossed</b> means the effect is on the <b>contralateral</b> limb (opposite the stimulus).</li>
+<li>Arc: nociceptive afferents → interneuron(s) → contralateral extensor motoneurons. Like the flexion reflex it is at least disynaptic, probably longer.</li>
+<li>Results: <b>activation of extensor motoneurons</b> and <b>inhibition of flexor motoneurons</b> of the contralateral limb, causing extension and <b>weight support</b>.</li>
+<li>This lets the other limb perform a flexion withdrawal. It keeps you from falling when you step on something sharp.</li>
+</ul>
+<div class="tbl"><table>
+<tr><th>Limb</th><th>Flexors</th><th>Extensors</th><th>Role</th></tr>
+<tr><td>Injured (same side)</td><td>Contract</td><td>Relax</td><td>Withdraw from stimulus</td></tr>
+<tr><td>Opposite side</td><td>Relax</td><td>Contract</td><td>Support full body weight</td></tr>
+</table></div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+
+<details class="card topic" data-id="l4-15" data-lec="4"><summary>15. Controlling di- and polysynaptic reflexes</summary><div class="body">
+<ol>
+<li><b>The afferent:</b> maybe, but not like muscle spindles (which have gamma control).</li>
+<li><b>The synapse(s):</b> e.g. presynaptic inhibition.</li>
+<li><b>The interneuron(s):</b> if the interneuron is inhibited it is harder to activate, so less transmission through the reflex pathway.</li>
+<li><b>The motoneuron:</b> changing its excitability changes the size of the reflex.</li>
+</ol>
+<div class="note"><b>Key difference:</b> interneurons give an <b>additional site of control</b> compared with the monosynaptic reflex.</div>
+<label class="done"><input type="checkbox"> Mark as studied</label></div></details>
+</section>
+
+<section id="l4-sum">
+  <div class="k">Lecture 4 &middot; Exam notes</div>
+  <h2>High-yield summary</h2>
+  <div class="g">
+    <div class="card"><h3>Transduction</h3><ul>
+      <li>Stimulus: permeability change: <b>graded receptor potential</b> (Na⁺ in).</li>
+      <li>No refractory period: summation.</li>
+      <li>Stronger stimulus: bigger RP: higher AP rate.</li>
+      <li>Separate receptor cell (Merkel): Ca²⁺ entry, transmitter release, then AP.</li></ul></div>
+    <div class="card"><h3>AP initiation site</h3><ul>
+      <li>Afferent: peripheral end next to receptor.</li>
+      <li>Interneuron and efferent: axon hillock.</li></ul></div>
+    <div class="card"><h3>Spinal cord</h3><ul>
+      <li>Dorsal root: afferent in. Ventral root: efferent out.</li>
+      <li>Dorsal horn: sensory. Ventral horn: motor.</li>
+      <li>White matter: axons. Gray matter: neurons and glia.</li></ul></div>
+    <div class="card"><h3>Stretch reflex (Ia)</h3><ul>
+      <li>Monosynaptic: spindle Ia → alpha motoneuron of same muscle and synergists.</li>
+      <li>Antagonist inhibited via Ia inhibitory interneuron.</li>
+      <li>Negative feedback; graded; H reflex = electrical.</li>
+      <li>Uses: correct sudden stretch; assist movement.</li></ul></div>
+    <div class="card"><h3>Controlling gain</h3><ul>
+      <li>Afferent: gamma motoneurons (spindle tone).</li>
+      <li>Synapse: presynaptic inhibition (GABA axo-axonal).</li>
+      <li>Motoneuron excitability (Jendrassik).</li>
+      <li>Polysynaptic: also interneurons.</li></ul></div>
+    <div class="card"><h3>Golgi tendon (Ib)</h3><ul>
+      <li>Tension receptor in series; collagen compresses Ib axon.</li>
+      <li>At rest: inhibits same muscle (Ib interneuron).</li>
+      <li>Locomotion: reversed to excitation (McCrea).</li>
+      <li>Protection idea is outdated.</li></ul></div>
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Reflex</th><th>Receptor / afferent</th><th>Synapses</th><th>Output</th><th>Purpose</th></tr>
+    <tr><td>Stretch</td><td>Spindle / Ia</td><td>Monosynaptic (+ inhibitory interneuron for antagonist)</td><td>Same muscle contracts; antagonist inhibited</td><td>Correct stretch, stay upright</td></tr>
+    <tr><td>Golgi tendon</td><td>GTO / Ib</td><td>Interneuron(s)</td><td>Rest: same muscle inhibited. Walking: excited</td><td>Force feedback, reinforce gait</td></tr>
+    <tr><td>Flexion withdrawal</td><td>Nociceptor</td><td>≥ disynaptic</td><td>Whole-limb flexors on, extensors off</td><td>Remove limb from harm</td></tr>
+    <tr><td>Crossed extension</td><td>Nociceptor</td><td>≥ disynaptic</td><td>Contralateral extensors on, flexors off</td><td>Support weight</td></tr>
+  </table></div>
+</section>
+
+<section id="l4-rev">
+  <div class="k">Lecture 4 &middot; Active recall</div>
+  <h2>Rapid revision</h2>
+  <p class="mu">Click a question to reveal the answer.</p>
+  <div id="fc4"></div>
+</section>
+
+<section id="l4-quiz">
+  <div class="k">Lecture 4 &middot; Test yourself</div>
+  <h2>Practice MCQs</h2>
+  <div id="qz4"></div>
+  <div id="sc4">Score: 0 / 0</div>
+  <div><button class="r" id="rs4">Reset quiz</button> <button class="gh" id="rw4">Retry incorrect only</button></div>
+  <div class="note final" id="fn4"></div>
+</section>
+
+</main>
+<footer>Study aid built from the MSS Physiology lecture slides (Lectures 3 and 4). Always check against your official slides and textbooks.</footer>
+<script>
+(function(){
+"use strict";
+var PFX="mss34-";
+function lsGet(k){try{var v=window.localStorage.getItem(PFX+k);return v?JSON.parse(v):null}catch(e){return null}}
+function lsSet(k,v){try{window.localStorage.setItem(PFX+k,JSON.stringify(v))}catch(e){}}
+
+/* ---------- Lecture 3 quiz data: [question, [options], correctIndex, explanation] ---------- */
+var Q3=[
+["Proprioception is best defined as the sense of:",["Head motion and gravity","Skin deformation and motion","Muscle length, muscle force and joint angle","Noxious thermal and chemical stimuli"],2,"Proprioception reports muscle length, muscle force and joint angle (muscle spindles and joint capsules)."],
+["The intrafusal fibres of the muscle spindle are innervated by:",["Alpha motoneurons","Ib afferents","Group III afferents","Gamma motoneurons"],3,"Gamma motoneurons innervate intrafusal fibres; alpha motoneurons innervate the extrafusal fibres."],
+["Which fibre is most sensitive to muscle stretch AND its rate of change?",["Ib fibres","Ia fibres","Group IV fibres","Group II fibres"],1,"Ia fibres (primary spindle endings) signal length and its rate of change."],
+["Group II spindle afferents mainly convey:",["Vibration","Pain and temperature","The static length of the muscle","Muscle tension"],2,"Group II endings report static muscle length (little rate sensitivity). Tension is Ib."],
+["Why are alpha and gamma motoneurons activated together?",["To increase Ia conduction velocity","To keep the spindle taut so Ia fibres keep responding as the muscle shortens","To relax the extrafusal fibres","To abolish the stretch reflex"],1,"Without gamma co-activation the spindle goes slack when the muscle shortens and Ia fibres fall silent."],
+["Activating dynamic gamma motoneurons makes the spindle more sensitive to:",["Muscle tension","Joint angle","The speed at which the muscle is lengthening","The static length of the muscle"],2,"Dynamic gamma enhances the response to the rate of lengthening; static gamma enhances sensitivity to length."],
+["Which pairing is correct?",["Ia fibre – Golgi tendon organ – muscle tension","Ib fibre – secondary spindle ending – length","II – primary spindle ending – rate of stretch","Ib fibre – Golgi tendon organ – muscle tension"],3,"Ib = Golgi tendon organ = tension. Ia = primary spindle; II = secondary spindle."],
+["Fine touch and proprioception are mediated mainly by:",["Group IV fibres","Large-diameter myelinated fibres (A-alpha / A-beta)","Small A-delta fibres","Unmyelinated C fibres"],1,"Fast information about touch and body position travels in large myelinated fibres."],
+["How is stretch transduced at spindle sensory endings?",["Photon absorption by pigments","Ligand binding to chemoreceptors","Stretch-sensitive channels open more with more stretch, giving greater depolarization","Heat-induced closure of K⁺ channels"],2,"Stretch-sensitive channels linked to the cytoskeleton open more often and longer with greater stretch."],
+["A dermatome is best defined as:",["Area of skin supplied by a single ventral root","Cortical area that receives touch input","Muscle group supplied by one spinal nerve","Area of skin (and deeper tissue) supplied mainly by a single dorsal root"],3,"A dermatome is the region supplied mainly by one dorsal (sensory) root."],
+["Meissner corpuscles are:",["SA2, deep, large receptive field, sense skin stretch","RA1, superficial, small receptive field, sense stroking/flutter and slip","SA1, superficial, small receptive field, sense pressure","RA2, deep, large receptive field, sense vibration"],1,"Meissner = RA1, superficial, small field; frictional forces, flutter, grip slipping."],
+["Merkel disc receptors (SA1) are particularly important for detecting:",["Pain","Vibration","Skin stretch","Fine pressure and texture (two-point discrimination)"],3,"Merkel discs are slowly adapting, superficial, and give fine pressure, texture and shape detail."],
+["Pacinian corpuscles are:",["Deep, slowly adapting, sense skin stretch","Superficial, rapidly adapting, sense steady pressure","Deep, rapidly adapting, large receptive field, best at vibration","Superficial, slowly adapting, small receptive field"],2,"Pacinian = RA2, deep, large field, best at vibration."],
+["Which two touch receptors are SLOWLY adapting?",["Meissner and Pacinian corpuscles","Pacinian corpuscles and Ruffini endings","Merkel cells and Ruffini endings","Meissner corpuscles and Merkel cells"],2,"Merkel (SA1) and Ruffini (SA2) are slowly adapting."],
+["During a constant, steady pressure, a rapidly adapting receptor:",["Fires continuously at a steady rate","Fires at a rate proportional to the pressure","Fires only at the end of the stimulus","Fires at onset and offset, and is silent in between"],3,"Rapidly adapting receptors signal changes: on and off."],
+["In “rate coding”, stimulus intensity is signalled by:",["The number of action potentials per second (higher intensity = more spikes)","The size of each action potential","The speed of action potential conduction","The type of ion channel opened"],0,"Action potentials are all the same size; intensity is carried by their frequency."],
+["A SA1 fibre fires at the highest rate during steady pressure from:",["The smallest, sharpest probe","All probes equally","A large, flat probe","A large rounded probe"],0,"Force concentrated on a small area gives the highest firing (23.7 impulses/s vs 2.0 for a flat probe)."],
+["Fingertips, lips and tongue have the best two-point discrimination because they have:",["Only unmyelinated fibres","The smallest receptive fields","The largest receptive fields","Only Pacinian corpuscles"],1,"Small receptive fields allow two nearby points to be felt as separate."],
+["The cell body of a primary somatosensory afferent lies in the:",["Postcentral gyrus","Dorsal root ganglion, next to the spinal cord","Ventral root","Ventral horn"],1,"Primary afferent cell bodies sit in the dorsal root ganglion."],
+["The sensory homunculus lies in the ___ and its distortion is due to ___.",["Thalamus; muscle mass","Precentral gyrus; actual body size","Postcentral gyrus; right body on the right cortex only","Postcentral gyrus; receptor density (lips and fingers are over-represented)"],3,"The postcentral gyrus is the primary sensory cortex; representation follows receptor density."],
+["Which two touch receptors lie superficially and give the finest localization of touch?",["Pacinian and Ruffini","Meissner and Merkel","Meissner and Pacinian","Merkel and Ruffini"],1,"Superficial receptors have the smallest receptive fields."],
+["Selective activation of Merkel cells and Ruffini endings produces the sensation of:",["Vibration","Contact only at the instant of touch","Steady pressure on the skin above the receptor","Pain"],2,"The two slowly adapting receptors signal sustained pressure; Meissner + Pacinian give vibration."],
+["Why does a Pacinian corpuscle fall silent during steady pressure?",["Its channels are permanently inactivated by calcium","The capsule lamellae absorb the static load so the deformation no longer reaches the nerve terminal","The nerve fibre becomes fatigued","Gamma motoneurons inhibit it"],1,"The onion-like capsule absorbs static load; changes (onset/offset/vibration) still reach the core."],
+["The depolarizing receptor potential in a group Ia ending is proportional to:",["Amplitude of stretch only","Velocity of stretch only","Both velocity and amplitude of stretch","Neither; it is all-or-none"],2,"Bigger and faster stretch gives a bigger receptor potential."],
+["Which statement about the C1 spinal level is correct?",["It has a dorsal root but no ventral root","It has no dorsal root, only a ventral (motor) root","It supplies the skin of the face","It supplies the skin of the hand"],1,"C1 has no dorsal root so no dermatome; the face is supplied by the trigeminal nerve."],
+["Static gamma motoneuron activation makes the spindle more sensitive to:",["How fast the muscle is lengthening","Joint angle","How long the muscle is","Vibration"],2,"Static gamma: length; dynamic gamma: speed of lengthening."],
+["Which fibre type has the fastest conduction velocity (72–120 m/s)?",["C","A-delta","A-beta","A-alpha (group I)"],3,"Large diameter myelinated A-alpha fibres conduct fastest."],
+["Why do Ia, Ib and II afferents have big, heavily myelinated fibres?",["To save metabolic energy","Information about body position must reach the CNS quickly to protect the body, e.g. from falling","They carry pain","They are unmyelinated"],1,"Speed matters for postural and positional information."],
+["Which statement about two-point discrimination is correct?",["The back is as good as the fingertip","Threshold is about 2 mm on the fingers and up to about 40 mm on the arm, thigh and back","Threshold is about 40 mm on the fingers","The lips have the poorest discrimination"],1,"Threshold follows receptive-field size: finest at fingertips, lips and tongue."],
+["Touch from the right hand is represented in the:",["Left postcentral gyrus","Right postcentral gyrus","Left precentral gyrus","Right thalamus only"],0,"The right body is represented on the left primary somatosensory cortex."],
+["In the dorsal column–medial lemniscal pathway, second-order fibres cross the midline in the:",["Spinal cord at the level of entry","Pons","Medulla","Thalamus"],2,"Dorsal column nuclei fibres cross in the medulla and ascend in the medial lemniscus."],
+["A rapidly adapting receptor pressed by a SLOW motion gives:",["A brief high-frequency burst","A longer-lasting, low-frequency spike train","No response","A continuous steady rate for as long as pressure lasts"],1,"Rapid motion gives a brief high-frequency burst; slow motion a longer, lower-frequency train."]
+];
+
+/* ---------- Lecture 4 quiz data ---------- */
+var Q4=[
+["Which is a characteristic of a receptor potential?",["All-or-none with a refractory period","Graded, with no refractory period so summation is possible","Produced only at the axon hillock","Always hyperpolarizing"],1,"Receptor potentials are graded and have no refractory period."],
+["A stronger stimulus leads to:",["A smaller receptor potential and lower AP rate","A larger receptor potential and higher AP rate in the afferent","The same receptor potential but larger APs","Fewer neurotransmitter vesicles released"],1,"Stimulus strength is coded as receptor potential size, then AP frequency, then transmitter release."],
+["In a Pacinian or Meissner ending, the receptor potential is produced by:",["Ca²⁺ efflux","Opening of stimulus-sensitive cation channels, allowing Na⁺ entry","Closure of Na⁺ channels","Neurotransmitter from a separate receptor cell"],1,"The afferent ending itself carries stimulus-sensitive non-specific cation channels."],
+["For a receptor that is a separate cell (e.g. Merkel disc), which sequence is correct?",["Na⁺ entry → Ca²⁺ channels open → transmitter release → AP in afferent","Ca²⁺ entry → Na⁺ entry → AP","Transmitter release → Ca²⁺ entry → receptor potential","K⁺ entry → hyperpolarization → AP"],0,"The receptor cell depolarizes, opens voltage-gated Ca²⁺ channels and releases transmitter onto the afferent."],
+["In an afferent neuron, the action potential is initiated:",["At the axon hillock","At the dendrites in the cord","At the peripheral end next to the receptor","At the terminal in the dorsal horn"],2,"Afferent AP initiation site is the peripheral end next to the receptor."],
+["In interneurons and efferent neurons, APs are initiated at the:",["Axon hillock","Axon terminal","Receptor ending","Node of Ranvier nearest the target"],0,"Initiation is at the axon hillock next to the cell body."],
+["The dorsal root of the spinal cord carries:",["Efferent motor axons out of the cord","Afferent sensory axons into the cord","Only interneurons","Only descending tracts"],1,"Dorsal root = afferent; ventral root = efferent."],
+["The ventral horn is mainly concerned with:",["Sensory processing","Motor output","Pain perception","Nothing; it contains only white matter"],1,"Dorsal horn = sensory processing; ventral horn = motor output."],
+["Somatic reflexes are best described as:",["Voluntary movements","Automatic responses via skeletal muscle contraction without conscious effort","Smooth muscle responses","Hormone-mediated responses"],1,"They are automatic responses of skeletal muscle."],
+["Which arrangement is correct?",["Muscle spindles are in series; Golgi tendon organs are in parallel with muscle fibres","Muscle spindles are in parallel; Golgi tendon organs are in series with muscle fibres","Both are in series","Both are in parallel"],1,"Spindles in parallel measure length; tendon organs in series measure tension."],
+["Tapping the patellar tendon first stretches which structures?",["Golgi tendon organs of the hamstrings","Muscle spindles in the quadriceps femoris","Pacinian corpuscles in the skin","Joint capsules only"],1,"The stretch is detected by quadriceps spindles; the quadriceps (extensor) then contracts."],
+["Why is the stretch reflex called monosynaptic?",["It involves one muscle","It has one synapse between the Ia afferent and the motoneuron","It occurs once only","It has no interneurons for any muscle"],1,"One central synapse links Ia afferent and alpha motoneuron (the antagonist pathway adds an interneuron)."],
+["During the stretch reflex, antagonist motoneurons are:",["Excited directly by Ia fibres","Inhibited via an inhibitory interneuron","Unaffected","Excited by Golgi tendon organs"],1,"Ia fibres excite an inhibitory interneuron that inhibits the antagonist (disynaptic)."],
+["In the load-on-the-arm figure, which neuron fires to contract the extrafusal muscle fibres?",["Muscle alpha motor neuron","Muscle spindle gamma motor neuron","Muscle spindle sensory neuron","Golgi tendon organ sensory neuron"],0,"Alpha motoneurons innervate extrafusal fibres; gamma innervate intrafusal fibres."],
+["The stretch reflex produced by electrical stimulation of the peripheral nerve is called the:",["F wave","H reflex","Withdrawal reflex","Babinski reflex"],1,"The H reflex (Hoffmann) bypasses the spindle."],
+["Increasing gamma motoneuron activity:",["Decreases spindle sensitivity","Increases spindle tone and sensitivity","Abolishes Ia firing","Relaxes extrafusal fibres"],1,"More gamma drive keeps intrafusal fibres tense and the spindle more sensitive."],
+["Presynaptic inhibition of the afferent–motoneuron connection is due to:",["Glycine at the neuromuscular junction","GABAergic axo-axonal synapses reducing transmitter release","Cholinergic synapses on the soma","Direct hyperpolarization of the motoneuron"],1,"GABAergic axo-axonal synapses reduce transmitter release from the afferent terminal."],
+["Which best explains the effect of the Jendrassik manoeuvre?",["It reduces spindle sensitivity","It increases background excitation of motoneurons, enlarging the reflex","It blocks Golgi tendon organs","It stimulates nociceptors"],1,"More excitable motoneurons give a larger reflex for the same stretch."],
+["Golgi tendon organ afferents are:",["Group Ia, signalling stretch","Group Ib, signalling muscle tension","Group II, signalling length","Group IV, signalling pain"],1,"Ib afferents come from tendon organs and signal force."],
+["At rest, activation of Golgi tendon organs classically causes:",["Excitation of motoneurons to the same muscle","Inhibition of motoneurons to the same muscle","Contraction of the antagonist only","No spinal effect"],1,"Via Ib inhibitory interneurons (roughly opposite of the stretch reflex)."],
+["During locomotion, the Ib pathway to extensor motoneurons:",["Remains inhibitory","Is reversed to excitation","Is abolished","Becomes presynaptic only"],1,"Ib inhibitory interneurons are inhibited and excitatory interneurons are facilitated, so Ib input excites extensors."],
+["Why is the Golgi tendon reflex described as complicated?",["It has no interneurons","Ib interneurons also receive spindle, joint, cutaneous and descending inputs","It only exists in the arm","It is monosynaptic"],1,"Convergence of many inputs on Ib interneurons makes the reflex state-dependent."],
+["The flexion withdrawal reflex produces:",["Extensor activation in the stimulated limb","Flexor activation and extensor inhibition of the whole limb","Only the biceps contracting","Contraction of all muscles"],1,"Flexors on, extensors inhibited; the limb moves away from the noxious stimulus."],
+["The flexion withdrawal reflex arc is:",["Monosynaptic","At least disynaptic, maybe polysynaptic","Without interneurons","Entirely in the brain"],1,"Nociceptive afferent → interneuron(s) → motoneurons."],
+["Relative to pain perception, the withdrawal reflex:",["Occurs after the perception","Occurs before the perception of pain","Requires the cortex","Cannot happen in parallel with ascending pathways"],1,"The reflex is fast, spinal, and runs alongside the ascending pathway to the brain."],
+["The crossed extension reflex causes, in the contralateral limb:",["Flexor activation and extensor inhibition","Extensor activation and flexor inhibition","No change","Activation of both"],1,"Extension gives weight support so the injured limb can withdraw."],
+["Which control site exists in polysynaptic reflexes but NOT in the monosynaptic stretch reflex?",["The motoneuron","The synapse","The interneuron(s)","The efferent muscle"],2,"Interneurons add an extra site where gain can be adjusted."],
+["Negative feedback in the stretch reflex means:",["Afferent firing rises as the muscle contracts","Muscle contraction reduces spindle stretch and afferent firing","The muscle relaxes more","Gamma neurons stop firing"],1,"The reflex contraction restores length, so the afferent firing rate decreases."],
+["When an excitatory (Ex1) and inhibitory (In1) input are activated simultaneously, the postsynaptic potential:",["Doubles","Shows temporal summation","Shows no net change because EPSP and IPSP cancel","Reaches threshold"],2,"EPSP and IPSP cancel each other out."],
+["Which statement about the idea that Golgi tendon organs “protect” muscle is correct?",["It is fully proven","It is outdated; excitatory Golgi reflexes appear during locomotion","It only applies to the arm","Golgi tendon organs are never active"],1,"McCrea and colleagues showed excitatory Golgi tendon reflexes during locomotion."]
+];
+
+/* ---------- Flashcards ---------- */
+var F3=[
+["Name the 4 attributes of a stimulus.","Modality, intensity, location and duration."],
+["What does a muscle spindle detect, and where is it relative to the muscle fibres?","Stretch (change in muscle length); in parallel with the muscle fibres."],
+["What innervates intrafusal fibres?","Gamma motoneurons (efferent, cause contraction of the intrafusal ends)."],
+["What do Ia fibres signal?","Muscle length AND rate of change of length; large, fast, key to the stretch reflex."],
+["What do group II spindle fibres signal?","Static muscle length (little rate sensitivity); posture and limb position."],
+["Why alpha-gamma co-activation?","Keeps the spindle taut when the muscle shortens, so Ia fibres keep responding."],
+["Static vs dynamic gamma?","Static: sensitivity to length. Dynamic: sensitivity to speed of lengthening."],
+["How does a spindle transduce stretch?","Stretch-sensitive channels (linked to cytoskeleton via spectrin) open more with more stretch; more Na⁺ current gives more depolarization."],
+["Which fibre is Golgi tendon organ?","Ib (12–20 µm myelinated); senses muscle tension."],
+["Four touch receptors with class and best stimulus?","Meissner RA1 (flutter, slip); Merkel SA1 (pressure, texture); Pacinian RA2 (vibration); Ruffini SA2 (skin stretch)."],
+["Which touch receptors are superficial with small fields?","Meissner and Merkel (finest discrimination)."],
+["Which sensations arise from receptor combinations?","All four: contact. Merkel + Ruffini: steady pressure. Meissner + Pacinian: vibration."],
+["Why is a Pacinian corpuscle rapidly adapting?","Concentric lamellae absorb steady load; only onset, offset and vibration reach the nerve terminal."],
+["What is rate coding?","Higher stimulus intensity gives more action potentials per second."],
+["What decides SA1 firing rate for different probes?","Probe curvature: smallest probe 23.7 impulses/s, flat probe 2.0."],
+["What is a receptive field?","The area where stimulation excites or inhibits that neuron."],
+["Two-point thresholds?","About 2 mm fingers, 10 mm palm, 40 mm arm/thigh/back."],
+["Which fibres carry fine touch and proprioception?","Large-diameter myelinated A-alpha and A-beta fibres."],
+["Where is the cell body of a primary somatosensory afferent?","In the dorsal root ganglion next to the spinal cord."],
+["What is a dermatome?","Area of skin (and deeper tissue) supplied mainly by one dorsal root; C1 has no dorsal root."],
+["Where is the sensory homunculus, and why is it distorted?","Postcentral gyrus; distorted because representation follows receptor density (lips, fingers large)."]
+];
+var F4=[
+["What is a receptor potential?","A graded depolarization (Na⁺ entry through stimulus-sensitive channels) with no refractory period, so it can summate."],
+["How is stimulus strength coded?","Bigger receptor potential gives a higher AP frequency in the afferent and more transmitter release."],
+["Receptor potential vs separate receptor cell?","Separate cell (Merkel): Ca²⁺ entry, transmitter release, then afferent depolarizes and fires."],
+["Where do APs start in afferent vs interneuron/efferent?","Afferent: peripheral end by the receptor. Interneuron/efferent: axon hillock."],
+["Dorsal vs ventral root?","Dorsal: afferent in. Ventral: efferent out."],
+["Dorsal vs ventral horn?","Dorsal: sensory processing. Ventral: motor output."],
+["Define a somatic reflex.","Automatic skeletal-muscle response without conscious effort."],
+["Components of a reflex arc?","Receptor, afferent pathway, integrating centre, efferent pathway, effector."],
+["Spindle vs Golgi tendon organ arrangement?","Spindle in parallel (length); Golgi tendon organ in series (tension)."],
+["Describe the knee-jerk reflex.","Tap stretches quadriceps spindles; Ia afferent excites alpha motoneurons (monosynaptic); quadriceps contracts; antagonist inhibited via interneuron."],
+["Why is the stretch reflex negative feedback?","Contraction restores length and reduces afferent firing."],
+["What is the H reflex?","Stretch-reflex pathway activated by electrical stimulation of the peripheral nerve."],
+["Uses of the stretch reflex?","Rapid correction of unexpected stretch (prevent falls); sensory feedback to help activate muscle in movement."],
+["Three ways to control the stretch reflex?","Spindle sensitivity (gamma), presynaptic inhibition at the synapse, motoneuron excitability."],
+["What is presynaptic inhibition?","GABAergic axo-axonal synapse reduces transmitter release from the afferent terminal."],
+["What is the Jendrassik manoeuvre?","Remote muscle effort (e.g. pulling interlocked fingers apart) that adds background excitation to leg motoneurons and enlarges the reflex."],
+["Classical Golgi tendon reflex at rest?","Ib afferent excites Ib inhibitory interneuron, which inhibits motoneurons of the same muscle."],
+["Why is the “protection” idea outdated?","Excitatory Golgi tendon reflexes occur during locomotion, reinforcing force production (McCrea)."],
+["State-dependent reflex reversal?","At rest Ib input hyperpolarizes extensor motoneurons; during walking Ib interneurons are inhibited and excitatory ones facilitated, so it depolarizes them."],
+["What happens in flexion withdrawal?","Whole-limb flexors contract, extensors inhibited; occurs before pain is perceived; at least disynaptic."],
+["Role of crossed extension reflex?","Contralateral extensors on, flexors off: supports body weight so the injured limb can withdraw."],
+["Control sites in polysynaptic reflexes?","Afferent (maybe), synapses, interneurons (extra site), motoneuron."]
+];
+
+/* ---------- Helpers ---------- */
+function el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!==undefined)e.textContent=txt;return e}
+
+/* ---------- Flashcards ---------- */
+function buildFC(id,data){
+  var box=document.getElementById(id);
+  data.forEach(function(p){
+    var w=el("div","fcw");
+    var b=el("button","o",p[0]);b.type="button";
+    var a=el("div","ex",p[1]);
+    b.addEventListener("click",function(){a.style.display=(a.style.display==="block")?"none":"block"});
+    w.appendChild(b);w.appendChild(a);box.appendChild(w);
+  });
+}
+
+/* ---------- Quiz engine ---------- */
+function makeQuiz(key,data,boxId,scId,resetId,wrongId,finalId,onChange){
+  var box=document.getElementById(boxId),sc=document.getElementById(scId),fin=document.getElementById(finalId);
+  var saved=lsGet("quiz-"+key);
+  var state=(saved&&saved.length===data.length)?saved:data.map(function(){return null});
+  var nodes=[],L="ABCDE";
+  data.forEach(function(d,i){
+    var q=el("div","q");
+    q.appendChild(el("p","",(i+1)+". "+d[0]));
+    var btns=d[1].map(function(o,j){
+      var b=el("button","o",L[j]+") "+o);b.type="button";
+      b.addEventListener("click",function(){
+        if(state[i]!==null)return;
+        state[i]=j;lsSet("quiz-"+key,state);paint(i);update();
+      });
+      q.appendChild(b);return b;
+    });
+    var ex=el("div","ex");
+    q.appendChild(ex);box.appendChild(q);
+    nodes.push({q:q,btns:btns,ex:ex});
+  });
+  function paint(i){
+    var n=nodes[i],d=data[i],s=state[i];
+    n.btns.forEach(function(b,j){
+      b.classList.remove("ok","no");
+      b.disabled=(s!==null);
+      if(s!==null){
+        if(j===d[2])b.classList.add("ok");
+        else if(j===s)b.classList.add("no");
+      }
+    });
+    if(s===null){n.ex.style.display="none";n.ex.textContent="";n.q.dispatchEvent(new Event("vitanova:question-reset",{bubbles:true}))}
+    else{
+      n.ex.style.display="block";
+      n.ex.textContent=(s===d[2]?"Correct. ":"Not quite; the answer is "+L[d[2]]+". ")+d[3];
+    }
+  }
+  function counts(){
+    var a=0,c=0;
+    state.forEach(function(s,i){if(s!==null){a++;if(s===data[i][2])c++}});
+    return {a:a,c:c};
+  }
+  function update(){
+    var k=counts();
+    sc.textContent="Score: "+k.c+" / "+data.length+" correct  |  "+k.a+" answered";
+    if(k.a===data.length){
+      var pct=Math.round(100*k.c/data.length);
+      var best=lsGet("best-"+key);
+      if(best===null||pct>best){best=pct;lsSet("best-"+key,best)}
+      fin.style.display="block";
+      fin.textContent="Finished: "+k.c+" of "+data.length+" ("+pct+"%). Best so far: "+best+"%. "+
+        (pct>=85?"Excellent. Move on to the next lecture or revise the high-yield summary once more.":
+         pct>=60?"Good base. Use “Retry incorrect only” and revisit the related topics.":
+         "Re-read the breakdown topics, then retry.");
+    } else fin.style.display="none";
+    if(onChange)onChange(k.a);
+  }
+  document.getElementById(resetId).addEventListener("click",function(){
+    for(var i=0;i<state.length;i++)state[i]=null;
+    lsSet("quiz-"+key,state);
+    nodes.forEach(function(_,i){paint(i)});update();
+    box.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  document.getElementById(wrongId).addEventListener("click",function(){
+    var first=-1;
+    state.forEach(function(s,i){if(s!==null&&s!==data[i][2]){state[i]=null;paint(i);if(first<0)first=i}});
+    lsSet("quiz-"+key,state);update();
+    if(first>=0)nodes[first].q.scrollIntoView({behavior:"smooth",block:"center"});
+  });
+  nodes.forEach(function(_,i){paint(i)});
+  update();
+  return {answered:function(){return counts().a},total:data.length};
+}
+
+/* ---------- Progress and topics ---------- */
+var quizzes={};
+function topicsOf(l){return document.querySelectorAll('details.topic[data-lec="'+l+'"]')}
+function refresh(){
+  ["3","4"].forEach(function(l){
+    var t=topicsOf(l),done=0;
+    t.forEach(function(d){if(d.querySelector(".done input").checked)done++});
+    var qa=quizzes[l]?quizzes[l].answered():0,qt=quizzes[l]?quizzes[l].total:0;
+    var tot=t.length+qt,pct=tot?Math.round(100*(done+qa)/tot):0;
+    document.getElementById("pb"+l).style.width=pct+"%";
+    document.getElementById("pt"+l).textContent=pct+"% complete  ("+done+" of "+t.length+" topics studied, "+qa+" of "+qt+" questions answered)";
+  });
+}
+function initTopics(){
+  var saved=lsGet("topics")||{};
+  document.querySelectorAll("details.topic").forEach(function(d){
+    var id=d.getAttribute("data-id"),cb=d.querySelector(".done input");
+    if(saved[id]){cb.checked=true;d.classList.add("is-done")}
+    cb.addEventListener("change",function(){
+      d.classList.toggle("is-done",cb.checked);
+      var s=lsGet("topics")||{};s[id]=cb.checked;lsSet("topics",s);refresh();
+    });
+  });
+  document.querySelectorAll("[data-open]").forEach(function(b){
+    b.addEventListener("click",function(){topicsOf(b.getAttribute("data-open")).forEach(function(d){d.open=true})});
+  });
+  document.querySelectorAll("[data-close]").forEach(function(b){
+    b.addEventListener("click",function(){topicsOf(b.getAttribute("data-close")).forEach(function(d){d.open=false})});
+  });
+}
+
+/* Spread the correct answers evenly across A-D by rotating options (fixed, so saved progress stays valid) */
+function rot(data,seed){
+  return data.map(function(d,i){
+    var n=d[1].length,r=(i*5+seed)%n,o=new Array(n);
+    d[1].forEach(function(t,j){o[(j+r)%n]=t});
+    return [d[0],o,(d[2]+r)%n,d[3]];
+  });
+}
+Q3=rot(Q3,1);Q4=rot(Q4,2);
+buildFC("fc3",F3);buildFC("fc4",F4);
+initTopics();
+quizzes["3"]=makeQuiz("l3",Q3,"qz3","sc3","rs3","rw3","fn3",refresh);
+quizzes["4"]=makeQuiz("l4",Q4,"qz4","sc4","rs4","rw4","fn4",refresh);
+refresh();
+})();
+</script>
+<script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body>
+</html>
