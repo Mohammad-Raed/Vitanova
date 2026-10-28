@@ -25,4 +25,3 @@ Which of the following describes the acetabulum?
 Recalled answer: **All the above**.
 
 Source: adrenaline, Q14, page 15.
-

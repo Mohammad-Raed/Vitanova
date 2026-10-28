@@ -575,4 +575,3 @@ Exam answer: It is the pathological velocity-dependent increase in tone called s
 Rapidly adapting phasic receptors are particularly useful for detecting what?
 
 Exam answer: Changes in a stimulus, such as movement. Phasic receptors respond strongly to changes and often to onset/offset. “Movement receptors” is a functional description in this context, not a claim that every mechanoreceptor has identical adaptation kinetics.
-
