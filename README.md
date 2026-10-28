@@ -95,3 +95,5 @@ Choose one/multiple subjects, search, filter by paper, shuffle, reset attempts, 
 See docs/past-papers/EXTRACTION_AUDIT.md, EDITORIAL_REVIEW.md, NEEDS_REVIEW.md and ADDING_PAPERS.md. Rebuild using `python3 tools/build_past_papers.py`; validate with `--check` and run `node tests/past-papers.browser.cjs` alongside the standard checks.
 
 Publication of this update was explicitly authorized by the user.
+
+Past-paper session controls collapse with **Study selected questions** or when you answer a question. The compact summary and **Change selection** button retain access to filters; score, Shuffle and Reset stay visible. Multiple subjects can be selected before applying. Reopening controls does not erase answers.

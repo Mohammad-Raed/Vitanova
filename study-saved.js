@@ -47,14 +47,61 @@
       <button id="vn-saved-mix" type="button">Shuffle questions</button><button id="vn-saved-reset" type="button">${papers?'Reset Current Quiz':'Start new attempt'}</button></div>
       ${papers?`<fieldset class="vn-past-subjects"><legend>Choose one or several subjects</legend><div><button type="button" id="vn-past-all">Select all</button><button type="button" id="vn-past-none">Clear selection</button></div>${subjects.map(s=>`<label><input type="checkbox" value="${s}" checked> ${s} <small>(${data.questions.filter(q=>q.subject===s&&q.status==='ready').length} MCQs / ${data.questions.filter(q=>q.subject===s&&q.status==='review').length} answer-only)</small></label>`).join('')}</fieldset><p class="progress-note">Filters change the visible score; answers are retained for this page session. Reset clears only the selected collection’s attempt answers, never bookmarks or mistake history. Mistake mastery is saved on this device.</p>`:''}
       <div class="vn-saved-stats" aria-live="polite"><strong id="vn-saved-score"></strong><span>Bookmarks and mistakes stay on this device.</span></div><p id="vn-missing-questions" class="vn-storage-warning" hidden></p></div><div id="vn-saved-list" class="vn-saved-list"></div>`;
+    let filterPanel,filterToggle,selectionLabel;
+    function setFilterPanel(open,moveFocus=false){
+      if(!papers)return;
+      filterPanel.hidden=!open;filterToggle.setAttribute('aria-expanded',String(open));
+      filterToggle.textContent=open?'Hide filters':'Change selection';
+      if(moveFocus){
+        const heading=host.querySelector('.vn-review-question h3')||host.querySelector('.vn-saved-empty h3');
+        if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}
+        host.querySelector('.vn-past-session').scrollIntoView({block:'start'});
+      }
+    }
+    if(papers){
+      const toolbar=host.querySelector('.vn-saved-toolbar');
+      toolbar.classList.add('vn-past-toolbar');
+      const session=document.createElement('div');session.className='vn-past-session';
+      session.innerHTML='<div class="vn-past-selection"><strong id="vn-past-selection-title">Practice questions</strong><p id="vn-past-selection-summary"></p></div><button id="vn-past-toggle" type="button" aria-expanded="true" aria-controls="vn-past-filter-panel">Hide filters</button>';
+      toolbar.prepend(session);
+      selectionLabel=session.querySelector('#vn-past-selection-summary');filterToggle=session.querySelector('button');
+      const intro=toolbar.querySelector('.vn-saved-intro');intro.remove();
+      filterPanel=document.createElement('div');filterPanel.id='vn-past-filter-panel';filterPanel.className='vn-past-filter-panel';session.after(filterPanel);
+      const tools=toolbar.querySelector('.vn-saved-tools');filterPanel.append(tools,toolbar.querySelector('.vn-past-subjects'));
+      const help=document.createElement('details');help.className='vn-past-help';
+      const helpSummary=document.createElement('summary');helpSummary.textContent='About answers, scoring and resets';help.append(helpSummary);
+      const keyNote=document.createElement('p');keyNote.textContent='Answers follow the supplied past-paper key for this exam. Repeated questions remain included.';help.append(keyNote,toolbar.querySelector('.progress-note'));filterPanel.append(help);
+      const apply=document.createElement('button');apply.type='button';apply.id='vn-past-apply';apply.className='vn-past-apply';apply.textContent='Study selected questions →';filterPanel.append(apply);
+      const footer=document.createElement('div');footer.className='vn-past-footer';toolbar.append(footer);
+      const actions=document.createElement('div');actions.className='vn-past-quick-actions';
+      actions.append(host.querySelector('#vn-saved-mix'),host.querySelector('#vn-saved-reset'));actions.children[0].textContent='Shuffle';actions.children[1].textContent='Reset quiz';
+      footer.append(toolbar.querySelector('.vn-saved-stats'),actions);
+      footer.querySelector('.vn-saved-stats>span').remove();
+      const legend=host.querySelector('.vn-past-subjects legend');legend.textContent='Subjects';
+      host.querySelectorAll('.vn-past-subjects label').forEach(label=>{const subject=label.querySelector('input').value;label.querySelector('small').textContent='('+data.questions.filter(q=>q.subject===subject).length+')';});
+      host.querySelector('#vn-past-all').textContent='All';host.querySelector('#vn-past-none').textContent='Clear';
+      filterToggle.addEventListener('click',()=>setFilterPanel(filterPanel.hidden));
+      apply.addEventListener('click',()=>setFilterPanel(false,true));
+    }
     host.querySelector('#vn-saved-mode').value=mode;
     if(!papers){host.querySelector('#vn-saved-lecture').value=filters.lecture;host.querySelector('#vn-saved-lecture').disabled=Boolean(settings.lectureId);}
     function draw(focus){
       if(!host.querySelector(`[data-vn-revision="${token}"]`))return;
       const items=visible(),answers=responses[mode],records=mistakes.all(),saved=bookmarks.all();
+      if(papers){
+        const subjectText=chosenSubjects.size===subjects.length?'All subjects':chosenSubjects.size===0?'No subjects':chosenSubjects.size<=2?[...chosenSubjects].join(', '):chosenSubjects.size+' subjects';
+        const sourceText=filters.source==='all'?'All source papers':data.sources.find(s=>s.id===filters.source)?.label||filters.source;
+        const parts=[subjectText,sourceText];
+        if(filters.batch!=='all')parts.push('Batch '+filters.batch);
+        if(filters.year!=='all')parts.push(filters.year);
+        if(filters.query.trim())parts.push('Search: '+filters.query.trim());
+        selectionLabel.textContent=parts.join(' · ');selectionLabel.title=selectionLabel.textContent;
+        host.querySelector('#vn-past-selection-title').textContent=host.querySelector('#vn-saved-mode').selectedOptions[0].textContent;
+      }
       if(countNode)countNode.textContent=`${items.length} ${mode==='review'?'answer-only recalls':mode==='practice'?'practice questions':mode==='mistakes'?'mistake questions':'saved questions'}`;
       const scored=items.filter(q=>q.status!=='review'),answered=scored.filter(q=>answers.has(q.id)),correct=answered.filter(q=>answers.get(q.id)===q.answer).length;
       host.querySelector('#vn-saved-score').textContent=mode==='review'?`${items.length} answer-only recalls`:`${correct} correct · ${answered.length} answered · ${scored.length} questions · ${mode==='mistakes'?'Mistake revision':mode==='practice'?'Past-paper practice':'Saved revision'}`;
+      if(papers){const score=host.querySelector('#vn-saved-score');score.textContent=score.textContent.replace(/ · (?:Past-paper practice|Mistake revision)$/,'');}
       const missing=(mode==='saved'?Object.keys(saved):mode==='mistakes'?Object.keys(records):[]).filter(id=>!byId.has(id)).length;
       const warning=host.querySelector('#vn-missing-questions');warning.hidden=!missing;warning.textContent=`${missing} question references are unavailable in this version. Your original records have been kept.`;
       const list=host.querySelector('#vn-saved-list');
@@ -65,7 +112,7 @@
         ${unresolved?`<p class="progress-note">Answer-only recall</p><button type="button" data-reveal="true">Show recalled answer</button>${revealed.has(q.id)?`<div class="vn-review-explanation" role="status"><strong>Recalled answer: ${esc(q.editorial.recalledAnswer)}</strong></div>`:''}<div class="vn-review-footer"><button class="vn-review-remove" type="button">${Object.hasOwn(saved,q.id)?'Remove bookmark':'Save question'}</button></div>`:`<div class="vn-review-options">${q.options.map((text,j)=>`<button type="button" class="vn-review-option${attempted?(j===q.answer?' is-correct':j===choice?' is-wrong':''):''}" data-answer="${j}" ${attempted?'disabled':''}><span class="vn-review-letter">${String.fromCharCode(65+j)}</span><span>${esc(text)}</span></button>`).join('')}</div>${attempted?`<div class="vn-review-explanation" role="status"><strong>${choice===q.answer?'✓ Correct':'Correct answer: '+String.fromCharCode(65+q.answer)+' — '+esc(q.options[q.answer])}${mode==='mistakes'&&records[q.id]?.mastered?' · Mastered':''}</strong><p>${esc(q.explanation)}</p></div>`:''}<div class="vn-review-footer"><a href="${esc(href(q))}">${q.kind==='past-paper'?'View in Past Papers ↗':'View in original lecture ↗'}</a><button class="vn-review-remove" type="button">${Object.hasOwn(saved,q.id)?'Remove bookmark':'Save question'}</button></div>`}
         ${q.kind==='past-paper'?sourceDetails(q).replace(/<div class="vn-provenance">[\s\S]*?<\/div>/,''):''}</article>`;
       }).join('');
-      if(focus){const card=[...list.querySelectorAll('.vn-review-question')].find(c=>c.dataset.questionId===focus.id)||list.querySelector('.vn-review-question');const target=focus.answer?card?.querySelector('.vn-review-explanation'):card?.querySelector('.vn-review-remove');if(target){if(focus.answer)target.tabIndex=-1;target.focus({preventScroll:true});}else if(list.querySelector('h3')){list.querySelector('h3').tabIndex=-1;list.querySelector('h3').focus({preventScroll:true});}}
+      if(focus){const card=[...list.querySelectorAll('.vn-review-question')].find(c=>c.dataset.questionId===focus.id)||list.querySelector('.vn-review-question');const target=focus.answer?card?.querySelector('.vn-review-explanation'):card?.querySelector('.vn-review-remove');if(target){if(focus.answer)target.tabIndex=-1;target.focus({preventScroll:true});if(papers&&focus.answer)target.scrollIntoView({block:'nearest'});}else if(list.querySelector('h3')){list.querySelector('h3').tabIndex=-1;list.querySelector('h3').focus({preventScroll:true});}}
     }
     host.querySelector('#vn-saved-mode').addEventListener('change',e=>{mode=e.target.value;order=[];if(mode==='mistakes')capture();draw();});
     if(papers){
@@ -77,7 +124,7 @@
     }else for(const [name,selector]of [['system','#vn-saved-system'],['subject','#vn-saved-filter'],['lecture','#vn-saved-lecture']])host.querySelector(selector).addEventListener('change',e=>{filters[name]=e.target.value;order=[];draw();});
     host.querySelector('#vn-saved-reset').addEventListener('click',()=>{responses[mode].clear();order=[];if(mode==='mistakes')capture();draw();});
     host.querySelector('#vn-saved-mix').addEventListener('click',()=>{order=visible().map(q=>q.id);for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}draw();});
-    host.querySelector('#vn-saved-list').addEventListener('click',e=>{const card=e.target.closest('.vn-review-question');if(!card)return;const id=card.dataset.questionId,q=byId.get(id);if(!q)return;if(e.target.closest('[data-reveal]')){revealed.add(id);draw();return;}if(q.status==='review'){if(e.target.closest('.vn-review-remove')){bookmarks.set(id,!bookmarks.has(id));draw();}return;}const option=e.target.closest('[data-answer]');if(option&&!responses[mode].has(id)){const answer=Number(option.dataset.answer);responses[mode].set(id,answer);mistakes.record(id,answer===q.answer,mode==='mistakes');draw({id,answer:true});}else if(e.target.closest('.vn-review-remove')){const ids=visible().map(x=>x.id),i=ids.indexOf(id);bookmarks.set(id,!bookmarks.has(id));draw({id:mode==='saved'?ids[i+1]||ids[i-1]:id});}});
+    host.querySelector('#vn-saved-list').addEventListener('click',e=>{const card=e.target.closest('.vn-review-question');if(!card)return;const id=card.dataset.questionId,q=byId.get(id);if(!q)return;if(e.target.closest('[data-reveal]')){revealed.add(id);if(papers)setFilterPanel(false);draw({id,answer:true});return;}if(q.status==='review'){if(e.target.closest('.vn-review-remove')){bookmarks.set(id,!bookmarks.has(id));draw();}return;}const option=e.target.closest('[data-answer]');if(option&&!responses[mode].has(id)){const answer=Number(option.dataset.answer);responses[mode].set(id,answer);if(papers)setFilterPanel(false);mistakes.record(id,answer===q.answer,mode==='mistakes');draw({id,answer:true});}else if(e.target.closest('.vn-review-remove')){const ids=visible().map(x=>x.id),i=ids.indexOf(id);bookmarks.set(id,!bookmarks.has(id));draw({id:mode==='saved'?ids[i+1]||ids[i-1]:id});}});
     const update=()=>draw();window.addEventListener('vitanova:bookmarks-changed',update);
     const external=e=>{if(e.detail?.external||e.detail?.imported){capture();draw();}};window.addEventListener('vitanova:storage-changed',external);
     host._vnRevisionCleanup=()=>{window.removeEventListener('vitanova:bookmarks-changed',update);window.removeEventListener('vitanova:storage-changed',external);};
