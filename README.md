@@ -102,7 +102,7 @@ Physiology Lectures 3–4 also have a separate **Full Explanation** resource und
 
 ### Lecture-linked MSS flashcards
 
-Open **Flashcards** in the sidebar or any lecture’s shared navigation. The source deck adds **3,323 cloze flashcards** without changing the 19 lecture resources or 674 lecture MCQs. Choose a lecture/subject, due + new or free practice, search, shuffle and session size. Settings collapse on start; reveal, rate Again/Hard/Good/Easy, skip or undo. Review history persists and is included in the existing backup/import. This uses simple Vitanova intervals rather than Anki/FSRS or live Anki sync.
+Open **Flashcards** in the sidebar or beside the final quiz tab in every lecture. The source deck adds **3,323 cloze flashcards** without changing the 19 lecture resources or 674 lecture MCQs. Choose a lecture/subject, due + new or free practice, search, shuffle and session size. Settings collapse on start; reveal, rate Repeat/Hard/Good/Easy, skip or undo. Review history persists and is included in the existing backup/import. This uses simple Vitanova intervals rather than Anki/FSRS or live Anki sync.
 
 All source cards remain available centrally; suggested lecture sets may include related extra material. Supplemental explanations/media stay collapsed. Media is optimized and loaded on demand; three unavailable source illustrations are recorded with placeholders. See [flashcard documentation](docs/flashcards/README.md) for attribution, mapping, limitations, source maintenance and storage compatibility.
 
@@ -112,3 +112,5 @@ Additional checks:
 python3 tools/build_flashcards.py --check
 node tests/flashcards.browser.cjs
 ```
+
+Completed flashcard sets offer **Continue next set** for the remaining cards in the same selection and **Next lecture** for the next resource in the same subject. New ratings schedule Repeat in 1 minute, Hard in 6 minutes, Good in 10 minutes, and Easy in 2 days. Existing saved schedules are preserved until reviewed.

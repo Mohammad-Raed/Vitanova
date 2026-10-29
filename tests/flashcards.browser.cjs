@@ -26,11 +26,11 @@ async function main(){
  if(await closed.count()){await closed.first().locator('summary').click();await page.waitForTimeout(100);check(await page.locator('#fc-supplements details[open] div').first().textContent()!==undefined,'Supplement fields expand on request');}
  await page.locator('[data-rating="3"]').focus();await page.keyboard.press('3');await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('1 rated'));
  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('vitanova:flashcards:v1'))),id=Object.keys(saved.records)[0];
- check(saved.records[id].rating===3&&saved.records[id].interval===3,'Good saves a three-day interval');
+ check(saved.records[id].rating===3&&saved.records[id].interval===10/1440,'Good saves a ten-minute interval');
  await page.locator('#fc-undo').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('0 rated'));
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===0,'Undo removes first review without losing other state');
  await page.locator('#fc-reveal').click();await page.locator('[data-rating="1"]').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('1 rated'));
- check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records)[0].lapses)===1,'Again records lapse');
+ check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records)[0].lapses)===1,'Repeat records lapse');
  await page.locator('#fc-settings-toggle').click();await page.locator('#fc-search').fill('brachial');check((await page.locator('#fc-counter').textContent()).includes('1 rated'),'Changing filters leaves active session intact');
  await page.locator('#fc-settings-toggle').click();await page.locator('#fc-skip').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('1 skipped'));
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Skip changes no persistent review record');
@@ -61,7 +61,9 @@ async function main(){
  const all=await page.evaluate(async()=>{const catalog=await(await fetch('data/flashcards/catalog.json')).json(),notes={};for(const url of Object.values(catalog.subjects))Object.assign(notes,await(await fetch(url)).json());return catalog.cards.every(c=>{const n=notes[c.note];return !VitanovaFlashcardCore.render(n.text,c.ordinal).includes('{{c')&&!VitanovaFlashcardCore.render(n.text,c.ordinal,true).includes('{{c');});});
  check(all,'All imported clozes render front and back');
  const registry=await page.evaluate(()=>VitanovaLectures);
- for(const lecture of registry){await goto(encodeURIComponent(lecture.file));check(await page.locator('.vn-flashcards').getAttribute('href')==='flashcards.html?lecture='+lecture.id,lecture.id+' links to lecture flashcards');}
+ for(const lecture of registry){await goto(encodeURIComponent(lecture.file));check(await page.locator('.vn-flashcards').getAttribute('href')==='flashcards.html?lecture='+lecture.id,lecture.id+' links to lecture flashcards');
+ check(await page.locator('.vn-section-flashcards').evaluate(el=>el.parentElement.tagName==='NAV'&&/quiz|mcq/i.test(el.previousElementSibling.textContent)),lecture.id+' flashcard tab follows its final quiz tab');}
+
  await goto('flashcards.html');await page.waitForFunction(()=>!document.getElementById('fc-start').disabled);await page.locator('#fc-size').selectOption('10');await start();
  // Complete a small session and undo its final rating.
  for(let i=0;i<10;i++){await page.locator('#fc-reveal').click();await page.locator('[data-rating="4"]').click();if(i<9)await page.waitForFunction(()=>!document.getElementById('fc-reveal').disabled&&!document.getElementById('fc-practice').hidden);}
@@ -70,6 +72,67 @@ async function main(){
  check(errors.length===0,'No unexpected browser errors: '+errors.join('; '));
  // A network failure is handled with retry and does not corrupt study records.
  const broken=await context.newPage();await broken.route('**/data/flashcards/catalog.json',route=>route.abort());await broken.goto(base+'/flashcards.html');await broken.locator('#fc-retry').waitFor();check(await broken.locator('#fc-error').isVisible(),'Failed library load offers retry');await broken.unroute('**/data/flashcards/catalog.json');await broken.locator('#fc-retry').click();await broken.waitForFunction(()=>!document.getElementById('fc-start').disabled);check(await broken.locator('#fc-error').isHidden(),'Retry recovers library');
+ // Deterministic 40-card lecture fixture: test pagination without depending on future source counts.
+ const real=JSON.parse(fs.readFileSync(path.join(root,'data/flashcards/catalog.json'),'utf8'));
+ const anatomy=real.cards.filter(c=>c.subject==='Anatomy').slice(0,51);
+ const fixture={...real,cards:anatomy.map((c,i)=>({...c,lectures:[i<40?'mss-mid-anatomy-01-02':i<50?'mss-mid-anatomy-03-04':'mss-mid-anatomy-14-15']}))};
+ const paginationContext=await browser.newContext({viewport:{width:390,height:844}}),fresh=await paginationContext.newPage();
+ fresh.on('pageerror',e=>errors.push(e.message));
+ await fresh.clock.install({time:new Date('2026-10-29T12:00:00Z')});
+ await fresh.route('**/data/flashcards/catalog.json',route=>route.fulfill({json:fixture}));
+ await fresh.goto(base+'/flashcards.html?lecture=mss-mid-anatomy-01-02');await fresh.waitForFunction(()=>!document.getElementById('fc-start').disabled);
+ await fresh.locator('#fc-size').selectOption('20');await fresh.locator('#fc-start').click();
+ await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);
+ const first=[],second=[];
+ async function finishSet(target,n,repeatFirst=false,skipSecond=false){
+  for(let i=0;i<n;i++){
+   await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled&&!document.getElementById('fc-practice').hidden);
+   const card=await fresh.locator('#fc-practice').getAttribute('data-card-id');target.push(card);
+   if(skipSecond&&i===1){await fresh.locator('#fc-skip').click();if(i<n-1)await fresh.waitForFunction(id=>document.getElementById('fc-practice').dataset.cardId!==id&&!document.getElementById('fc-reveal').disabled,card);continue;}
+   await fresh.locator('#fc-reveal').click();
+   if(i===0)check((await fresh.locator('#fc-ratings').textContent()).includes('1 min')&&(await fresh.locator('#fc-ratings').textContent()).includes('6 min')&&(await fresh.locator('#fc-ratings').textContent()).includes('10 min')&&(await fresh.locator('#fc-ratings').textContent()).includes('2 days'),'Rating labels show all requested intervals');
+   await fresh.locator('[data-rating="'+(repeatFirst&&i===0?1:4)+'"]').click();
+   if(i<n-1)await fresh.waitForFunction(id=>document.getElementById('fc-practice').dataset.cardId!==id&&!document.getElementById('fc-reveal').disabled,card);
+  }
+  await fresh.locator('#fc-finished').waitFor();
+ }
+ // Draft selection edits must not redirect continuation away from the original lecture.
+ await fresh.locator('#fc-settings-toggle').click();await fresh.locator('#fc-lecture').selectOption('mss-mid-anatomy-14-15');await fresh.locator('#fc-settings-toggle').click();
+ await finishSet(first,20,true,true);
+ check((await fresh.locator('#fc-continue').textContent()).includes('20 cards'),'First 20 of 40 offer exactly the next 20');
+ check((await fresh.locator('#fc-next-lecture').textContent()).includes(registry.find(l=>l.id==='mss-mid-anatomy-03-04').lectureLabel),'Next lecture follows Anatomy 1–2 with 3–4 despite edited draft selection');
+ check(await fresh.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Completion actions fit mobile');
+ await fresh.clock.fastForward('02:00');
+ check(await fresh.evaluate(id=>JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records[id].due<=Date.now(),first[0]),'Repeat card becomes due after the one-minute interval');
+ await fresh.locator('#fc-continue').click();await finishSet(second,20);
+ check(new Set([...first,...second]).size===40,'Continuing covers all 40 cards without repeating earlier due or shown cards');
+ check(await fresh.locator('#fc-continue').isHidden(),'No continuation is offered after all lecture cards are shown');
+ await fresh.locator('#fc-undo').click();await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);
+ check((await fresh.locator('#fc-counter').textContent()).includes('19 rated'),'Undo remains valid on the final card of a later set');
+ await fresh.locator('#fc-reveal').click();await fresh.locator('[data-rating="4"]').click();await fresh.locator('#fc-finished').waitFor();
+ await fresh.locator('#fc-next-lecture').click();await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);
+ check(await fresh.locator('#fc-lecture').inputValue()==='mss-mid-anatomy-03-04','One click selects and starts the next lecture');
+ check((await fresh.locator('#fc-counter').textContent()).includes('of 10'),'Next lecture uses its remaining card count with the same set size');
+ check((await fresh.locator('#fc-back').getAttribute('href')).includes('Lectures-3-4'),'Return link updates to the new lecture');
+ check(await fresh.locator('#fc-search').inputValue()==='','Next lecture clears the prior topic search');
+ await finishSet([],10);await fresh.locator('#fc-next-lecture').click();await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);await finishSet([],1);
+ check(await fresh.locator('#fc-next-lecture').isHidden(),'Final available lecture has no broken Next lecture action');
+ check(await fresh.locator('#fc-continue').isHidden(),'Final partial set has no empty continuation');
+
+ // When the next lecture is not due, do not silently switch to free practice.
+ const zero=await paginationContext.newPage(),zeroCards=fixture.cards.slice(0,2).map((c,i)=>({...c,lectures:[i?'mss-mid-anatomy-03-04':'mss-mid-anatomy-01-02']}));
+ await zero.route('**/data/flashcards/catalog.json',route=>route.fulfill({json:{...fixture,cards:zeroCards}}));
+ await zero.goto(base+'/flashcards.html?lecture=mss-mid-anatomy-01-02');await zero.waitForFunction(()=>document.getElementById('fc-selection').textContent.includes('2 cards'));
+ // First note may already have review history from this test context; start with a controlled snapshot.
+ await zero.evaluate(id=>{const r=VitanovaFlashcardCore.schedule(null,4);VitanovaStorage.write(VitanovaFlashcardCore.KEY,{version:1,records:{[id]:r}});},zeroCards[1].id);
+ await zero.locator('#fc-mode').selectOption('due');
+ await zero.locator('#fc-start').click();await zero.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);await zero.locator('#fc-reveal').click();await zero.locator('[data-rating="4"]').click();await zero.locator('#fc-finished').waitFor();await zero.locator('#fc-next-lecture').click();
+ check(await zero.locator('#fc-settings').isVisible()&&await zero.locator('#fc-start').isDisabled(),'Next lecture with no due cards opens a clear empty state');
+ check(await zero.locator('#fc-mode').inputValue()==='due','Next lecture keeps the requested review mode');
+ check((await zero.locator('#fc-error').textContent()).includes('No cards are ready'),'Empty next lecture explains why it cannot start');
+ await zero.locator('#fc-mode').selectOption('all');check(await zero.locator('#fc-start').isEnabled(),'Student can explicitly choose free practice for the next lecture');
+ check(errors.length===0,'No browser errors during continuation or lecture switching: '+errors.join('; '));
+ await paginationContext.close();
  console.log('PASS: '+checks+' flashcard browser checks; all 3,323 clozes render.');
  }finally{await browser.close();}
 }

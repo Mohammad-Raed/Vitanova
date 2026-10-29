@@ -7,9 +7,8 @@
   function schedule(previous,rating,now=Date.now()){
     if(!Number.isInteger(rating)||rating<1||rating>4||!Number.isFinite(now)||now<0)throw new Error('Invalid review');
     const p=previous||{interval:0,reviews:0,lapses:0};
-    const interval=rating===1?10/1440:rating===2?Math.max(1,p.interval*1.2):rating===3?Math.max(3,p.interval*2.5):Math.max(7,p.interval*3);
-    const bounded=Math.min(3650,interval);
-    return {due:now+bounded*DAY,interval:bounded,reviews:p.reviews+1,lapses:p.lapses+(rating===1?1:0),lastReview:now,rating};
+    const interval=[1/1440,6/1440,10/1440,2][rating-1];
+    return {due:now+Math.round(interval*DAY),interval,reviews:p.reviews+1,lapses:p.lapses+(rating===1?1:0),lastReview:now,rating};
   }
   function render(text,ordinal,reveal=false){
     let out='',i=0;

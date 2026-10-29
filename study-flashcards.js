@@ -2,7 +2,7 @@
   'use strict';
   const $=id=>document.getElementById(id), core=window.VitanovaFlashcardCore, storage=window.VitanovaStorage;
   const lectures=window.VitanovaLectures||[], params=new URLSearchParams(location.search);
-  let catalog,queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[];
+  let catalog,queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null;
   const noteCache=new Map(),pending=new Map();
   const state=()=>storage.read(core.KEY,{version:1,records:{}},core.validState);
   function message(text){$('fc-error').textContent=text;$('fc-error').hidden=!text;}
@@ -53,11 +53,11 @@
     if(position>=queue.length){
       busy=false;active=false;$('fc-practice').hidden=true;$('fc-finished').hidden=false;$('fc-finished-text').textContent=reviewed+' rated · '+skipped+' skipped. Your next due times are saved on this device.';
       // Keep Undo accessible after the final card.
-      $('fc-finished').append($('fc-undo'));showUndo();count();$('fc-finished').querySelector('h2').tabIndex=-1;$('fc-finished').querySelector('h2').focus();return;
+      $('fc-finished').append($('fc-undo'));showUndo();finishActions();count();$('fc-finished').querySelector('h2').tabIndex=-1;$('fc-finished').querySelector('h2').focus();return;
     }
     if($('fc-undo').parentElement.id==='fc-finished')document.querySelector('.fc-progress').append($('fc-undo'));
     $('fc-practice').hidden=false;$('fc-front').textContent='Loading card…';$('fc-extra').replaceChildren();$('fc-supplements').replaceChildren();
-    const card=queue[position];$('fc-topic').textContent=card.subject+' · '+card.topic;$('fc-counter').textContent=(position+1)+' of '+queue.length+' · '+reviewed+' rated · '+skipped+' skipped';
+    const card=queue[position];$('fc-practice').dataset.cardId=card.id;$('fc-topic').textContent=card.subject+' · '+card.topic;$('fc-counter').textContent=(position+1)+' of '+queue.length+' · '+reviewed+' rated · '+skipped+' skipped';
     try{
       const notes=await getNotes(card.subject);if(token!==revision)return;
       const note=notes[card.note];if(!note)throw new Error('This card is missing its note. Try reloading the library.');
@@ -74,7 +74,7 @@
       let mounted=false;detail.addEventListener('toggle',()=>{if(detail.open&&!mounted){content(body,supplemental.html);mounted=true;}});$('fc-supplements').append(detail);
     }
     $('fc-answer').hidden=false;$('fc-reveal').hidden=true;$('fc-ratings').replaceChildren();const record=state().records[card.id];
-    ['Again','Hard','Good','Easy'].forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.dataset.rating=String(i+1);const span=document.createElement('span');span.textContent=label;const small=document.createElement('small');small.textContent=intervalLabel(core.schedule(record,i+1).interval)+' · '+(i+1);button.append(span,small);button.addEventListener('click',()=>rate(i+1));$('fc-ratings').append(button);});
+    ['Repeat','Hard','Good','Easy'].forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.dataset.rating=String(i+1);const span=document.createElement('span');span.textContent=label;const small=document.createElement('small');small.textContent=intervalLabel(core.schedule(record,i+1).interval)+' · '+(i+1);button.append(span,small);button.addEventListener('click',()=>rate(i+1));$('fc-ratings').append(button);});
     $('fc-ratings').hidden=false;$('fc-ratings').querySelector('button').focus({preventScroll:true});
   }
   function rate(rating){
@@ -89,14 +89,53 @@
     undo.pop();if(last.previous)snapshot.records[last.id]=last.previous;else delete snapshot.records[last.id];storage.write(core.KEY,snapshot);position=last.position;reviewed--;skipped=queue.slice(0,position).length-reviewed;active=true;draw();
   }
   function shuffle(list){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;}
+  function config(){return {lecture:$('fc-lecture').value,subject:$('fc-subject').value,search:$('fc-search').value,mode:$('fc-mode').value,size:$('fc-size').value,shuffle:$('fc-shuffle').checked};}
+  function scope(settings){
+    const lecture=lectures.find(l=>l.id===settings.lecture);
+    return lecture?lecture.lectureLabel+' · '+lecture.title:settings.lecture==='__lectures__'?(settings.subject?settings.subject+' · ':'')+'All lecture topics':settings.subject||'All MSS topics';
+  }
+  function batch(offset){
+    series.offset=offset;queue=series.cards.slice(offset,offset+series.size);position=reviewed=skipped=0;undo=[];active=true;
+    $('fc-selection').textContent=scope(series.config)+' · '+queue.length+' cards · set '+(Math.floor(offset/series.size)+1);
+    $('fc-session-warning').hidden=false;choices(false);draw();
+  }
+  function nextLecture(){
+    const current=lectures.find(l=>l.id===series?.config.lecture);if(!current)return null;
+    const ordered=lectures.filter(l=>l.category===current.category&&l.system===current.system&&l.exam===current.exam&&l.subject===current.subject).sort((a,b)=>a.order-b.order||a.id.localeCompare(b.id));
+    return ordered.slice(ordered.findIndex(l=>l.id===current.id)+1).find(l=>catalog.cards.some(c=>c.lectures.includes(l.id)))||null;
+  }
+  function finishActions(){
+    const remaining=series?Math.max(0,series.cards.length-series.offset-queue.length):0;
+    $('fc-continue').hidden=!remaining;
+    if(remaining)$('fc-continue').textContent='Continue next '+Math.min(series.size,remaining)+' cards · '+remaining+' remaining';
+    const next=nextLecture();$('fc-next-lecture').hidden=!next;
+    if(next)$('fc-next-lecture').textContent='Next lecture → '+next.lectureLabel;
+  }
+  function lectureContext(lecture){
+    $('fc-context').textContent=lecture?'Related practice for '+lecture.lectureLabel+' · '+lecture.title:'Recall first. Reveal the answer, then choose how well you remembered.';
+    $('fc-back').href=lecture?encodeURIComponent(lecture.file):'index.html#mss';$('fc-back').textContent=lecture?'← Back to lecture':'MSS library';
+  }
   function start(event){
-    event?.preventDefault();if(busy)return;
-    let matches=filtered();if(!matches.length){message('No matching cards are ready. Try All cards, a different subject, or a broader search.');return;}
-    const records=state().records;if($('fc-shuffle').checked)shuffle(matches);
-    if($('fc-mode').value==='due')matches.sort((a,b)=>(records[a.id]?.due??Infinity)-(records[b.id]?.due??Infinity));
-    const size=$('fc-size').value;queue=matches.slice(0,size==='all'?matches.length:Number(size));position=reviewed=skipped=0;undo=[];active=true;
-    const lecture=lectures.find(l=>l.id===$('fc-lecture').value),scope=lecture?lecture.lectureLabel+' · '+lecture.title:($('fc-lecture').value==='__lectures__'?($('fc-subject').value?$('fc-subject').value+' · ':'')+'All lecture topics':($('fc-subject').value||'All MSS topics'));
-    $('fc-selection').textContent=scope+' · '+queue.length+' cards';$('fc-session-warning').hidden=false;choices(false);draw();
+    event?.preventDefault();if(busy)return false;
+    const matches=filtered();if(!matches.length){message('No matching cards are ready. Try All cards, a different subject, or a broader search.');return false;}
+    const settings=config(),records=state().records;if(settings.shuffle)shuffle(matches);
+    if(settings.mode==='due')matches.sort((a,b)=>(records[a.id]?.due??Infinity)-(records[b.id]?.due??Infinity));
+    series={cards:matches,size:settings.size==='all'?matches.length:Number(settings.size),offset:0,config:settings};
+    const lecture=lectures.find(l=>l.id===settings.lecture);lectureContext(lecture);
+    const url=new URL(location.href);if(lecture)url.searchParams.set('lecture',lecture.id);else url.searchParams.delete('lecture');history.replaceState(null,'',url);
+    batch(0);return true;
+  }
+  function continueSet(){if(busy||active||!series)return;const offset=series.offset+queue.length;if(offset<series.cards.length)batch(offset);}
+  function advanceLecture(){
+    if(busy||active)return;const next=nextLecture();if(!next)return;
+    const settings=series.config;
+    $('fc-lecture').value=next.id;$('fc-subject').value=next.subject;$('fc-search').value='';$('fc-mode').value=settings.mode;$('fc-size').value=settings.size;$('fc-shuffle').checked=settings.shuffle;
+    if(!start()){
+      series=null;queue=[];position=reviewed=skipped=0;undo=[];revision++;
+      $('fc-practice').hidden=true;$('fc-finished').hidden=true;choices(true);lectureContext(next);$('fc-selection').textContent=scope(config())+' · no cards ready';$('fc-session-warning').hidden=true;count();
+      const url=new URL(location.href);url.searchParams.set('lecture',next.id);history.replaceState(null,'',url);
+      message('No cards are ready for '+next.lectureLabel+' in this review mode. Choose All cards for free practice, or return when cards are due.');
+    }
   }
   async function load(){
     message('');$('fc-retry').hidden=true;
@@ -106,7 +145,7 @@
       $('fc-subject').length=1;for(const sub of Object.keys(catalog.subjects))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
       $('fc-lecture').length=2;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
       const requested=lectures.find(l=>l.id===params.get('lecture'));
-      if(requested){$('fc-lecture').value=requested.id;$('fc-context').textContent='Related practice for '+requested.lectureLabel+' · '+requested.title;$('fc-back').href=encodeURIComponent(requested.file);$('fc-back').textContent='← Back to lecture';}
+      if(requested){$('fc-lecture').value=requested.id;lectureContext(requested);}
       $('fc-selection').textContent=catalog.cards.length.toLocaleString()+' cards · MSS topic library';count();
     }catch(error){message(error.message);$('fc-retry').hidden=false;}
   }
@@ -114,6 +153,7 @@
   $('fc-settings-toggle').addEventListener('click',()=>choices($('fc-settings').hidden));
   $('fc-reveal').addEventListener('click',reveal);$('fc-skip').addEventListener('click',()=>{if(busy||position>=queue.length)return;skipped++;position++;draw();});
   $('fc-undo').addEventListener('click',undoRating);$('fc-another').addEventListener('click',()=>{choices(true);count();$('fc-start').focus();});
+  $('fc-continue').addEventListener('click',continueSet);$('fc-next-lecture').addEventListener('click',advanceLecture);
   $('fc-retry').addEventListener('click',()=>catalog&&queue.length?draw():load());
   document.addEventListener('keydown',event=>{
     if(event.ctrlKey||event.metaKey||event.altKey||event.repeat||['INPUT','SELECT','TEXTAREA','BUTTON','SUMMARY','A'].includes(event.target.tagName)||event.target.isContentEditable)return;

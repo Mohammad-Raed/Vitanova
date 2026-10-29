@@ -12,10 +12,13 @@ test('nested clozes balance and reveal without dropping inner content',()=>{
  assert.equal(core.render('{{c1::outer {{c2::inner}}}}',2),'outer <span class="fc-blank">[…]</span>');
  assert.throws(()=>core.render('{{c1::broken',1),/Incomplete/);
 });
-test('review intervals are deterministic and bounded; Again records a lapse',()=>{
- const now=1000,a=core.schedule(null,1,now);assert.equal(a.due,now+600000);assert.equal(a.lapses,1);assert.equal(a.reviews,1);
- const g=core.schedule(a,3,now);assert.equal(g.interval,3);assert.equal(g.lapses,1);assert.equal(g.reviews,2);
- assert.equal(core.schedule(g,3,now).interval,7.5);assert.equal(core.schedule({...g,interval:4000},4,now).interval,3650);
+test('Repeat, Hard, Good and Easy schedule the requested fixed intervals',()=>{
+ const now=1000,a=core.schedule(null,1,now);assert.equal(a.due,now+60000);assert.equal(a.lapses,1);assert.equal(a.reviews,1);
+ const g=core.schedule(a,3,now);assert.equal(g.interval,10/1440);assert.equal(g.lapses,1);assert.equal(g.reviews,2);
+ for(const [rating,millis] of [[1,60000],[2,360000],[3,600000],[4,172800000]]){
+  const fresh=core.schedule(null,rating,now),old=core.schedule({...g,interval:4000},rating,now);
+  assert.equal(fresh.due,now+millis);assert.equal(old.due,now+millis);assert.equal(old.reviews,3);
+ }
  for(const rating of [0,5,NaN,'1'])assert.throws(()=>core.schedule(null,rating,now));
 });
 test('persistent records validate without discarding unknown IDs',()=>{
