@@ -40,6 +40,14 @@ async function main(){
  await page.evaluate(data=>{localStorage.removeItem('vitanova:flashcards:v1');VitanovaBackup.importData(data,'merge');},exported);
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Existing import restores flashcard history');
  await goto('flashcards.html');await page.waitForFunction(()=>!document.getElementById('fc-start').disabled);
+ await page.locator('#fc-mode').selectOption('all');await page.locator('#fc-lecture').selectOption('__lectures__');
+ const mapped=await page.evaluate(async()=>{const c=await(await fetch('data/flashcards/catalog.json')).json();return c.cards.filter(x=>x.lectures.length>0).length;});
+ check((await page.locator('#fc-match-count').textContent()).startsWith(mapped+' matching'),'All lecture topics excludes unmapped additional material');
+ await page.locator('#fc-subject').selectOption('Anatomy');
+ const mappedAnatomy=await page.evaluate(async()=>{const c=await(await fetch('data/flashcards/catalog.json')).json();return c.cards.filter(x=>x.lectures.length>0&&x.subject==='Anatomy').length;});
+ check((await page.locator('#fc-match-count').textContent()).startsWith(mappedAnatomy+' matching'),'Lecture topics combines with subject filter');
+ await page.locator('#fc-subject').selectOption('');await start();check((await page.locator('#fc-selection').textContent()).includes('All lecture topics'),'Session summary identifies lecture-only scope');
+ await page.locator('#fc-settings-toggle').click();
  await page.locator('#fc-lecture').selectOption('immunology-mid-01');check(await page.locator('#fc-start').isDisabled(),'Lecture with no mapped cards has clear empty selection');
  await page.locator('#fc-lecture').selectOption('');await page.locator('#fc-subject').selectOption('Physiology');await page.locator('#fc-mode').selectOption('all');await page.locator('#fc-size').selectOption('10');await start();
  check((await page.locator('#fc-topic').textContent()).startsWith('Physiology'),'Subject filtering starts correct session');

@@ -4,7 +4,7 @@
 
 Open **Flashcards** in the hub sidebar, or **Flashcards** in any registered lecture's shared navigation. A lecture link preselects its related set and includes a return link. An unrelated or empty lecture (including immunology) displays zero matches, with access to the full MSS library; it does not silently substitute an unrelated set.
 
-Choose subject, lecture, text/topic search, review mode, shuffle and session size. Starting a session collapses settings. Changing choices does not replace the active queue until **Start new session**. Filters match all search words. All cards, including those outside current lectures, remain accessible centrally.
+Choose subject, lecture, text/topic search, review mode, shuffle and session size. **All lecture topics — exclude additional material** includes only cards assigned to at least one registered lecture (currently 1,935 cards), while still respecting subject/search/review filters. It excludes unmapped cards, not optional explanation fields within included cards. Topic assignments remain suggestions rather than an exact syllabus guarantee. Starting a session collapses settings. Changing choices does not replace the active queue until **Start new session**. Filters match all search words. All cards, including those outside current lectures, remain accessible centrally.
 
 Reveal before rating. Space reveals; keys 1–4 rate Again/Hard/Good/Easy while a card or rating control has focus. Inputs and links retain their normal keyboard behavior. Skip does not write progress. Undo restores the most recent rating, including the last card in a completed session. New session/reload clears the transient queue/undo history, not saved review records.
 

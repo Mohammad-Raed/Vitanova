@@ -15,7 +15,7 @@
   function filtered(){
     if(!catalog)return[];
     const records=state().records,now=Date.now(),search=$('fc-search').value.trim().toLowerCase(),lecture=$('fc-lecture').value,subject=$('fc-subject').value,mode=$('fc-mode').value;
-    return catalog.cards.filter(c=>(!subject||c.subject===subject)&&(!lecture||c.lectures.includes(lecture))&&(!search||search.split(/\s+/).every(word=>c.search.toLowerCase().includes(word)))&&(mode==='all'||(mode==='learning'?records[c.id]?.rating===1:!records[c.id]||records[c.id].due<=now)));
+    return catalog.cards.filter(c=>(!subject||c.subject===subject)&&(!lecture||(lecture==='__lectures__'?c.lectures.length>0:c.lectures.includes(lecture)))&&(!search||search.split(/\s+/).every(word=>c.search.toLowerCase().includes(word)))&&(mode==='all'||(mode==='learning'?records[c.id]?.rating===1:!records[c.id]||records[c.id].due<=now)));
   }
   function count(){if(!catalog)return;const n=filtered().length;$('fc-match-count').textContent=n?n+' matching '+(n===1?'card':'cards'):'No matching cards. Try All cards, All topics, or a broader search.';$('fc-start').disabled=!n||busy;$('fc-start').textContent=active?'Start new session':'Start session';}
   async function getNotes(subject){
@@ -95,7 +95,7 @@
     const records=state().records;if($('fc-shuffle').checked)shuffle(matches);
     if($('fc-mode').value==='due')matches.sort((a,b)=>(records[a.id]?.due??Infinity)-(records[b.id]?.due??Infinity));
     const size=$('fc-size').value;queue=matches.slice(0,size==='all'?matches.length:Number(size));position=reviewed=skipped=0;undo=[];active=true;
-    const lecture=lectures.find(l=>l.id===$('fc-lecture').value),scope=lecture?lecture.lectureLabel+' · '+lecture.title:($('fc-subject').value||'All MSS topics');
+    const lecture=lectures.find(l=>l.id===$('fc-lecture').value),scope=lecture?lecture.lectureLabel+' · '+lecture.title:($('fc-lecture').value==='__lectures__'?($('fc-subject').value?$('fc-subject').value+' · ':'')+'All lecture topics':($('fc-subject').value||'All MSS topics'));
     $('fc-selection').textContent=scope+' · '+queue.length+' cards';$('fc-session-warning').hidden=false;choices(false);draw();
   }
   async function load(){
@@ -104,7 +104,7 @@
       const r=await fetch('data/flashcards/catalog.json');if(!r.ok)throw new Error('The flashcard library could not load. Check your connection and retry.');catalog=await r.json();
       if(catalog.version!==1||!Array.isArray(catalog.cards))throw new Error('Unsupported flashcard library version.');
       $('fc-subject').length=1;for(const sub of Object.keys(catalog.subjects))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
-      $('fc-lecture').length=1;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
+      $('fc-lecture').length=2;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
       const requested=lectures.find(l=>l.id===params.get('lecture'));
       if(requested){$('fc-lecture').value=requested.id;$('fc-context').textContent='Related practice for '+requested.lectureLabel+' · '+requested.title;$('fc-back').href=encodeURIComponent(requested.file);$('fc-back').textContent='← Back to lecture';}
       $('fc-selection').textContent=catalog.cards.length.toLocaleString()+' cards · MSS topic library';count();
