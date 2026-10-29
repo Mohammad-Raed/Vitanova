@@ -99,3 +99,16 @@ Publication of this update was explicitly authorized by the user.
 Past-paper session controls collapse with **Study selected questions** or when you answer a question. The compact summary and **Change selection** button retain access to filters; score, Shuffle and Reset stay visible. Multiple subjects can be selected before applying. Reopening controls does not erase answers.
 
 Physiology Lectures 3–4 also have a separate **Full Explanation** resource under MSS → Midterm → Physiology, covering sensory receptors, touch, spinal reflexes and somatosensory integration, with 62 MCQs. Existing summary resources and student records remain available.
+
+### Lecture-linked MSS flashcards
+
+Open **Flashcards** in the sidebar or any lecture’s shared navigation. The source deck adds **3,323 cloze flashcards** without changing the 19 lecture resources or 674 lecture MCQs. Choose a lecture/subject, due + new or free practice, search, shuffle and session size. Settings collapse on start; reveal, rate Again/Hard/Good/Easy, skip or undo. Review history persists and is included in the existing backup/import. This uses simple Vitanova intervals rather than Anki/FSRS or live Anki sync.
+
+All source cards remain available centrally; suggested lecture sets may include related extra material. Supplemental explanations/media stay collapsed. Media is optimized and loaded on demand; three unavailable source illustrations are recorded with placeholders. See [flashcard documentation](docs/flashcards/README.md) for attribution, mapping, limitations, source maintenance and storage compatibility.
+
+Additional checks:
+
+```sh
+python3 tools/build_flashcards.py --check
+node tests/flashcards.browser.cjs
+```

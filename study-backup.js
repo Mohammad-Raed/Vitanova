@@ -5,7 +5,7 @@
   const MAX_BYTES = 5 * 1024 * 1024;
   const keys = {
     progress: 'vitanova:progress:v1', bookmarks: 'vitanova:bookmarks:v1',
-    mistakes: 'vitanova:mistakes:v1', recent: 'vitanova:recent:v1', theme: 'vitanova:theme:v1'
+    mistakes: 'vitanova:mistakes:v1', flashcards: 'vitanova:flashcards:v1', recent: 'vitanova:recent:v1', theme: 'vitanova:theme:v1'
   };
   const forbidden = new Set(['__proto__', 'constructor', 'prototype']);
   const plain = value => value !== null && typeof value === 'object' && !Array.isArray(value) &&
@@ -30,12 +30,15 @@
       value.version === 1 && identifier(value.lectureId) && finite(value.openedAt) &&
       (value.hash === undefined || (typeof value.hash === 'string' && value.hash.length <= 500 && (!value.hash || value.hash.startsWith('#')))));
     if (!plain(value) || value.version !== 1) return false;
-    const field = {progress: 'categories', bookmarks: 'saved', mistakes: 'records'}[name];
+    const field = {progress: 'categories', bookmarks: 'saved', mistakes: 'records', flashcards: 'records'}[name];
     if (!field || !only(value, ['version',field]) || !plain(value[field])) return false;
     return Object.entries(value[field]).every(([id, entry]) => {
       if (!identifier(id)) return false;
       if (name === 'progress') return plain(entry) && Object.entries(entry).every(([lecture, completed]) => identifier(lecture) && typeof completed === 'boolean');
       if (name === 'bookmarks') return finite(entry);
+      if (name === 'flashcards') return plain(entry) && only(entry,['due','interval','reviews','lapses','lastReview','rating']) &&
+        ['due','interval','lastReview'].every(k=>finite(entry[k])) && ['reviews','lapses'].every(k=>Number.isSafeInteger(entry[k])&&entry[k]>=0) &&
+        Number.isInteger(entry.rating)&&entry.rating>=1&&entry.rating<=4;
       return plain(entry) && only(entry, ['wrong','correct','mastered','lastAttempt']) &&
         Number.isSafeInteger(entry.wrong) && entry.wrong >= 0 && Number.isSafeInteger(entry.correct) && entry.correct >= 0 &&
         typeof entry.mastered === 'boolean' && finite(entry.lastAttempt);
@@ -55,7 +58,7 @@
   }
   function empty(name) {
     if (name === 'recent' || name === 'theme') return null;
-    return {version: 1, [{progress:'categories',bookmarks:'saved',mistakes:'records'}[name]]: {}};
+    return {version: 1, [{progress:'categories',bookmarks:'saved',mistakes:'records',flashcards:'records'}[name]]: {}};
   }
   function rawRead(name) {
     let raw;
@@ -109,6 +112,13 @@
       for (const [id, time] of Object.entries(incoming.saved)) saved[id] = Object.hasOwn(saved,id) ? Math.min(saved[id],time) : time;
       return {version: 1, saved};
     }
+    if (name === 'flashcards') {
+      const records = {...current.records};
+      for (const [id, next] of Object.entries(incoming.records)) {
+        if (!records[id] || next.lastReview > records[id].lastReview) records[id] = next;
+      }
+      return {version:1, records};
+    }
     const records = {...current.records};
     for (const [id, next] of Object.entries(incoming.records)) {
       const prev = records[id];
@@ -157,7 +167,7 @@
     container.replaceChildren();
     container.classList.add('vn-backup');
     const title = document.createElement('h3'); title.textContent = 'Keep a copy of your study data';
-    const intro = document.createElement('p'); intro.textContent = 'Your progress stays in this browser. Export a JSON backup to move completion, saved questions, mistakes, and preferences to another device. Backups contain no medical content or executable code.';
+    const intro = document.createElement('p'); intro.textContent = 'Your progress stays in this browser. Export a JSON backup to move completion, saved questions, mistakes, flashcard reviews, and preferences to another device. Backups contain no medical content or executable code.';
     const download = document.createElement('button'); download.type = 'button'; download.textContent = 'Export study backup';
     const label = document.createElement('label'); label.textContent = 'Import a Vitanova JSON backup';
     const file = document.createElement('input'); file.type = 'file'; file.accept = '.json,application/json'; label.append(file);
@@ -167,7 +177,7 @@
       const option = document.createElement('option'); option.value=value; option.textContent=text; mode.append(option);
     }
     modeLabel.append(mode);
-    const help = document.createElement('p'); help.textContent = 'Merge keeps completed lectures and combines bookmarks. Replace overwrites only the data types present in your backup. Export first if you want to keep the current state.';
+    const help = document.createElement('p'); help.textContent = 'Merge keeps completed lectures, combines bookmarks, and keeps the latest flashcard review for each card. Replace overwrites only the data types present in your backup. Export first if you want to keep the current state.';
     const upload = document.createElement('button'); upload.type = 'button'; upload.textContent = 'Import backup';
     const status = document.createElement('p'); status.setAttribute('role','status'); status.setAttribute('aria-live','polite');
     download.addEventListener('click', () => {

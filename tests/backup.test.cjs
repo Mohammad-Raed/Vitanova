@@ -72,7 +72,7 @@ test('partial quota failure rolls back earlier writes',()=>{
 test('an unavailable browser store exports a clearly marked recovery backup',()=>{
   const b=browser();b.run('window.localStorage.getItem=()=>{throw new Error("blocked")}');
   const data=JSON.parse(b.run('JSON.stringify(window.VitanovaBackup.exportData())'));
-  assert.equal(data.warnings.length,5);
+  assert.equal(data.warnings.length,6);
   assert.deepEqual(data.data.progress,{version:1,categories:{}});
 });
 
@@ -89,7 +89,7 @@ test('export includes session edits when persistent storage is unavailable',()=>
   assert.equal(exported.data.progress.categories.anatomy.sessionLecture,true);
   assert.equal(exported.data.bookmarks.saved.sessionQuestion,200);
   assert.equal(exported.data.mistakes.records.sessionQuestion.wrong,1);
-  assert.equal(exported.warnings.length,5);
+  assert.equal(exported.warnings.length,6);
   assert.doesNotThrow(()=>b.run(`window.VitanovaBackup.validate(JSON.parse(${JSON.stringify(JSON.stringify(exported))}))`));
 });
 test('session edits are preferred to stale persistent data',()=>{
@@ -98,4 +98,18 @@ test('session edits are preferred to stale persistent data',()=>{
   const exported=JSON.parse(b.run('JSON.stringify(window.VitanovaBackup.exportData())'));
   assert.equal(exported.data.progress.categories.anatomy.lecture1,false);
   assert.equal(exported.data.progress.categories.anatomy.lecture2,true);
+});
+
+test('flashcard backups preserve unknown IDs and merge the latest complete schedule',()=>{
+  const r={due:1000,interval:3,reviews:2,lapses:1,lastReview:100,rating:3};
+  const b=browser({'vitanova:flashcards:v1':JSON.stringify({version:1,records:{old:r,shared:r}})});
+  const next={...r,lastReview:200,due:9999,reviews:3,rating:4};
+  b.run(importCode(backup({flashcards:{version:1,records:{shared:next,new:next}}})));
+  assert.deepEqual(JSON.parse(b.entries.get('vitanova:flashcards:v1')).records,{old:r,shared:next,new:next});
+  const exp=JSON.parse(b.run('JSON.stringify(window.VitanovaBackup.exportData())'));
+  assert.deepEqual(exp.data.flashcards.records.shared,next);
+  b.run(importCode(backup({progress:{version:1,categories:{}}}),'replace'));
+  assert.deepEqual(JSON.parse(b.entries.get('vitanova:flashcards:v1')).records.old,r);
+  for(const invalid of [{...r,rating:5},{...r,due:-1},{...r,reviews:1.5}])
+    assert.throws(()=>b.run(importCode(backup({flashcards:{version:1,records:{x:invalid}}}))));
 });

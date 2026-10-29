@@ -26,6 +26,7 @@
     else {const disabled=document.createElement('span');disabled.className=cls;disabled.textContent=label;disabled.setAttribute('aria-disabled','true');controls.append(disabled);}
   }
   nav.append(link('✦ Vitanova','index.html','vn-home'),link('← Back to '+current.subject,'index.html#'+encodeURIComponent(current.category),'vn-subject'),context,controls);
+  controls.prepend(link('▤ Flashcards','flashcards.html?lecture='+encodeURIComponent(current.id),'vn-flashcards'));
   // Remove only the two obsolete hub buttons, leaving all original section navigation.
   document.querySelectorAll('a[href]').forEach(anchor=>{
     const label=anchor.textContent.trim();

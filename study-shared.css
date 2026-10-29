@@ -53,3 +53,6 @@ main,section,.card,.tbl,.g>*{min-width:0}
 .vn-lecture-navigation .vn-theme-toggle{position:static;box-shadow:none;min-height:32px;font-size:11px;padding:5px 8px}
 @media(max-width:550px){.vn-clarification,.vn-abbreviations{padding:14px;font-size:13px}.vn-abbreviations dl{gap:6px 11px;grid-template-columns:minmax(50px,auto) minmax(0,1fr)}}
 @media(max-width:600px){.tl div{display:block}.tl div>b{min-width:0}.tl div>b:first-child{display:inline-block;min-width:24px;margin-right:8px}}
+
+/* Flashcards remain reachable from every registered lecture. */
+.vn-lecture-navigation .vn-flashcards{min-height:32px;background:var(--soft)}

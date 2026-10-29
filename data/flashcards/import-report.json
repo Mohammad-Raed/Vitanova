@@ -1,0 +1,38 @@
+{
+  "sourceSHA256": "5eb595501d4f736a67a25a0f3210ebfc88fb38083493cf31438c250967abbdd0",
+  "notes": 2508,
+  "cards": 3323,
+  "subjects": {
+    "Pharmacology": 463,
+    "Anatomy": 1036,
+    "Pathology": 1586,
+    "Physiology": 165,
+    "Microbiology": 55,
+    "Other MSS topics": 18
+  },
+  "lectureCounts": {
+    "mss-mid-anatomy-03-04": 114,
+    "mss-mid-pathology-01-03": 829,
+    "mss-mid-physiology-01-03": 153,
+    "mss-mid-anatomy-11-12": 256,
+    "mss-mid-anatomy-14-15": 320,
+    "mss-mid-pharmacology-01-03": 60,
+    "mss-mid-physiology-04": 26,
+    "mss-mid-physiology-03-04-full": 26,
+    "mss-mid-anatomy-09-10": 184,
+    "mss-mid-anatomy-13": 215,
+    "mss-mid-anatomy-05-06": 210,
+    "mss-mid-anatomy-07-08": 122,
+    "mss-mid-microbiology-01-02": 54,
+    "mss-mid-anatomy-01-02": 4
+  },
+  "unassigned": 1388,
+  "missingMedia": [
+    "Heberden's and Bouchard's_1566160514431.jpg",
+    "https://ankihub.s3.us-east-1.amazonaws.com/deck_assets/e77aedfe-a636-40e2-8169-2fce2673187e/95f9bf2ba6e6a821dcf854eb5fc530fc.webp",
+    "https://ankihub.s3.us-east-1.amazonaws.com/deck_assets/e77aedfe-a636-40e2-8169-2fce2673187e/cb9086db67432c7ecb47078f669397d0.webp"
+  ],
+  "mediaFiles": 6070,
+  "mediaBytes": 667895648,
+  "policy": "All source cards retained. Topic-based lecture suggestions; unmatched cards remain in central library. One-by-one cards reveal together on answer. Ratings use Vitanova intervals, not Anki/FSRS. Supplementary fields collapsed and images loaded lazily."
+}

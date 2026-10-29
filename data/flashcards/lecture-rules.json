@@ -1,0 +1,16 @@
+{
+  "mss-mid-anatomy-01-02": {"subject":"Anatomy","pattern":"skull|temporomandibular|\\btmj\\b|mandib|mastication"},
+  "mss-mid-anatomy-03-04": {"subject":"Anatomy","pattern":"vertebr|spinal.column|intervertebral|radiculopath|spondyl|\\bspine\\b|disc.herni"},
+  "mss-mid-anatomy-05-06": {"subject":"Anatomy","pattern":"clavicl|scapul|humer|radius|ulna|upper.extremity|upper.limb|shoulder|elbow"},
+  "mss-mid-anatomy-07-08": {"subject":"Anatomy","pattern":"shoulder|rotator.cuff|glenohumeral|elbow|trapezius|latissimus|rhomboid|erector.spinae"},
+  "mss-mid-anatomy-09-10": {"subject":"Anatomy","pattern":"brachial.plexus|axilla|cubital.fossa|biceps|triceps|musculocutaneous|brachial.artery|axillary.nerve"},
+  "mss-mid-anatomy-11-12": {"subject":"Anatomy","pattern":"\\bhand\\b|forearm|wrist|carpal|finger|median.nerve|ulnar.nerve|radial.nerve|lumbrical|interosse"},
+  "mss-mid-anatomy-13": {"subject":"Anatomy","pattern":"brachial.plexus|erb|klumpke|winged.scapula|long.thoracic|median.nerve|ulnar.nerve|radial.nerve|axillary.nerve|musculocutaneous|carpal.tunnel|wrist.drop"},
+  "mss-mid-anatomy-14-15": {"subject":"Anatomy","pattern":"\\bhip\\b|femur|femoral|pelvi|acetabul|sacroiliac|tibia|fibula|\\bfoot\\b|ankle|tarsal|calcane|talus"},
+  "mss-mid-physiology-01-03": {"subject":"Physiology","pattern":"muscle|myosin|actin|sarcomere|troponin|tropomyosin|motor.unit|neuromuscular|touch|receptor|spindle"},
+  "mss-mid-physiology-04": {"subject":"Physiology","pattern":"reflex|spindle|golgi.tendon|propriocep|gamma.motor|renshaw|reciprocal.inhib|somatosens|sensory.receptor"},
+  "mss-mid-physiology-03-04-full": {"subject":"Physiology","pattern":"reflex|spindle|golgi.tendon|propriocep|gamma.motor|renshaw|reciprocal.inhib|somatosens|sensory.receptor|touch|pacinian|meissner|merkel|ruffini"},
+  "mss-mid-pharmacology-01-03": {"subject":"Pharmacology","pattern":"psoria|retinoid|acitretin|methotrexate|rheumatoid|dmard|tnf|etanercept|infliximab|adalimumab|hydroxychloroquine|sulfasalazine|leflunomide|abatacept|rituximab|tocilizumab|tofacitinib|muscle.relax|baclofen|dantrolene|tizanidine|cyclobenzaprine|succinylcholine|curare|rocuronium|vecuronium|atracurium|botulinum|neostigmine|pyridostigmine"},
+  "mss-mid-pathology-01-03": {"subject":"Pathology","pattern":"muscle|muscular|myopath|myositis|dystroph|bone|oste|ricket|paget|arthritis|gout|rheumatoid|synovi|joint|chondro|ewing|sarcoma|myeloma|fracture|marfan|ehlers"},
+  "mss-mid-microbiology-01-02": {"subject":"Microbiology","pattern":"skin|cutaneous|cellulitis|erysipelas|impetigo|staphylococc|streptococc|clostrid|anaerob|gas.gangrene|necrotizing|acne|follicul|abscess|wound|tetan"}
+}
