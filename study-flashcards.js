@@ -2,7 +2,7 @@
   'use strict';
   const $=id=>document.getElementById(id), core=window.VitanovaFlashcardCore, storage=window.VitanovaStorage;
   const lectures=window.VitanovaLectures||[], params=new URLSearchParams(location.search);
-  let catalog,finalNotes={},queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null,pendingReviews=new Map();
+  let catalog,finalNotes={},queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null,pendingReviews=new Map(),wakeTimer;
   const noteCache=new Map(),pending=new Map();
   const state=()=>storage.read(core.KEY,{version:1,records:{}},core.validState);
   function message(text){$('fc-error').textContent=text;$('fc-error').hidden=!text;}
@@ -47,16 +47,34 @@
   }
   function intervalLabel(days){if(days<1)return Math.round(days*1440)+' min';return Math.round(days)+' '+(Math.round(days)===1?'day':'days');}
   function showUndo(){$('fc-undo').disabled=!undo.length;}
+  function nextLearning(){
+    return [...pendingReviews.values()].sort((a,b)=>a.due-b.due)[0];
+  }
+  function learningStatus(){
+    clearTimeout(wakeTimer);
+    const next=nextLearning(), button=$('fc-learning-next');
+    if(!button)return;
+    const wait=next?next.due-Date.now():Infinity;
+    button.hidden=wait>20*60000;
+    if(!button.hidden)button.textContent=wait<=0?'Review learning card now':'Review learning card early ('+Math.ceil(wait/60000)+' min left)';
+    if(wait>0&&Number.isFinite(wait))wakeTimer=setTimeout(learningStatus,Math.min(wait,60000));
+  }
+  function takeLearning(early=false){
+    const entry=nextLearning();
+    if(!entry||entry.due-Date.now()>(early?20*60000:0))return false;
+    pendingReviews.delete(entry.card.id);
+    queue.splice(position,0,entry.card);
+    return true;
+  }
   async function draw(){
     const token=++revision;revealed=false;busy=true;message('');$('fc-retry').hidden=true;$('fc-ratings').hidden=true;$('fc-answer').hidden=true;$('fc-reveal').hidden=false;$('fc-reveal').disabled=true;$('fc-skip').disabled=true;showUndo();
     $('fc-finished').hidden=true;
-    if(position>=queue.length){
-      for(const [id,entry] of pendingReviews)if(entry.due<=Date.now()){queue.push(entry.card);pendingReviews.delete(id);}
-    }
+    // Learning cards have priority once due; cram has no scheduled entries.
+    if(queue[position]?.id!==nextLearning()?.card.id)takeLearning();
     if(position>=queue.length){
       busy=false;active=false;$('fc-practice').hidden=true;$('fc-finished').hidden=false;$('fc-finished-text').textContent=reviewed+' rated · '+skipped+' skipped. '+(series?.config.mode==='all'?' Cram did not change your schedule.':' Your next due times are saved on this device.');
       // Keep Undo accessible after the final card.
-      $('fc-finished').append($('fc-undo'));showUndo();finishActions();count();$('fc-finished').querySelector('h2').tabIndex=-1;$('fc-finished').querySelector('h2').focus();return;
+      $('fc-finished').append($('fc-undo'));showUndo();finishActions();learningStatus();count();$('fc-finished').querySelector('h2').tabIndex=-1;$('fc-finished').querySelector('h2').focus();return;
     }
     if($('fc-undo').parentElement.id==='fc-finished')document.querySelector('.fc-progress').append($('fc-undo'));
     $('fc-practice').hidden=false;$('fc-front').textContent='Loading card…';$('fc-extra').replaceChildren();$('fc-supplements').replaceChildren();
@@ -84,7 +102,7 @@
     revealed=false;
     const card=queue[position],snapshot=state(),previous=snapshot.records[card.id]||null,cram=series?.config.mode==='all';
     const next=cram?null:core.schedule(previous,rating);
-    undo.push({position,previous,next,id:card.id,skipped,queueLength:queue.length,pending:new Map(pendingReviews)});
+    undo.push({position,previous,next,id:card.id,skipped,queue:queue.slice(),pending:new Map(pendingReviews)});
     if(next){
       snapshot.records[card.id]=next;storage.write(core.KEY,snapshot);
       if([1,3].includes(next.memory.state))pendingReviews.set(card.id,{card,due:next.due});
@@ -98,17 +116,18 @@
     if(last.next&&JSON.stringify(snapshot.records[last.id])!==JSON.stringify(last.next)){message('This rating changed in another tab or import. Undo was stopped to preserve that newer record.');return;}
     undo.pop();
     if(last.next){if(last.previous)snapshot.records[last.id]=last.previous;else delete snapshot.records[last.id];storage.write(core.KEY,snapshot);}
-    queue.length=last.queueLength;pendingReviews=last.pending;position=last.position;reviewed--;skipped=last.skipped;active=true;draw();
+    queue=last.queue;pendingReviews=last.pending;position=last.position;reviewed--;skipped=last.skipped;active=true;draw();
   }
   function shuffle(list){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;}
-  function config(){return {lecture:$('fc-lecture').value,subject:$('fc-subject').value,search:$('fc-search').value,mode:$('fc-mode').value,size:$('fc-size').value,shuffle:$('fc-shuffle').checked};}
+  function config(){return {lecture:$('fc-lecture').value,subject:$('fc-subject').value,search:$('fc-search').value,mode:$('fc-mode').value,size:$('fc-size').value,shuffle:$('fc-shuffle').checked,onePerNote:$('fc-one-per-note')?.checked===true,newLimit:Number($('fc-new-limit')?.value||0)};}
   function scope(settings){
     const lecture=lectures.find(l=>l.id===settings.lecture);
     return lecture?lecture.lectureLabel+' · '+lecture.title:settings.lecture==='__lectures__'?(settings.subject?settings.subject+' · ':'')+'All lecture topics':settings.subject||'All topics';
   }
   function batch(offset){
-    series.offset=offset;pendingReviews.clear();queue=series.cards.slice(offset,offset+series.size);position=reviewed=skipped=0;undo=[];active=true;
-    $('fc-selection').textContent=scope(series.config)+' · '+queue.length+' cards · set '+(Math.floor(offset/series.size)+1);
+    series.offset=offset;queue=series.cards.slice(offset,offset+series.size);position=reviewed=skipped=0;undo=[];active=true;
+    const records=state().records, unseen=queue.filter(c=>!records[c.id]).length;
+    $('fc-selection').textContent=scope(series.config)+' · '+queue.length+' cards · set '+(Math.floor(offset/series.size)+1)+(series.config.mode==='all'?' · Cram':' · '+(queue.length-unseen)+' due / '+unseen+' new');
     $('fc-session-warning').hidden=false;choices(false);draw();
   }
   function nextLecture(){
@@ -129,9 +148,20 @@
   }
   function start(event){
     event?.preventDefault();if(busy)return false;
-    const matches=filtered();if(!matches.length){message('No matching cards are ready. Try All cards, a different subject, or a broader search.');return false;}
+    let matches=filtered();if(!matches.length){message('No matching cards are ready. Try All cards, a different subject, or a broader search.');return false;}
     const settings=config(),records=state().records;if(settings.shuffle)shuffle(matches);
-    if(settings.mode==='due'||settings.mode==='due-only')matches.sort((a,b)=>(records[a.id]?.due??Infinity)-(records[b.id]?.due??Infinity));
+    if(settings.mode!=='all'){
+      const priority=card=>!records[card.id]?2:[1,3].includes(records[card.id].memory?.state)?0:1;
+      matches.sort((a,b)=>priority(a)-priority(b)||(records[a.id]?.due??0)-(records[b.id]?.due??0));
+      if(settings.onePerNote){
+        const notes=new Set();
+        matches=matches.filter(card=>!notes.has(card.note)&&!!notes.add(card.note));
+      }
+      if(settings.newLimit){
+        let unseen=0;matches=matches.filter(card=>records[card.id]||++unseen<=settings.newLimit);
+      }
+    }
+    pendingReviews.clear();clearTimeout(wakeTimer);
     series={cards:matches,size:settings.size==='all'?matches.length:Number(settings.size),offset:0,config:settings};
     const lecture=lectures.find(l=>l.id===settings.lecture);lectureContext(lecture);
     const url=new URL(location.href);if(lecture)url.searchParams.set('lecture',lecture.id);else url.searchParams.delete('lecture');history.replaceState(null,'',url);
@@ -141,7 +171,7 @@
   function advanceLecture(){
     if(busy||active)return;const next=nextLecture();if(!next)return;
     const settings=series.config;
-    $('fc-lecture').value=next.id;$('fc-subject').value=next.subject;$('fc-search').value='';$('fc-mode').value=settings.mode;$('fc-size').value=settings.size;$('fc-shuffle').checked=settings.shuffle;
+    $('fc-lecture').value=next.id;$('fc-subject').value=next.subject;$('fc-search').value='';$('fc-mode').value=settings.mode;$('fc-size').value=settings.size;$('fc-shuffle').checked=settings.shuffle;if($('fc-one-per-note'))$('fc-one-per-note').checked=settings.onePerNote;if($('fc-new-limit'))$('fc-new-limit').value=String(settings.newLimit);
     if(!start()){
       series=null;queue=[];position=reviewed=skipped=0;undo=[];revision++;
       $('fc-practice').hidden=true;$('fc-finished').hidden=true;choices(true);lectureContext(next);$('fc-selection').textContent=scope(config())+' · no cards ready';$('fc-session-warning').hidden=true;count();
@@ -177,6 +207,10 @@
   $('fc-settings').addEventListener('submit',start);$('fc-settings').addEventListener('input',count);$('fc-settings').addEventListener('change',count);
   $('fc-settings-toggle').addEventListener('click',()=>choices($('fc-settings').hidden));
   $('fc-reveal').addEventListener('click',reveal);$('fc-skip').addEventListener('click',()=>{if(busy||position>=queue.length)return;skipped++;position++;draw();});
+  $('fc-learning-next').addEventListener('click',()=>{
+    if(busy||active||!takeLearning(true))return;
+    active=true;draw();
+  });
   $('fc-undo').addEventListener('click',undoRating);$('fc-another').addEventListener('click',()=>{choices(true);count();$('fc-start').focus();});
   $('fc-continue').addEventListener('click',continueSet);$('fc-next-lecture').addEventListener('click',advanceLecture);
   $('fc-retry').addEventListener('click',()=>catalog&&queue.length?draw():load());
