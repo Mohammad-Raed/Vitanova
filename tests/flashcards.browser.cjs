@@ -34,17 +34,21 @@ async function main(){
  await page.locator('#fc-settings-toggle').click();await page.locator('#fc-search').fill('brachial');check((await page.locator('#fc-counter').textContent()).includes('1 rated'),'Changing filters leaves active session intact');
  await page.locator('#fc-settings-toggle').click();await page.locator('#fc-skip').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('1 skipped'));
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Skip changes no persistent review record');
- await page.reload();await page.waitForFunction(()=>document.getElementById('fc-selection').textContent.includes('3,323'));
+ await page.reload();await page.waitForFunction(()=>document.getElementById('fc-selection').textContent.includes('cards · MSS topic library'));
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Reviews persist after refresh');
  await goto('index.html#backup');const exported=await page.evaluate(()=>VitanovaBackup.exportData());check(Object.keys(exported.data.flashcards.records).length===1,'Central backup includes flashcard review');
  await page.evaluate(data=>{localStorage.removeItem('vitanova:flashcards:v1');VitanovaBackup.importData(data,'merge');},exported);
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Existing import restores flashcard history');
+ await goto('flashcards.html?lecture=mss-final-pharmacology-01');
+ await page.waitForFunction(()=>document.getElementById('fc-match-count').textContent.startsWith('10 matching'));
+ await page.locator('#fc-start').click();await page.locator('#fc-reveal').click();
+ check(await page.locator('.fc-answer').count()>0,'MSS Final lecture cloze reveals its answer');
  await goto('flashcards.html');await page.waitForFunction(()=>!document.getElementById('fc-start').disabled);
  await page.locator('#fc-mode').selectOption('all');await page.locator('#fc-lecture').selectOption('__lectures__');
- const mapped=await page.evaluate(async()=>{const c=await(await fetch('data/flashcards/catalog.json')).json();return c.cards.filter(x=>x.lectures.length>0).length;});
+ const mapped=await page.evaluate(async()=>{const files=['catalog.json','mss-final.json'];const sets=await Promise.all(files.map(async f=>(await fetch('data/flashcards/'+f)).json()));return sets.flatMap(s=>s.cards).filter(x=>x.lectures.length>0).length;});
  check((await page.locator('#fc-match-count').textContent()).startsWith(mapped+' matching'),'All lecture topics excludes unmapped additional material');
  await page.locator('#fc-subject').selectOption('Anatomy');
- const mappedAnatomy=await page.evaluate(async()=>{const c=await(await fetch('data/flashcards/catalog.json')).json();return c.cards.filter(x=>x.lectures.length>0&&x.subject==='Anatomy').length;});
+ const mappedAnatomy=await page.evaluate(async()=>{const files=['catalog.json','mss-final.json'];const sets=await Promise.all(files.map(async f=>(await fetch('data/flashcards/'+f)).json()));return sets.flatMap(s=>s.cards).filter(x=>x.lectures.length>0&&x.subject==='Anatomy').length;});
  check((await page.locator('#fc-match-count').textContent()).startsWith(mappedAnatomy+' matching'),'Lecture topics combines with subject filter');
  await page.locator('#fc-subject').selectOption('');await start();check((await page.locator('#fc-selection').textContent()).includes('All lecture topics'),'Session summary identifies lecture-only scope');
  await page.locator('#fc-settings-toggle').click();
@@ -79,6 +83,7 @@ async function main(){
  const paginationContext=await browser.newContext({viewport:{width:390,height:844}}),fresh=await paginationContext.newPage();
  fresh.on('pageerror',e=>errors.push(e.message));
  await fresh.clock.install({time:new Date('2026-10-29T12:00:00Z')});
+ await fresh.route('**/data/flashcards/mss-final.json',route=>route.fulfill({json:{version:1,cards:[],notes:{}}}));
  await fresh.route('**/data/flashcards/catalog.json',route=>route.fulfill({json:fixture}));
  await fresh.goto(base+'/flashcards.html?lecture=mss-mid-anatomy-01-02');await fresh.waitForFunction(()=>!document.getElementById('fc-start').disabled);
  await fresh.locator('#fc-size').selectOption('20');await fresh.locator('#fc-start').click();
@@ -121,6 +126,7 @@ async function main(){
 
  // When the next lecture is not due, do not silently switch to free practice.
  const zero=await paginationContext.newPage(),zeroCards=fixture.cards.slice(0,2).map((c,i)=>({...c,lectures:[i?'mss-mid-anatomy-03-04':'mss-mid-anatomy-01-02']}));
+ await zero.route('**/data/flashcards/mss-final.json',route=>route.fulfill({json:{version:1,cards:[],notes:{}}}));
  await zero.route('**/data/flashcards/catalog.json',route=>route.fulfill({json:{...fixture,cards:zeroCards}}));
  await zero.goto(base+'/flashcards.html?lecture=mss-mid-anatomy-01-02');await zero.waitForFunction(()=>document.getElementById('fc-selection').textContent.includes('2 cards'));
  // First note may already have review history from this test context; start with a controlled snapshot.
