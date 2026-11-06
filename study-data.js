@@ -324,5 +324,18 @@ window.VitanovaLectures = [
     "description": "Spinal reflexes, motor neuron lesions, baclofen, and the control of walking.",
     "file": "MSS-Final-Physiology-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-06",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 6",
+    "order": 6,
+    "title": "Adaptive Immunity: From Recognition to Memory",
+    "description": "Antigen presentation, lymphocyte activation, effector responses, memory and vaccines.",
+    "file": "Immunology-Midterm-Lecture-6-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];

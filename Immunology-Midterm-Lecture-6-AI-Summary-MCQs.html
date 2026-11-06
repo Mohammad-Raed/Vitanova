@@ -1,0 +1,525 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Immunology Midterm Lecture 6: Adaptive Immunity</title><style>:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px 20px 36px;text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px 12px;white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 60px}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+/* Quiz */
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+#sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--bl);outline-offset:3px}
+details summary{cursor:pointer;font-weight:650;color:var(--pu)}
+.g{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.card p:first-child{margin-top:0}.card p:last-child{margin-bottom:0}
+#sc{position:sticky;top:49px;z-index:3;margin-block:12px}
+#sc progress{width:100%;height:9px;accent-color:var(--te)}
+#filters button,.sa{background:var(--soft);color:var(--pu);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font:inherit;cursor:pointer}
+#filters button[aria-pressed="true"]{background:var(--pu);color:var(--card)}
+#filters .r{background:var(--or);color:var(--tx);border-color:var(--or)}
+.q .ex:not([hidden]){display:block}.ex>div{padding-top:6px}
+.q{scroll-margin-top:130px}.o[aria-disabled="true"]{cursor:default}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<header><small>IMMUNOLOGY · MIDTERM · LECTURE 6</small><h1>Adaptive Immunity: From Recognition to Memory</h1><p>How antigens are presented, how lymphocytes respond, and why protection lasts.</p></header>
+<nav aria-label="Study sections"><a href="#presentation">Presentation</a><a href="#activation">T-cell activation</a><a href="#helpers">Helper T cells</a><a href="#b">B cells</a><a href="#killing">Killing &amp; defence</a><a href="#memory">Memory</a><a href="#vaccines">Vaccines &amp; age</a><a href="#cases">Cases</a><a href="#summary">Quick review</a><a href="#quiz">Quiz</a></nav>
+<main>
+<div class="note"><b>Source numbering:</b> This is Midterm Lecture 6 in Vitanova. The supplied notes include slides with an original “Lecture 3” footer. Page references below refer to the uploaded PDF.</div>
+<section id="presentation"><div class="k">PDF pages 3–6, 20–21</div><h2>1. What T and B cells recognize</h2>
+<div class="card"><p>A <b>B-cell receptor (BCR)</b> binds an intact antigen directly: it might be a protein surface, a polysaccharide, or another accessible structure. The BCR is membrane immunoglobulin (Ig) with signalling partners Igα and Igβ (cluster of differentiation [CD] 79a and 79b). Plasma cells secrete antibodies of the same basic specificity. Conventional <b>alpha–beta T-cell receptors (TCRs)</b> instead recognize the combined surface of a peptide and a <b>major histocompatibility complex (MHC)</b> molecule. TCRs remain membrane-bound. The CD3 signalling complex and associated zeta chains carry <b>immunoreceptor tyrosine-based activation motifs (ITAMs)</b> that transmit the signal.</p><p>Most T cells have alpha–beta receptors; gamma–delta T cells are a minority enriched at some epithelial barriers. Other exceptions to the conventional peptide rule include <b>invariant natural killer T (iNKT) cells</b>, which see lipids on CD1d, and <b>mucosal-associated invariant T (MAIT) cells</b>, which see microbial metabolites on MHC class I-related protein 1 (MR1).</p></div>
+<div class="card tbl" tabindex="0" aria-label="Antigen processing pathways"><table><thead><tr><th>Step</th><th>MHC class I</th><th>MHC class II</th></tr></thead><tbody>
+<tr><td>Source</td><td>Usually proteins made inside the cell: self, viral, or tumour proteins.</td><td>Usually material captured from outside by endocytosis or phagocytosis.</td></tr>
+<tr><td>Processing</td><td>Proteasomes cut cytosolic proteins. The transporter associated with antigen processing (TAP) moves peptides into the endoplasmic reticulum (ER).</td><td>Acidified endosomes and lysosomes digest captured material. Failure to acidify impairs this process.</td></tr>
+<tr><td>Loading</td><td>In the ER, peptide stabilizes the class I heavy chain with beta-2 microglobulin; the complex travels through the Golgi to the surface.</td><td>Class II is made in rough ER. Invariant chain blocks the groove and guides the complex to endosomes. Its remnant, class II-associated invariant chain peptide (CLIP), is exchanged for antigen peptide with help from human leukocyte antigen DM (HLA-DM).</td></tr>
+<tr><td>Seen by</td><td>CD8 T cells; class I is on most nucleated cells.</td><td>CD4 T cells; class II is chiefly on professional antigen-presenting cells (APCs): dendritic cells, macrophages and B cells.</td></tr>
+</tbody></table></div>
+<div class="note"><b>Exam clues:</b> TAP defect → reduced class I presentation. Acidification defect → impaired class II processing. Dendritic cells can <b>cross-present</b> extracellular antigen on class I to prime CD8 cells. Remember: <b>I × 8 = II × 4</b>.</div>
+<div class="card"><p><b>Human leukocyte antigen (HLA)</b> is the human MHC system: HLA-A, -B and -C are class I; HLA-DP, -DQ and -DR are class II. HLA typing helps assess donor–recipient compatibility; antibody screening and crossmatching answer related but distinct questions. Disease associations are risk markers, not diagnoses or proof of causation. Class I can also be found on platelets; mature red cells lack conventional class I. Class II has membrane-spanning alpha and beta chains, while class I has a membrane-spanning heavy chain and noncovalently associated beta-2 microglobulin. The lecture also illustrates that some engineered TCR therapies, such as afamitresgene autoleucel (afami-cel), recognize targets only with specified HLA alleles.</p></div><details class="card"><summary>HLA associations from the slide table</summary><ul><li><b>B27:</b> psoriatic arthritis, ankylosing spondylitis, inflammatory bowel disease-associated arthritis and reactive arthritis (PAIR).</li><li><b>B*57:01:</b> abacavir hypersensitivity. The specific allele matters.</li><li><b>DQ2/DQ8:</b> coeliac disease.</li><li><b>DR3:</b> associations listed include type 1 diabetes, systemic lupus erythematosus, Graves disease, Hashimoto thyroiditis and Addison disease.</li><li><b>DR4:</b> associations listed include rheumatoid arthritis, type 1 diabetes and Addison disease. Risk depends on the specific allele and population.</li></ul></details></section>
+<section id="activation"><div class="k">PDF pages 6–8 and 20–21</div><h2>2. How a naïve T cell becomes activated</h2>
+<div class="card"><ol><li><b>Recognition:</b> TCR binds the correct peptide–MHC. CD4 or CD8 binds the corresponding MHC class and supports signalling through CD3. Dendritic cells are the usual primers of naïve T cells; macrophages and B cells can present to appropriate T cells in other contexts.</li><li><b>Costimulation:</b> CD28 on the T cell binds B7 (CD80/CD86) on the APC. Infection increases B7. Recognition without adequate costimulation can leave a naïve T cell unresponsive (anergy). Adhesion, such as lymphocyte function-associated antigen 1 (LFA-1) binding intercellular adhesion molecule 1 (ICAM-1), stabilizes the immune synapse.</li><li><b>Instruction and expansion:</b> Local cytokines steer differentiation. Activated T cells produce interleukin-2 (IL-2) and upregulate its receptor, including CD25, to drive clonal expansion. Autocrine means the secreting cell responds to its own signal; nearby cells may also respond.</li></ol><p><b>Feedback:</b> Cytotoxic T-lymphocyte-associated protein 4 (CTLA-4) restrains costimulation by binding B7. CD40 ligand (CD40L, also CD154) on helper T cells binds CD40 to activate macrophages, license dendritic cells, or help B cells, depending on the partner. Macrophages can release IL-1, IL-6, IL-12 and tumour necrosis factor alpha (TNF-α); activated type 1 helper T cells release interferon gamma (IFN-γ).</p></div>
+<div class="card"><h3>Superantigens bypass ordinary peptide specificity</h3><p>The tuberculin skin-test vignette illustrates a delayed T-cell response. CD28–B7 supports naïve T-cell priming; the swelling on re-exposure reflects a memory response and local recruitment, rather than an immediate antibody reaction.</p><p>A superantigen bridges MHC class II outside the peptide groove to certain variable beta (Vβ) regions of TCRs. Many unrelated clones carrying the relevant Vβ region activate together. T-cell IFN-γ and other mediators stimulate myeloid cells, which release IL-1, IL-6 and TNF-α; excessive systemic inflammation can cause fever, rash and hypotension. Examples: staphylococcal enterotoxins, toxic shock syndrome toxin 1 (TSST-1), and certain streptococcal pyrogenic exotoxins.</p></div></section>
+<section id="helpers"><div class="k">PDF pages 9–11 and 22</div><h2>3. Helper T cells choose an effector programme</h2>
+<p>A mature naïve CD4 T cell (sometimes called Th0 in the notes) expands after priming in lymph nodes or spleen. The local cytokine environment and antigen context shape its fate. These are useful teaching patterns; individual cells and tissues can vary.</p>
+<div class="card tbl" tabindex="0" aria-label="Helper T-cell subsets"><table><thead><tr><th>Subset</th><th>Inducing signals / regulator</th><th>Outputs and main job</th></tr></thead><tbody>
+<tr><td>Type 1 helper T (Th1)</td><td>IL-12 from APCs and early IFN-γ, often from natural killer (NK) cells; T-box transcription factor TBX21 (T-bet).</td><td>IFN-γ activates macrophages against intracellular microbes and reinforces Th1 differentiation.</td></tr>
+<tr><td>Type 2 helper T (Th2)</td><td>IL-4; GATA-binding protein 3 (GATA3).</td><td>IL-4 promotes immunoglobulin E (IgE) responses; IL-5 supports eosinophils; IL-13 supports mucus and barrier changes. Helps expel helminths and drives allergy.</td></tr>
+<tr><td>Type 17 helper T (Th17)</td><td>IL-6 and transforming growth factor beta (TGF-β) in the classic model; IL-1 may contribute and IL-23 supports expansion and maintenance; retinoic acid receptor-related orphan receptor gamma t (RORγt).</td><td>IL-17 recruits neutrophils indirectly; IL-22 supports barrier defences. Important against fungi and extracellular bacteria.</td></tr>
+<tr><td>Follicular helper T (Tfh)</td><td>Signals including IL-6 and IL-21; B-cell lymphoma 6 protein (BCL6).</td><td>IL-21 and CD40L help B cells in germinal centres.</td></tr>
+<tr><td>Regulatory T (Treg)</td><td>IL-2; TGF-β supports peripheral induction; forkhead box P3 (FOXP3).</td><td>Suppresses inappropriate immune activation through mechanisms including CTLA-4, IL-10 and TGF-β. Maintains tolerance.</td></tr>
+</tbody></table></div>
+<div class="note"><b>Clarification:</b> IFN-γ supports Th1 and can suppress Th2 differentiation. IL-4 reinforces Th2. Th2 is not an inevitable default when IL-12 is absent; the combination of signals matters. A male infant with severe enteropathy, eczema and early diabetes suggests <b>immune dysregulation, polyendocrinopathy, enteropathy, X-linked (IPEX) syndrome</b> from FOXP3 dysfunction.</div></section>
+<section id="b"><div class="k">PDF pages 12–19</div><h2>4. How B cells make better antibodies</h2>
+<div class="card"><p>B cells mature in bone marrow and naïve cells circulate through lymphoid follicles. The BCR binds antigen through its variable region. After activation, an early extrafollicular response can rapidly supply antibody; a germinal-centre response develops more slowly and improves antibody quality.</p></div>
+<div class="card tbl" tabindex="0" aria-label="B-cell activation pathways"><table><thead><tr><th>Feature</th><th>T-dependent</th><th>T-independent</th></tr></thead><tbody>
+<tr><td>Typical trigger</td><td>Protein: the B cell binds and internalizes it, then presents its peptide on class II to a cognate Tfh cell.</td><td>Repetitive polysaccharides cross-link many BCRs; microbial molecules such as lipopolysaccharide (LPS) can also supply innate signals.</td></tr>
+<tr><td>Second signal</td><td>CD40L on Tfh binds CD40 on B cell, with cytokines such as IL-21.</td><td>Receptor clustering and/or innate signals, without cognate T-cell help.</td></tr>
+<tr><td>Typical result</td><td>Class switching, affinity maturation, memory B cells and long-lived plasma cells.</td><td>Rapid, mainly immunoglobulin M (IgM); generally limited switching, affinity maturation and durable memory. Weak in young infants; splenic marginal-zone cells matter.</td></tr></tbody></table></div>
+<div class="card"><p><b>Linked recognition:</b> In a conjugate vaccine, the BCR binds the bacterial sugar, takes up the attached carrier protein, and presents <em>carrier peptide</em> to the Tfh cell. The T cell supplies help while the B cell makes antibody against the sugar. This is why conjugates can work well in infants. Examples: <i>Haemophilus influenzae</i> type b (Hib), pneumococcal conjugates and quadrivalent meningococcal conjugates against groups A, C, W and Y (MenACWY).</p></div>
+<div class="card"><h3>Germinal centre: mutate, test, repeat</h3><ol><li><b>Dark zone:</b> B cells proliferate and activation-induced cytidine deaminase (AID) promotes somatic hypermutation in immunoglobulin variable genes.</li><li><b>Light zone:</b> Follicular dendritic cells hold intact antigen for B cells to capture. B cells that capture it well can present more peptide to Tfh cells and receive survival signals. Poor competitors often die by apoptosis.</li><li><b>Outcome:</b> Repeated selection raises average binding affinity. AID also enables class-switch recombination: change the heavy-chain constant region and effector function while retaining the rearranged antigen-binding region. Cytokines influence the class (for example IL-4 favours IgE and TGF-β can favour immunoglobulin A [IgA]). Class switching can also occur outside germinal centres.</li></ol><p>Outputs include memory B cells and long-lived bone marrow plasma cells. CD40L deficiency can cause X-linked hyper-IgM syndrome: poor class switching and impaired CD40-dependent immune functions. The slide’s infant with encapsulated bacterial infections plus Pneumocystis pneumonia illustrates why this defect goes beyond antibodies: helper T-cell communication with APCs, including macrophages, is also impaired. Follicular lymphoma and Burkitt lymphoma can arise from germinal-centre lineage cells.</p></div>
+<div class="card"><h3>Four useful B-cell populations</h3><p><b>Follicular:</b> recirculate and drive most T-dependent responses. <b>Marginal zone:</b> splenic cells that rapidly respond to blood-borne polysaccharides. <b>B-1:</b> classically described in body cavities, especially in mice; provide broadly reactive natural IgM before deliberate immunization. Natural antibodies contribute to early defence and removal of dying cells. <b>Regulatory B cells:</b> can release IL-10 and dampen inflammation.</p></div></section>
+<section id="killing"><div class="k">PDF pages 11 and 23–25</div><h2>5. Killing infected cells and matching the defence</h2>
+<div class="card"><p>Naïve CD8 cells are primed by peptide–class I, costimulation and cytokines, often on dendritic cells. A CD4 cell can <b>license</b> the dendritic cell through CD40L–CD40, improving CD8 priming. A differentiated <b>cytotoxic T lymphocyte (CTL)</b> recognizes the matching peptide–class I on a target and can kill by two routes:</p><ul><li><b>Perforin and granzymes:</b> focused granule release lets granzymes access the target cytosol and trigger programmed cell death, including through caspases.</li><li><b>Fas ligand (FasL) and Fas:</b> binding activates a target death-receptor pathway.</li></ul><p>A CTL can detach and kill another target, and can secrete IFN-γ and TNF. Perforin defects can cause familial <b>haemophagocytic lymphohistiocytosis (HLH)</b> because defective killing permits prolonged immune activation.</p></div>
+<div class="card"><p><b>Exhaustion:</b> Persistent antigen in human immunodeficiency virus (HIV), hepatitis B virus (HBV) or tumours can reduce proliferation, cytokine release and killing. Programmed cell death protein 1 (PD-1) binding its ligands PD-L1 or PD-L2 provides inhibitory signalling. In some cancers, antibodies such as pembrolizumab and nivolumab block PD-1 and can restore some activity. PD-1 expression alone does not prove exhaustion. <b>Tumour-infiltrating lymphocyte (TIL)</b> therapy expands tumour-derived cells before reinfusion (example: lifileucel in melanoma). Epstein–Barr virus (EBV)-specific T cells can target infected cells in selected cases of post-transplant lymphoproliferative disorder (PTLD).</p></div>
+<div class="card tbl" tabindex="0" aria-label="Defences against microbes"><table><thead><tr><th>Challenge</th><th>Best-matched defence</th></tr></thead><tbody>
+<tr><td>Viruses</td><td>CTLs remove infected cells; neutralizing antibody limits spread between cells.</td></tr>
+<tr><td>Extracellular bacteria and toxins</td><td>Immunoglobulin G (IgG) opsonizes bacteria; complement and neutrophils help clear them; antibodies neutralize toxins.</td></tr>
+<tr><td>Intracellular bacteria</td><td>Th1 IFN-γ activates macrophages; disruption of the IL-12/IFN-γ axis increases susceptibility to mycobacteria.</td></tr>
+<tr><td>Fungi at barriers</td><td>Th17 signals recruit and support neutrophil defence; impaired IL-17 signalling predisposes to mucocutaneous candidiasis.</td></tr>
+<tr><td>Helminths</td><td>Th2 responses recruit eosinophils and promote IgE, mast-cell and barrier responses.</td></tr></tbody></table></div></section>
+<section id="memory"><div class="k">PDF pages 26–28</div><h2>6. Contraction, memory and changing antigens</h2>
+<div class="card"><p>Naïve cells have matured without meeting their cognate antigen. Effector clones expand during infection, then most die during <b>contraction</b> (the deck illustrates roughly 90%, not a fixed fraction). Surviving memory cells respond faster on re-exposure. IL-7 and IL-15 help maintain many memory T-cell populations without ongoing antigen; long-lived plasma cells use specialized survival niches.</p></div>
+<div class="card tbl" tabindex="0" aria-label="Memory populations"><table><thead><tr><th>Population</th><th>Location and job</th></tr></thead><tbody>
+<tr><td>Central memory T cells (T<sub>CM</sub>)</td><td>C-C chemokine receptor 7 (CCR7) supports lymph-node homing; strong proliferation on recall.</td></tr><tr><td>Effector memory T cells (T<sub>EM</sub>)</td><td>Patrol blood and peripheral tissues; rapid effector function.</td></tr><tr><td>Tissue-resident memory T cells (T<sub>RM</sub>)</td><td>Remain in tissues such as skin, lung and gut. Often express CD69; some express CD103. Positioned for local defence.</td></tr><tr><td>Memory B cells and plasma cells</td><td>Memory B cells respond on re-exposure; long-lived plasma cells continually secrete antibody without requiring a new exposure.</td></tr></tbody></table></div>
+<div class="card"><p><b>Durability:</b> The slide’s estimated antibody half-lives (years) are tetanus 11, diphtheria 19, varicella-zoster 50, vaccinia 92, rubella 114, mumps 542 and measles 3,014. These are model estimates from antibody measurements, not individual guarantees or literal observation over millennia. Neutralization may decline enough to permit infection while memory still limits severe disease. A <b>correlate of protection</b> is a measurable marker associated with protection; slide examples include antibody to hepatitis B surface antigen (anti-HBs) at 10 milli-international units per millilitre and tetanus antitoxin at 0.1 international units per millilitre in the relevant testing contexts.</p><p><b>Imprinting and drift:</b> The first strain encountered can bias recall toward shared epitopes. Mutations in variable epitopes can reduce recognition; conserved sites, such as the influenza haemagglutinin stem, are candidates for broader vaccines. Infection plus vaccination is called hybrid immunity and can broaden responses; it is not a reason to seek infection. The World Health Organization (WHO) makes seasonal influenza composition recommendations twice yearly. The coronavirus disease 2019 (COVID-19) strain example in the deck is season-specific, not a permanent formulation.</p></div></section>
+<section id="vaccines"><div class="k">PDF pages 29–30</div><h2>7. Vaccine platforms and immunity across life</h2>
+<div class="card tbl" tabindex="0" aria-label="Vaccine platforms"><table><thead><tr><th>Platform</th><th>How it teaches the immune system</th></tr></thead><tbody>
+<tr><td>Live attenuated</td><td>Limited replication mimics infection and can induce antibody and cellular immunity. Some live vaccines are contraindicated in pregnancy or severe immunodeficiency.</td></tr><tr><td>Inactivated, subunit or toxoid</td><td>Deliver killed organism, selected antigens or inactivated toxin. Generally usable in immunocompromised patients, though responses may be weaker. Often rely on adjuvants or boosters.</td></tr><tr><td>Conjugate</td><td>Links polysaccharide to protein to recruit T-cell help and improve infant responses and memory.</td></tr><tr><td>Messenger ribonucleic acid in lipid nanoparticles (mRNA–LNP) or viral vector</td><td>Host cells make antigen, permitting class I presentation as well as antibody responses.</td></tr><tr><td>Mucosal delivery</td><td>Oral or intranasal delivery can promote local IgA and resident memory depending on the vaccine.</td></tr><tr><td>Passive antibodies</td><td>Nirsevimab and clesrovimab illustrate passive protection against respiratory syncytial virus (RSV). Supplied antibody can protect immediately but does not generate the recipient’s own antigen-specific memory.</td></tr></tbody></table></div>
+<div class="card"><p><b>Newborns:</b> Maternal IgG crosses the placenta, especially in the third trimester. It wanes over the first months as infant antibody production increases. Maternal vaccination can protect the newborn through transferred IgG. Infant vaccine timing and boosters vary by jurisdiction and product; the lecture’s examples include early primary series, influenza vaccination, pertussis vaccination in pregnancy and tetanus–diphtheria boosters.</p><p><b>Young children:</b> Weak responses to plain polysaccharides before roughly age two explain the use of conjugates. <b>Older adults:</b> Thymic output declines rather than stopping abruptly, naïve pools shrink, and responses can weaken (immunosenescence). Chronic low-grade inflammation is sometimes called inflammaging. Higher-dose or adjuvanted vaccines are examples of strategies to improve protection in older adults.</p></div></section>
+<section id="cases"><div class="k">PDF pages 31–32</div><h2>8. Localize the immune defect from the case</h2>
+<details class="card"><summary>Case A: recurrent otitis and pneumonia after 6–8 months, absent tonsils, very low B cells</summary><p><b>X-linked agammaglobulinaemia (XLA)</b> due to loss of Bruton tyrosine kinase (BTK). B-cell maturation stalls, so CD19-positive B cells and multiple immunoglobulin classes are very low while T cells are generally preserved. Encapsulated bacteria such as <i>Streptococcus pneumoniae</i> and <i>Haemophilus influenzae</i> fit. Maternal IgG initially masks the defect. Immunoglobulin replacement is central; live vaccine decisions require specialist guidance.</p></details>
+<details class="card"><summary>Case B: cardiac outflow defect, hypocalcaemic seizures, candidiasis and low T cells</summary><p><b>22q11.2 deletion syndrome (DiGeorge phenotype):</b> thymic hypoplasia explains low CD3-positive T cells and viral/fungal susceptibility; hypoparathyroidism explains low calcium; conotruncal defects complete the pattern. Severity varies. Complete congenital athymia may be treated with thymus tissue implantation. Irradiated cellular blood products may be indicated in suspected severe T-cell deficiency to prevent transfusion-associated graft-versus-host disease.</p></details>
+<div class="note"><b>Compare:</b> B cells mature in bone marrow and bind intact antigen; their effector output is antibody. T cells mature in the thymus; conventional T cells see peptide–MHC and act through cytokines, help or killing. Memory follows both arms.</div></section>
+<section id="summary"><div class="k">High-yield review</div><h2>One-minute recap</h2><div class="g"><div class="card"><ul><li><b>I → CD8:</b> proteasome → TAP → ER.</li><li><b>II → CD4:</b> acidic vesicles → invariant chain/CLIP → HLA-DM.</li><li><b>T-cell signals:</b> peptide–MHC, CD28–B7, cytokines. CTLA-4 brakes; IL-2 expands.</li><li><b>Th1</b> activates macrophages; <b>Th2</b> recruits eosinophils; <b>Th17</b> recruits neutrophils; <b>Tfh</b> helps B cells; <b>Treg</b> protects tolerance.</li></ul></div><div class="card"><ul><li><b>CD40L–CD40</b> helps B cells switch and form durable responses.</li><li><b>Dark zone:</b> mutate. <b>Light zone:</b> select. <b>Switching:</b> change function.</li><li><b>CTL:</b> perforin/granzymes or FasL–Fas; chronic antigen can lead to exhaustion.</li><li><b>Memory B cells recall; plasma cells secrete.</b> Conjugates turn a sugar response into one with T-cell help.</li></ul></div></div></section>
+<section id="quiz"><div class="k">Active recall</div><h2>Multiple-choice questions (MCQs)</h2><p>Choose one best answer or reveal it without scoring. Collapse the explanation when you’re done. Use Missed to revisit mistakes.</p>
+<div class="card" id="sc"><div id="score" role="status"></div><progress id="progress" value="0" max="1" aria-label="Quiz progress"></progress><div class="flow" id="filters"><button type="button" data-filter="all">All</button><button type="button" data-filter="new">Unanswered</button><button type="button" data-filter="missed">Missed</button><button type="button" data-filter="revealed">Revealed</button><button class="r" type="button">Reset</button></div></div><div id="qs"></div><p id="empty" hidden>No questions match this filter.</p></section>
+<section><div class="k">Source notes</div><h2>References</h2><p>Primary source: supplied Immunology Lecture 6 PDF, including its annotated notes and review slides. The lecture cites Abbas, Lichtman and Pillai, <i>Basic Immunology</i>, 7th edition; Murphy, Weaver and Berg, <i>Janeway’s Immunobiology</i>, 10th edition; and Amanna and colleagues on antibody durability.</p></section>
+</main><footer>Vitanova · Immunology Midterm · Lecture 6</footer>
+<script>
+const Q=[
+  [
+    "A cell cannot transport cytosolic peptides into its endoplasmic reticulum. What presentation step is most directly affected?",
+    [
+      "Acidification of class II endosomes",
+      "Degradation of class II invariant chain",
+      "Antigen capture by the B-cell receptor",
+      "Loading of peptides onto class I"
+    ],
+    3,
+    "TAP transports cytosolic peptides into the endoplasmic reticulum for class I loading."
+  ],
+  [
+    "Which molecule helps exchange CLIP for an antigen peptide?",
+    [
+      "Beta-2 microglobulin",
+      "HLA-DM",
+      "CD28",
+      "TAP"
+    ],
+    1,
+    "HLA-DM catalyzes peptide exchange in the class II compartment."
+  ],
+  [
+    "An inhibitor prevents endosomal acidification in a macrophage. Which step is most directly impaired?",
+    [
+      "Degradation of cytosolic proteins by proteasomes",
+      "Export of cytosolic peptides into the endoplasmic reticulum",
+      "Recognition of intact antigen by surface immunoglobulin",
+      "Processing of ingested proteins for class II"
+    ],
+    3,
+    "Acidic compartments support proteolysis and class II peptide loading."
+  ],
+  [
+    "A dendritic cell displays a peptide from a phagocytosed tumour cell on class I. What is this called?",
+    [
+      "Linked recognition",
+      "Affinity maturation",
+      "Cross-presentation",
+      "Receptor editing"
+    ],
+    2,
+    "Extracellular antigen can enter the class I pathway through cross-presentation."
+  ],
+  [
+    "Which recognition event can occur without classical peptide–MHC presentation?",
+    [
+      "A CD8 T cell recognizes a viral peptide on a target",
+      "A conventional CD4 T cell recognizes a carrier peptide",
+      "A CTL recognizes its peptide on a tumour cell",
+      "A BCR binds an intact capsular polysaccharide"
+    ],
+    3,
+    "The BCR binds intact antigen; the conventional T-cell examples use peptide–MHC."
+  ],
+  [
+    "Which interaction provides classical costimulation to a naïve T cell?",
+    [
+      "CD40L with CD40",
+      "CD28 with B7",
+      "CD4 with MHC class II",
+      "LFA-1 with ICAM-1"
+    ],
+    1,
+    "CD28–B7 supplies signal 2. Adhesion and coreceptor binding play different roles."
+  ],
+  [
+    "A naïve T cell recognizes peptide–MHC without adequate costimulation. What can follow?",
+    [
+      "Affinity maturation",
+      "Class-switch recombination",
+      "Functional anergy",
+      "Antigen-independent effector expansion"
+    ],
+    2,
+    "Recognition alone can induce unresponsiveness rather than productive activation."
+  ],
+  [
+    "Which factor directly supports expansion of a newly activated T-cell clone?",
+    [
+      "IL-5",
+      "IL-2",
+      "IL-17",
+      "IL-22"
+    ],
+    1,
+    "Activated T cells produce IL-2 and upregulate its receptor to expand."
+  ],
+  [
+    "Why can a bacterial superantigen activate many unrelated T-cell clones?",
+    [
+      "It delivers cytosolic peptides to many different class I alleles",
+      "It mimics a peptide that binds all T-cell receptors equally",
+      "It bridges MHC II and particular TCR variable beta regions",
+      "It cross-links B-cell immunoglobulin through repetitive sugars"
+    ],
+    2,
+    "Superantigens activate clones sharing a Vβ family without normal peptide specificity."
+  ],
+  [
+    "Which helper response best supports macrophage control of intracellular mycobacteria?",
+    [
+      "Th1-derived IFN-γ",
+      "Th2-derived IL-5",
+      "Th17-derived IL-22",
+      "Tfh-derived IL-21"
+    ],
+    0,
+    "IFN-γ from Th1 cells activates macrophages; IL-12 helps establish the response."
+  ],
+  [
+    "Which pairing best describes a helminth-directed response?",
+    [
+      "Th1, IL-12 and macrophages",
+      "Th17, IL-17 and neutrophils",
+      "Tfh, IL-21 and plasma cells",
+      "Th2, IL-5 and eosinophils"
+    ],
+    3,
+    "Th2 cytokines support IgE and eosinophils, with IL-5 particularly important for eosinophils."
+  ],
+  [
+    "Recurrent mucocutaneous candidiasis suggests impairment of which pathway?",
+    [
+      "Th2–IL-5",
+      "Th1–IFN-γ",
+      "Th17–IL-17",
+      "Treg–FOXP3"
+    ],
+    2,
+    "IL-17 supports barrier defence and neutrophil recruitment against Candida."
+  ],
+  [
+    "A male infant has severe enteropathy, dermatitis and early diabetes. Which regulator is most likely defective?",
+    [
+      "BCL6",
+      "GATA3",
+      "T-bet",
+      "FOXP3"
+    ],
+    3,
+    "FOXP3 dysfunction impairs regulatory T cells in IPEX syndrome."
+  ],
+  [
+    "What peptide does a polysaccharide-specific B cell present after taking up a conjugate vaccine?",
+    [
+      "A peptide from the carrier protein",
+      "A peptide derived from the polysaccharide",
+      "A peptide from the B-cell receptor",
+      "A peptide generated from the adjuvant"
+    ],
+    0,
+    "The B cell binds sugar, internalizes the linked carrier, and presents carrier peptide to helper T cells."
+  ],
+  [
+    "Which pattern best fits a typical response to a plain bacterial polysaccharide?",
+    [
+      "Strong affinity maturation with durable memory",
+      "Early IgM with limited durable memory",
+      "Predominant IgE with eosinophil expansion",
+      "Rapid class switching with germinal-centre selection"
+    ],
+    1,
+    "A T-independent response is typically fast and IgM-biased, with limited durable memory."
+  ],
+  [
+    "Where do germinal-centre B cells compete for intact antigen held by follicular dendritic cells?",
+    [
+      "Dark zone",
+      "Light zone",
+      "Bone marrow niche",
+      "Thymic medulla"
+    ],
+    1,
+    "The dark zone supports proliferation and mutation; selection takes place in the light zone."
+  ],
+  [
+    "Which feature changes directly during immunoglobulin class-switch recombination?",
+    [
+      "The heavy-chain rearranged variable region",
+      "The light-chain antigen-binding sequence",
+      "The heavy-chain constant region",
+      "The epitope bound by the original receptor"
+    ],
+    2,
+    "Switching changes effector class while retaining the rearranged binding region."
+  ],
+  [
+    "Which enzyme participates in both somatic hypermutation and class switching?",
+    [
+      "BTK",
+      "TAP",
+      "HLA-DM",
+      "AID"
+    ],
+    3,
+    "Activation-induced cytidine deaminase initiates both DNA modification processes."
+  ],
+  [
+    "A boy has impaired class switching despite B-cell antigen recognition. Which missing T-cell signal best explains X-linked hyper-IgM syndrome?",
+    [
+      "CD40L binding CD40",
+      "CD28 binding CD80",
+      "CD8 binding class I",
+      "CTLA-4 binding CD86"
+    ],
+    0,
+    "CD40L deficiency prevents effective CD40-dependent help for switching."
+  ],
+  [
+    "What is an alternative to perforin and granzyme-mediated cytotoxicity?",
+    [
+      "CD28 binding B7 on the target",
+      "CD40L binding CD40 on the target",
+      "FasL binding Fas on the target",
+      "PD-1 binding PD-L1 on the target"
+    ],
+    2,
+    "Fas engagement triggers death-receptor-mediated apoptosis."
+  ],
+  [
+    "Why can perforin deficiency cause severe systemic inflammation?",
+    [
+      "Increased granule release destroys excessive numbers of targets",
+      "Loss of B-cell class switching produces immune complexes",
+      "Defective killing permits prolonged immune activation",
+      "Increased costimulation blocks lymphocyte contraction"
+    ],
+    2,
+    "Ineffective cytotoxicity can allow excessive ongoing immune activation in familial HLH."
+  ],
+  [
+    "Which change best fits T-cell exhaustion during chronic antigen exposure?",
+    [
+      "Reduced killing and proliferation with sustained inhibitory signalling",
+      "Increased killing and proliferation after every antigen encounter",
+      "Loss of peptide specificity with normal effector function",
+      "A switch from T-cell receptor expression to antibody secretion"
+    ],
+    0,
+    "Persistent stimulation can lead to progressive dysfunction and increased inhibitory receptor expression."
+  ],
+  [
+    "Which memory T-cell population uses CCR7 to home to lymph nodes?",
+    [
+      "Central memory",
+      "Effector memory",
+      "Tissue-resident memory",
+      "Terminal effector"
+    ],
+    0,
+    "Central memory cells recirculate through lymphoid organs and proliferate strongly on recall."
+  ],
+  [
+    "What maintains circulating antibody titres between exposures?",
+    [
+      "Naïve follicular B cells",
+      "Quiescent memory B cells",
+      "Central memory T cells",
+      "Long-lived plasma cells"
+    ],
+    3,
+    "Plasma cells continue to secrete antibodies; memory B cells reactivate on re-exposure."
+  ],
+  [
+    "What does immune imprinting explain when a virus changes its surface antigens?",
+    [
+      "All memory cells immediately lose their original specificity",
+      "Recall may favour epitopes shared with the first strain",
+      "The new strain cannot activate any naïve B cells",
+      "Every conserved epitope becomes equally immunogenic"
+    ],
+    1,
+    "Existing memory can bias the response toward shared targets from the original exposure."
+  ],
+  [
+    "Which intervention gives passive protection without inducing the infant’s own antigen-specific memory?",
+    [
+      "A protein conjugate vaccine",
+      "An inactivated viral vaccine",
+      "An administered RSV-neutralizing antibody",
+      "A live attenuated mucosal vaccine"
+    ],
+    2,
+    "An administered antibody supplies immediate protection without active priming of the recipient."
+  ],
+  [
+    "A 14-month-old has recurrent bacterial respiratory infections, absent tonsils and very few B cells. Which defect fits?",
+    [
+      "Bruton tyrosine kinase deficiency",
+      "FOXP3 deficiency",
+      "Perforin deficiency",
+      "22q11.2 deletion"
+    ],
+    0,
+    "BTK deficiency blocks B-cell maturation; maternal IgG temporarily masks the defect."
+  ],
+  [
+    "A newborn has a conotruncal defect, hypocalcaemia and a low T-cell count. What is the most likely explanation?",
+    [
+      "Thymic and parathyroid hypoplasia",
+      "Failure of B-cell maturation",
+      "Deficient cytotoxic granule release",
+      "Impaired immunoglobulin class switching"
+    ],
+    0,
+    "The constellation points to the DiGeorge phenotype of 22q11.2 deletion."
+  ],
+  [
+    "Which structure stabilizes the class I heavy chain at the surface?",
+    [
+      "Invariant chain",
+      "CD3 zeta chain",
+      "HLA-DM",
+      "Beta-2 microglobulin"
+    ],
+    3,
+    "Class I consists of a heavy chain associated with beta-2 microglobulin."
+  ],
+  [
+    "An HLA-B27 association with ankylosing spondylitis establishes which conclusion?",
+    [
+      "The allele is sufficient to cause the disease",
+      "The allele is a risk marker, not diagnostic by itself",
+      "Every affected patient must carry the allele",
+      "A negative result rules out the disease"
+    ],
+    1,
+    "An association changes probability without establishing causation or a diagnosis."
+  ],
+  [
+    "Which population helps explain weak responses to plain polysaccharides after splenectomy?",
+    [
+      "Splenic marginal-zone B cells",
+      "Thymic regulatory T cells",
+      "Lymph-node central memory T cells",
+      "Bone marrow long-lived plasma cells"
+    ],
+    0,
+    "Marginal-zone B cells provide a fast response to blood-borne polysaccharides."
+  ],
+  [
+    "Which cytokines help maintain many memory T-cell populations without persistent antigen?",
+    [
+      "IL-4 and IL-5",
+      "IL-7 and IL-15",
+      "IL-17 and IL-22",
+      "IL-1 and IL-6"
+    ],
+    1,
+    "IL-7 and IL-15 support homeostasis of many memory T cells."
+  ]
+];
+(function(){
+'use strict';
+const box=document.getElementById('qs'), score=document.getElementById('score'), progress=document.getElementById('progress');
+const key='vitanova:immunology-mid-06:quiz:v1'; let filter='all', state=Q.map(()=>null);
+try {const saved=JSON.parse(localStorage.getItem(key)); if(Array.isArray(saved)&&saved.length===Q.length&&saved.every((x,i)=>x===null||Number.isInteger(x)&&x>=-1&&x<Q[i][1].length))state=saved;}catch{}
+const save=()=>{try{localStorage.setItem(key,JSON.stringify(state));}catch{}};
+const el=(tag,txt,cls)=>{const n=document.createElement(tag);if(txt)n.textContent=txt;if(cls)n.className=cls;return n;};
+const cards=Q.map(([stem,opts,right,reason],i)=>{
+ const d=el('article','','q');d.append(el('p',(i+1)+'. '+stem));
+ const options=opts.map((option,j)=>{const b=el('button',String.fromCharCode(65+j)+'. '+option,'o');b.type='button';b.addEventListener('click',()=>lock(j));d.append(b);return b;});
+ const show=el('button','Show answer','sa');show.type='button';show.addEventListener('click',()=>lock(-1));d.append(show);
+ const exp=el('details','','ex'); exp.append(el('summary','Answer and explanation'),el('div','Correct: '+opts[right]+'. '+reason));d.append(exp);
+ function lock(j){if(state[i]!==null)return;state[i]=j;save();paint();update();}
+ function paint(){const v=state[i];options.forEach((b,j)=>{b.setAttribute('aria-disabled',String(v!==null));b.classList.toggle('ok',v!==null&&j===right);b.classList.toggle('no',v===j&&j!==right);});show.hidden=v!==null;exp.hidden=v===null;exp.open=v!==null;}
+ box.append(d);paint();return {d,paint};
+});
+function update(){
+ const answered=state.filter(x=>x!==null&&x>=0).length, revealed=state.filter(x=>x===-1).length, correct=state.filter((x,i)=>x===Q[i][2]).length;
+ score.textContent='Answered '+answered+'/'+Q.length+' · Score '+correct+' · Revealed '+revealed;
+ progress.max=Q.length;progress.value=answered+revealed;
+ let visible=0;cards.forEach(({d},i)=>{const v=state[i];d.hidden=!(filter==='all'||filter==='new'&&v===null||filter==='missed'&&v!==null&&v>=0&&v!==Q[i][2]||filter==='revealed'&&v===-1);if(!d.hidden)visible++;});
+ document.getElementById('empty').hidden=!!visible;
+ document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===filter)));
+}
+document.getElementById('filters').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.filter)filter=b.dataset.filter;
+ if(b.classList.contains('r')){state=Q.map(()=>null);filter='all';save();cards.forEach(({d,paint})=>{paint();d.dispatchEvent(new Event('vitanova:question-reset',{bubbles:true}));});}
+ update();
+});
+update();
+})();
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

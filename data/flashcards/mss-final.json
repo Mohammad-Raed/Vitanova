@@ -704,6 +704,270 @@
         "mss-final-physiology-01"
       ],
       "search": "Contact with an obstacle can trigger a preorganized spinal response called the stumbling corrective reaction"
+    },
+    {
+      "id": "1a0bed49474dd95899cd8e9a",
+      "note": "vn-imm-mid-06-1",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The transporter that carries cytosolic antigen peptides into the endoplasmic reticulum is TAP"
+    },
+    {
+      "id": "67897a38b60481d6ea25d3ef",
+      "note": "vn-imm-mid-06-2",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The usual co-receptor for T-cell recognition of peptide–MHC class I is CD8"
+    },
+    {
+      "id": "8c83042c8018dd0e9e741eb8",
+      "note": "vn-imm-mid-06-3",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The protein associated with the MHC class I heavy chain is beta-2 microglobulin"
+    },
+    {
+      "id": "df8a8835a54df5196e6d0af9",
+      "note": "vn-imm-mid-06-4",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The peptide left in the MHC class II groove after invariant-chain degradation is CLIP"
+    },
+    {
+      "id": "c2c0138671cedae59d298917",
+      "note": "vn-imm-mid-06-5",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The molecule that promotes CLIP exchange for antigen peptide is HLA-DM"
+    },
+    {
+      "id": "bec416a0f5a8511a4decd5ce",
+      "note": "vn-imm-mid-06-6",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The classical costimulatory receptor on a naïve T cell that binds B7 is CD28"
+    },
+    {
+      "id": "42c602c495ec2f6a86a736cd",
+      "note": "vn-imm-mid-06-7",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The inhibitory receptor that competes with CD28 for B7 is CTLA-4"
+    },
+    {
+      "id": "31fa32f214e693eff806d442",
+      "note": "vn-imm-mid-06-8",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The cytokine that drives expansion of a newly activated T-cell clone is interleukin-2"
+    },
+    {
+      "id": "1f9e9ec0b9df883168d4dda8",
+      "note": "vn-imm-mid-06-9",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "A superantigen cross-links MHC class II to the T-cell receptor’s variable beta region"
+    },
+    {
+      "id": "2e761fd8ca9397ee9c606144",
+      "note": "vn-imm-mid-06-10",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "Th1 cells activate macrophages primarily through interferon gamma"
+    },
+    {
+      "id": "ebca79c2907db61e7eaec0e4",
+      "note": "vn-imm-mid-06-11",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The Th2 cytokine especially important for eosinophils is interleukin-5"
+    },
+    {
+      "id": "94cd360403164fb2383292f6",
+      "note": "vn-imm-mid-06-12",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The helper T-cell subset that supports defence against mucocutaneous Candida is Th17"
+    },
+    {
+      "id": "165fcb1bbf20d0846aca8922",
+      "note": "vn-imm-mid-06-13",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The transcription factor defective in IPEX syndrome is FOXP3"
+    },
+    {
+      "id": "498712674db5398aa1485ebf",
+      "note": "vn-imm-mid-06-14",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The cytokine produced by follicular helper T cells that supports B-cell responses is interleukin-21"
+    },
+    {
+      "id": "40a027e857abab5638308ae8",
+      "note": "vn-imm-mid-06-15",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "A B cell responding to a conjugate vaccine presents peptides from the carrier protein"
+    },
+    {
+      "id": "090fa9489f8df4e1bc3a385e",
+      "note": "vn-imm-mid-06-16",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The germinal-centre zone where B cells compete for antigen is the light zone"
+    },
+    {
+      "id": "4ad5f25930203e0ad2a65085",
+      "note": "vn-imm-mid-06-17",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The enzyme needed for both somatic hypermutation and class switching is activation-induced cytidine deaminase"
+    },
+    {
+      "id": "28884a22bfc594f6f93e2a69",
+      "note": "vn-imm-mid-06-18",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "Immunoglobulin class switching changes the heavy-chain constant region"
+    },
+    {
+      "id": "852b2147483f293ede347f99",
+      "note": "vn-imm-mid-06-19",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "X-linked hyper-IgM syndrome classically results from deficiency of CD40 ligand"
+    },
+    {
+      "id": "7d31cb4c92d2d43156420a6f",
+      "note": "vn-imm-mid-06-20",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The death receptor engaged by a cytotoxic T cell as an alternative to granule release is Fas"
+    },
+    {
+      "id": "714d06eaacbb1fe858f8ef72",
+      "note": "vn-imm-mid-06-21",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The memory T-cell subset that uses CCR7 to home to lymph nodes is central memory T cells"
+    },
+    {
+      "id": "5d1763010941981fe53fc1da",
+      "note": "vn-imm-mid-06-22",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "Between antigen exposures, circulating antibody is maintained by long-lived plasma cells"
+    },
+    {
+      "id": "01b0fb7e0dc23231a3e44e48",
+      "note": "vn-imm-mid-06-23",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "The protein defective in X-linked agammaglobulinaemia is Bruton tyrosine kinase"
+    },
+    {
+      "id": "08146c52b1c90f825e380b82",
+      "note": "vn-imm-mid-06-24",
+      "ordinal": 1,
+      "subject": "Immunology",
+      "topic": "Adaptive immunity",
+      "lectures": [
+        "immunology-mid-06"
+      ],
+      "search": "Cardiac outflow defects, hypocalcaemia and thymic hypoplasia suggest 22q11.2 deletion syndrome"
     }
   ],
   "notes": {
@@ -1090,6 +1354,150 @@
       "extra": "",
       "supplements": [],
       "oneByOne": false
+    },
+    "vn-imm-mid-06-1": {
+      "text": "The transporter that carries cytosolic antigen peptides into the endoplasmic reticulum is {{c1::TAP}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-2": {
+      "text": "The usual co-receptor for T-cell recognition of peptide–MHC class I is {{c1::CD8}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-3": {
+      "text": "The protein associated with the MHC class I heavy chain is {{c1::beta-2 microglobulin}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-4": {
+      "text": "The peptide left in the MHC class II groove after invariant-chain degradation is {{c1::CLIP}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-5": {
+      "text": "The molecule that promotes CLIP exchange for antigen peptide is {{c1::HLA-DM}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-6": {
+      "text": "The classical costimulatory receptor on a naïve T cell that binds B7 is {{c1::CD28}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-7": {
+      "text": "The inhibitory receptor that competes with CD28 for B7 is {{c1::CTLA-4}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-8": {
+      "text": "The cytokine that drives expansion of a newly activated T-cell clone is {{c1::interleukin-2}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-9": {
+      "text": "A superantigen cross-links MHC class II to the T-cell receptor’s {{c1::variable beta region}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-10": {
+      "text": "Th1 cells activate macrophages primarily through {{c1::interferon gamma}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-11": {
+      "text": "The Th2 cytokine especially important for eosinophils is {{c1::interleukin-5}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-12": {
+      "text": "The helper T-cell subset that supports defence against mucocutaneous Candida is {{c1::Th17}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-13": {
+      "text": "The transcription factor defective in IPEX syndrome is {{c1::FOXP3}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-14": {
+      "text": "The cytokine produced by follicular helper T cells that supports B-cell responses is {{c1::interleukin-21}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-15": {
+      "text": "A B cell responding to a conjugate vaccine presents peptides from the {{c1::carrier protein}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-16": {
+      "text": "The germinal-centre zone where B cells compete for antigen is the {{c1::light zone}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-17": {
+      "text": "The enzyme needed for both somatic hypermutation and class switching is {{c1::activation-induced cytidine deaminase}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-18": {
+      "text": "Immunoglobulin class switching changes the heavy-chain {{c1::constant region}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-19": {
+      "text": "X-linked hyper-IgM syndrome classically results from deficiency of {{c1::CD40 ligand}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-20": {
+      "text": "The death receptor engaged by a cytotoxic T cell as an alternative to granule release is {{c1::Fas}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-21": {
+      "text": "The memory T-cell subset that uses CCR7 to home to lymph nodes is {{c1::central memory T cells}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-22": {
+      "text": "Between antigen exposures, circulating antibody is maintained by {{c1::long-lived plasma cells}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-23": {
+      "text": "The protein defective in X-linked agammaglobulinaemia is {{c1::Bruton tyrosine kinase}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-imm-mid-06-24": {
+      "text": "Cardiac outflow defects, hypocalcaemia and thymic hypoplasia suggest {{c1::22q11.2 deletion syndrome}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
     }
   },
   "ankiLectureLinks": {
@@ -1360,6 +1768,11 @@
       "fc-mss-1cab3bd344cb64c35378-c1",
       "fc-mss-5cf9cbe2f5093f8265ca-c1",
       "fc-mss-0d550ff24574709e3374-c1"
+    ],
+    "immunology-mid-06": [
+      "fc-mss-a11f54815fa3dbb3ae98-c1",
+      "fc-mss-c18635e251d9e9c8554f-c1",
+      "fc-mss-ed16462c32c0a460876f-c1"
     ]
   }
 }

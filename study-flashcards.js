@@ -91,7 +91,7 @@
   function config(){return {lecture:$('fc-lecture').value,subject:$('fc-subject').value,search:$('fc-search').value,mode:$('fc-mode').value,size:$('fc-size').value,shuffle:$('fc-shuffle').checked};}
   function scope(settings){
     const lecture=lectures.find(l=>l.id===settings.lecture);
-    return lecture?lecture.lectureLabel+' · '+lecture.title:settings.lecture==='__lectures__'?(settings.subject?settings.subject+' · ':'')+'All lecture topics':settings.subject||'All MSS topics';
+    return lecture?lecture.lectureLabel+' · '+lecture.title:settings.lecture==='__lectures__'?(settings.subject?settings.subject+' · ':'')+'All lecture topics':settings.subject||'All topics';
   }
   function batch(offset){
     series.offset=offset;queue=series.cards.slice(offset,offset+series.size);position=reviewed=skipped=0;undo=[];active=true;
@@ -153,7 +153,7 @@
       const linked=base.cards.map(card=>lectureLinks.has(card.id)
         ? {...card,lectures:[...new Set([...card.lectures,...lectureLinks.get(card.id)])]} : card);
       finalNotes=final.notes;catalog={...base,cards:[...linked,...final.cards]};
-      $('fc-subject').length=1;for(const sub of Object.keys(catalog.subjects))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
+      $('fc-subject').length=1;for(const sub of new Set([...Object.keys(catalog.subjects),...final.cards.map(card=>card.subject)]))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
       $('fc-lecture').length=2;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
       const requested=lectures.find(l=>l.id===params.get('lecture'));
       if(requested){$('fc-lecture').value=requested.id;lectureContext(requested);}
