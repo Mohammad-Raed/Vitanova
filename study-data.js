@@ -311,5 +311,18 @@ window.VitanovaLectures = [
     "description": "Acne treatments, mechanisms, adverse effects and rosacea.",
     "file": "MSS-Final-Pharmacology-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-physiology-01",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Physiology",
+    "category": "mss-final-physiology",
+    "lectureLabel": "Lecture 1",
+    "order": 1,
+    "title": "Spinal Reflexes & Motor Patterns",
+    "description": "Spinal reflexes, motor neuron lesions, baclofen, and the control of walking.",
+    "file": "MSS-Final-Physiology-Lecture-1-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];

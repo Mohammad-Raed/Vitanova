@@ -1,0 +1,425 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>MSS Final Physiology Lecture 1: Spinal Reflexes and Motor Patterns</title><style>:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px 20px 36px;text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px 12px;white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 60px}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+/* Quiz */
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+#sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--bl);outline-offset:3px}
+details summary{cursor:pointer;font-weight:650;color:var(--pu)}
+.g{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.card p:first-child{margin-top:0}.card p:last-child{margin-bottom:0}
+#sc{position:sticky;top:49px;z-index:3;margin-block:12px}
+#sc progress{width:100%;height:9px;accent-color:var(--te)}
+#filters button,.sa{background:var(--soft);color:var(--pu);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font:inherit;cursor:pointer}
+#filters button[aria-pressed="true"]{background:var(--pu);color:var(--card)}
+#filters .r{background:var(--or);color:var(--tx);border-color:var(--or)}
+.q .ex:not([hidden]){display:block}.ex>div{padding-top:6px}
+.q{scroll-margin-top:130px}.o[aria-disabled="true"]{cursor:default}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<header><small>MUSCULOSKELETAL SYSTEM (MSS) · FINAL · PHYSIOLOGY LECTURE 1</small><h1>Spinal Reflexes &amp; Motor Patterns</h1><p>How the spinal cord responds, how the brain adjusts it, and how both shape walking.</p></header>
+<nav aria-label="Study sections"><a href="#reflex">Reflexes</a><a href="#tone">Tone &amp; motor neurons</a><a href="#descending">Descending control</a><a href="#baclofen">Baclofen</a><a href="#patterns">Rhythm &amp; feedback</a><a href="#summary">High-yield review</a><a href="#quiz">MCQs</a></nav>
+<main>
+<div class="note"><b>Lecture numbering:</b> This is Final Physiology Lecture 1 in Vitanova. The original deck is labelled “MSS system lecture 5.” Start with the explanation, then use the summary and quiz to revise.</div>
+<section id="reflex"><div class="k">Slides 2–4 and 25</div><h2>1. From stimulus to reflex</h2>
+<div class="card"><p>A <b>somatic reflex</b> is an automatic skeletal muscle response to a stimulus. A receptor converts the stimulus into an electrical signal (<b>sensory transduction</b>). An <b>afferent</b> fibre carries the signal toward the spinal cord. One or more spinal synapses route it to an <b>efferent</b> motor neuron, which activates skeletal muscle.</p>
+<div class="flow"><span>Stimulus &amp; receptor</span><i>→</i><span>Afferent fibre</span><i>→</i><span>Spinal synapse(s)</span><i>→</i><span>Motor neuron</span><i>→</i><span>Muscle</span></div>
+<p>At the same time, ascending signals can reach the brain and contribute to conscious sensation. You can begin withdrawing before you consciously register the pain.</p></div>
+<div class="card tbl" tabindex="0" aria-label="Comparison of spinal reflexes"><table><thead><tr><th scope="col">Reflex</th><th scope="col">Sensor and pathway</th><th scope="col">Result</th></tr></thead><tbody>
+<tr><td>Stretch</td><td>Muscle spindle senses length and change in length. Group Ia is the primary spindle afferent class. It directly excites alpha motor neurons of the stretched muscle.</td><td>The stretched muscle contracts. In parallel, an inhibitory interneuron relaxes the antagonist (reciprocal inhibition). Only the direct excitatory limb is monosynaptic.</td></tr>
+<tr><td>Golgi tendon organ</td><td>Golgi tendon organ senses tension. Its group Ib afferent acts through interneurons.</td><td>In the classic resting circuit, it inhibits the muscle generating the tension. During walking, the effect can change with the task and phase.</td></tr>
+<tr><td>Flexion withdrawal</td><td>A painful skin stimulus recruits spinal interneurons across levels.</td><td>On the stimulated side: excite flexors and inhibit extensors so the limb withdraws.</td></tr>
+<tr><td>Crossed extension</td><td>Interneurons relay the withdrawal signal across the midline.</td><td>On the opposite side: excite extensors and inhibit flexors so the supporting leg bears weight.</td></tr>
+</tbody></table></div>
+<div class="note"><b>Walk it through:</b> Step on a sharp object with your right foot. The right leg flexes away, and the left leg extends to support you. Remember: <b>same side escapes; opposite side supports.</b> A patellar tendon tap, by contrast, stretches the quadriceps spindle even though the hammer hits the tendon.</div></section>
+<section id="tone"><div class="k">Slides 5–9 and 13</div><h2>2. Tone and motor neuron lesions</h2>
+<div class="g"><div class="card"><h3>Lower motor neurons (LMNs)</h3><p>Cell bodies lie in the spinal cord’s ventral horn or motor nuclei of the brainstem. Their axons directly innervate skeletal muscle. An alpha motor neuron and the muscle fibres it supplies form a <b>motor unit</b>. A lesion interrupts the final route to contraction.</p></div>
+<div class="card"><h3>Upper motor neurons (UMNs)</h3><p>Neurons in the motor cortex, including primary motor and premotor regions, and descending motor centres in the brainstem influence spinal and cranial motor circuits. Corticospinal fibres act through interneurons and, in some pathways, directly on motor neurons. They help set reflex strength and pattern.</p></div></div>
+<div class="card"><h3>Why a relaxed limb still resists movement</h3><p><b>Muscle tone</b> is the resistance felt during passive movement. Muscle and connective tissue supply passive elastic resistance; ongoing neural activity and stretch reflexes add an active component, especially during posture. Descending commands and postural reflexes adjust this activity to stabilize the body.</p></div>
+<div class="card tbl" tabindex="0" aria-label="Motor neuron lesion comparison"><table><thead><tr><th scope="col">Finding</th><th scope="col">LMN pattern</th><th scope="col">Established UMN pattern</th></tr></thead><tbody>
+<tr><td>Strength</td><td>Weakness or paralysis</td><td>Weakness, often with loss of fine control</td></tr><tr><td>Tendon reflexes</td><td>Reduced or absent</td><td>Brisk; clonus may occur</td></tr><tr><td>Tone</td><td>Reduced (flaccid)</td><td>Often increased (spastic)</td></tr><tr><td>Muscle bulk</td><td>Denervation atrophy</td><td>Some disuse atrophy can develop</td></tr><tr><td>Other clues</td><td>Fasciculations; fibrillation potentials on electromyography (EMG)</td><td>Extensor plantar response (Babinski sign)</td></tr></tbody></table></div>
+<div class="card"><p><b>Fasciculation:</b> spontaneous discharge of a motor unit, often arising in its motor axon or terminal, may make a visible twitch. <b>Fibrillation:</b> spontaneous activity in a single muscle fibre, often after denervation; usually detected with needle EMG rather than seen through the skin.</p><p><b>Examples:</b> Polio can injure anterior horn cells. Guillain–Barré syndrome affects peripheral nerves and often produces areflexic weakness. Botulism reduces acetylcholine release at the neuromuscular junction and can mimic a flaccid LMN pattern without destroying LMNs. <b>Amyotrophic lateral sclerosis (ALS)</b> can show <em>both</em> UMN and LMN findings.</p></div></section>
+<section id="descending"><div class="k">Slides 9–15</div><h2>3. Descending control changes strength and pattern</h2>
+<div class="card"><h3>Strength: how much reflex output follows a given input?</h3><p><b>Reflex gain</b> describes the size of the response for a given input. Descending pathways can inhibit or facilitate spinal circuits. When inhibitory regulation is lost, an established UMN lesion often produces hyperreflexia. Immediately after severe spinal cord injury, spinal shock can temporarily suppress reflexes before they return and become brisk.</p><p>During the <b>Jendrassik manoeuvre</b>, the patient hooks the fingers and pulls while the examiner taps the tendon. This can reinforce a difficult-to-elicit tendon reflex. It illustrates that descending or task-related effects can also facilitate reflexes.</p></div>
+<div class="card"><h3>Pattern: which movement does the stimulus produce?</h3><p>Stroking the lateral sole and curving toward the forefoot normally produces toe flexion or no clear response in adults. In an extensor plantar response, the <b>great toe extends upward</b>; the other toes may fan. The sign suggests impaired corticospinal control in an adult. In infants it can be normal while descending pathways mature.</p><p>Distinguish a reproducible great-toe extension from a rapid whole-leg withdrawal to an unpleasant stimulus. Brisk tendon reflexes describe <b>gain</b>; Babinski describes a change in <b>pattern</b>.</p></div>
+<div class="note"><b>Spasticity:</b> resistance rises when a relaxed limb is stretched faster because stretch reflexes are overactive. Stroke or spinal cord injury can cause it. Both mono- and polysynaptic pathways may contribute to abnormal reflex behaviour. A fixed contracture can also increase passive resistance, but is mechanically different from reflex spasticity.</div></section>
+<section id="baclofen"><div class="k">Slides 15–17</div><h2>4. Why baclofen can reduce spasticity</h2>
+<div class="card"><p>Baclofen activates the type B receptor for <b>gamma-aminobutyric acid (GABA)</b>, written <b>GABA<sub>B</sub></b>. The spinal result is weaker transmission through reflex circuits, including mono- and polysynaptic responses. The diagram’s two forms of inhibition act at different sites:</p></div>
+<div class="card tbl" tabindex="0" aria-label="Inhibition mechanisms"><table><thead><tr><th scope="col">Site</th><th scope="col">Mechanism</th><th scope="col">Effect</th></tr></thead><tbody>
+<tr><td>Presynaptic</td><td>An axon can contact a sensory terminal (an axo-axonic synapse). GABA<sub>B</sub> signalling can reduce calcium entry into the terminal.</td><td>Less excitatory transmitter released; the downstream excitatory postsynaptic potential (EPSP) is smaller. Other terminals onto the same cell can still transmit.</td></tr>
+<tr><td>Postsynaptic</td><td>GABA<sub>B</sub> signalling can increase potassium conductance on a downstream neuron.</td><td>It becomes harder to fire. Interneurons and motor neurons are less readily recruited.</td></tr>
+</tbody></table></div>
+<details class="card"><summary>Diagram checkpoint: what happens if a different excitatory input fires?</summary><p>In the slide example, an inhibitory terminal acts on excitatory terminal A before it reaches cell C. The response to A decreases; an independent terminal D can still excite C. If another excitatory input increases transmitter release specifically at D, D can produce a larger EPSP, other things being equal. This illustrates input-specific modulation.</p></details>
+<div class="note"><b>Receptor distinction:</b> The slide’s chloride diagram illustrates fast inhibition via GABA<sub>A</sub> or glycine receptors. Chloride conductance can hyperpolarize or shunt excitatory input, depending on the chloride gradient. Baclofen acts at <b>GABA<sub>B</sub></b>, a receptor that signals indirectly via G proteins.</div>
+<div class="card"><p><b>Why intrathecal?</b> Baclofen crosses the blood–brain barrier poorly. Oral baclofen can still work, but intrathecal delivery places the drug in cerebrospinal fluid (CSF) around the spinal cord, achieving effective spinal concentrations with lower systemic exposure. This is the physiological rationale for selected cases of severe spasticity.</p></div></section>
+<section id="patterns"><div class="k">Slides 18–28 · Slide 23 marked not required</div><h2>5. How walking gets its rhythm</h2>
+<div class="card"><h3>Central pattern generators</h3><p>A <b>central pattern generator (CPG)</b> is a network in the central nervous system (CNS) that can generate an organized rhythmic motor pattern when activated, even without rhythmic sensory input. In the spinal locomotor network, interneurons deliver alternating bursts of excitation and inhibition to flexor and extensor motor neurons. Descending drive can initiate or change the pattern; the cortex does not have to issue a separate command for every step.</p><p><b>Fictive locomotion</b> is a locomotion-like pattern recorded from motor nerves without actual stepping. Alternating flexor and extensor bursts show that the core rhythm can be generated centrally. Real walking still depends on sensory feedback for timing, strength and stability.</p></div>
+<div class="card tbl" tabindex="0" aria-label="Sensory feedback roles"><table><thead><tr><th scope="col">Feedback role</th><th scope="col">Mechanism and example</th></tr></thead><tbody>
+<tr><td>Retimes</td><td><b>Stance</b> is when the limb supports weight; <b>swing</b> is when it advances. Hip extension stretches hip flexors near the end of stance. Proprioceptive input from muscles and joints can advance flexor bursts and help trigger swing. In the cat traces, passive hip motion entrained the rhythm; iliopsoas stretch suppressed knee extensor activity and advanced knee flexor onset.</td></tr>
+<tr><td>Corrects</td><td>When a swinging foot hits an obstacle, skin input can trigger a phase-dependent spinal stumbling correction that lifts the foot. Once triggered, the organized response can be expressed without further feedback in experimental conditions. The cerebellum also helps fine-tune voluntary movement; that is distinct from the preorganized spinal response.</td></tr>
+<tr><td>Reinforces</td><td>Load-related proprioceptive feedback can boost extensor activity during stance. The deck quotes roughly 30–70% in experimental locomotion contexts. This conveys that feedback can contribute substantially; it is not a fixed fraction for every muscle, species, or gait.</td></tr>
+</tbody></table></div>
+<div class="card"><h3>Shared circuits and motor modules</h3><p><b>Flexion reflex afferents (FRA)</b> are sensory fibres capable of evoking a flexion reflex. Some of the interneurons they recruit also participate in locomotor circuits; activating this input can therefore recruit rhythmic flexor–extensor alternation under suitable conditions. A withdrawal with crossed extension and a stumble correction are examples of spinal circuits coordinating a whole response.</p><p>Other rhythm-generating networks support scratching, paw shaking, breathing and chewing. Which patterns can run together depends on the networks and tasks involved. The <b>Rybak–McCrea model</b> separates rhythm generation (timing) from pattern formation (which motor pools are recruited), and uses sensory inputs to reproduce experimental changes in timing and muscle output.</p></div></section>
+<section id="summary"><div class="k">Quick revision</div><h2>High-yield summary</h2>
+<div class="g"><div class="card"><h3>Reflex arc and localisation</h3><ul><li>Spindle <b>Ia</b> = length; tendon organ <b>Ib</b> = tension.</li><li>Withdrawal = flex on the stimulated side; crossed extension = support on the other side.</li><li>LMN: low tone, low reflexes, denervation atrophy. Established UMN: brisk reflexes, spasticity, extensor plantar response.</li><li>Fasciculation = motor unit; fibrillation = single fibre.</li></ul></div>
+<div class="card"><h3>Modulation and locomotion</h3><ul><li>Babinski = changed pattern; hyperreflexia = increased gain.</li><li>Baclofen: GABA<sub>B</sub>; less transmitter release before the synapse, lower excitability after it.</li><li>CPG sets a basic rhythm. Feedback <b>retimes, corrects and reinforces</b>.</li><li>Hip extension helps switch stance to swing; obstacle contact can trigger a spinal correction.</li></ul></div></div></section>
+<section id="quiz"><div class="k">Active recall</div><h2>Multiple-choice questions (MCQs)</h2><p>Choose one best answer. Open the explanation to review the reasoning. Use the filters to return to unanswered, missed or revealed questions.</p>
+<div class="card" id="sc"><div id="score" role="status"></div><progress id="progress" value="0" max="1" aria-label="Quiz progress"></progress><div class="flow" id="filters"><button type="button" data-filter="all">All</button><button type="button" data-filter="new">Unanswered</button><button type="button" data-filter="missed">Missed</button><button type="button" data-filter="revealed">Revealed</button><button class="r" type="button">Reset</button></div></div>
+<div id="qs"></div><p id="empty" hidden>No questions match this filter.</p></section>
+<section><div class="k">Source notes</div><h2>References</h2><p>Primary source: Dr Mona Nazzal’s supplied “MSS system lecture 5” deck. Clarifications: <a href="https://openstax.org/books/introduction-to-behavioral-neuroscience/pages/10-2-eliciting-contractions-from-lower-levels-lower-motoneurons-and-reflex-arcs">OpenStax: lower motor neurons and reflex arcs</a>; <a href="https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=077aaf3b-1ca3-4599-a51a-6bbe39810ca8">DailyMed: intrathecal baclofen</a>; <a href="https://pubmed.ncbi.nlm.nih.gov/7931503/">Kriellaars and colleagues: hip input and locomotor timing</a>. The original slides also credit Sherwood and Ward, Kandel and colleagues, Hiebert and Pearson, and Rybak and McCrea.</p></section>
+</main><footer>Vitanova · MSS Final Physiology · Spinal reflexes and motor patterns</footer>
+<script>
+const Q=[
+  [
+    "Which event is sensory transduction in a withdrawal reflex?",
+    [
+      "A motor axon conducts a signal toward a flexor",
+      "A nociceptor converts a stimulus into an electrical signal",
+      "A spinal interneuron excites a motor neuron",
+      "An ascending pathway carries information to the brain"
+    ],
+    1,
+    "Transduction happens at the receptor; conduction and synaptic transmission occur later."
+  ],
+  [
+    "Which afferent carries the primary muscle spindle signal in the patellar reflex?",
+    [
+      "Group Ib",
+      "Group II",
+      "Group IV",
+      "Group Ia"
+    ],
+    3,
+    "The primary spindle ending signals via Ia fibres. The tendon tap stretches the quadriceps."
+  ],
+  [
+    "Which statement describes the monosynaptic component of a stretch reflex?",
+    [
+      "The spindle afferent excites an alpha motor neuron of the stretched muscle",
+      "The spindle afferent inhibits the antagonist motor neuron directly",
+      "The tendon organ excites a motor neuron through an interneuron",
+      "The skin afferent excites contralateral extensor motor neurons"
+    ],
+    0,
+    "The Ia-to-alpha motor neuron connection has one central synapse. Antagonist inhibition uses an interneuron."
+  ],
+  [
+    "Which pairing is correct for the classic resting Golgi tendon organ reflex?",
+    [
+      "Length; group Ia afferent",
+      "Tension; group II afferent",
+      "Tension; group Ib afferent",
+      "Length; group Ib afferent"
+    ],
+    2,
+    "The tendon organ detects tension and sends its signal through group Ib fibres."
+  ],
+  [
+    "A person steps on a tack with the right foot. Which change helps support body weight?",
+    [
+      "Inhibition of left leg extensors",
+      "Excitation of right leg extensors",
+      "Excitation of left leg extensors",
+      "Inhibition of right leg flexors"
+    ],
+    2,
+    "The crossed extension reflex recruits extensors on the opposite side as the stimulated limb withdraws."
+  ],
+  [
+    "Where are the cell bodies of the neurons that directly innervate limb skeletal muscles?",
+    [
+      "Ventral horn of the spinal cord",
+      "Dorsal root ganglion",
+      "Primary motor cortex",
+      "Dorsal horn of the spinal cord"
+    ],
+    0,
+    "Limb LMNs are in the ventral horn. Dorsal root ganglia contain sensory neuron cell bodies."
+  ],
+  [
+    "What contributes to resistance during passive movement of a resting limb?",
+    [
+      "Spindle discharge without tissue elasticity",
+      "Tendon elasticity without neural influence",
+      "Voluntary motor drive without reflex input",
+      "Passive tissue elasticity plus neural activity"
+    ],
+    3,
+    "Tone reflects passive mechanics and neural activity, including stretch reflexes."
+  ],
+  [
+    "A patient has focal weakness, marked muscle wasting and a reduced tendon reflex. Which lesion pattern fits best?",
+    [
+      "Upper motor neuron",
+      "Lower motor neuron",
+      "Cerebellar hemisphere",
+      "Dorsal column"
+    ],
+    1,
+    "Weakness with denervation atrophy and hyporeflexia points toward the LMN pathway."
+  ],
+  [
+    "A spontaneous contraction of a single denervated muscle fibre is recorded by needle electromyography. What is it?",
+    [
+      "Fibrillation",
+      "Fasciculation",
+      "Clonus",
+      "Spastic catch"
+    ],
+    0,
+    "Fibrillation arises in a single fibre; fasciculation represents a spontaneous motor unit discharge."
+  ],
+  [
+    "Which clinical combination can occur in amyotrophic lateral sclerosis?",
+    [
+      "Extensor plantar response and isolated sensory loss",
+      "Resting tremor and loss of proprioception",
+      "Fasciculations and brisk tendon reflexes",
+      "Intention tremor and scanning speech"
+    ],
+    2,
+    "ALS can affect both motor neuron levels, producing LMN fasciculations with UMN hyperreflexia."
+  ],
+  [
+    "Which response identifies an extensor plantar response in an adult?",
+    [
+      "Downward movement of the great toe",
+      "Upward movement of the great toe",
+      "Fanning alone with great-toe flexion",
+      "Rapid withdrawal of the entire leg"
+    ],
+    1,
+    "Great-toe extension is the key sign; the other toes may fan."
+  ],
+  [
+    "Why can an extensor plantar response be normal in an infant?",
+    [
+      "Muscle spindles cannot yet detect stretch",
+      "Spinal sensory pathways are not yet active",
+      "Tendon organs have no functional afferents",
+      "Descending motor control is still maturing"
+    ],
+    3,
+    "The pattern can occur normally before descending control has matured."
+  ],
+  [
+    "Which observation is an increase in reflex gain?",
+    [
+      "Great-toe extension replacing toe flexion",
+      "Loss of a patellar response to a tap",
+      "Flexion switching sides after a skin stimulus",
+      "A larger knee jerk for the same tendon tap"
+    ],
+    3,
+    "Gain describes how much output follows a given input. A changed movement is a pattern change."
+  ],
+  [
+    "What is the expected effect of the Jendrassik manoeuvre on a difficult-to-elicit patellar reflex?",
+    [
+      "The tendon reflex becomes a withdrawal response",
+      "The tendon reflex can become more prominent",
+      "The patellar reflex changes to a crossed response",
+      "The plantar response becomes extensor"
+    ],
+    1,
+    "Pulling against interlocked fingers can reinforce tendon reflexes."
+  ],
+  [
+    "A stroke patient shows more resistance to fast passive elbow extension than to slow extension. What does this suggest?",
+    [
+      "Flaccidity",
+      "Fibrillation",
+      "Spasticity",
+      "Isolated disuse atrophy"
+    ],
+    2,
+    "Velocity-dependent resistance is characteristic of spasticity."
+  ],
+  [
+    "Which mechanism can account for baclofen’s presynaptic effect on a spinal sensory terminal?",
+    [
+      "Reduced calcium entry and transmitter release",
+      "Increased calcium entry and transmitter release",
+      "Increased sodium entry and terminal depolarization",
+      "Reduced potassium conductance and increased firing"
+    ],
+    0,
+    "Activation of GABA type B receptors can reduce presynaptic calcium influx and excitatory release."
+  ],
+  [
+    "Which receptor does baclofen principally activate?",
+    [
+      "GABA type A receptor",
+      "Glycine receptor",
+      "GABA type B receptor",
+      "Nicotinic acetylcholine receptor"
+    ],
+    2,
+    "Baclofen acts at GABA type B receptors. The slide’s chloride channel illustrates fast inhibition through other receptors."
+  ],
+  [
+    "What is the rationale for intrathecal baclofen in selected patients with severe spasticity?",
+    [
+      "It increases absorption of baclofen from the intestine",
+      "It prolongs baclofen’s action at muscle end plates",
+      "It increases baclofen’s movement across the blood–brain barrier",
+      "It delivers baclofen directly into cerebrospinal fluid"
+    ],
+    3,
+    "Intrathecal delivery reaches the spinal compartment directly, bypassing the need to cross from blood."
+  ],
+  [
+    "What finding provides evidence for a locomotor central pattern generator?",
+    [
+      "Alternating flexor and extensor bursts without actual stepping",
+      "A reflex contraction after each tendon tap",
+      "An extensor response after painful sole stimulation",
+      "Withdrawal after repeated noxious stimuli"
+    ],
+    0,
+    "Fictive locomotion shows a patterned alternating output without actual limb cycling or rhythmic sensory input."
+  ],
+  [
+    "During late stance, which sensory cue can help advance the transition to swing?",
+    [
+      "Hip flexion shortening the hip flexors",
+      "Hip extension stretching the hip flexors",
+      "Knee extension unloading the knee flexors",
+      "Ankle dorsiflexion shortening the calf muscles"
+    ],
+    1,
+    "Hip extension can stretch the hip flexors, whose sensory input helps advance flexor bursts."
+  ],
+  [
+    "A swinging foot strikes an obstacle and quickly lifts higher. What initiates the correction?",
+    [
+      "A new voluntary command for every muscle",
+      "Sensory input from contact with the obstacle",
+      "A change in passive hip joint stiffness",
+      "A loss of descending spinal inhibition"
+    ],
+    1,
+    "The contact signal triggers a phase-dependent spinal corrective pattern."
+  ],
+  [
+    "What does load-related sensory feedback contribute during stance?",
+    [
+      "It can reinforce extensor activity",
+      "It can abolish the locomotor rhythm",
+      "It replaces descending drive to the cord",
+      "It restricts proprioception to swing"
+    ],
+    0,
+    "Load feedback can strengthen extensor output while the leg supports body weight."
+  ],
+  [
+    "Why can stimulation of flexion reflex afferents evoke rhythmic activity under some conditions?",
+    [
+      "They directly activate every antagonist motor neuron",
+      "They replace all cortical motor commands",
+      "They block afferent traffic from muscle spindles",
+      "They recruit interneurons shared with locomotor circuits"
+    ],
+    3,
+    "Some interneurons participate in both reflex and locomotor circuits, allowing sensory input to recruit a motor pattern."
+  ],
+  [
+    "In the Rybak–McCrea model, what is the distinction between rhythm and pattern formation?",
+    [
+      "Muscle tension versus passive tissue elasticity",
+      "Reflex gain versus plantar response direction",
+      "Timing of the cycle versus distribution of motor activity",
+      "Sensory transduction versus sensory conduction"
+    ],
+    2,
+    "The rhythm layer supplies timing; the pattern layer organizes activity across motor pools."
+  ]
+];
+(function(){
+'use strict';
+const box=document.getElementById('qs'), score=document.getElementById('score'), progress=document.getElementById('progress');
+const key='vitanova:final-physiology-01:quiz:v1'; let filter='all', state=Q.map(()=>null);
+try {const saved=JSON.parse(localStorage.getItem(key)); if(Array.isArray(saved)&&saved.length===Q.length&&saved.every((x,i)=>x===null||Number.isInteger(x)&&x>=-1&&x<Q[i][1].length))state=saved;}catch{}
+const save=()=>{try{localStorage.setItem(key,JSON.stringify(state));}catch{}};
+const el=(tag,txt,cls)=>{const n=document.createElement(tag);if(txt)n.textContent=txt;if(cls)n.className=cls;return n;};
+const cards=Q.map(([stem,opts,right,reason],i)=>{
+ const d=el('article','','q');d.append(el('p',(i+1)+'. '+stem));
+ const options=opts.map((option,j)=>{const b=el('button',String.fromCharCode(65+j)+'. '+option,'o');b.type='button';b.addEventListener('click',()=>lock(j));d.append(b);return b;});
+ const show=el('button','Show answer','sa');show.type='button';show.addEventListener('click',()=>lock(-1));d.append(show);
+ const exp=el('details','','ex'); exp.append(el('summary','Answer and explanation'),el('div','Correct: '+opts[right]+'. '+reason));d.append(exp);
+ function lock(j){if(state[i]!==null)return;state[i]=j;save();paint();update();}
+ function paint(){const v=state[i];options.forEach((b,j)=>{b.setAttribute('aria-disabled',String(v!==null));b.classList.toggle('ok',v!==null&&j===right);b.classList.toggle('no',v===j&&j!==right);});show.hidden=v!==null;exp.hidden=v===null;exp.open=v!==null;}
+ box.append(d);paint();return {d,paint};
+});
+function update(){
+ const answered=state.filter(x=>x!==null&&x>=0).length, revealed=state.filter(x=>x===-1).length, correct=state.filter((x,i)=>x===Q[i][2]).length;
+ score.textContent='Answered '+answered+'/'+Q.length+' · Score '+correct+' · Revealed '+revealed;
+ progress.max=Q.length;progress.value=answered+revealed;
+ let visible=0;cards.forEach(({d},i)=>{const v=state[i];d.hidden=!(filter==='all'||filter==='new'&&v===null||filter==='missed'&&v!==null&&v>=0&&v!==Q[i][2]||filter==='revealed'&&v===-1);if(!d.hidden)visible++;});
+ document.getElementById('empty').hidden=!!visible;
+ document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===filter)));
+}
+document.getElementById('filters').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.filter)filter=b.dataset.filter;
+ if(b.classList.contains('r')){state=Q.map(()=>null);filter='all';save();cards.forEach(({d,paint})=>{paint();d.dispatchEvent(new Event('vitanova:question-reset',{bubbles:true}));});}
+ update();
+});
+update();
+})();
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

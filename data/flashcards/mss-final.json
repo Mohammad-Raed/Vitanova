@@ -550,6 +550,160 @@
         "mss-final-pharmacology-01"
       ],
       "search": "An example of topical therapy for papulopustular rosacea is metronidazole Acne pharmacology"
+    },
+    {
+      "id": "c080a5f623cc694fbd8ed883",
+      "note": "vn-final-physiology-01-1",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "The sensory fibre class in the direct muscle stretch reflex is group Ia"
+    },
+    {
+      "id": "52e14fb6d30a5371554d4533",
+      "note": "vn-final-physiology-01-2",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "A Golgi tendon organ measures muscle tension and signals via group Ib fibres"
+    },
+    {
+      "id": "338a709188b2a33a071f5071",
+      "note": "vn-final-physiology-01-3",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "When the right foot withdraws from pain, the left leg supports weight by activating its extensors"
+    },
+    {
+      "id": "e1a87b628da72b28f7421609",
+      "note": "vn-final-physiology-01-4",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "A visible spontaneous twitch of a motor unit is a fasciculation"
+    },
+    {
+      "id": "1af2cebe52c25340fb130ecc",
+      "note": "vn-final-physiology-01-5",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "Spontaneous activity of one denervated muscle fibre on electromyography is a fibrillation"
+    },
+    {
+      "id": "f15c2c12c0ff604cb2482ba9",
+      "note": "vn-final-physiology-01-6",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "The defining movement in an extensor plantar response is extension of the great toe"
+    },
+    {
+      "id": "97647aca2415ccca3ee4b2a5",
+      "note": "vn-final-physiology-01-7",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "Spasticity is an increase in resistance that depends on stretch velocity"
+    },
+    {
+      "id": "f54595d711c258fd5ec0b84c",
+      "note": "vn-final-physiology-01-8",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "The gamma-aminobutyric acid receptor subtype activated by baclofen is GABA type B"
+    },
+    {
+      "id": "49cfeaa7764377c57f7ef59c",
+      "note": "vn-final-physiology-01-9",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "Presynaptic GABA type B signalling reduces transmitter release in part by reducing entry of calcium"
+    },
+    {
+      "id": "0716ae9aba8094a520392a92",
+      "note": "vn-final-physiology-01-10",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "A centrally generated pattern recorded without actual stepping is called fictive locomotion"
+    },
+    {
+      "id": "724e04e669c6c0ccf7a32962",
+      "note": "vn-final-physiology-01-11",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "Late-stance hip extension can help initiate the next phase of gait, called swing"
+    },
+    {
+      "id": "df31866c41ef3a541ae8b414",
+      "note": "vn-final-physiology-01-12",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "Locomotor feedback has three main roles: retiming, correcting and reinforcing motor output"
+    },
+    {
+      "id": "013620afa54a915da91b0bb7",
+      "note": "vn-final-physiology-01-13",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "The part of the Rybak–McCrea model that decides when a cycle occurs is rhythm generation"
+    },
+    {
+      "id": "2edb649abb2b55e6527f30f2",
+      "note": "vn-final-physiology-01-14",
+      "ordinal": 1,
+      "subject": "Physiology",
+      "topic": "Spinal reflexes and motor patterns",
+      "lectures": [
+        "mss-final-physiology-01"
+      ],
+      "search": "Contact with an obstacle can trigger a preorganized spinal response called the stumbling corrective reaction"
     }
   ],
   "notes": {
@@ -852,6 +1006,90 @@
       "extra": "",
       "supplements": [],
       "oneByOne": false
+    },
+    "vn-final-physiology-01-1": {
+      "text": "The sensory fibre class in the direct muscle stretch reflex is {{c1::group Ia}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-2": {
+      "text": "A Golgi tendon organ measures muscle tension and signals via {{c1::group Ib fibres}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-3": {
+      "text": "When the right foot withdraws from pain, the left leg supports weight by activating its {{c1::extensors}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-4": {
+      "text": "A visible spontaneous twitch of a motor unit is a {{c1::fasciculation}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-5": {
+      "text": "Spontaneous activity of one denervated muscle fibre on electromyography is a {{c1::fibrillation}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-6": {
+      "text": "The defining movement in an extensor plantar response is extension of the {{c1::great toe}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-7": {
+      "text": "Spasticity is an increase in resistance that depends on stretch {{c1::velocity}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-8": {
+      "text": "The gamma-aminobutyric acid receptor subtype activated by baclofen is {{c1::GABA type B}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-9": {
+      "text": "Presynaptic GABA type B signalling reduces transmitter release in part by reducing entry of {{c1::calcium}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-10": {
+      "text": "A centrally generated pattern recorded without actual stepping is called {{c1::fictive locomotion}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-11": {
+      "text": "Late-stance hip extension can help initiate the next phase of gait, called {{c1::swing}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-12": {
+      "text": "Locomotor feedback has three main roles: retiming, correcting and {{c1::reinforcing motor output}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-13": {
+      "text": "The part of the Rybak–McCrea model that decides when a cycle occurs is {{c1::rhythm generation}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-physiology-01-14": {
+      "text": "Contact with an obstacle can trigger a preorganized spinal response called the {{c1::stumbling corrective reaction}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
     }
   },
   "ankiLectureLinks": {
@@ -1077,6 +1315,51 @@
       "fc-mss-6bab4b5052098eb2d33f-c1",
       "fc-mss-93a1fd160a9ac9c9d5b0-c1",
       "fc-mss-4345ee5010b0737f48a9-c1"
+    ],
+    "mss-final-physiology-01": [
+      "fc-mss-e2f842ffcbc6d74a3820-c1",
+      "fc-mss-39fd9b200983453b21bf-c2",
+      "fc-mss-39fd9b200983453b21bf-c1",
+      "fc-mss-6e101138f033f534c556-c1",
+      "fc-mss-a05384fde6a4d07101e9-c1",
+      "fc-mss-ecce5af4056dab241dde-c1",
+      "fc-mss-53788806d462c4744ba9-c1",
+      "fc-mss-69f2c3caed4759b4facf-c1",
+      "fc-mss-fdd6eb763eb5829e78dc-c1",
+      "fc-mss-f1e3c0533afe6725b968-c1",
+      "fc-mss-9c8bf121afc89757e6da-c1",
+      "fc-mss-9ec4191d6bb52950be18-c1",
+      "fc-mss-5b530c66173a4a7cb413-c1",
+      "fc-mss-ba94eafc9ff7cb267c29-c1",
+      "fc-mss-ba94eafc9ff7cb267c29-c2",
+      "fc-mss-3fd075f292a8387a32a1-c1",
+      "fc-mss-6f9b1a0e89ea706b4232-c1",
+      "fc-mss-61eb1f67870fe4ffbd02-c1",
+      "fc-mss-c8422687b8bce9e199bb-c1",
+      "fc-mss-771b30cee55065a00bed-c1",
+      "fc-mss-1e3ce1c6683e7acc432c-c2",
+      "fc-mss-1e3ce1c6683e7acc432c-c1",
+      "fc-mss-dea955ccc3a7f4a6012c-c1",
+      "fc-mss-dea955ccc3a7f4a6012c-c2",
+      "fc-mss-d1ff3d5fb0e2100ebfd2-c1",
+      "fc-mss-a48aeacaec065fa5754e-c2",
+      "fc-mss-a48aeacaec065fa5754e-c1",
+      "fc-mss-28170587b35874d2b328-c1",
+      "fc-mss-d2087d18cd28f742a133-c1",
+      "fc-mss-94f291c3685a6a9a746c-c1",
+      "fc-mss-418963500b1e5e9df5c0-c1",
+      "fc-mss-339f072a55f2242d3efe-c2",
+      "fc-mss-339f072a55f2242d3efe-c1",
+      "fc-mss-a2fe0f63532f17c717a8-c2",
+      "fc-mss-a2fe0f63532f17c717a8-c1",
+      "fc-mss-0f1669d3b66b9bfccb89-c1",
+      "fc-mss-96a88f5e4e56f0a50d62-c1",
+      "fc-mss-96a88f5e4e56f0a50d62-c2",
+      "fc-mss-77736284f11366552719-c1",
+      "fc-mss-f48b2b60bb6170c498a7-c1",
+      "fc-mss-1cab3bd344cb64c35378-c1",
+      "fc-mss-5cf9cbe2f5093f8265ca-c1",
+      "fc-mss-0d550ff24574709e3374-c1"
     ]
   }
 }
