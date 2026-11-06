@@ -111,3 +111,34 @@ main,section,.card,.tbl,.g>*{min-width:0}
 .vn-palette-option small{font-weight:400;color:var(--mu)}
 .vn-palette-swatch{height:21px;border-radius:5px;background:linear-gradient(90deg,var(--swatch-base) 0 65%,var(--swatch-accent) 65%)}
 @media(max-width:450px){.vn-lecture-controls{flex-wrap:wrap;justify-content:flex-end}.vn-appearance-trigger{padding:5px 8px;font-size:11px}}
+
+/* Shared study surfaces: palette colors for chrome, fixed semantics for feedback. */
+:root[data-theme="light"]{--vn-correct:#18704c;--vn-wrong:#a83145;--vn-warning:#86501c}
+:root[data-theme="dark"]{--vn-correct:#88d6ab;--vn-wrong:#ff9bab;--vn-warning:#ffd39d}
+:root[data-palette] :is(.vn-saved-toolbar,.vn-review-question,.vn-saved-empty,.fc-panel,.fc-card,.dashboard-overview,.more-subjects){
+  background:var(--card);border-color:var(--ln);box-shadow:var(--vn-shadow);border-radius:14px;
+}
+:root[data-palette] :is(.vn-saved-toolbar,.fc-panel,.dashboard-overview){border-top:3px solid var(--pu)}
+:root[data-palette] :is(.vn-review-option,.vn-saved-tools select,.vn-saved-tools button,.vn-past-session button,.vn-past-subjects button){
+  background:var(--bg);color:var(--tx);border-color:var(--ln);
+}
+:root[data-palette] :is(.vn-review-option,.vn-saved-tools button,.vn-past-session button,.vn-past-subjects button):not(:disabled):hover{background:var(--soft);border-color:var(--pu)}
+:root[data-palette] .vn-review-option.is-correct{border-color:var(--vn-correct);background:color-mix(in srgb,var(--card),var(--vn-correct) 14%)}
+:root[data-palette] .vn-review-option.is-wrong{border-color:var(--vn-wrong);background:color-mix(in srgb,var(--card),var(--vn-wrong) 14%)}
+:root[data-palette] :is(.vn-review-explanation,.fc-blank,.fc-answer,.vn-source-badge){background:var(--soft);color:var(--tx)}
+:root[data-palette] :is(.vn-redo-mistakes,.vn-bookmark-toggle,.vn-bookmarks-link,.vn-flashcards){
+  border-color:var(--ln);color:var(--pu);
+}
+:root[data-palette] .vn-bookmark-toggle[aria-pressed="true"]{border-color:var(--pu);background:var(--soft)}
+:root[data-palette] .vn-saved-storage-warning{color:var(--vn-warning)}
+:root[data-palette] .vn-storage-warning{background:var(--soft);color:var(--tx);border-color:var(--vn-warning)}
+:root[data-palette] :is(#fc-error,#fc-ratings button:first-child){border-color:var(--vn-wrong)}
+:root[data-palette] :is(.vn-past-apply,button.fc-primary){background:var(--pu);color:var(--card);border-color:var(--pu)}
+:root[data-palette] :is(.vn-saved-host,.vn-lecture-page,.fc-top) :focus-visible{outline-color:var(--te)}
+:root[data-palette] .vn-lecture-page :is(main,.vn-mistake-panel){color:var(--tx)}
+:root[data-palette] .vn-lecture-page :is(main h2,main summary,body > nav a){color:var(--pu)}
+:root[data-palette] .vn-lecture-page :is(main .card,main .q,body > nav){background:var(--card);border-color:var(--ln)}
+:root[data-palette] .vn-lecture-page :is(main .note,main .tag){background:var(--soft)}
+:root[data-palette] .vn-lecture-page :is(main .o.ok,main .o.no){color:var(--tx)}
+:root[data-palette] .vn-lecture-page main .o.ok{border-color:var(--vn-correct);background:color-mix(in srgb,var(--card),var(--vn-correct) 18%)}
+:root[data-palette] .vn-lecture-page main .o.no{border-color:var(--vn-wrong);background:color-mix(in srgb,var(--card),var(--vn-wrong) 18%)}
