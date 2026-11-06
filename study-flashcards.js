@@ -143,7 +143,16 @@
       if(!r.ok||!finalResponse.ok)throw new Error('The flashcard library could not load. Check your connection and retry.');
       const [base, final]=await Promise.all([r.json(),finalResponse.json()]);
       if(base.version!==1||final.version!==1||!Array.isArray(base.cards)||!Array.isArray(final.cards))throw new Error('Unsupported flashcard library version.');
-      finalNotes=final.notes;catalog={...base,cards:[...base.cards,...final.cards]};
+      const lectureLinks=new Map();
+      for(const [lecture, ids] of Object.entries(final.ankiLectureLinks||{})){
+        for(const id of ids){
+          if(!lectureLinks.has(id))lectureLinks.set(id,[]);
+          lectureLinks.get(id).push(lecture);
+        }
+      }
+      const linked=base.cards.map(card=>lectureLinks.has(card.id)
+        ? {...card,lectures:[...new Set([...card.lectures,...lectureLinks.get(card.id)])]} : card);
+      finalNotes=final.notes;catalog={...base,cards:[...linked,...final.cards]};
       $('fc-subject').length=1;for(const sub of Object.keys(catalog.subjects))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
       $('fc-lecture').length=2;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
       const requested=lectures.find(l=>l.id===params.get('lecture'));

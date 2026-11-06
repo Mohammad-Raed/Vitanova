@@ -40,15 +40,15 @@ async function main(){
  await page.evaluate(data=>{localStorage.removeItem('vitanova:flashcards:v1');VitanovaBackup.importData(data,'merge');},exported);
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Existing import restores flashcard history');
  await goto('flashcards.html?lecture=mss-final-pharmacology-01');
- await page.waitForFunction(()=>document.getElementById('fc-match-count').textContent.startsWith('10 matching'));
+ await page.waitForFunction(()=>document.getElementById('fc-match-count').textContent.startsWith('20 matching'));
  await page.locator('#fc-start').click();await page.locator('#fc-reveal').click();
  check(await page.locator('.fc-answer').count()>0,'MSS Final lecture cloze reveals its answer');
  await goto('flashcards.html');await page.waitForFunction(()=>!document.getElementById('fc-start').disabled);
  await page.locator('#fc-mode').selectOption('all');await page.locator('#fc-lecture').selectOption('__lectures__');
- const mapped=await page.evaluate(async()=>{const files=['catalog.json','mss-final.json'];const sets=await Promise.all(files.map(async f=>(await fetch('data/flashcards/'+f)).json()));return sets.flatMap(s=>s.cards).filter(x=>x.lectures.length>0).length;});
+ const mapped=await page.evaluate(async()=>{const files=['catalog.json','mss-final.json'];const sets=await Promise.all(files.map(async f=>(await fetch('data/flashcards/'+f)).json()));const linked=new Set(Object.values(sets[1].ankiLectureLinks||{}).flat());return sets.flatMap(s=>s.cards).filter(x=>(x.lectures.length>0||linked.has(x.id))).length;});
  check((await page.locator('#fc-match-count').textContent()).startsWith(mapped+' matching'),'All lecture topics excludes unmapped additional material');
  await page.locator('#fc-subject').selectOption('Anatomy');
- const mappedAnatomy=await page.evaluate(async()=>{const files=['catalog.json','mss-final.json'];const sets=await Promise.all(files.map(async f=>(await fetch('data/flashcards/'+f)).json()));return sets.flatMap(s=>s.cards).filter(x=>x.lectures.length>0&&x.subject==='Anatomy').length;});
+ const mappedAnatomy=await page.evaluate(async()=>{const files=['catalog.json','mss-final.json'];const sets=await Promise.all(files.map(async f=>(await fetch('data/flashcards/'+f)).json()));const linked=new Set(Object.values(sets[1].ankiLectureLinks||{}).flat());return sets.flatMap(s=>s.cards).filter(x=>(x.lectures.length>0||linked.has(x.id))&&x.subject==='Anatomy').length;});
  check((await page.locator('#fc-match-count').textContent()).startsWith(mappedAnatomy+' matching'),'Lecture topics combines with subject filter');
  await page.locator('#fc-subject').selectOption('');await start();check((await page.locator('#fc-selection').textContent()).includes('All lecture topics'),'Session summary identifies lecture-only scope');
  await page.locator('#fc-settings-toggle').click();
