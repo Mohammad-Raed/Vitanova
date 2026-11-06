@@ -200,7 +200,7 @@ document.getElementById("st").textContent="Done "+t+"/"+n+" · Correct "+c+"/"+a
 document.getElementById("bar").style.width=(t/n*100)+"%";var f=document.querySelector(".fb.on");if(f)f.click()}
 function flt(m,b){document.querySelectorAll(".fb").forEach(function(x){x.classList.remove("on")});b.classList.add("on");
 Q.forEach(function(q,i){var v=ans[i],s=true;if(m=="todo")s=v==null;if(m=="wrong")s=v!=null&&v!=q[2];document.getElementById("q"+i).style.display=s?"block":"none"})}
-function rs(){ans=[];document.querySelectorAll(".q").forEach(function(d){d.querySelectorAll(".o").forEach(function(o){o.classList.remove("ok","no")});d.querySelector(".ex").style.display="none";d.querySelector(".sa").style.display="inline"});
+function rs(){ans=[];document.querySelectorAll(".q").forEach(function(d){d.querySelectorAll(".o").forEach(function(o){o.classList.remove("ok","no")});d.querySelector(".ex").style.display="none";d.querySelector(".sa").style.display="inline";d.dispatchEvent(new Event("vitanova:question-reset",{bubbles:true}))});
 document.querySelectorAll(".fb")[0].click();up();document.getElementById("s10").scrollIntoView()}
 up();
 </script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

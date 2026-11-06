@@ -135,5 +135,5 @@ const x=document.createElement("div");x.className="ex";x.textContent="Explanatio
 function up(){sc.textContent="Answered "+done+"/"+Q.length+" · Correct "+ok}
 up();let rvw=false;
 document.getElementById("rv").onclick=()=>{rvw=!rvw;[...qs.children].forEach(e=>e.style.display=rvw&&!e.dataset.w?"none":"");};
-document.getElementById("rs").onclick=()=>{done=ok=0;rvw=false;[...qs.children].forEach(e=>{delete e.dataset.d;delete e.dataset.w;e.style.display="";e.querySelectorAll(".o").forEach(b=>b.className="o");e.querySelector(".ex").style.display="none"});up()};
+document.getElementById("rs").onclick=()=>{done=ok=0;rvw=false;[...qs.children].forEach(e=>{delete e.dataset.d;delete e.dataset.w;e.style.display="";e.querySelectorAll(".o").forEach(b=>b.className="o");e.querySelector(".ex").style.display="none";e.dispatchEvent(new Event("vitanova:question-reset",{bubbles:true}))});up()};
 </script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

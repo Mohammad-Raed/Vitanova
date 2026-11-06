@@ -20,7 +20,9 @@
     document.querySelectorAll('.q:not([data-vn-question-id])').forEach((block) => {
       const heading = block.querySelector('p'); const options = [...block.querySelectorAll('button.o')];
       if (!heading || !options.length) return;
-      const candidates = questions.get(stem(heading.textContent)) || [];
+      const title = heading.cloneNode(true);
+      title.querySelectorAll('.tag').forEach((tag) => tag.remove());
+      const candidates = questions.get(stem(title.textContent)) || [];
       const raw = options.map((o) => normalize(o.textContent));
       const noPrefix = raw.map((text) => text.replace(/^[A-Z][.)]\s*/, ''));
       let item; let mapping;
@@ -32,7 +34,15 @@
         if (item) { mapping = displayed.map((text) => item.options.map(normalize).indexOf(text)); break; }
       }
       if (!item) return;
-      block.dataset.vnQuestionId = item.id; block.id = 'mcq-' + item.id;
+      block.dataset.vnQuestionId = item.id;
+      const anchorId = 'mcq-' + item.id;
+      if (!block.id || block.id === anchorId) block.id = anchorId;
+      else {
+        // Some native quizzes use the question's original ID when scoring.
+        const anchor = document.createElement('span');
+        anchor.id = anchorId;
+        block.append(anchor);
+      }
       matched.set(block, { item, mapping });
       const button = document.createElement('button'); button.type = 'button'; button.className = 'vn-bookmark-toggle';
       label(button, bookmarks.has(item.id)); button.setAttribute('aria-label', `Bookmark question: ${item.question}`);
