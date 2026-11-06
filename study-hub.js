@@ -6,6 +6,8 @@
   const storage = window.VitanovaStorage;
   const $ = (id) => document.getElementById(id);
   const cards = $('cards');
+  // Retained in HTML so a cached pre-refresh script can still start.
+  $('continue-studying')?.remove();
   const views = window.VitanovaViews || {};
   const esc=(value)=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const fileHref=(file)=>encodeURIComponent(file);
@@ -45,7 +47,7 @@
     const completed=lectures.filter(done).length;
     const mistakes=window.VitanovaMistakes?.count()||0;
     const core=window.VitanovaFlashcardCore;
-    const records=core&&storage?.read(core.KEY,{version:1,records:{}},core.validState).records||{};
+    const records=(core&&storage?.read(core.KEY,{version:1,records:{}},core.validState)?.records)||{};
     const now=Date.now(), due=Object.values(records).filter(r=>r.due<=now).length;
     const record=storage?.read('vitanova:recent:v1',null);
     const lecture=lectures.find(l=>l.id===record?.lectureId);
