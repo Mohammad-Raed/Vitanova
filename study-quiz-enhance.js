@@ -7,7 +7,7 @@
   const bank = (window.VitanovaQuestionBank || []).filter((item) => item.lectureId === lecture.id);
   if (!bank.length) return;
   const normalize = (text) => String(text || '').replace(/\s+/g, ' ').trim();
-  const stem = (text) => normalize(text).replace(/^\d+\s*[.)]\s*/, '');
+  const stem = (text) => normalize(text).replace(/\s+([?!.,;:])/g, '$1').replace(/^\d+\s*[.)]\s*/, '');
   const questions = new Map(); const matched = new WeakMap(); const answered = new WeakSet();
   bank.forEach((q) => { const key = stem(q.question); if (!questions.has(key)) questions.set(key, []); questions.get(key).push(q); });
   function label(button, saved) {
