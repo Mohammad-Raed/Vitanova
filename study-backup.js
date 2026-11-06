@@ -36,6 +36,7 @@
       if (!identifier(id)) return false;
       if (name === 'progress') return plain(entry) && Object.entries(entry).every(([lecture, completed]) => identifier(lecture) && typeof completed === 'boolean');
       if (name === 'bookmarks') return finite(entry);
+      if (name === 'flashcards' && window.VitanovaFlashcardCore) return window.VitanovaFlashcardCore.validRecord(entry);
       if (name === 'flashcards') return plain(entry) && only(entry,['due','interval','reviews','lapses','lastReview','rating']) &&
         ['due','interval','lastReview'].every(k=>finite(entry[k])) && ['reviews','lapses'].every(k=>Number.isSafeInteger(entry[k])&&entry[k]>=0) &&
         Number.isInteger(entry.rating)&&entry.rating>=1&&entry.rating<=4;

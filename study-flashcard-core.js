@@ -1,14 +1,18 @@
-/* Stable cloze rendering and transparent, lightweight review intervals; not Anki/FSRS. */
+/* Stable cloze rendering and FSRS-6 scheduling. */
 (function(root){
   'use strict';
   const DAY=86400000, KEY='vitanova:flashcards:v1';
-  function validRecord(r){return r&&typeof r==='object'&&!Array.isArray(r)&&Object.keys(r).every(k=>['due','interval','reviews','lapses','lastReview','rating'].includes(k))&&['due','interval','lastReview'].every(k=>Number.isFinite(r[k])&&r[k]>=0)&&['reviews','lapses'].every(k=>Number.isSafeInteger(r[k])&&r[k]>=0)&&Number.isInteger(r.rating)&&r.rating>=1&&r.rating<=4;}
+  const engine=typeof module==='object'&&module.exports?require('./vendor/ts-fsrs-5.4.2.js'):root.FSRS;
+  const scheduler=engine?.fsrs({request_retention:0.9,enable_fuzz:false,enable_short_term:true,learning_steps:['1m','10m'],relearning_steps:['10m']});
+  function validMemory(m){return m&&typeof m==='object'&&!Array.isArray(m)&&Object.keys(m).every(k=>['stability','difficulty','state','steps','days'].includes(k))&&Number.isFinite(m.stability)&&m.stability>0&&Number.isFinite(m.difficulty)&&m.difficulty>=1&&m.difficulty<=10&&[1,2,3].includes(m.state)&&[m.steps,m.days].every(n=>Number.isSafeInteger(n)&&n>=0);}
+  function validRecord(r){return r&&typeof r==='object'&&!Array.isArray(r)&&Object.keys(r).every(k=>['due','interval','reviews','lapses','lastReview','rating','memory'].includes(k))&&['due','interval','lastReview'].every(k=>Number.isFinite(r[k])&&r[k]>=0)&&['reviews','lapses'].every(k=>Number.isSafeInteger(r[k])&&r[k]>=0)&&Number.isInteger(r.rating)&&r.rating>=1&&r.rating<=4&&(!Object.hasOwn(r,'memory')||validMemory(r.memory));}
   function validState(v){return v&&v.version===1&&Object.keys(v).every(k=>['version','records'].includes(k))&&v.records&&typeof v.records==='object'&&!Array.isArray(v.records)&&Object.entries(v.records).every(([id,r])=>!['__proto__','constructor','prototype'].includes(id)&&id.length>0&&id.length<=500&&validRecord(r));}
   function schedule(previous,rating,now=Date.now()){
     if(!Number.isInteger(rating)||rating<1||rating>4||!Number.isFinite(now)||now<0)throw new Error('Invalid review');
-    const p=previous||{interval:0,reviews:0,lapses:0};
-    const interval=[1/1440,6/1440,10/1440,2][rating-1];
-    return {due:now+Math.round(interval*DAY),interval,reviews:p.reviews+1,lapses:p.lapses+(rating===1?1:0),lastReview:now,rating};
+    const date=new Date(now), card=engine.createEmptyCard(date), m=previous?.memory;
+    if(m)Object.assign(card,{due:new Date(previous.due),last_review:new Date(Math.min(previous.lastReview,now)),reps:previous.reviews,lapses:previous.lapses,stability:m.stability,difficulty:m.difficulty,state:m.state,learning_steps:m.steps,scheduled_days:m.days});
+    const c=scheduler.next(card,date,rating).card, due=c.due.getTime();
+    return {due,interval:(due-now)/DAY,reviews:(previous?.reviews||0)+1,lapses:m?c.lapses:(previous?.lapses||0),lastReview:now,rating,memory:{stability:c.stability,difficulty:c.difficulty,state:c.state,steps:c.learning_steps,days:c.scheduled_days}};
   }
   function render(text,ordinal,reveal=false){
     let out='',i=0;

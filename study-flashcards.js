@@ -2,7 +2,7 @@
   'use strict';
   const $=id=>document.getElementById(id), core=window.VitanovaFlashcardCore, storage=window.VitanovaStorage;
   const lectures=window.VitanovaLectures||[], params=new URLSearchParams(location.search);
-  let catalog,finalNotes={},queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null;
+  let catalog,finalNotes={},queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null,pendingReviews=new Map();
   const noteCache=new Map(),pending=new Map();
   const state=()=>storage.read(core.KEY,{version:1,records:{}},core.validState);
   function message(text){$('fc-error').textContent=text;$('fc-error').hidden=!text;}
@@ -15,7 +15,7 @@
   function filtered(){
     if(!catalog)return[];
     const records=state().records,now=Date.now(),search=$('fc-search').value.trim().toLowerCase(),lecture=$('fc-lecture').value,subject=$('fc-subject').value,mode=$('fc-mode').value;
-    return catalog.cards.filter(c=>(!subject||c.subject===subject)&&(!lecture||(lecture==='__lectures__'?c.lectures.length>0:c.lectures.includes(lecture)))&&(!search||search.split(/\s+/).every(word=>c.search.toLowerCase().includes(word)))&&(mode==='all'||(mode==='learning'?records[c.id]?.rating===1:!records[c.id]||records[c.id].due<=now)));
+    return catalog.cards.filter(c=>(!subject||c.subject===subject)&&(!lecture||(lecture==='__lectures__'?c.lectures.length>0:c.lectures.includes(lecture)))&&(!search||search.split(/\s+/).every(word=>c.search.toLowerCase().includes(word)))&&(mode==='all'||(mode==='due-only'?Boolean(records[c.id]&&records[c.id].due<=now):mode==='learning'?Boolean(records[c.id]&&(records[c.id].memory?[1,3].includes(records[c.id].memory.state):records[c.id].rating===1)&&records[c.id].due<=now):!records[c.id]||records[c.id].due<=now)));
   }
   function count(){if(!catalog)return;const n=filtered().length;$('fc-match-count').textContent=n?n+' matching '+(n===1?'card':'cards'):'No matching cards. Try All cards, All topics, or a broader search.';$('fc-start').disabled=!n||busy;$('fc-start').textContent=active?'Start new session':'Start session';}
   async function getNotes(subject){
@@ -51,7 +51,10 @@
     const token=++revision;revealed=false;busy=true;message('');$('fc-retry').hidden=true;$('fc-ratings').hidden=true;$('fc-answer').hidden=true;$('fc-reveal').hidden=false;$('fc-reveal').disabled=true;$('fc-skip').disabled=true;showUndo();
     $('fc-finished').hidden=true;
     if(position>=queue.length){
-      busy=false;active=false;$('fc-practice').hidden=true;$('fc-finished').hidden=false;$('fc-finished-text').textContent=reviewed+' rated · '+skipped+' skipped. Your next due times are saved on this device.';
+      for(const [id,entry] of pendingReviews)if(entry.due<=Date.now()){queue.push(entry.card);pendingReviews.delete(id);}
+    }
+    if(position>=queue.length){
+      busy=false;active=false;$('fc-practice').hidden=true;$('fc-finished').hidden=false;$('fc-finished-text').textContent=reviewed+' rated · '+skipped+' skipped. '+(series?.config.mode==='all'?' Cram did not change your schedule.':' Your next due times are saved on this device.');
       // Keep Undo accessible after the final card.
       $('fc-finished').append($('fc-undo'));showUndo();finishActions();count();$('fc-finished').querySelector('h2').tabIndex=-1;$('fc-finished').querySelector('h2').focus();return;
     }
@@ -72,20 +75,30 @@
       const detail=document.createElement('details'),summary=document.createElement('summary'),body=document.createElement('div');summary.textContent=supplemental.title;detail.append(summary,body);
       let mounted=false;detail.addEventListener('toggle',()=>{if(detail.open&&!mounted){content(body,supplemental.html);mounted=true;}});$('fc-supplements').append(detail);
     }
-    $('fc-answer').hidden=false;$('fc-reveal').hidden=true;$('fc-ratings').replaceChildren();const record=state().records[card.id];
-    ['Repeat','Hard','Good','Easy'].forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.dataset.rating=String(i+1);const span=document.createElement('span');span.textContent=label;const small=document.createElement('small');small.textContent=intervalLabel(core.schedule(record,i+1).interval)+' · '+(i+1);button.append(span,small);button.addEventListener('click',()=>rate(i+1));$('fc-ratings').append(button);});
+    $('fc-answer').hidden=false;$('fc-reveal').hidden=true;$('fc-ratings').replaceChildren();const record=state().records[card.id],now=Date.now(),cram=series?.config.mode==='all';
+    ['Again','Hard','Good','Easy'].forEach((label,i)=>{const button=document.createElement('button');button.type='button';button.dataset.rating=String(i+1);const span=document.createElement('span');span.textContent=label;const small=document.createElement('small');small.textContent=(cram?'No reschedule':intervalLabel(core.schedule(record,i+1,now).interval))+' · '+(i+1);button.append(span,small);button.addEventListener('click',()=>rate(i+1));$('fc-ratings').append(button);});
     $('fc-ratings').hidden=false;$('fc-ratings').querySelector('button').focus({preventScroll:true});
   }
   function rate(rating){
     if(!revealed||busy||position>=queue.length)return;
-    revealed=false;const card=queue[position],snapshot=state(),previous=snapshot.records[card.id]||null,next=core.schedule(previous,rating);
-    undo.push({position,previous,next,id:card.id});snapshot.records[card.id]=next;storage.write(core.KEY,snapshot);reviewed++;position++;draw();
+    revealed=false;
+    const card=queue[position],snapshot=state(),previous=snapshot.records[card.id]||null,cram=series?.config.mode==='all';
+    const next=cram?null:core.schedule(previous,rating);
+    undo.push({position,previous,next,id:card.id,skipped,queueLength:queue.length,pending:new Map(pendingReviews)});
+    if(next){
+      snapshot.records[card.id]=next;storage.write(core.KEY,snapshot);
+      if([1,3].includes(next.memory.state))pendingReviews.set(card.id,{card,due:next.due});
+      else pendingReviews.delete(card.id);
+    }
+    reviewed++;position++;draw();
   }
   function undoRating(){
     if(busy||!undo.length)return;
     const last=undo[undo.length-1],snapshot=state();
-    if(JSON.stringify(snapshot.records[last.id])!==JSON.stringify(last.next)){message('This rating changed in another tab or import. Undo was stopped to preserve that newer record.');return;}
-    undo.pop();if(last.previous)snapshot.records[last.id]=last.previous;else delete snapshot.records[last.id];storage.write(core.KEY,snapshot);position=last.position;reviewed--;skipped=queue.slice(0,position).length-reviewed;active=true;draw();
+    if(last.next&&JSON.stringify(snapshot.records[last.id])!==JSON.stringify(last.next)){message('This rating changed in another tab or import. Undo was stopped to preserve that newer record.');return;}
+    undo.pop();
+    if(last.next){if(last.previous)snapshot.records[last.id]=last.previous;else delete snapshot.records[last.id];storage.write(core.KEY,snapshot);}
+    queue.length=last.queueLength;pendingReviews=last.pending;position=last.position;reviewed--;skipped=last.skipped;active=true;draw();
   }
   function shuffle(list){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;}
   function config(){return {lecture:$('fc-lecture').value,subject:$('fc-subject').value,search:$('fc-search').value,mode:$('fc-mode').value,size:$('fc-size').value,shuffle:$('fc-shuffle').checked};}
@@ -94,7 +107,7 @@
     return lecture?lecture.lectureLabel+' · '+lecture.title:settings.lecture==='__lectures__'?(settings.subject?settings.subject+' · ':'')+'All lecture topics':settings.subject||'All topics';
   }
   function batch(offset){
-    series.offset=offset;queue=series.cards.slice(offset,offset+series.size);position=reviewed=skipped=0;undo=[];active=true;
+    series.offset=offset;pendingReviews.clear();queue=series.cards.slice(offset,offset+series.size);position=reviewed=skipped=0;undo=[];active=true;
     $('fc-selection').textContent=scope(series.config)+' · '+queue.length+' cards · set '+(Math.floor(offset/series.size)+1);
     $('fc-session-warning').hidden=false;choices(false);draw();
   }
@@ -104,7 +117,7 @@
     return ordered.slice(ordered.findIndex(l=>l.id===current.id)+1).find(l=>catalog.cards.some(c=>c.lectures.includes(l.id)))||null;
   }
   function finishActions(){
-    const remaining=series?Math.max(0,series.cards.length-series.offset-queue.length):0;
+    const remaining=series?Math.max(0,series.cards.length-series.offset-series.size):0;
     $('fc-continue').hidden=!remaining;
     if(remaining)$('fc-continue').textContent='Continue next '+Math.min(series.size,remaining)+' cards · '+remaining+' remaining';
     const next=nextLecture();$('fc-next-lecture').hidden=!next;
@@ -118,13 +131,13 @@
     event?.preventDefault();if(busy)return false;
     const matches=filtered();if(!matches.length){message('No matching cards are ready. Try All cards, a different subject, or a broader search.');return false;}
     const settings=config(),records=state().records;if(settings.shuffle)shuffle(matches);
-    if(settings.mode==='due')matches.sort((a,b)=>(records[a.id]?.due??Infinity)-(records[b.id]?.due??Infinity));
+    if(settings.mode==='due'||settings.mode==='due-only')matches.sort((a,b)=>(records[a.id]?.due??Infinity)-(records[b.id]?.due??Infinity));
     series={cards:matches,size:settings.size==='all'?matches.length:Number(settings.size),offset:0,config:settings};
     const lecture=lectures.find(l=>l.id===settings.lecture);lectureContext(lecture);
     const url=new URL(location.href);if(lecture)url.searchParams.set('lecture',lecture.id);else url.searchParams.delete('lecture');history.replaceState(null,'',url);
     batch(0);return true;
   }
-  function continueSet(){if(busy||active||!series)return;const offset=series.offset+queue.length;if(offset<series.cards.length)batch(offset);}
+  function continueSet(){if(busy||active||!series)return;const offset=series.offset+series.size;if(offset<series.cards.length)batch(offset);}
   function advanceLecture(){
     if(busy||active)return;const next=nextLecture();if(!next)return;
     const settings=series.config;
@@ -155,6 +168,7 @@
       finalNotes=final.notes;catalog={...base,cards:[...linked,...final.cards]};
       $('fc-subject').length=1;for(const sub of new Set([...Object.keys(catalog.subjects),...final.cards.map(card=>card.subject)]))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
       $('fc-lecture').length=2;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
+      if(params.get('mode')==='due-only')$('fc-mode').value='due-only';
       const requested=lectures.find(l=>l.id===params.get('lecture'));
       if(requested){$('fc-lecture').value=requested.id;lectureContext(requested);}
       $('fc-selection').textContent=catalog.cards.length.toLocaleString()+' cards · MSS topic library';count();

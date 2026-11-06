@@ -30,7 +30,7 @@ async function main(){
  await page.locator('#fc-undo').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('0 rated'));
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===0,'Undo removes first review without losing other state');
  await page.locator('#fc-reveal').click();await page.locator('[data-rating="1"]').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('1 rated'));
- check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records)[0].lapses)===1,'Repeat records lapse');
+ check(await page.evaluate(()=>Object.values(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records)[0].lapses)===0,'Again on a new card does not count as a review lapse');
  await page.locator('#fc-settings-toggle').click();await page.locator('#fc-search').fill('brachial');check((await page.locator('#fc-counter').textContent()).includes('1 rated'),'Changing filters leaves active session intact');
  await page.locator('#fc-settings-toggle').click();await page.locator('#fc-skip').click();await page.waitForFunction(()=>document.getElementById('fc-counter').textContent.includes('1 skipped'));
  check(await page.evaluate(()=>Object.keys(JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records).length)===1,'Skip changes no persistent review record');
@@ -95,7 +95,7 @@ async function main(){
    const card=await fresh.locator('#fc-practice').getAttribute('data-card-id');target.push(card);
    if(skipSecond&&i===1){await fresh.locator('#fc-skip').click();if(i<n-1)await fresh.waitForFunction(id=>document.getElementById('fc-practice').dataset.cardId!==id&&!document.getElementById('fc-reveal').disabled,card);continue;}
    await fresh.locator('#fc-reveal').click();
-   if(i===0)check((await fresh.locator('#fc-ratings').textContent()).includes('1 min')&&(await fresh.locator('#fc-ratings').textContent()).includes('6 min')&&(await fresh.locator('#fc-ratings').textContent()).includes('10 min')&&(await fresh.locator('#fc-ratings').textContent()).includes('2 days'),'Rating labels show all requested intervals');
+   if(i===0)check((await fresh.locator('#fc-ratings').textContent()).includes('Again')&&/\d+ (min|days?)/.test(await fresh.locator('#fc-ratings').textContent()),'Rating labels show FSRS next intervals');
    await fresh.locator('[data-rating="'+(repeatFirst&&i===0?1:4)+'"]').click();
    if(i<n-1)await fresh.waitForFunction(id=>document.getElementById('fc-practice').dataset.cardId!==id&&!document.getElementById('fc-reveal').disabled,card);
   }

@@ -43,9 +43,17 @@
     host.hidden=current!=='home';
     if(host.hidden)return;
     const completed=lectures.filter(done).length;
-    const saved=window.VitanovaBookmarks?.count()||0;
     const mistakes=window.VitanovaMistakes?.count()||0;
-    host.innerHTML=`<div class="snapshot-card"><span class="snapshot-label">Explore file library</span><strong>${lectures.length}<small> lectures</small></strong><span class="snapshot-detail">Across ${new Set(lectures.map(l=>l.system)).size} systems</span></div><div class="snapshot-card"><span class="snapshot-label">Completed</span><strong>${completed}<small> / ${lectures.length}</small></strong><span class="snapshot-detail">Marked complete by you</span></div><a class="snapshot-card" href="#saved"><span class="snapshot-label">Saved questions</span><strong>${saved}</strong><span class="snapshot-detail">Your personal revision collection <span aria-hidden="true">→</span></span></a><a class="snapshot-card" href="#mistakes"><span class="snapshot-label">Mistakes to revisit</span><strong>${mistakes}</strong><span class="snapshot-detail">Practise until you feel confident <span aria-hidden="true">→</span></span></a>`;
+    const core=window.VitanovaFlashcardCore;
+    const records=core&&storage?.read(core.KEY,{version:1,records:{}},core.validState).records||{};
+    const now=Date.now(), due=Object.values(records).filter(r=>r.due<=now).length;
+    const record=storage?.read('vitanova:recent:v1',null);
+    const lecture=lectures.find(l=>l.id===record?.lectureId);
+    const hash=typeof record?.hash==='string'&&/^#[a-zA-Z][\w:.-]*$/.test(record.hash)?record.hash:'';
+    host.innerHTML=`<div class="today-heading"><div><span class="eyebrow">YOUR NEXT SESSION</span><h2>Study Today</h2></div><span class="today-progress">${completed} / ${lectures.length} lectures complete</span></div>
+    <a class="snapshot-card today-resume"${lecture?' id="continue-studying"':''} href="${lecture?esc(fileHref(lecture.file)+hash):'#search'}"><span class="snapshot-label">${lecture?'RESUME LECTURE':'START STUDYING'}</span><strong>${lecture?esc(lecture.title):'Find a lecture'}</strong><span class="snapshot-detail">${lecture?esc(lecture.system+' · '+lecture.exam+' · '+lecture.lectureLabel):'Search by subject or topic'} <span aria-hidden="true">→</span></span></a>
+    <a class="snapshot-card" href="flashcards.html${due?'?mode=due-only':''}"><span class="snapshot-label">FLASHCARDS</span><strong>${due}<small> due</small></strong><span class="snapshot-detail">${due?'Review due cards':'Explore the flashcard library'} →</span></a>
+    <a class="snapshot-card" href="#mistakes"><span class="snapshot-label">MISSED QUESTIONS</span><strong>${mistakes}<small> to review</small></strong><span class="snapshot-detail">Redo mistakes →</span></a>`;
   }
   function sidebarSystems() {
     const ancestors=new Set();let key=current;
@@ -64,18 +72,10 @@
     }).join('');
     $('count').textContent=current==='mss-past'?'Midterm question collection':descendants(current).length+' lecture resources';
   }
-  function recent() {
-    const host=$('continue-studying'); host.hidden=true;
-    let record; try { record=storage?.read('vitanova:recent:v1',null)||JSON.parse(localStorage.getItem('vitanova:recent:v1')); } catch { return; }
-    const lecture=lectures.find(l=>l.id===record?.lectureId); if(!lecture)return;
-    const hash=typeof record.hash==='string'&&/^#[a-zA-Z][\w:.-]*$/.test(record.hash)?record.hash:'';
-    host.innerHTML=`<div><span class="eyebrow">CONTINUE STUDYING</span><p>${esc(lecture.title)}</p><small>${esc(lecture.system+' · '+lecture.subject+' · '+lecture.lectureLabel)}</small></div><a class="resource-open" href="${esc(fileHref(lecture.file)+hash)}">Continue →</a>`;
-    host.hidden=false;
-  }
   function render() {
     const requested=route(); current=views[requested]?requested:'home'; const view=views[current];
     cards._vnRevisionCleanup?.();cards._vnRevisionCleanup=null;
-    cards.className='grid'; $('continue-studying').hidden=true;
+    cards.className='grid';
     const isHome=current==='home';
     $('site-header').classList.toggle('is-home',isHome); $('site-header').classList.toggle('is-internal',!isHome);
     $('hero-content').hidden=!isHome; $('compact-header').hidden=isHome;
@@ -96,7 +96,7 @@
       const params=new URLSearchParams(location.hash.split('?')[1]||'');
       window.VitanovaSaved?.render(cards,$('count'),{mode:current==='mistakes'?'mistakes':'saved',lectureId:params.get('lecture')||undefined});
     } else if (current==='backup') { $('count').textContent='Local data only'; window.VitanovaBackup?.mount(cards); }
-    else {drawCards(view); if(isHome)recent();}
+    else drawCards(view);
     document.title=(isHome?'':view.title+' · ')+'Vitanova Learning Hub';
     document.querySelectorAll('.hub-links a').forEach(a=>{if(a.hash==='#'+current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     studyOverview();sidebarSystems();
@@ -137,5 +137,6 @@
       document.documentElement.dataset.theme=value;toggle.textContent=value==='dark'?'☀ Light':'☾ Dark';
     }
   });
+  window.addEventListener('pageshow',studyOverview);
   render();savedCount();
 })();

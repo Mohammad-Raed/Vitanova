@@ -12,13 +12,20 @@ test('nested clozes balance and reveal without dropping inner content',()=>{
  assert.equal(core.render('{{c1::outer {{c2::inner}}}}',2),'outer <span class="fc-blank">[…]</span>');
  assert.throws(()=>core.render('{{c1::broken',1),/Incomplete/);
 });
-test('Repeat, Hard, Good and Easy schedule the requested fixed intervals',()=>{
- const now=1000,a=core.schedule(null,1,now);assert.equal(a.due,now+60000);assert.equal(a.lapses,1);assert.equal(a.reviews,1);
- const g=core.schedule(a,3,now);assert.equal(g.interval,10/1440);assert.equal(g.lapses,1);assert.equal(g.reviews,2);
- for(const [rating,millis] of [[1,60000],[2,360000],[3,600000],[4,172800000]]){
-  const fresh=core.schedule(null,rating,now),old=core.schedule({...g,interval:4000},rating,now);
-  assert.equal(fresh.due,now+millis);assert.equal(old.due,now+millis);assert.equal(old.reviews,3);
- }
+test('FSRS graduates learned cards and grows intervals with successful reviews',()=>{
+ const now=Date.UTC(2026,0,1);
+ const learning=core.schedule(null,3,now), review=core.schedule(learning,3,learning.due), mature=core.schedule(review,3,review.due);
+ assert.equal(learning.memory.state,1);
+ assert.equal(review.memory.state,2);
+ assert(mature.interval>review.interval);
+ const lapse=core.schedule(mature,1,mature.due);
+ assert.equal(lapse.memory.state,3);
+ assert.equal(lapse.lapses,1);
+ assert(lapse.interval<review.interval);
+ const legacy={due:now,interval:2,reviews:9,lapses:2,lastReview:now-2*core.DAY,rating:4};
+ assert(core.validRecord(legacy));
+ const migrated=core.schedule(legacy,3,now);
+ assert.equal(migrated.reviews,10);assert.equal(migrated.lapses,2);assert(core.validRecord(migrated));
  for(const rating of [0,5,NaN,'1'])assert.throws(()=>core.schedule(null,rating,now));
 });
 test('persistent records validate without discarding unknown IDs',()=>{

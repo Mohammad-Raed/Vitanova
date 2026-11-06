@@ -56,3 +56,13 @@ main,section,.card,.tbl,.g>*{min-width:0}
 
 /* Flashcards remain reachable from every registered lecture. */
 .vn-lecture-navigation .vn-flashcards{min-height:32px;background:var(--soft)}
+
+/* Shared violet and jade palette, with legible text in both modes. */
+:root[data-theme="light"]{--bg:#f7f6fb;--card:#fff;--tx:#231d35;--mu:#625a72;--pu:#60418d;--te:#087768;--ln:#e5e0ed;--soft:#f0ebf8;--or:#b44f30;--bl:#315f97;color-scheme:light}
+:root[data-theme="dark"]{--bg:#151222;--card:#201b30;--tx:#f0ebf8;--mu:#bdb3ce;--pu:#c1a6ef;--te:#83dccc;--ln:#3c324e;--soft:#2b233d;--or:#ffab8f;--bl:#93bced;color-scheme:dark}
+.vn-study-sections{display:flex;align-items:center;flex-wrap:wrap;gap:8px;max-width:1080px;margin:14px auto;padding:0 14px}
+.vn-study-sections a,.vn-study-sections select{min-height:44px;padding:8px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--card);color:var(--pu);font:650 13px/1.4 system-ui,sans-serif;text-decoration:none}
+.vn-study-sections a:hover{background:var(--soft)}
+.vn-study-sections select{max-width:100%;min-width:0;margin-left:auto}
+.vn-study-sections :focus-visible{outline:2px solid var(--te);outline-offset:2px}
+@media(max-width:650px){.vn-study-sections select{flex:1 0 100%;margin:0}.vn-study-sections a{flex:1 0 auto;text-align:center}}
