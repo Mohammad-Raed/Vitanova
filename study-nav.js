@@ -84,5 +84,6 @@
   const top=document.createElement('a');top.className='vn-back-to-top';top.href='#';top.textContent='↑ Top';top.setAttribute('aria-label','Back to top');
   top.addEventListener('click',event=>{event.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
   document.body.append(top);
+  const appearance=document.createElement('script');appearance.src='study-appearance.js?v=1';document.body.append(appearance);
   if(storage&&!storage.isAvailable())storage.warning();
 })();
