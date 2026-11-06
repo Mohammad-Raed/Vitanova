@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MSS Anatomy Revision</title>
+<style>
+:root{
+  --bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;
+  --pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;
+  --ln:#e3dcf0;--soft:#f1ecfa;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;
+    --pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;
+    --ln:#3a3057;--soft:#2b2347;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px 20px 36px;text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);
+  display:flex;gap:4px;overflow-x:auto;padding:8px 12px;white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 60px}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+/* Quiz */
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+#sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+/* Additions (same tokens, radii, spacing) */
+.ex.show{display:block}
+details{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:10px 18px;margin:12px 0}
+summary{cursor:pointer;font-weight:700;color:var(--pu)}
+.bar{height:10px;background:var(--soft);border:1px solid var(--ln);border-radius:10px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0;background:var(--te)}
+.flt{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.flt button,.sm{background:var(--card);color:var(--pu);border:1px solid var(--ln);border-radius:10px;padding:4px 12px;font:inherit;font-size:14px;cursor:pointer}
+.flt button.on{background:var(--soft);border-color:var(--pu);font-weight:700}
+.act{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.sm.on{border-color:var(--or);color:var(--or);font-weight:700}
+.hid{display:none}
+.mu{color:var(--mu);font-size:14px}
+</style>
+<link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head>
+<body>
+<header>
+  <small>AL-BALQA’ APPLIED UNIVERSITY · ANATOMY</small>
+  <h1>Gluteal Region, Thigh &amp; Knee Joint</h1>
+  <p>MSS (musculoskeletal system) final revision · Lectures 3 &amp; 4</p>
+</header>
+<nav>
+  <a href="#start">Start</a><a href="#gluteal">Gluteal region</a><a href="#thigh">Thigh</a><a href="#knee">Knee joint</a><a href="#clin">Clinical</a><a href="#hy">High-yield</a><a href="#fix">Clarifications</a><a href="#quiz">MCQs</a><a href="#abbr">Abbreviations</a>
+</nav>
+<main>
+
+<section id="start">
+  <div class="k">Overview</div>
+  <h2>How to use this page</h2>
+  <div class="g">
+    <div class="card"><h3>Part A</h3><b>Gluteal region and thigh</b> (slides by Dr. Dima Hamarsheh): skin, fascia, muscles, foramina, vessels, lymph nodes, compartments.</div>
+    <div class="card"><h3>Part B</h3><b>Knee joint</b> (slides by Dr. Refat AboGhazleh): bones, menisci, capsule, bursae, ligaments, movements, injuries.</div>
+    <div class="card"><h3>Practice</h3>32 MCQs (multiple-choice questions) with explanations, answer reveal, flagging, filters and progress tracking.</div>
+  </div>
+  <div class="note"><b>Lecturer emphasis (from slide annotations):</b> in the knee lecture the key topics are the anterior and posterior cruciate ligaments (ACL, PCL), the menisci, and the medial and lateral collateral ligaments. In the gluteal lecture, the structures under gluteus maximus and the structures passing through the sciatic foramina were flagged as examinable. For the short lateral rotators, <b>know the names and the action only</b>; origin, insertion, nerve supply and roots were crossed out.</div>
+  <p class="mu">Tag <span class="tag">Added</span> marks standard textbook detail that is not on the slides but resolves an ambiguity. Progress in the MCQ section is kept only while the page is open.</p>
+</section>
+
+<section id="gluteal">
+  <div class="k">Part A</div>
+  <h2>Gluteal region</h2>
+  <p>The <b>gluteal region</b> (Greek <i>gloutos</i>, buttock) is the transitional region between the <b>trunk and the free lower limb</b>.</p>
+
+  <h3>1. Skin: cutaneous innervation by quadrant</h3>
+  <p class="mu">The buttock is divided into 4 quadrants by a vertical and a horizontal line; each has its own nerve supply. (L = lumbar, S = sacral, T = thoracic spinal levels.)</p>
+  <div class="card tbl"><table>
+    <tr><th>Quadrant</th><th>Rami</th><th>Nerve source</th></tr>
+    <tr><td>Upper lateral</td><td>Anterior primary rami</td><td>Lateral cutaneous branch of the <b>iliohypogastric nerve</b> (L1) and lateral cutaneous branch of the <b>subcostal nerve</b> (T12). Contains the <b>safe injection region</b>.</td></tr>
+    <tr><td>Upper medial</td><td>Posterior primary rami</td><td>L1–L3 and S1–S3 (the superior and middle cluneal nerves <span class="tag">Added</span>).</td></tr>
+    <tr><td>Lower lateral</td><td>Anterior primary rami</td><td>Branches from the <b>lateral</b> cutaneous nerve of the thigh.</td></tr>
+    <tr><td>Lower medial</td><td>Anterior primary rami</td><td>Branches from the <b>posterior</b> cutaneous nerve of the thigh.</td></tr>
+  </table></div>
+  <div class="note"><b>Mnemonic:</b> Upper = trunk nerves (T12/L1 laterally, posterior rami medially). Lower = thigh nerves, matched by name: lateral quadrant gets the <i>lateral</i> cutaneous nerve of thigh, medial quadrant gets the <i>posterior</i> one.</div>
+
+  <h3>2. Fascia</h3>
+  <div class="g">
+    <div class="card"><b>Superficial fascia:</b> thick, especially in women; contributes to the prominence of the buttock.</div>
+    <div class="card"><b>Deep fascia:</b> continuous with the deep fascia of the thigh, the <b>fascia lata</b>. (The slide’s word “contentious” is a typo for “continuous”.)</div>
+  </div>
+  <div class="card">
+    <b>Fascia lata:</b> strong fibrous sheet enclosing the whole thigh like tight trousers or leggings. <b>Thin medially</b>, <b>thicker laterally</b>, where it forms the <b>iliotibial tract (ITT)</b>.<br>
+    <b>Iliotibial tract (ITT):</b> thickening of the fascia lata on the lateral thigh. <b>Above:</b> tubercle of the iliac crest (iliac tubercle). <b>Below:</b> lateral condyle of the tibia (anterolateral or Gerdy’s tubercle). <b>Receives the insertion of</b> tensor fasciae latae (TFL) and gluteus maximus.
+  </div>
+
+  <h3>3. Muscles</h3>
+  <div class="note"><b>Rule:</b> a muscle crossing the hip joint <b>posteriorly extends</b> it; one crossing <b>anteriorly flexes</b> it (the knee is the exception).</div>
+  <div class="card tbl"><table>
+    <tr><th>Muscle</th><th>Origin</th><th>Insertion</th><th>Action</th><th>Nerve</th></tr>
+    <tr><td>Gluteus maximus (outermost)</td><td>Ilium behind the posterior gluteal line; back of sacrum and coccyx; back of the sacrotuberous ligament</td><td>Superficial <b>¾</b> into ITT; deep lower <b>¼</b> into gluteal tuberosity of femur</td><td><b>Main extensor</b> of hip; some lateral rotation; climbing stairs, cycling; braces extended knee via ITT</td><td><b>Inferior</b> gluteal</td></tr>
+    <tr><td>Gluteus medius and minimus</td><td>Ilium</td><td>Greater trochanter of femur</td><td><b>Main abductors</b> of hip; anterior fibres medially rotate; keep pelvis level when walking</td><td><b>Superior</b> gluteal</td></tr>
+    <tr><td>Tensor fasciae latae (TFL)</td><td>Iliac crest (anterior part and anterior superior iliac spine, ASIS <span class="tag">Added</span>)</td><td>ITT</td><td>Assists gluteus maximus in extending (bracing) the knee through the ITT</td><td><b>Superior</b> gluteal</td></tr>
+  </table></div>
+  <div class="note"><b>Mnemonic:</b> “Inferior = Maximus (the big one); Superior = all the rest” (medius, minimus, TFL).</div>
+
+  <h3>Short lateral rotators (under gluteus maximus)</h3>
+  <p>Six muscles: <b>piriformis, quadratus femoris, obturator internus, superior gemellus, obturator externus, inferior gemellus</b>. Obturator internus lies <b>between</b> the two gemelli (its tendon is sandwiched). Piriformis is the key landmark: it almost fills the greater sciatic foramen. All are <b>lateral rotators of the thigh at the hip</b>.</p>
+  <details><summary>Optional detail table (lecturer crossed out origin/insertion/nerve; action is what matters)</summary>
+  <div class="tbl"><table>
+    <tr><th>Muscle</th><th>Origin</th><th>Insertion</th><th>Nerve (roots)</th></tr>
+    <tr><td>Piriformis</td><td>Anterior surface of sacrum</td><td>Upper border of greater trochanter</td><td>1st and 2nd sacral nerves (L5, S1, S2)</td></tr>
+    <tr><td>Obturator internus</td><td>Inner surface of obturator membrane</td><td>Upper border of greater trochanter</td><td>Sacral plexus (L5, S1)</td></tr>
+    <tr><td>Superior gemellus</td><td>Spine of ischium</td><td>Upper border of greater trochanter</td><td>Sacral plexus (L5, S1)</td></tr>
+    <tr><td>Inferior gemellus</td><td>Ischial tuberosity</td><td>Upper border of greater trochanter</td><td>Sacral plexus (L5, S1)</td></tr>
+    <tr><td>Quadratus femoris</td><td>Lateral border of ischial tuberosity</td><td>Quadrate tubercle of femur</td><td>Sacral plexus (L5, S1)</td></tr>
+  </table></div></details>
+  <div class="note"><b>Functional groups:</b> gluteus maximus = hip extension; medius and minimus = abduction (anterior fibres medial rotation); short rotators = lateral rotation. Together the gluteal muscles extend, abduct and rotate (medially and laterally) the hip.</div>
+
+  <h3>4. Structures under cover of gluteus maximus <span class="tag">flagged important</span></h3>
+  <div class="g">
+    <div class="card"><b>A. Bony (3)</b><ul><li>Greater trochanter and its bursa</li><li>Gluteal tuberosity (deep part of gluteus maximus inserts here)</li><li>Ischial tuberosity and its bursa</li></ul></div>
+    <div class="card"><b>B. Ligaments (2)</b><ul><li>Sacrotuberous ligament</li><li>Sacrospinous ligament (spelt “Scrospinous” on the slide)</li></ul></div>
+    <div class="card"><b>C. Muscles (3 groups)</b><ul><li>Gluteus medius and minimus</li><li>Six short lateral rotators</li><li>Origin of the hamstrings (mostly from the ischial tuberosity)</li></ul></div>
+    <div class="card"><b>D. Vessels (3)</b><ul><li>Superior gluteal vessels</li><li>Inferior gluteal vessels</li><li>Internal pudendal vessels</li></ul></div>
+    <div class="card"><b>E. Nerves (6 groups)</b><ul><li>Superior and inferior gluteal nerves</li><li>Sciatic nerve</li><li>Pudendal nerve</li><li>Posterior cutaneous nerve of the thigh</li><li>Nerve to obturator internus</li><li>Nerve to quadratus femoris</li></ul></div>
+  </div>
+  <div class="note"><b>Mnemonic:</b> 3 – 2 – 3 – 3 – 6 (bones, ligaments, muscle groups, vessels, nerve groups).</div>
+
+  <h3>5. Sciatic foramina <span class="tag">flagged important</span></h3>
+  <p class="mu">The sacrotuberous and sacrospinous ligaments convert the sciatic notches into the greater and lesser sciatic foramina <span class="tag">Added</span>.</p>
+  <div class="card tbl"><table>
+    <tr><th>Opening</th><th>Relation</th><th>Structures</th></tr>
+    <tr><td>Greater sciatic foramen</td><td><b>Above</b> piriformis</td><td>Superior gluteal nerve and vessels (only these)</td></tr>
+    <tr><td>Greater sciatic foramen</td><td><b>Below</b> piriformis</td><td>Inferior gluteal nerve and vessels; sciatic nerve; posterior cutaneous nerve of thigh; nerve to quadratus femoris; pudendal nerve; internal pudendal vessels; nerve to obturator internus</td></tr>
+    <tr><td>Lesser sciatic foramen</td><td>—</td><td>Pudendal nerve; internal pudendal vessels; nerve to obturator internus</td></tr>
+  </table></div>
+  <div class="note"><b>Mnemonics:</b> “Superior is above; everything else is below.” Lesser foramen = <b>PIN</b>: <b>P</b>udendal nerve, <b>I</b>nternal pudendal vessels, <b>N</b>erve to obturator internus. These three leave through the greater foramen below piriformis, hook round the ischial spine, then re-enter through the lesser foramen (the slide’s list skips number 8).</div>
+
+  <h3>6. Arteries</h3>
+  <div class="card tbl"><table>
+    <tr><th>Artery</th><th>Entry</th><th>Supply</th></tr>
+    <tr><td>Superior gluteal</td><td>Branch of internal iliac artery; enters via greater sciatic foramen <b>above</b> piriformis</td><td>Divides into <b>superficial</b> branch (gluteus maximus) and <b>deep</b> branch (gluteus medius and minimus)</td></tr>
+    <tr><td>Inferior gluteal</td><td>Branch of internal iliac artery; enters via greater sciatic foramen <b>below</b> piriformis</td><td>Numerous branches distributed throughout the gluteal region</td></tr>
+  </table></div>
+</section>
+
+<section id="thigh">
+  <div class="k">Part A (continued)</div>
+  <h2>Thigh</h2>
+
+  <h3>1. Skin: cutaneous nerves by plexus</h3>
+  <div class="card tbl"><table>
+    <tr><th>Source</th><th>Nerves</th></tr>
+    <tr><td>Lumbar plexus</td><td>1. Lateral cutaneous nerve of thigh · 2. Femoral branch of genitofemoral nerve · 3. Ilioinguinal nerve</td></tr>
+    <tr><td>Femoral nerve</td><td>4. Medial cutaneous nerve of thigh · 5. Intermediate cutaneous nerve of thigh</td></tr>
+    <tr><td>Obturator nerve</td><td>6. Cutaneous branch(es) to the medial thigh</td></tr>
+    <tr><td>Sacral plexus</td><td>7. Posterior cutaneous nerve of thigh</td></tr>
+  </table></div>
+
+  <h3>2. Superficial fascia contents</h3>
+  <div class="g">
+    <div class="card"><b>Cutaneous nerves:</b> all those above.</div>
+    <div class="card"><b>Superficial arteries:</b> branches of the femoral artery that emerge through the <b>saphenous opening</b> (superficial circumflex iliac, superficial epigastric, superficial external pudendal <span class="tag">Added</span>).</div>
+    <div class="card"><b>Superficial veins:</b> most important is the <b>great saphenous vein</b>. It begins at the dorsal venous arch, passes in front of the medial malleolus, ascends the medial side of leg and thigh, and drains through the saphenous opening into the femoral vein <span class="tag">Added</span>. Perforating veins carry blood to deep veins (venous pump).</div>
+  </div>
+
+  <h3>3. Superficial inguinal lymph nodes</h3>
+  <p>Lie <b>below the inguinal ligament</b> in two groups.</p>
+  <div class="card tbl"><table>
+    <tr><th>Group</th><th>Position</th><th>Drains</th></tr>
+    <tr><td>Horizontal, medial</td><td>Below and parallel to the inguinal ligament</td><td>Anterior abdominal wall <b>below the umbilicus</b>; perineum; urethra; external genitalia of both sexes (<b>except the testes</b>); <b>lower half of anal canal</b>; <b>lower third of vagina</b></td></tr>
+    <tr><td>Horizontal, lateral</td><td>Below and parallel to the inguinal ligament</td><td>Back <b>below the level of the iliac crests</b> (includes the gluteal region)</td></tr>
+    <tr><td>Vertical</td><td>Along the terminal great saphenous vein</td><td>Most of the superficial lymph vessels of the <b>lower limb</b></td></tr>
+  </table></div>
+  <div class="flow"><span>Superficial inguinal nodes</span><i>→</i><span>saphenous opening in deep fascia</span><i>→</i><span>deep inguinal nodes</span></div>
+  <p class="mu">Testes drain to para-aortic (lumbar) nodes, not inguinal nodes <span class="tag">Added</span>.</p>
+
+  <h3>4. Deep fascia and compartments</h3>
+  <p>The fascia lata is attached to the <b>linea aspera</b> by three intermuscular septa (<b>medial, lateral, posterior</b>). With the fascia they divide the thigh into three compartments.</p>
+  <div class="card tbl"><table>
+    <tr><th>Compartment</th><th>Main muscles <span class="tag">Added</span></th><th>Main nerve <span class="tag">Added</span></th></tr>
+    <tr><td>Anterior</td><td>Quadriceps femoris, sartorius</td><td>Femoral</td></tr>
+    <tr><td>Medial</td><td>Adductors, gracilis</td><td>Obturator</td></tr>
+    <tr><td>Posterior</td><td>Hamstrings</td><td>Sciatic (tibial part)</td></tr>
+  </table></div>
+</section>
+
+<section id="knee">
+  <div class="k">Part B</div>
+  <h2>Knee joint</h2>
+
+  <h3>1. Bones and landmarks</h3>
+  <div class="card tbl"><table>
+    <tr><th>Bone</th><th>Features to identify</th></tr>
+    <tr><td>Femur</td><td>Body; adductor tubercle; medial and lateral epicondyles; medial and lateral condyles; patellar surface; intercondylar fossa (notch)</td></tr>
+    <tr><td>Patella</td><td>Base (top); apex (bottom); anterior surface</td></tr>
+    <tr><td>Tibia</td><td>Medial and lateral condyles (tibial plateau); intercondylar eminence (with medial and lateral tubercles); tibial tuberosity; shaft</td></tr>
+    <tr><td>Fibula</td><td>Head and shaft. Not part of the joint and not weight-bearing, but stabilises it (fibular collateral ligament and biceps femoris attach to the head)</td></tr>
+  </table></div>
+  <p>Articular surfaces are covered by <b>hyaline cartilage</b>. On X-ray, bone is opaque and cartilage is not seen, so the “black space” between femur and tibia is the cartilage; <b>narrowing</b> suggests osteoarthritis.</p>
+
+  <h3>2. Type and articulations</h3>
+  <div class="card tbl"><table>
+    <tr><th>Articulation</th><th>Between</th><th>Type</th></tr>
+    <tr><td>Medial and lateral femorotibial (2)</td><td>Two femoral condyles and upper surfaces of two tibial condyles</td><td>Synovial, <b>modified hinge</b></td></tr>
+    <tr><td>Femoropatellar (1)</td><td>Posterior surface of patella and patellar surface of femur</td><td>Synovial, <b>plane</b></td></tr>
+  </table></div>
+  <p><b>3 bones, 3 articulations.</b> The patella articulates <b>only with the femur</b> through the whole range of flexion. The knee as a whole is a modified hinge: flexion and extension plus a small amount of rotation (about 5°, used in locking and unlocking). By contrast, the elbow is a true hinge with no rotation.</p>
+
+  <h3>3. Menisci <span class="tag">flagged important</span></h3>
+  <p>Two C-shaped plates of <b>fibrocartilage</b> on the tibial condyles, attached by <b>anterior and posterior horns</b> to the intercondylar area of the tibia. The anterior horns are joined by the <b>transverse ligament of the knee</b>. Functions: <b>deepen</b> the articular surfaces, <b>absorb shock</b>, and help stabilise the joint.</p>
+  <div class="card tbl"><table>
+    <tr><th>Feature</th><th>Lateral meniscus</th><th>Medial meniscus</th></tr>
+    <tr><td>Size</td><td>Small</td><td>Large (the medial condyles are larger)</td></tr>
+    <tr><td>Shape</td><td>Circular</td><td>Oval (more open C)</td></tr>
+    <tr><td>Outer border</td><td>Separated from the fibular collateral ligament by the <b>popliteus tendon</b></td><td>Attached to the capsule and <b>tibial collateral ligament</b></td></tr>
+    <tr><td>Mobility</td><td>More mobile</td><td>Less mobile (fixed)</td></tr>
+    <tr><td>Liability to injury</td><td>Less liable</td><td><b>More liable</b></td></tr>
+  </table></div>
+  <div class="note"><b>Mnemonic:</b> <b>M</b>edial = <b>M</b>ore injured (fixed to the capsule and medial collateral ligament). Lateral = lively (mobile) and spared. The posterior horn of the lateral meniscus is tied to the medial femoral condyle by the posterior meniscofemoral ligament.</div>
+
+  <h3>4. Joint capsule and synovial membrane</h3>
+  <div class="g">
+    <div class="card"><b>Fibrous capsule (outer)</b><ul><li><b>Deficient anteriorly</b>: replaced by quadriceps femoris tendon, patella and patellar ligament.</li><li><b>Opening posteriorly</b> for the popliteus tendon.</li></ul></div>
+    <div class="card"><b>Synovial membrane (inner)</b><ul><li>Lines the capsule and attaches to the margins of the articular surfaces and the peripheral edges of the menisci.</li><li>Reflects into the intercondylar region, covering the <b>cruciate ligaments</b> and <b>infrapatellar fat pad</b>, so they are <b>inside the capsule but outside the articular cavity</b>.</li><li>Posteriorly it reflects off the capsule on either side of the PCL and loops forward round both cruciates.</li><li>Anteriorly: <b>alar folds</b> on each side of the fat pad, and a midline <b>infrapatellar synovial fold</b> attached to the intercondylar fossa of the femur.</li></ul></div>
+  </div>
+  <p><b>Synovial cavity communicates with:</b> suprapatellar bursa, popliteus bursa (subpopliteal recess), semimembranosus bursa, gastrocnemius bursa.</p>
+
+  <h3>5. Bursae</h3>
+  <div class="card tbl"><table>
+    <tr><th>Bursa</th><th>Location</th></tr>
+    <tr><td>Suprapatellar</td><td>Between femur and quadriceps femoris tendon (communicates with the joint)</td></tr>
+    <tr><td>Subcutaneous prepatellar</td><td>Between patella and skin: <b>housemaid’s knee</b></td></tr>
+    <tr><td>Subcutaneous infrapatellar</td><td>Between tibial tuberosity and skin</td></tr>
+    <tr><td>Deep infrapatellar</td><td>Between tibia and patellar ligament</td></tr>
+    <tr><td>Popliteus</td><td>Between popliteus tendon and lateral condyle of tibia</td></tr>
+    <tr><td>Anserine</td><td>Under the pes anserinus, over the tibial collateral ligament</td></tr>
+  </table></div>
+
+  <h3>6. Ligaments <span class="tag">flagged important</span></h3>
+  <h3 style="margin-top:6px">Extracapsular (4)</h3>
+  <div class="card tbl"><table>
+    <tr><th>Ligament</th><th>Attachments and notes</th></tr>
+    <tr><td>Patellar</td><td>Patella to tibial tuberosity (continuation of the quadriceps tendon)</td></tr>
+    <tr><td>Medial (tibial) collateral, MCL</td><td>Medial epicondyle of femur to upper part of medial surface of tibia. <b>Deep fibres firmly attached to the medial meniscus.</b></td></tr>
+    <tr><td>Lateral (fibular) collateral, LCL</td><td>Lateral epicondyle of femur to head of fibula. A strong cord <b>separated from the lateral meniscus by the popliteus tendon</b>; deep fibres <b>not</b> attached to the meniscus.</td></tr>
+    <tr><td>Oblique popliteal</td><td>Expansion of the <b>semimembranosus</b> tendon, strengthening the back of the capsule</td></tr>
+  </table></div>
+  <h3 style="margin-top:6px">Intracapsular: cruciate ligaments (ACL, PCL)</h3>
+  <p>Two, in the middle of the joint, crossing each other (“cruciate”). Named <b>anterior</b> or <b>posterior</b> by their <b>tibial</b> attachment. They hold femur and tibia together and stabilise the joint.</p>
+  <div class="card tbl"><table>
+    <tr><th></th><th>Anterior cruciate (ACL)</th><th>Posterior cruciate (PCL)</th></tr>
+    <tr><td>Tibial attachment</td><td>Anterior intercondylar area</td><td>Posterior intercondylar area</td></tr>
+    <tr><td>Femoral attachment</td><td>Posterior part of medial surface of the <b>lateral</b> condyle</td><td>Anterior part of lateral surface of the <b>medial</b> condyle</td></tr>
+    <tr><td>Prevents</td><td><b>Anterior</b> displacement of tibia on fixed femur</td><td><b>Posterior</b> displacement of tibia on fixed femur</td></tr>
+    <tr><td>Strength</td><td>Weaker (more often injured)</td><td>Stronger</td></tr>
+    <tr><td>Test</td><td>Anterior drawer: supine, knee flexed, pull tibia forward</td><td>Posterior drawer: push tibia backward</td></tr>
+  </table></div>
+  <div class="note"><b>Mnemonic (slide’s “A–P … L–M”):</b> ACL runs <b>A</b>nterior (tibia) → <b>P</b>osterior (femur) and ends on the <b>L</b>ateral condyle. PCL is the opposite: <b>P</b>osterior → <b>A</b>nterior, <b>M</b>edial condyle.</div>
+
+  <h3>7. Stabilisation of the knee by region</h3>
+  <div class="card tbl"><table>
+    <tr><th>Region</th><th>Stabilisers</th></tr>
+    <tr><td>Anterior (extension)</td><td>Extensor (patellar) retinacula: aponeurotic expansions of <b>vastus lateralis and vastus medialis</b>, attached to the sides of quadriceps tendon, patella and patellar ligament, blending laterally with the ITT and medially with the MCL region</td></tr>
+    <tr><td>Posterior (extension)</td><td><b>Arcuate popliteal ligament</b>: Y-shaped, from the head of the fibula; one limb arches over popliteus to the intercondylar area of the tibia, the other goes to the lateral femoral epicondyle. <b>Oblique popliteal ligament</b> (from semimembranosus).</td></tr>
+    <tr><td>Medial</td><td>MCL (attached to the medial meniscus). Superficial to it, the <b>pes anserinus</b> (goose foot): common insertion of <b>S</b>artorius, <b>G</b>racilis, <b>S</b>emi<b>T</b>endinosus (SGT), listed from anterior to posterior.</td></tr>
+    <tr><td>Lateral</td><td>LCL, biceps femoris tendon, ITT, popliteus tendon</td></tr>
+  </table></div>
+  <div class="note"><b>Mnemonic:</b> <b>S</b>ay <b>G</b>race before <b>T</b>ea = Sartorius, Gracilis, semiTendinosus.</div>
+
+  <h3>8. Movements and muscles</h3>
+  <div class="card tbl"><table>
+    <tr><th>Movement</th><th>Muscles</th></tr>
+    <tr><td>Flexion</td><td>Mainly <b>hamstrings</b> (biceps femoris, semitendinosus, semimembranosus); assisted by sartorius, gracilis, popliteus</td></tr>
+    <tr><td>Extension</td><td><b>Quadriceps femoris</b></td></tr>
+    <tr><td>Active medial rotation (knee flexed)</td><td>Semitendinosus and semimembranosus; assisted by sartorius and gracilis</td></tr>
+    <tr><td>Active lateral rotation (knee flexed)</td><td><b>Biceps femoris</b></td></tr>
+  </table></div>
+  <p>Active rotation is possible <b>only when the knee is flexed</b>; the extended knee cannot be rotated.</p>
+
+  <h3>9. Locking and unlocking <span class="tag">lecturer: important</span></h3>
+  <div class="g">
+    <div class="card"><b>Locking (passive, no muscle needed)</b><ul><li>At the end of extension the femoral condyles <b>rotate medially</b> on the tibial plateau (the medial condyle is larger, so it travels further).</li><li>All ligaments become tight; the knee is rigid for standing.</li></ul></div>
+    <div class="card"><b>Unlocking</b><ul><li><b>Popliteus</b> contracts and rotates the femur <b>laterally</b> about 5° on the tibia.</li><li>This slackens the ligaments so flexion can start.</li></ul></div>
+  </div>
+  <div class="note"><b>Mnemonic:</b> Medial rotation locks; popliteus “pops” it open by lateral rotation. (Rotation is described for a weight-bearing leg, with the femur turning on a fixed tibia.)</div>
+
+  <h3>10. Nerve and blood supply</h3>
+  <div class="g">
+    <div class="card"><b>Nerves:</b> femoral, obturator, tibial and common peroneal (fibular).</div>
+    <div class="card"><b>Arteries:</b> genicular anastomosis formed by the femoral, popliteal, and anterior and posterior tibial arteries.</div>
+  </div>
+</section>
+
+<section id="clin">
+  <div class="k">Clinical</div>
+  <h2>Clinical correlations</h2>
+  <div class="g">
+    <div class="card"><h3>Intramuscular injection</h3>The thickness of gluteus maximus makes it seem ideal, but to avoid the <b>sciatic nerve</b> the injection goes <b>well forward in the upper outer quadrant</b>. This area is mostly <b>gluteus medius</b>, so the drug is injected into gluteus medius rather than maximus.</div>
+    <div class="card"><h3>Superior gluteal nerve injury</h3>Weak gluteus medius and minimus: during walking the pelvis tilts toward the <b>unsupported</b> side (Trendelenburg sign <span class="tag">Added</span>).</div>
+    <div class="card"><h3>Inferior gluteal nerve injury</h3>Weak gluteus maximus: difficulty with stairs and rising from sitting <span class="tag">Added</span>.</div>
+    <div class="card"><h3>ACL injury</h3>Partial, complete or avulsion tear. Anterior drawer test: patient supine, knee flexed, examiner pulls the tibia forward. Excess forward movement = positive.</div>
+    <div class="card"><h3>PCL injury</h3>Excess posterior movement of the tibia (posterior drawer); visible as a discontinuity of the PCL on MRI (magnetic resonance imaging).</div>
+    <div class="card"><h3>Meniscus tear</h3>Usually after a <b>sudden twisting injury</b>. Joint-line pain; the knee “gives way” when flexed or extended. On MRI the normal meniscus is dark; a tear shows a bright (fluid) line. Types: longitudinal (can become bucket-handle), radial (parrot beak), horizontal (flap).</div>
+    <div class="card"><h3>MCL rupture</h3>Often accompanied by a <b>medial meniscus</b> tear because they are attached. The classic “unhappy triad” adds the ACL <span class="tag">Added</span>.</div>
+    <div class="card"><h3>Housemaid’s knee</h3>Subcutaneous prepatellar bursitis from repeated kneeling. Repetitive trauma and small punctures can cause <b>septic bursitis</b> (may be mistaken for arthritis); incision and drainage are often needed.</div>
+  </div>
+</section>
+
+<section id="hy">
+  <div class="k">Rapid revision</div>
+  <h2>High-yield summary</h2>
+  <div class="g">
+    <div class="card"><h3>Gluteal region</h3><ul>
+      <li>Max = inferior gluteal; medius, minimus, TFL = superior gluteal.</li>
+      <li>Max inserts <b>¾ ITT, ¼ gluteal tuberosity</b>.</li>
+      <li>Medius and minimus = main abductors; keep pelvis level.</li>
+      <li>Only <b>superior gluteal</b> nerve and vessels pass <b>above</b> piriformis.</li>
+      <li>Lesser foramen = <b>PIN</b>.</li>
+      <li>Injection site: upper outer quadrant (gluteus medius).</li>
+    </ul></div>
+    <div class="card"><h3>Thigh</h3><ul>
+      <li>Fascia lata → ITT laterally (iliac tubercle → lateral tibial condyle).</li>
+      <li>3 septa, 3 compartments: anterior, medial, posterior.</li>
+      <li>Lateral horizontal nodes = buttock; medial horizontal = perineum and below umbilicus; vertical = lower limb.</li>
+      <li>Testes do not drain to inguinal nodes.</li>
+    </ul></div>
+    <div class="card"><h3>Knee: structure</h3><ul>
+      <li>3 bones, 3 articulations; modified hinge; patella meets femur only.</li>
+      <li>Medial meniscus: large, fixed, more injured.</li>
+      <li>Cruciates are intracapsular but extrasynovial.</li>
+      <li>MCL fused to medial meniscus; LCL is not.</li>
+      <li>Pes anserinus = SGT, superficial to MCL.</li>
+    </ul></div>
+    <div class="card"><h3>Knee: function</h3><ul>
+      <li>ACL stops tibia sliding forward; PCL stops it sliding back.</li>
+      <li>Flexion = hamstrings; extension = quadriceps.</li>
+      <li>Medial rotation: semitendinosus and semimembranosus; lateral: biceps femoris (knee flexed only).</li>
+      <li>Locking = medial rotation of femur; unlocking = popliteus.</li>
+    </ul></div>
+  </div>
+  <div class="card tbl"><table>
+    <tr><th>Comparison</th><th>First</th><th>Second</th></tr>
+    <tr><td>ACL vs PCL</td><td>Anterior tibia → lateral condyle; stops forward tibia</td><td>Posterior tibia → medial condyle; stops backward tibia</td></tr>
+    <tr><td>MCL vs LCL</td><td>Medial epicondyle → tibia; fused to medial meniscus</td><td>Lateral epicondyle → fibular head; popliteus tendon intervenes</td></tr>
+    <tr><td>Medial vs lateral meniscus</td><td>Large, oval, fixed, more injured</td><td>Small, circular, mobile, less injured</td></tr>
+    <tr><td>Above vs below piriformis</td><td>Superior gluteal nerve and vessels</td><td>All other gluteal-region nerves and vessels</td></tr>
+  </table></div>
+</section>
+
+<section id="fix">
+  <div class="k">Accuracy</div>
+  <h2>Clarifications and corrections</h2>
+  <div class="card"><ul>
+    <li><b>Obturator externus:</b> the slide lists it among the six short lateral rotators, but it lies in the medial thigh, deep to quadratus femoris, and is supplied by the <b>obturator nerve</b>, not the sacral plexus. Learn it as listed for the exam, but know it is not a true gluteal muscle <span class="tag">Added</span>.</li>
+    <li><b>Nerve to obturator internus</b> appears in both foramen lists because it leaves via the greater foramen (below piriformis) and re-enters through the lesser foramen.</li>
+    <li><b>TFL origin:</b> the slide says “iliac crest”; the anterior part of the crest and ASIS are more precise.</li>
+    <li><b>ITT lower attachment:</b> “lateral condyle of tibia” means Gerdy’s tubercle on that condyle.</li>
+    <li><b>Slide typos:</b> “contentious” (continuous), “Scrospinous” (sacrospinous), “Lumber plexus” (lumbar), “burse” (bursa), and numbering that skips 8 in the greater foramen list.</li>
+    <li><b>ACL/PCL “tibia on fixed femur”:</b> it is the same as saying the femur is stopped from sliding the opposite way when the tibia is fixed; the ACL is the one that prevents the tibia from moving forward.</li>
+    <li><b>Locking:</b> “medial rotation of femoral condyles” describes a standing (weight-bearing) knee. With a free leg the tibia rotates laterally instead; the result is the same locked position.</li>
+    <li><b>Quiz slide (original deck):</b> Q6 lists the nerve to obturator internus for the lesser foramen, which is correct, but it also passes through the greater foramen.</li>
+  </ul></div>
+</section>
+
+<section id="quiz">
+  <div class="k">Practice</div>
+  <h2>MCQs</h2>
+  <p class="mu">Click an option to answer. Use “Show answer” to reveal without attempting. Flag questions for later and filter to review your mistakes.</p>
+  <div class="card"><b id="prog">Progress: 0 / 0</b><div class="bar"><i id="pf"></i></div>
+    <div class="flt" id="flt"></div>
+  </div>
+  <div id="quiz-list"></div>
+  <div id="res" class="card hid"></div>
+  <div id="sc">Answered 0/0 · Correct 0 · Accuracy 0%</div>
+  <button class="r" id="rst" type="button">Reset</button>
+</section>
+
+<section id="abbr">
+  <div class="k">Reference</div>
+  <h2>Abbreviations</h2>
+  <div class="card tbl"><table>
+    <tr><th>Abbreviation</th><th>Meaning</th></tr>
+    <tr><td>MSS</td><td>Musculoskeletal system (module)</td></tr>
+    <tr><td>MCQ</td><td>Multiple-choice question</td></tr>
+    <tr><td>L, S, T</td><td>Lumbar, sacral, thoracic spinal nerve levels</td></tr>
+    <tr><td>ITT</td><td>Iliotibial tract</td></tr>
+    <tr><td>TFL</td><td>Tensor fasciae latae</td></tr>
+    <tr><td>ASIS</td><td>Anterior superior iliac spine</td></tr>
+    <tr><td>ACL / PCL</td><td>Anterior / posterior cruciate ligament</td></tr>
+    <tr><td>MCL / LCL</td><td>Medial (tibial) / lateral (fibular) collateral ligament</td></tr>
+    <tr><td>SGT</td><td>Sartorius, Gracilis, Semitendinosus (pes anserinus)</td></tr>
+    <tr><td>PIN</td><td>Pudendal nerve, Internal pudendal vessels, Nerve to obturator internus</td></tr>
+    <tr><td>MRI</td><td>Magnetic resonance imaging</td></tr>
+  </table></div>
+</section>
+
+</main>
+<footer>Prepared from lecturer slides for revision. Check against the official course material before the exam.</footer>
+
+<script>
+const Q=[
+["A nurse gives an intramuscular injection into the upper lateral quadrant of a patient’s buttock. Which muscle does the needle most likely enter?",
+ ["Gluteus maximus","Gluteus medius","Gluteus minimus","Piriformis","Tensor fasciae latae"],1,
+ "The upper outer quadrant overlies gluteus medius rather than maximus, and it lies well forward of the sciatic nerve. Gluteus minimus is deeper, and piriformis lies lower and deep.","Gluteal"],
+["After a deep stab wound to the buttock, a man has marked difficulty climbing stairs and rising from a chair, but when he stands on one leg his pelvis stays level. Which nerve is most likely injured?",
+ ["Superior gluteal nerve","Sciatic nerve","Inferior gluteal nerve","Obturator nerve","Femoral nerve"],2,
+ "The inferior gluteal nerve supplies gluteus maximus, the main hip extensor used for stairs, rising and cycling. A superior gluteal injury would instead drop the pelvis.","Gluteal"],
+["When a patient stands on the right leg only, the left side of the pelvis sags. Which lesion best explains this?",
+ ["Right superior gluteal nerve injury","Left superior gluteal nerve injury","Right inferior gluteal nerve injury","Left inferior gluteal nerve injury","Right femoral nerve injury"],0,
+ "Gluteus medius and minimus of the standing (supporting) leg must contract to keep the pelvis level. If they are weak, the pelvis tilts toward the unsupported side. They are supplied by the superior gluteal nerve.","Gluteal"],
+["Which pair of structures passes through the greater sciatic foramen ABOVE the piriformis?",
+ ["Sciatic nerve and artery to the sciatic nerve","Inferior gluteal nerve and vessels","Pudendal nerve and internal pudendal vessels","Posterior cutaneous nerve of the thigh and nerve to quadratus femoris","Superior gluteal nerve and vessels"],4,
+ "Only the superior gluteal nerve and vessels pass above piriformis. All the other listed structures leave below it.","Gluteal"],
+["Which group of structures passes through the lesser sciatic foramen?",
+ ["Sciatic nerve, inferior gluteal nerve and posterior cutaneous nerve of the thigh","Superior gluteal nerve, superior gluteal vessels and nerve to piriformis","Obturator nerve, obturator vessels and nerve to obturator externus","Pudendal nerve, internal pudendal vessels and nerve to obturator internus","Inferior gluteal vessels, nerve to quadratus femoris and sciatic nerve"],3,
+ "PIN: Pudendal nerve, Internal pudendal vessels, Nerve to obturator internus. They leave the pelvis below piriformis, wrap round the ischial spine and re-enter through the lesser foramen.","Gluteal"],
+["Which statement about the insertion of gluteus maximus is correct?",
+ ["Most fibres go to the gluteal tuberosity; the deepest fibres go to the iliotibial tract","All fibres insert on the greater trochanter","Most fibres go to the iliotibial tract; the deepest fibres go to the gluteal tuberosity","All fibres insert on the gluteal tuberosity","All fibres insert into the iliotibial tract"],2,
+ "The superficial three-quarters insert into the iliotibial tract and the deep lower quarter into the gluteal tuberosity of the femur.","Gluteal"],
+["Which muscle and nerve pairing is correct?",
+ ["Gluteus maximus – superior gluteal nerve","Gluteus medius – inferior gluteal nerve","Gluteus minimus – inferior gluteal nerve","Tensor fasciae latae – superior gluteal nerve","Gluteus maximus – sciatic nerve"],3,
+ "Gluteus maximus is supplied by the inferior gluteal nerve. Gluteus medius, minimus and tensor fasciae latae are supplied by the superior gluteal nerve.","Gluteal"],
+["Which statement correctly describes the iliotibial tract?",
+ ["A thickening of the fascia lata on the lateral thigh, from the iliac tubercle to the lateral tibial condyle","A thickening of the fascia lata on the medial thigh, ending on the medial tibial condyle","A thickening of the superficial fascia that receives sartorius and gracilis","A tendon of biceps femoris that ends on the fibular head","A thin sheet on the posterior thigh that receives the hamstrings"],0,
+ "The iliotibial tract is the lateral thickening of the fascia lata. It receives the insertions of tensor fasciae latae and gluteus maximus and supports the extended knee.","Thigh"],
+["Superficial lymph from all of the following normally drains to the medial group of the horizontal superficial inguinal nodes EXCEPT:",
+ ["Skin of the perineum","Urethra","Lower third of the vagina","Lower half of the anal canal","Testis"],4,
+ "The testis drains along the testicular vessels to para-aortic (lumbar) nodes. The other structures drain to the medial horizontal inguinal nodes.","Thigh"],
+["A man has an infected skin wound on his left buttock, 5 cm below the iliac crest. Which lymph nodes will most likely enlarge first?",
+ ["Medial members of the horizontal superficial inguinal group","Lateral members of the horizontal superficial inguinal group","Vertical superficial inguinal group","Popliteal nodes","Para-aortic nodes"],1,
+ "The lateral members of the horizontal group receive lymph from the back below the iliac crests, which includes the gluteal region. The vertical group drains the lower limb.","Thigh"],
+["Efferent lymph vessels from the superficial inguinal nodes pass through which opening, to which nodes?",
+ ["Saphenous opening, to the deep inguinal nodes","Adductor hiatus, to the popliteal nodes","Obturator canal, to the internal iliac nodes","Greater sciatic foramen, to the sacral nodes","Inguinal canal, to the para-aortic nodes"],0,
+ "The efferents pass through the saphenous opening in the deep fascia and join the deep inguinal nodes.","Thigh"],
+["Which cutaneous nerve of the thigh is a branch of the femoral nerve?",
+ ["Lateral cutaneous nerve of the thigh","Posterior cutaneous nerve of the thigh","Intermediate cutaneous nerve of the thigh","Femoral branch of the genitofemoral nerve","Ilioinguinal nerve"],2,
+ "The femoral nerve gives the medial and intermediate cutaneous nerves. The lateral cutaneous nerve, genitofemoral and ilioinguinal nerves come from the lumbar plexus, and the posterior cutaneous nerve from the sacral plexus.","Thigh"],
+["The fascia lata is attached to the linea aspera by intermuscular septa. Together they divide the thigh into:",
+ ["Two compartments: anterior and posterior","Two compartments: medial and lateral","Four compartments: anterior, posterior, medial and lateral","Three compartments: anterior, medial and posterior","Three compartments: anterior, lateral and medial"],3,
+ "Medial, lateral and posterior intermuscular septa create three compartments: anterior, medial and posterior.","Thigh"],
+["Which statement about the bones of the knee joint is correct?",
+ ["The fibula articulates with the lateral femoral condyle","The patella articulates only with the femur","The patella articulates with both the femur and the tibia","The fibular head forms part of the weight-bearing surface","The fibula contributes to the femorotibial articulation"],1,
+ "The patella articulates only with the femur throughout flexion. The fibula is not part of the joint but stabilises it through the fibular collateral ligament and biceps femoris.","Knee"],
+["Which description of the knee articulations is correct?",
+ ["Femorotibial: synovial ball-and-socket; femoropatellar: synovial hinge","Femorotibial: synovial plane; femoropatellar: synovial modified hinge","Femorotibial: synovial pivot; femoropatellar: synovial saddle","Femorotibial: synovial pure hinge; femoropatellar: synovial pivot","Femorotibial: synovial modified hinge; femoropatellar: synovial plane"],4,
+ "The femorotibial articulations form a modified hinge (flexion and extension with some rotation), and the femoropatellar articulation is a plane synovial joint.","Knee"],
+["Which feature correctly characterises the medial meniscus compared with the lateral meniscus?",
+ ["Smaller and more circular in shape","More mobile and separated from its collateral ligament by the popliteus tendon","Larger and firmly fixed to the capsule and tibial collateral ligament","Less liable to injury","Attached to the head of the fibula"],2,
+ "The medial meniscus is larger, less mobile and fixed to the capsule and medial (tibial) collateral ligament, so it is injured more often. The other features describe the lateral meniscus.","Knee"],
+["A footballer is tackled on the lateral side of the knee and tears the tibial collateral ligament. Which intra-articular structure is most likely damaged as well?",
+ ["Medial meniscus","Lateral meniscus","Posterior cruciate ligament","Infrapatellar fat pad","Popliteus tendon"],0,
+ "The deep fibres of the tibial collateral ligament are attached to the medial meniscus, so MCL rupture often involves a medial meniscus tear.","Knee"],
+["With the patient supine and the knee flexed, the examiner pulls the tibia forward and finds excessive anterior movement. Which structure is most likely torn?",
+ ["Posterior cruciate ligament","Tibial collateral ligament","Fibular collateral ligament","Anterior cruciate ligament","Oblique popliteal ligament"],3,
+ "The anterior cruciate ligament prevents anterior displacement of the tibia on the femur. The posterior cruciate ligament prevents posterior displacement.","Knee"],
+["Which description fits the posterior cruciate ligament?",
+ ["Anterior intercondylar area of tibia to posterior part of the medial surface of the lateral femoral condyle","Posterior intercondylar area of tibia to anterior part of the lateral surface of the medial femoral condyle","Head of fibula to lateral femoral epicondyle","Posterior intercondylar area of tibia to posterior part of the medial surface of the lateral femoral condyle","Anterior intercondylar area of tibia to anterior part of the lateral surface of the medial femoral condyle"],1,
+ "PCL: posterior tibia to anterior femur, on the medial condyle. Option A describes the ACL. Memory aid: A–P … L–M.","Knee"],
+["Which statement about the cruciate ligaments is correct?",
+ ["They lie in the articular cavity bathed by synovial fluid","They are extracapsular and lie behind the fibrous capsule","They attach to the femoral epicondyles","They are covered by the fibrous capsule anteriorly and by bursae posteriorly","They are inside the capsule but excluded from the articular cavity by the synovial membrane"],4,
+ "The synovial membrane reflects round the cruciate ligaments, so they are intracapsular but extrasynovial.","Knee"],
+["A cleaner who works on hands and knees develops a painful swelling between the skin and the patella. Which structure is inflamed?",
+ ["Suprapatellar bursa","Deep infrapatellar bursa","Subcutaneous prepatellar bursa","Popliteus bursa","Semimembranosus bursa"],2,
+ "Housemaid’s knee is subcutaneous prepatellar bursitis. If infected it can mimic arthritis and may need incision and drainage.","Knee"],
+["Which bursa lies between the femur and the quadriceps femoris tendon and communicates with the knee joint cavity?",
+ ["Suprapatellar bursa","Subcutaneous prepatellar bursa","Subcutaneous infrapatellar bursa","Deep infrapatellar bursa","Anserine bursa"],0,
+ "The suprapatellar bursa is an extension of the synovial cavity. The infrapatellar bursae lie below the patella, and the anserine bursa lies under the pes anserinus.","Knee"],
+["Which statement describes the locked knee at full extension?",
+ ["The femur is laterally rotated on the tibia and the ligaments are slack","The tibia is medially rotated and popliteus is contracting","The menisci are disengaged and the ligaments are slack","The femoral condyles are medially rotated on the tibial plateau and all ligaments are tight","The femur is medially rotated by active contraction of semimembranosus"],3,
+ "Locking is a passive medial rotation of the femoral condyles at the end of extension. It needs no muscle, and all ligaments become taut.","Knee"],
+["Which muscle unlocks the extended knee, and how?",
+ ["Quadriceps femoris, by medially rotating the femur","Popliteus, by laterally rotating the femur on the tibia (about 5°)","Semitendinosus, by laterally rotating the femur","Sartorius, by medially rotating the tibia on the femur","Biceps femoris, by medially rotating the femur"],1,
+ "Popliteus laterally rotates the femur about 5° on the tibial plateau, releasing the lock so flexion can occur.","Knee"],
+["With the knee flexed, which muscle is the main lateral rotator at the knee?",
+ ["Semitendinosus","Semimembranosus","Gracilis","Sartorius","Biceps femoris"],4,
+ "Biceps femoris laterally rotates the flexed knee. Medial rotation is by semitendinosus and semimembranosus, assisted by sartorius and gracilis.","Knee"],
+["A runner has tenderness over the anteromedial upper tibia, where three tendons insert superficial to the tibial collateral ligament. Which muscles form this “goose foot”?",
+ ["Sartorius, rectus femoris and semimembranosus","Gracilis, semimembranosus and biceps femoris","Sartorius, gracilis and semitendinosus","Vastus medialis, gracilis and sartorius","Semitendinosus, biceps femoris and popliteus"],2,
+ "The pes anserinus is formed by Sartorius, Gracilis and Semitendinosus (SGT), from anterior to posterior.","Knee"],
+["The oblique popliteal ligament is an expansion of the tendon of which muscle?",
+ ["Semimembranosus","Semitendinosus","Biceps femoris","Popliteus","Gastrocnemius"],0,
+ "The oblique popliteal ligament strengthens the back of the capsule and is derived from the semimembranosus tendon.","Knee"],
+["A 24-year-old footballer twists his knee and has joint-line pain, and the knee gives way. On MRI, a bright (fluid) line crosses the normally dark meniscus. What is the most likely diagnosis?",
+ ["Patellar ligament rupture","Suprapatellar bursitis","Housemaid’s knee","Meniscal tear","Popliteus tendon avulsion"],3,
+ "Twisting injury, joint-line pain, giving way and a bright line in the meniscus on MRI indicate a meniscal tear.","Knee"],
+["Which nerve does NOT contribute to the nerve supply of the knee joint?",
+ ["Femoral nerve","Obturator nerve","Tibial nerve","Common fibular (peroneal) nerve","Superior gluteal nerve"],4,
+ "The knee joint is supplied by the femoral, obturator, tibial and common peroneal nerves. The superior gluteal nerve supplies gluteal muscles.","Knee"],
+["Which artery does NOT contribute to the genicular anastomosis around the knee?",
+ ["Descending genicular artery (from the femoral artery)","Inferior gluteal artery","Genicular branches of the popliteal artery","Recurrent branch of the anterior tibial artery","Circumflex fibular artery"],1,
+ "The anastomosis is formed by the femoral, popliteal, and anterior and posterior tibial arteries. The inferior gluteal artery belongs to the buttock.","Knee"],
+["Which statement about the lateral (fibular) collateral ligament is correct?",
+ ["It attaches to the medial meniscus and the medial femoral epicondyle","Its deep fibres are firmly attached to the lateral meniscus","It attaches to the fibular head and is separated from the lateral meniscus by the popliteus tendon","It passes from the lateral femoral epicondyle to the tibial tuberosity","It is an expansion of the semimembranosus tendon"],2,
+ "The LCL runs from the lateral femoral epicondyle to the fibular head. The popliteus tendon separates it from the lateral meniscus, which is one reason the lateral meniscus is injured less often.","Knee"],
+["Anteriorly, the fibrous capsule of the knee is deficient and is replaced by:",
+ ["Quadriceps femoris tendon, patella and patellar ligament","Oblique popliteal and arcuate popliteal ligaments","Iliotibial tract and biceps femoris tendon","Tibial collateral ligament and pes anserinus","Popliteus tendon and semimembranosus bursa"],0,
+ "The anterior capsule is replaced by the quadriceps tendon, patella and patellar ligament. The capsule’s posterior gap is for the popliteus tendon.","Knee"]
+];
+
+const N=Q.length;
+const st=Q.map(()=>({sel:null,rev:false,show:false,flag:false}));
+let filt='all';
+const L='ABCDE';
+const list=document.getElementById('quiz-list');
+
+function locked(i){return st[i].sel!==null||st[i].rev}
+
+function build(){
+  list.innerHTML='';
+  Q.forEach((it,i)=>{
+    const d=document.createElement('div');d.className='q';d.id='q'+i;
+    const p=document.createElement('p');
+    p.innerHTML='<span class="tag">Q'+(i+1)+'</span><span class="tag">'+it[4]+'</span> ';
+    p.appendChild(document.createTextNode(it[0]));
+    d.appendChild(p);
+    it[1].forEach((t,j)=>{
+      const b=document.createElement('button');b.type='button';b.className='o';b.dataset.j=j;
+      b.textContent=L[j]+'. '+t;
+      b.addEventListener('click',()=>choose(i,j));
+      d.appendChild(b);
+    });
+    const ex=document.createElement('div');ex.className='ex';ex.id='ex'+i;
+    ex.innerHTML='<b></b> ';ex.querySelector('b').textContent='Answer: '+L[it[2]]+'.';
+    ex.appendChild(document.createTextNode(' '+it[3]));
+    d.appendChild(ex);
+    const a=document.createElement('div');a.className='act';
+    const s=document.createElement('button');s.type='button';s.className='sm';s.id='sh'+i;s.textContent='Show answer';
+    s.addEventListener('click',()=>toggle(i));
+    const f=document.createElement('button');f.type='button';f.className='sm';f.id='fl'+i;f.textContent='Flag';
+    f.addEventListener('click',()=>{st[i].flag=!st[i].flag;paint(i);update()});
+    a.appendChild(s);a.appendChild(f);d.appendChild(a);
+    list.appendChild(d);
+  });
+  Q.forEach((_,i)=>paint(i));
+  update();
+}
+
+function choose(i,j){
+  if(locked(i))return;
+  st[i].sel=j;st[i].show=true;paint(i);update();
+}
+function toggle(i){
+  if(!locked(i)){st[i].rev=true;st[i].show=true}
+  else st[i].show=!st[i].show;
+  paint(i);update();
+}
+function paint(i){
+  const d=document.getElementById('q'+i),s=st[i],ans=Q[i][2];
+  d.querySelectorAll('.o').forEach(b=>{
+    const j=+b.dataset.j;b.classList.remove('ok','no');
+    if(locked(i)){
+      if(j===ans)b.classList.add('ok');
+      else if(j===s.sel)b.classList.add('no');
+    }
+  });
+  document.getElementById('ex'+i).classList.toggle('show',s.show);
+  document.getElementById('sh'+i).textContent=s.show?'Hide explanation':'Show answer';
+  const f=document.getElementById('fl'+i);
+  f.classList.toggle('on',s.flag);f.textContent=s.flag?'Flagged':'Flag';
+}
+function vis(i){
+  const s=st[i],ans=Q[i][2];
+  if(filt==='all')return true;
+  if(filt==='un')return s.sel===null;
+  if(filt==='bad')return s.sel!==null&&s.sel!==ans;
+  if(filt==='good')return s.sel===ans;
+  if(filt==='flag')return s.flag;
+  return true;
+}
+function update(){
+  let ans=0,cor=0,done=0;
+  st.forEach((s,i)=>{if(s.sel!==null){ans++;if(s.sel===Q[i][2])cor++}if(locked(i))done++});
+  const acc=ans?Math.round(cor/ans*100):0;
+  document.getElementById('sc').textContent='Answered '+ans+'/'+N+' · Correct '+cor+' · Accuracy '+acc+'%';
+  document.getElementById('prog').textContent='Progress: '+done+' / '+N+' questions completed';
+  document.getElementById('pf').style.width=(done/N*100)+'%';
+  Q.forEach((_,i)=>document.getElementById('q'+i).classList.toggle('hid',!vis(i)));
+  const counts={un:0,bad:0,good:0,flag:0};
+  st.forEach((s,i)=>{if(s.sel===null)counts.un++;else if(s.sel===Q[i][2])counts.good++;else counts.bad++;if(s.flag)counts.flag++});
+  const defs=[['all','All ('+N+')'],['un','Unanswered ('+counts.un+')'],['bad','Incorrect ('+counts.bad+')'],['good','Correct ('+counts.good+')'],['flag','Flagged ('+counts.flag+')']];
+  const fl=document.getElementById('flt');fl.innerHTML='';
+  defs.forEach(([k,t])=>{
+    const b=document.createElement('button');b.type='button';b.textContent=t;
+    if(k===filt)b.className='on';
+    b.addEventListener('click',()=>{filt=k;update()});
+    fl.appendChild(b);
+  });
+  const res=document.getElementById('res');
+  if(done===N){
+    const by={};
+    st.forEach((s,i)=>{const t=Q[i][4];by[t]=by[t]||{n:0,c:0};if(s.sel!==null){by[t].n++;if(s.sel===Q[i][2])by[t].c++}});
+    let h='<h3 style="margin-top:0">Result: '+cor+' / '+ans+' ('+acc+'%)</h3><ul>';
+    Object.keys(by).forEach(t=>{h+='<li><b>'+t+':</b> '+by[t].c+' / '+by[t].n+' attempted correct</li>'});
+    h+='</ul><p class="mu" style="margin:6px 0 0">Use the “Incorrect” and “Flagged” filters to review. Questions you revealed without answering are not scored.</p>';
+    res.innerHTML=h;res.classList.remove('hid');
+  }else res.classList.add('hid');
+}
+document.getElementById('rst').addEventListener('click',()=>{
+  st.forEach(s=>{s.sel=null;s.rev=false;s.show=false;s.flag=false});
+  filt='all';build();
+});
+build();
+</script>
+<script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body>
+</html>

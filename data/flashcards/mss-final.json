@@ -1,0 +1,857 @@
+{
+  "version": 1,
+  "cards": [
+    {
+      "id": "b5ac8a52a79024a2f54ad6e6",
+      "note": "vn-final-anatomy-01-02-1",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "Vertebrae and ribs develop from the sclerotome Musculoskeletal development"
+    },
+    {
+      "id": "424fbbb3c95e15b33d3eaee6",
+      "note": "vn-final-anatomy-01-02-2",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The nucleus pulposus is a remnant of the notochord Musculoskeletal development"
+    },
+    {
+      "id": "2f50dcbcf540700d56c66db3",
+      "note": "vn-final-anatomy-01-02-3",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The annulus fibrosus develops from the sclerotome Musculoskeletal development"
+    },
+    {
+      "id": "192483ac8e6dcf258d450c3e",
+      "note": "vn-final-anatomy-01-02-4",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The epaxial muscles are supplied by the dorsal primary rami Musculoskeletal development"
+    },
+    {
+      "id": "534b69e4dcedbbd38be0e786",
+      "note": "vn-final-anatomy-01-02-5",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The hypaxial muscles are supplied by the ventral primary rami Musculoskeletal development"
+    },
+    {
+      "id": "c3733c40b2cd3bb0f5af642b",
+      "note": "vn-final-anatomy-01-02-6",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The primary ossification center of a long bone forms in the diaphysis Musculoskeletal development"
+    },
+    {
+      "id": "41f3126e72d3b4be5d465754",
+      "note": "vn-final-anatomy-01-02-7",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "Secondary ossification centers of long bones form in the epiphyses Musculoskeletal development"
+    },
+    {
+      "id": "772d2acf5ce5fa8df8793c4a",
+      "note": "vn-final-anatomy-01-02-8",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The lateral plate mesoderm supplies the limb bones and cartilage; limb muscle precursors come from the myotome Musculoskeletal development"
+    },
+    {
+      "id": "fd8c14cb5c0ebc11d5f028ab",
+      "note": "vn-final-anatomy-01-02-9",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "The upper limb rotates laterally during development; the lower limb rotates medially Musculoskeletal development"
+    },
+    {
+      "id": "acd8ae22a7ab6e1b7de13c15",
+      "note": "vn-final-anatomy-01-02-10",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Musculoskeletal development",
+      "lectures": [
+        "mss-final-anatomy-01-02"
+      ],
+      "search": "Premature closure of the sagittal suture causes scaphocephaly Musculoskeletal development"
+    },
+    {
+      "id": "d485de3ad6671f4aaf806eba",
+      "note": "vn-final-anatomy-03-04-1",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The superior gluteal nerve supplies gluteus medius, gluteus minimus and tensor fasciae latae Gluteal region, thigh and knee"
+    },
+    {
+      "id": "0e91a7fd15d4ed417a130198",
+      "note": "vn-final-anatomy-03-04-2",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "Gluteus maximus is supplied by the inferior gluteal nerve Gluteal region, thigh and knee"
+    },
+    {
+      "id": "194c5f772067fbbb9dc34a9e",
+      "note": "vn-final-anatomy-03-04-3",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "On a Trendelenburg test, the pelvis drops on the side opposite the affected stance leg Gluteal region, thigh and knee"
+    },
+    {
+      "id": "62aceb925b5fc20603e150c2",
+      "note": "vn-final-anatomy-03-04-4",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "Piriformis divides the greater sciatic foramen into spaces above and below it; the superior gluteal nerve exits above piriformis Gluteal region, thigh and knee"
+    },
+    {
+      "id": "1d94f1ae1c2aa30b24124adc",
+      "note": "vn-final-anatomy-03-04-5",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The main nerve of the medial thigh compartment is the obturator nerve Gluteal region, thigh and knee"
+    },
+    {
+      "id": "26aadbc2ccbef1c734d00a58",
+      "note": "vn-final-anatomy-03-04-6",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The anterior cruciate ligament limits anterior translation of the tibia relative to the femur Gluteal region, thigh and knee"
+    },
+    {
+      "id": "c865cdb8bf1709367fc39550",
+      "note": "vn-final-anatomy-03-04-7",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The posterior cruciate ligament limits posterior translation of the tibia relative to the femur Gluteal region, thigh and knee"
+    },
+    {
+      "id": "d0f9ee23e1217343576ed82a",
+      "note": "vn-final-anatomy-03-04-8",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The medial meniscus is attached to the tibial collateral ligament Gluteal region, thigh and knee"
+    },
+    {
+      "id": "1941a70bf92b3add470ee67e",
+      "note": "vn-final-anatomy-03-04-9",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The muscle that unlocks the extended knee is the popliteus Gluteal region, thigh and knee"
+    },
+    {
+      "id": "848dc578f741f4de52a57602",
+      "note": "vn-final-anatomy-03-04-10",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Gluteal region, thigh and knee",
+      "lectures": [
+        "mss-final-anatomy-03-04"
+      ],
+      "search": "The patellar ligament attaches to the tibial tuberosity Gluteal region, thigh and knee"
+    },
+    {
+      "id": "50b7249fd11fdd6f9938fdb1",
+      "note": "vn-final-anatomy-05-06-1",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The lumbar plexus forms mainly from the anterior rami of L1–L4 Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "4eee7c33744fc0297762b9e0",
+      "note": "vn-final-anatomy-05-06-2",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The femoral nerve emerges from the lateral border of psoas major Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "df190a728463c8e7e0861b49",
+      "note": "vn-final-anatomy-05-06-3",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The obturator nerve emerges from the medial border of psoas major Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "d3aeed7e0245059bcab09f4d",
+      "note": "vn-final-anatomy-05-06-4",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The femoral and obturator nerves both receive fibers from L2–L4 Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "b7f4320a709a7334cafb1f6e",
+      "note": "vn-final-anatomy-05-06-5",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The saphenous nerve is a sensory branch of the femoral nerve Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "83e6b4bb38ad4f6f06687d02",
+      "note": "vn-final-anatomy-05-06-6",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "From lateral to medial, the major structures in the femoral triangle are nerve, artery, vein and femoral canal Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "e529ca5f33a64697679c3a88",
+      "note": "vn-final-anatomy-05-06-7",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The major structure outside the femoral sheath is the femoral nerve Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "7ce21f68d1502d95a5f73184",
+      "note": "vn-final-anatomy-05-06-8",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The medial compartment of the femoral sheath is the femoral canal Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "3d46a43d45e366dcd5ed7d75",
+      "note": "vn-final-anatomy-05-06-9",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The femoral artery becomes the popliteal artery after passing through the adductor hiatus Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "72433f6144c0de6099b75399",
+      "note": "vn-final-anatomy-05-06-10",
+      "ordinal": 1,
+      "subject": "Anatomy",
+      "topic": "Lumbar plexus, thigh and popliteal fossa",
+      "lectures": [
+        "mss-final-anatomy-05-06"
+      ],
+      "search": "The deepest major neurovascular structure in the popliteal fossa is the popliteal artery Lumbar plexus, thigh and popliteal fossa"
+    },
+    {
+      "id": "6664c5ad72bdd0f836dc5696",
+      "note": "vn-final-microbiology-01-1",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Koplik spots in a child with cough, coryza and conjunctivitis point to measles Skin viruses"
+    },
+    {
+      "id": "bd117cae8f2581cf5ebbf87a",
+      "note": "vn-final-microbiology-01-2",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Cataracts, deafness and congenital heart defects are characteristic of congenital rubella syndrome Skin viruses"
+    },
+    {
+      "id": "373c8eefd377cd67d2f47577",
+      "note": "vn-final-microbiology-01-3",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Parvovirus B19 can cause transient aplastic crisis because it infects erythroid precursors Skin viruses"
+    },
+    {
+      "id": "ab8155c7b89efb3aa0e5ecd0",
+      "note": "vn-final-microbiology-01-4",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "In roseola, the rash typically appears after the fever subsides Skin viruses"
+    },
+    {
+      "id": "018c96b93b64ccb20f082f25",
+      "note": "vn-final-microbiology-01-5",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Chickenpox can show macules, papules, vesicles and crusts at the same time Skin viruses"
+    },
+    {
+      "id": "4409e260c1d0e02d1d596341",
+      "note": "vn-final-microbiology-01-6",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "A common long-term complication of shingles is postherpetic neuralgia Skin viruses"
+    },
+    {
+      "id": "d70853dde0c7dce7efc72cb6",
+      "note": "vn-final-microbiology-01-7",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Human papillomavirus types 6 and 11 commonly cause anogenital warts Skin viruses"
+    },
+    {
+      "id": "c9797facb26712ac93e20e5c",
+      "note": "vn-final-microbiology-01-8",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Human papillomavirus types 16 and 18 are associated with cervical cancer Skin viruses"
+    },
+    {
+      "id": "911297a0d1570a95f493e72d",
+      "note": "vn-final-microbiology-01-9",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Molluscum contagiosum typically causes dome-shaped papules with central umbilication Skin viruses"
+    },
+    {
+      "id": "532f91e0e838373e182c0989",
+      "note": "vn-final-microbiology-01-10",
+      "ordinal": 1,
+      "subject": "Microbiology",
+      "topic": "Skin viruses",
+      "lectures": [
+        "mss-final-microbiology-01"
+      ],
+      "search": "Hand, foot and mouth disease can be caused by Coxsackie A viruses of the genus Enterovirus Skin viruses"
+    },
+    {
+      "id": "0597c5ff0de7997fb14931e3",
+      "note": "vn-final-pharmacology-01-1",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "A first-line option for predominantly comedonal acne is a topical retinoid Acne pharmacology"
+    },
+    {
+      "id": "2f0f8ebed92d6aa0fdf441e0",
+      "note": "vn-final-pharmacology-01-2",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Benzoyl peroxide kills Cutibacterium acnes by releasing free oxygen radicals Acne pharmacology"
+    },
+    {
+      "id": "cd3df3745542792fa0e83c9e",
+      "note": "vn-final-pharmacology-01-3",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Topical clindamycin is paired with benzoyl peroxide to limit antibiotic resistance Acne pharmacology"
+    },
+    {
+      "id": "bd1c559c29fc4e3a6b257b29",
+      "note": "vn-final-pharmacology-01-4",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Common local adverse effects of topical retinoids include dryness, peeling and irritation Acne pharmacology"
+    },
+    {
+      "id": "7c0e80d0032df1cf5ca7fe4b",
+      "note": "vn-final-pharmacology-01-5",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "An acne agent that can also reduce hyperpigmentation is azelaic acid Acne pharmacology"
+    },
+    {
+      "id": "1e793a385eff5d2766579d79",
+      "note": "vn-final-pharmacology-01-6",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Oral isotretinoin is used for severe nodulocystic acne and is strongly teratogenic Acne pharmacology"
+    },
+    {
+      "id": "78e5684e0b2a4de77e7747c5",
+      "note": "vn-final-pharmacology-01-7",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Two laboratory abnormalities associated with isotretinoin are raised liver enzymes and triglycerides Acne pharmacology"
+    },
+    {
+      "id": "bd06922df0979bef4b180e61",
+      "note": "vn-final-pharmacology-01-8",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Estrogen in combined oral contraceptives lowers free testosterone in part by increasing sex hormone-binding globulin Acne pharmacology"
+    },
+    {
+      "id": "6b1aea89180c8b4b4c32503b",
+      "note": "vn-final-pharmacology-01-9",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "Spironolactone helps hormonal acne in part by blocking androgen receptors Acne pharmacology"
+    },
+    {
+      "id": "fc7248958955eb09469a7d4d",
+      "note": "vn-final-pharmacology-01-10",
+      "ordinal": 1,
+      "subject": "Pharmacology",
+      "topic": "Acne pharmacology",
+      "lectures": [
+        "mss-final-pharmacology-01"
+      ],
+      "search": "An example of topical therapy for papulopustular rosacea is metronidazole Acne pharmacology"
+    }
+  ],
+  "notes": {
+    "vn-final-anatomy-01-02-1": {
+      "text": "Vertebrae and ribs develop from the {{c1::sclerotome}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-2": {
+      "text": "The nucleus pulposus is a remnant of the {{c1::notochord}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-3": {
+      "text": "The annulus fibrosus develops from the {{c1::sclerotome}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-4": {
+      "text": "The epaxial muscles are supplied by the {{c1::dorsal primary rami}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-5": {
+      "text": "The hypaxial muscles are supplied by the {{c1::ventral primary rami}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-6": {
+      "text": "The primary ossification center of a long bone forms in the {{c1::diaphysis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-7": {
+      "text": "Secondary ossification centers of long bones form in the {{c1::epiphyses}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-8": {
+      "text": "The lateral plate mesoderm supplies the limb bones and cartilage; limb muscle precursors come from the {{c1::myotome}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-9": {
+      "text": "The upper limb rotates laterally during development; the lower limb rotates {{c1::medially}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-01-02-10": {
+      "text": "Premature closure of the sagittal suture causes {{c1::scaphocephaly}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-1": {
+      "text": "The superior gluteal nerve supplies gluteus medius, gluteus minimus and {{c1::tensor fasciae latae}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-2": {
+      "text": "Gluteus maximus is supplied by the {{c1::inferior gluteal nerve}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-3": {
+      "text": "On a Trendelenburg test, the pelvis drops on the side {{c1::opposite the affected stance leg}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-4": {
+      "text": "Piriformis divides the greater sciatic foramen into spaces above and below it; the superior gluteal nerve exits {{c1::above piriformis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-5": {
+      "text": "The main nerve of the medial thigh compartment is the {{c1::obturator nerve}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-6": {
+      "text": "The anterior cruciate ligament limits anterior translation of the {{c1::tibia relative to the femur}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-7": {
+      "text": "The posterior cruciate ligament limits posterior translation of the {{c1::tibia relative to the femur}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-8": {
+      "text": "The medial meniscus is attached to the {{c1::tibial collateral ligament}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-9": {
+      "text": "The muscle that unlocks the extended knee is the {{c1::popliteus}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-03-04-10": {
+      "text": "The patellar ligament attaches to the {{c1::tibial tuberosity}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-1": {
+      "text": "The lumbar plexus forms mainly from the anterior rami of {{c1::L1–L4}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-2": {
+      "text": "The femoral nerve emerges from the lateral border of {{c1::psoas major}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-3": {
+      "text": "The obturator nerve emerges from the medial border of {{c1::psoas major}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-4": {
+      "text": "The femoral and obturator nerves both receive fibers from {{c1::L2–L4}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-5": {
+      "text": "The saphenous nerve is a sensory branch of the {{c1::femoral nerve}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-6": {
+      "text": "From lateral to medial, the major structures in the femoral triangle are {{c1::nerve, artery, vein and femoral canal}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-7": {
+      "text": "The major structure outside the femoral sheath is the {{c1::femoral nerve}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-8": {
+      "text": "The medial compartment of the femoral sheath is the {{c1::femoral canal}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-9": {
+      "text": "The femoral artery becomes the popliteal artery after passing through the {{c1::adductor hiatus}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-anatomy-05-06-10": {
+      "text": "The deepest major neurovascular structure in the popliteal fossa is the {{c1::popliteal artery}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-1": {
+      "text": "Koplik spots in a child with cough, coryza and conjunctivitis point to {{c1::measles}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-2": {
+      "text": "Cataracts, deafness and congenital heart defects are characteristic of {{c1::congenital rubella syndrome}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-3": {
+      "text": "Parvovirus B19 can cause transient aplastic crisis because it infects {{c1::erythroid precursors}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-4": {
+      "text": "In roseola, the rash typically appears after the {{c1::fever subsides}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-5": {
+      "text": "Chickenpox can show macules, papules, vesicles and crusts {{c1::at the same time}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-6": {
+      "text": "A common long-term complication of shingles is {{c1::postherpetic neuralgia}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-7": {
+      "text": "Human papillomavirus types 6 and 11 commonly cause {{c1::anogenital warts}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-8": {
+      "text": "Human papillomavirus types 16 and 18 are associated with {{c1::cervical cancer}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-9": {
+      "text": "Molluscum contagiosum typically causes dome-shaped papules with {{c1::central umbilication}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-microbiology-01-10": {
+      "text": "Hand, foot and mouth disease can be caused by Coxsackie A viruses of the genus {{c1::Enterovirus}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-1": {
+      "text": "A first-line option for predominantly comedonal acne is a topical {{c1::retinoid}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-2": {
+      "text": "Benzoyl peroxide kills Cutibacterium acnes by releasing {{c1::free oxygen radicals}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-3": {
+      "text": "Topical clindamycin is paired with benzoyl peroxide to limit {{c1::antibiotic resistance}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-4": {
+      "text": "Common local adverse effects of topical retinoids include {{c1::dryness, peeling and irritation}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-5": {
+      "text": "An acne agent that can also reduce hyperpigmentation is {{c1::azelaic acid}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-6": {
+      "text": "Oral isotretinoin is used for severe nodulocystic acne and is strongly {{c1::teratogenic}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-7": {
+      "text": "Two laboratory abnormalities associated with isotretinoin are {{c1::raised liver enzymes and triglycerides}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-8": {
+      "text": "Estrogen in combined oral contraceptives lowers free testosterone in part by increasing {{c1::sex hormone-binding globulin}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-9": {
+      "text": "Spironolactone helps hormonal acne in part by blocking {{c1::androgen receptors}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-final-pharmacology-01-10": {
+      "text": "An example of topical therapy for papulopustular rosacea is {{c1::metronidazole}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    }
+  }
+}

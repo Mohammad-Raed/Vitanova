@@ -246,5 +246,70 @@ window.VitanovaLectures = [
     "description": "Full explanations for Lectures 3–4: touch and muscle receptors, somatic reflexes and somatosensory integration, with high-yield summaries, rapid recall and MCQs.",
     "file": "MSS-Midterm-Physiology-Lectures-3-4-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-01-02",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lectures 1 & 2",
+    "order": 1,
+    "title": "Development of the Musculoskeletal System",
+    "description": "Somites, ossification, skull and limb development.",
+    "file": "MSS-Final-Anatomy-Lectures-1-2-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-03-04",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lectures 3 & 4",
+    "order": 3,
+    "title": "Gluteal Region, Thigh & Knee Joint",
+    "description": "Gluteal muscles and nerves, thigh compartments and knee anatomy.",
+    "file": "MSS-Final-Anatomy-Lectures-3-4-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-05-06",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lectures 5 & 6",
+    "order": 5,
+    "title": "Lumbar Plexus, Thigh & Popliteal Fossa",
+    "description": "Lumbar plexus, femoral region and popliteal fossa.",
+    "file": "MSS-Final-Anatomy-Lectures-5-6-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-microbiology-01",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Microbiology",
+    "category": "mss-final-microbiology",
+    "lectureLabel": "Lecture 1",
+    "order": 1,
+    "title": "Skin Viruses",
+    "description": "Viral exanthems, herpesviruses, HPV, poxviruses and hand, foot and mouth disease.",
+    "file": "MSS-Final-Microbiology-Lecture-1-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-pharmacology-01",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Pharmacology",
+    "category": "mss-final-pharmacology",
+    "lectureLabel": "Lecture 1",
+    "order": 1,
+    "title": "Acne Pharmacology",
+    "description": "Acne treatments, mechanisms, adverse effects and rosacea.",
+    "file": "MSS-Final-Pharmacology-Lecture-1-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];

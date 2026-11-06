@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MSS Anatomy Final: Development of the MSS</title>
+<style>
+:root{--bg:#faf8ff;--card:#fff;--tx:#241a3a;--mu:#5f5877;--pu:#6b4c93;--te:#128a7c;--or:#e2582e;--bl:#3d7ab3;--ln:#e3dcf0;--soft:#f1ecfa;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17122a;--card:#221b3a;--tx:#ece8f7;--mu:#a9a0c4;--pu:#a98bd6;--te:#3dbfae;--or:#ff8a63;--bl:#6fb0e6;--ln:#3a3057;--soft:#2b2347}}
+*{box-sizing:border-box}
+html{scroll-padding-top:60px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:linear-gradient(135deg,#2d1b4e,#4b2d7a);color:#fff;padding:48px 20px 36px;text-align:center}
+header small{color:#f3b04a;letter-spacing:.12em;font-weight:700}
+header p{margin:4px 0;color:#d9d0ee}
+h1{font-family:Georgia,serif;font-size:clamp(28px,5vw,46px);margin:10px 0}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--ln);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;white-space:nowrap}
+nav a{color:var(--pu);text-decoration:none;font-size:14px;font-weight:600;padding:4px 10px;border-radius:14px}
+nav a:hover{background:var(--soft)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 60px}
+section{margin:34px 0}
+h2{font-family:Georgia,serif;font-size:28px;margin:0 0 4px;color:var(--pu)}
+h3{margin:18px 0 6px;font-size:18px}
+.k{color:var(--te);font-size:12px;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:16px 18px;margin:12px 0}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g .card{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:10px;background:var(--soft);color:var(--pu);margin-right:4px}
+.note{background:var(--soft);border-left:4px solid var(--or);padding:10px 14px;border-radius:8px;margin:12px 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{border:1px solid var(--ln);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--pu);color:#fff}
+td:first-child{font-weight:700}
+ul{padding-left:20px;margin:6px 0}li{margin:3px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{background:var(--soft);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:14px}
+.flow i{color:var(--or);font-style:normal;font-weight:700}
+.tl div{display:flex;gap:12px;padding:5px 0;border-bottom:1px dashed var(--ln)}
+.tl b{min-width:78px;color:var(--or)}
+button.r{background:var(--or);color:#fff;border:0;border-radius:10px;padding:8px 16px;font:inherit;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
+.q{border:1px solid var(--ln);background:var(--card);border-radius:14px;padding:14px 16px;margin:14px 0}
+.q p{margin:0 0 8px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin:6px 0;font:inherit;cursor:pointer}
+.o:hover{border-color:var(--pu)}
+.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}
+.o.no{background:#d64545;color:#fff;border-color:#d64545}
+.ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
+#sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
+.pb{height:6px;background:var(--soft);border-radius:10px;margin-top:6px;overflow:hidden}.pb i{display:block;height:100%;width:0;background:var(--or)}
+.fb{background:var(--soft);color:var(--pu);border:1px solid var(--ln);border-radius:10px;padding:4px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;margin:2px 4px 2px 0}
+.fb.on{background:var(--pu);color:#fff}
+.sa{background:none;border:0;color:var(--pu);font:inherit;font-size:13px;font-weight:700;cursor:pointer;padding:2px 0}
+</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<header><small>ANATOMY · MSS FINAL</small><h1>Development of the Musculoskeletal System</h1><p>Lectures 1 &amp; 2: Somites, vertebral column, skull, bone, muscle and limbs</p></header>
+<nav><a href="#s1">Somites</a><a href="#s2">Vertebrae</a><a href="#s3">Skull</a><a href="#s4">Bone</a><a href="#s5">Muscle</a><a href="#s6">Limbs</a><a href="#s7">Anomalies</a><a href="#s8">Fixes</a><a href="#s9">High-yield</a><a href="#s10">Quiz</a></nav>
+<main>
+<section id="s1"><div class="k">Lecture 1</div><h2>Mesoderm and somites</h2>
+<div class="card"><div class="flow"><span>Intraembryonic mesoderm</span><i>→</i><span>Paraxial</span><span>Intermediate</span><span>Lateral plate (somatic + splanchnic)</span></div>
+<ul><li><b>Somatic</b> layer + ectoderm = body wall; <b>splanchnic</b> layer + endoderm = gut wall.</li>
+<li>Mesoderm → <b>mesenchyme</b> → fibroblasts, chondroblasts, osteoblasts.</li>
+<li><b>Somites</b>: from paraxial mesoderm at the <b>end of week 3</b>; elevations lateral to the neural tube; form <b>craniocaudally</b>.</li></ul></div>
+<div class="card tbl"><table><tr><th>Somite part</th><th>Position</th><th>Gives</th></tr>
+<tr><td>Sclerotome</td><td>Ventromedial</td><td>Vertebrae, ribs, base of occipital bone</td></tr>
+<tr><td>Myotome</td><td>Dermomyotome (dorsolateral)</td><td>Myoblasts → skeletal muscle</td></tr>
+<tr><td>Dermatome</td><td>Dermomyotome (dorsolateral)</td><td>Dermis of skin</td></tr></table></div>
+<div class="note"><b>Mnemonic:</b> Sclero = skeleton, Myo = muscle, Dermato = dermis (medial → lateral).</div></section>
+
+<section id="s2"><div class="k">Axial skeleton</div><h2>Vertebral column</h2>
+<div class="card"><ul><li>Week 4: sclerotome mesenchyme surrounds the neural tube and notochord, forming segments: <b>loose cranially</b>, <b>dense caudally</b>.</li>
+<li>Each <b>vertebral body</b> = dense (caudal) half of one sclerotome + loose (cranial) half of the sclerotome <b>below</b> it. So bodies are intersegmental; myotomes and nerves lie against the disc and intervertebral foramen (IVF).</li>
+<li><b>Intervertebral disc (IVD)</b>: <b>anulus fibrosus</b> from dense sclerotome cells; <b>nucleus pulposus</b> from <b>notochord</b> remnants.</li></ul></div>
+<div class="note"><b>Clinical link:</b> Scoliosis (lateral curvature) can be congenital: asymmetric fusion of vertebrae or a missing half (hemivertebra).</div></section>
+
+<section id="s3"><div class="k">Cranium</div><h2>Skull</h2>
+<div class="card"><p>Sources: <b>paraxial mesoderm</b> (sclerotome and somitomeres), <b>lateral plate mesoderm</b> (somatic layer; laryngeal cartilages) and <b>neural crest</b>. Mainly neural crest (anterior) vs paraxial mesoderm (posterior).</p></div>
+<div class="card tbl"><table><tr><th>Part</th><th>Structure</th><th>Origin / derivatives</th></tr>
+<tr><td>Cartilaginous neurocranium (base)</td><td>Parachordal cartilage + occipital sclerotomes</td><td>Base of occipital bone (paraxial)</td></tr>
+<tr><td></td><td>Hypophyseal cartilage</td><td>Body of sphenoid (neural crest)</td></tr>
+<tr><td></td><td>Trabeculae cranii</td><td>Ethmoid (neural crest)</td></tr>
+<tr><td></td><td>Ala orbitalis / ala temporalis</td><td>Lesser / greater wing of sphenoid</td></tr>
+<tr><td></td><td>Otic (periotic) capsule</td><td>Petrous + mastoid temporal (paraxial)</td></tr>
+<tr><td>Membranous neurocranium (vault)</td><td>Calvaria</td><td>Frontal (neural crest); parietal, occipital (paraxial)</td></tr>
+<tr><td>Cartilaginous viscerocranium</td><td>Dorsal Meckel’s cartilage (arch 1); arch 2 cartilage</td><td>Malleus + incus; stapes</td></tr>
+<tr><td>Membranous viscerocranium</td><td>Maxillary prominence; mandibular prominence</td><td>Maxilla, zygomatic, squamous temporal; mandible</td></tr></table></div>
+<ul><li><b>Neurocranium</b> encases brain; <b>viscerocranium</b> = face, entirely neural crest, from the first two pharyngeal arches.</li>
+<li>Fontanelles allow <b>moulding</b> of the fetal skull in delivery. Ear ossicles ossify first (4th month) and reach adult size.</li>
+<li>Mandible is membranous except some endochondral ossification at the chin and condyle.</li></ul>
+<h3>Skull anomalies</h3>
+<div class="card tbl"><table><tr><th>Anomaly</th><th>Key facts</th></tr>
+<tr><td>Acrania</td><td>Calvaria absent; neural tube fails to close (week 4); with meroanencephaly or anencephaly; ~1/1000; fatal</td></tr>
+<tr><td>Craniosynostosis</td><td>Premature suture closure; male &gt; female; cause unknown</td></tr>
+<tr><td>Scaphocephaly</td><td>Sagittal suture; long, narrow skull</td></tr>
+<tr><td>Oxycephaly</td><td>Coronal suture; high, short skull</td></tr>
+<tr><td>Plagiocephaly</td><td>Coronal + lambdoid on one side; twisted, asymmetrical</td></tr></table></div></section>
+
+<section id="s4"><div class="k">Ossification</div><h2>Bone formation</h2>
+<div class="card tbl"><table><tr><th>Feature</th><th>Intramembranous</th><th>Endochondral</th></tr>
+<tr><td>Bones</td><td>Flat bones (vault, face)</td><td>Long and bulky bones, skull base</td></tr>
+<tr><td>Template</td><td>Mesenchyme directly</td><td>Hyaline cartilage model</td></tr>
+<tr><td>Steps</td><td>Mesenchyme → osteoprogenitor → osteoblast → osteocyte; trabeculae with red marrow; periosteum; spongy replaced by compact superficially</td><td>Cartilage model grows (interstitial in length, appositional in width) → primary then secondary centres</td></tr></table></div>
+<div class="g"><div class="card"><h3>Primary centre (diaphysis, week 7)</h3><ul><li>Perichondrium lays <b>periosteal bone collar</b></li><li>Nutrient artery enters; <b>osteogenic bud</b> brings osteoblasts + osteoclasts</li><li>Osteoblasts make spongy trabeculae; osteoclasts form <b>medullary cavity</b></li><li>All long bones have 1° centres by week 12</li></ul></div>
+<div class="card"><h3>Secondary centre (epiphysis, after birth)</h3><ul><li>Vessels enter epiphyses around birth</li><li>Spongy bone, <b>no medullary cavity</b></li><li>Cartilage at ends stays as <b>articular cartilage</b></li><li>Epiphyseal plate replaced by bone by ~20 years</li></ul></div></div></section>
+
+<section id="s5"><div class="k">Muscle</div><h2>Muscle development</h2>
+<div class="card tbl"><table><tr><th>Muscle</th><th>Origin</th></tr>
+<tr><td>Skeletal</td><td>Paraxial mesoderm (myotome of somites)</td></tr>
+<tr><td>Smooth (gut)</td><td>Splanchnic (visceral) lateral plate mesoderm</td></tr>
+<tr><td>Smooth (pupil, mammary, sweat glands)</td><td>Ectoderm</td></tr>
+<tr><td>Cardiac</td><td>Splanchnic mesoderm around heart tube</td></tr></table></div>
+<ul><li>Myoblast → fuse → <b>myotube</b> (multinucleated). Most muscles form before birth; nearly all by end of year 1.</li>
+<li>Myotome splits: <b>epaxial</b> (dorsal) → <b>dorsal primary ramus</b> → intrinsic back muscles. <b>Hypaxial</b> (ventral) → <b>ventral primary ramus</b> → everything else (body wall, limbs).</li></ul></section>
+
+<section id="s6"><div class="k">Lecture 2</div><h2>Limb development</h2>
+<div class="card tl"><div><b>Day 26–27</b>Upper limb bud (lower: 1–2 days later), ventrolateral; upper opposite lower cervical segments, lower opposite lumbar + upper sacral</div>
+<div><b>Week 5</b>Hand and foot plates; mesenchymal bone models; motor axons enter</div>
+<div><b>Week 6</b>Hand digital rays (end); chondrification complete; synovial joints begin</div>
+<div><b>Week 7</b>Foot digital rays; 1° ossification begins; limb rotation</div>
+<div><b>Week 8</b>Digits separate (apoptosis); synovial joints complete</div>
+<div><b>1st year</b>Carpal ossification begins (last)</div></div>
+<ul><li>Bud = <b>mesenchyme from somatic lateral plate mesoderm</b> covered by ectoderm. Bone and cartilage stay in the bud; <b>muscles and nerves grow in</b>; vessels form locally then join the aorta.</li>
+<li><b>Apical ectodermal ridge (AER)</b>: thickened distal ectoderm secreting fibroblast growth factors (FGFs); keeps the <b>progress zone</b> proliferating; proximal mesenchyme differentiates into vessels and cartilage (proximodistal growth).</li>
+<li><b>Zone of polarizing activity (ZPA)</b>: posterior mesenchyme next to AER; retinoic acid → <b>sonic hedgehog (SHH)</b>; sets anteroposterior axis.</li>
+<li><b>Hox</b> genes: craniocaudal location. <b>TBX5</b> forelimb, <b>TBX4</b> hindlimb.</li>
+<li>Digit separation: <b>programmed cell death</b> of loose mesenchyme between digital rays.</li></ul>
+<div class="card tbl"><table><tr><th>Topic</th><th>Upper limb</th><th>Lower limb</th></tr>
+<tr><td>Rotation (90°)</td><td>Lateral: elbows dorsal, extensors lateral/posterior</td><td>Medial: knees ventral, extensors anterior</td></tr>
+<tr><td>Muscles from</td><td>Cervical myotomes (hypaxial)</td><td>Lumbosacral myotomes (hypaxial)</td></tr>
+<tr><td>Plexus</td><td>Brachial (C5–T1)</td><td>Lumbosacral</td></tr>
+<tr><td>Primary axial artery</td><td>Arm: brachial. Forearm: common interosseous</td><td>Thigh: deep artery of thigh. Leg: anterior + posterior tibial</td></tr></table></div>
+<ul><li>Muscle mass splits into dorsal (extensor) and ventral (flexor) parts. Axial artery → peripheral marginal sinus → peripheral vein.</li>
+<li>Nerves: motor axons enter first (week 5), sensory axons follow them; <b>neural crest</b> → Schwann cells (myelin, neurolemma). Dermatomes migrate distally as the limb lengthens.</li></ul></section>
+
+<section id="s7"><div class="k">Clinical</div><h2>Limb malformations</h2>
+<div class="card tbl"><table><tr><th>Anomaly</th><th>Key facts</th></tr>
+<tr><td>Amelia</td><td>Complete absence; bud formation suppressed (week 4)</td></tr>
+<tr><td>Meromelia</td><td>Partial absence (week 5)</td></tr>
+<tr><td>Cleft hand/foot</td><td>Lobster claw; central digit(s) absent</td></tr>
+<tr><td>Absent radius</td><td>Radial primordium fails to form</td></tr>
+<tr><td>Brachydactyly</td><td>Short digits; usually hereditary; rare</td></tr>
+<tr><td>Syndactyly</td><td>Most common (1:2200). Cutaneous: web fails to degenerate. Osseous: notches fail to develop. Mostly 3rd–4th fingers, 2nd–3rd toes; more in foot</td></tr>
+<tr><td>Polydactyly</td><td>Extra digit; dominant; hand medial/lateral; foot lateral</td></tr>
+<tr><td>Talipes equinovarus</td><td>Clubfoot, 1:1000, 2× male; medial orientation + inversion; multifactorial</td></tr>
+<tr><td>Hip dislocation (CDH)</td><td>1:1500; female &gt; male; abnormal acetabulum, joint laxity; often dominant</td></tr></table></div>
+<div class="note"><b>Causes:</b> genetic (trisomy 18), mutant genes (brachydactyly), environmental (thalidomide), multifactorial (CDH), vascular disruption (amniotic bands: fibrous strands from a torn amnion entangle the fetus).</div></section>
+
+<section id="s8"><div class="k">Clarifications</div><h2>Confusing points fixed</h2>
+<div class="card"><ul><li><b>Secondary ossification centres are in the epiphysis</b> (not the metaphysis). Primary = diaphysis.</li>
+<li><b>Two meanings of dermatome:</b> somite part (makes dermis) vs clinical skin area of one spinal nerve root. Not the same.</li>
+<li><b>Vertebral body halves:</b> “dense of one + loose of the caudal segment” means the cranial (loose) half of the sclerotome below.</li>
+<li><b>Limb tissue sources differ:</b> bone, cartilage, tendons from somatic lateral plate mesoderm; muscle from somite myotome; Schwann cells from neural crest.</li>
+<li>Slide typos: “Staps” = stapes; scaphocephaly is long and <i>narrow</i>; “periotic” = otic capsule.</li>
+<li>Textbooks vary slightly on when limbs extend ventrally (late week 6 to early week 7); follow your slides: early week 7.</li></ul></div></section>
+
+<section id="s9"><div class="k">Summary</div><h2>High-yield summary</h2>
+<div class="g"><div class="card"><h3>Must-know numbers</h3><ul><li>Somites: end week 3</li><li>Limb buds: day 26–27 (week 4)</li><li>Plates: week 5; rays: wk 6 hand, wk 7 foot</li><li>1° ossification: week 7; all by week 12</li><li>Digits free: week 8</li><li>Carpals: after birth</li></ul></div>
+<div class="card"><h3>Origins</h3><ul><li>Nucleus pulposus: notochord</li><li>Face: neural crest</li><li>Parietal, occipital: paraxial</li><li>Laryngeal: lateral plate</li><li>Limb muscle: myotome</li><li>Schwann cells: neural crest</li></ul></div>
+<div class="card"><h3>Mnemonics</h3><ul><li><b>TBX5</b> = 5 fingers (arm); <b>TBX4</b> = lower limb</li><li>Upper limb rotates <b>L</b>aterally; lower rotates <b>M</b>edially</li><li><b>E</b>paxial = <b>E</b>rector (intrinsic back) muscles, dorsal ramus; hypaxial = the rest</li></ul></div></div></section>
+
+<section id="s10"><div class="k">Practice</div><h2>MCQs (20)</h2>
+<div id="fl"><button class="fb on" onclick="flt('all',this)">All</button><button class="fb" onclick="flt('todo',this)">Unanswered</button><button class="fb" onclick="flt('wrong',this)">Review incorrect</button></div>
+<div id="qs"></div>
+<div id="sc"><span id="st"></span><div class="pb"><i id="bar"></i></div></div>
+<button class="r" onclick="rs()">Reset</button></section>
+</main>
+<footer>MSS Anatomy: Development of the MSS, Lectures 1 &amp; 2. Verify against your slides.</footer>
+<script>
+var Q=[
+["A newborn has a hemivertebra with fused ribs. Which somite component failed to develop normally?",["Dermatome","Sclerotome","Myotome","Epaxial myotome","Notochord"],1,"Sclerotome forms vertebrae and ribs."],
+["The nucleus pulposus is derived from:",["Sclerotome","Neural crest","Notochord remnants","Dense caudal sclerotome cells","Lateral plate mesoderm"],2,"Anulus fibrosus comes from sclerotome; nucleus pulposus from the notochord."],
+["A vertebral body forms from:",["Two cranial (loose) halves of adjacent sclerotomes","Two caudal (dense) halves of adjacent sclerotomes","Cranial half of one sclerotome and caudal half of the one below","The whole sclerotome of a single somite","Caudal (dense) half of one sclerotome and cranial (loose) half of the one below"],4,"Dense half of one segment fuses with the loose half of the segment below, so bodies are intersegmental."],
+["Acrania is associated with failure of:",["Premature suture closure","Somite segmentation","Cranial neural tube closure in week 4","Chondrification of the skull base","Neural crest migration to the arches"],2,"Calvaria is absent with meroanencephaly or anencephaly; incompatible with life."],
+["A child’s skull is long and narrow from premature fusion of the sagittal suture. This is:",["Scaphocephaly","Oxycephaly","Plagiocephaly","Acrania","Hydrocephalus"],0,"Sagittal = scaphocephaly; coronal = oxycephaly; unilateral coronal + lambdoid = plagiocephaly."],
+["Which bone is derived mainly from paraxial mesoderm rather than neural crest?",["Frontal","Parietal","Maxilla","Mandible","Zygomatic"],1,"Parietal and occipital (posterior vault) are paraxial; frontal and facial bones are neural crest."],
+["The ala temporalis forms which structure?",["Lesser wing of sphenoid","Body of sphenoid","Ethmoid bone","Greater wing of sphenoid","Petrous temporal bone"],3,"Ala orbitalis = lesser wing; hypophyseal = body; trabeculae cranii = ethmoid."],
+["The stapes develops from:",["Dorsal Meckel’s cartilage","Dorsal end of the second arch cartilage","Otic capsule","Hypophyseal cartilage","Mandibular prominence"],1,"Malleus and incus come from dorsal Meckel’s cartilage (arch 1)."],
+["During endochondral ossification of a long bone, which event initiates the primary ossification centre?",["Osteoclasts form the medullary cavity","Blood vessels enter the epiphyses","The cartilage model becomes articular cartilage","The epiphyseal plate fuses","The perichondrium lays down a periosteal bone collar around the diaphysis"],4,"Bone collar first, then nutrient artery and osteogenic bud; begins in week 7."],
+["Regarding secondary ossification centres:",["They develop in the epiphyses, around birth or after, forming spongy bone without a medullary cavity","They develop in the diaphysis in the 7th week","They form the periosteal bone collar","They develop in the metaphysis and form a medullary cavity","They appear in the carpals before birth"],0,"Primary = diaphysis; secondary = epiphysis. Carpals ossify in the first year after birth."],
+["Limb skeletal muscle myoblasts originate from:",["Somatic lateral plate mesoderm","Neural crest","Myotome region of dermomyotome","Splanchnic mesoderm","Intermediate mesoderm"],2,"Muscle comes from somites, whereas limb bone and cartilage come from somatic lateral plate mesoderm."],
+["Which pairing is correct?",["Epaxial: ventral primary ramus: limb muscles","Hypaxial: dorsal primary ramus: intrinsic back muscles","Epaxial: ventral primary ramus: body wall","Epaxial: dorsal primary ramus: intrinsic back muscles","Hypaxial: dorsal primary ramus: body wall"],3,"Epaxial = dorsal ramus = intrinsic back; hypaxial = ventral ramus = body wall and limbs."],
+["Lower limb buds appear:",["Day 20, opposite thoracic segments","Together with the upper buds, opposite lower cervical segments","1–2 days after, opposite upper cervical segments","In week 5, opposite coccygeal segments","1–2 days after the upper buds, opposite lumbar and upper sacral segments"],4,"Upper buds: day 26–27, lower cervical segments (brachial plexus)."],
+["A baby is born without all four limbs. Which process was disturbed?",["Digital ray formation","Limb bud formation in week 4","Apoptosis between digital rays","Limb rotation in week 7","Joint cavitation in weeks 6–8"],1,"Amelia = suppressed bud formation (week 4); meromelia = week 5 disturbance."],
+["Experimental removal of the AER would most likely cause:",["Loss of forelimb identity","Loss of anteroposterior polarity","Mirror-image digits","Limb truncation from arrested proximodistal growth","Failure of limb rotation"],3,"AER (FGFs) maintains the progress zone; its loss stops distal outgrowth."],
+["The zone of polarizing activity:",["Secretes FGF4 and FGF8","Specifies forelimb identity","Produces retinoic acid and sonic hedgehog","Regulates craniocaudal location","Forms the apical ridge"],2,"ZPA = posterior mesenchyme, sets the anteroposterior axis."],
+["An infant has a skin web between the 3rd and 4th fingers with separate bones. The cause is:",["Failure of programmed cell death of web mesenchyme","Failure of notches to form","Absent radial primordium","Suppression of bud formation","Absent central digit"],0,"Cutaneous syndactyly: web fails to degenerate. Osseous: notches fail to develop."],
+["After normal limb rotation:",["Upper limbs rotate medially and elbows point ventrally","Both limbs rotate 90° laterally","Lower limb extensors become posterior","Lower limbs rotate 90° medially so knees point ventrally and extensors are anterior","Upper limbs rotate 180°"],3,"Upper: lateral 90°, elbows dorsal. Lower: medial 90°."],
+["A male newborn’s foot is medially oriented and inverted. Which statement is correct?",["The foot is everted","Females are twice as affected","It is due to a single dominant gene","It results from absent primary axial artery","Incidence is about 1:1000, twice as common in males, multifactorial"],4,"Talipes equinovarus is the most common clubfoot."],
+["A female infant has hip instability. Which statement is correct?",["More common in males","Caused by absent radius","Female predominance; abnormal acetabulum and generalized joint laxity","Caused solely by thalidomide","Caused by amniotic bands"],2,"CDH: ~1:1500, female &gt; male, often dominantly inherited."]
+];
+var L="ABCDE",ans=[],n=Q.length,box=document.getElementById("qs");
+Q.forEach(function(q,i){var d=document.createElement("div");d.className="q";d.id="q"+i;
+var h="<p>"+(i+1)+". "+q[0]+"</p>";
+q[1].forEach(function(o,j){h+='<button class="o" onclick="pk('+i+','+j+')">'+L[j]+". "+o+"</button>"});
+h+='<button class="sa" onclick="sa('+i+')">Show answer</button><div class="ex"><b>Answer: '+L[q[2]]+".</b> "+q[3]+"</div>";
+d.innerHTML=h;box.appendChild(d)});
+function lock(i){var d=document.getElementById("q"+i),b=d.querySelectorAll(".o");b[Q[i][2]].classList.add("ok");d.querySelector(".ex").style.display="block";d.querySelector(".sa").style.display="none"}
+function pk(i,j){if(ans[i]!=null)return;ans[i]=j;if(j!=Q[i][2])document.querySelectorAll("#q"+i+" .o")[j].classList.add("no");lock(i);up()}
+function sa(i){if(ans[i]!=null)return;ans[i]=-1;lock(i);up()}
+function up(){var a=0,c=0,t=0;ans.forEach(function(v,i){if(v!=null){t++;if(v>=0){a++;if(v==Q[i][2])c++}}});
+document.getElementById("st").textContent="Done "+t+"/"+n+" · Correct "+c+"/"+a;
+document.getElementById("bar").style.width=(t/n*100)+"%";var f=document.querySelector(".fb.on");if(f)f.click()}
+function flt(m,b){document.querySelectorAll(".fb").forEach(function(x){x.classList.remove("on")});b.classList.add("on");
+Q.forEach(function(q,i){var v=ans[i],s=true;if(m=="todo")s=v==null;if(m=="wrong")s=v!=null&&v!=q[2];document.getElementById("q"+i).style.display=s?"block":"none"})}
+function rs(){ans=[];document.querySelectorAll(".q").forEach(function(d){d.querySelectorAll(".o").forEach(function(o){o.classList.remove("ok","no")});d.querySelector(".ex").style.display="none";d.querySelector(".sa").style.display="inline"});
+document.querySelectorAll(".fb")[0].click();up();document.getElementById("s10").scrollIntoView()}
+up();
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

@@ -2,7 +2,7 @@
   'use strict';
   const $=id=>document.getElementById(id), core=window.VitanovaFlashcardCore, storage=window.VitanovaStorage;
   const lectures=window.VitanovaLectures||[], params=new URLSearchParams(location.search);
-  let catalog,queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null;
+  let catalog,finalNotes={},queue=[],position=0,reviewed=0,skipped=0,revealed=false,active=false,busy=false,revision=0,undo=[],series=null;
   const noteCache=new Map(),pending=new Map();
   const state=()=>storage.read(core.KEY,{version:1,records:{}},core.validState);
   function message(text){$('fc-error').textContent=text;$('fc-error').hidden=!text;}
@@ -59,15 +59,14 @@
     $('fc-practice').hidden=false;$('fc-front').textContent='Loading card…';$('fc-extra').replaceChildren();$('fc-supplements').replaceChildren();
     const card=queue[position];$('fc-practice').dataset.cardId=card.id;$('fc-topic').textContent=card.subject+' · '+card.topic;$('fc-counter').textContent=(position+1)+' of '+queue.length+' · '+reviewed+' rated · '+skipped+' skipped';
     try{
-      const notes=await getNotes(card.subject);if(token!==revision)return;
-      const note=notes[card.note];if(!note)throw new Error('This card is missing its note. Try reloading the library.');
+      const note=finalNotes[card.note]||(await getNotes(card.subject))[card.note];if(token!==revision)return;if(!note)throw new Error('This card is missing its note. Try reloading the library.');
       $('fc-format').textContent=note.oneByOne?'Grouped cloze recall':'Cloze recall';
       content($('fc-front'),core.render(note.text,card.ordinal));busy=false;$('fc-reveal').disabled=false;$('fc-skip').disabled=false;count();$('fc-card-heading').focus({preventScroll:true});
     }catch(error){if(token===revision){busy=false;message(error.message);$('fc-retry').hidden=false;$('fc-skip').disabled=false;count();}}
   }
   function reveal(){
     if(busy||revealed||position>=queue.length)return;
-    const card=queue[position],note=noteCache.get(card.subject)?.[card.note];if(!note)return;
+    const card=queue[position],note=finalNotes[card.note]||noteCache.get(card.subject)?.[card.note];if(!note)return;
     revealed=true;content($('fc-front'),core.render(note.text,card.ordinal,true));content($('fc-extra'),note.extra);
     for(const supplemental of note.supplements){
       const detail=document.createElement('details'),summary=document.createElement('summary'),body=document.createElement('div');summary.textContent=supplemental.title;detail.append(summary,body);
@@ -140,8 +139,11 @@
   async function load(){
     message('');$('fc-retry').hidden=true;
     try{
-      const r=await fetch('data/flashcards/catalog.json');if(!r.ok)throw new Error('The flashcard library could not load. Check your connection and retry.');catalog=await r.json();
-      if(catalog.version!==1||!Array.isArray(catalog.cards))throw new Error('Unsupported flashcard library version.');
+      const [r, finalResponse]=await Promise.all([fetch('data/flashcards/catalog.json'),fetch('data/flashcards/mss-final.json')]);
+      if(!r.ok||!finalResponse.ok)throw new Error('The flashcard library could not load. Check your connection and retry.');
+      const [base, final]=await Promise.all([r.json(),finalResponse.json()]);
+      if(base.version!==1||final.version!==1||!Array.isArray(base.cards)||!Array.isArray(final.cards))throw new Error('Unsupported flashcard library version.');
+      finalNotes=final.notes;catalog={...base,cards:[...base.cards,...final.cards]};
       $('fc-subject').length=1;for(const sub of Object.keys(catalog.subjects))option($('fc-subject'),sub,sub+' ('+catalog.cards.filter(c=>c.subject===sub).length+')');
       $('fc-lecture').length=2;for(const l of lectures){const n=catalog.cards.filter(c=>c.lectures.includes(l.id)).length;option($('fc-lecture'),l.id,l.subject+' · '+l.lectureLabel+' · '+l.title+' ('+n+')');}
       const requested=lectures.find(l=>l.id===params.get('lecture'));
