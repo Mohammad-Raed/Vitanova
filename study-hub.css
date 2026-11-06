@@ -156,3 +156,27 @@ a.snapshot-card .snapshot-detail{color:var(--mint)}
 .category-card,.study-resource,.dashboard-overview{border-radius:16px}
 .hub-workspace :focus-visible{outline:2px solid var(--mint);outline-offset:3px}
 @media(max-width:650px){#study-snapshot{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.today-resume{grid-column:1/-1}.snapshot-card{min-height:100px;padding:13px}.hub-workspace #hero-content{padding:26px 18px}}
+
+/* A quiet editorial study desk: a compact masthead and clear next actions. */
+#site-header.is-home{
+  background:repeating-linear-gradient(128deg,transparent 0 39px,#ffffff08 40px 41px),linear-gradient(118deg,var(--vn-ink),var(--vn-ink-end));
+  color:var(--vn-on-ink);
+}
+.hub-workspace #hero-content{padding:clamp(26px,5vw,60px) clamp(20px,5vw,60px)}
+.hub-workspace #hero-content h1{font-weight:500;font-size:clamp(35px,5vw,66px);letter-spacing:-.055em;text-wrap:balance}
+#hero-content .brand{color:var(--vn-gold)}
+.hub-workspace #hero-content p{color:var(--vn-muted-ink);max-width:40rem}
+.hero-dua{background:#ffffff0b;border-color:#ffffff3d;border-radius:10px}
+.hero-dua .dua-kicker{color:var(--vn-gold)}
+.compact-brand{font-family:Georgia,serif;font-size:24px;letter-spacing:-.045em}
+.study-sidebar .hub-links{font-size:13px}
+#study-snapshot{gap:clamp(10px,1.5vw,18px)}
+.snapshot-card,.category-card,.study-resource,.dashboard-overview{box-shadow:var(--vn-shadow)}
+.snapshot-card{border-radius:12px}
+.today-resume{background:var(--soft);border-color:var(--te)}
+.snapshot-label,.resource-kicker,.eyebrow{letter-spacing:.11em}
+.category-card .icon{background:var(--soft);color:var(--pu)}
+.category-card .action{background:var(--pu);color:var(--card)}
+.study-resource{border-radius:12px}
+.resource-open{min-height:42px}
+@media(min-width:1000px){.hub-workspace #hero-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,.65fr);column-gap:26px}.hub-workspace #hero-content>.brand,.hub-workspace #hero-content>h1,.hub-workspace #hero-content>p{grid-column:1}.hero-dua{grid-column:2;grid-row:1/4;align-self:center;justify-self:end;margin:0}}

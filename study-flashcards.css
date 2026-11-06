@@ -2,3 +2,11 @@
 .skip-link{position:absolute;left:16px;top:-100px;padding:10px 16px;background:var(--card);z-index:50;border:2px solid var(--te);border-radius:8px}.skip-link:focus{top:8px}
 
 .fc-finish-actions{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.fc-finish-actions button{max-width:100%;white-space:normal}#fc-finished>#fc-undo{margin:12px}#fc-finished>#fc-another{margin:8px 0}
+
+.fc-heading h1{font-family:Georgia,serif;font-weight:500;letter-spacing:-.035em}
+.fc-heading{padding:22px 24px;background:linear-gradient(110deg,var(--vn-ink),var(--vn-ink-end));color:var(--vn-on-ink);border-radius:14px}
+.fc-heading p{color:var(--vn-muted-ink)}
+.fc-heading .fc-eyebrow{color:var(--vn-gold)}
+.fc-panel,.fc-card{border-radius:14px;box-shadow:var(--vn-shadow)}
+.fc-card-meta{letter-spacing:.035em}
+#fc-ratings button{min-height:52px}

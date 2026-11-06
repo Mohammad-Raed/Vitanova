@@ -66,3 +66,23 @@ main,section,.card,.tbl,.g>*{min-width:0}
 .vn-study-sections select{max-width:100%;min-width:0;margin-left:auto}
 .vn-study-sections :focus-visible{outline:2px solid var(--te);outline-offset:2px}
 @media(max-width:650px){.vn-study-sections select{flex:1 0 100%;margin:0}.vn-study-sections a{flex:1 0 auto;text-align:center}}
+
+/* Vitanova editorial palette. Legacy token names remain compatible with lecture files. */
+:root[data-theme="light"]{
+  --bg:#f6f4ee;--card:#fffdf8;--tx:#18312f;--mu:#4f625c;--pu:#176153;--te:#176153;--ln:#d9dfd5;--soft:#e8f1e9;--or:#984921;--bl:#285f77;
+  --vn-ink:#123b36;--vn-ink-end:#20584c;--vn-on-ink:#fffdf5;--vn-muted-ink:#d5e7db;--vn-gold:#f3cb8a;--vn-shadow:0 5px 18px #18312f0b;
+}
+:root[data-theme="dark"]{
+  --bg:#111d1b;--card:#192924;--tx:#edf4ea;--mu:#b2c6b9;--pu:#91d9c2;--te:#91d9c2;--ln:#344b40;--soft:#223a30;--or:#ffbb8d;--bl:#9acde2;
+  --vn-ink:#173a31;--vn-ink-end:#235446;--vn-on-ink:#fffdf5;--vn-muted-ink:#d5e7db;--vn-gold:#f3cb8a;--vn-shadow:0 5px 18px #0002;
+}
+.vn-lecture-page > header{
+  background:linear-gradient(112deg,var(--vn-ink),var(--vn-ink-end));
+  color:var(--vn-on-ink);border-bottom:1px solid var(--ln);
+}
+.vn-lecture-page > header h1{color:var(--vn-on-ink);font-family:Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
+.vn-lecture-page > header p{color:var(--vn-muted-ink)}
+.vn-lecture-page > header small,.vn-lecture-page > header .k{color:var(--vn-gold)}
+.vn-study-sections a,.vn-study-sections select{border-radius:8px;box-shadow:var(--vn-shadow)}
+.vn-lecture-page :is(th,.fb.on,#filters button[aria-pressed="true"]){background-color:var(--pu);color:var(--card)}
+.vn-lecture-page main :is(.card,.q){box-shadow:var(--vn-shadow)}
