@@ -99,6 +99,11 @@ async function main(){
    await fresh.locator('[data-rating="'+(repeatFirst&&i===0?1:4)+'"]').click();
    if(i<n-1)await fresh.waitForFunction(id=>document.getElementById('fc-practice').dataset.cardId!==id&&!document.getElementById('fc-reveal').disabled,card);
   }
+  if(repeatFirst){
+    await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);
+    check(await fresh.locator('#fc-practice').getAttribute('data-card-id')===target[0],'Learning card returns automatically');
+    await fresh.locator('#fc-reveal').click();await fresh.locator('[data-rating="4"]').click();
+  }
   await fresh.locator('#fc-finished').waitFor();
  }
  // Draft selection edits must not redirect continuation away from the original lecture.
@@ -107,11 +112,6 @@ async function main(){
  check((await fresh.locator('#fc-continue').textContent()).includes('20 cards'),'First 20 of 40 offer exactly the next 20');
  check((await fresh.locator('#fc-next-lecture').textContent()).includes(registry.find(l=>l.id==='mss-mid-anatomy-03-04').lectureLabel),'Next lecture follows Anatomy 1–2 with 3–4 despite edited draft selection');
  check(await fresh.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Completion actions fit mobile');
- await fresh.clock.fastForward('02:00');
- check(await fresh.evaluate(id=>JSON.parse(localStorage.getItem('vitanova:flashcards:v1')).records[id].due<=Date.now(),first[0]),'Repeat card becomes due after the one-minute interval');
- await fresh.locator('#fc-learning-next').click();await fresh.waitForFunction(()=>!document.getElementById('fc-reveal').disabled);
- check(await fresh.locator('#fc-practice').getAttribute('data-card-id')===first[0],'A due learning card returns before the next set');
- await fresh.locator('#fc-reveal').click();await fresh.locator('[data-rating="4"]').click();await fresh.locator('#fc-finished').waitFor();
  await fresh.locator('#fc-continue').click();await finishSet(second,20);
  check(new Set([...first,...second]).size===40,'Continuing covers all 40 cards without repeating earlier due or shown cards');
  check(await fresh.locator('#fc-continue').isHidden(),'No continuation is offered after all lecture cards are shown');

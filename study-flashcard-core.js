@@ -11,7 +11,9 @@
     if(!Number.isInteger(rating)||rating<1||rating>4||!Number.isFinite(now)||now<0)throw new Error('Invalid review');
     const date=new Date(now), card=engine.createEmptyCard(date), m=previous?.memory;
     if(m)Object.assign(card,{due:new Date(previous.due),last_review:new Date(Math.min(previous.lastReview,now)),reps:previous.reviews,lapses:previous.lapses,stability:m.stability,difficulty:m.difficulty,state:m.state,learning_steps:m.steps,scheduled_days:m.days});
-    const c=scheduler.next(card,date,rating).card, due=c.due.getTime();
+    const c=scheduler.next(card,date,rating).card;
+    if(!previous&&rating===4&&c.due.getTime()>now+3*DAY){c.due=new Date(now+3*DAY);c.scheduled_days=3;}
+    const due=c.due.getTime();
     return {due,interval:(due-now)/DAY,reviews:(previous?.reviews||0)+1,lapses:m?c.lapses:(previous?.lapses||0),lastReview:now,rating,memory:{stability:c.stability,difficulty:c.difficulty,state:c.state,steps:c.learning_steps,days:c.scheduled_days}};
   }
   function render(text,ordinal,reveal=false){

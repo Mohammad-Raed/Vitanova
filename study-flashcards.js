@@ -70,7 +70,8 @@
     const token=++revision;revealed=false;busy=true;message('');$('fc-retry').hidden=true;$('fc-ratings').hidden=true;$('fc-answer').hidden=true;$('fc-reveal').hidden=false;$('fc-reveal').disabled=true;$('fc-skip').disabled=true;showUndo();
     $('fc-finished').hidden=true;
     // Learning cards have priority once due; cram has no scheduled entries.
-    if(queue[position]?.id!==nextLearning()?.card.id)takeLearning();
+    if(position>=queue.length)takeLearning(true);
+    else if(queue[position]?.id!==nextLearning()?.card.id)takeLearning();
     if(position>=queue.length){
       busy=false;active=false;$('fc-practice').hidden=true;$('fc-finished').hidden=false;$('fc-finished-text').textContent=reviewed+' rated · '+skipped+' skipped. '+(series?.config.mode==='all'?' Cram did not change your schedule.':' Your next due times are saved on this device.');
       // Keep Undo accessible after the final card.
