@@ -24,16 +24,18 @@
     while (key && views[key] && !seen.has(key)) { seen.add(key); chain.unshift(key); key=views[key].parent; }
     $('breadcrumbs').innerHTML=chain.map((id,i)=>`${i?'<span aria-hidden="true">/</span>':''}<a href="#${encodeURIComponent(id)}"${i===chain.length-1?' aria-current="page"':''}>${esc(id==='home'?'Home':views[id].title)}</a>`).join('');
   }
+  const isLab=key=>typeof key==='string'&&(key==='mss-labs'||key.startsWith('mss-labs-'));
+  const resourceCount=(number,lab=false)=>number+' '+(lab?'lab':'lecture')+' '+(number===1?'resource':'resources');
   function overview(category) {
     const list=lectures.filter(l=>l.category===category), count=list.filter(done).length;
     const pct=list.length?Math.round(100*count/list.length):0;
-    $('dashboard-overview').innerHTML=`<div class="progress-topline"><div><span class="eyebrow">YOUR PROGRESS</span><p id="progress-count">${count} of ${list.length} lecture resources completed</p></div><strong id="completion-percent">${pct}%</strong></div><progress id="completion-progress" max="100" value="${pct}" aria-label="${pct}% complete"></progress><p class="progress-note">Mark completion yourself. Opening a lecture never changes progress.</p>`;
+    $('dashboard-overview').innerHTML=`<div class="progress-topline"><div><span class="eyebrow">YOUR PROGRESS</span><p id="progress-count">${count} of ${resourceCount(list.length,isLab(category))} completed</p></div><strong id="completion-percent">${pct}%</strong></div><progress id="completion-progress" max="100" value="${pct}" aria-label="${pct}% complete"></progress><p class="progress-note">Mark completion yourself. Opening a lecture never changes progress.</p>`;
     $('dashboard-overview').hidden=!list.length;
   }
   function drawLectures(items) {
     const visible=ordered(items).filter(matches);
-    $('search-summary').textContent=`${visible.length} of ${items.length} lecture resources shown`;
-    cards.innerHTML=visible.length ? visible.map(lecture=>`<article class="study-resource${done(lecture)?' is-complete':''}" data-resource-id="${esc(lecture.id)}"><label class="completion-control"><input type="checkbox" ${done(lecture)?'checked':''} aria-label="Mark ${esc(lecture.lectureLabel+' '+lecture.title)} completed"></label><div class="resource-main"><div class="resource-meta"><span class="resource-kicker">${esc(lecture.lectureLabel)}</span><span class="resource-status">${done(lecture)?'Completed':'Not completed'}</span></div><h3><a href="${esc(fileHref(lecture.file))}">${esc(lecture.title)}</a></h3><p>${esc(lecture.description)}</p>${current==='search'?`<small class="resource-context">${esc(lecture.system+' · '+lecture.exam+' · '+lecture.subject)}</small>`:''}</div><a class="resource-open" href="${esc(fileHref(lecture.file))}" aria-label="Open ${esc(lecture.title)}">Open <span aria-hidden="true">→</span></a></article>`).join('') : `<div class="empty">${items.length?'No lectures match these filters. Try another search or completion filter.':'No lectures uploaded yet. New resources will appear here when added.'}</div>`;
+    $('search-summary').textContent=`${visible.length} of ${resourceCount(items.length,isLab(current))} shown`;
+    cards.innerHTML=visible.length ? visible.map(lecture=>`<article class="study-resource${done(lecture)?' is-complete':''}" data-resource-id="${esc(lecture.id)}"><label class="completion-control"><input type="checkbox" ${done(lecture)?'checked':''} aria-label="Mark ${esc(lecture.lectureLabel+' '+lecture.title)} completed"></label><div class="resource-main"><div class="resource-meta"><span class="resource-kicker">${esc(lecture.lectureLabel)}</span><span class="resource-status">${done(lecture)?'Completed':'Not completed'}</span></div><h3><a href="${esc(fileHref(lecture.file))}">${esc(lecture.title)}</a></h3><p>${esc(lecture.description)}</p>${current==='search'?`<small class="resource-context">${esc(lecture.system+' · '+lecture.exam+' · '+lecture.subject)}</small>`:''}</div><a class="resource-open" href="${esc(fileHref(lecture.file))}" aria-label="Open ${esc(lecture.title)}">Open <span aria-hidden="true">→</span></a></article>`).join('') : `<div class="empty">${items.length?'No lectures match these filters. Try another search or completion filter.':isLab(current)?'No labs uploaded yet. New resources will appear here when added.':'No lectures uploaded yet. New resources will appear here when added.'}</div>`;
     if (views[current]?.category && views[current]?.cards?.length) cards.insertAdjacentHTML('beforeend', '<section class="more-subjects"><h3>More subjects</h3>'+views[current].cards.map(([title,,to])=>`<a class="resource-open" href="#${encodeURIComponent(to)}">${esc(title)} →</a>`).join(' ')+'</section>');
   }
   function descendants(key) {
@@ -70,10 +72,10 @@
     cards.innerHTML=(view.cards||[]).map(([title,description,to,icon,tag])=>{
       const list=descendants(to), completed=list.filter(done).length;
       const paperSummary=['mss-past','mss-past-mid'].includes(to)&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
-      const hideCounts=to==='mss-labs'||current==='mss-labs';
-      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p>${hideCounts?'':`<span class="category-progress">${paperSummary|| (list.length?`${list.length} lecture ${list.length===1?'resource':'resources'} · ${completed} completed`:'Resources coming soon')}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${list.length} lectures completed"></progress>`:''}`}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
+      const summary=paperSummary||(isLab(to)||list.length?`${resourceCount(list.length,isLab(to))}${list.length?' · '+completed+' completed':''}`:'Resources coming soon');
+      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${summary}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${resourceCount(list.length,isLab(to))} completed"></progress>`:''}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
     }).join('');
-    $('count').textContent=current==='mss-labs'?'':current==='mss-past'?'Midterm question collection':descendants(current).length+' lecture resources';
+    $('count').textContent=current==='mss-past'?'Midterm question collection':resourceCount(descendants(current).length,isLab(current));
   }
   function render() {
     const requested=route(); current=views[requested]?requested:'home'; const view=views[current];
@@ -91,10 +93,10 @@
     else if (view.category||current==='search') {
       const items=view.category?lectures.filter(l=>l.category===view.category):lectures;
       if(view.category) {
-        const sample=items[0]; $('page-subtitle').textContent=sample?`${sample.system} · ${sample.exam} · ${sample.subject}`:'No lectures uploaded yet.';
+        const sample=items[0]; $('page-subtitle').textContent=sample?`${sample.system} · ${sample.exam} · ${sample.subject}`:isLab(view.category)?'No labs uploaded yet.':'No lectures uploaded yet.';
         overview(view.category);
       }
-      $('count').textContent=items.length+' lecture resources'; drawLectures(items);
+      $('count').textContent=resourceCount(items.length,isLab(view.category)); drawLectures(items);
     } else if (current==='saved'||current==='mistakes') {
       const params=new URLSearchParams(location.hash.split('?')[1]||'');
       window.VitanovaSaved?.render(cards,$('count'),{mode:current==='mistakes'?'mistakes':'saved',lectureId:params.get('lecture')||undefined});

@@ -389,5 +389,18 @@ window.VitanovaLectures = [
     "description": "Pectoral region, shoulder and axilla: numbered specimens, progress checklist and 23 practical spotters.",
     "file": "MSS-Anatomy-Lab-3.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-microbiology-02",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Microbiology",
+    "category": "mss-final-microbiology",
+    "lectureLabel": "Lecture 2",
+    "order": 2,
+    "title": "Parasitic Infections of the Skin",
+    "description": "High-yield parasite comparison, four visual clues and 26 practice questions.",
+    "file": "MSS-Final-Microbiology-Lecture-2-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
