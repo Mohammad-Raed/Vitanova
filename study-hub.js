@@ -70,9 +70,10 @@
     cards.innerHTML=(view.cards||[]).map(([title,description,to,icon,tag])=>{
       const list=descendants(to), completed=list.filter(done).length;
       const paperSummary=['mss-past','mss-past-mid'].includes(to)&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
-      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${paperSummary|| (list.length?`${list.length} lecture ${list.length===1?'resource':'resources'} · ${completed} completed`:'Resources coming soon')}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${list.length} lectures completed"></progress>`:''}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
+      const hideCounts=to==='mss-labs'||current==='mss-labs';
+      return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p>${hideCounts?'':`<span class="category-progress">${paperSummary|| (list.length?`${list.length} lecture ${list.length===1?'resource':'resources'} · ${completed} completed`:'Resources coming soon')}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${list.length} lectures completed"></progress>`:''}`}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
     }).join('');
-    $('count').textContent=current==='mss-past'?'Midterm question collection':descendants(current).length+' lecture resources';
+    $('count').textContent=current==='mss-labs'?'':current==='mss-past'?'Midterm question collection':descendants(current).length+' lecture resources';
   }
   function render() {
     const requested=route(); current=views[requested]?requested:'home'; const view=views[current];

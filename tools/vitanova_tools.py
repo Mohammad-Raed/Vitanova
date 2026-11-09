@@ -146,9 +146,10 @@ def registry(root=ROOT):
         if row['id'] in seen or row['file'] in files: raise ValueError('Duplicate lecture ID or filename')
         if not isinstance(row.get('order'),(int,float)) or isinstance(row['order'],bool): raise ValueError('Invalid lecture ordering')
         if not re.fullmatch(r'[a-z0-9][a-z0-9-]*',row['category']): raise ValueError('Invalid category')
-        if row['exam'] not in ('Midterm','Final'): raise ValueError('Exam must be Midterm or Final')
+        if row['exam'] not in ('Midterm','Final','Labs'): raise ValueError('Exam must be Midterm, Final, or Labs')
         expected = category(row['system'],row['exam'],row['subject'])
-        if row['category'] not in (expected, f"{slug(row['system'])}-past-{'mid' if row['exam']=='Midterm' else 'final'}"):
+        allowed = (expected,) if row['exam']=='Labs' else (expected, f"{slug(row['system'])}-past-{'mid' if row['exam']=='Midterm' else 'final'}")
+        if row['category'] not in allowed:
             raise ValueError('Category does not match lecture metadata: '+row['id'])
         target = (root/row['file']).resolve()
         if target.parent != root.resolve() or target.suffix.lower() != '.html': raise ValueError('Lecture must be a root HTML file')
@@ -160,7 +161,7 @@ def slug(value):
     return re.sub(r'[^a-z0-9]+','-',value.lower()).strip('-')
 
 def category(system, exam, subject):
-    prefix=f"{slug(system)}-{'mid' if exam=='Midterm' else 'final'}"
+    prefix=f"{slug(system)}-{'mid' if exam=='Midterm' else 'labs' if exam=='Labs' else 'final'}"
     return prefix if system.lower()==subject.lower() else prefix+'-'+slug(subject)
 
 def extract(lecture, source):

@@ -20,7 +20,7 @@ def metadata(source, filename, args):
         if len(matches)!=1: raise ValueError(f'Ambiguous {label}. Supply --{label.lower()}.')
         return matches[0]
     system=choose(args.system,('MSS','Immunology'),'system')
-    exam=choose(args.exam,('Midterm','Final'),'exam')
+    exam=choose(args.exam,('Midterm','Final','Labs'),'exam')
     subject=choose(args.subject,SUBJECTS,'subject')
     label=args.lectures
     if not label:
@@ -39,10 +39,11 @@ def metadata(source, filename, args):
     cat=category(system,exam,subject)
     ident=args.id or cat+'-'+'-'.join(f'{n:02}' for n in numbers)
     if not re.fullmatch(r'[a-z0-9][a-z0-9-]*',ident): raise ValueError('ID must use lowercase letters, numbers and hyphens')
-    fileparts=[system,exam]+([] if subject.lower()==system.lower() else [subject])+['Lecture' if len(numbers)==1 else 'Lectures']+[str(n) for n in numbers]+['AI','Summary','MCQs']
+    fileparts=[system,subject,'Lab',str(numbers[0])] if exam=='Labs' else [system,exam]+([] if subject.lower()==system.lower() else [subject])+['Lecture' if len(numbers)==1 else 'Lectures']+[str(n) for n in numbers]+['AI','Summary','MCQs']
+    if exam=='Labs' and len(numbers)!=1: raise ValueError('Register one lab per page')
     filename='-'.join(re.sub(r'[^A-Za-z0-9]+','-',x).strip('-') for x in fileparts)+'.html'
     separator='–' if re.search(r'[-–]|\bto\b',label) and len(numbers)==2 else ' & '
-    return dict(id=ident,system=system,exam=exam,subject=subject,category=cat,lectureLabel=('Lecture ' if len(numbers)==1 else 'Lectures ')+separator.join(map(str,numbers)),order=numbers[0],title=title,description=description,file=filename,icon='📘')
+    return dict(id=ident,system=system,exam=exam,subject=subject,category=cat,lectureLabel=('Lab ' if exam=='Labs' else 'Lecture ' if len(numbers)==1 else 'Lectures ')+separator.join(map(str,numbers)),order=numbers[0],title=title,description=description,file=filename,icon='📘')
 
 def run(args, root=ROOT):
     path=Path(args.file).resolve()
@@ -108,7 +109,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('file')
     parser.add_argument('--system')
-    parser.add_argument('--exam',choices=('Midterm','Final'))
+    parser.add_argument('--exam',choices=('Midterm','Final','Labs'))
     parser.add_argument('--subject')
     parser.add_argument('--lectures',help='A lecture number or range, e.g. 13-14')
     parser.add_argument('--title')

@@ -341,14 +341,27 @@ window.VitanovaLectures = [
   {
     "id": "mss-final-pathology-lab-01",
     "system": "MSS",
-    "exam": "Final",
+    "exam": "Labs",
     "subject": "Pathology",
-    "category": "mss-final-pathology",
+    "category": "mss-labs-pathology",
     "lectureLabel": "Lab 1",
     "order": 1,
     "title": "Pathology Lab 1: Muscle, Bone & Joints",
     "description": "27 original pathology figures with annotated findings and 29 practical questions.",
     "file": "MSS-Final-Pathology-Lab-1.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-labs-anatomy-01",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Anatomy",
+    "category": "mss-labs-anatomy",
+    "lectureLabel": "Lab 1",
+    "order": 1,
+    "title": "Anatomy Lab 1: Skull & TMJ",
+    "description": "Skull and temporomandibular joint specimens, checklist tracking, and 20 practical spotters.",
+    "file": "MSS-Anatomy-Lab-1.html",
     "icon": "📘"
   }
 ];

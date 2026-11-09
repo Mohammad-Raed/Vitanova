@@ -2,8 +2,8 @@
 (function () {
   const lectures = window.VitanovaLectures || [];
   const views = {
-    home: {title:'Explore file library', parent:null, subtitle:'Choose a system to browse its study resources.', cards:[['MSS System','Midterm, final, and past-paper study resources.','mss','🦴','SYSTEM'],['Immunology','Midterm and final immunology study resources.','immunology','🧬','SYSTEM']]},
-    mss: {title:'MSS System', parent:'home', cards:[['Midterm Summary + AI MCQs','Lecture summaries and questions for the midterm.','mss-mid','📘','MIDTERM'],['Final Summary + AI MCQs','Lecture summaries and questions for the final.','mss-final','📗','FINAL'],['Past Papers','Practice papers from previous MSS examinations.','mss-past','📝','PAST PAPERS']]},
+    home: {title:'Explore file library', parent:null, subtitle:'Choose a system to browse its study resources.', cards:[['MSS System','Midterm, final, labs, and past-paper study resources.','mss','🦴','SYSTEM'],['Immunology','Midterm and final immunology study resources.','immunology','🧬','SYSTEM']]},
+    mss: {title:'MSS System', parent:'home', cards:[['MSS Midterm','Lecture summaries and questions for the midterm.','mss-mid','📘','MIDTERM'],['MSS Final','Lecture summaries and questions for the final.','mss-final','📗','FINAL'],['MSS Labs','Practical anatomy, pathology, and microbiology resources.','mss-labs','🔎','LABS'],['MSS Past Papers','Practice papers from previous MSS examinations.','mss-past','📝','PAST PAPERS']]},
     immunology: {title:'Immunology', parent:'home', cards:[['Midterm','Immunology resources for the midterm examination.','immunology-mid','🧬','MIDTERM'],['Final','Immunology resources for the final examination.','immunology-final','🧬','FINAL']]},
     'mss-past': {title:'MSS Past Papers', parent:'mss', cards:[['Midterm Questions','Past-paper questions for the MSS midterm.','mss-past-mid','📝','PAST PAPERS'],['Final Questions','Past-paper questions for the MSS final.','mss-past-final','📝','PAST PAPERS']]},
     saved: {title:'Saved Questions', parent:'home', subtitle:'Your personal collection, ready for a focused revision session.'},
@@ -12,6 +12,9 @@
     backup: {title:'Back up your study data', parent:'home', subtitle:'Export progress, bookmarks, mistakes, and preferences to keep a copy or move devices.'}
   };
   const subjects = [['anatomy','Anatomy','🦴'],['pharmacology','Pharmacology','💊'],['physiology','Physiology','❤️'],['pathology','Pathology','🔬'],['microbiology','Microbiology','🦠']];
+  const labSubjects = subjects.filter(([id])=>['anatomy','pathology','microbiology'].includes(id));
+  views['mss-labs']={title:'MSS Labs',parent:'mss',cards:labSubjects.map(([id,title,icon])=>[title,'Explore '+title.toLowerCase()+' practical material.','mss-labs-'+id,icon,'LAB'])};
+  for(const [id,title] of labSubjects)views['mss-labs-'+id]={title,parent:'mss-labs',category:'mss-labs-'+id};
   for (const exam of ['mid','final']) {
     const key = 'mss-' + exam;
     const list = exam === 'final' ? [...subjects,['biochemistry','Biochemistry','🧪']] : subjects;
