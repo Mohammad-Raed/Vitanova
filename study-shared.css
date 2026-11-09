@@ -54,18 +54,18 @@ main,section,.card,.tbl,.g>*{min-width:0}
 @media(max-width:550px){.vn-clarification,.vn-abbreviations{padding:14px;font-size:13px}.vn-abbreviations dl{gap:6px 11px;grid-template-columns:minmax(50px,auto) minmax(0,1fr)}}
 @media(max-width:600px){.tl div{display:block}.tl div>b{min-width:0}.tl div>b:first-child{display:inline-block;min-width:24px;margin-right:8px}}
 
+/* Use the lecture’s original topic links as the only section bar. */
+.vn-lecture-page .vn-lecture-topics{display:flex;gap:4px;overflow-x:auto;white-space:nowrap;align-items:center;padding:5px max(12px,calc((100% - 1080px)/2));scrollbar-width:thin}
+.vn-lecture-page .vn-lecture-topics a{flex:none;padding:6px 9px;border-radius:7px;text-decoration:none;font:650 13px/1.45 system-ui,sans-serif}
+.vn-lecture-page .vn-lecture-topics a:hover,.vn-lecture-page .vn-lecture-topics a:focus-visible{background:var(--soft)}
+.vn-lecture-page .vn-lecture-topics a:focus-visible{outline-offset:-2px}
+
 /* Flashcards remain reachable from every registered lecture. */
 .vn-lecture-navigation .vn-flashcards{min-height:32px;background:var(--soft)}
 
 /* Shared violet and jade palette, with legible text in both modes. */
 :root[data-theme="light"]{--bg:#f7f6fb;--card:#fff;--tx:#231d35;--mu:#625a72;--pu:#60418d;--te:#087768;--ln:#e5e0ed;--soft:#f0ebf8;--or:#b44f30;--bl:#315f97;color-scheme:light}
 :root[data-theme="dark"]{--bg:#151222;--card:#201b30;--tx:#f0ebf8;--mu:#bdb3ce;--pu:#c1a6ef;--te:#83dccc;--ln:#3c324e;--soft:#2b233d;--or:#ffab8f;--bl:#93bced;color-scheme:dark}
-.vn-study-sections{display:flex;align-items:center;flex-wrap:wrap;gap:8px;max-width:1080px;margin:14px auto;padding:0 14px}
-.vn-study-sections a,.vn-study-sections select{min-height:44px;padding:8px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--card);color:var(--pu);font:650 13px/1.4 system-ui,sans-serif;text-decoration:none}
-.vn-study-sections a:hover{background:var(--soft)}
-.vn-study-sections select{max-width:100%;min-width:0;margin-left:auto}
-.vn-study-sections :focus-visible{outline:2px solid var(--te);outline-offset:2px}
-@media(max-width:650px){.vn-study-sections select{flex:1 0 100%;margin:0}.vn-study-sections a{flex:1 0 auto;text-align:center}}
 
 /* Vitanova editorial palette. Legacy token names remain compatible with lecture files. */
 :root[data-theme="light"]{
@@ -83,7 +83,6 @@ main,section,.card,.tbl,.g>*{min-width:0}
 .vn-lecture-page > header h1{color:var(--vn-on-ink);font-family:Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
 .vn-lecture-page > header p{color:var(--vn-muted-ink)}
 .vn-lecture-page > header small,.vn-lecture-page > header .k{color:var(--vn-gold)}
-.vn-study-sections a,.vn-study-sections select{border-radius:8px;box-shadow:var(--vn-shadow)}
 .vn-lecture-page :is(th,.fb.on,#filters button[aria-pressed="true"]){background-color:var(--pu);color:var(--card)}
 .vn-lecture-page main :is(.card,.q){box-shadow:var(--vn-shadow)}
 
@@ -156,13 +155,10 @@ main,section,.card,.tbl,.g>*{min-width:0}
 }
 .vn-lecture-page > header p{font-size:13px;line-height:1.4;margin:4px 0 0}
 .vn-lecture-page > header small{font-size:10px;line-height:1.3}
-.vn-lecture-page .vn-study-sections{margin:6px auto;gap:6px}
-.vn-lecture-page .vn-study-sections :is(a,select){min-height:36px;padding:7px 10px;box-shadow:none}
 .vn-lecture-page .vn-lecture-navigation{min-height:42px}
 .vn-lecture-page .vn-lecture-navigation .vn-redo-mistakes{font:650 12px/1.35 system-ui,sans-serif;padding:6px 8px;min-height:32px}
 .vn-lecture-page .q .vn-bookmark-toggle{margin-inline-start:12px;margin-block-start:8px;vertical-align:middle}
 .vn-lecture-page .q .sa{margin-inline-end:6px;vertical-align:middle}
 @media(max-width:420px){
-  .vn-lecture-page .vn-study-sections :is(a,select){font-size:12px;padding-inline:6px}
   .vn-lecture-page .q .vn-bookmark-toggle{margin-inline-start:8px}
 }
