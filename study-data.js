@@ -337,5 +337,18 @@ window.VitanovaLectures = [
     "description": "Antigen presentation, lymphocyte activation, effector responses, memory and vaccines.",
     "file": "Immunology-Midterm-Lecture-6-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-pathology-lab-01",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Pathology",
+    "category": "mss-final-pathology",
+    "lectureLabel": "Lab 1",
+    "order": 1,
+    "title": "Pathology Lab 1: Muscle, Bone & Joints",
+    "description": "27 original pathology figures with annotated findings and 29 practical questions.",
+    "file": "MSS-Final-Pathology-Lab-1.html",
+    "icon": "📘"
   }
 ];
