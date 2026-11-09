@@ -10,6 +10,14 @@ figure figcaption{font-weight:750;margin-bottom:.6rem}figcaption small{font-weig
 .lab-label{position:absolute;transform:translate(-50%,-50%);background:#10191af2;color:#fff09a;border:1px solid #fde047a0;border-radius:4px;padding:.18em .35em;font:650 clamp(8px,2.8cqw,13px)/1.12 system-ui,sans-serif;text-align:center;width:max-content;max-width:43%}
 .lab-label-left{transform:translate(0,-50%)}
 .lab-label-right{transform:translate(-100%,-50%)}
+.lab-pin,.lab-image-key b{display:inline-grid;place-items:center;border-radius:50%;border:1px solid #fde047;background:#10191a;color:#fff09a;width:1.55em;height:1.55em;font:750 .75rem/1 system-ui,sans-serif}
+.lab-pin{position:absolute;transform:translate(-50%,-50%);font-size:clamp(9px,2.7cqw,13px)}
+.lab-image-key{display:flex;flex-wrap:wrap;gap:4px 12px;list-style:none;margin:6px 0 2px;padding:0;color:var(--tx);font-size:.8rem}
+.lab-image-key li{display:inline-flex;gap:4px;align-items:baseline}
+.lab-image-key b{flex:none}
+.lab-hide-image-notes .lab-image-key,.lab-self-test .lab-image-key{display:none}
+#lab-preview[open]:has(> .lab-image-key){display:flex;flex-direction:column}
+#lab-preview:has(> .lab-image-key) #lab-preview-image{min-height:0}
 .lab-hide-image-notes .lab-image-notes,.lab-self-test .lab-image-notes,#lab-preview.lab-quiz-preview .lab-image-notes{display:none}.lab-caption{text-align:center;font-size:.85rem;padding:.35rem}
 .lab-figure summary{cursor:pointer;font-weight:700}.lab-figure h3,.lab-figure p{margin:.5rem 0}
 button{font:inherit;cursor:pointer;color:var(--pu);background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:.45rem .7rem}
@@ -71,7 +79,7 @@ dialog{max-width:min(95vw,1040px);max-height:90vh;background:var(--card);color:v
  <div class="lab-visual"><div class="lab-media" data-figure="04" style="--lab-image-limit:898px"><img src="assets/pathology-lab-1/figure-04.jpeg" width="963" height="343" loading="lazy" alt="Original pathology specimen, Figure 04"><div class="lab-image-notes" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><polygon points="23.7,9 32.2,10 32.2,26 28,29 27.5,60 23,57 17,73 15.6,49 23,48"/><polygon points="70.6,1 76,1 75,49 77,62 83,76 82,95 60,99 63,76 66,43 69,19"/></svg><span class="lab-label" style="left:24%;top:86%">C5 · Grouped atrophy</span><span class="lab-label" style="left:71%;top:86%">C6 · Fibre-type grouping</span></div><button class="lab-enlarge" type="button" aria-label="Enlarge Figure 04"></button></div><div class="lab-caption"><a href="assets/pathology-lab-1/figure-04.jpeg" target="_blank" rel="noopener">Open original</a></div></div>
  <details open><summary>Diagnosis &amp; notes</summary><h3>Denervation and reinnervation</h3><div class="lab-note"><h4>Notes</h4><p><strong>Left:</strong> Haematoxylin and eosin (H&E) shows groups of small angular fibres after denervation. <strong>Right:</strong> Reinnervation produces same-type clusters on ATPase staining. Motor-unit dysfunction can occur at the motor neuron, axon or neuromuscular junction (NMJ); junction disorders need not produce this pattern.</p></div></details>
 </figure><figure class="card lab-figure" id="figure-05"><figcaption>Figure 05 <small>· Source page 6</small></figcaption>
- <div class="lab-visual"><div class="lab-media" data-figure="05" style="--lab-image-limit:1164px"><img src="assets/pathology-lab-1/figure-05.jpeg" width="1560" height="429" loading="lazy" alt="Original pathology specimen, Figure 05"><div class="lab-image-notes" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><ellipse cx="9" cy="40" rx="8" ry="17"/><polygon points="50,50 66,50 66,93 50,93"/></svg><span class="lab-label lab-label-left" style="left:17%;top:6%">A early: regenerating fibres (arrow)</span><span class="lab-label" style="left:43%;top:22%">B · No dystrophin stain</span><span class="lab-label" style="left:58%;top:40%">Inset · Normal dystrophin</span><span class="lab-label lab-label-right" style="left:85%;top:48%">C late · Fat replacement</span><span class="lab-label lab-label-right" style="left:83%;top:12%">Endomysial fibrosis</span></div><button class="lab-enlarge" type="button" aria-label="Enlarge Figure 05"></button></div><div class="lab-caption"><a href="assets/pathology-lab-1/figure-05.jpeg" target="_blank" rel="noopener">Open original</a></div></div>
+ <div class="lab-visual"><div class="lab-media" data-figure="05" style="--lab-image-limit:1164px"><img src="assets/pathology-lab-1/figure-05.jpeg" width="1560" height="429" loading="lazy" alt="Original pathology specimen, Figure 05"><div class="lab-image-notes" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><ellipse cx="9" cy="40" rx="8" ry="17"/><polygon points="50,50 66,50 66,93 50,93"/></svg><span class="lab-pin" style="left:18%;top:26%">1</span><span class="lab-pin" style="left:43%;top:22%">2</span><span class="lab-pin" style="left:58%;top:43%">3</span><span class="lab-pin" style="left:78%;top:67%">4</span><span class="lab-pin" style="left:90%;top:19%">5</span></div><button class="lab-enlarge" type="button" aria-label="Enlarge Figure 05"></button></div><ul class="lab-image-key" aria-label="Figure 05 marker key"><li><b>1</b> A · Regenerating fibres</li><li><b>2</b> B · No dystrophin stain</li><li><b>3</b> Inset · Normal dystrophin stain</li><li><b>4</b> C · Fat replacement</li><li><b>5</b> C · Endomysial fibrosis</li></ul><div class="lab-caption"><a href="assets/pathology-lab-1/figure-05.jpeg" target="_blank" rel="noopener">Open original</a></div></div>
  <details open><summary>Diagnosis &amp; notes</summary><h3>Duchenne and Becker muscular dystrophy</h3><div class="lab-note"><h4>Notes</h4><p><strong>A:</strong> Regeneration, variable fibre size and early fibrosis. <strong>B:</strong> Immunohistochemistry (IHC) usually shows absent or nearly absent dystrophin in Duchenne muscular dystrophy (DMD) and reduced or abnormal staining in Becker muscular dystrophy (BMD). <strong>C:</strong> Fat and fibrosis replace muscle, causing calf pseudohypertrophy.</p></div></details>
 </figure><figure class="card lab-figure" id="figure-06"><figcaption>Figure 06 <small>· Source page 7</small></figcaption>
  <div class="lab-visual"><div class="lab-media" data-figure="06" style="--lab-image-limit:233px"><img src="assets/pathology-lab-1/figure-06.jpeg" width="499" height="684" loading="lazy" alt="Original pathology specimen, Figure 06"><div class="lab-image-notes" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><polygon points="0,58 25,57 48,62 62,68 75,75 78,100 62,100 62,85 50,78 40,72 20,72 0,70"/></svg><span class="lab-label" style="left:40%;top:66%">Endomysial infiltrate: CD8+ T cells</span><span class="lab-label lab-label-right" style="left:84%;top:26%">Necrotic fibre (arrow)</span></div><button class="lab-enlarge" type="button" aria-label="Enlarge Figure 06"></button></div><div class="lab-caption"><a href="assets/pathology-lab-1/figure-06.jpeg" target="_blank" rel="noopener">Open original</a></div></div>
@@ -162,11 +170,13 @@ const make=(tag,text,cls)=>{const el=document.createElement(tag);if(text)el.text
 const close=document.getElementById('lab-preview-close'),zoom=document.getElementById('lab-preview-zoom');
 const imageNotes=document.getElementById('lab-ink'),selfTest=document.getElementById('lab-self-test');
 const figureNotes=[...document.querySelectorAll('.lab-figure details')];
-let moved=null,origin=null,trigger=null,answered=0,correct=0;
+let moved=null,movedKey=null,origin=null,trigger=null,answered=0,correct=0;
 function update(){score.textContent='Answered '+answered+' of '+Q.length+' · Score '+correct;}
 function preview(id,button,inQuiz=false){
  const media=document.querySelector('[data-figure="'+id+'"]');if(!media||moved)return;
  origin=media.parentNode;trigger=button;moved=media;
+ movedKey=inQuiz?null:origin.querySelector('.lab-image-key');
+ if(movedKey)holder.after(movedKey);
  dialog.classList.toggle('lab-quiz-preview',inQuiz);
  close.textContent=inQuiz?'Back to question':'Close figure';
  holder.append(media);document.getElementById('lab-preview-title').textContent='Figure '+id;dialog.showModal();
@@ -186,8 +196,12 @@ zoom.onclick=()=>{
 };
 dialog.addEventListener('close',()=>{
  fitImage();
- if(moved)origin.insertBefore(moved,origin.querySelector('.lab-caption'));
- moved=null;trigger?.focus();
+ if(moved){
+  const caption=origin.querySelector('.lab-caption');
+  origin.insertBefore(moved,caption);
+  if(movedKey)origin.insertBefore(movedKey,caption);
+ }
+ moved=movedKey=null;trigger?.focus({preventScroll:true});
 });
 close.onclick=()=>dialog.close();
 document.querySelectorAll('.lab-enlarge').forEach(button=>{
