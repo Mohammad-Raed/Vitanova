@@ -7,91 +7,220 @@
 <style>
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 system-ui,sans-serif}
-header,nav,main{padding-inline:16px}header{padding-block:18px}
-header h1{font-family:Georgia,serif;margin:.2em 0}header p{margin:0}
-nav{display:flex;gap:8px;white-space:nowrap;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--ln);padding-block:8px}
-nav a,a,summary{color:var(--pu)}
-main{max-width:980px;margin:auto;padding-bottom:3rem}
-h2{font:600 clamp(22px,4vw,30px)/1.25 Georgia,serif;color:var(--pu);margin:1em 0 .45em}
-h3{font-size:1.05rem;margin:.7em 0 .2em}
-section{scroll-margin-top:8px}
-.card,.q{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:12px 15px;margin:0 0 12px}
+body{margin:0;background:var(--bg,#f3f6fb);color:var(--tx,#16233b);font:16px/1.6 system-ui,sans-serif}
+body>header{padding:18px 16px}
+body>header small,.k{font-size:.73rem;letter-spacing:.1em;font-weight:750;text-transform:uppercase}
+body>header h1{font-family:Georgia,serif;margin:.2em 0}
+body>header p{margin:0}
+body>nav{position:sticky;top:0;z-index:5;display:flex;gap:4px;white-space:nowrap;overflow-x:auto;background:var(--card,#fff);border-bottom:1px solid var(--ln);padding:5px 12px}
+body>nav a{padding:6px 9px;color:var(--pu);text-decoration:none}
+main{max-width:1112px;margin:auto;padding:0 16px 3rem}
+main section{margin:clamp(22px,3.5vw,34px) 0}
+.k{color:var(--mu)}
+h2{font:600 clamp(23px,4vw,32px)/1.2 Georgia,serif;color:var(--pu);margin:3px 0 10px}
+h3{font-size:1.05rem;line-height:1.35;margin:0 0 .4em}
+a,summary{color:var(--pu)}
+.card,.q{background:var(--card,#fff);border:1px solid var(--ln);border-radius:14px;padding:14px 16px;margin:0 0 12px}
 .card p,.card ul{margin:.35em 0}
 .card ul{padding-inline-start:1.2em}
 .vn-lecture-page main .card :is(p,li){line-height:1.52}
-.card li+li{margin-top:.3em}
-.tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;min-width:540px;text-align:start}
-th,td{padding:.5em .65em;border-bottom:1px solid var(--ln);vertical-align:top;text-align:start}
-th{background:var(--soft)}
-.micro-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:12px;margin-top:10px}
-figure{margin:0}figure img{display:block;width:100%;height:150px;object-fit:contain;border-radius:7px;background:var(--bg)}
-figcaption{font-size:.87rem;margin-top:.3em}
+.card li+li{margin-top:.35em}
+.g{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:12px}
+.g .card{margin:0}
+.note{border-inline-start:3px solid var(--te);background:var(--soft);border-radius:8px;padding:9px 12px;margin:0 0 12px}
+.micro-gloss{color:var(--mu);font-size:.9rem;margin:.55em 0 0}
+.tbl{overflow-x:auto;padding:0}
+table{border-collapse:collapse;width:100%;min-width:440px;font-size:.94rem}
+th,td{padding:.53em .75em;border-bottom:1px solid var(--ln);vertical-align:top;text-align:start}
+.vn-lecture-page main .tbl tbody th{background:transparent;color:var(--tx)}
+thead th{background:var(--soft)}
+tbody tr:last-child>*{border-bottom:0}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 34%,var(--card))}
+.micro-figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));gap:10px;margin:0 0 12px}
+.micro-figures figure{margin:0;background:var(--card);border:1px solid var(--ln);border-radius:12px;overflow:hidden}
+.micro-figures a{display:block;background:var(--soft);cursor:zoom-in}
+.micro-figures img{display:block;width:100%;height:clamp(120px,15vw,176px);object-fit:contain}
+.micro-figures a:focus-visible{outline-offset:-3px}
+.micro-figures figure:target{outline:2px solid var(--te);outline-offset:2px}
+figcaption{font-size:.86rem;line-height:1.4;padding:8px 10px}
 summary{cursor:pointer;font-weight:700}
-button,select{font:inherit;background:var(--card);color:var(--pu);border:1px solid var(--ln);border-radius:8px;padding:.35em .65em}
+button,select{font:inherit;background:var(--card);color:var(--pu);border:1px solid var(--ln);border-radius:8px;padding:.4em .65em}
 button{cursor:pointer}
-.q .o{display:block;width:100%;text-align:start;color:var(--tx);background:var(--bg);margin:.35em 0}
+.q>p{margin:0 0 8px;font-weight:650}
+.q .o{display:block;width:100%;text-align:start;color:var(--tx);background:var(--bg);margin:.35em 0;padding:8px 12px}
+.q .o:not(:disabled):hover,.micro-tools button:hover{border-color:var(--pu);background:var(--soft)}
 .q .o.ok{border-color:var(--vn-correct,#197854)}.q .o.no{border-color:var(--vn-wrong,#aa304b)}
 .q .o:disabled{cursor:default}
 .ex{background:var(--soft);padding:8px 10px;border-radius:8px;margin:.45em 0}
 .micro-tools{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
 .micro-tools progress{accent-color:var(--pu);max-width:100%}
-button[aria-pressed="true"]{background:var(--soft)}
-footer{color:var(--mu);font-size:.85rem;margin:1.5em 0}
+.micro-tools button[aria-pressed="true"]{background:var(--soft);border-color:var(--pu)}
+footer{color:var(--mu);font-size:.87rem;margin:1.5em 0}
+footer summary{margin-bottom:.3em}
+.micro-image-dialog{width:min(820px,calc(100% - 24px));max-height:calc(100dvh - 24px);padding:14px;border:1px solid var(--ln);border-radius:14px;background:var(--card);color:var(--tx);box-shadow:0 18px 60px #0005}
+.micro-image-dialog::backdrop{background:#080d16b8}
+.micro-image-dialog .micro-dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.micro-image-dialog img{display:block;width:100%;max-height:68dvh;object-fit:contain;background:var(--soft);border-radius:8px}
+.micro-image-dialog p{margin:.55em 0 0;font-size:.92rem}
+@media(max-width:580px){
+ main{padding-inline:12px}
+ .g{grid-template-columns:minmax(0,1fr)}
+ .micro-figures{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .micro-figures img{height:112px}
+ .micro-figures figcaption{padding:7px 8px}
+}
 </style>
 <link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head>
 <body>
-<header><small>MSS FINAL · MICROBIOLOGY · LECTURE 2</small><h1>Parasitic Infections of the Skin</h1><p>High-yield review and practice questions</p></header>
-<nav aria-label="Lecture topics"><a href="#rapid">Quick comparison</a><a href="#leish">Leishmania</a><a href="#worms">Helminths</a><a href="#arthropods">Arthropods</a><a href="#visual">Image clues</a><a href="#quiz">Quiz</a></nav>
+<header><small>MSS FINAL REVISION</small><h1>Parasitic Infections of the Skin</h1><p>Microbiology Lecture 2</p></header>
+<nav aria-label="Lecture topics"><a href="#rapid">Quick comparison</a><a href="#leish">Leishmania</a><a href="#filariae">Filariae</a><a href="#worms">Other worms</a><a href="#arthropods">Arthropods</a><a href="#visual">Exam traps</a><a href="#quiz">MCQs</a></nav>
 <main>
-<section id="rapid"><h2>Quick comparison</h2>
-<div class="card tbl"><table><thead><tr><th>Organism</th><th>Exposure or vector</th><th>Key clue or specimen</th></tr></thead><tbody>
-<tr><th scope="row"><i>Leishmania</i></th><td>Female sandfly</td><td>Chronic ulcer; amastigotes inside macrophages at the active edge.</td></tr>
-<tr><th scope="row"><i>Loa loa</i></th><td><i>Chrysops</i> deerfly</td><td>Calabar swellings or eye worm; sheathed microfilariae in daytime blood.</td></tr>
+<section id="rapid"><div class="k">Start here</div><h2>Quick comparison</h2>
+<div class="card tbl"><table><thead><tr><th scope="col">Organism</th><th scope="col">Exposure</th><th scope="col">Key clue or specimen</th></tr></thead><tbody>
+<tr><th scope="row"><i>Leishmania</i></th><td>Female sandfly</td><td>Chronic ulcer; amastigotes in macrophages at the active edge.</td></tr>
+<tr><th scope="row"><i>Loa loa</i></th><td><i>Chrysops</i> deerfly</td><td>Eye worm or Calabar swellings; sheathed microfilariae in daytime blood.</td></tr>
 <tr><th scope="row"><i>Onchocerca volvulus</i></th><td><i>Simulium</i> blackfly</td><td>Itch, nodules or visual loss; unsheathed microfilariae in a skin snip.</td></tr>
-<tr><th scope="row">Guinea worm</th><td>Drinking water with infected copepods</td><td>Painful blister on a limb; adult female emerges.</td></tr>
+<tr><th scope="row">Guinea worm</th><td>Drinking water with infected copepods</td><td>Painful limb blister with an emerging adult female.</td></tr>
 <tr><th scope="row"><i>Trichinella spiralis</i></th><td>Undercooked pork or wild game</td><td>Gut symptoms, then fever, muscle pain and swelling around the eyes.</td></tr>
-<tr><th scope="row">Cutaneous larva migrans</th><td>Sand or soil contaminated by animal hookworms</td><td>Intensely itchy, raised, winding track, often on the foot.</td></tr>
-<tr><th scope="row">Scabies</th><td>Prolonged skin contact</td><td>Nocturnal itch; thin burrows in finger webs or on wrists.</td></tr>
-<tr><th scope="row">Lice</th><td>Close contact; body lice live in clothing</td><td>Lice or eggs (nits); body lice are the classic bacterial vectors.</td></tr>
+<tr><th scope="row">Cutaneous larva migrans</th><td>Sand or soil contaminated by animal hookworms</td><td>Itchy, raised, winding track, often on the foot.</td></tr>
+<tr><th scope="row">Scabies</th><td>Prolonged skin contact</td><td>Nocturnal itch; short burrows in finger webs or on wrists.</td></tr>
+<tr><th scope="row">Lice</th><td>Close contact; body lice live in clothing</td><td>Live lice or attached eggs (nits); body lice spread bacterial diseases.</td></tr>
 <tr><th scope="row">Myiasis</th><td>Fly larvae, often after tropical exposure</td><td>Boil-like lesion with a central breathing opening.</td></tr>
-</tbody></table></div></section>
+</tbody></table></div>
+<p class="micro-gloss"><b>Host terms:</b> A definitive host harbours the adult or sexually reproducing stage; an intermediate host supports a developmental stage. A vector transmits the parasite and can also be an intermediate host.</p></section>
 
-<section id="leish"><h2>Leishmania</h2><div class="card"><ul>
-<li><b>Stages:</b> The female sandfly injects flagellated <b>promastigotes</b>. In human macrophages they become intracellular <b>amastigotes</b>, the diagnostic tissue form. The fly ingests infected cells and the parasite returns to the promastigote stage.</li>
-<li><b>Cutaneous:</b> Ulcer on exposed skin. Common examples: <i>L. major</i>, <i>L. tropica</i>, <i>L. aethiopica</i>, the <i>L. mexicana</i> complex and <i>L. peruviana</i>. Some lesions heal with scars.</li>
-<li><b>Mucosal:</b> Destructive nasal or oral disease, classically <i>L. braziliensis</i>. <b>Visceral (kala-azar):</b> Fever, enlarged liver and spleen, pancytopenia and sometimes hyperpigmentation; think <i>L. donovani</i> or <i>L. infantum</i> (also called <i>L. chagasi</i> in the Americas).</li>
-<li><b>Exam treatment examples:</b> Antimonials such as sodium stibogluconate, or amphotericin B. The choice depends on disease form, species and region. Prevention focuses on avoiding sandfly bites.</li>
-</ul></div></section>
+<section id="leish"><div class="k">Protozoa</div><h2>Leishmania</h2>
+<div class="note"><b>Remember the two forms:</b> Promastigote = flagellated form passed to humans by the sandfly. Amastigote = intracellular form found in human tissue.</div>
+<div class="g">
+<div class="card"><h3>Life cycle and diagnosis</h3><ul>
+<li>The female sandfly injects <b>promastigotes</b>. Macrophages engulf them; they become <b>amastigotes</b>, multiply and spread to other phagocytic cells.</li>
+<li>The fly ingests infected cells. In its gut the parasite returns to the promastigote stage, multiplies and migrates to the mouthparts.</li>
+<li><b>Cutaneous diagnosis:</b> Sample the active edge of the lesion. Look for small amastigotes with a nucleus and a kinetoplast, a small body containing mitochondrial genetic material.</li>
+</ul></div>
+<div class="card"><h3>Three clinical forms</h3><ul>
+<li><b>Cutaneous:</b> Papule or nodule on exposed skin can become an ulcer with a raised edge. Some lesions heal with a scar.</li>
+<li><b>Mucosal:</b> Destructive nose or mouth lesions, classically associated with <i>Leishmania braziliensis</i>; nasal septum damage is a key clue.</li>
+<li><b>Visceral (kala-azar):</b> Fever, enlarged liver and spleen, low counts across blood cell lines (pancytopenia), and sometimes hyperpigmentation.</li>
+</ul></div></div>
+<div class="micro-figures">
+<figure id="image-am"><a href="assets/microbiology-final-2/am.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Amastigotes "><img src="assets/microbiology-final-2/am.jpeg" width="583" height="460" alt="Small stained parasites clustered around a ruptured macrophage" loading="lazy" decoding="async"></a><figcaption><b>Amastigotes.</b> Look for small intracellular forms or clusters released from a ruptured macrophage.</figcaption></figure>
+<figure id="image-cut"><a href="assets/microbiology-final-2/cut.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Cutaneous leishmaniasis "><img src="assets/microbiology-final-2/cut.jpeg" width="643" height="720" alt="Round lesion on the cheek with a raised border" loading="lazy" decoding="async"></a><figcaption><b>Cutaneous leishmaniasis.</b> An exposed site and raised ulcer edge are useful clues.</figcaption></figure>
+<figure id="image-lc_leish"><a href="assets/microbiology-final-2/lc_leish.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Life cycle "><img src="assets/microbiology-final-2/lc_leish.jpeg" width="581" height="435" alt="Diagram showing the human and sandfly stages of Leishmania" loading="lazy" decoding="async"></a><figcaption><b>Life cycle.</b> Trace the switch between promastigotes in the fly and amastigotes in human cells.</figcaption></figure>
+</div>
+<details class="card"><summary>Species associations, treatment and prevention</summary><ul>
+<li><b>Old World cutaneous:</b> <i>L. major</i>, <i>L. tropica</i> (Oriental sore) and <i>L. aethiopica</i>; the latter can also cause diffuse cutaneous disease. Here <i>L.</i> means <i>Leishmania</i>.</li>
+<li><b>New World:</b> The <i>L. mexicana</i> complex (Chiclero’s ulcer) and <i>L. peruviana</i> (uta) are classically cutaneous. The <i>L. braziliensis</i> complex is classically linked to mucosal disease.</li>
+<li><b>Visceral:</b> Think <i>L. donovani</i> and <i>L. infantum</i>, including the New World name <i>L. chagasi</i>.</li>
+<li><b>Treatment examples:</b> Sodium stibogluconate (an antimonial) and amphotericin B. Choice depends on the form, species and region. Treated nets, protective clothing and repellent help prevent bites.</li>
+</ul></details></section>
 
-<section id="worms"><h2>Helminths</h2><div class="card"><ul>
-<li><b>Filariae:</b> Both flies transmit third-stage larvae (L3); adult worms produce microfilariae. <b>Loa:</b> Migrating adults cause Calabar swellings and may cross the conjunctiva. The lecture associates it with diethylcarbamazine (DEC). <b>Onchocerca:</b> Adults live in subcutaneous nodules; inflammation around dying microfilariae damages skin and eyes. Ivermectin targets microfilariae. Heavy <i>Loa loa</i> coinfection changes treatment safety.</li>
-<li><b>Guinea worm (<i>Dracunculus medinensis</i>):</b> Swallow L3 in copepods (intermediate hosts). Larvae penetrate the gut, mature in deeper tissues and the female reaches the skin after about a year. Water contact triggers release of first-stage larvae. Diagnosis is usually clinical; gradual extraction is the classic management.</li>
-<li><b>Trichinellosis:</b> Ingest encysted larvae in meat. Adults mature in the small intestine; females release live larvae that migrate to striated muscle. Early diarrhoea gives way to fever, myalgia and periorbital swelling; eosinophilia supports the diagnosis. Serology or muscle biopsy can confirm it.</li>
-<li><b>Cutaneous larva migrans (CLM):</b> Filariform larvae of dog or cat hookworms (e.g. <i>Ancylostoma braziliense</i>) penetrate the skin but usually stay superficial in humans. Dogs and cats harbour adults and pass eggs; human diagnosis is usually clinical.</li>
-</ul></div></section>
+<section id="filariae"><div class="k">Vector-borne helminths</div><h2>Loiasis and onchocerciasis</h2>
+<p class="note"><b>Shared cycle:</b> An infected fly deposits third-stage larvae (L3), which enter the bite wound. Adults in humans release microfilariae. The fly picks up microfilariae during feeding; they mature to L3 in the fly.</p>
+<div class="g">
+<div class="card"><h3><i>Loa loa</i> · African eye worm</h3><ul>
+<li><b>Exposure:</b> Day-biting <i>Chrysops</i> deerflies in West and Central Africa.</li>
+<li><b>Adults:</b> Migrate through subcutaneous tissue and can cross under the conjunctiva. Calabar swellings are transient, localised areas of swelling associated with worm migration.</li>
+<li><b>Diagnosis:</b> Look for <b>sheathed microfilariae in daytime blood</b>. Seeing the adult eye worm is also diagnostic.</li>
+<li><b>Drug association:</b> Diethylcarbamazine (DEC); parasite load matters for safe treatment.</li>
+</ul></div>
+<div class="card"><h3><i>Onchocerca volvulus</i> · River blindness</h3><ul>
+<li><b>Exposure:</b> <i>Simulium</i> blackflies breed near fast-flowing water; most cases occur in sub-Saharan Africa.</li>
+<li><b>Adults:</b> Live in firm subcutaneous nodules called onchocercomas. Inflammation around dying microfilariae causes itching, skin changes and eye damage.</li>
+<li><b>Diagnosis:</b> Look for <b>unsheathed microfilariae in a skin snip</b>, a small superficial skin sample.</li>
+<li><b>Drug association:</b> Ivermectin targets microfilariae; heavy <i>Loa loa</i> coinfection raises the risk of serious reactions.</li>
+</ul></div></div>
+<div class="micro-figures">
+<figure id="image-eye1"><a href="assets/microbiology-final-2/eye1.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Loiasis "><img src="assets/microbiology-final-2/eye1.jpeg" width="680" height="383" alt="A pale curved worm visible across the eye" loading="lazy" decoding="async"></a><figcaption><b>Loiasis.</b> A migrating adult can be visible under the conjunctiva.</figcaption></figure>
+<figure id="image-nod"><a href="assets/microbiology-final-2/nod.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Onchocerciasis "><img src="assets/microbiology-final-2/nod.jpeg" width="570" height="720" alt="Limb with several visible subcutaneous nodules" loading="lazy" decoding="async"></a><figcaption><b>Onchocerciasis.</b> Adult worms may be enclosed in subcutaneous nodules.</figcaption></figure>
+</div>
+</section>
 
-<section id="arthropods"><h2>Mites, lice and fly larvae</h2><div class="card"><ul>
-<li><b>Scabies:</b> <i>Sarcoptes scabiei</i> burrows in the superficial epidermis. Look for short burrows, itchy papules and household spread. Permethrin is a common treatment; manage close contacts at the same time.</li>
-<li><b>Lice:</b> Head and body lice are <i>Pediculus humanus</i>; pubic lice are <i>Pthirus pubis</i>. Look for live lice or attached nits. Body lice transmit epidemic typhus, trench fever and louse-borne relapsing fever. Check close contacts; treat active head-lice infestation and use fine-tooth combing as directed.</li>
-<li><b>Furuncular myiasis:</b> <i>Dermatobia hominis</i> (Americas) puts eggs on another insect; <i>Cordylobia anthropophaga</i> (Africa) lays eggs on soil or contaminated fabric. The central punctum helps distinguish it from an ordinary boil. Management centres on removal of the larva.</li>
-</ul></div></section>
+<section id="worms"><div class="k">Water, food and soil</div><h2>Other helminths</h2>
+<div class="card"><h3>Guinea worm · <i>Dracunculus medinensis</i></h3><ul>
+<li><b>Infection:</b> Drink water containing copepods such as <i>Cyclops</i> carrying L3. The copepod is the intermediate host; humans harbour adult worms.</li>
+<li><b>Cycle:</b> Larvae cross the gut wall and mature in deeper tissues. About a year later, a gravid female reaches the skin, usually on a lower limb. Water contact triggers release of first-stage larvae, which are swallowed by copepods.</li>
+<li><b>Exam clue:</b> A painful blister followed by emergence of a long white worm. Diagnosis is clinical; gradual mechanical extraction is the classic management.</li>
+</ul></div>
+<div class="card"><h3>Trichinellosis · <i>Trichinella spiralis</i></h3><ul>
+<li><b>Cycle:</b> Encysted larvae in undercooked meat are released by digestion. Adults mature in the small intestine; females release live larvae that migrate to striated muscle and encyst.</li>
+<li><b>Two phases:</b> Nausea, abdominal pain or diarrhoea first; then fever, myalgia (muscle pain), weakness and periorbital oedema (swelling around the eyes).</li>
+<li><b>Diagnosis:</b> Eosinophilia supports it. Antibody testing or muscle biopsy can confirm it; an encysted larva is the infective stage in meat and can be seen in muscle biopsy.</li>
+</ul></div>
+<div class="card"><h3>Cutaneous larva migrans (CLM) · Animal hookworms</h3><ul>
+<li><b>Cycle:</b> Adult <i>Ancylostoma braziliense</i> or <i>Ancylostoma caninum</i> live in cats or dogs. Eggs pass in faeces and hatch into rhabditiform larvae, which mature into infective filariform larvae in soil or sand.</li>
+<li><b>Human clue:</b> Larvae penetrate exposed skin but typically stay superficial. A raised, intensely itchy, winding track on the foot, buttock or hand is usually diagnosed clinically. Eggs in animal faeces are part of the animal cycle.</li>
+</ul></div>
+<div class="micro-figures">
+<figure id="image-gw"><a href="assets/microbiology-final-2/gw.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Guinea worm "><img src="assets/microbiology-final-2/gw.jpeg" width="720" height="718" alt="A thin white worm emerging from a lesion on a limb" loading="lazy" decoding="async"></a><figcaption><b>Guinea worm.</b> The adult female emerges through the skin.</figcaption></figure>
+<figure id="image-th1"><a href="assets/microbiology-final-2/th1.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Trichinellosis "><img src="assets/microbiology-final-2/th1.jpeg" width="720" height="349" alt="Coiled larva within a cyst in pink skeletal muscle" loading="lazy" decoding="async"></a><figcaption><b>Trichinellosis.</b> Look for a coiled larva encysted in striated muscle.</figcaption></figure>
+<figure id="image-clm"><a href="assets/microbiology-final-2/clm.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Larva migrans "><img src="assets/microbiology-final-2/clm.jpeg" width="720" height="479" alt="Winding raised track on the top of a foot" loading="lazy" decoding="async"></a><figcaption><b>Larva migrans.</b> The superficial track is longer and more serpiginous than a typical scabies burrow.</figcaption></figure>
+</div>
+</section>
 
-<section id="visual"><h2>Four image clues</h2><details class="card"><summary>Show the four comparison images</summary><div class="micro-figures">
-<figure><a href="assets/microbiology-final-2/am.jpeg"><img src="assets/microbiology-final-2/am.jpeg" alt="Leishmania amastigotes in a ruptured macrophage" loading="lazy"></a><figcaption><b>Leishmania:</b> Tiny amastigotes clustered in and around the macrophage.</figcaption></figure>
-<figure><a href="assets/microbiology-final-2/clm.jpeg"><img src="assets/microbiology-final-2/clm.jpeg" alt="Winding cutaneous larva migrans track on a foot" loading="lazy"></a><figcaption><b>Larva migrans:</b> A long, raised, winding track.</figcaption></figure>
-<figure><a href="assets/microbiology-final-2/burrow.jpeg"><img src="assets/microbiology-final-2/burrow.jpeg" alt="Short scabies burrows indicated by arrows" loading="lazy"></a><figcaption><b>Scabies:</b> Short, fine burrows rather than a long track.</figcaption></figure>
-<figure><a href="assets/microbiology-final-2/myi.jpeg"><img src="assets/microbiology-final-2/myi.jpeg" alt="Furuncular myiasis with a central punctum and larva removal" loading="lazy"></a><figcaption><b>Myiasis:</b> A central breathing punctum and emerging larva.</figcaption></figure>
-</div></details></section>
+<section id="arthropods"><div class="k">Mites and insects</div><h2>Scabies, lice and myiasis</h2>
+<div class="card"><h3>Scabies · <i>Sarcoptes scabiei</i></h3><ul>
+<li>The female mite burrows into the outer epidermis. <b>Night-time itch, short burrows and itchy papules</b> in finger webs or at the wrists are classic. Scratching can lead to bacterial infection.</li>
+<li>When confirmation is needed, a skin scraping can show mites, eggs or faecal pellets. Permethrin is a common treatment; household and close contacts should be managed at the same time.</li>
+</ul></div>
+<div class="card"><h3>Lice · Three types</h3><ul>
+<li><b>Head:</b> <i>Pediculus humanus capitis</i>; look for live lice on the scalp and nits attached to hairs. Combing helps find and remove lice and eggs.</li>
+<li><b>Body:</b> <i>Pediculus humanus corporis</i>; look in clothing seams. Body lice are the classic vectors of epidemic typhus, trench fever and louse-borne relapsing fever.</li>
+<li><b>Pubic:</b> <i>Pthirus pubis</i>; a broad, crab-shaped louse typically found on coarse hair.</li>
+</ul></div>
+<div class="card"><h3>Furuncular myiasis · Fly larvae</h3><ul>
+<li>A painful, boil-like lesion with a <b>central breathing punctum</b> suggests a larva under the skin.</li>
+<li><b>Human botfly:</b> <i>Dermatobia hominis</i> (Central and South America) puts eggs on another insect, such as a mosquito. <b>Tumbu fly:</b> <i>Cordylobia anthropophaga</i> (Africa) lays eggs on soil or fabric.</li>
+<li><b>Management:</b> Remove the larva; techniques depend on species and site.</li>
+</ul></div>
+<div class="micro-figures">
+<figure id="image-burrow"><a href="assets/microbiology-final-2/burrow.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Scabies burrows "><img src="assets/microbiology-final-2/burrow.jpeg" width="640" height="433" alt="Short narrow scabies burrows marked by arrows" loading="lazy" decoding="async"></a><figcaption><b>Scabies burrows.</b> Look for short, fine tracks on the skin.</figcaption></figure>
+<figure id="image-mite"><a href="assets/microbiology-final-2/mite.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Scabies mite "><img src="assets/microbiology-final-2/mite.jpeg" width="623" height="623" alt="Microscopic view of a rounded scabies mite with legs" loading="lazy" decoding="async"></a><figcaption><b>Scabies mite.</b> A scraping can reveal the mite itself.</figcaption></figure>
+<figure id="image-nits"><a href="assets/microbiology-final-2/nits.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Head lice "><img src="assets/microbiology-final-2/nits.jpeg" width="472" height="333" alt="Small pale eggs attached to strands of hair" loading="lazy" decoding="async"></a><figcaption><b>Head lice.</b> Nits cling to the hair shaft. Live lice confirm active infestation.</figcaption></figure>
+<figure id="image-myi"><a href="assets/microbiology-final-2/myi.jpeg" target="_blank" rel="noopener" aria-label="Open full-size image: Furuncular myiasis "><img src="assets/microbiology-final-2/myi.jpeg" width="720" height="266" alt="Two views showing a central punctum and removal of a larva" loading="lazy" decoding="async"></a><figcaption><b>Furuncular myiasis.</b> The central punctum is the larva’s breathing opening.</figcaption></figure>
+</div>
+</section>
 
-<section id="quiz"><h2>Practice quiz · 26 questions</h2><div class="card micro-tools">
+<section id="visual"><div class="k">Last-minute review</div><h2>Common exam traps</h2>
+<div class="g">
+<div class="card"><h3>Match the stage to the specimen</h3><ul>
+<li>Sandfly inoculates <b>promastigotes</b>; the ulcer edge yields <b>amastigotes</b>.</li>
+<li><i>Loa loa</i>: daytime blood. <i>Onchocerca</i>: skin snip. Both flies transmit L3.</li>
+</ul></div>
+<div class="card"><h3>Read the skin pattern</h3><ul>
+<li><a href="#image-clm">Long winding track</a> → larva migrans; <a href="#image-burrow">short burrows</a> with night itch → scabies.</li>
+<li><a href="#image-myi">Boil with a breathing pore</a> → myiasis; <a href="#image-gw">blister with an emerging long worm</a> → Guinea worm.</li>
+</ul></div></div></section>
+<section id="quiz"><div class="k">Self-test</div><h2>Practice questions</h2><p>Select an option to record your answer, or use <b>Show answer</b> to read the explanation without scoring.</p><div class="card micro-tools">
 <strong id="sc" aria-live="polite"></strong><progress id="micro-progress" max="26" value="0" aria-label="Questions answered"></progress>
 <label for="micro-filter">Show</label><select id="micro-filter"><option value="all">All questions</option><option value="unanswered">Unanswered</option><option value="incorrect">Incorrect</option><option value="flagged">Flagged</option></select>
 <button class="r" id="micro-reset" type="button">Reset quiz</button></div>
 <p id="micro-empty" hidden>No questions match this filter.</p><div id="questions"></div></section>
-<footer>Adapted from the supplied MSS Final Microbiology Lecture 2 revision. References: <a href="https://www.cdc.gov/dpdx/leishmaniasis/">CDC parasite stages</a>, <a href="https://www.cdc.gov/leishmaniasis/hcp/clinical-care/index.html">leishmaniasis treatment</a>, <a href="https://www.cdc.gov/filarial-worms/hcp/clinical-care/loiasis.html">loiasis</a>, <a href="https://www.cdc.gov/filarial-worms/hcp/clinical-care/onchocerciasis.html">onchocerciasis</a>, <a href="https://www.cdc.gov/yellow-book/hcp/post-travel-evaluation/post-travel-dermatologic-conditions.html">skin presentations</a> and <a href="https://www.cdc.gov/scabies/hcp/clinical-care/">scabies</a>.</footer>
+<footer><details><summary>Sources and image credits</summary>
+<p>Based on the supplied MSS Final Microbiology Lecture 2 revision. Images are from the supplied material; the life-cycle diagram is credited to the Centers for Disease Control and Prevention (CDC).</p>
+<p>CDC references: <a href="https://www.cdc.gov/dpdx/leishmaniasis/">Leishmaniasis</a> · <a href="https://www.cdc.gov/dpdx/loiasis/">Loiasis</a> · <a href="https://www.cdc.gov/dpdx/onchocerciasis/">Onchocerciasis</a> · <a href="https://www.cdc.gov/dpdx/dracunculiasis/">Dracunculiasis</a> · <a href="https://www.cdc.gov/dpdx/trichinellosis/">Trichinellosis</a> · <a href="https://www.cdc.gov/dpdx/zoonotichookworm/">Zoonotic hookworm</a> · <a href="https://www.cdc.gov/dpdx/scabies/">Scabies</a> · <a href="https://www.cdc.gov/lice/">Lice</a> · <a href="https://www.cdc.gov/dpdx/myiasis/">Myiasis</a>.</p>
+</details></footer>
 </main>
+<dialog class="micro-image-dialog" aria-labelledby="micro-image-title" aria-describedby="micro-image-caption">
+<div class="micro-dialog-bar"><strong id="micro-image-title">Study image</strong><form method="dialog"><button type="submit" autofocus>Close</button></form></div>
+<img alt=""><p id="micro-image-caption"></p>
+</dialog>
+<script>
+(() => {
+ const viewer=document.querySelector('.micro-image-dialog');
+ if(typeof viewer.showModal!=='function')return;
+ const image=viewer.querySelector('img'),title=document.getElementById('micro-image-title'),caption=document.getElementById('micro-image-caption');
+ document.querySelectorAll('.micro-figures a').forEach(link=>link.addEventListener('click',event=>{
+  if(event.defaultPrevented||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+  event.preventDefault();
+  const figure=link.closest('figure'),label=figure.querySelector('figcaption b'),text=figure.querySelector('figcaption');
+  title.textContent=label.textContent.replace(/\.$/,'');
+  caption.textContent=text.textContent.slice(label.textContent.length).trim();
+  image.alt=link.querySelector('img').alt;
+  image.src=link.href;
+  viewer.showModal();
+ }));
+})();
+</script>
 <script>const Q = [["Biopsy from the margin of a chronic skin ulcer shows intracellular parasites inside macrophages. Which form of Leishmania is this?", ["Promastigote", "Amastigote", "Microfilaria", "Filariform larva", "Trophozoite"], 1, "Amastigotes are the non-flagellated intracellular, diagnostic stage. Promastigotes live in the sandfly gut."], ["Fever, hepatosplenomegaly, pancytopenia and hyperpigmentation point to which form of leishmaniasis?", ["Cutaneous leishmaniasis", "Mucocutaneous leishmaniasis", "Onchocerciasis", "Loiasis", "Visceral leishmaniasis (kala-azar)"], 4, "Visceral disease involves the mononuclear phagocyte system; kala-azar means black sickness. It is associated with L. donovani and L. infantum."], ["Which species–disease pairing is correct?", ["L. donovani – cutaneous", "L. major – visceral", "L. braziliensis – mucocutaneous (espundia)", "L. mexicana – mucocutaneous", "L. tropica – visceral"], 2, "L. braziliensis complex causes mucocutaneous disease; tropica / major / mexicana are cutaneous; donovani is visceral."], ["A sandfly bites a person. Which statement about stages is correct?", ["Amastigotes are injected and become promastigotes in macrophages", "Promastigotes are injected and are the diagnostic stage in biopsies", "Promastigotes are injected, become amastigotes in macrophages, and amastigotes are seen on biopsy", "Amastigotes are injected, remain in the gut, and cause the lesion"], 2, "Promastigote (infective) → amastigote (diagnostic) inside mononuclear phagocytes."], ["Which is an appropriate treatment option for leishmaniasis according to the lecture?", ["Ivermectin", "Diethylcarbamazine", "Permethrin lotion", "Sodium stibogluconate or amphotericin B", "Surgical removal"], 3, "Sodium stibogluconate (a pentavalent antimonial) and amphotericin B are lecture examples. The choice depends on the form, species and region."], ["A man returning from the Amazon basin has progressive nasal septum destruction years after a skin ulcer. Which organism is most likely?", ["L. major", "L. braziliensis complex", "L. donovani", "L. tropica", "L. peruviana"], 1, "Mucocutaneous leishmaniasis (espundia) from the New World L. braziliensis complex destroys nasal/oral mucosa."], ["A patient from West Africa has transient swellings and a worm crossing the eye; microfilariae are sought in blood. When are they most likely detected?", ["At night", "Only during fever", "Only in the early morning", "During the day"], 3, "Loa loa microfilariae show diurnal periodicity ; the vector Chrysops also bites in the day."], ["Which insect transmits the parasite causing Calabar swellings?", ["Simulium (blackfly)", "Phlebotomus (sandfly)", "Chrysops (deerfly)", "Dermatobia (botfly)", "Cyclops (copepod)"], 2, "Loa loa is transmitted by Chrysops . Simulium transmits Onchocerca ; Phlebotomus transmits Leishmania ."], ["What causes Calabar swellings?", ["Allergic reaction to substances released by migrating adult worms", "Death of microfilariae in the eye", "Encysted larvae in muscle", "Lymphatic obstruction by adult worms", "Secondary bacterial infection of a burrow"], 0, "On the slide: an allergic reaction to substances released by adult worms as they travel through the body."], ["Severe itching, thickened skin and progressive visual loss; skin snip shows microfilariae. Which parasite?", ["Onchocerca volvulus", "Loa loa", "Dracunculus medinensis", "Trichinella spiralis"], 0, "Skin snip + skin/eye disease = Onchocerca volvulus (river blindness)."], ["According to the lecture, ivermectin in onchocerciasis…", ["kills adult worms only", "kills microfilariae but not adult worms", "destroys eggs in the intestine", "prevents transmission by killing blackflies", "dissolves the nodules"], 1, "Ivermectin is microfilaricidal; adults survive within nodules."], ["In onchocerciasis, which event mainly triggers the inflammation that causes symptoms?", ["Adult worm reproduction", "The blackfly bite itself", "Nodule formation over bone", "Egg deposition in the gut", "Death of microfilariae"], 4, "Dying microfilariae in skin and eye trigger the inflammatory response."], ["Which statement best distinguishes Loa loa from Onchocerca volvulus ?", ["Loa is diagnosed by skin snip; Onchocerca by blood film", "Loa microfilariae are in blood by day; Onchocerca microfilariae are in the skin", "Loa is treated with ivermectin only; Onchocerca with DEC", "Loa is blackfly-borne; Onchocerca is deerfly-borne"], 1, "Loa: blood (day), DEC, Chrysops . Onchocerca: skin snip, ivermectin, Simulium ."], ["A painful blister forms on the lower leg and a worm emerges when the limb is placed in water. What was the likely source?", ["Drinking water containing infected Cyclops", "Eating undercooked pork", "Skin penetration by filariform larvae", "A deerfly bite", "A sandfly bite"], 0, "Guinea worm is acquired by swallowing copepods carrying L3 larvae."], ["After ingestion of infected Cyclops , where do Dracunculus larvae go before becoming adults and mating?", ["Skeletal muscle", "Liver", "Subcutaneous tissue directly", "Retroperitoneum", "Lungs"], 3, "Larvae pierce the gut wall to reach the retroperitoneum; gravid females later migrate to subcutaneous tissue."], ["What is the appropriate management of an emerging Guinea worm?", ["Ivermectin", "Manual or surgical removal", "Diethylcarbamazine", "Amphotericin B", "Permethrin"], 1, "Diagnosis is clinical; treatment on the slide is manual or surgical removal."], ["Diarrhoea and abdominal pain after undercooked pork, then fever, myalgia and facial swelling a week later. What explains the systemic phase?", ["Adult worms burrowing in the epidermis", "Larval migration to skeletal muscle", "Microfilariae in peripheral blood", "Amastigotes multiplying in macrophages"], 1, "Most trichinosis symptoms arise from larval migration and muscle invasion."], ["Which statement about Trichinella spiralis is correct?", ["The female lays eggs in the intestinal lumen", "Larvae stay only in the small intestine", "The female is viviparous and produces many larvae", "Humans acquire it through insect bites", "Humans are infected through the skin"], 2, "The female releases live larvae that penetrate the gut wall and encyst in striated muscle."], ["Intensely itchy, raised serpiginous red tracks on the feet after walking barefoot on a beach. Which parasite?", ["Ancylostoma braziliense", "Sarcoptes scabiei", "Loa loa", "Trichinella spiralis", "Dracunculus medinensis"], 0, "This is cutaneous larva migrans from cat/dog hookworm filariform larvae."], ["Why do dog/cat hookworm larvae cause only a skin eruption in humans?", ["Humans are the definitive host", "Adults reproduce in human muscle", "Larvae penetrate skin but normally do not migrate further", "Larvae multiply inside macrophages"], 2, "Humans are accidental hosts; larvae remain in the superficial skin layer."], ["Itching, papules, vesicles and burrows in the upper epidermis after close contact with an infected person. Which organism?", ["Pediculus humanus", "Sarcoptes scabiei", "Dermatobia hominis", "Pthirus pubis", "Ancylostoma caninum"], 1, "Scabies mites burrow into the upper epidermis and spread by direct or indirect contact."], ["Which management is recommended for scabies?", ["Treat the patient only", "Surgical removal of mites", "Wet-combing alone", "Antifungal cream", "Treat household contacts as well"], 4, "Permethrin/malathion for the patient, and household contacts should be treated too."], ["Which louse is a recognized vector of bacteria?", ["Head louse ( P. h. capitis )", "Pubic louse ( Pthirus pubis )", "Body louse ( Pediculus humanus corporis )", "All three equally", "None of them"], 2, "Only body lice are vectors; head and pubic lice generally are not."], ["A child has itching and visible nits. Which approach is appropriate?", ["Oral ivermectin for all contacts", "Surgical excision of each nit", "Insecticide plus repeated wet-combing with a fine-tooth comb; check household contacts", "Antibiotics alone"], 2, "Use an appropriate lice treatment and follow product instructions; a fine-tooth comb helps remove lice and nits. Check close contacts and treat active infestations."], ["A painful red boil-like swelling with a central punctum contains a fly larva. Diagnosis?", ["Cutaneous leishmaniasis", "Scabies", "Cutaneous larva migrans", "Myiasis", "Calabar swelling"], 3, "Myiasis = infestation by fly larvae; treat by larva removal."], ["A man develops myiasis after a mosquito carrying fly eggs lands on his skin. Which genus?", ["Cordylobia", "Dermatobia", "Simulium", "Chrysops", "Phlebotomus"], 1, "Dermatobia hominis attaches eggs to other insects; Cordylobia lays eggs in contaminated soil."]];
 (()=>{
  const root=document.getElementById('questions'),score=document.getElementById('sc');
