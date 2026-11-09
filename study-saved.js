@@ -13,6 +13,11 @@
     const meta=q=>window.VitanovaQuestionCatalog?.metadata(q)||registry.find(l=>l.id===q.lectureId);
     const sourceKey=q=>window.VitanovaQuestionCatalog?.sourceKey(q)||q.lectureId;
     const labFigure=q=>{
+      const anatomyLab=/^mss-labs-anatomy-0([23])$/.exec(q.lectureId)?.[1];
+      if(anatomyLab){
+        const figure=/^Figure (0[1-9]|1\d|2[0-3]) — /.exec(q.question)?.[1];
+        return figure?`<a href="assets/anatomy-lab-${anatomyLab}/figure-${figure}.jpeg" target="_blank" rel="noopener">View source Figure ${figure} ↗</a>`:'';
+      }
       if(q.lectureId==='mss-labs-anatomy-01'){
         const figure=/^Figure (0[1-8]) — /.exec(q.question)?.[1];
         return figure?`<a href="assets/anatomy-lab-1/figure-${figure}.jpeg" target="_blank" rel="noopener">View original Figure ${figure} ↗</a>`:'';

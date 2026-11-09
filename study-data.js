@@ -363,5 +363,31 @@ window.VitanovaLectures = [
     "description": "Skull and temporomandibular joint specimens, checklist tracking, and 20 practical spotters.",
     "file": "MSS-Anatomy-Lab-1.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-labs-anatomy-02",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Anatomy",
+    "category": "mss-labs-anatomy",
+    "lectureLabel": "Lab 2",
+    "order": 2,
+    "title": "Anatomy Lab 2: Back Muscles and Vertebral Column",
+    "description": "Back muscles and vertebral column: numbered specimens, progress checklist and 24 practical spotters.",
+    "file": "MSS-Anatomy-Lab-2.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-labs-anatomy-03",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Anatomy",
+    "category": "mss-labs-anatomy",
+    "lectureLabel": "Lab 3",
+    "order": 3,
+    "title": "Anatomy Lab 3: Pectoral Region, Shoulder and Axilla",
+    "description": "Pectoral region, shoulder and axilla: numbered specimens, progress checklist and 23 practical spotters.",
+    "file": "MSS-Anatomy-Lab-3.html",
+    "icon": "📘"
   }
 ];

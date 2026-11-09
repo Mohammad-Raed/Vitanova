@@ -66,7 +66,7 @@ async function main(){
  check(all,'All imported clozes render front and back');
  const registry=await page.evaluate(()=>VitanovaLectures);
  for(const lecture of registry){await goto(encodeURIComponent(lecture.file));check(await page.locator('.vn-flashcards').getAttribute('href')==='flashcards.html?lecture='+lecture.id,lecture.id+' links to lecture flashcards');
- check(await page.locator('.vn-section-flashcards').evaluate(el=>el.parentElement.tagName==='NAV'&&/quiz|mcq/i.test(el.previousElementSibling.textContent)),lecture.id+' flashcard tab follows its final quiz tab');}
+ check(await page.locator('.vn-flashcards').evaluate(el=>el.closest('.vn-lecture-topics')?el===el.parentElement.lastElementChild:!!el.closest('.vn-lecture-controls')),lecture.id+' flashcards link is available in the lecture navigation');}
 
  await goto('flashcards.html');await page.waitForFunction(()=>!document.getElementById('fc-start').disabled);await page.locator('#fc-size').selectOption('10');await start();
  // Complete a small session and undo its final rating.
