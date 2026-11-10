@@ -14,14 +14,16 @@
 .mss-checklist-overall{font-weight:750;margin:0}.mss-checklist-filter{display:inline-flex;align-items:center;gap:.4rem;font-size:.88rem}
 .mss-checklist progress{width:100%;accent-color:var(--pu);height:10px}
 .mss-checklist-section{margin:24px 0}.mss-checklist-section h3{margin:0;color:var(--pu);font-size:1.32rem}
-.mss-checklist-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
-.mss-checklist-subject{min-width:0;overflow:hidden}.mss-checklist-subject h4{margin:0;padding:10px 12px;background:var(--soft);color:var(--tx)}
+.mss-checklist-grid{columns:2 350px;column-gap:12px}
+.mss-checklist-subject{min-width:0;overflow:hidden;break-inside:avoid;margin-bottom:12px}.mss-checklist-subject h4{margin:0;padding:10px 12px;background:var(--soft);color:var(--tx)}
 .mss-checklist-subject table{border-collapse:collapse;width:100%;font-size:.9rem}
 .mss-checklist-subject :is(th,td){padding:6px 8px;text-align:center;border-bottom:1px solid var(--ln)}
 .mss-checklist-subject :is(th,td):first-child{text-align:left;padding-inline-start:12px;width:100%;overflow-wrap:anywhere}
 .mss-checklist-subject tr:last-child td{border-bottom:0}
 .mss-checklist-resources{display:grid;gap:2px;font-size:.86rem}
 .mss-checklist-resources a{color:var(--pu);text-decoration:underline;text-underline-offset:2px}
+.mss-checklist-resources a.mss-checklist-primary{text-decoration:none}
+.mss-checklist-primary span{text-decoration:underline}
 .mss-checklist-pending{display:block;font-size:.79rem;color:var(--mu)}
 .mss-checklist input[type="checkbox"]{width:18px;height:18px;accent-color:var(--pu);cursor:pointer}
 .mss-checklist-empty{padding:12px;color:var(--mu)}
