@@ -428,5 +428,18 @@ window.VitanovaLectures = [
     "description": "Leg compartments, ankle retinacula, popliteal neurovascular anatomy, and clinical localization with 30 practice MCQs.",
     "file": "MSS-Final-Anatomy-Lectures-8-9-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-07",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lecture 7",
+    "order": 7,
+    "title": "Nerves of the Lower Limb II",
+    "description": "Sacral plexus, sciatic and plantar branches, sensory territories, and nerve injury localization with 22 MCQs.",
+    "file": "MSS-Final-Anatomy-Lecture-7-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
