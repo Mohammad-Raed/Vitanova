@@ -18,7 +18,11 @@ figure figcaption{font-weight:750;margin-bottom:.6rem}figcaption small{font-weig
 .lab-hide-image-notes .lab-image-key,.lab-self-test .lab-image-key{display:none}
 #lab-preview[open]:has(> .lab-image-key){display:flex;flex-direction:column}
 #lab-preview:has(> .lab-image-key) #lab-preview-image{min-height:0}
-.lab-hide-image-notes .lab-image-notes,.lab-self-test .lab-image-notes,#lab-preview.lab-quiz-preview .lab-image-notes{display:none}.lab-caption{text-align:center;font-size:.85rem;padding:.35rem}
+.lab-hide-image-notes .lab-image-notes,.lab-self-test .lab-image-notes{display:none}
+/* Quiz: preserve question-target outlines, but conceal diagnostic labels. */
+#lab-preview.lab-quiz-preview .lab-image-notes{display:block}
+#lab-preview.lab-quiz-preview .lab-image-notes .lab-label{display:none}
+#lab-preview.lab-quiz-preview .lab-image-notes svg{display:block}.lab-caption{text-align:center;font-size:.85rem;padding:.35rem}
 .lab-figure summary{cursor:pointer;font-weight:700}.lab-figure h3,.lab-figure p{margin:.5rem 0}
 button{font:inherit;cursor:pointer;color:var(--pu);background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:.45rem .7rem}
 .q .o{display:block;text-align:left;width:100%;margin:.4rem 0;background:var(--bg);color:var(--tx)}
