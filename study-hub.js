@@ -72,7 +72,7 @@
     cards.innerHTML=(view.cards||[]).map(([title,description,to,icon,tag])=>{
       const list=descendants(to), completed=list.filter(done).length;
       const paperSummary=['mss-past','mss-past-mid'].includes(to)&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
-      const summary=paperSummary||(isLab(to)||list.length?`${resourceCount(list.length,isLab(to))}${list.length?' · '+completed+' completed':''}`:'Resources coming soon');
+      const summary=views[to]?.checklist?'Midterm and Final views':paperSummary||(isLab(to)||list.length?`${resourceCount(list.length,isLab(to))}${list.length?' · '+completed+' completed':''}`:'Resources coming soon');
       return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${summary}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${resourceCount(list.length,isLab(to))} completed"></progress>`:''}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
     }).join('');
     $('count').textContent=current==='mss-past'?'Midterm question collection':resourceCount(descendants(current).length,isLab(current));
@@ -91,7 +91,7 @@
     $('dashboard-overview').hidden=true; $('lecture-filters').hidden=!(view.category||current==='search');
     const shortcut=$('mss-checklist-shortcut');
     if(shortcut){
-      const show=['mss','mss-mid','mss-final','mss-labs'].some(key=>current===key||current.startsWith(key+'-'))&&!view.checklist&&!current.startsWith('mss-past');
+      const show=['mss-mid','mss-final','mss-labs'].some(key=>current===key||current.startsWith(key+'-'));
       shortcut.hidden=!show;
       shortcut.href=current.startsWith('mss-mid')?'#mss-checklist-mid':'#mss-checklist';
     }

@@ -14,7 +14,7 @@
 .mss-checklist-overall{font-weight:750;margin:0}.mss-checklist-filter{display:inline-flex;align-items:center;gap:.4rem;font-size:.88rem}
 .mss-checklist progress{width:100%;accent-color:var(--pu);height:10px}
 .mss-checklist-section{margin:24px 0}.mss-checklist-section h3{margin:0;color:var(--pu);font-size:1.32rem}
-.mss-checklist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));align-items:start;gap:12px}
+.mss-checklist-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
 .mss-checklist-subject{min-width:0;overflow:hidden}.mss-checklist-subject h4{margin:0;padding:10px 12px;background:var(--soft);color:var(--tx)}
 .mss-checklist-subject table{border-collapse:collapse;width:100%;font-size:.9rem}
 .mss-checklist-subject :is(th,td){padding:6px 8px;text-align:center;border-bottom:1px solid var(--ln)}
