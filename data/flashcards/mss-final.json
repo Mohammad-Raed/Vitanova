@@ -968,6 +968,248 @@
         "immunology-mid-06"
       ],
       "search": "Cardiac outflow defects, hypocalcaemia and thymic hypoplasia suggest 22q11.2 deletion syndrome"
+    },
+    {
+      "id": "c6d6f66cfc030dec941fc0f4",
+      "note": "vn-mss-final-pathology-01-01",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Lesion terms",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "A flat lesion that differs only in colour is a macule or patch."
+    },
+    {
+      "id": "48024c4551b77cb26b46eab8",
+      "note": "vn-mss-final-pathology-01-02",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Lesion terms",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "The lecture uses 5 mm to distinguish a vesicle from a bulla."
+    },
+    {
+      "id": "ddd4a57f4dba0ad39fb7756d",
+      "note": "vn-mss-final-pathology-01-03",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Lesion terms",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "A transient raised lesion due to dermal oedema is a wheal."
+    },
+    {
+      "id": "daa59731300ec3b9fb94ecf2",
+      "note": "vn-mss-final-pathology-01-04",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Lesion terms",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Thick skin with accentuated skin markings after repeated rubbing is lichenification."
+    },
+    {
+      "id": "f57dbb076dc609bd79bd5318",
+      "note": "vn-mss-final-pathology-01-05",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Histology",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Thickening of viable epidermis is acanthosis."
+    },
+    {
+      "id": "bbc9785844e2c37d42215e2d",
+      "note": "vn-mss-final-pathology-01-06",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Histology",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Retained nuclei in the stratum corneum define parakeratosis."
+    },
+    {
+      "id": "9b4979361139aa5ae657208f",
+      "note": "vn-mss-final-pathology-01-07",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Histology",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Intercellular epidermal oedema is spongiosis."
+    },
+    {
+      "id": "94a38097393ffe54bda8cbed",
+      "note": "vn-mss-final-pathology-01-08",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Histology",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Premature keratinisation of individual viable epidermal cells is dyskeratosis."
+    },
+    {
+      "id": "f8e18ee650fbba8e0445d4e0",
+      "note": "vn-mss-final-pathology-01-09",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Eczema",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Acute eczema can form intraepidermal vesicles through severe spongiosis."
+    },
+    {
+      "id": "44fbfd1a697264ec58200ec7",
+      "note": "vn-mss-final-pathology-01-10",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Eczema",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Chronic eczema has more acanthosis and hyperkeratosis and less spongiosis."
+    },
+    {
+      "id": "09852ed6dae46a66b39c206a",
+      "note": "vn-mss-final-pathology-01-11",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Eczema",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Allergic contact dermatitis is a delayed type IV hypersensitivity reaction."
+    },
+    {
+      "id": "27420ce0252658921fad3695",
+      "note": "vn-mss-final-pathology-01-12",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Eczema",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Irritant contact dermatitis results from direct skin injury without prior sensitisation."
+    },
+    {
+      "id": "153ddbf28c6ef8ef4c5ad97c",
+      "note": "vn-mss-final-pathology-01-13",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Eczema",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "The atopic triad is eczema, asthma and allergic rhinitis."
+    },
+    {
+      "id": "d990d38ac3a9d3598558127f",
+      "note": "vn-mss-final-pathology-01-14",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Psoriasis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Pinpoint bleeding after lifting a psoriasis scale is the Auspitz sign."
+    },
+    {
+      "id": "9b7b1617ebaf9cfe0ab02544",
+      "note": "vn-mss-final-pathology-01-15",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Psoriasis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "New lesions at sites of skin trauma are the Koebner phenomenon."
+    },
+    {
+      "id": "e790c8fe07179154536ddc04",
+      "note": "vn-mss-final-pathology-01-16",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Psoriasis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Munro microabscesses contain neutrophils in the stratum corneum."
+    },
+    {
+      "id": "ff64aa9f2d2db01ef7d15e6f",
+      "note": "vn-mss-final-pathology-01-17",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Psoriasis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Pustules of Kogoj contain neutrophils in the spongiotic viable epidermis."
+    },
+    {
+      "id": "0bc609e564b9b8b1e23f4ff1",
+      "note": "vn-mss-final-pathology-01-18",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Acne",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "A blackhead is an open comedone."
+    },
+    {
+      "id": "0bd11737c991ae1c9cbe5304",
+      "note": "vn-mss-final-pathology-01-19",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Acne",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "After a follicle ruptures in acne, neutrophils arrive early and foreign-body granulomas may follow."
+    },
+    {
+      "id": "7d0a17ca2799fbcafe850a07",
+      "note": "vn-mss-final-pathology-01-20",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Panniculitis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Erythema nodosum is the classic septal panniculitis."
+    },
+    {
+      "id": "060b4bb2940b60db7ea85270",
+      "note": "vn-mss-final-pathology-01-21",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Panniculitis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "A biopsy for suspected panniculitis must include subcutaneous fat."
+    },
+    {
+      "id": "93b3ca3bde388224c0e6e79a",
+      "note": "vn-mss-final-pathology-01-22",
+      "ordinal": 1,
+      "subject": "Pathology",
+      "topic": "Panniculitis",
+      "lectures": [
+        "mss-final-pathology-01"
+      ],
+      "search": "Lupus panniculitis and pancreatic panniculitis typically show a lobular pattern."
     }
   ],
   "notes": {
@@ -1498,6 +1740,138 @@
       "extra": "",
       "supplements": [],
       "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-01": {
+      "text": "A flat lesion that differs only in colour is a {{c1::macule or patch}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-02": {
+      "text": "The lecture uses {{c1::5 mm}} to distinguish a vesicle from a bulla.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-03": {
+      "text": "A transient raised lesion due to dermal oedema is a {{c1::wheal}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-04": {
+      "text": "Thick skin with accentuated skin markings after repeated rubbing is {{c1::lichenification}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-05": {
+      "text": "Thickening of viable epidermis is {{c1::acanthosis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-06": {
+      "text": "Retained nuclei in the stratum corneum define {{c1::parakeratosis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-07": {
+      "text": "Intercellular epidermal oedema is {{c1::spongiosis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-08": {
+      "text": "Premature keratinisation of individual viable epidermal cells is {{c1::dyskeratosis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-09": {
+      "text": "Acute eczema can form intraepidermal vesicles through severe {{c1::spongiosis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-10": {
+      "text": "Chronic eczema has more {{c1::acanthosis and hyperkeratosis}} and less spongiosis.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-11": {
+      "text": "Allergic contact dermatitis is a {{c1::delayed type IV hypersensitivity}} reaction.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-12": {
+      "text": "Irritant contact dermatitis results from {{c1::direct skin injury without prior sensitisation}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-13": {
+      "text": "The atopic triad is eczema, {{c1::asthma and allergic rhinitis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-14": {
+      "text": "Pinpoint bleeding after lifting a psoriasis scale is the {{c1::Auspitz sign}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-15": {
+      "text": "New lesions at sites of skin trauma are the {{c1::Koebner phenomenon}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-16": {
+      "text": "Munro microabscesses contain neutrophils in the {{c1::stratum corneum}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-17": {
+      "text": "Pustules of Kogoj contain neutrophils in the {{c1::spongiotic viable epidermis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-18": {
+      "text": "A blackhead is an {{c1::open comedone}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-19": {
+      "text": "After a follicle ruptures in acne, {{c1::neutrophils}} arrive early and foreign-body granulomas may follow.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-20": {
+      "text": "Erythema nodosum is the classic {{c1::septal panniculitis}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-21": {
+      "text": "A biopsy for suspected panniculitis must include {{c1::subcutaneous fat}}.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
+    },
+    "vn-mss-final-pathology-01-22": {
+      "text": "Lupus panniculitis and pancreatic panniculitis typically show a {{c1::lobular}} pattern.",
+      "extra": "",
+      "supplements": [],
+      "oneByOne": false
     }
   },
   "ankiLectureLinks": {
@@ -1773,6 +2147,37 @@
       "fc-mss-a11f54815fa3dbb3ae98-c1",
       "fc-mss-c18635e251d9e9c8554f-c1",
       "fc-mss-ed16462c32c0a460876f-c1"
+    ],
+    "mss-final-pathology-01": [
+      "fc-mss-1d5d1ef85747c336ee94-c1",
+      "fc-mss-ea6d70c06a26bba14532-c1",
+      "fc-mss-ea6d70c06a26bba14532-c2",
+      "fc-mss-f1573b7ee2b66470a9fa-c1",
+      "fc-mss-81f856dc308cfc9c64f5-c1",
+      "fc-mss-49e4901999db69b77e5a-c1",
+      "fc-mss-1b37f3de8dcf41bffa87-c1",
+      "fc-mss-5a7ffd6478c81af45729-c1",
+      "fc-mss-ad84fa00ac37c96bf03a-c2",
+      "fc-mss-ad84fa00ac37c96bf03a-c1",
+      "fc-mss-8807e8756f9a64173cf0-c1",
+      "fc-mss-1052d91734a0f13f8349-c1",
+      "fc-mss-73eba75b81d9ef30c161-c1",
+      "fc-mss-17f60dafde86b4d57933-c1",
+      "fc-mss-35feae1c4c4b7360f579-c1",
+      "fc-mss-8d7c8ea6c8ae5cb108ad-c1",
+      "fc-mss-40d4756c0eeb6a843caf-c1",
+      "fc-mss-5abdb9f63c5bdf8ab76d-c1",
+      "fc-mss-dc0485c3fad7d6d3fc28-c1",
+      "fc-mss-9d91fc602668bb6d778e-c1",
+      "fc-mss-58a503b887214d8de0e6-c1",
+      "fc-mss-63fa227553c989421681-c1",
+      "fc-mss-63fa227553c989421681-c2",
+      "fc-mss-190724b546bb545d67ac-c1",
+      "fc-mss-190724b546bb545d67ac-c2",
+      "fc-mss-830d969f72c5ceb797f1-c1",
+      "fc-mss-4cd3b57cfa6434da8b44-c1",
+      "fc-mss-f83ff3f45b9e8f1e4428-c1",
+      "fc-mss-be63977c6136ed1798a6-c1"
     ]
   }
 }

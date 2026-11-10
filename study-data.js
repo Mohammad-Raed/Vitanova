@@ -402,5 +402,18 @@ window.VitanovaLectures = [
     "description": "High-yield parasite comparison, four visual clues and 26 practice questions.",
     "file": "MSS-Final-Microbiology-Lecture-2-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-pathology-01",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Pathology",
+    "category": "mss-final-pathology",
+    "lectureLabel": "Lecture 1",
+    "order": 1,
+    "title": "Inflammatory Skin Diseases",
+    "description": "Recognise skin lesions and biopsy patterns in eczema, psoriasis, acne and panniculitis. Includes 31 practice questions.",
+    "file": "MSS-Final-Pathology-Lecture-1-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
