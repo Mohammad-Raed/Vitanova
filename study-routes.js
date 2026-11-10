@@ -4,6 +4,8 @@
   const views = {
     home: {title:'Explore file library', parent:null, subtitle:'Choose a system to browse its study resources.', cards:[['MSS System','Midterm, final, labs, and past-paper study resources.','mss','🦴','SYSTEM'],['Immunology','Midterm and final immunology study resources.','immunology','🧬','SYSTEM']]},
     mss: {title:'MSS System', parent:'home', cards:[['MSS Midterm','Lecture summaries and questions for the midterm.','mss-mid','📘','MIDTERM'],['MSS Final','Lecture summaries and questions for the final.','mss-final','📗','FINAL'],['MSS Labs','Practical anatomy, pathology, and microbiology resources.','mss-labs','🔎','LABS'],['MSS Past Papers','Practice papers from previous MSS examinations.','mss-past','📝','PAST PAPERS']]},
+    'mss-checklist': {title:'MSS Final Checklist',parent:'mss',checklist:'final',subtitle:'Final lectures, midterm material, and practical labs in one place.'},
+    'mss-checklist-mid': {title:'MSS Midterm Checklist',parent:'mss',checklist:'mid',subtitle:'Track the midterm lectures available on Vitanova.'},
     immunology: {title:'Immunology', parent:'home', cards:[['Midterm','Immunology resources for the midterm examination.','immunology-mid','🧬','MIDTERM'],['Final','Immunology resources for the final examination.','immunology-final','🧬','FINAL']]},
     'mss-past': {title:'MSS Past Papers', parent:'mss', cards:[['Midterm Questions','Past-paper questions for the MSS midterm.','mss-past-mid','📝','PAST PAPERS'],['Final Questions','Past-paper questions for the MSS final.','mss-past-final','📝','PAST PAPERS']]},
     saved: {title:'Saved Questions', parent:'home', subtitle:'Your personal collection, ready for a focused revision session.'},

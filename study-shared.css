@@ -11,7 +11,9 @@ body{background:var(--bg);color:var(--tx);transition:background-color .2s ease,c
 .vn-lecture-navigation .vn-subject{white-space:nowrap}
 .vn-lecture-context{min-width:0;display:flex;align-items:center;justify-content:center;gap:7px;overflow:hidden;color:var(--mu);font-size:12px;white-space:nowrap}
 .vn-lecture-context span{overflow:hidden;text-overflow:ellipsis}
-.vn-lecture-context span+span::before{content:"/";margin-right:7px;color:var(--pu)}
+.vn-lecture-context .vn-breadcrumb-separator{color:var(--mu)}
+.vn-lecture-navigation .vn-lecture-context .vn-breadcrumb{min-height:26px;padding:3px 5px;font-size:inherit;white-space:nowrap}
+.vn-lecture-navigation .vn-lecture-context .vn-breadcrumb[aria-current="page"]{color:var(--tx)}
 .vn-lecture-controls{display:flex;align-items:center;gap:4px;white-space:nowrap}
 .vn-lecture-controls a{min-height:32px;padding-inline:8px}
 .vn-lecture-navigation + header{padding-block:34px 26px}

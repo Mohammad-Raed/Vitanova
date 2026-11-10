@@ -18,8 +18,20 @@
   const index=ordered.findIndex(l=>l.id===current.id),previous=ordered[index-1],next=ordered[index+1];
   const nav=document.createElement('div');nav.className='vn-lecture-navigation';nav.setAttribute('role','navigation');nav.setAttribute('aria-label','Lecture navigation');
   function link(label,href,cls) {const anchor=document.createElement('a');anchor.textContent=label;anchor.href=href;anchor.className=cls;return anchor;}
-  const context=document.createElement('div');context.className='vn-lecture-context';context.setAttribute('aria-label','Current lecture');
-  [current.system,current.exam,current.subject,current.lectureLabel].forEach(part=>{const span=document.createElement('span');span.textContent=part;context.append(span);});
+  const context=document.createElement('div');context.className='vn-lecture-context';context.setAttribute('role','navigation');context.setAttribute('aria-label','Lecture breadcrumbs');
+  const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  const system=slug(current.system);
+  const exam=system+'-'+(current.exam==='Midterm'?'mid':slug(current.exam));
+  const header=document.querySelector('header')||document.querySelector('main');
+  if(header&&!header.id)header.id='vn-lecture-start';
+  const trail=[[current.system,system],[current.exam,exam],[current.subject,current.category]];
+  for(const [label,route] of trail) {
+    context.append(link(label,'index.html#'+encodeURIComponent(route),'vn-breadcrumb'));
+    const separator=document.createElement('span');separator.className='vn-breadcrumb-separator';
+    separator.setAttribute('aria-hidden','true');separator.textContent='/';context.append(separator);
+  }
+  const here=link(current.lectureLabel,header?'#'+encodeURIComponent(header.id):'#','vn-breadcrumb');
+  here.setAttribute('aria-current','page');context.append(here);
   const controls=document.createElement('div');controls.className='vn-lecture-controls';
   for(const [label,lecture,cls] of [['← Previous',previous,'vn-previous'],['Next →',next,'vn-next']]) {
     if(lecture)controls.append(link(label,encodeURIComponent(lecture.file),cls));

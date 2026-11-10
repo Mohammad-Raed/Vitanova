@@ -79,17 +79,24 @@
   }
   function render() {
     const requested=route(); current=views[requested]?requested:'home'; const view=views[current];
-    cards._vnRevisionCleanup?.();cards._vnRevisionCleanup=null;
+    cards._vnRevisionCleanup?.();cards._vnRevisionCleanup=null;cards._vnChecklistRefresh=null;
     cards.className='grid';
     const isHome=current==='home';
     $('site-header').classList.toggle('is-home',isHome); $('site-header').classList.toggle('is-internal',!isHome);
     $('hero-content').hidden=!isHome; $('compact-header').hidden=isHome;
     $('hub-main').classList.toggle('is-dashboard',Boolean(view.category)||current==='search');
     breadcrumbs(current);
-    $('page-eyebrow').textContent=['saved','mistakes'].includes(current)?'YOUR REVISION':current==='backup'?'YOUR DATA':'EXPLORE FILE LIBRARY';
+    $('page-eyebrow').textContent=['saved','mistakes'].includes(current)?'YOUR REVISION':current==='backup'?'YOUR DATA':view.checklist?'STUDY PLANNER':'EXPLORE FILE LIBRARY';
     $('page-title').textContent=view.title; $('page-subtitle').textContent=view.subtitle||'';
     $('dashboard-overview').hidden=true; $('lecture-filters').hidden=!(view.category||current==='search');
-    if(view.pastPaper){window.VitanovaSaved.render(cards,$('count'),{collection:'past-paper'});}
+    const shortcut=$('mss-checklist-shortcut');
+    if(shortcut){
+      const show=['mss','mss-mid','mss-final','mss-labs'].some(key=>current===key||current.startsWith(key+'-'))&&!view.checklist&&!current.startsWith('mss-past');
+      shortcut.hidden=!show;
+      shortcut.href=current.startsWith('mss-mid')?'#mss-checklist-mid':'#mss-checklist';
+    }
+    if(view.checklist){window.VitanovaMSSChecklist?.render(cards,$('count'),view.checklist);}
+    else if(view.pastPaper){window.VitanovaSaved.render(cards,$('count'),{collection:'past-paper'});}
     else if (view.category||current==='search') {
       const items=view.category?lectures.filter(l=>l.category===view.category):lectures;
       if(view.category) {
@@ -103,7 +110,7 @@
     } else if (current==='backup') { $('count').textContent='Local data only'; window.VitanovaBackup?.mount(cards); }
     else drawCards(view);
     document.title=(isHome?'':view.title+' · ')+'Vitanova Learning Hub';
-    document.querySelectorAll('.hub-links a').forEach(a=>{if(a.hash==='#'+current)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    document.querySelectorAll('.hub-links a').forEach(a=>{if(a.hash==='#'+current||(view.checklist&&a.hash==='#mss-checklist'))a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     studyOverview();sidebarSystems();
     if(storage && !storage.isAvailable())storage.warning();
   }
@@ -121,7 +128,7 @@
   function savedCount(){const count=window.VitanovaBookmarks?.count()||0;$('saved-count').textContent=count?`(${count})`:'';studyOverview();}
   window.addEventListener('vitanova:bookmarks-changed',savedCount);
   window.addEventListener('vitanova:mistakes-changed',studyOverview);
-  window.addEventListener('vitanova:progress-changed',()=>{studyOverview();sidebarSystems();if(!views[current]?.category&&views[current]?.cards)drawCards(views[current]);});
+  window.addEventListener('vitanova:progress-changed',()=>{studyOverview();sidebarSystems();if(views[current]?.checklist)cards._vnChecklistRefresh?.();if(!views[current]?.category&&views[current]?.cards)drawCards(views[current]);});
   window.addEventListener('storage',()=>{render();savedCount();});
   window.addEventListener('hashchange',()=>{query='';completion='all';$('lecture-search').value='';$('completion-filter').value='all';render();if(!(views[route()]?.pastPaper&&new URLSearchParams(location.hash.split('?')[1]||'').has('question'))){$('page-title').tabIndex=-1;$('page-title').focus({preventScroll:true});window.scrollTo(0,0);}});
   const menuButton=$('study-menu-toggle'),sidebar=document.querySelector('.study-sidebar'),mobileMenu=window.matchMedia('(max-width:900px)');
