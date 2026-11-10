@@ -415,5 +415,18 @@ window.VitanovaLectures = [
     "description": "Recognise skin lesions and biopsy patterns in eczema, psoriasis, acne and panniculitis. Includes 31 practice questions.",
     "file": "MSS-Final-Pathology-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-08-09",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lectures 8 & 9",
+    "order": 8,
+    "title": "Leg Muscles & Popliteal Fossa",
+    "description": "Leg compartments, ankle retinacula, popliteal neurovascular anatomy, and clinical localization with 30 practice MCQs.",
+    "file": "MSS-Final-Anatomy-Lectures-8-9-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
