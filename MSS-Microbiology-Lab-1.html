@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Microbiology Lab 1: Musculoskeletal Infections | Vitanova</title><style>
+:root{--tx:var(--ink);--pu:var(--acc);--te:var(--acc);--ln:var(--line);--mu:var(--mute);--bg:#f6f8fa;--card:#fff;--ink:#1b2430;--mute:#5d6b7a;--acc:#0f766e;--acc2:#e6f4f2;--line:#dbe2e8;--bad:#b91c1c;--badbg:#fdecec;--ok:#15803d;--okbg:#e8f6ec;--warn:#fff7db}
+@media(prefers-color-scheme:dark){:root{--bg:#10161c;--card:#18212a;--ink:#e6edf3;--mute:#9aa8b6;--acc:#2dd4bf;--acc2:#12312e;--line:#2a3745;--bad:#f87171;--badbg:#3a1a1a;--ok:#4ade80;--okbg:#13301e;--warn:#3a3112}}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{max-width:980px;margin:auto;padding:16px 16px 12px}
+header h1{margin:0;font-size:1.25rem}header p{margin:2px 0 0;font-size:.85rem;opacity:.9}
+.lecture-toc{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:6px 10px}
+.lecture-toc a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:.82rem;padding:5px 10px;border-radius:14px;background:var(--acc2)}
+.lecture-toc a:hover{background:var(--acc);color:#fff}
+main{max-width:980px;margin:0 auto;padding:12px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0;scroll-margin-top:50px}
+h2{margin:0 0 8px;font-size:1.1rem;color:var(--acc)}h3{margin:12px 0 4px;font-size:.95rem}
+p{margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:.85rem;margin:8px 0}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+th{background:var(--acc2)}
+.tw{overflow-x:auto}
+.tip{background:var(--warn);border-left:4px solid #d9a400;padding:6px 10px;border-radius:4px;margin:8px 0;font-size:.88rem}
+.mn{background:var(--acc2);border-left:4px solid var(--acc);padding:6px 10px;border-radius:4px;margin:8px 0;font-size:.88rem}
+.fig{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;margin:8px 0}
+.fig svg{flex:1 1 360px;max-width:100%;height:auto;background:var(--bg);border:1px solid var(--line);border-radius:8px}
+.fig .cap{flex:1 1 240px;font-size:.88rem}
+.cap ul{margin:4px 0;padding-left:18px}
+svg text{fill:var(--ink);font-family:inherit}
+b.k{color:var(--acc)}
+/* quiz */
+#bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:.88rem}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:5px 12px;border-radius:6px}
+button:hover{border-color:var(--acc)}
+.q{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:10px 0}
+.q .t{font-weight:600;margin-bottom:6px}
+.q .tag{font-size:.7rem;background:var(--acc2);color:var(--acc);padding:1px 6px;border-radius:8px;margin-left:6px;font-weight:600}
+.o{display:block;width:100%;text-align:left;margin:4px 0;padding:6px 10px}
+.o.ok{background:var(--okbg);border-color:var(--ok)}
+.o.no{background:var(--badbg);border-color:var(--bad)}
+.ex{display:none;margin-top:6px;font-size:.87rem;padding:6px 10px;background:var(--bg);border-radius:6px}
+.q.done .ex{display:block}.q.done .o{pointer-events:none}
+.q.hide{display:none}
+#res{font-weight:600}
+footer{text-align:center;color:var(--mute);font-size:.78rem;padding:14px}
+
+:root[data-theme]{--ink:var(--tx);--mute:var(--mu);--acc:var(--pu);--acc2:var(--soft)}
+:root[data-theme="light"]{--bad:#b91c1c;--badbg:#fdecec;--ok:#15803d;--okbg:#e8f6ec;--warn:#fff7db;color-scheme:light}
+:root[data-theme="dark"]{--bad:#f87171;--badbg:#3a1a1a;--ok:#4ade80;--okbg:#13301e;--warn:#3a3112;color-scheme:dark}
+header .kicker{color:var(--acc);font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.lecture-toc a:hover{outline:1px solid var(--acc);outline-offset:-1px;background:var(--acc2);color:var(--ink)}
+:where(.lecture-toc a,button,summary,.tw):focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+main a{color:var(--acc);overflow-wrap:anywhere}
+.q .t{margin:0 0 6px}
+.q .tag{display:inline-block}
+.o.ok{font-weight:650}
+.recall-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:8px}
+.recall-grid details{padding:8px 10px;border:1px solid var(--line);border-radius:8px}
+.recall-grid summary{cursor:pointer;font-weight:650}
+@media(max-width:600px){.tw table{min-width:410px}.lecture-toc a{min-height:32px}}
+:root[data-theme]{--ink:var(--tx);--mute:var(--mu);--acc:var(--te);--acc2:var(--soft)} .specimen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;margin:12px 0}.specimen img,.spotter img{display:block;max-width:100%;max-height:390px;object-fit:contain;border-radius:6px}.specimen figcaption{padding:4px 0}.specimen h3{margin-top:0}.media{position:relative;display:inline-block;max-width:100%;line-height:0}.marker{position:absolute;transform:translate(-50%,-50%);border:2px solid #fff;box-shadow:0 0 0 1px #4b1237;background:#851347;color:#fff;border-radius:50%;font:bold 12px/20px system-ui;width:24px;height:24px;text-align:center}.figure-zoom{display:block;width:fit-content;max-width:100%;padding:0;background:none;border:0;text-align:left}.figure-dialog{max-width:min(92vw,960px);max-height:92vh;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px}.figure-dialog::backdrop{background:#000a}.figure-dialog img{display:block;max-width:100%;max-height:75vh;object-fit:contain;margin-top:8px}.spotter{margin:8px 0}.spotter img{max-height:230px} @media(max-width:600px){.specimen{grid-template-columns:1fr}} </style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body><header><h1>Microbiology Lab 1: Musculoskeletal Infections</h1><p>MSS Labs · Microbiology · Lab 1</p></header><nav class="lecture-toc" aria-label="Page sections"><a href="#specimens">Specimens and routes of infection</a><a href="#cocci">Gram-positive cocci</a><a href="#rods">Gram-negative rods</a><a href="#anaerobes">Anaerobes</a><a href="#quiz">MCQs</a></nav><main><section id="specimens"><h2>Specimens and routes of infection</h2><p><b>Osteomyelitis:</b> direct inoculation after trauma or surgery, contiguous spread from an adjacent infection, or hematogenous spread through the blood.</p><div class="tw"><table><thead><tr><th scope="col">Suspected infection</th><th scope="col">Specimen and tests</th></tr></thead><tbody><tr><td>Osteomyelitis</td><td>Bone biopsy for aerobic and anaerobic cultures. Surface swabs can grow colonizing flora.</td></tr><tr><td>Septic arthritis</td><td>Aseptically aspirate synovial fluid for Gram stain, culture, white blood cell count and crystals. Crystals can coexist with infection.</td></tr><tr><td>Wound infection</td><td>Deep tissue or aspirate for deep infections. For a superficial swab, clean with sterile saline first.</td></tr></tbody></table></div><p>Collect cultures before antibiotics when feasible.</p></section>
+<section id="cocci"><h2>Gram-positive cocci</h2><p><i>Staphylococcus aureus</i>: clusters, catalase positive, coagulase positive. <i>Streptococcus pyogenes</i>: chains, beta hemolysis and a pink positive pyrrolidonyl arylamidase (PYR) test. Bacitracin sensitivity is a presumptive Group A clue. Lancefield grouping detects cell-wall carbohydrate by latex agglutination.</p><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/sa-gram.jpg" alt="S. aureus – Gram stain"><span class="marker" aria-hidden="true" style="left:62%;top:30%">1</span></div></div><figcaption><h3>S. aureus – Gram stain</h3><p>Purple (Gram-positive) cocci in grape-like clusters.</p><p><b>1.</b> Cluster of purple cocci</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/sa-tests.jpg" alt="Catalase (A) and Coagulase (B) tests"><span class="marker" aria-hidden="true" style="left:19%;top:64%">1</span><span class="marker" aria-hidden="true" style="left:75%;top:68%">2</span><span class="marker" aria-hidden="true" style="left:92%;top:68%">3</span></div></div><figcaption><h3>Catalase (A) and Coagulase (B) tests</h3><p>A: slide catalase – bubbles = positive; no bubbles = negative. B: tube coagulase – clot = positive; no clot = negative.</p><p><b>1.</b> Bubbling = catalase positive</p><p><b>2.</b> Tube POSITIVE (clot)</p><p><b>3.</b> Tube NEGATIVE (stays liquid)</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/sp-gram.jpg" alt="S. pyogenes – Gram stain"><span class="marker" aria-hidden="true" style="left:35%;top:40%">1</span></div></div><figcaption><h3>S. pyogenes – Gram stain</h3><p>Purple cocci arranged in CHAINS.</p><p><b>1.</b> Chains of cocci</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/sp-beta.jpg" alt="β-hemolysis on blood agar"><span class="marker" aria-hidden="true" style="left:32%;top:48%">1</span></div></div><figcaption><h3>β-hemolysis on blood agar</h3><p>Clear/translucent zones around colonies.</p><p><b>1.</b> Clear halos around colonies</p></figcaption></figure></section>
+<section id="rods"><h2>Gram-negative rods</h2><p>MacConkey agar selects for Gram-negative organisms and differentiates lactose fermenters (pink) from non-fermenters (colorless).</p><div class="tw"><table><thead><tr><th scope="col">Organism</th><th scope="col">Fast identification</th></tr></thead><tbody><tr><td><i>Pseudomonas aeruginosa</i></td><td>Colorless on MacConkey, oxidase positive, blue-green pigment on cetrimide.</td></tr><tr><td><i>Escherichia coli</i> and <i>Klebsiella pneumoniae</i></td><td>Pink on MacConkey. Mucoid growth suggests Klebsiella; colony appearance alone cannot confirm species.</td></tr><tr><td><i>Proteus</i></td><td>Colorless on MacConkey, swarming on blood agar, pink positive urease test and black hydrogen sulfide precipitate.</td></tr></tbody></table></div><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/pa-cet.jpg" alt="Blue-green pigment on Cetrimide agar"><span class="marker" aria-hidden="true" style="left:28%;top:72%">1</span></div></div><figcaption><h3>Blue-green pigment on Cetrimide agar</h3><p>Green-blue diffusing pigment (also fruity odor).</p><p><b>1.</b> Green-blue pigment in agar</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/pa-mac.jpg" alt="Colorless colonies on MacConkey agar"><span class="marker" aria-hidden="true" style="left:40%;top:48%">1</span></div></div><figcaption><h3>Colorless colonies on MacConkey agar</h3><p>Pale/colorless colonies = no lactose fermentation.</p><p><b>1.</b> Colorless/grey growth</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/ec.jpg" alt="Pink colonies on MacConkey agar (plate 1)"><span class="marker" aria-hidden="true" style="left:35%;top:42%">1</span></div></div><figcaption><h3>Pink colonies on MacConkey agar (plate 1)</h3><p>Gram-negative rods; pink colonies = lactose fermenters. (Slide doesn’t label which plate is which.)</p><p><b>1.</b> Pink = lactose fermenter</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/pr-sw.jpg" alt="Swarming on blood agar"><span class="marker" aria-hidden="true" style="left:55%;top:50%">1</span></div></div><figcaption><h3>Swarming on blood agar</h3><p>Concentric waves of growth spread over the whole plate.</p><p><b>1.</b> Concentric swarming rings</p></figcaption></figure></section>
+<section id="anaerobes"><h2>Anaerobes</h2><p><i>Clostridium perfringens</i>: boxcar-shaped, Gram-positive, spore-forming rods associated with gas gangrene. <i>Fusobacterium</i> forms thin, tapered Gram-negative rods. <i>Bacteroides fragilis</i> forms Gram-negative rods. <i>Peptostreptococcus</i> forms Gram-positive cocci.</p><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/cp-dbl.jpg" alt="Double zone of hemolysis"><span class="marker" aria-hidden="true" style="left:22%;top:80%">1</span></div></div><figcaption><h3>Double zone of β-hemolysis</h3><p>Inner clear zone + outer zone of partial hemolysis around colonies on blood agar.</p><p><b>1.</b> Double zone</p></figcaption></figure><figure class="specimen"><div><div class="media"><img loading="lazy" src="assets/microbiology-lab-1/cp-egg.jpg" alt="Egg yolk agar – lecithinase / Nagler"><span class="marker" aria-hidden="true" style="left:55%;top:40%">1</span></div></div><figcaption><h3>Egg yolk agar – lecithinase / Nagler</h3><p>Alpha-toxin splits lecithin → insoluble diglyceride + phosphorylcholine → white opaque halo (opalescence).</p><p><b>1.</b> Opaque halo around growth</p></figcaption></figure></section><section id="quiz">
+<h2>Practical quiz <span id="cnt" style="font-weight:400;color:var(--mute);font-size:.85rem"></span></h2>
+<div id="bar">
+<span id="res" class="sc" role="status">Answered 0/0 · Score: 0</span>
+<button type="button" id="rv" aria-pressed="false">Review wrong only</button>
+<button type="button" id="all" aria-pressed="true">Show all</button>
+<button type="button" id="rs" class="r">Reset &amp; reshuffle</button>
+</div>
+<p id="empty-review" hidden>No incorrect answers in this attempt yet.</p>
+<div id="qs"></div>
+</section></main><dialog class="figure-dialog" aria-label="Enlarged lab figure"><form method="dialog"><button type="submit">Close image</button></form><div class="figure-preview"></div></dialog><script>
+const Q = [
+["A Gram stain shows purple cocci arranged in grape-like clusters. Which organism is the most likely MSS pathogen?",["Staphylococcus aureus","Streptococcus pyogenes","Clostridium perfringens","Pseudomonas aeruginosa","Klebsiella pneumoniae"],0,"G+ cocci in CLUSTERS = Staphylococcus; S. aureus is the most common MSS pathogen.","Spotter"],
+["In panel A, bubbles appear after adding hydrogen peroxide. Which enzyme is detected?",["Catalase","Coagulase","Oxidase","Urease","Lecithinase"],0,"Catalase splits H₂O₂ into water + oxygen gas (bubbles).","Spotter"],
+["Panel B: the tube labelled POSITIVE shows a clot. Which isolate from this lab gives this result?",["S. aureus","S. pyogenes","P. aeruginosa","Proteus species","C. perfringens"],0,"Coagulase converts fibrinogen to fibrin → clot. Among staphylococci, S. aureus is the coagulase-positive one (CONS = coagulase-negative).","Spotter"],
+["Golden/cream colonies grow on blood agar from a Gram-positive coccus in clusters. Which pair of results confirms S. aureus?",["Catalase + / Coagulase +","Catalase − / PYR +","Oxidase + / H₂S +","Urease + / H₂S +","Lecithinase + / Nagler +"],0,"S. aureus is catalase + and coagulase +.","Recall"],
+["A wound smear shows purple cocci in long chains. Which organism, a cause of necrotizing fasciitis, fits best?",["Streptococcus pyogenes","Staphylococcus aureus","Escherichia coli","Pseudomonas aeruginosa","Clostridium perfringens"],0,"G+ cocci in CHAINS, β-hemolytic = S. pyogenes (cellulitis, necrotizing fasciitis).","Spotter"],
+["This blood agar plate shows clear, translucent zones around colonies. What type of hemolysis is this?",["β-hemolysis","α-hemolysis","γ-hemolysis","Lecithinase opalescence","Inhibition by antiserum"],0,"Clear zones = complete RBC lysis = β-hemolysis. α gives greenish discoloration (partial); γ = none.","Spotter"],
+["After adding reagent, the broth turns pink/red. Which statement is correct?",["PYR positive – S. pyogenes","PYR positive – S. aureus","PYR negative – S. pyogenes","Urease positive – Proteus","Oxidase positive – P. aeruginosa"],0,"PYR (pyrrolidonyl arylamidase) detects the enzyme; pink = positive, typical of S. pyogenes.","Recall"],
+["A β-hemolytic streptococcus shows a clear zone around the “A” disk. What does this indicate?",["Bacitracin sensitive → Group A Strep","Bacitracin resistant → Group A Strep","Lecithinase positive → C. perfringens","Coagulase positive → S. aureus","Oxidase positive → P. aeruginosa"],0,"An inhibition zone around the bacitracin disk = sensitive = Group A (S. pyogenes).","Recall"],
+["What principle does the Slidex Strepto Plus kit use to identify streptococci?",["Latex agglutination with group-specific antibodies","Bubble formation with H₂O₂","Colour change of a urea medium","Opaque halo on egg yolk agar","Swarming on blood agar"],0,"Latex particles coated with anti-A, B, C, D, F, G antibodies agglutinate with the matching cell-wall carbohydrate (Lancefield group).","Recall"],
+["Colonies are colorless on MacConkey agar. How should this be interpreted?",["Lactose non-fermenter (e.g. P. aeruginosa)","Lactose fermenter (e.g. E. coli)","Gram-positive organism growing","Coagulase-positive staphylococcus","Spore-forming anaerobe"],0,"MacConkey contains lactose + pH indicator: fermenters turn pink; colorless = non-fermenter (Pseudomonas, Proteus).","Spotter"],
+["A blue-green pigment diffuses into the agar. What causes it?",["Pyocyanin + pyoverdine","Hydrogen sulfide + iron","Lactose fermentation + neutral red","Urea hydrolysis to ammonia","Fibrin formation"],0,"P. aeruginosa secretes pyocyanin and pyoverdine (cetrimide/Pseudomonas agar).","Spotter"],
+["A filter-paper spot turns purple/blue. Which of these organisms is oxidase positive?",["Pseudomonas aeruginosa","Escherichia coli","Proteus species","Staphylococcus aureus","Klebsiella pneumoniae"],0,"P. aeruginosa is the oxidase-positive organism in this lab’s set.","Recall"],
+["Gram-negative rods give pink colonies on MacConkey agar. What does this mean?",["Lactose fermenters, e.g. E. coli / Klebsiella","Lactose non-fermenters, e.g. Pseudomonas","Swarming Proteus","β-hemolytic Group A Strep","Anaerobic C. perfringens"],0,"Acid from lactose fermentation turns the indicator pink.","Spotter"],
+["Large, glistening, mucoid pink growth spreads on MacConkey agar. Which organism fits best? (the slide does not label it)",["Klebsiella pneumoniae","Pseudomonas aeruginosa","Proteus mirabilis","Bacteroides fragilis","Staphylococcus aureus"],0,"Pink = lactose fermenter; mucoid, confluent growth is typical of Klebsiella (capsule). Confirm with biochemical tests.","Recall"],
+["Concentric waves of growth cover the whole blood agar plate. Which genus?",["Proteus","Pseudomonas","Klebsiella","Streptococcus","Clostridium"],0,"Swarming motility on blood agar is the key feature of Proteus.","Spotter"],
+["The pink tube indicates which reaction and organism?",["Urea → ammonia; Proteus","Fibrinogen → fibrin; S. aureus","H₂O₂ → O₂; S. aureus","Lecithin splitting; C. perfringens","Pyocyanin release; P. aeruginosa"],0,"Urease splits urea → ammonia (alkaline) → pink. Proteus is urease + and H₂S +.","Recall"],
+["A black precipitate (arrow) appears in the medium. This shows:",["H₂S production – Proteus","Lactose fermentation – E. coli","Oxidase activity – Pseudomonas","Complete hemolysis – S. pyogenes","Lecithinase – C. perfringens"],0,"Black precipitate = hydrogen sulfide (H₂S) production; Proteus is H₂S positive.","Recall"],
+["Large, boxy Gram-positive rods are seen. Which infection is classically linked?",["Gas gangrene (myonecrosis)","Hot-tub folliculitis","Cellulitis from group A strep","Burn wound infection","Chronic osteomyelitis in diabetics"],0,"Box-car, spore-forming G+ bacilli = C. perfringens → gas gangrene.","Recall"],
+["Each colony has an inner clear zone and an outer zone of partial hemolysis. Which toxin causes the INNER clear zone?",["Theta toxin","Alpha toxin","M protein","Hyaluronidase","Pyocyanin"],0,"Per the note: inner clear zone = theta toxin; outer partial zone = alpha toxin → double zone of hemolysis (C. perfringens).","Spotter"],
+["A white opaque halo surrounds colonies on egg-yolk agar and is blocked by antitoxin. Which test is this?",["Nagler reaction","Bacitracin test","PYR test","Coagulase test","Oxidase test"],0,"Lecithinase (alpha-toxin) splits lecithin → opalescence; antitoxin inhibition = positive Nagler reaction.","Spotter"],
+["A diabetic foot ulcer overlying bone leads to bone infection. Which route of spread is this?",["Contiguous spread","Hematogenous spread","Direct inoculation","Lymphatic spread","Iatrogenic spread"],0,"Infection extending from nearby infected tissue = contiguous. Open fracture = direct inoculation; endocarditis bacteremia = hematogenous.","Recall"],
+["For suspected osteomyelitis, which specimen is best?",["Sterile bone biopsy for aerobic + anaerobic culture","Swab of the skin surface","Swab of the sinus-tract opening","Midstream urine","Throat swab"],0,"Surface swabs are contaminated with normal flora; send bone tissue for aerobic and anaerobic cultures.","Recall"],
+["Which set of tests is sent on synovial fluid in suspected septic arthritis?",["Gram stain, culture, cell count, crystals","Gram stain only","Bacitracin and PYR","Catalase and Nagler","Urease and H₂S"],0,"Cell count (WBCs, high = inflammation/infection) and crystals (gout/pseudogout) help distinguish infection from crystal arthritis.","Recall"],
+["Before swabbing a superficial wound, the surface should be cleaned with:",["Sterile saline","Povidone-iodine","70% alcohol","Hydrogen peroxide","Nothing – swab straight away"],0,"Saline cleans without killing the microorganisms; antiseptics could cause false-negative cultures.","Recall"],
+["Which anaerobe in the panel is a Gram-positive coccus?",["Peptostreptococcus","Fusobacterium","Prevotella","Bacteroides fragilis","Proteus"],0,"Fusobacterium, Prevotella and Bacteroides are G− rods; Peptostreptococcus is G+ cocci.","Recall"],
+["Long, thin, tapered pink rods are seen under anaerobic conditions. Which genus?",["Fusobacterium","Peptostreptococcus","Clostridium","Staphylococcus","Proteus"],0,"Fusobacterium: Gram-negative anaerobic thin pointed rods.","Recall"],
+["Why must specimens be collected BEFORE antibiotics?",["Antibiotics can kill or inhibit bacteria in the sample","Antibiotics change the Gram stain colour of the agar","Antibiotics make the specimen too concentrated","Antibiotics destroy the transport medium","Antibiotics cause hemolysis"],0,"Antibiotics can kill/inhibit growth → false-negative cultures.","Recall"]
+];
+const specimens = ["assets/microbiology-lab-1/sa-gram.jpg","assets/microbiology-lab-1/sa-tests.jpg","assets/microbiology-lab-1/sa-tests.jpg",null,"assets/microbiology-lab-1/sp-gram.jpg","assets/microbiology-lab-1/sp-beta.jpg",null,null,null,"assets/microbiology-lab-1/pa-mac.jpg","assets/microbiology-lab-1/pa-cet.jpg",null,"assets/microbiology-lab-1/ec.jpg",null,"assets/microbiology-lab-1/pr-sw.jpg",null,null,null,"assets/microbiology-lab-1/cp-dbl.jpg","assets/microbiology-lab-1/cp-egg.jpg",null,null,null,null,null,null,null];
+const L="ABCDE";let st=[];
+function sh(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function build(){
+ const box=document.getElementById('qs');box.innerHTML='';st=Q.map(()=>null);
+ document.getElementById('cnt').textContent='('+Q.length+' questions)';
+ Q.forEach((q,i)=>{
+  const opts=sh(q[1].map((t,k)=>({t,ok:k===q[2]})));
+  const d=document.createElement('div');d.className='q';d.id='q'+i;
+  const heading=document.createElement('p');heading.className='t';heading.textContent=(i+1)+'. '+q[0];
+  const tag=document.createElement('span');tag.className='tag';tag.textContent=q[4];heading.appendChild(tag);d.appendChild(heading);
+  const specimen = specimens[i];
+  if (specimen) {
+   const img = document.createElement('img'); img.src = specimen; img.alt = 'Lab specimen for question ' + (i + 1); img.loading = 'lazy';
+   const figure = document.createElement('figure'); figure.className = 'spotter'; figure.append(img); d.append(figure); makeZoomable(img);
+  }
+  opts.forEach((o,k)=>{
+   const b=document.createElement('button');b.className='o';b.type='button';b.textContent=L[k]+'. '+o.t;
+   b.onclick=()=>pick(i,b,o.ok,d);d.appendChild(b);d._o=(d._o||[]);d._o.push([b,o.ok]);
+  });
+  const e=document.createElement('div');e.className='ex';e.textContent='Answer: '+q[1][q[2]]+'. '+q[3];e.setAttribute('role','status');d.appendChild(e);
+  box.appendChild(d);
+ });upd();filterWrong(false);
+}
+function pick(i,b,ok,d){
+ if(st[i]!==null)return;st[i]=ok;d.classList.add('done');
+ d._o.forEach(([x,o])=>{x.disabled=true;if(o)x.classList.add('ok')});
+ if(!ok)b.classList.add('no');upd();
+}
+function upd(){
+ const a=st.filter(x=>x!==null).length,s=st.filter(x=>x===true).length;
+ document.getElementById('res').textContent='Answered '+a+'/'+Q.length+' · Score: '+s+(a?' ('+Math.round(100*s/a)+'%)':'');
+}
+function filterWrong(enabled){
+ Q.forEach((_,i)=>document.getElementById('q'+i).classList.toggle('hide',enabled&&st[i]!==false));
+ document.getElementById('rv').setAttribute('aria-pressed',String(enabled));
+ document.getElementById('all').setAttribute('aria-pressed',String(!enabled));
+ document.getElementById('empty-review').hidden=!enabled||st.includes(false);
+}
+document.getElementById('rv').onclick=()=>filterWrong(true);
+document.getElementById('all').onclick=()=>filterWrong(false);
+document.getElementById('rs').onclick=build;
+const figureDialog = document.querySelector('.figure-dialog');
+function makeZoomable(image) {
+ const visual = image.closest('.media') || image;
+ const button = document.createElement('button');
+ button.className = 'figure-zoom';
+ button.type = 'button';
+ button.setAttribute('aria-label', 'Enlarge ' + image.alt);
+ visual.replaceWith(button);
+ button.append(visual);
+ button.addEventListener('click', () => {
+  figureDialog.querySelector('.figure-preview').replaceChildren(visual.cloneNode(true));
+  figureDialog.showModal();
+ });
+}
+document.querySelectorAll('.specimen img').forEach(makeZoomable);
+build();
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

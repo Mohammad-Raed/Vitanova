@@ -467,5 +467,31 @@ window.VitanovaLectures = [
     "description": "Lymphadenopathy, spleen, asplenia, mucosal and skin immunity, and clinical lymphatics.",
     "file": "Immunology-Midterm-Lecture-8.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-10",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lecture 10",
+    "order": 10,
+    "title": "Blood Supply of the Lower Limb",
+    "description": "Lower-limb vessels, collateral routes and pulse landmarks with 22 MCQs.",
+    "file": "MSS-Final-Anatomy-Lecture-10-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-labs-microbiology-01",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Microbiology",
+    "category": "mss-labs-microbiology",
+    "lectureLabel": "Lab 1",
+    "order": 1,
+    "title": "Microbiology Lab 1: Musculoskeletal Infections",
+    "description": "Specimen collection, Gram stains, culture clues and 27 practical questions.",
+    "file": "MSS-Microbiology-Lab-1.html",
+    "icon": "🧫"
   }
 ];
