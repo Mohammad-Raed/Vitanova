@@ -441,5 +441,31 @@ window.VitanovaLectures = [
     "description": "Sacral plexus, sciatic and plantar branches, sensory territories, and nerve injury localization with 22 MCQs.",
     "file": "MSS-Final-Anatomy-Lecture-7-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-07",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 7",
+    "order": 7,
+    "title": "Organisation, Lymph & Lymph Nodes",
+    "description": "Lymphatic organisation, lymph drainage, thymus, bone marrow, lymphocyte homing and lymph nodes.",
+    "file": "Immunology-Midterm-Lecture-7.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-08",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 8",
+    "order": 8,
+    "title": "Spleen, MALT & Clinical Lymphatics",
+    "description": "Lymphadenopathy, spleen, asplenia, mucosal and skin immunity, and clinical lymphatics.",
+    "file": "Immunology-Midterm-Lecture-8.html",
+    "icon": "📘"
   }
 ];
