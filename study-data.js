@@ -490,7 +490,7 @@ window.VitanovaLectures = [
     "lectureLabel": "Lab 1",
     "order": 1,
     "title": "Microbiology Lab 1: Musculoskeletal Infections",
-    "description": "Specimen collection, Gram stains, culture clues and 27 practical questions.",
+    "description": "Specimen collection, Gram stains, culture clues and 28 practical questions.",
     "file": "MSS-Microbiology-Lab-1.html",
     "icon": "🧫"
   }
