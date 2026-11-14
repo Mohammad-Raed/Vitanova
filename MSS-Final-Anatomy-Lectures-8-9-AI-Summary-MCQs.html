@@ -1,8 +1,7 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MSS Final Anatomy Lectures 8 and 9</title><link rel="stylesheet" href="study-shared.css"></head>
-<body><main><h1>MSS Final Anatomy Lectures 8 and 9</h1><ul><li><a href="MSS-Final-Anatomy-Lecture-8-AI-Summary-MCQs.html">Lecture 8 · Anterior and lateral leg</a></li><li><a href="MSS-Final-Anatomy-Lecture-9-AI-Summary-MCQs.html#post">Lecture 9 · Part 1 — Posterior compartment</a></li><li><a href="MSS-Final-Anatomy-Lecture-9-AI-Summary-MCQs.html#pop">Lecture 9 · Part 2 — Popliteal fossa</a></li></ul></main>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MSS Final Anatomy</title>
 <script>
-const part = location.hash.slice(1);
-if (['overview','fascia','ant','lat'].includes(part)) location.replace('MSS-Final-Anatomy-Lecture-8-AI-Summary-MCQs.html' + location.search + location.hash);
-if (['post','pop','clin'].includes(part)) location.replace('MSS-Final-Anatomy-Lecture-9-AI-Summary-MCQs.html' + location.search + location.hash);
-</script></body></html>
+const topic = location.hash.slice(1);
+const lecture = ['post', 'pop', 'clin'].includes(topic) ? 'MSS-Final-Anatomy-Lecture-9-AI-Summary-MCQs.html' : 'MSS-Final-Anatomy-Lecture-8-AI-Summary-MCQs.html';
+location.replace(lecture + location.search + location.hash);
+</script></head><body><noscript><a href="MSS-Final-Anatomy-Lecture-8-AI-Summary-MCQs.html">Open Lecture 8</a></noscript></body></html>

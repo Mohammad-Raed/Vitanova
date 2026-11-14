@@ -12,10 +12,6 @@ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-app
 header{padding:18px 16px 10px;max-width:980px;margin:auto}
 h1{font-size:22px;margin:0 0 2px}
 header p{margin:0;color:var(--mut);font-size:13px}
-.lecture-toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
-.lecture-toc div{max-width:980px;margin:auto;padding:8px 12px;display:flex;gap:6px}
-.lecture-toc a{padding:5px 11px;border-radius:99px;font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card)}
-.lecture-toc a:hover{border-color:var(--acc);color:var(--acc)}
 main{max-width:980px;margin:auto;padding:8px 16px 60px}
 section{margin-top:22px}
 h2{font-size:18px;margin:0 0 8px;padding-bottom:4px;border-bottom:2px solid var(--acc);color:var(--acc)}
@@ -59,7 +55,6 @@ button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
 header .kicker{color:var(--acc);font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 header p+p{margin-top:8px}
 section{scroll-margin-top:58px}
-.lecture-toc a{white-space:nowrap}
 main a{color:var(--acc);overflow-wrap:anywhere}
 .tw{max-width:100%}
 caption{text-align:left;font-weight:700;padding:6px 0;color:var(--ink)}
@@ -74,19 +69,29 @@ caption{text-align:left;font-weight:700;padding:6px 0;color:var(--ink)}
 button.on{background:var(--acc2);color:var(--ink)}
 #res{margin-right:0}
 #empty-review{padding:8px 0;color:var(--mut)}
-:where(.lecture-toc a,button,summary,.tw):focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-@media(max-width:600px){.tw table{min-width:440px}.lecture-toc a{min-height:32px}}
+:where(nav a,button,summary,.tw):focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+@media(max-width:600px){.tw table{min-width:440px}}
+
+.vn-standard-lecture header a{color:inherit;text-decoration:underline;text-underline-offset:.18em}
+.vn-standard-lecture .vn-lecture-topics{position:sticky;top:0;z-index:5}
+.vn-standard-lecture main > section{scroll-margin-top:60px;min-width:0}
+.vn-standard-lecture main h2{border:0;padding:0}
+.vn-standard-lecture main .tw{max-width:100%;overflow-x:auto}
+.vn-standard-lecture main .fig{grid-template-columns:minmax(0,260px) minmax(0,1fr)}
+.vn-standard-lecture main .fig.wide{grid-template-columns:minmax(0,1fr)}
+.vn-standard-lecture #quizbar{position:static}
+@media(max-width:600px){.vn-standard-lecture main .fig{grid-template-columns:minmax(0,1fr)}}
 </style>
 <link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head>
-<body>
+<body class="vn-lecture-page vn-standard-lecture">
 <header>
-<p class="kicker">MSS Final · Anatomy · Lecture 9 (Parts 1 and 2)</p>
+<p class="k">MSS Final · Anatomy · Lecture 9 (Parts 1 and 2)</p>
 <h1>Posterior Leg &amp; Popliteal Fossa</h1>
 <p><a href="MSS-Final-Anatomy-Lecture-8-AI-Summary-MCQs.html">Lecture 8 · Anterior and lateral leg</a></p>
 </header>
-<nav class="lecture-toc" aria-label="On this page"><div>
+<nav aria-label="On this page">
 <a href="#post">Part 1 · Posterior leg</a><a href="#pop">Part 2 · Popliteal fossa</a><a href="#clin">Clinical</a><a href="#recall">Quick recall</a><a href="#quiz">17 MCQs</a>
-</div></nav>
+</nav>
 <main>
 <section id="post">
 <h2>Lecture 9 · Part 1 — Posterior compartment</h2>
@@ -274,5 +279,5 @@ document.getElementById('bWrong').onclick=()=>filt(true);
 document.getElementById('bReset').onclick=()=>{build();filt(false)};
 build();
 </script>
-<script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body>
+<script src="study-data.js?v=anatomy-split-2"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js?v=anatomy-split-2"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body>
 </html>
