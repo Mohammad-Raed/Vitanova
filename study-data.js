@@ -422,11 +422,24 @@ window.VitanovaLectures = [
     "exam": "Final",
     "subject": "Anatomy",
     "category": "mss-final-anatomy",
-    "lectureLabel": "Lecture 8 & Lecture 9 (Parts 1 and 2)",
+    "lectureLabel": "Lecture 8",
     "order": 8,
-    "title": "Leg Muscles & Popliteal Fossa",
-    "description": "Lecture 8 covers the anterior and lateral leg. Lecture 9 covers the posterior compartment (Part 1) and popliteal fossa (Part 2), with 30 practice MCQs across both lectures.",
-    "file": "MSS-Final-Anatomy-Lectures-8-9-AI-Summary-MCQs.html",
+    "title": "Leg Muscles: Anterior & Lateral Compartments",
+    "description": "Leg fascia, ankle retinacula, and the anterior and lateral compartments.",
+    "file": "MSS-Final-Anatomy-Lecture-8-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-09",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lecture 9",
+    "order": 9,
+    "title": "Posterior Leg & Popliteal Fossa (Parts 1 and 2)",
+    "description": "Part 1 covers the posterior compartment. Part 2 covers the popliteal fossa.",
+    "file": "MSS-Final-Anatomy-Lecture-9-AI-Summary-MCQs.html",
     "icon": "📘"
   },
   {
