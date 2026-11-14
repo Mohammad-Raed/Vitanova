@@ -519,5 +519,18 @@ window.VitanovaLectures = [
     "description": "Muscle energy systems, fuel use, and metabolic regulation with 21 MCQs.",
     "file": "MSS-Final-Biochemistry-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-anatomy-11",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Anatomy",
+    "category": "mss-final-anatomy",
+    "lectureLabel": "Lecture 11",
+    "order": 11,
+    "title": "Lower-Limb Nerve Injuries",
+    "description": "Localize obturator, femoral, sciatic, common fibular, tibial and superior gluteal lesions from motor and sensory findings.",
+    "file": "MSS-Final-Anatomy-Lecture-11-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];

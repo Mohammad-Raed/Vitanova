@@ -65,6 +65,7 @@ class RegistrationTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory(); self.root=Path(self.temp.name)/'site'; self.root.mkdir()
         (self.root/'study-data.js').write_text('window.VitanovaLectures = [];')
+        (self.root/'study-appearance-init.js').write_text('')
         for asset in SHARED_SCRIPTS+SHARED_STYLES:
             if not (self.root/asset).exists(): (self.root/asset).write_text('')
         (self.root/'study-questions-data.js').write_text('window.VitanovaQuestionBank = [];')

@@ -78,10 +78,10 @@ def validate():
         group = (item['system'], item['exam'], item['subject'], item['category'])
         grouped.setdefault(group, []).append(item)
         if path.is_file():
-            content = path.read_text()
+            content = path.read_text(encoding='utf-8')
             for script in ('study-data.js', 'study-storage.js', 'study-bookmarks.js',
                            'study-questions-data.js', 'study-nav.js', 'study-quiz-enhance.js'):
-                if len(re.findall(r'<script\b[^>]*\bsrc=[\"\']' + re.escape(script) + r'[\"\']', content)) != 1:
+                if len(re.findall(r'<script\b[^>]*\bsrc=[\"\']' + re.escape(script) + r'(?:\?[^\"\']*)?[\"\']', content)) != 1:
                     errors.append(f'{item["file"]}: expected one {script}')
     for group, items in grouped.items():
         orders = [item['order'] for item in items]
