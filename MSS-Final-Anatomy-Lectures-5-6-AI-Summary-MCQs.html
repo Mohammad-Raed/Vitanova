@@ -29,7 +29,7 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
 .o:hover{border-color:var(--pu)}.o.ok{background:#1f9d6b;color:#fff;border-color:#1f9d6b}.o.no{background:#d64545;color:#fff;border-color:#d64545}
 .ex{display:none;margin-top:8px;font-size:14px;color:var(--mu)}
 #sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
-</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body class="vn-lecture-page">
 <header><small>AL-BALQA’ APPLIED UNIVERSITY · MSS FINAL</small><h1>Anatomy Lectures 5 &amp; 6</h1><p>Lumbar plexus, femoral &amp; obturator nerves, thigh compartments, femoral triangle, popliteal fossa</p></header>
 <nav><a href="#plexus">Lumbar plexus</a><a href="#nerves">Nerves</a><a href="#comp">Compartments</a><a href="#fem">Femoral region</a><a href="#pop">Posterior &amp; popliteal</a><a href="#hy">High-yield</a><a href="#quiz">Quiz</a></nav>
 <main>
@@ -136,4 +136,4 @@ function up(){sc.textContent="Answered "+done+"/"+Q.length+" · Correct "+ok}
 up();let rvw=false;
 document.getElementById("rv").onclick=()=>{rvw=!rvw;[...qs.children].forEach(e=>e.style.display=rvw&&!e.dataset.w?"none":"");};
 document.getElementById("rs").onclick=()=>{done=ok=0;rvw=false;[...qs.children].forEach(e=>{delete e.dataset.d;delete e.dataset.w;e.style.display="";e.querySelectorAll(".o").forEach(b=>b.className="o");e.querySelector(".ex").style.display="none";e.dispatchEvent(new Event("vitanova:question-reset",{bubbles:true}))});up()};
-</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js?v=lecture-first-paint-1"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

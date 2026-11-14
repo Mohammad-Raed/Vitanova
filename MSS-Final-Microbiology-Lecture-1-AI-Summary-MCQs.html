@@ -48,7 +48,7 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
 .f{cursor:pointer;margin:0 4px 6px 0}.f.on{background:var(--pu);color:#fff}
 #sc{position:sticky;bottom:8px;background:var(--pu);color:#fff;border-radius:20px;padding:8px 16px;text-align:center;font-weight:700;margin-top:12px}
 .bar{height:6px;background:var(--ln);border-radius:6px;margin:8px 0;overflow:hidden}.bar div{height:100%;width:0;background:var(--te)}
-</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body class="vn-lecture-page">
 <header><small>MSS FINAL REVISION</small><h1>Skin Viruses</h1><p>Microbiology Lecture 1</p></header>
 <nav><a href="#ab">Abbreviations</a><a href="#ex">Exanthems</a><a href="#hv">Herpesviruses</a><a href="#ot">Other viruses</a><a href="#sm">High-yield</a><a href="#mcq">MCQs</a></nav>
 <main>
@@ -264,4 +264,4 @@ box.addEventListener('click',e=>{const d=e.target.closest('.q');if(!d)return;con
 document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{flt=b.dataset.f;document.querySelectorAll('.f').forEach(x=>x.classList.toggle('on',x===b));upd()});
 document.getElementById('rs').onclick=()=>{flt='all';document.querySelectorAll('.f').forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));build()};
 build();
-</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js?v=lecture-first-paint-1"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

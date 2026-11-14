@@ -264,12 +264,13 @@ SHARED_STYLES = ('study-shared.css','study-quiz.css','study-saved.css')
 
 def integrate_shared(source):
     """Keep educational markup/inline quiz scripts intact; add shared assets once."""
-    result=source
+    result=re.sub(r'<script\s+src="study-appearance-init\.js"\s*>\s*</script>', '', source, flags=re.I)
     # Remove only these exact local external assets, then insert in dependency order.
     for asset in SHARED_SCRIPTS:
-        result=re.sub(r'<script\b(?=[^>]*\bsrc\s*=\s*[\"\']'+re.escape(asset)+r'[\"\'])[^>]*>\s*</script\s*>','',result,flags=re.I)
+        result=re.sub(r'<script\b(?=[^>]*\bsrc\s*=\s*[\"\']'+re.escape(asset)+r'(?:\?[^\"\']*)?[\"\'])[^>]*>\s*</script\s*>','',result,flags=re.I)
+    result=re.sub(r'</head\s*>', '<script src="study-appearance-init.js"></script></head>', result, count=1, flags=re.I)
     for asset in SHARED_STYLES:
-        result=re.sub(r'<link\b(?=[^>]*\bhref\s*=\s*[\"\']'+re.escape(asset)+r'[\"\'])[^>]*>','',result,flags=re.I)
+        result=re.sub(r'<link\b(?=[^>]*\bhref\s*=\s*[\"\']'+re.escape(asset)+r'(?:\?[^\"\']*)?[\"\'])[^>]*>','',result,flags=re.I)
         if not re.search(r'</head\s*>',result,re.I): raise ValueError('Lecture is missing </head>')
         result=re.sub(r'</head\s*>',f'<link rel="stylesheet" href="{asset}"></head>',result,count=1,flags=re.I)
     if not re.search(r'</body\s*>',result,re.I): raise ValueError('Lecture is missing </body>')

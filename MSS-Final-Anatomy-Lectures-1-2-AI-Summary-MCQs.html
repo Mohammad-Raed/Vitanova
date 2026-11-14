@@ -50,7 +50,7 @@ footer{text-align:center;color:var(--mu);font-size:13px;padding:20px}
 .fb{background:var(--soft);color:var(--pu);border:1px solid var(--ln);border-radius:10px;padding:4px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;margin:2px 4px 2px 0}
 .fb.on{background:var(--pu);color:#fff}
 .sa{background:none;border:0;color:var(--pu);font:inherit;font-size:13px;font-weight:700;cursor:pointer;padding:2px 0}
-</style><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body class="vn-lecture-page">
 <header><small>ANATOMY · MSS FINAL</small><h1>Development of the Musculoskeletal System</h1><p>Lectures 1 &amp; 2: Somites, vertebral column, skull, bone, muscle and limbs</p></header>
 <nav><a href="#s1">Somites</a><a href="#s2">Vertebrae</a><a href="#s3">Skull</a><a href="#s4">Bone</a><a href="#s5">Muscle</a><a href="#s6">Limbs</a><a href="#s7">Anomalies</a><a href="#s8">Fixes</a><a href="#s9">High-yield</a><a href="#s10">Quiz</a></nav>
 <main>
@@ -203,4 +203,4 @@ Q.forEach(function(q,i){var v=ans[i],s=true;if(m=="todo")s=v==null;if(m=="wrong"
 function rs(){ans=[];document.querySelectorAll(".q").forEach(function(d){d.querySelectorAll(".o").forEach(function(o){o.classList.remove("ok","no")});d.querySelector(".ex").style.display="none";d.querySelector(".sa").style.display="inline";d.dispatchEvent(new Event("vitanova:question-reset",{bubbles:true}))});
 document.querySelectorAll(".fb")[0].click();up();document.getElementById("s10").scrollIntoView()}
 up();
-</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js?v=lecture-first-paint-1"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

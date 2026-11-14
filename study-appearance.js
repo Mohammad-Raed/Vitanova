@@ -15,16 +15,13 @@
   function load(){
     let saved;try{saved=JSON.parse(read(key));}catch{}
     if(palettes.some(([id])=>id===saved?.palette))prefs.palette=saved.palette;
-    if(['light','dark','auto'].includes(saved?.mode))prefs.mode=saved.mode;
+    const legacy=read(themeKey);
+    prefs.mode=['light','dark','auto'].includes(saved?.mode)?saved.mode:['light','dark'].includes(legacy)?legacy:'auto';
   }
   load();
   const mount=document.querySelector('#sidebar-appearance,.vn-lecture-controls,.fc-top nav');
   if(!mount||typeof HTMLDialogElement==='undefined')return;
   const el=(tag,label,cls)=>{const n=document.createElement(tag);if(label)n.textContent=label;if(cls)n.className=cls;return n;};
-  if(document.body.classList.contains('vn-lecture-page')){
-    const stylesheet=document.querySelector('link[href="study-shared.css"]');
-    if(stylesheet)stylesheet.href='study-shared.css?v=appearance-2';
-  }
   const open=el('button','Appearance','vn-appearance-trigger');open.type='button';open.setAttribute('aria-haspopup','dialog');mount.append(open);
   const dialog=el('dialog',null,'vn-appearance');dialog.setAttribute('aria-labelledby','vn-appearance-title');
   const head=el('div',null,'vn-appearance-head'), title=el('h2','Appearance');title.id='vn-appearance-title';
@@ -35,6 +32,8 @@
   function apply(){
     const mode=prefs.mode==='auto'?(device.matches?'dark':'light'):prefs.mode;
     root.dataset.palette=prefs.palette;root.dataset.theme=mode;
+    const toggle=mount.querySelector('.vn-theme-toggle');
+    if(toggle)toggle.textContent=mode==='dark'?'☀ Light':'☾ Dark';
     for(const b of modes.children)b.setAttribute('aria-pressed',String(b.dataset.mode===prefs.mode));
     for(const b of grid.children)b.setAttribute('aria-pressed',String(b.dataset.palette===prefs.palette));
   }

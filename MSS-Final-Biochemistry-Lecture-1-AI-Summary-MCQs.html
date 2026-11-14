@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biochemistry of Muscles – MSS Final Revision</title>
-<link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body class="vn-lecture-page vn-standard-lecture">
+<script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body class="vn-lecture-page vn-standard-lecture">
 <header><h1>Biochemistry of Muscles</h1>
 <p>Prof. Mohammed Hamad</p></header>
 <nav><a href="#types">Muscle types</a><a href="#atp">ATP sources</a><a href="#pcr">Creatine phosphate</a><a href="#anaer">Anaerobic</a><a href="#aer">Aerobic</a><a href="#fa">Fatty acids</a><a href="#cardiac">Cardiac</a><a href="#skel">Skeletal fuels</a><a href="#ex">Exercise</a><a href="#quiz">Quiz</a></nav><main>
@@ -120,4 +120,4 @@ function upd(){sc.firstChild.textContent="Score: "+cor+" / "+ans+" answered (of 
 function build(){box.innerHTML="";ans=cor=0;Q.forEach((q,i)=>{const d=document.createElement("div");d.className="q";const heading=document.createElement("p");heading.textContent=(i+1)+". "+q[0];d.appendChild(heading);const ex=document.createElement("div");ex.className="ex";ex.hidden=true;ex.textContent="Answer "+L[q[2]]+". "+q[3];
 const bs=q[1].map((t,j)=>{const b=document.createElement("button");b.type="button";b.className="o";b.textContent=L[j]+". "+t;b.onclick=()=>{bs.forEach((x,k)=>{x.disabled=true;if(k==q[2])x.classList.add("ok")});if(j!=q[2])b.classList.add("no");else cor++;ans++;ex.hidden=false;upd()};d.appendChild(b);return b});d.appendChild(ex);box.appendChild(d)});upd()}
 document.getElementById("reset").onclick=build;build();
-</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js?v=lecture-first-paint-1"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
