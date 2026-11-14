@@ -73,3 +73,12 @@ python3 tools/refresh_question_bank.py
 ```
 
 Never edit `study-questions-data.js` by hand. The application stays static and works on GitHub Pages; Python is a maintenance tool, not a runtime dependency. Commit, push, and publish only after review.
+
+## Standard layout for new lectures
+
+Ask for concise explanations, legible handwritten notes in context, and only figures that clarify the material. Use unnumbered topic headings, short descriptive captions below figures, and the existing quiz markup and data format described above.
+
+Use `<body class="vn-lecture-page vn-standard-lecture">` with a direct child `<header>` containing the title, one optional topic `<nav>` linking to section IDs, and a direct child `<main>`. Each topic and the quiz belong in a `<section class="card" id="...">` with a descriptive `<h2>`. Wrap wide tables in `<div class="tbl">` and use `<div class="note">` for brief annotations. Keep original figures in `<figure>` with descriptive alternative text and a `<figcaption>`.
+
+The lecture importer adds the shared styles, navigation, appearance controls, bookmarks and mistake review. Use the shared layout without a separate color palette, duplicate navigation, or numbered topic headings. Verify light and dark modes and mobile widths before publishing.
+

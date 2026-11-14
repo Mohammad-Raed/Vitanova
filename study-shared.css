@@ -164,3 +164,32 @@ main,section,.card,.tbl,.g>*{min-width:0}
 @media(max-width:420px){
   .vn-lecture-page .q .vn-bookmark-toggle{margin-inline-start:8px}
 }
+
+/* Reusable lecture layout for new pages. Colors come from the active appearance preset. */
+.vn-standard-lecture { margin: 0; font: 16px/1.65 system-ui, sans-serif; }
+.vn-standard-lecture *, .vn-standard-lecture *::before, .vn-standard-lecture *::after { box-sizing: border-box; }
+.vn-standard-lecture > main { max-width: 1080px; margin-inline: auto; padding: 16px 16px 64px; }
+.vn-standard-lecture > nav { border-bottom: 1px solid var(--ln); background: var(--card); }
+.vn-standard-lecture > nav a { color: var(--pu); }
+.vn-standard-lecture main > section { margin: 0 0 14px; padding: clamp(14px, 2vw, 22px); border: 1px solid var(--ln); border-radius: 14px; background: var(--card); scroll-margin-top: 12px; }
+.vn-standard-lecture main h2 { margin: 0 0 8px; font: 600 clamp(21px, 3vw, 27px)/1.25 Georgia, serif; color: var(--pu); }
+.vn-standard-lecture main h3 { margin: 16px 0 4px; font-size: 1rem; }
+.vn-standard-lecture main p { margin-block: 8px; }
+.vn-standard-lecture .note { margin-block: 10px; padding: 8px 12px; border-inline-start: 3px solid var(--te); border-radius: 6px; background: var(--soft); }
+.vn-standard-lecture .vn-lecture-note-uncertain { border-inline-start-color: var(--vn-warning); }
+.vn-standard-lecture .row { display: flex; flex-wrap: wrap; align-items: start; gap: 12px 20px; }
+.vn-standard-lecture .row > * { flex: 1 1 300px; min-width: 0; }
+.vn-standard-lecture figure { margin: 8px 0; }
+.vn-standard-lecture figure img { display: block; width: 100%; height: auto; border: 1px solid var(--ln); border-radius: 8px; }
+.vn-standard-lecture figcaption { margin-top: 6px; font-size: .85rem; color: var(--mu); }
+.vn-standard-lecture table { border-collapse: collapse; width: 100%; }
+.vn-standard-lecture :is(th, td) { padding: 7px 10px; border: 1px solid var(--ln); text-align: start; }
+.vn-standard-lecture .q { padding: 12px; margin-block: 12px; border: 1px solid var(--ln); border-radius: 12px; }
+.vn-standard-lecture .q p { font-weight: 600; }
+.vn-standard-lecture .o { display: block; width: 100%; margin-block: 5px; padding: 8px 10px; border: 1px solid var(--ln); border-radius: 8px; background: var(--bg); color: var(--tx); font: inherit; text-align: start; cursor: pointer; }
+.vn-standard-lecture .o:not(:disabled):hover { border-color: var(--pu); background: var(--soft); }
+.vn-standard-lecture .o:disabled { cursor: default; }
+.vn-standard-lecture .ex { margin-top: 8px; color: var(--mu); }
+.vn-standard-lecture .vn-lecture-score { font-weight: 600; }
+.vn-standard-lecture #reset { padding: 4px 10px; border: 1px solid var(--ln); border-radius: 8px; background: var(--soft); color: var(--pu); font: inherit; cursor: pointer; }
+
