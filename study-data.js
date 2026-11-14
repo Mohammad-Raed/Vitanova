@@ -493,5 +493,18 @@ window.VitanovaLectures = [
     "description": "Specimen collection, Gram stains, culture clues and 28 practical questions.",
     "file": "MSS-Microbiology-Lab-1.html",
     "icon": "🧫"
+  },
+  {
+    "id": "mss-final-biochemistry-01",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Biochemistry",
+    "category": "mss-final-biochemistry",
+    "lectureLabel": "Lecture 1",
+    "order": 1,
+    "title": "Biochemistry of Muscles",
+    "description": "Muscle energy systems, fuel use, and metabolic regulation with 21 MCQs.",
+    "file": "MSS-Final-Biochemistry-Lecture-1-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
