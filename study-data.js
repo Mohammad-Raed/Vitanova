@@ -422,10 +422,10 @@ window.VitanovaLectures = [
     "exam": "Final",
     "subject": "Anatomy",
     "category": "mss-final-anatomy",
-    "lectureLabel": "Lecture 8",
+    "lectureLabel": "Lecture 8 & Lecture 9 (Parts 1 and 2)",
     "order": 8,
     "title": "Leg Muscles & Popliteal Fossa",
-    "description": "Leg compartments, ankle retinacula, popliteal neurovascular anatomy, and clinical localization with 30 practice MCQs.",
+    "description": "Lecture 8 covers the anterior and lateral leg. Lecture 9 covers the posterior compartment (Part 1) and popliteal fossa (Part 2), with 30 practice MCQs across both lectures.",
     "file": "MSS-Final-Anatomy-Lectures-8-9-AI-Summary-MCQs.html",
     "icon": "📘"
   },
