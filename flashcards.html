@@ -1,13 +1,216 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Lecture-linked MSS flashcards with cloze recall and personal spaced review."><title>MSS Flashcards · Vitanova</title><link rel="stylesheet" href="study-shared.css?v=appearance-2"><link rel="stylesheet" href="study-flashcards.css"></head><body>
-<a class="skip-link" href="#fc-main">Skip to flashcards</a>
-<header class="fc-top"><a href="index.html">✦ Vitanova</a><nav aria-label="Flashcard navigation"><a id="fc-back" href="index.html#mss">MSS library</a><a href="index.html#backup">Back up progress</a><button id="fc-theme" type="button">Change theme</button></nav></header>
-<main id="fc-main"><div class="fc-heading"><p class="fc-eyebrow">ANOTHER WAY TO REMEMBER</p><h1>MSS Flashcards</h1><p id="fc-context">Recall first. Reveal the answer, then choose how well you remembered.</p></div>
-<section class="fc-panel" aria-label="Choose flashcards"><div class="fc-session-bar"><p id="fc-selection" role="status">Loading card library…</p><button id="fc-settings-toggle" aria-expanded="true" aria-controls="fc-settings" type="button">Hide choices</button></div>
-<form id="fc-settings"><div class="fc-filters"><label>Subject<select id="fc-subject"><option value="">All MSS subjects</option></select></label><label>Lecture<select id="fc-lecture"><option value="">All topics, including additional material</option><option value="__lectures__">All lecture topics — exclude additional material</option></select></label><label>Review<select id="fc-mode"><option value="due-only">Due cards only</option><option value="due" selected>Due + new cards</option><option value="all">Cram · keep my schedule</option><option value="learning">Learning and relearning</option></select></label><label>Search topics<input id="fc-search" type="search" placeholder="For example: brachial plexus"></label><label>Session size<select id="fc-size"><option>10</option><option selected>20</option><option>50</option><option value="all">All matching cards</option></select></label><label class="fc-check"><input id="fc-shuffle" type="checkbox" checked> Shuffle cards</label><label>New cards per session<select id="fc-new-limit"><option value="0">No limit</option><option value="10">10</option><option value="20">20</option><option value="50">50</option></select></label><label class="fc-check"><input id="fc-one-per-note" type="checkbox"> One cloze per note in scheduled sessions</label></div><p class="fc-muted">Lecture sets are suggested by topic and may include related material beyond the lecture. Every source card remains available in All topics.</p><button class="fc-primary" id="fc-start" type="submit" disabled>Start session</button><span id="fc-match-count" role="status"></span><p class="fc-muted" id="fc-session-warning" hidden>Starting a new session replaces the current queue. Your saved review history is kept.</p></form></section>
-<p id="fc-error" role="alert" hidden></p><button id="fc-retry" type="button" hidden>Retry loading</button>
-<section id="fc-practice" aria-label="Flashcard practice" hidden><div class="fc-progress"><p id="fc-counter" role="status" aria-live="polite"></p><button id="fc-undo" type="button" disabled>Undo last rating</button></div><article class="fc-card"><div class="fc-card-meta"><span id="fc-topic"></span><span id="fc-format">Cloze recall</span></div><h2 class="fc-sr" id="fc-card-heading" tabindex="-1">Current flashcard</h2><div id="fc-front" class="fc-face"></div><div id="fc-answer" hidden><div id="fc-extra" class="fc-extra"></div><div id="fc-supplements"></div></div><div class="fc-card-actions"><button id="fc-reveal" class="fc-primary" type="button">Reveal answer <kbd>Space</kbd></button><div id="fc-ratings" aria-label="Rate your recall" hidden></div><button id="fc-skip" type="button">Skip for this session</button></div></article></section>
-<section id="fc-finished" class="fc-panel" hidden><h2>Session complete</h2><p id="fc-finished-text" role="status"></p><div class="fc-finish-actions"><button id="fc-continue" class="fc-primary" type="button" hidden>Continue next set</button><button id="fc-learning-next" type="button" hidden>Review learning card</button><button id="fc-next-lecture" type="button" hidden>Next lecture</button></div><button id="fc-another" class="fc-primary" type="button">Choose another session</button></section>
-<details class="fc-help"><summary>How review and progress work</summary><p>Try recalling the missing words before revealing. Vitanova uses FSRS at 90% desired retention. Again means you forgot; Hard means you recalled with effort. The delay under each rating is calculated for that card. Existing due dates stay unchanged until the next review.</p><p>Due + new puts due cards first. Cram does not change your schedule. Skipping changes no study record. Changing choices leaves the active session intact until you start a new one. Undo restores the previous rating’s record. Continue next set keeps the same selection. Learning and relearning cards return as soon as they are due, ahead of unseen cards. When the queue is empty, learning cards automatically return up to 20 minutes early. Skipped cards are also left out of later sets. Next lecture follows the same subject’s lecture order, keeps review mode and set size, and clears the topic search. Starting a new session or refreshing begins a new series.</p><p>Your flashcard history stays in this browser and is included in Vitanova’s existing backup/import. MCQ bookmarks, mistakes and lecture completion are separate and unchanged. Cards with several blanks for the same cloze reveal them together, including source “one-by-one” notes.</p><p>Imported card text is preserved; source content has not undergone a new medical accuracy review. Supplemental source fields are optional and load only when opened.</p></details>
-<footer>MSS source deck · <a href="https://github.com/Mohammad-Raed/Vitanova/releases/tag/mss-anki-source-v1" rel="noopener">Source and attribution</a> · <a href="index.html#backup">Back up your study data</a></footer></main>
-<script src="study-data.js?v=anatomy-final-11"></script><script src="study-storage.js?v=20261107b"></script><script src="vendor/ts-fsrs-5.4.2.js?v=20261107b"></script><script src="study-flashcard-core.js?v=anki-3"></script><script src="study-flashcards.js?v=anki-3"></script><script src="study-appearance.js?v=2"></script></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitanova · MSS and Immunology flashcards</title>
+<style>
+:root{color-scheme:light dark;--bg:#f2f5f9;--card:#fff;--ink:#17243a;--muted:#4b5e75;--line:#d6dfe9;--blue:#2459a7;--soft:#e9f1fc}
+@media(prefers-color-scheme:dark){:root{--bg:#111827;--card:#192337;--ink:#eef4ff;--muted:#b8c6dd;--line:#34435e;--blue:#a8c8ff;--soft:#253754}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,sans-serif}
+main{max-width:900px;margin:auto;padding:24px clamp(12px,3vw,28px) 48px}
+header{margin-bottom:20px}header p{margin:0;color:var(--muted)}h1{font:700 clamp(1.8rem,5vw,2.8rem)/1.12 Georgia,serif;margin:.22em 0}h2{font:700 clamp(1.28rem,4vw,1.75rem)/1.25 Georgia,serif;margin:.7em 0}
+a{color:var(--blue)}button,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;max-width:100%}button{cursor:pointer}button:hover{background:var(--soft)}button:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}label{font-size:.84rem;color:var(--muted);display:grid;gap:3px}
+.filters,.actions,.ratings{display:flex;gap:8px;flex-wrap:wrap;align-items:end}.filters{margin-bottom:12px}.filters button{min-height:43px}.primary{background:var(--soft);border-color:var(--blue);color:var(--blue);font-weight:700}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,4vw,30px);margin:12px 0}.meta{color:var(--muted);font-size:.86rem;margin:0}.answer{margin:14px 0;padding:12px;border-inline-start:3px solid var(--blue);background:var(--soft);border-radius:6px;font-weight:600}.actions{margin-top:14px}.ratings button{flex:1 1 115px}.ratings button span{display:block;font-size:.76rem;color:var(--muted)}
+progress{width:100%;height:7px;accent-color:var(--blue);display:block;margin:7px 0 14px}.figure{display:block;max-width:430px;margin:12px 0}.figure img{display:block;width:100%;border-radius:8px;border:1px solid var(--line)}.figure small{color:var(--muted)}
+.cloze{color:var(--blue);background:var(--soft);border-radius:4px;padding:0 .2em}
+.badge{display:inline-block;color:var(--blue);background:var(--soft);border-radius:5px;padding:0 .4em;margin-inline-start:6px;font-weight:700}
+details summary{cursor:pointer;font-weight:700}details p{margin-bottom:8px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;margin:8px 0 20px}th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}th{background:var(--soft)}[hidden]{display:none!important}footer{font-size:.86rem;color:var(--muted);margin-top:16px}
+</style></head><body><main>
+<header><a href="index.html">← Learning Hub</a> <a id="return-to-lecture" hidden>← Back to lecture</a><p>Vitanova Learning Hub</p><h1>Study flashcards</h1><p>MSS Midterm and Final · Immunology Midterm · Practical labs</p></header>
+<div class="filters">
+<label>Exam<select id="exam"><option value="mid">Midterm</option><option value="final">Final and labs</option><option value="">All materials</option></select></label>
+<label>Lecture or lab<select id="lecture"><option value="">All materials</option></select></label>
+<label>Topic<select id="topic"></select></label>
+<label>Cards<select id="origin"><option value="">All cards</option><option value="anking">AnKing only</option><option value="original">Course cards only</option></select></label>
+<label>Mode<select id="mode"><option value="practice">Free practice</option><option value="due">Due + new</option></select></label>
+<button id="start" type="button">Start set</button><button id="start-linked" class="primary" type="button" hidden></button></div>
+<div class="panel" id="study">
+<p class="meta" id="progress-text" aria-live="polite"></p><progress id="progress" value="0" max="1" aria-label="Set progress"></progress>
+<p class="meta" id="source"></p><h2 id="question" tabindex="-1"></h2>
+<a class="figure" id="figure" target="_blank" rel="noopener" hidden><img id="image" alt=""><small id="image-caption"></small></a>
+<div id="answer" class="answer" hidden></div>
+<div id="ratings" class="ratings" hidden aria-label="Rate recall"></div>
+<div class="actions"><button id="reveal" class="primary" type="button">Show answer</button><button id="skip" type="button">Skip</button><button id="undo" type="button">Undo rating</button></div>
+<p class="meta" id="shortcut">Space reveals · 1 Again · 2 Hard · 3 Good · 4 Easy</p>
+</div>
+
+<footer>Review ratings use Vitanova’s FSRS scheduler. Progress is stored in this browser when storage is available. Slide references use PDF page numbers.
+</footer>
+</main><script src="vendor/ts-fsrs-5.4.2.js"></script><script src="study-flashcard-core.js"></script><script src="study-storage.js"></script><script src="data/flashcards/course-deck.js"></script><script>
+const {cards,images,pages} = window.VitanovaCourseDeck;
+const byId = id => document.getElementById(id);
+const core = window.VitanovaFlashcardCore, storage = window.VitanovaStorage;
+const key = core.KEY;
+const loadState = () => storage.read(key, {version:1,records:{}}, core.validState);
+let records = loadState().records;
+const request = new URLSearchParams(location.search).get('lecture');
+const linked = Object.hasOwn(pages, request) ? pages[request] : null;
+const linkedOption = '@page';
+let queue = [], cursor = 0, revealed = false, last = null, storageFailed = false;
+const lecture = byId('lecture'), topic = byId('topic'), mode = byId('mode'), origin = byId('origin'), exam = byId('exam');
+const lectureNames = ['Musculoskeletal development','Limb development','Gluteal region and thigh','Knee joint','Lumbar plexus','Thigh compartments','Sacral plexus and lower-limb nerves','Anterior and lateral leg','Posterior leg, popliteal fossa and foot','Lower-limb blood supply','Lower-limb nerve injuries'];
+const materials = {
+  ...{"mss-mid-anatomy-01-02": "Anatomy · Lectures 1 & 2 · Skull & TMJ", "mss-mid-anatomy-03-04": "Anatomy · Lectures 3 & 4 · Vertebral Column", "mss-mid-anatomy-05-06": "Anatomy · Lectures 5 & 6 · Upper Limb Bones & Joints", "mss-mid-anatomy-07-08": "Anatomy · Lectures 7 & 8 · Upper Limb Joints & Back Muscles", "mss-mid-anatomy-09-10": "Anatomy · Lectures 9 & 10 · Arm, Cubital Fossa & Brachial Plexus", "mss-mid-anatomy-11-12": "Anatomy · Lectures 11 & 12 · The Hand & The Forearm", "mss-mid-pharmacology-01-03": "Pharmacology · Lectures 1–3 · Psoriasis, Anti-Rheumatoid Drugs & Muscle Relaxants", "mss-mid-physiology-01-03": "Physiology · Lectures 1–3 · Muscle Physiology & Touch", "mss-mid-pathology-01-03": "Pathology · Lectures 1–3 · Skeletal Muscle, Bone Disease & Arthritis", "immunology-mid-01": "Immunology · Lecture 1 · Course Introduction", "mss-mid-microbiology-01-02": "Microbiology · Lectures 1 & 2 · Skin Infections & Anaerobes", "mss-mid-physiology-04": "Physiology · Lecture 4 · Somatic Reflexes", "mss-mid-anatomy-14-15": "Anatomy · Lectures 14 & 15 · Lower Limb Bones & Hip, SI and Foot Joints", "mss-mid-anatomy-13": "Anatomy · Lecture 13 · Nerve Injuries of the Upper Limb", "immunology-mid-02": "Immunology · Lecture 2 · Immunity Overview", "immunology-mid-03": "Immunology · Lecture 3 · Barriers & Microbial Sensing", "immunology-mid-04": "Immunology · Lecture 4 · Phagocytes & Inflammation", "immunology-mid-05": "Immunology · Lecture 5 · Innate Cells & Introduction to Adaptive Immunity", "mss-mid-physiology-03-04-full": "Physiology · Lectures 3–4 · Sensory Receptors, Touch and Spinal Reflexes — Full Explanation", "immunology-mid-06": "Immunology · Lecture 6 · Adaptive Immunity: From Recognition to Memory", "immunology-mid-07": "Immunology · Lecture 7 · Organisation, Lymph & Lymph Nodes", "immunology-mid-08": "Immunology · Lecture 8 · Spleen, MALT & Clinical Lymphatics"},
+  phys1:'Physiology 1 · Reflexes and locomotion', pharm1:'Pharmacology 1 · Acne treatment',
+  path1:'Pathology 1 · Inflammatory skin disease', micro1:'Microbiology 1 · Skin viruses',
+  micro2:'Microbiology 2 · Skin parasites', bio1:'Biochemistry 1 · Muscle metabolism',
+  anatlab1:'Anatomy Lab 1 · Skull', anatlab2:'Anatomy Lab 2 · Back and spine',
+  anatlab3:'Anatomy Lab 3 · Shoulder and axilla', pathlab1:'Pathology Lab 1',
+  microlab1:'Microbiology Lab 1'
+};
+const anatomyGroup = document.createElement('optgroup'), midGroup = document.createElement('optgroup');
+midGroup.label = 'Midterm lectures';
+anatomyGroup.label = 'Anatomy lectures';
+lectureNames.forEach((name,i) => anatomyGroup.append(new Option((i+1)+' · '+name,String(i+1))));
+const lectureGroup = document.createElement('optgroup'), labGroup = document.createElement('optgroup');
+lectureGroup.label = 'Other Final lectures';
+labGroup.label = 'Practical labs';
+Object.entries(materials).forEach(([id,name]) => (id.includes('-mid-') ? midGroup : id.includes('lab') ? labGroup : lectureGroup).append(new Option(name,id)));
+function inExam(card) { return !exam.value || (exam.value === 'mid') === card.lecture.includes('-mid-'); }
+function materialsForExam() {
+  lecture.replaceChildren(new Option('All in this exam',''));
+  if (exam.value !== 'final') lecture.append(midGroup);
+  if (exam.value !== 'mid') lecture.append(anatomyGroup, lectureGroup, labGroup);
+  if (linked && (!exam.value || (exam.value === 'mid') === request.includes('-mid-'))) {
+    lecture.add(new Option(linked.label + ' · ' + linked.title, linkedOption), 1);
+  }
+  topics();
+}
+function inLecture(card) {
+  return lecture.value === linkedOption ? linked.decks.includes(card.lecture) : !lecture.value || card.lecture === lecture.value;
+}
+const names = ['Again','Hard','Good','Easy'];
+const buttons = names.map((name, index) => {
+  const button = document.createElement('button'), interval = document.createElement('span');
+  button.type = 'button';
+  button.append(name, interval);
+  button.onclick = () => rate(index + 1);
+  byId('ratings').append(button);
+  return interval;
+});
+function save() {
+  storageFailed = !storage.write(key, {version:1, records});
+}
+function topics() {
+  topic.replaceChildren(new Option('All topics',''));
+  for (const name of new Set(cards.filter(c => inExam(c) && inLecture(c)).map(c => c.topic))) {
+    topic.add(new Option(name,name));
+  }
+}
+function start() {
+  records = loadState().records;
+  queue = cards.filter(c => inExam(c) && inLecture(c) && (!topic.value || c.topic === topic.value));
+  if (origin.value) queue = queue.filter(c => Boolean(c.anking) === (origin.value === 'anking'));
+  if (mode.value === 'due') queue = queue.filter(c => !records[c.id] || records[c.id].due <= Date.now())
+    .sort((a,b) => (records[a.id]?.due ?? Infinity) - (records[b.id]?.due ?? Infinity));
+  cursor = 0; revealed = false; last = null; render();
+}
+function render(focus = false) {
+  const card = queue[cursor];
+  const source = card ? (materials[card.lecture] || 'Anatomy ' + card.lecture) + ' · ' + card.topic + (card.pages ? ' · PDF pp. ' + card.pages : '') : '';
+  byId('source').textContent = source;
+  if (card?.anking) {
+    const badge = document.createElement('span');
+    badge.className = 'badge';
+    badge.textContent = 'AnKing';
+    byId('source').append(badge);
+  }
+  byId('progress-text').textContent = (card ? 'Card ' + (cursor + 1) + ' of ' + queue.length : cursor + ' of ' + queue.length + ' cards viewed')
+    + (storageFailed ? ' · Progress available for this session only' : '');
+  byId('progress').max = queue.length || 1; byId('progress').value = cursor;
+  const heading = byId('question');
+  heading.textContent = card?.question ?? (queue.length ? 'Set complete' : 'No cards match this set');
+  if (card?.blanks.length) {
+    heading.replaceChildren();
+    card.question.split('[…]').forEach((part, index) => {
+      if (index) {
+        const blank = document.createElement('span');
+        blank.className = 'cloze';
+        blank.textContent = revealed ? card.blanks[index - 1] : '[…]';
+        heading.append(blank);
+      }
+      heading.append(part);
+    });
+  }
+  byId('answer').textContent = card?.answer ?? '';
+  byId('answer').hidden = !revealed || !card?.answer;
+  byId('ratings').hidden = !card || !revealed;
+  byId('reveal').hidden = !card || revealed;
+  byId('skip').hidden = !card;
+  byId('shortcut').hidden = !card;
+  byId('undo').disabled = !last;
+  const figure = byId('figure');
+  figure.hidden = !card?.image || !(card.imageOnFront || revealed);
+  if (!figure.hidden) {
+    const image = byId('image');
+    image.src = images[card.image];
+    image.alt = (card.caption || 'Original slide figure') + ' for ' + card.topic;
+    byId('image-caption').textContent = (card.caption || 'Original slide figure') + ' · Open full size';
+    figure.href = images[card.image];
+  }
+  if (focus) byId('question').focus();
+}
+function intervalLabel(days) {
+  return days < 1 / 24 ? Math.max(1,Math.round(days * 1440)) + ' min'
+    : days < 1 ? Math.round(days * 24) + ' hr' : Math.round(days) + ' d';
+}
+function reveal() {
+  const card = queue[cursor];
+  if (!card || revealed) return;
+  revealed = true;
+  buttons.forEach((label, i) => label.textContent = intervalLabel(core.schedule(records[card.id],i+1).interval));
+  render();
+  buttons[0].parentElement.focus({preventScroll:true});
+}
+function rate(rating) {
+  const card = queue[cursor];
+  if (!card || !revealed) return;
+  records = loadState().records;
+  const previous = records[card.id];
+  const updated = core.schedule(previous,rating);
+  last = {id:card.id, record:previous, next:updated, cursor};
+  records[card.id] = updated;
+  save(); next();
+}
+function next() { cursor++; revealed = false; render(true); }
+function undo() {
+  if (!last) return;
+  records = loadState().records;
+  if (JSON.stringify(records[last.id]) !== JSON.stringify(last.next)) { last = null; render(); return; }
+  if (last.record) records[last.id] = last.record; else delete records[last.id];
+  cursor = last.cursor; last = null; revealed = false; save(); render(true);
+}
+lecture.onchange = topics;
+byId('start').onclick = start;
+byId('reveal').onclick = reveal;
+byId('skip').onclick = next;
+byId('undo').onclick = undo;
+document.addEventListener('keydown', event => {
+  if (event.altKey || event.ctrlKey || event.metaKey || event.repeat || event.target.closest('select,a,input,textarea,summary')) return;
+  if (event.code === 'Space' && !revealed && queue[cursor] && !event.target.closest('button')) { event.preventDefault(); reveal(); }
+  else if (/^[1-4]$/.test(event.key) && revealed) { event.preventDefault(); rate(Number(event.key)); }
+});
+exam.onchange = () => { materialsForExam(); start(); };
+function openLinked() {
+  exam.value = request.includes('-mid-') ? 'mid' : 'final';
+  materialsForExam();
+  lecture.value = linkedOption;
+  topic.value = '';
+  origin.value = '';
+  topics();
+  start();
+}
+if (linked) {
+  const back = byId('return-to-lecture');
+  back.href = linked.file;
+  back.hidden = false;
+  const button = byId('start-linked');
+  button.hidden = false;
+  button.textContent = 'Study ' + linked.label;
+  button.onclick = openLinked;
+  openLinked();
+} else {
+  materialsForExam();
+  start();
+}
+</script></body></html>
