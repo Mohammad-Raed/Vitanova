@@ -193,3 +193,38 @@ main,section,.card,.tbl,.g>*{min-width:0}
 .vn-standard-lecture .vn-lecture-score { font-weight: 600; }
 .vn-standard-lecture #reset { padding: 4px 10px; border: 1px solid var(--ln); border-radius: 8px; background: var(--soft); color: var(--pu); font: inherit; cursor: pointer; }
 
+/* The shared lecture shell follows the hub controls, title, topics and content order. */
+body.vn-lecture-page{margin:0;padding-bottom:0;--vn-study-width:1080px}
+body.vn-lecture-page > .vn-lecture-hero{
+  box-sizing:border-box;width:100%;max-width:none;margin:0;border-radius:0;
+  padding:clamp(13px,2vw,25px) max(16px,calc((100% - var(--vn-study-width))/2));
+  background:linear-gradient(112deg,var(--vn-ink),var(--vn-ink-end)) !important;
+  color:var(--vn-on-ink);border-bottom:1px solid var(--ln);text-align:start;
+}
+body.vn-lecture-page > .vn-lecture-hero h1{
+  color:var(--vn-on-ink);font:700 clamp(25px,3.4vw,40px)/1.12 Georgia,serif;
+  margin:4px 0;letter-spacing:-.025em;text-wrap:wrap;
+}
+body.vn-lecture-page > .vn-lecture-hero :is(p,.sub){color:var(--vn-muted-ink);font-size:.9rem;line-height:1.45;margin:4px 0 0}
+body.vn-lecture-page > .vn-lecture-hero :is(small,.k,.eyebrow,.vn-lecture-label){
+  color:var(--vn-gold);font:700 .71rem/1.4 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin:0;
+}
+body.vn-lecture-page > nav.vn-lecture-topics{
+  box-sizing:border-box;position:static;inset:auto;z-index:auto;
+  display:flex;justify-content:flex-start;align-items:center;gap:4px;
+  width:100%;max-width:none;margin:0;padding:5px max(12px,calc((100% - var(--vn-study-width))/2));
+  overflow-x:auto;overscroll-behavior-x:contain;scroll-padding-inline:12px;
+  border:0;border-bottom:1px solid var(--ln);border-radius:0;background:var(--card);
+}
+body.vn-lecture-page > nav.vn-lecture-topics a{
+  display:inline-flex;align-items:center;flex:none;min-height:36px;margin:0;padding:5px 9px;
+  border:1px solid transparent;border-radius:7px;background:transparent;color:var(--pu);
+  font:650 .82rem/1.35 system-ui,sans-serif;text-decoration:none;white-space:nowrap;
+}
+body.vn-lecture-page > nav.vn-lecture-topics a:is(:hover,:focus-visible){background:var(--soft);border-color:var(--ln)}
+body.vn-lecture-page > main{box-sizing:border-box;width:100%;max-width:var(--vn-study-width);margin-inline:auto;padding-inline:16px}
+body.vn-lecture-page > .vn-back-to-top{display:inline-flex}
+@media(max-width:480px){
+  body.vn-lecture-page > main{padding-inline:12px}
+  body.vn-lecture-page > nav.vn-lecture-topics a{min-height:40px}
+}

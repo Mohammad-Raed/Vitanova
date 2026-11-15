@@ -6,7 +6,7 @@
   if (!lecture || !bookmarks || !mistakes) return;
   const bank = (window.VitanovaQuestionBank || []).filter((item) => item.lectureId === lecture.id);
   if (!bank.length) return;
-  const normalize = (text) => String(text || '').replace(/\s+/g, ' ').trim();
+  const normalize = (text) => String(text || '').replace(/\s+/g, ' ').replace(/([<>≤≥])\s+(?=\d)/g, '$1').replace(/\(\s+(?=[<>≤≥])/g, '(').trim();
   const stem = (text) => normalize(text).replace(/\s+([?!.,;:])/g, '$1').replace(/^\d+\s*[.)]\s*/, '');
   const questions = new Map(); const matched = new WeakMap(); const answered = new WeakSet();
   bank.forEach((q) => { const key = stem(q.question); if (!questions.has(key)) questions.set(key, []); questions.get(key).push(q); });
@@ -16,14 +16,20 @@
     if (button.textContent !== text) button.textContent = text;
     button.title = saved ? 'Remove this bookmark' : 'Save this question for mixed revision';
   }
+  const optionSelector = 'button.o, .qt ~ button.opt';
   function enhance() {
     document.querySelectorAll('.q:not([data-vn-question-id])').forEach((block) => {
-      const heading = block.querySelector('p'); const options = [...block.querySelectorAll('button.o')];
+      const heading = block.querySelector('p, .qt'); const options = [...block.querySelectorAll(optionSelector)];
       if (!heading || !options.length) return;
       const title = heading.cloneNode(true);
-      title.querySelectorAll('.tag').forEach((tag) => tag.remove());
+      title.querySelectorAll('.tag, .ty, .qn').forEach((tag) => tag.remove());
       const candidates = questions.get(stem(title.textContent)) || [];
-      const raw = options.map((o) => normalize(o.textContent));
+      const raw = options.map((option) => {
+        if (!option.matches('.qt ~ button.opt')) return normalize(option.textContent);
+        const copy = option.cloneNode(true);
+        copy.querySelector('.l')?.remove();
+        return normalize(copy.textContent);
+      });
       const noPrefix = raw.map((text) => text.replace(/^[A-Z][.)]\s*/, ''));
       let item; let mapping;
       for (const displayed of [raw, noPrefix]) {
@@ -84,10 +90,13 @@
     });
     // Capture before native handlers mark their question as locked, without altering their score/reset flow.
     document.addEventListener('click', (event) => {
-      const option = event.target.closest('button.o'); if (!option) return;
+      const option = event.target.closest(optionSelector); if (!option) return;
       const block = option.closest('.q'); const match = matched.get(block);
-      if (!match || answered.has(block) || block.dataset.l || block.dataset.d || block.dataset.done) return;
-      const index = [...block.querySelectorAll('button.o')].indexOf(option);
+      if (!match || block.dataset.l || block.dataset.d || block.dataset.done) return;
+      // The legacy Immunology quiz clears its done class and re-enables options on reset.
+      const legacy = option.matches('.qt ~ button.opt');
+      if (legacy ? block.classList.contains('done') : answered.has(block)) return;
+      const index = [...block.querySelectorAll(optionSelector)].indexOf(option);
       if (index < 0 || option.disabled) return;
       answered.add(block); mistakes.record(match.item.id, match.mapping[index] === match.item.answer, false);
     }, true);

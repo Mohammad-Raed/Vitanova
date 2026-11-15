@@ -22,15 +22,28 @@
   const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   const system=slug(current.system);
   const exam=system+'-'+(current.exam==='Midterm'?'mid':slug(current.exam));
-  const header=document.querySelector('header')||document.querySelector('main');
-  if(header&&!header.id)header.id='vn-lecture-start';
+  const main=document.querySelector('main');
+  const header=document.querySelector('body > header')||main?.querySelector(':scope > .hero');
+  const start=header||main;
+  if(start&&!start.id)start.id='vn-lecture-start';
+  if(header){
+    header.classList.add('vn-lecture-hero');
+    const heading=header.querySelector('h1');
+    if(heading&&!header.querySelector('small,.k,.eyebrow,.vn-lecture-label')){
+      const label=document.createElement('p');
+      label.className='vn-lecture-label';
+      label.textContent=[current.system,current.exam,current.subject,current.lectureLabel].join(' · ');
+      heading.before(label);
+    }
+    if(header.parentElement!==document.body)document.body.insertBefore(header,main);
+  }
   const trail=[[current.system,system],[current.exam,exam],[current.subject,current.category]];
   for(const [label,route] of trail) {
     context.append(link(label,'index.html#'+encodeURIComponent(route),'vn-breadcrumb'));
     const separator=document.createElement('span');separator.className='vn-breadcrumb-separator';
     separator.setAttribute('aria-hidden','true');separator.textContent='/';context.append(separator);
   }
-  const here=link(current.lectureLabel,header?'#'+encodeURIComponent(header.id):'#','vn-breadcrumb');
+  const here=link(current.lectureLabel,start?'#'+encodeURIComponent(start.id):'#','vn-breadcrumb');
   here.setAttribute('aria-current','page');context.append(here);
   const controls=document.createElement('div');controls.className='vn-lecture-controls';
   for(const [label,lecture,cls] of [['← Previous',previous,'vn-previous'],['Next →',next,'vn-next']]) {
@@ -43,27 +56,27 @@
     const label=anchor.textContent.trim();
     if((label==='← Vitanova Learning Hub'||label==='← Back')&&/^index\.html(?:#|$)/.test(anchor.getAttribute('href')||''))anchor.remove();
   });
-  const insertion=document.querySelector('header')||document.querySelector('nav,main');if(insertion)insertion.before(nav);else document.body.prepend(nav);
-  const sectionBar=[...document.querySelectorAll('nav')].find(bar=>bar.querySelector('a[href^="#"]'));
-  const topics=new Map();
-  const flashcards=link('▤ Flashcards','flashcards.html?lecture='+encodeURIComponent(current.id),'vn-flashcards');
-  if(sectionBar){
-    sectionBar.classList.add('vn-lecture-topics');
-    if(!sectionBar.hasAttribute('aria-label'))sectionBar.setAttribute('aria-label','Lecture topics');
-    for(const a of sectionBar.querySelectorAll('a[href^="#"]')){
-      let id;try{id=decodeURIComponent(a.hash.slice(1));}catch{continue;}
-      const target=document.getElementById(id);
-      if(!target)continue;
-      if(topics.has(id)){a.remove();continue;}
-      topics.set(id,target);
-    }
-    sectionBar.append(flashcards);
-  }else{
-    controls.prepend(flashcards);
-    for(const section of document.querySelectorAll('main section[id]')){
-      if(section.querySelector('h2,h3'))topics.set(section.id,section);
+  if(start)start.before(nav);else document.body.prepend(nav);
+  let sectionBar=[...document.querySelectorAll('nav')].find(bar=>bar.querySelector('a[href^="#"]'));
+  if(!sectionBar){
+    sectionBar=document.createElement('nav');
+    for(const section of main?.querySelectorAll('section[id]')||[]){
+      const heading=section.querySelector('h2,h3');
+      if(heading)sectionBar.append(link(heading.textContent.trim(),'#'+encodeURIComponent(section.id),'vn-topic'));
     }
   }
+  (header||nav).after(sectionBar);
+  const topics=new Map();
+  const flashcards=link('▤ Flashcards','flashcards.html?lecture='+encodeURIComponent(current.id),'vn-flashcards');
+  sectionBar.classList.add('vn-lecture-topics');
+  if(!sectionBar.hasAttribute('aria-label'))sectionBar.setAttribute('aria-label','Lecture topics');
+  for(const a of sectionBar.querySelectorAll('a[href^="#"]')){
+    let id;try{id=decodeURIComponent(a.hash.slice(1));}catch{continue;}
+    const target=document.getElementById(id);
+    if(!target||topics.has(id)){a.remove();continue;}
+    topics.set(id,target);
+  }
+  sectionBar.append(flashcards);
   if(topics.size){
     let frame=0,active=null;
     const track=()=>{
