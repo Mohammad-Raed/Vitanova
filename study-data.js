@@ -571,5 +571,31 @@ window.VitanovaLectures = [
     "description": "Bone and soft tissue tumour pathology, diagnostic images and 15 practice questions.",
     "file": "MSS-Final-Pathology-Lecture-3-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-microbiology-03",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Microbiology",
+    "category": "mss-final-microbiology",
+    "lectureLabel": "Lecture 3",
+    "order": 3,
+    "title": "Fungal Infections of the Skin",
+    "description": "Fungal forms, superficial mycoses, dermatophytosis, candidiasis and subcutaneous mycoses.",
+    "file": "MSS-Final-Microbiology-Lecture-3-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-biochemistry-02",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Biochemistry",
+    "category": "mss-final-biochemistry",
+    "lectureLabel": "Lecture 2",
+    "order": 2,
+    "title": "Biochemistry of Bones",
+    "description": "Bone matrix, cells, remodelling, mineral regulation and metabolic bone disorders.",
+    "file": "MSS-Final-Biochemistry-Lecture-2-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
