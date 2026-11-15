@@ -532,5 +532,44 @@ window.VitanovaLectures = [
     "description": "Localize obturator, femoral, sciatic, common fibular, tibial and superior gluteal lesions from motor and sensory findings.",
     "file": "MSS-Final-Anatomy-Lecture-11-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-final-pharmacology-02",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Pharmacology",
+    "category": "mss-final-pharmacology",
+    "lectureLabel": "Lecture 2",
+    "order": 2,
+    "title": "Trichogenic and Antitrichogenic Agents",
+    "description": "Hair growth and reduction, drug mechanisms, adverse effects and 15 practice questions.",
+    "file": "MSS-Final-Pharmacology-Lecture-2-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-pathology-02",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Pathology",
+    "category": "mss-final-pathology",
+    "lectureLabel": "Lecture 2",
+    "order": 2,
+    "title": "Skin Tumours",
+    "description": "Actinic keratosis, squamous and basal cell carcinoma, melanoma and 15 practice questions.",
+    "file": "MSS-Final-Pathology-Lecture-2-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "mss-final-pathology-03",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Pathology",
+    "category": "mss-final-pathology",
+    "lectureLabel": "Lecture 3",
+    "order": 3,
+    "title": "Bone and Soft Tissue Tumours",
+    "description": "Bone and soft tissue tumour pathology, diagnostic images and 15 practice questions.",
+    "file": "MSS-Final-Pathology-Lecture-3-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];
