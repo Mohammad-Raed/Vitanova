@@ -7,213 +7,47 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,sans-serif}
 main{max-width:900px;margin:auto;padding:24px clamp(12px,3vw,28px) 48px}
 header{margin-bottom:20px}header p{margin:0;color:var(--muted)}h1{font:700 clamp(1.8rem,5vw,2.8rem)/1.12 Georgia,serif;margin:.22em 0}h2{font:700 clamp(1.28rem,4vw,1.75rem)/1.25 Georgia,serif;margin:.7em 0}
-a{color:var(--blue)}button,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;max-width:100%}button{cursor:pointer}button:hover{background:var(--soft)}button:disabled{opacity:.5;cursor:default}
+.header-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.header-links a{display:inline-flex;align-items:center;gap:.45em;min-height:40px;padding:5px 11px;border:1px solid var(--line);border-radius:8px;background:var(--card);font-size:.88rem;font-weight:650;text-decoration:none}
+.header-links a:hover{background:var(--soft);border-color:var(--blue)}
+a{color:var(--blue)}button,select,input{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;max-width:100%}button{cursor:pointer}button:hover{background:var(--soft)}button:disabled{opacity:.5;cursor:default}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}label{font-size:.84rem;color:var(--muted);display:grid;gap:3px}
 .filters,.actions,.ratings{display:flex;gap:8px;flex-wrap:wrap;align-items:end}.filters{margin-bottom:12px}.filters button{min-height:43px}.primary{background:var(--soft);border-color:var(--blue);color:var(--blue);font-weight:700}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:clamp(14px,4vw,30px);margin:12px 0}.meta{color:var(--muted);font-size:.86rem;margin:0}.answer{margin:14px 0;padding:12px;border-inline-start:3px solid var(--blue);background:var(--soft);border-radius:6px;font-weight:600}.actions{margin-top:14px}.ratings button{flex:1 1 115px}.ratings button span{display:block;font-size:.76rem;color:var(--muted)}
-progress{width:100%;height:7px;accent-color:var(--blue);display:block;margin:7px 0 14px}.figure{display:block;max-width:430px;margin:12px 0}.figure img{display:block;width:100%;border-radius:8px;border:1px solid var(--line)}.figure small{color:var(--muted)}
+.figure{display:block;max-width:430px;margin:12px 0}.figure img{display:block;width:100%;border-radius:8px;border:1px solid var(--line)}.figure small{color:var(--muted)}
 .cloze{color:var(--blue);background:var(--soft);border-radius:4px;padding:0 .2em}
 .badge{display:inline-block;color:var(--blue);background:var(--soft);border-radius:5px;padding:0 .4em;margin-inline-start:6px;font-weight:700}
 details summary{cursor:pointer;font-weight:700}details p{margin-bottom:8px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;margin:8px 0 20px}th,td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}th{background:var(--soft)}[hidden]{display:none!important}footer{font-size:.86rem;color:var(--muted);margin-top:16px}
+label{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr)}label select{min-width:0}
 </style></head><body><main>
-<header><a href="index.html">← Learning Hub</a> <a id="return-to-lecture" hidden>← Back to lecture</a><p>Vitanova Learning Hub</p><h1>Study flashcards</h1><p>MSS Midterm and Final · Immunology Midterm · Practical labs</p></header>
+<header>
+  <nav class="header-links" aria-label="Flashcard navigation">
+    <a href="index.html"><span aria-hidden="true">←</span> Vitanova Learning Hub</a>
+    <a id="return-to-lecture" hidden><span aria-hidden="true">←</span> Back to lecture</a>
+  </nav>
+  <h1>Study flashcards</h1>
+  <p>MSS Midterm and Final · Immunology Midterm · Practical labs</p>
+</header>
 <div class="filters">
 <label>Exam<select id="exam"><option value="mid">Midterm</option><option value="final">Final and labs</option><option value="">All materials</option></select></label>
 <label>Lecture or lab<select id="lecture"><option value="">All materials</option></select></label>
 <label>Topic<select id="topic"></select></label>
 <label>Cards<select id="origin"><option value="">All cards</option><option value="anking">AnKing only</option><option value="original">Course cards only</option></select></label>
-<label>Mode<select id="mode"><option value="practice">Free practice</option><option value="due">Due + new</option></select></label>
-<button id="start" type="button">Start set</button><button id="start-linked" class="primary" type="button" hidden></button></div>
-<div class="panel" id="study">
-<p class="meta" id="progress-text" aria-live="polite"></p><progress id="progress" value="0" max="1" aria-label="Set progress"></progress>
+<button id="start" type="button">Study Now</button><button id="start-linked" class="primary" type="button" hidden></button></div>
+<section class="panel" aria-label="Deck overview">
+<p class="meta" id="counts"></p>
+<div class="actions"><button id="reset" type="button">Reset deck progress</button></div><p class="meta" id="reset-status" role="status"></p>
+</section>
+<div class="panel" id="study" hidden>
+<p class="meta" id="progress-text" aria-live="polite"></p>
 <p class="meta" id="source"></p><h2 id="question" tabindex="-1"></h2>
 <a class="figure" id="figure" target="_blank" rel="noopener" hidden><img id="image" alt=""><small id="image-caption"></small></a>
 <div id="answer" class="answer" hidden></div>
 <div id="ratings" class="ratings" hidden aria-label="Rate recall"></div>
-<div class="actions"><button id="reveal" class="primary" type="button">Show answer</button><button id="skip" type="button">Skip</button><button id="undo" type="button">Undo rating</button></div>
-<p class="meta" id="shortcut">Space reveals · 1 Again · 2 Hard · 3 Good · 4 Easy</p>
+<div class="actions"><button id="reveal" class="primary" type="button">Show answer</button></div>
+<p class="meta" id="shortcut">Space to show answer · 1 Again · 2 Hard · 3 Good · 4 Easy</p>
 </div>
 
-<footer>Review ratings use Vitanova’s FSRS scheduler. Progress is stored in this browser when storage is available. Slide references use PDF page numbers.
+<footer>Progress is stored in this browser when storage is available. Slide references use PDF page numbers.
 </footer>
-</main><script src="vendor/ts-fsrs-5.4.2.js"></script><script src="study-flashcard-core.js"></script><script src="study-storage.js"></script><script src="data/flashcards/course-deck.js?v=final-lecture-decks"></script><script>
-const {cards,images,pages} = window.VitanovaCourseDeck;
-const byId = id => document.getElementById(id);
-const core = window.VitanovaFlashcardCore, storage = window.VitanovaStorage;
-const key = core.KEY;
-const loadState = () => storage.read(key, {version:1,records:{}}, core.validState);
-let records = loadState().records;
-const request = new URLSearchParams(location.search).get('lecture');
-const linked = Object.hasOwn(pages, request) ? pages[request] : null;
-const linkedOption = '@page';
-let queue = [], cursor = 0, revealed = false, last = null, storageFailed = false;
-const lecture = byId('lecture'), topic = byId('topic'), mode = byId('mode'), origin = byId('origin'), exam = byId('exam');
-const lectureNames = ['Musculoskeletal development','Limb development','Gluteal region and thigh','Knee joint','Lumbar plexus','Thigh compartments','Sacral plexus and lower-limb nerves','Anterior and lateral leg','Posterior leg, popliteal fossa and foot','Lower-limb blood supply','Lower-limb nerve injuries'];
-const materials = {
-  ...{"mss-mid-anatomy-01-02": "Anatomy · Lectures 1 & 2 · Skull & TMJ", "mss-mid-anatomy-03-04": "Anatomy · Lectures 3 & 4 · Vertebral Column", "mss-mid-anatomy-05-06": "Anatomy · Lectures 5 & 6 · Upper Limb Bones & Joints", "mss-mid-anatomy-07-08": "Anatomy · Lectures 7 & 8 · Upper Limb Joints & Back Muscles", "mss-mid-anatomy-09-10": "Anatomy · Lectures 9 & 10 · Arm, Cubital Fossa & Brachial Plexus", "mss-mid-anatomy-11-12": "Anatomy · Lectures 11 & 12 · The Hand & The Forearm", "mss-mid-pharmacology-01-03": "Pharmacology · Lectures 1–3 · Psoriasis, Anti-Rheumatoid Drugs & Muscle Relaxants", "mss-mid-physiology-01-03": "Physiology · Lectures 1–3 · Muscle Physiology & Touch", "mss-mid-pathology-01-03": "Pathology · Lectures 1–3 · Skeletal Muscle, Bone Disease & Arthritis", "immunology-mid-01": "Immunology · Lecture 1 · Course Introduction", "mss-mid-microbiology-01-02": "Microbiology · Lectures 1 & 2 · Skin Infections & Anaerobes", "mss-mid-physiology-04": "Physiology · Lecture 4 · Somatic Reflexes", "mss-mid-anatomy-14-15": "Anatomy · Lectures 14 & 15 · Lower Limb Bones & Hip, SI and Foot Joints", "mss-mid-anatomy-13": "Anatomy · Lecture 13 · Nerve Injuries of the Upper Limb", "immunology-mid-02": "Immunology · Lecture 2 · Immunity Overview", "immunology-mid-03": "Immunology · Lecture 3 · Barriers & Microbial Sensing", "immunology-mid-04": "Immunology · Lecture 4 · Phagocytes & Inflammation", "immunology-mid-05": "Immunology · Lecture 5 · Innate Cells & Introduction to Adaptive Immunity", "mss-mid-physiology-03-04-full": "Physiology · Lectures 3–4 · Sensory Receptors, Touch and Spinal Reflexes — Full Explanation", "immunology-mid-06": "Immunology · Lecture 6 · Adaptive Immunity: From Recognition to Memory", "immunology-mid-07": "Immunology · Lecture 7 · Organisation, Lymph & Lymph Nodes", "immunology-mid-08": "Immunology · Lecture 8 · Spleen, MALT & Clinical Lymphatics"},
-  phys1:'Physiology 1 · Reflexes and locomotion', pharm1:'Pharmacology 1 · Acne treatment',
-  pharm2:'Pharmacology 2 · Hair growth and reduction',
-  path2:'Pathology 2 · Skin tumours', path3:'Pathology 3 · Bone and soft tissue tumours',
-  path1:'Pathology 1 · Inflammatory skin disease', micro1:'Microbiology 1 · Skin viruses',
-  micro2:'Microbiology 2 · Skin parasites', micro3:'Microbiology 3 · Fungal skin infections',
-  bio1:'Biochemistry 1 · Muscle metabolism', bio2:'Biochemistry 2 · Bone biochemistry',
-  anatlab1:'Anatomy Lab 1 · Skull', anatlab2:'Anatomy Lab 2 · Back and spine',
-  anatlab3:'Anatomy Lab 3 · Shoulder and axilla', pathlab1:'Pathology Lab 1',
-  microlab1:'Microbiology Lab 1'
-};
-const anatomyGroup = document.createElement('optgroup'), midGroup = document.createElement('optgroup');
-midGroup.label = 'Midterm lectures';
-anatomyGroup.label = 'Anatomy lectures';
-lectureNames.forEach((name,i) => anatomyGroup.append(new Option((i+1)+' · '+name,String(i+1))));
-const lectureGroup = document.createElement('optgroup'), labGroup = document.createElement('optgroup');
-lectureGroup.label = 'Other Final lectures';
-labGroup.label = 'Practical labs';
-Object.entries(materials).forEach(([id,name]) => (id.includes('-mid-') ? midGroup : id.includes('lab') ? labGroup : lectureGroup).append(new Option(name,id)));
-function inExam(card) { return !exam.value || (exam.value === 'mid') === card.lecture.includes('-mid-'); }
-function materialsForExam() {
-  lecture.replaceChildren(new Option('All in this exam',''));
-  if (exam.value !== 'final') lecture.append(midGroup);
-  if (exam.value !== 'mid') lecture.append(anatomyGroup, lectureGroup, labGroup);
-  if (linked && (!exam.value || (exam.value === 'mid') === request.includes('-mid-'))) {
-    lecture.add(new Option(linked.label + ' · ' + linked.title, linkedOption), 1);
-  }
-  topics();
-}
-function inLecture(card) {
-  return lecture.value === linkedOption ? linked.decks.includes(card.lecture) : !lecture.value || card.lecture === lecture.value;
-}
-const names = ['Again','Hard','Good','Easy'];
-const buttons = names.map((name, index) => {
-  const button = document.createElement('button'), interval = document.createElement('span');
-  button.type = 'button';
-  button.append(name, interval);
-  button.onclick = () => rate(index + 1);
-  byId('ratings').append(button);
-  return interval;
-});
-function save() {
-  storageFailed = !storage.write(key, {version:1, records});
-}
-function topics() {
-  topic.replaceChildren(new Option('All topics',''));
-  for (const name of new Set(cards.filter(c => inExam(c) && inLecture(c)).map(c => c.topic))) {
-    topic.add(new Option(name,name));
-  }
-}
-function start() {
-  records = loadState().records;
-  queue = cards.filter(c => inExam(c) && inLecture(c) && (!topic.value || c.topic === topic.value));
-  if (origin.value) queue = queue.filter(c => Boolean(c.anking) === (origin.value === 'anking'));
-  if (mode.value === 'due') queue = queue.filter(c => !records[c.id] || records[c.id].due <= Date.now())
-    .sort((a,b) => (records[a.id]?.due ?? Infinity) - (records[b.id]?.due ?? Infinity));
-  cursor = 0; revealed = false; last = null; render();
-}
-function render(focus = false) {
-  const card = queue[cursor];
-  const source = card ? (materials[card.lecture] || 'Anatomy ' + card.lecture) + ' · ' + card.topic + (card.pages ? ' · PDF pp. ' + card.pages : '') : '';
-  byId('source').textContent = source;
-  if (card?.anking) {
-    const badge = document.createElement('span');
-    badge.className = 'badge';
-    badge.textContent = 'AnKing';
-    byId('source').append(badge);
-  }
-  byId('progress-text').textContent = (card ? 'Card ' + (cursor + 1) + ' of ' + queue.length : cursor + ' of ' + queue.length + ' cards viewed')
-    + (storageFailed ? ' · Progress available for this session only' : '');
-  byId('progress').max = queue.length || 1; byId('progress').value = cursor;
-  const heading = byId('question');
-  heading.textContent = card?.question ?? (queue.length ? 'Set complete' : 'No cards match this set');
-  if (card?.blanks.length) {
-    heading.replaceChildren();
-    card.question.split('[…]').forEach((part, index) => {
-      if (index) {
-        const blank = document.createElement('span');
-        blank.className = 'cloze';
-        blank.textContent = revealed ? card.blanks[index - 1] : '[…]';
-        heading.append(blank);
-      }
-      heading.append(part);
-    });
-  }
-  byId('answer').textContent = card?.answer ?? '';
-  byId('answer').hidden = !revealed || !card?.answer;
-  byId('ratings').hidden = !card || !revealed;
-  byId('reveal').hidden = !card || revealed;
-  byId('skip').hidden = !card;
-  byId('shortcut').hidden = !card;
-  byId('undo').disabled = !last;
-  const figure = byId('figure');
-  figure.hidden = !card?.image || !(card.imageOnFront || revealed);
-  if (!figure.hidden) {
-    const image = byId('image');
-    image.src = images[card.image];
-    image.alt = (card.caption || 'Original slide figure') + ' for ' + card.topic;
-    byId('image-caption').textContent = (card.caption || 'Original slide figure') + ' · Open full size';
-    figure.href = images[card.image];
-  }
-  if (focus) byId('question').focus();
-}
-function intervalLabel(days) {
-  return days < 1 / 24 ? Math.max(1,Math.round(days * 1440)) + ' min'
-    : days < 1 ? Math.round(days * 24) + ' hr' : Math.round(days) + ' d';
-}
-function reveal() {
-  const card = queue[cursor];
-  if (!card || revealed) return;
-  revealed = true;
-  buttons.forEach((label, i) => label.textContent = intervalLabel(core.schedule(records[card.id],i+1).interval));
-  render();
-  buttons[0].parentElement.focus({preventScroll:true});
-}
-function rate(rating) {
-  const card = queue[cursor];
-  if (!card || !revealed) return;
-  records = loadState().records;
-  const previous = records[card.id];
-  const updated = core.schedule(previous,rating);
-  last = {id:card.id, record:previous, next:updated, cursor};
-  records[card.id] = updated;
-  save(); next();
-}
-function next() { cursor++; revealed = false; render(true); }
-function undo() {
-  if (!last) return;
-  records = loadState().records;
-  if (JSON.stringify(records[last.id]) !== JSON.stringify(last.next)) { last = null; render(); return; }
-  if (last.record) records[last.id] = last.record; else delete records[last.id];
-  cursor = last.cursor; last = null; revealed = false; save(); render(true);
-}
-lecture.onchange = topics;
-byId('start').onclick = start;
-byId('reveal').onclick = reveal;
-byId('skip').onclick = next;
-byId('undo').onclick = undo;
-document.addEventListener('keydown', event => {
-  if (event.altKey || event.ctrlKey || event.metaKey || event.repeat || event.target.closest('select,a,input,textarea,summary')) return;
-  if (event.code === 'Space' && !revealed && queue[cursor] && !event.target.closest('button')) { event.preventDefault(); reveal(); }
-  else if (/^[1-4]$/.test(event.key) && revealed) { event.preventDefault(); rate(Number(event.key)); }
-});
-exam.onchange = () => { materialsForExam(); start(); };
-function openLinked() {
-  exam.value = request.includes('-mid-') ? 'mid' : 'final';
-  materialsForExam();
-  lecture.value = linkedOption;
-  topic.value = '';
-  origin.value = '';
-  topics();
-  start();
-}
-if (linked) {
-  const back = byId('return-to-lecture');
-  back.href = linked.file;
-  back.hidden = false;
-  const button = byId('start-linked');
-  button.hidden = false;
-  button.textContent = 'Study ' + linked.label;
-  button.onclick = openLinked;
-  openLinked();
-} else {
-  materialsForExam();
-  start();
-}
-</script></body></html>
+</main><script src="study-srs.js"></script><script src="data/flashcards/course-deck.js?v=final-lecture-decks"></script><script src="study-srs-page.js"></script></body></html>

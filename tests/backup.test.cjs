@@ -72,7 +72,7 @@ test('partial quota failure rolls back earlier writes',()=>{
 test('an unavailable browser store exports a clearly marked recovery backup',()=>{
   const b=browser();b.run('window.localStorage.getItem=()=>{throw new Error("blocked")}');
   const data=JSON.parse(b.run('JSON.stringify(window.VitanovaBackup.exportData())'));
-  assert.equal(data.warnings.length,6);
+  assert.equal(data.warnings.length,7);
   assert.deepEqual(data.data.progress,{version:1,categories:{}});
 });
 
@@ -89,7 +89,7 @@ test('export includes session edits when persistent storage is unavailable',()=>
   assert.equal(exported.data.progress.categories.anatomy.sessionLecture,true);
   assert.equal(exported.data.bookmarks.saved.sessionQuestion,200);
   assert.equal(exported.data.mistakes.records.sessionQuestion.wrong,1);
-  assert.equal(exported.warnings.length,6);
+  assert.equal(exported.warnings.length,7);
   assert.doesNotThrow(()=>b.run(`window.VitanovaBackup.validate(JSON.parse(${JSON.stringify(JSON.stringify(exported))}))`));
 });
 test('session edits are preferred to stale persistent data',()=>{
@@ -112,4 +112,19 @@ test('flashcard backups preserve unknown IDs and merge the latest complete sched
   assert.deepEqual(JSON.parse(b.entries.get('vitanova:flashcards:v1')).records.old,r);
   for(const invalid of [{...r,rating:5},{...r,due:-1},{...r,reviews:1.5}])
     assert.throws(()=>b.run(importCode(backup({flashcards:{version:1,records:{x:invalid}}}))));
+});
+
+test('SRS backup restores the learning step and due time',()=>{
+  const srs = require('../study-srs.js');
+  const now = new Date(2026,10,16,12).getTime();
+  const card = srs.scheduleCard(null,3,now);
+  const state = {version:1,records:{card},decks:{lecture:{
+    settings:srs.defaults,stats:{date:srs.dayKey(now),new:1,review:0}
+  }}};
+  const source = browser({[srs.KEY]:JSON.stringify(state)});
+  const exported = JSON.parse(source.run('JSON.stringify(window.VitanovaBackup.exportData())'));
+  const restored = browser();
+  restored.run(importCode(exported));
+  assert.deepEqual(JSON.parse(restored.entries.get(srs.KEY)),state);
+  assert.equal(srs.getNextIntervals(card,card.due)[2].interval,1);
 });

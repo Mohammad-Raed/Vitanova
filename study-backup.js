@@ -5,7 +5,7 @@
   const MAX_BYTES = 5 * 1024 * 1024;
   const keys = {
     progress: 'vitanova:progress:v1', bookmarks: 'vitanova:bookmarks:v1',
-    mistakes: 'vitanova:mistakes:v1', flashcards: 'vitanova:flashcards:v1', recent: 'vitanova:recent:v1', theme: 'vitanova:theme:v1'
+    mistakes: 'vitanova:mistakes:v1', flashcards: 'vitanova:flashcards:v1', srs: 'vitanova_srs_v1', recent: 'vitanova:recent:v1', theme: 'vitanova:theme:v1'
   };
   const forbidden = new Set(['__proto__', 'constructor', 'prototype']);
   const plain = value => value !== null && typeof value === 'object' && !Array.isArray(value) &&
@@ -30,6 +30,7 @@
       value.version === 1 && identifier(value.lectureId) && finite(value.openedAt) &&
       (value.hash === undefined || (typeof value.hash === 'string' && value.hash.length <= 500 && (!value.hash || value.hash.startsWith('#')))));
     if (!plain(value) || value.version !== 1) return false;
+    if (name === 'srs') return srsSchema(value);
     const field = {progress: 'categories', bookmarks: 'saved', mistakes: 'records', flashcards: 'records'}[name];
     if (!field || !only(value, ['version',field]) || !plain(value[field])) return false;
     return Object.entries(value[field]).every(([id, entry]) => {
@@ -45,6 +46,27 @@
         typeof entry.mastered === 'boolean' && finite(entry.lastAttempt);
     });
   }
+  function srsSchema(value) {
+    const whole = number => Number.isSafeInteger(number) && number >= 0;
+    const numeric = ['newLimit','reviewLimit','graduating','easy','ease','easyBonus','hardMultiplier','modifier'];
+    const steps = ['learning','relearning'];
+    const validDeck = deck => plain(deck) && only(deck, ['settings','stats']) &&
+      plain(deck.settings) && only(deck.settings, [...numeric, ...steps]) &&
+      numeric.every(key => finite(deck.settings[key])) &&
+      steps.every(key => Array.isArray(deck.settings[key]) && deck.settings[key].length > 0 &&
+        deck.settings[key].length <= 30 && deck.settings[key].every(finite)) &&
+      (deck.stats === undefined || (plain(deck.stats) && only(deck.stats, ['date','new','review']) &&
+        /^\d{4}-\d{1,2}-\d{1,2}$/.test(deck.stats.date) && whole(deck.stats.new) && whole(deck.stats.review)));
+    const validCard = card => plain(card) &&
+      only(card, ['state','due','interval','ease','reps','lapses','step','lastReviewed']) &&
+      ['Learning','Review','Relearning'].includes(card.state) &&
+      finite(card.due) && card.due <= 8640000000000000 && finite(card.lastReviewed) &&
+      whole(card.interval) && (card.state === 'Learning' || card.interval >= 1) &&
+      finite(card.ease) && card.ease >= 1.3 && [card.reps,card.lapses,card.step].every(whole);
+    return only(value, ['version','decks','records']) && plain(value.decks) && plain(value.records) &&
+      Object.entries(value.decks).every(([id, deck]) => identifier(id) && validDeck(deck)) &&
+      Object.entries(value.records).every(([id, card]) => identifier(id) && validCard(card));
+  }
   function validate(data) {
     safeTree(data);
     if (!plain(data) || data.format !== FORMAT || data.version !== 1 || !plain(data.data) ||
@@ -59,6 +81,7 @@
   }
   function empty(name) {
     if (name === 'recent' || name === 'theme') return null;
+    if (name === 'srs') return {version: 1, records: {}, decks: {}};
     return {version: 1, [{progress:'categories',bookmarks:'saved',mistakes:'records',flashcards:'records'}[name]]: {}};
   }
   function rawRead(name) {
@@ -90,7 +113,8 @@
           else warnings.push(`${name}: session data was invalid and could not be included.`);
         } catch { warnings.push(`${name}: session data was invalid and could not be included.`); }
       }
-      data[name] = stored;
+      // An empty placeholder would supersede legacy progress on a first import.
+      if (name !== 'srs' || Object.keys(stored.records).length || Object.keys(stored.decks).length) data[name] = stored;
     }
     const result = {format: FORMAT, version: 1, exportedAt: new Date().toISOString(), data};
     if (warnings.length) result.warnings = warnings;
@@ -112,6 +136,23 @@
       const saved = {...current.saved};
       for (const [id, time] of Object.entries(incoming.saved)) saved[id] = Object.hasOwn(saved,id) ? Math.min(saved[id],time) : time;
       return {version: 1, saved};
+    }
+    if (name === 'srs') {
+      const records = {...current.records}, decks = {...incoming.decks, ...current.decks};
+      for (const [id, next] of Object.entries(incoming.records)) {
+        if (!records[id] || next.lastReviewed > records[id].lastReviewed) records[id] = next;
+      }
+      for (const [id, next] of Object.entries(incoming.decks)) {
+        const local = current.decks[id];
+        if (!local || !next.stats) continue;
+        const previous = local.stats;
+        const ordinal = stats => Number(stats.date.split('-').map(part => part.padStart(2, '0')).join(''));
+        if (!previous || ordinal(next.stats) > ordinal(previous)) decks[id] = {...local, stats: next.stats};
+        else if (next.stats.date === previous.date) decks[id] = {...local, stats: {
+          date: previous.date, new: Math.max(previous.new, next.stats.new), review: Math.max(previous.review, next.stats.review)
+        }};
+      }
+      return {version: 1, records, decks};
     }
     if (name === 'flashcards') {
       const records = {...current.records};
