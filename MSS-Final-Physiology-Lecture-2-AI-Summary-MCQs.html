@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermal &amp; Pain Perception — MSS Final Physiology Lecture 2</title>
+<style>
+:root{
+  --bg:#15181e; --bar:#1d2128; --hero1:#2a3240; --hero2:#323d4e; --tabs:#1a1e25;
+  --line:#2c323c; --text:#e6e9ee; --muted:#a3acb9; --head:#ffffff; --accent:#8fb8ff;
+  --card:#1b1f26; --th:#252b35; --stripe:#191d23; --key:rgba(255,206,86,.18); --keyt:#ffe2a0;
+  --good:#4caf7a; --bad:#e5645a; --pill:#2a303a; --shadow:0 8px 28px rgba(0,0,0,.45);
+  --serif:"Source Serif 4","Iowan Old Style","Palatino Linotype",Georgia,"Times New Roman",serif;
+  --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+  --fs:16px;
+}
+body.light{
+  --bg:#f5f6f8; --bar:#ffffff; --hero1:#e3e9f1; --hero2:#d8e0eb; --tabs:#ffffff;
+  --line:#dde1e7; --text:#252b34; --muted:#5d6775; --head:#12161c; --accent:#1c5fd1;
+  --card:#ffffff; --th:#eef1f5; --stripe:#f8f9fb; --key:#fff1b8; --keyt:#3a2c00;
+  --good:#2e7d4f; --bad:#c5392e; --pill:#eef1f5; --shadow:0 8px 24px rgba(20,30,50,.14);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:var(--fs);line-height:1.65}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.wrap.wide{max-width:1260px}
+
+/* top bar */
+.topbar{background:var(--bar);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:80px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{font-weight:800;color:var(--head);letter-spacing:.2px;display:flex;align-items:center;gap:6px;margin-right:6px}
+.back{color:var(--accent);text-decoration:none;font-weight:600;font-size:.97rem;white-space:nowrap}
+.crumbs{display:flex;gap:12px;color:var(--accent);font-weight:600;font-size:.92rem;margin-left:28px;white-space:nowrap}
+.crumbs span.sep{color:var(--muted);font-weight:400}
+.spacer{flex:1}
+.pill{background:transparent;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-weight:700;font-size:.92rem;color:var(--head);white-space:nowrap}
+.pill:hover{background:var(--pill)}
+.pill.big{padding:15px 18px;border-radius:12px;font-size:1rem}
+.ghost{background:none;border:0;color:var(--head);font-weight:700;padding:8px 6px;font-size:.95rem;white-space:nowrap}
+.ghost[disabled]{color:var(--muted);font-weight:500;cursor:default}
+.appwrap{position:relative}
+#appear{display:none;position:absolute;right:0;top:calc(100% + 8px);z-index:80;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;width:230px;box-shadow:var(--shadow)}
+#appear.open{display:block}
+#appear h4{margin:0 0 8px;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+#appear .row{display:flex;gap:6px;margin-bottom:12px}
+#appear .row button{flex:1;border:1px solid var(--line);background:none;border-radius:8px;padding:6px 0;font-weight:700}
+#appear .row button.on{background:var(--accent);border-color:var(--accent);color:#0c1422}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--hero1),var(--hero2));border-bottom:1px solid var(--line);padding:46px 0 34px}
+.eyebrow{font-size:.82rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase;color:var(--head)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.1;margin:10px 0 12px;color:var(--head);font-weight:800}
+.hero p{margin:0;font-size:1.12rem;color:var(--text);opacity:.9}
+
+/* tabs */
+.tabs{background:var(--tabs);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:9px;padding-bottom:9px;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tabs a{color:var(--text);text-decoration:none;font-weight:700;font-size:.95rem;padding:14px 16px;border:1px solid transparent;border-radius:11px;white-space:nowrap}
+.tabs a:hover{color:var(--head)}
+.tabs a.active{border-color:var(--line);background:var(--bg);color:var(--head)}
+
+/* content */
+main.wrap{padding-top:10px;padding-bottom:70px}
+section{padding-top:48px;scroll-margin-top:62px}
+h2{font-family:var(--serif);font-size:2.2rem;line-height:1.2;color:var(--head);margin:0 0 14px;font-weight:800}
+h2 small{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-bottom:8px}
+h3{font-size:1.15rem;color:var(--head);margin:26px 0 8px}
+p{margin:8px 0}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin:4px 0}
+b,strong{color:var(--head)}
+.key{background:var(--key);color:var(--keyt);padding:0 5px;border-radius:4px}
+.tw{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:18px;padding:22px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.98rem}
+th,td{padding:14px 16px;text-align:left;vertical-align:top;border:1px solid var(--line)}
+th{background:var(--th);color:var(--head);white-space:nowrap;font-size:.85rem;letter-spacing:.03em}
+td:first-child{font-weight:700;color:var(--head)}
+.note{border-left:5px solid #f0a35e;background:var(--th);padding:16px 22px;border-radius:14px;margin:22px 0;color:var(--text)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+.flow span{background:var(--th);border:1px solid var(--line);color:var(--head);border-radius:8px;padding:5px 11px;font-size:.88rem;font-weight:600}
+.flow i{font-style:normal;color:var(--muted)}
+hr.sec{display:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 26px}
+.card h3{margin-top:0}
+.card>:last-child{margin-bottom:0}
+.grid .card{margin:0}
+#summaryGrid .card ul{padding-left:18px;font-size:.95rem}
+#toTop{position:fixed;left:18px;bottom:18px;z-index:60;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-weight:700;font-size:.88rem;color:var(--head);box-shadow:var(--shadow)}
+
+/* quiz */
+#scoreBar{position:sticky;top:60px;z-index:40;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 18px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:.9rem;margin:14px 0}
+#scoreBar .btns{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.btn{background:transparent;border:1px solid var(--line);border-radius:9px;padding:7px 13px;font-weight:700;font-size:.88rem;color:var(--head)}
+.btn:hover{background:var(--pill)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#0c1422}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 24px;margin:14px 0}
+.qhead{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.star{background:none;border:0;font-size:1.25rem;color:var(--muted);line-height:1}
+.star.on{color:#f2c14e}
+.qcard p.q{margin:6px 0 8px;font-weight:700;color:var(--head)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 13px;border:1px solid var(--line);background:transparent;color:var(--text);border-radius:10px}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--pill)}
+.opt.correct{border-color:var(--good);background:rgba(76,175,122,.16)}
+.opt.wrong{border-color:var(--bad);background:rgba(229,100,90,.14)}
+.opt:disabled{cursor:default}
+.expl{display:none;margin-top:8px;padding:9px 13px;border-left:3px solid var(--accent);background:var(--th);border-radius:0 8px 8px 0;font-size:.93rem}
+#result{display:none;text-align:center}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--head);color:var(--bg);padding:9px 16px;border-radius:10px;font-weight:700;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .25s;z-index:99}
+#toast.show{opacity:1}
+
+/* flashcards */
+.fcbar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin:16px 0 8px}
+.fc{perspective:1000px;height:190px;cursor:pointer;max-width:640px;margin:0 auto}
+.fcIn{position:relative;width:100%;height:100%;transition:transform .45s;transform-style:preserve-3d}
+.fc.flip .fcIn{transform:rotateY(180deg)}
+.fcF,.fcB{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:1.08rem}
+.fcF{background:linear-gradient(135deg,var(--hero1),var(--hero2));color:var(--head);font-weight:700;border:1px solid var(--line);font-family:var(--serif);font-size:1.25rem}
+.fcB{background:var(--card);border:1px solid var(--accent);transform:rotateY(180deg)}
+
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.82rem;text-align:center;padding:22px}
+@media(max-width:900px){.crumbs{display:none}.topbar .wrap{gap:8px}}
+@media(max-width:600px){.wrap{padding:0 16px}.hero{padding:30px 0 24px}#scoreBar{top:58px}}
+@media print{.topbar,.tabs,#scoreBar{display:none}}
+
+/* ===== boxy UI refresh ===== */
+section>h2{margin-bottom:18px}
+section>h3{display:flex;align-items:center;gap:10px;margin:34px 0 12px;font-size:1.2rem}
+section>h3::before{content:"";width:5px;height:1.1em;border-radius:3px;background:var(--accent)}
+.card,.tw,.note,.flow,.qcard{border-radius:20px}
+.card{padding:26px 30px;margin:18px 0;box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+.grid{gap:20px}
+.card h3{font-size:1.2rem;margin:0 0 12px}
+.card h3+p,.card h3+ul,.card h3+ol{margin-top:0}
+.card.accent{border-top:3px solid var(--accent)}
+.card .lbl,.tw .lbl{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--muted);margin:0 0 8px}
+.tw{padding:24px;margin:18px 0}
+.tw table{border:0}
+th,td{border-color:var(--line)}
+tr:nth-child(even) td{background:var(--stripe)}
+td:first-child{white-space:nowrap}
+@media(max-width:700px){td:first-child{white-space:normal}.card{padding:20px}.tw{padding:14px}}
+.note{padding:18px 24px;margin:22px 0;line-height:1.7;background:var(--th);border:1px solid var(--line);border-left:5px solid #f0a35e}
+.note.walk b:first-child{color:var(--head)}
+.flow{background:var(--card);border:1px solid var(--line);padding:16px 20px;margin:18px 0}
+.flow span{border-radius:10px;padding:7px 14px}
+.card ol,.card ul{margin-bottom:0}
+.card li::marker{color:var(--accent)}
+.grid .card:hover,.qcard:hover{border-color:var(--accent);transition:border-color .2s}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap wide">
+  <div class="brand">✦ Vitanova</div>
+  <a class="back" href="index.html#mss-final-physiology">← Back to Physiology</a>
+  <div class="crumbs"><a class="back" href="index.html#mss">MSS</a><span class="sep">/</span><a class="back" href="index.html#mss-final">Final</a><span class="sep">/</span><a class="back" href="index.html#mss-final-physiology">Physiology</a><span class="sep">/</span><span>Lecture 2</span></div>
+  <div class="spacer"></div>
+  <button class="pill" id="savedBtn">★ Saved (0)</button>
+  <button class="pill" id="redoBtn">Redo mistakes (0)</button>
+  <button class="ghost" id="prevBtn">← Previous</button>
+  <button class="ghost" id="nextBtn">Next →</button>
+  <button class="pill" id="themeBtn">☀ Light</button>
+  <div class="appwrap">
+    <button class="pill big" id="appBtn">Appearance</button>
+    <div id="appear">
+      <h4>Text size</h4>
+      <div class="row"><button data-fs="14">A−</button><button data-fs="16" class="on">A</button><button data-fs="18">A+</button></div>
+      <h4>Theme</h4>
+      <div class="row"><button data-th="dark" class="on">Dark</button><button data-th="light">Light</button></div>
+    </div>
+  </div>
+</div></div>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">MSS Final · Physiology · Lecture 2</div>
+  <h1>Thermal &amp; Pain Perception</h1>
+  <p>Thermoreceptors, nociceptors, pain modulation and management</p>
+</div></header>
+
+<nav class="tabs" id="tabs"><div class="wrap">
+  <a href="#thermal">Thermal</a>
+  <a href="#nociception">Nociception</a>
+  <a href="#inflammation">Inflammation</a>
+  <a href="#central">Central &amp; referred</a>
+  <a href="#modulation">Modulation</a>
+  <a href="#management">Management</a>
+  <a href="#terms">Terminology</a>
+  <a href="#summary">Summary</a>
+  <a href="#quiz">Practice quiz</a>
+  <a href="#cards">▤ Flashcards</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="thermal">
+  <h2><small>Thermoreception</small>1. Thermal sensation</h2>
+  <div class="card accent"><h3>Learning objectives</h3><ul><li>Identify the afferent fibres carrying thermal and nociceptive signals.</li><li>Explain why pain is a perception, not just a sensation.</li><li>Define the core terminology (allodynia, hyperalgesia, paresthesia…).</li><li>Describe gate control and endogenous modulation.</li><li>Outline six management strategies.</li></ul></div>
+  <div class="flow"><span>Stimulus</span><i>→</i><span>Transduction</span><i>→</i><span>Afferent transmission</span><i>→</i><span>Synapse(s)</span><i>→</i><span>Sensation / perception</span></div>
+  <div class="card"><h3>Four attributes of any stimulus</h3><p>Every stimulus is defined by <b>modality, intensity, location and duration</b>. Temperature and pain are somatosensory modalities whose afferent cell bodies lie in the <b>dorsal root ganglia</b> (the trigeminal ganglion for the face).</p></div>
+
+  <h3>Types and receptors</h3>
+  <div class="card"><p>Four thermal sensations — <span class="key">cold, cool, warm, hot</span> — arise from the <b>difference</b> between the stimulus temperature and normal skin temperature (<b>≈ 32 °C</b>), not from absolute temperature.</p></div>
+  <div class="tw"><table>
+    <tr><th></th><th>Cold / cool receptors</th><th>Warm receptors</th></tr>
+    <tr><td>Fibre</td><td>Small myelinated <b>Aδ</b>; unmyelinated endings in the <b>epidermis</b></td><td><b>C</b> fibre terminals in the <b>dermis</b></td></tr>
+    <tr><td>Range</td><td>Cool: skin &lt; 25 °C</td><td>Warm: skin &gt; 35 °C</td></tr>
+    <tr><td>Behaviour</td><td>Highly sensitive to <b>sudden change</b>; firing frequency is <b>linearly related to the size of the cooling step</b>; re-warming silences the fibre</td><td>Thermometer-like: firing rises <b>monotonically</b> with temperature up to the pain threshold</td></tr>
+    <tr><td>Conduction</td><td>Faster (smaller diameter, myelinated)</td><td>Slower (unmyelinated)</td></tr>
+  </table></div>
+
+  <h3>TRP channels (temperature and chemical sensors)</h3>
+  <div class="card"><p>Transient receptor potential channels have six transmembrane domains, with the pore between S5 and S6. All are gated by temperature and chemical ligands; a neuron's thermal sensitivity depends on <b>which TRP channels it expresses</b>. At resting skin temperature (32 °C) only <b>TRPV4 and some TRPV3</b> are active.</p></div>
+  <div class="note walk"><b>Walk it through:</b> Sip a menthol mint and the mouth feels cool even though nothing is cold: menthol opens <b>TRPM8</b>, the cold channel. Bite a chili and it feels hot: capsaicin opens <b>TRPV1</b>, the heat channel (&gt; 43 °C). Same neurons, different trigger.</div>
+  <div class="tw"><table>
+    <tr><th>Channel</th><th>Activation</th><th>Ligand</th><th>Role</th></tr>
+    <tr><td>TRPA1</td><td>&lt; 17 °C</td><td>Alliums (garlic, radish)</td><td>Cold</td></tr>
+    <tr><td>TRPM8</td><td>≈ 8–28 °C</td><td>Menthol</td><td>Cool / cold</td></tr>
+    <tr><td>TRPV4</td><td>&gt; 27 °C</td><td>–</td><td>Skin temperature; touch</td></tr>
+    <tr><td>TRPV3</td><td>&gt; 31 or 39 °C</td><td>Camphor</td><td>Warmth</td></tr>
+    <tr><td>TRPV1</td><td>&gt; 43 °C</td><td><b>Capsaicin</b></td><td>Noxious heat, burning pain</td></tr>
+    <tr><td>TRPV2</td><td>&gt; 52 °C</td><td>Does not bind capsaicin</td><td>Noxious heat</td></tr>
+  </table></div>
+
+  <div class="card"><h3>Capsaicin and TRPV1</h3>
+  <ul>
+    <li>Capsaicin (hot peppers) selectively activates nociceptive neurons by opening <b>TRPV1</b>, which admits <b>Ca²⁺ and Na⁺</b> and depolarises the neuron.</li>
+    <li>Tissue-damage chemicals lower the temperature threshold of TRPV1, explaining <b>heat hyperalgesia</b> in injured skin; it is absent in TRPV1-knockout mice.</li>
+    <li><b>Birds lack TRPV1</b>, so they are unaffected by capsaicin.</li>
+    <li>At high doses capsaicin is <b>analgesic</b>: it desensitises pain fibres and depletes <b>substance P</b> (patches and ointments for arthritis, shingles, psoriasis).</li>
+  </ul></div>
+</section>
+
+<hr class="sec">
+<section id="nociception">
+  <h2><small>Nociception</small>2. Pain and nociceptors</h2>
+  <h3>Definition</h3>
+  <div class="card accent"><p>Pain is an <span class="key">unpleasant sensory and emotional experience</span> associated with <b>actual or potential tissue damage</b>. It is normally protective, and it can only be quantified by self-report (e.g. a 1–10 scale).</p>
+  <p>Pain is a <b>perception</b>, not merely a sensation: it can occur without nociceptor activation (<b>phantom limb pain</b>), and an identical stimulus (e.g. a needle) may or may not be experienced as painful.</p></div>
+  <p class="lbl" style="font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--muted);margin:22px 0 0">Three dimensions of pain</p>
+  <div class="grid">
+    <div class="card"><h3>Sensory-discriminative</h3><p>Location, intensity and quality of the noxious stimulus.</p></div>
+    <div class="card"><h3>Affective-motivational</h3><p>Unpleasantness, urge to escape, fear and anxiety, autonomic (fight-or-flight) activation.</p></div>
+    <div class="card"><h3>Cognitive-evaluative</h3><p>Appraisal, cultural values and distraction; varies between individuals and cultures.</p></div>
+  </div>
+
+  <h3>Nociceptors and fibre types</h3>
+  <p>Nociceptors are <b>free nerve endings</b> of primary afferents that respond selectively to tissue-damaging stimuli and are not modality-specific. They project to the spinal cord (or the trigeminal nucleus for the face) via <b>thinly myelinated Aδ</b> or <b>unmyelinated C</b> fibres.</p>
+  <div class="tw"><table>
+    <tr><th></th><th>Aδ (first pain)</th><th>C (second pain)</th></tr>
+    <tr><td>Myelination</td><td>Thin</td><td>None</td></tr>
+    <tr><td>Diameter · velocity</td><td>1–6 µm · 4–36 m/s</td><td>0.2–1.5 µm · 0.4–2.0 m/s</td></tr>
+    <tr><td>Pain quality</td><td>Sharp, pricking, well localised; short latency</td><td>Dull, burning, diffuse, poorly tolerated; delayed (~30–40 ms deflection on the compound action potential)</td></tr>
+    <tr><td>Receptors</td><td>Mechanical and thermal nociceptors</td><td>Polymodal (mechanical, thermal, chemical) — the most common type</td></tr>
+  </table></div>
+  <div class="card"><p>For comparison, Aα conducts at 72–120 m/s and Aβ at 36–72 m/s. Muscle afferents are classified by diameter (groups I–IV); cutaneous afferents by conduction velocity (Aα, Aβ, Aδ, C).</p></div>
+  <div class="note walk"><b>Walk it through:</b> Stub your toe. The fast Aδ fibres deliver an immediate sharp jab (<b>first pain</b>); seconds later the slow C fibres arrive with a dull, throbbing ache (<b>second pain</b>). Remember: <b>Aδ = quick and sharp; C = slow and burning</b>.</div>
+
+  <h3>Nociceptor classes</h3>
+  <div class="tw"><table>
+    <tr><th>Class</th><th>Fibre</th><th>Stimulus</th><th>Pain quality</th></tr>
+    <tr><td>Mechanical</td><td>Aδ</td><td>Intense pressure; puncture, pinch</td><td>Sharp, pricking</td></tr>
+    <tr><td>Thermal (heat)</td><td>Aδ</td><td>&gt; 45 °C</td><td>Burning</td></tr>
+    <tr><td>Thermal (cold)</td><td>C</td><td>&lt; 5 °C</td><td>Freezing</td></tr>
+    <tr><td>Polymodal</td><td>C</td><td>Mechanical, thermal (hot and cold), chemical (capsaicin, tissue-damage products)</td><td>Slow, burning</td></tr>
+  </table></div>
+  <div class="note">Sources differ on cold-nociceptor fibres: Table 22-2 assigns them to C fibres, whereas the class summary groups thermal nociceptors under Aδ. Table 22-2 is the reference for fibre assignment.</div>
+  <div class="card"><h3>Nociceptor properties</h3><ul>
+    <li><b>Channels expressed:</b> TRP channels, tetrodotoxin (TTX)-resistant Na⁺ channels, and ionotropic purinergic receptors (activated by ATP from damaged cells).</li>
+    <li><b>Mechanical nociceptors:</b> a blunt probe produces no response despite strong pressure; a pinprick gives a brief burst; a serrated-forceps pinch gives the <b>strongest</b> response because it damages tissue.</li>
+  </ul></div>
+</section>
+
+<hr class="sec">
+<section id="inflammation">
+  <h2><small>Peripheral mechanisms</small>3. Peripheral sensitisation and neurogenic inflammation</h2>
+  <h3>Inflammatory mediators</h3>
+  <div class="card"><p>Damaged cells (<b>ATP, H⁺</b>), platelets (<b>5-HT</b>), macrophages (<b>bradykinin, IL-1β, NGF, TNF-α</b>), <b>prostaglandins</b>, mast cells and neutrophils (<b>histamine</b>), and the nerve terminal itself (<b>substance P, CGRP</b>).</p></div>
+  <div class="grid">
+    <div class="card"><h3>Sequence after a burn</h3>
+      <ol>
+        <li><b>Immediate:</b> tissue injury → action potentials in sensory fibres (first awareness of pain) → reddening and <b>weal</b>.</li>
+        <li><b>Soon after:</b> peptides released from sensory nerves trigger <b>histamine</b> and other mediators → <b>flare</b> and hyperalgesia.</li>
+        <li><b>Long term:</b> <b>secondary hyperalgesia</b> from receptor sensitisation and altered central synaptic transmission; pain persists beyond tissue damage.</li>
+      </ol></div>
+    <div class="card"><h3>Neurogenic inflammation</h3>
+      <ol>
+        <li>Bradykinin and prostaglandins activate and sensitise nociceptors.</li>
+        <li>Activated terminals release <b>substance P and CGRP</b>.</li>
+        <li>Substance P causes <b>mast cell degranulation</b> (histamine excites nociceptors) and <b>plasma extravasation</b>.</li>
+        <li><b>CGRP dilates</b> peripheral vessels; the resulting oedema liberates more bradykinin.</li>
+        <li>The cycle spreads to adjacent healthy tissue → <b>secondary (spreading) hyperalgesia</b>.</li>
+      </ol></div>
+  </div>
+</section>
+
+<hr class="sec">
+<section id="central">
+  <h2><small>Central mechanisms</small>4. Central processing and referred pain</h2>
+  <p>The classical hard-wired pathway (nociceptor → afferent → spinothalamic system) accounts only for the <b>sensory-discriminative</b> dimension. Threshold, intensity and even modality are determined by <b>central processing</b>.</p>
+  <div class="grid">
+    <div class="card"><h3>Melzack, Rose &amp; McGinty (1962)</h3><p>Probes at a constant 43 °C of increasing diameter produce different percepts (spatial summation):</p><ul><li><b>1 mm:</b> prickling pain</li><li><b>5 mm:</b> stinging pain</li><li><b>20 mm:</b> pleasant warmth</li></ul></div>
+    <div class="card"><h3>Not explained by the classical pathway alone</h3><ul><li>Referred pain</li><li>Trigeminal neuralgia and fibromyalgia</li><li>Complex regional pain syndromes</li><li>Phantom limb pain</li><li>Acupuncture analgesia</li></ul></div>
+  </div>
+
+  <div class="card"><h3>Referred pain</h3>
+  <p>Pain arising from deep (visceral) structures is perceived at another body site. According to the <b>convergence</b> model:</p>
+  <ol>
+    <li>Visceral nociceptive afferents enter the cord at the same segment as afferents from skin, muscle and joints.</li>
+    <li>Both converge on common second-order neurons that ascend in a single tract.</li>
+    <li>Because cutaneous pain is far more common, the brain attributes activity in that pathway to the skin.</li>
+  </ol></div>
+  <div class="note walk"><b>Walk it through:</b> During a heart attack, cardiac afferents and left-arm skin afferents converge on the same spinal neurons. The brain, used to skin input, reads the signal as arm pain. <b>Clinical correlate:</b> referral zones of different organs partly overlap, notably <b>heart and oesophagus</b>, so cardiac pain may present as shoulder or arm pain and mimic heartburn.</div>
+</section>
+
+<hr class="sec">
+<section id="modulation">
+  <h2><small>Endogenous control</small>5. Modulation of pain</h2>
+  <p>Pain is perceived when inhibitory modulation is smaller than nociceptive activation. Modulation operates at several levels: <b>spinal gate control</b>, <b>descending monoaminergic pathways</b>, the <b>endogenous opioid</b> and <b>endocannabinoid</b> systems, and <b>psychological</b> (affective and cognitive) factors.</p>
+
+  <h3>Gate control theory</h3>
+  <div class="card"><p>Activity in large-diameter, non-nociceptive afferents (Aα/β from touch and stretch receptors) activates inhibitory interneurons that <b>reduce transmission</b> through the nociceptive pathway at the first synapse.</p>
+  <ol>
+    <li><b>No stimulus:</b> a tonically active inhibitory interneuron suppresses the projection neuron → no signal.</li>
+    <li><b>Noxious stimulus:</b> the C fibre excites the projection neuron and <b>switches off</b> the interneuron → strong pain signal (gate open).</li>
+    <li><b>Touch plus noxious stimulus:</b> the Aβ fibre excites the inhibitory interneuron, restoring inhibition → reduced pain signal (gate partly closed).</li>
+  </ol></div>
+  <div class="note walk"><b>Walk it through:</b> Bump your elbow and you instinctively rub it: the touch input (Aβ) closes the gate on the pain input (C). <b>Applications:</b> rubbing a bumped elbow; <b>acupuncture, TENS, massage</b>. It remains a “theory” because the interneurons are poorly characterised.</div>
+
+  <h3>Descending and endogenous systems</h3>
+  <div class="tw"><table>
+    <tr><th>System</th><th>Origin / mechanism</th></tr>
+    <tr><td>Serotonin</td><td>Rostral ventromedial medulla (RVM) → dorsal horn</td></tr>
+    <tr><td>Norepinephrine</td><td>A5 group (pons) → dorsal horn</td></tr>
+    <tr><td>Dopamine</td><td>A11 group (hypothalamus) → dorsal horn</td></tr>
+    <tr><td>Opioid</td><td>Periaqueductal grey (PAG) → raphe nuclei → dorsal horn; long-lasting analgesia</td></tr>
+    <tr><td>Cannabinoid</td><td>PAG-released endocannabinoids act on <b>CB1/CB2</b> (GPCRs) and attenuate neurogenic inflammation</td></tr>
+  </table></div>
+  <div class="card"><h3>Higher control and pathways</h3><p>Higher control arises from the <b>anterior cingulate gyrus</b> and the PAG.</p>
+  <ul>
+    <li><b>Normal pathway:</b> the afferent releases <b>substance P</b> → dorsal-horn neurons → thalamus (perception), somatosensory cortex (localisation), reticular formation (arousal), hypothalamus and limbic system (emotional response).</li>
+    <li><b>Analgesic pathway:</b> PAG, medulla and reticular formation activate a dorsal-horn <b>inhibitory interneuron</b> → endogenous opioid binds <b>opiate receptors on the afferent terminal</b> → substance P release is blocked → no pain perception. Oxycodone acts at the same receptors.</li>
+  </ul></div>
+</section>
+
+<hr class="sec">
+<section id="management">
+  <h2><small>Clinical</small>6. Chronic pain and management</h2>
+  <div class="grid">
+    <div class="card"><h3>Persistence</h3><p>Prolonged pain alters the nervous system (central plasticity), so pain can outlast tissue damage. Peripheral sensitisation and central plasticity make it self-sustaining.</p></div>
+    <div class="card"><h3>Neuropathic pain</h3><p>Results from direct injury to peripheral or central nerves; typically <b>burning or electric</b>, <b>out of proportion</b> to tissue injury, and not necessarily nociceptor-driven.</p>
+    <ul><li><b>Peripheral:</b> prolonged neurogenic inflammation. <b>Central:</b> CNS lesions, e.g. after stroke.</li><li>Only some cases respond to opioids; <b>gabapentin and pregabalin</b> are used.</li></ul></div>
+  </div>
+
+  <h3>Six management strategies</h3>
+  <div class="card"><p>Management is difficult because pain has sensory, affective and cognitive components, can become self-sustaining, and differs in type (<b>nociceptive vs neuropathic</b>).</p></div>
+  <div class="tw"><table>
+    <tr><th>#</th><th>Strategy</th><th>Examples</th></tr>
+    <tr><td>1</td><td>Deliver anaesthetic locally, avoiding unwanted sites of action</td><td>Topical, epidural, spinal; local anaesthetics and nerve blocks; low-dose <b>lidocaine</b> blocks small-diameter fibres</td></tr>
+    <tr><td>2</td><td>Target peripheral sensitisation</td><td>Antihistamines, NSAIDs, ice</td></tr>
+    <tr><td>3</td><td>Apply gate theory</td><td>Acupuncture, exercise, massage, TENS</td></tr>
+    <tr><td>4</td><td>Activate endogenous modulation</td><td>Exercise (endorphins), meditation</td></tr>
+    <tr><td>5</td><td>Recognise central pain</td><td>Tricyclic antidepressants; counselling and mind-body therapies for the affective component</td></tr>
+    <tr><td>6</td><td>Prevent rather than treat</td><td>Pre-operative local anaesthetics; early opioids (patches, patient-controlled delivery) to avoid chronic pain</td></tr>
+  </table></div>
+</section>
+
+<hr class="sec">
+<section id="terms">
+  <h2><small>Definitions</small>7. Terminology</h2>
+  <div class="tw"><table>
+    <tr><th>Term</th><th>Definition</th><th>Example</th></tr>
+    <tr><td>Nociception</td><td>Detection and neural transmission of noxious stimuli by nociceptors</td><td>The signal, before perception</td></tr>
+    <tr><td>Anesthesia</td><td>Loss of sensation</td><td></td></tr>
+    <tr><td>Analgesia</td><td>Absence of pain perception from a normally noxious stimulus</td><td>Opioids, capsaicin patches</td></tr>
+    <tr><td>Thermal anesthesia</td><td>Loss of temperature sensation</td><td></td></tr>
+    <tr><td>Paresthesia</td><td>Altered or abnormal sensation</td><td>Pins and needles</td></tr>
+    <tr><td>Allodynia</td><td>Pain from a normally <b>non-painful</b> stimulus (the stimulus is innocuous, but pain is still felt)</td><td>Light touch on sunburned skin</td></tr>
+    <tr><td>Hyperalgesia</td><td>Exaggerated response to a <b>noxious</b> stimulus. Primary = at the injury; secondary = spreads to undamaged tissue (the slides also describe persistent pain without stimulation)</td><td>Flare and secondary hyperalgesia after a burn</td></tr>
+    <tr><td>Referred pain</td><td>Deep-structure pain perceived at another site</td><td>Cardiac pain in the left arm</td></tr>
+    <tr><td>Neurogenic inflammation</td><td>Inflammation dependent on neural activity (substance P, CGRP)</td><td></td></tr>
+    <tr><td>Neuropathic pain</td><td>Pain of neural origin, not necessarily from nociceptor stimulation</td><td>Post-stroke pain</td></tr>
+  </table></div>
+</section>
+
+<hr class="sec">
+<section id="summary">
+  <h2><small>High-yield</small>Summary</h2>
+  <div class="grid" id="summaryGrid"></div>
+</section>
+
+<hr class="sec">
+<section id="quiz">
+  <h2><small>Practice</small>Quiz <span id="qCountTitle" style="font-weight:600;color:var(--muted);font-size:1rem"></span></h2>
+  <div id="scoreBar">
+    <span>Answered <b id="qAns">0</b>/<b id="qTot">0</b></span><span>Score <b id="qScore">0</b></span><span>Accuracy <b id="qAcc">–</b></span><span>Best <b id="qBest">–</b></span><span id="qMode" style="color:var(--muted)"></span>
+    <span class="btns"><button class="btn" onclick="loadQuiz('all',false)">Restart</button><button class="btn" onclick="loadQuiz('all',true)">Shuffle</button></span>
+  </div>
+  <div id="questions"></div>
+  <div id="result" class="card"></div>
+</section>
+
+<hr class="sec">
+<section id="cards">
+  <h2><small>Revision</small>Flashcards</h2>
+  <div class="fcbar"><button class="btn" onclick="fcMove(-1)">◀ Prev</button><span id="fcCount" style="min-width:70px;text-align:center"></span><button class="btn" onclick="fcMove(1)">Next ▶</button><button class="btn" onclick="fcShuffle()">Shuffle</button></div>
+  <div class="fc" id="fc" onclick="this.classList.toggle('flip')"><div class="fcIn"><div class="fcF" id="fcQ"></div><div class="fcB" id="fcA"></div></div></div>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem">Click the card to flip.</p>
+</section>
+
+</main>
+<footer>Based on “MSS Lecture 6 – Thermal and Pain Perception” (Dr. Mona Nazzal); notes by Wessam Hussein. Study aid — verify against the original slides.</footer>
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+<div id="toast"></div>
+
+<script>
+function store(k,v){try{if(v===undefined){return JSON.parse(localStorage.getItem(k))}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+const $=s=>document.querySelector(s);
+
+const MCQS=[
+{q:"What is the normal skin temperature against which thermal sensations are judged?",o:["25 °C","32 °C","37 °C","43 °C"],a:1,e:"Cold, cool, warm and hot are perceived relative to a normal skin temperature of about 32 °C."},
+{q:"Cold receptors are best described as:",o:["Unmyelinated C fibres ending in the dermis","Small myelinated Aδ fibres with unmyelinated endings in the epidermis","Large Aα fibres ending in muscle","Aβ fibres ending around hair follicles"],a:1,e:"Cold receptor fibres are small-diameter myelinated Aδ fibres whose unmyelinated endings lie in the epidermis."},
+{q:"Which statement about warm receptors is correct?",o:["They fire only during sudden cooling","They are Aδ fibres in the epidermis","They act like thermometers; firing rises with temperature up to the pain threshold","They are silenced by warming"],a:2,e:"Warm receptors (C-fibre terminals in the dermis) show monotonic increase in firing with skin temperature until the pain threshold."},
+{q:"In Figure 22-10, what happens to cold-fibre firing when the skin is re-warmed at the end of the stimulus?",o:["It increases","It is silenced","It doubles","It is unchanged"],a:1,e:"Warming at the end of the stimulus silences the cold fibre; firing during cooling is linearly related to the size of the cooling step."},
+{q:"Which TRP channel is activated by menthol and temperatures of about 8–28 °C?",o:["TRPV1","TRPA1","TRPM8","TRPV3"],a:2,e:"TRPM8 responds to cooling/cold and menthol/mints."},
+{q:"Which channel binds capsaicin and opens above ~43 °C?",o:["TRPV2","TRPV1","TRPV4","TRPA1"],a:1,e:"TRPV1 is activated by heat >43 °C and capsaicin. TRPV2 (>52 °C) does not bind capsaicin."},
+{q:"At the resting skin temperature of 32 °C, which TRP channels are active?",o:["TRPA1 and TRPM8","TRPV1 and TRPV2","TRPV4 and some TRPV3","None"],a:2,e:"Only TRPV4 and some TRPV3 are stimulated at 32 °C; TRPV4 also responds to touch."},
+{q:"Why can high-dose capsaicin cause analgesia?",o:["It blocks Na⁺ channels permanently","It desensitises pain fibres and depletes substance P","It activates Aβ fibres","It destroys the dorsal horn"],a:1,e:"Large amounts of capsaicin desensitise nociceptive fibres and deplete substance P from their terminals (patches/ointments for arthritis, shingles etc.)."},
+{q:"Why can birds eat chili peppers?",o:["They have thick skin","They lack the TRPV1 channel","They have more TRPM8","They lack nociceptors"],a:1,e:"All mammals express TRPV1, but birds do not, so capsaicin does not trigger pain in them."},
+{q:"According to the lecture, pain is best defined as:",o:["A simple sensation from nociceptor activation","The unpleasant sensory and emotional experience associated with actual or potential tissue damage","Only a spinal reflex","Activation of Aβ fibres"],a:1,e:"Pain is a perception with sensory and emotional components, linked to actual or potential tissue damage."},
+{q:"Which observation shows that pain is a perception rather than a pure sensation?",o:["Touch has receptors","Phantom limb pain occurs without nociceptor activation","Aδ fibres are myelinated","Pain can be treated with NSAIDs"],a:1,e:"Pain can be felt without activation of nociceptors (phantom limb), and the same stimulus (e.g. needle) may or may not be painful."},
+{q:"The urge to escape a noxious stimulus, fear and autonomic activation belong to which dimension?",o:["Sensory-discriminative","Affective-motivational","Cognitive-evaluative","Proprioceptive"],a:1,e:"The affective-motivational dimension covers unpleasantness, urge to escape, fear/anxiety and autonomic activation."},
+{q:"Cultural values, appraisal and distraction influence which pain dimension?",o:["Sensory-discriminative","Affective-motivational","Cognitive-evaluative","Nociceptive"],a:2,e:"Cognitive-evaluative dimension: appraisal, cultural values, distraction; responses vary between individuals and cultures."},
+{q:"First pain is carried by ____ and is described as ____.",o:["C fibres; dull and burning","Aδ fibres; sharp, pricking and localised","Aβ fibres; vibrating","Aα fibres; throbbing"],a:1,e:"First (short-latency) pain: thinly myelinated Aδ fibres, sharp and localised. Second pain: unmyelinated C fibres, dull, burning, diffuse."},
+{q:"Which fibre has a conduction velocity of about 0.4–2.0 m/s?",o:["Aα","Aβ","Aδ","C"],a:3,e:"Unmyelinated C fibres (group IV, 0.2–1.5 µm) conduct at 0.4–2.0 m/s."},
+{q:"Which nociceptor type is the most common and responds to mechanical, thermal AND chemical noxious stimuli?",o:["Mechanical Aδ","Thermal Aδ","Polymodal C","Aβ low-threshold"],a:2,e:"Polymodal nociceptors on C-fibre endings respond to high-intensity mechanical, chemical and thermal stimuli."},
+{q:"In Figure 22-7, which stimulus produced the strongest firing of mechanical nociceptors?",o:["Blunt probe","Pinprick","Pinch with serrated forceps","Light stroking"],a:2,e:"Serrated forceps damage tissue, producing the strongest response. A blunt probe gives no response despite pressure."},
+{q:"Which is NOT a channel/receptor listed as expressed by nociceptors?",o:["TRP channels","Tetrodotoxin-resistant Na⁺ channels","Ionotropic purinergic (ATP) receptors","Nicotinic acetylcholine receptors of muscle"],a:3,e:"Nociceptors express TRP channels, TTX-resistant Na⁺ channels and ionotropic purinergic receptors activated by ATP."},
+{q:"Which substances are released from nociceptor terminals during neurogenic inflammation?",o:["Bradykinin and prostaglandins","Substance P and CGRP","Histamine and 5-HT","IL-1β and TNF-α"],a:1,e:"Activated nociceptors release substance P (mast cell degranulation, plasma extravasation) and CGRP (vasodilation)."},
+{q:"Which effect does CGRP have?",o:["Mast cell degranulation","Dilation of peripheral blood vessels","Opening TRPV1","Blocking Na⁺ channels"],a:1,e:"CGRP dilates blood vessels; substance P causes plasma extravasation and mast cell degranulation. The resulting oedema releases more bradykinin."},
+{q:"A 43 °C probe of 20 mm diameter placed on the skin is most likely perceived as:",o:["Prickling pain","Stinging pain","Pleasant warmth","Cold"],a:2,e:"1 mm → prickling pain, 5 mm → stinging pain, 20 mm → pleasant warmth, showing central processing shapes perception."},
+{q:"Referred pain occurs because:",o:["Nociceptors travel with sympathetic nerves only","Visceral and somatic nociceptive afferents converge on the same spinal neurons","C fibres regenerate","The thalamus is damaged"],a:1,e:"Visceral afferents enter the same cord segment as skin/muscle/joint afferents and converge on common neurons; the brain interprets it as skin pain."},
+{q:"Which organs show overlap in their referred-pain areas on the lecture’s figure?",o:["Heart and oesophagus","Kidney and stomach","Colon and heart","Liver and ureter"],a:0,e:"The slide notes overlap between heart and oesophagus, so symptoms can be confused."},
+{q:"In the gate control model, how does touch (Aβ) input reduce pain transmission?",o:["It destroys C fibres","It activates the inhibitory interneuron, restoring inhibition of the projection neuron","It blocks Aδ conduction in the periphery","It releases substance P"],a:1,e:"Aβ input excites the inhibitory interneuron (weak inhibition), decreasing the noxious signal sent to the brain."},
+{q:"Which therapy is NOT based on the gate theory?",o:["Acupuncture","TENS","Massage","Lidocaine nerve block"],a:3,e:"Acupuncture, TENS and massage use gate theory. Lidocaine is a local anaesthetic that blocks conduction (strategy 1)."},
+{q:"Descending pain modulation: the serotonergic pathway originates from the:",o:["A5 group","A11 group","Rostral ventromedial medulla","Anterior cingulate gyrus"],a:2,e:"Serotonin: RVM; noradrenaline: A5; dopamine: A11. All project to the dorsal horn."},
+{q:"Stimulating the periaqueductal grey causes long-lasting analgesia via:",o:["Raphe nuclei and descending pathways releasing endogenous opioids in the dorsal horn","Direct Aβ stimulation","Peripheral NSAID release","Increased substance P release"],a:0,e:"PAG → raphe nuclei → dorsal horn; opioids bind afferent terminals and block substance P release."},
+{q:"Endogenous cannabinoids act on which receptors and cause what?",o:["CB1/CB2 (GPCRs); attenuate neurogenic inflammation","TRPV1; sensitise nociceptors","NMDA; cause allodynia","P2X; excite nociceptors"],a:0,e:"PAG stimulation also releases endocannabinoids that bind CB1/CB2 (G-protein-coupled) and attenuate neurogenic inflammation."},
+{q:"A patient with prior stroke has burning, electric pain out of proportion to tissue injury. This is:",o:["Referred pain","Central neuropathic pain","First pain","Normal nociceptive pain"],a:1,e:"Central neuropathic pain follows CNS lesions (e.g. stroke). Gabapentin/pregabalin are used; some respond to opioids."},
+{q:"Feeling pain when lightly stroking sunburned skin is called:",o:["Hyperalgesia","Allodynia","Paresthesia","Analgesia"],a:1,e:"Allodynia = pain from a normally non-painful stimulus; no stimulus, no pain."},
+{q:"Which is the example given for ‘prevent pain rather than treat it’?",o:["Ice application","Prophylactic local anaesthetics before surgery","Acupuncture","Antihistamines"],a:1,e:"Strategy 6: prophylactic local anaesthetics before surgery and early opioid use (patches, patient-controlled delivery) to avoid chronic pain states."}
+];
+const FC=[
+["Normal skin temperature?","≈ 32 °C"],["4 thermal sensations?","Cold, cool, warm, hot"],["Cold receptor fibre?","Small myelinated Aδ; unmyelinated endings in epidermis"],["Warm receptor fibre?","C fibre terminals in dermis; monotonic firing with temp"],
+["TRPM8 activated by?","~8–28 °C and menthol"],["TRPA1 activated by?","< 17 °C and alliums (garlic, radish)"],["TRPV1 activated by?","> 43 °C and capsaicin; admits Ca²⁺ and Na⁺"],["TRPV2 threshold?","> 52 °C; does NOT bind capsaicin"],
+["TRPV3 / TRPV4?","V3: >31 or 39 °C, camphor, warm. V4: >27 °C, active at skin temp, touch"],["Why capsaicin analgesia?","Desensitises pain fibres, depletes substance P"],["Why birds eat chili?","Birds lack TRPV1"],["Pain definition?","Unpleasant sensory & emotional experience with actual/potential tissue damage"],
+["3 dimensions of pain?","Sensory-discriminative, affective-motivational, cognitive-evaluative"],["Nociceptor?","Receptor on free nerve endings responding selectively to tissue-damaging stimuli (Aδ or C)"],["First pain?","Aδ; sharp, pricking, localised, short latency"],["Second pain?","C; dull, burning, diffuse, poorly tolerated"],
+["Aδ conduction velocity?","4–36 m/s (1–6 µm)"],["C conduction velocity?","0.4–2.0 m/s (0.2–1.5 µm)"],["3 classes of nociceptor?","Thermal Aδ, mechanical Aδ, polymodal C"],["Channels on nociceptors?","TRP, TTX-resistant Na⁺, ionotropic purinergic (ATP)"],
+["Neurogenic inflammation mediators?","Substance P (mast cells, extravasation) and CGRP (vasodilation) from the terminals"],["Referred pain mechanism?","Visceral and somatic afferents converge on same spinal neurons/segment"],["Gate theory in one line?","Large non-nociceptive input ↑ inhibitory interneuron → ↓ pain transmission"],["Clinical gate theory uses?","Acupuncture, TENS, massage"],
+["Descending monoamine sources?","5-HT: RVM · NE: A5 · DA: A11"],["PAG pathway?","PAG → raphe nuclei → dorsal horn; opioids block substance P release"],["Endocannabinoid receptors?","CB1, CB2 (GPCR); ↓ neurogenic inflammation"],["Neuropathic pain drugs?","Gabapentin, pregabalin (some respond to opioids)"],
+["Allodynia?","Pain from normally non-painful stimulus"],["Paresthesia?","Altered or abnormal sensation"],["Analgesia vs anesthesia?","Analgesia: no pain perception from noxious stimulus. Anesthesia: loss of sensation"],["Lidocaine low dose?","Blocks conduction in small-diameter fibres"]
+];
+
+const SUMMARY=[
+{h:"Thermal sensation",l:["Skin ≈ 32 °C; cold, cool, warm, hot.","Cold: Aδ, epidermis, responds to change. Warm: C, dermis, monotonic firing.","Cool Aδ &lt; 25 °C · warm C &gt; 35 °C · heat nociceptor Aδ &gt; 45 °C · cold nociceptor C &lt; 5 °C."]},
+{h:"TRP channels",l:["TRPA1 &lt; 17 °C (garlic) · TRPM8 8–28 °C (menthol) · TRPV4 &gt; 27 · TRPV3 &gt; 31/39 (camphor) · TRPV1 &gt; 43 (capsaicin) · TRPV2 &gt; 52 (no capsaicin).","TRPV1 admits Ca²⁺/Na⁺; absent in birds; high-dose capsaicin depletes substance P."]},
+{h:"Pain and fibres",l:["Unpleasant sensory and emotional experience; a perception with three dimensions.","Aδ: first pain, sharp, localised, 4–36 m/s. C: second pain, dull, burning, 0.4–2 m/s, polymodal.","Nociceptor channels: TRP, TTX-resistant Na⁺, P2X (ATP)."]},
+{h:"Inflammation",l:["Mediators: bradykinin, prostaglandins, ATP, H⁺, 5-HT, histamine, NGF, IL-1β, TNF-α.","Terminals release substance P (mast cells, extravasation) and CGRP (vasodilation) → flare and spreading hyperalgesia."]},
+{h:"Central and referred pain",l:["Visceral and somatic afferents converge on the same spinal neurons.","Heart and oesophagus overlap.","43 °C probe: 1 mm prick, 5 mm sting, 20 mm warmth."]},
+{h:"Modulation",l:["Gate: Aβ input activates the inhibitory interneuron (acupuncture, TENS, massage).","5-HT from RVM, NE from A5, DA from A11.","PAG → raphe → dorsal horn; opioid blocks substance P release. CB1/CB2 reduce neurogenic inflammation."]},
+{h:"Chronic pain and management",l:["Neuropathic: nerve injury, burning/electric, disproportionate; gabapentin, pregabalin.","Strategies: local anaesthesia · peripheral sensitisation · gate theory · endogenous systems · central pain · prevention."]},
+{h:"Terminology",l:["Anesthesia: loss of sensation · analgesia: no pain from a noxious stimulus · paresthesia: abnormal sensation · allodynia: pain from a non-painful stimulus · hyperalgesia: exaggerated response to a noxious stimulus."]}
+];
+$("#summaryGrid").innerHTML=SUMMARY.map(s=>`<div class="card"><h3>${s.h}</h3><ul>${s.l.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("");
+
+/* ---------- toast ---------- */
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),1800)}
+
+/* ---------- quiz ---------- */
+let order=[],ans={},best=store("l6best"),mode="all";
+let saved=new Set(store("l6saved")||[]),wrong=new Set(store("l6wrong")||[]);
+function counts(){$("#savedBtn").textContent=`★ Saved (${saved.size})`;$("#redoBtn").textContent=`Redo mistakes (${wrong.size})`}
+function loadQuiz(m,shuffle){
+  mode=m;
+  let list=MCQS.map((_,i)=>i);
+  if(m==="saved")list=list.filter(i=>saved.has(i));
+  if(m==="wrong")list=list.filter(i=>wrong.has(i));
+  if(shuffle){for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}}
+  order=list;renderQuiz();
+}
+function renderQuiz(){
+  ans={};$("#result").style.display="none";
+  $("#qCountTitle").textContent=`(${MCQS.length} questions)`;
+  $("#qMode").textContent=mode==="all"?"":(mode==="saved"?"Showing saved questions":"Showing previous mistakes")+" ";
+  $("#questions").innerHTML=order.map((qi,n)=>{const m=MCQS[qi];
+    return `<div class="qcard" id="q${qi}"><div class="qhead"><span>Question ${n+1} of ${order.length}</span><button class="star ${saved.has(qi)?"on":""}" title="Save question" onclick="toggleSave(${qi},this)">${saved.has(qi)?"★":"☆"}</button></div><p class="q">${m.q}</p>${m.o.map((o,k)=>`<button class="opt" onclick="pick(${qi},${k})">${String.fromCharCode(65+k)}. ${o}</button>`).join("")}<div class="expl" id="e${qi}"></div></div>`}).join("");
+  $("#qTot").textContent=order.length;updScore();counts();
+}
+function toggleSave(qi,btn){
+  saved.has(qi)?saved.delete(qi):saved.add(qi);store("l6saved",[...saved]);
+  btn.classList.toggle("on",saved.has(qi));btn.textContent=saved.has(qi)?"★":"☆";counts();
+}
+function pick(qi,k){
+  if(ans[qi]!==undefined)return;
+  ans[qi]=k;const m=MCQS[qi],btns=$("#q"+qi).querySelectorAll(".opt");
+  btns.forEach((b,i)=>{b.disabled=true;if(i===m.a)b.classList.add("correct");else if(i===k)b.classList.add("wrong")});
+  k===m.a?wrong.delete(qi):wrong.add(qi);store("l6wrong",[...wrong]);
+  const e=$("#e"+qi);e.style.display="block";
+  e.innerHTML=(k===m.a?"<b>Correct.</b> ":`<b>Incorrect.</b> Correct answer: <b>${String.fromCharCode(65+m.a)}</b>. `)+m.e;
+  updScore();counts();
+  if(Object.keys(ans).length===order.length)finish();
+}
+function score(){return order.filter(q=>ans[q]===MCQS[q].a).length}
+function updScore(){const a=Object.keys(ans).length,s=score();
+  $("#qAns").textContent=a;$("#qScore").textContent=s;$("#qAcc").textContent=a?Math.round(s/a*100)+"%":"–";$("#qBest").textContent=best!=null?best+"%":"–"}
+function finish(){
+  const s=score(),p=Math.round(s/order.length*100);
+  if(mode==="all"&&(best==null||p>best)){best=p;store("l6best",p)}
+  updScore();
+  const msg=p>=90?"Excellent.":p>=70?"Good — review the missed questions.":p>=50?"Review the relevant sections and retry.":"Review the sections above, then retry.";
+  const r=$("#result");r.style.display="block";
+  r.innerHTML=`<h3 style="margin-top:0">Score: ${s}/${order.length} (${p}%)</h3><p>${msg}</p><button class="btn pri" onclick="loadQuiz('all',false)">Restart</button> <button class="btn" onclick="loadQuiz('all',true)">Shuffle</button> <button class="btn" onclick="redoMistakes()">Redo mistakes</button>`;
+  r.scrollIntoView({behavior:"smooth",block:"center"});
+}
+function goQuiz(){$("#quiz").scrollIntoView({behavior:"smooth"})}
+function redoMistakes(){if(!wrong.size){toast("No recorded mistakes yet");return}loadQuiz("wrong",false);goQuiz()}
+$("#redoBtn").onclick=redoMistakes;
+$("#savedBtn").onclick=()=>{if(!saved.size){toast("Star questions in the quiz to save them");return}loadQuiz("saved",false);goQuiz()};
+
+/* ---------- flashcards ---------- */
+let fcI=0,fcList=FC.slice();
+function showFc(){const c=fcList[fcI];$("#fc").classList.remove("flip");$("#fcQ").textContent=c[0];$("#fcA").textContent=c[1];$("#fcCount").textContent=(fcI+1)+" / "+fcList.length}
+function fcMove(d){fcI=(fcI+d+fcList.length)%fcList.length;showFc()}
+function fcShuffle(){for(let i=fcList.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcList[i],fcList[j]]=[fcList[j],fcList[i]]}fcI=0;showFc()}
+
+/* ---------- navigation ---------- */
+const links=[...document.querySelectorAll("#tabs a")];
+const secs=links.map(a=>$(a.getAttribute("href")));
+let cur=0;
+function setActive(){
+  const y=window.scrollY+130;let idx=-1;
+  secs.forEach((s,i)=>{if(s.offsetTop<=y)idx=i});
+  if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)idx=secs.length-1;
+  cur=idx;
+  links.forEach((a,i)=>a.classList.toggle("active",i===idx));
+  if(idx>=0){const a=links[idx],box=a.parentElement;box.scrollTo({left:a.offsetLeft-box.clientWidth/2+a.clientWidth/2})}
+  $("#prevBtn").disabled=idx<=-1;$("#nextBtn").disabled=idx>=secs.length-1;
+}
+window.addEventListener("scroll",setActive,{passive:true});
+$("#nextBtn").onclick=()=>secs[Math.min(cur+1,secs.length-1)].scrollIntoView({behavior:"smooth"});
+$("#prevBtn").onclick=()=>{cur<=0?window.scrollTo({top:0,behavior:"smooth"}):secs[cur-1].scrollIntoView({behavior:"smooth"})};
+
+/* ---------- appearance ---------- */
+function applyTheme(t){document.body.classList.toggle("light",t==="light");$("#themeBtn").textContent=t==="light"?"☾ Dark":"☀ Light";
+  document.querySelectorAll("[data-th]").forEach(b=>b.classList.toggle("on",b.dataset.th===t));store("l6theme",t)}
+function applyFs(n){document.documentElement.style.setProperty("--fs",n+"px");document.querySelectorAll("[data-fs]").forEach(b=>b.classList.toggle("on",b.dataset.fs==n));store("l6fs",n)}
+$("#themeBtn").onclick=()=>applyTheme(document.body.classList.contains("light")?"dark":"light");
+document.querySelectorAll("[data-th]").forEach(b=>b.onclick=()=>applyTheme(b.dataset.th));
+document.querySelectorAll("[data-fs]").forEach(b=>b.onclick=()=>applyFs(+b.dataset.fs));
+$("#appBtn").onclick=e=>{e.stopPropagation();$("#appear").classList.toggle("open")};
+document.addEventListener("click",e=>{if(!e.target.closest(".appwrap"))$("#appear").classList.remove("open")});
+applyTheme(store("l6theme")||"dark");applyFs(store("l6fs")||16);
+
+loadQuiz("all",false);showFc();setActive();
+</script>
+</body>
+</html>
