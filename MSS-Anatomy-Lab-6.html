@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSS Anatomy Lab 6 — Posterior Thigh, Leg &amp; Foot</title>
+<script src="study-appearance-init.js"></script>
+<link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1">
+<link rel="stylesheet" href="study-quiz.css">
+<link rel="stylesheet" href="study-lab-atlas.css?v=lab-header-1">
+<script defer src="study-data.js?v=mss-anatomy-lab-6"></script>
+<script defer src="study-storage.js"></script>
+<script defer src="study-bookmarks.js"></script>
+<script defer src="study-questions-data.js"></script>
+<script defer src="study-nav.js?v=lecture-first-paint-1"></script>
+<script defer src="study-lab-atlas.js?v=lab-header-1"></script>
+<style>
+[hidden]{display:none!important}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--tx);font:1rem/1.5 system-ui,sans-serif}
+body.vn-lecture-page main{padding-block:14px 48px}
+main h2{margin:24px 0 8px;font:700 clamp(1.22rem,3vw,1.55rem)/1.25 Georgia,serif}
+main h3{margin:6px 0 3px;font-size:1.05rem;line-height:1.3}
+main h4{margin:0 0 3px;font-size:.99rem}
+.lab6-panel{background:var(--card);border:1px solid var(--ln);border-radius:12px;padding:11px 13px;margin:8px 0}
+.lab6-bar,.lab6-filters{display:flex;flex-wrap:wrap;align-items:center;gap:7px 10px}
+.lab6-bar label,.lab6-bar button{font-size:.87rem}
+.lab6-bar input{accent-color:var(--pu)}
+.lab6-filters{gap:5px}
+.lab6-panel button,.lab6-zoom-controls button,.lab6-test-button{cursor:pointer;color:var(--tx);background:var(--card);border:1px solid var(--ln);border-radius:7px;padding:5px 9px;font:inherit}
+.lab6-panel button:is(:hover,[aria-pressed="true"]){border-color:var(--pu)}
+.lab6-filters button[aria-pressed="true"]{background:var(--soft);color:var(--pu)}
+.lab6-bar progress{width:105px;accent-color:var(--pu)}
+.lab6-hint,.lab6-caption{color:var(--mu);font-size:.88rem;margin:4px 0}
+.lab6-figure{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:14px;scroll-margin-top:8px}
+.lab6-study-picture{width:min(100%,max(235px,calc(60svh * var(--ratio))));margin-inline:auto}
+.lab6-picture{position:relative;width:100%;line-height:0}
+.lab6-picture img{display:block;width:100%;height:auto;border-radius:7px}
+.lab6-panel .lab6-enlarge{display:block;margin:4px 0 0 auto;font:600 12px/1.3 system-ui,sans-serif}
+.lab6-picture .lab6-pin{position:absolute;z-index:2;transform:translate(-50%,-50%);min-width:22px;height:21px;padding:0 3px;border-radius:10px;background:#152028;color:#ffe483;border:1px solid #ffe483;font:750 11px/1 system-ui,sans-serif;cursor:pointer}
+.lab6-picture .lab6-pin:is(:hover,:focus-visible,[aria-pressed="true"]){background:#ffe483;color:#152028;border-color:#152028;z-index:3}
+.lab6-ring{position:absolute;z-index:1;width:28px;height:28px;transform:translate(-50%,-50%);border:2px solid #c31f13;border-radius:50%;box-shadow:0 0 0 2px #ffe483;pointer-events:none}
+.lab6-masks{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.lab6-masks rect{fill:#aeb4b6}
+.lab6-atlas-picture .lab6-masks{display:none}
+body.lab6-test .lab6-atlas-picture .lab6-masks{display:block}
+.lab6-key{list-style:none;margin:0;padding:0;font-size:.91rem}
+.lab6-key li{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:baseline;gap:2px 6px;padding:5px 3px;border-bottom:1px solid var(--ln)}
+.lab6-key li.is-selected{background:var(--soft)}
+.lab6-key li.is-reviewed .lab6-name{text-decoration:line-through;opacity:.74}
+.lab6-code{border-radius:8px;background:#152028;color:#ffe483;padding:1px 5px;font:750 11px/1.55 system-ui,sans-serif}
+.lab6-name{font-weight:650}
+.lab6-key .lab6-description{grid-column:3 / -1;color:var(--mu);font-size:.87rem}
+.lab6-description:empty{display:none}
+.lab6-key .lab6-show,.lab6-note-target{border:0;background:transparent;color:var(--pu);padding:0 2px;text-align:start;text-decoration:underline;text-underline-offset:2px;font:inherit}
+.lab6-key .lab6-show{font-size:.79rem}
+body.lab6-test .lab6-key li:not(.is-revealed) :is(.lab6-name,.lab6-description){visibility:hidden}
+.lab6-notes{margin-top:8px;border-inline-start:3px solid #c8a450;padding:3px 8px;font-size:.89rem}
+.lab6-notes ul{padding-inline-start:18px;margin:3px 0}
+.lab6-notes li{margin-block:3px}
+body.lab6-hide-notes .lab6-notes,body.lab6-test .lab6-notes{display:none}
+#quiz{max-width:750px;margin-inline:auto}
+#quiz .q{padding:12px}
+#quiz .lab6-prompt{font-weight:650;margin:0 0 7px}
+#quiz .lab6-media{width:min(100%,360px);margin:8px 0}
+#quiz .o{display:block;width:100%;margin:5px 0;padding:7px 9px;text-align:start}
+#quiz .lab6-feedback{margin:8px 0 0;color:var(--mu);font-size:.9rem}
+#quiz .lab6-feedback a{color:var(--pu)}
+#lab6-zoom{width:max-content;max-width:96vw;max-height:96dvh;margin:auto;padding:10px;border:1px solid var(--ln);border-radius:12px;background:var(--card);color:var(--tx);overflow:auto}
+#lab6-zoom::backdrop{background:#000d}
+.lab6-zoom-controls{display:flex;justify-content:flex-end;padding-bottom:7px}
+#lab6-zoom .lab6-picture{width:min(90vw,calc(82dvh * var(--ratio)))}
+@media(max-width:700px){.lab6-figure{grid-template-columns:minmax(0,1fr);gap:7px}}
+</style>
+</head>
+<body class="vn-lecture-page mss-lab-atlas">
+<header class="vn-lecture-hero">
+  <small>Musculoskeletal System · Labs · Anatomy</small>
+  <h1>Anatomy Lab 6 — Posterior Thigh, Leg &amp; Foot</h1>
+  <p>Hamstrings, sciatic branches, leg compartments, ankle retinacula and the four layers of the sole.</p>
+  <p class="lab-quiz-progress" id="atlas-progress"></p>
+</header>
+<nav class="vn-lecture-topics" aria-label="Lab sections" id="lab-topics"></nav>
+<main>
+  <div class="lab6-panel lab6-bar">
+    <label><input type="checkbox" id="test-mode"> Test mode</label>
+    <label><input type="checkbox" id="show-notes" checked> Notes</label>
+    <div class="lab6-filters" role="group" aria-label="Filter specimens">
+      <button type="button" data-filter="" aria-pressed="true">All</button>
+      <button type="button" data-filter="Cadaver" aria-pressed="false">Cadaver</button>
+      <button type="button" data-filter="Model" aria-pressed="false">Model</button>
+    </div>
+    <progress id="review-progress" aria-label="Structures reviewed"></progress>
+  </div>
+  <p class="lab6-hint">Tap a numbered marker to find its key entry. In Test mode, tap a marker to reveal that structure.</p>
+  <p class="lab6-hint">FDL/FHL = flexor digitorum/hallucis longus. EDB/EHB = extensor digitorum/hallucis brevis. FDB = flexor digitorum brevis. FHB = flexor hallucis brevis.</p>
+  <div id="atlas"></div>
+  <section id="notes">
+    <h2>Lab notes</h2>
+    <div id="lab-notes"></div>
+  </section>
+  <section id="quiz">
+    <h2>Practical quiz</h2>
+    <p class="lab6-hint">Structure names are covered on quiz images. A red ring marks the target on spotter questions.</p>
+    <div class="lab6-panel lab6-bar">
+      <strong id="quiz-score" aria-live="polite"></strong>
+      <button type="button" id="quiz-reset">Reset quiz</button>
+      <button type="button" id="quiz-all" hidden>All questions</button>
+    </div>
+    <div id="lab-questions"></div>
+  </section>
+</main>
+<dialog id="lab6-zoom" aria-label="Enlarged specimen">
+  <form class="lab6-zoom-controls" method="dialog"><button>Close</button></form>
+  <div id="lab6-zoom-image"></div>
+</dialog>
+<script>
+const X=[[420, 1036], [420, 1036], [420, 1036], [466, 990], [456, 1000], [420, 1036], [420, 1036], [360, 1096], [182, 1274], [180, 1276], [187, 1270], [422, 1034], [420, 1036]];
+const G=['Posterior thigh &amp; popliteal region','Posterior leg','Anterior &amp; lateral leg','Ankle retinacula (model)','Sole of the foot (model)'];
+// [title,cap,group,type,[items: code,name,desc,x,y],notes]
+const F=[
+['Hamstrings — posterior thigh specimen','Posterior view; biceps femoris reflected. Original arrows show each target.',0,'Cadaver',[
+['1a','Biceps femoris, long head (upper)','Ischial tuberosity → fibular head. Tibial part of sciatic n.; extends hip, flexes knee.',675,224],
+['1b','Sciatic nerve','Runs deep to long head of biceps; tibial + common fibular parts.',708,272],
+['1c','Adductor magnus, hamstrings part','Ischiocondylar part; also supplied by tibial part of sciatic n.',690,328],
+['1d','Semitendinosus (upper)','Medial hamstring; lies superficial to semimembranosus.',753,311],
+['1e','Biceps femoris, short head','Linea aspera → fibular head. Only thigh muscle supplied by the common fibular part.',651,423],
+['1f','Biceps femoris, long head (lower)','Forms superolateral border of popliteal fossa.',694,507],
+['1g','Semimembranosus','Deep to semitendinosus; superomedial fossa border.',810,467],
+['1h','Common fibular (peroneal) nerve','Lateral branch of sciatic; follows biceps tendon to fibular neck.',726,522],
+['1i','Semitendinosus (lower)','Long tendon to pes anserinus; superomedial fossa border.',772,616],
+['1j','Tibial nerve','Medial branch of sciatic; runs down the middle of the fossa.',739,692]],
+['Short head of biceps is supplied by the common fibular part of the sciatic n.','Long head, semimembranosus, semitendinosus (and hamstrings part of adductor magnus) by the tibial part.','Adductor hiatus: femoral a. + v. pass through and become popliteal a. + v.']],
+['Sciatic nerve — splitting site','Posterior thigh; fascia opened to show the division into its two branches.',0,'Cadaver',[
+['2a','Sciatic nerve','Common trunk before it divides.',687,275],
+['2b','Splitting site of the sciatic nerve','Division into tibial and common fibular nerves (grey disc on slide).',695,367],
+['2c','Tibial nerve','Medial/continuing branch.',693,457],
+['2d','Common fibular (peroneal) nerve','Lateral branch.',668,487]],['Popliteal fossa: roof = skin and fascia; contents (from superficial) = tibial n., popliteal v., popliteal a.']],
+['Gastrocnemius heads — posterior leg','Posterior view of the leg.',1,'Cadaver',[
+['3a','Gastrocnemius, medial head','Medial femoral condyle; inferomedial border of fossa.',718,361],
+['3b','Gastrocnemius, lateral head','Lateral femoral condyle; inferolateral border (with plantaris).',782,350]],['Posterior compartment: 3 superficial + 4 deep muscles. Nerve: tibial n. Artery: posterior tibial a.']],
+['Superficial posterior leg — reflected','Gastrocnemius and soleus reflected; calcaneal tendon visible.',1,'Cadaver',[
+['4a','Gastrocnemius, lateral head','Reflected upward.',645,123],
+['4b','Gastrocnemius, medial head','Reflected upward.',747,127],
+['4c','Soleus (upper)','Deep to gastrocnemius; soleal line of tibia/fibula.',668,209],
+['4d','Gastrocnemius (distal)','Joins soleus to form the calcaneal tendon.',743,350],
+['4e','Soleus (lower)','Plantar flexor; joins gastrocnemius.',650,412],
+['4f','Calcaneal (Achilles) tendon','Inserts on posterior calcaneus.',715,619]],[]],
+['Deep posterior compartment','Posterior view; superficial muscles removed.',1,'Cadaver',[
+['5a','Tibialis posterior (upper arrow)','Deepest, central; inverts foot.',740,221],
+['5b','Tibialis posterior (second arrow)','Second pointer of the same muscle.',714,266],
+['5c','Flexor hallucis longus (upper arrow)','Lateral deep muscle; flexes big toe.',692,385],
+['5d','Flexor hallucis longus (second arrow)','Second pointer.',691,447],
+['5e','Flexor digitorum longus','Medial deep muscle; flexes lateral four toes.',760,395]],['Posterior view, deep compartment.']],
+['Anterior leg','Anterior view of the leg.',2,'Cadaver',[
+['6a','Tibial bone (shaft)','Subcutaneous anteromedial surface (shin).',718,305],
+['6b','Tibialis anterior','Dorsiflexes and inverts; deep fibular n.',754,396],
+['6c','Extensor digitorum longus','Lateral to tibialis anterior.',780,456],
+['6d','Tendon of extensor hallucis longus','Passes under extensor retinacula to big toe.',745,577],
+['6e','Tendon of fibularis (peroneus) tertius','Lateral dorsum; everts foot.',775,683]],['Anterior compartment: 4 muscles. Nerve: deep fibular n. Artery: anterior tibial a.']],
+['Lateral leg','Lateral view of the leg and foot.',2,'Cadaver',[
+['7a','Fibularis longus (upper arrow)','Everts; superficial fibular n.',740,269],
+['7b','Fibularis longus (second arrow)','Second pointer.',745,395],
+['7c','Fibularis brevis (white label)','Deep to longus.',729,398],
+['7d','Fibularis brevis (black label)','Second pointer.',762,433],
+['7e','Tendon of fibularis longus','Passes behind lateral malleolus, under fibular retinacula.',756,531]],['Lateral compartment: 2 muscles. Nerve: superficial fibular n. Artery: fibular a. (branch of posterior tibial).']],
+['Extensor retinacula — dorsum of the foot','Model. Numbers 1–6 are original pins.',3,'Model',[
+['8a','Superior extensor retinaculum','Above the ankle.',800,258],
+['8b','Inferior extensor retinaculum','Y-shaped band over the dorsum.',753,366],
+['8-1','Pin 1: Tibialis anterior tendon','Most medial.',820,345],
+['8-2','Pin 2: Extensor hallucis longus tendon','',775,307],
+['8-3','Pin 3: Anterior tibial a. + venae comitantes','',793,300],
+['8-4','Pin 4: Deep fibular nerve','',783,313],
+['8-5','Pin 5: Extensor digitorum longus tendons','',722,329],
+['8-6','Pin 6: Fibularis tertius','Most lateral.',680,408],
+['8c','Extensor digitorum brevis','Dorsal intrinsic.',710,468],
+['8d','Extensor hallucis brevis','Dorsal intrinsic.',770,467],
+['8e','Dorsal interosseous (1)','',745,518],['8f','Dorsal interosseous (2)','',737,558],['8g','Dorsal interosseous (3)','',795,592]],
+['Mnemonic, medial → lateral: <b>Tom Has Very Nice Dog P</b>.','Superficial to the retinaculum: superficial fibular n.','Anterior tibial a. continues as dorsalis pedis (pulse).']],
+['Flexor retinaculum — medial foot','Model. Structures behind the medial malleolus.',3,'Model',[
+['9-1','Pin 1: Tibialis posterior tendon','',713,348],['9-2','Pin 2: Flexor digitorum longus tendon','',730,397],
+['9-3','Pin 3: Posterior tibial a. + venae comitantes','',760,443],['9-4','Pin 4: Tibial nerve','',781,421],['9-5','Pin 5: Flexor hallucis longus tendon','',812,395],
+['9a','Flexor retinaculum','',712,503]],['Mnemonic, medial → lateral: <b>Tom, Does a Very Nice Hat</b> (Tom = tibialis posterior; Does = digitorum; Very = vessels; Nice = nerve; Hat = hallucis).']],
+['Fibular retinacula — lateral foot','Model. Structures passing below the fibular retinaculum.',3,'Model',[
+['10a','Superior fibular retinaculum','',548,543],['10b','Fibularis (peroneus) brevis tendon','Anterior / medial.',598,570],
+['10c','Fibularis (peroneus) longus tendon','Posterior / lateral.',578,588],['10d','Inferior fibular retinaculum','',598,626]],['Under the fibular retinacula: fibularis brevis (anterior) and longus (posterior).']],
+['Sole — layer 1','Plantar surface, model.',4,'Model',[
+['11a','Abductor hallucis','Medial border.',872,303],['11b','Flexor digitorum brevis','Central.',1104,390],['11c','Abductor digiti minimi','Lateral border.',921,520]],['Layer 1 (3 muscles): abductor hallucis, FDB, abductor digiti minimi.']],
+['Sole — layer 2','Plantar surface; neurovascular bundle lies in this layer.',4,'Model',[
+['12a','Lumbrical 1','',770,192],['12b','Lumbrical 2','',738,227],['12c','Lumbrical 3','',716,262],['12d','Lumbrical 4','',683,284],
+['12e','Flexor hallucis longus tendon','',830,257],['12f','Medial plantar artery','',843,326],['12g','Medial plantar nerve','',787,395],
+['12h','Lateral plantar artery','',684,394],['12i','Lateral plantar nerve','',758,452],['12j','Flexor digitorum longus tendon','',798,462],['12k','Quadratus plantae','',722,523]],
+['Layer 2: lumbricals + quadratus plantae + FDL and FHL tendons.','Posterior tibial a. → medial + lateral plantar aa.; tibial n. → medial + lateral plantar nn.']],
+['Sole — layers 3 and 4','Black arrows = layer 3; blue arrows = layer 4.',4,'Model',[
+['13a','Adductor hallucis','L3',734,339],['13b','Flexor hallucis brevis','L3',786,415],['13c','Flexor digiti minimi brevis','L3',607,424],
+['13d','Plantar interosseous (1)','L4',695,298],['13e','Plantar interosseous (2)','L4',655,325],['13f','Plantar interosseous (3)','L4',620,356],
+['13g','Fibularis longus tendon','L4',640,528],['13h','Tibialis posterior tendon','L4',807,527]],
+['Layer 3: FHB + flexor digiti minimi brevis + adductor hallucis.','Layer 4: interossei (3 plantar + 4 dorsal) + fibularis longus and tibialis posterior tendons.']]];
+const LN=[['Popliteal fossa','Superomedial: semitendinosus, semimembranosus. Superolateral: biceps femoris. Inferomedial: medial head of gastrocnemius. Inferolateral: lateral head of gastrocnemius, plantaris. Plus skin/fascia roof and contents. Adductor hiatus: femoral a. + v. → popliteal a. + v.'],
+['Leg compartments','Anterior 4 · Lateral 2 · Posterior 7 (3 superficial, 4 deep). Know insertions. Anterior: deep fibular n., anterior tibial a. Lateral: superficial fibular n., fibular a. (from posterior tibial). Posterior: tibial n., posterior tibial a. Popliteal a. → anterior tibial + posterior tibial (→ fibular).'],
+['Retinacula (medial → lateral)','Extensor: Tom Has Very Nice Dog P (superficial: superficial fibular n.). Fibular: brevis / longus. Flexor: Tom Does Very Nice Hat.'],
+['Foot','Dorsum: EHB + EDB. Sole L1 3 muscles; L2 lumbricals + quadratus plantae, FDL + FHL tendons; L3 FHB + flexor digiti minimi brevis + adductor hallucis; L4 interossei + fibularis longus and tibialis posterior tendons.'],
+['Additional','Dorsi/plantar flexion at ankle (anterior vs lateral + posterior compartments). Inversion/eversion at subtalar joint: 2 tibialis (inversion), 3 fibularis (eversion). Short head of biceps = common fibular part of sciatic; long head, semimembranosus, semitendinosus = tibial part.']];
+const Q=[
+['The ringed muscle is supplied by which nerve component?',['Tibial part of sciatic','Common fibular part of sciatic','Obturator nerve','Inferior gluteal nerve'],1,'Short head of biceps femoris: the only posterior thigh muscle supplied by the common fibular part.',0,'1e'],
+['The ringed muscle is supplied by:',['Tibial part of sciatic','Common fibular nerve','Femoral nerve','Superior gluteal nerve'],0,'Semimembranosus (like semitendinosus and the long head of biceps) uses the tibial portion.',0,'1g'],
+['The ringed point is where the sciatic nerve divides. Into which nerves?',['Tibial and saphenous','Femoral and obturator','Tibial and common fibular','Sural and superficial fibular'],2,'Tibial (medial) and common fibular (lateral).',1,'2b'],
+['Femoral vessels pass through a gap beside the ringed muscle and become popliteal vessels. The gap is the:',['Femoral canal','Obturator canal','Greater sciatic foramen','Adductor hiatus'],3,'Adductor hiatus in adductor magnus.',0,'1c'],
+['The ringed muscle with its partner forms which border of the popliteal fossa?',['Superolateral','Superomedial','Inferomedial','Inferolateral'],1,'Semitendinosus + semimembranosus = superomedial border.',0,'1d'],
+['The ringed head, with plantaris, forms which border of the popliteal fossa?',['Superomedial','Inferomedial','Inferolateral','Superolateral'],2,'Lateral head of gastrocnemius + plantaris = inferolateral.',2,'3b'],
+['Nerve and artery of the compartment of the ringed muscle:',['Tibial n.; posterior tibial a.','Superficial fibular n.; fibular a.','Deep fibular n.; anterior tibial a.','Sural n.; popliteal a.'],2,'Anterior compartment: deep fibular nerve, anterior tibial artery.',5,'6b'],
+['Nerve and artery of the compartment of the ringed muscle:',['Superficial fibular n.; fibular a.','Deep fibular n.; anterior tibial a.','Tibial n.; posterior tibial a.','Femoral n.; popliteal a.'],0,'Lateral compartment; fibular a. branches from posterior tibial.',6,'7a'],
+['The ringed deep muscle is supplied by:',['Deep fibular n.','Tibial n. (posterior tibial a. supplies it)','Superficial fibular n.','Saphenous n. (fibular a. supplies it)'],1,'Posterior compartment: tibial nerve, posterior tibial artery.',4,'5a'],
+['Which structure is the most lateral one passing under the extensor retinacula (Tom Has Very Nice Dog P)?',['Tibialis anterior tendon','Extensor digitorum longus','Deep fibular nerve','Fibularis tertius'],3,'P = peroneus (fibularis) tertius.',7,null],
+['Behind the medial malleolus, which nerve lies between the posterior tibial vessels and the FHL tendon?',['Tibial nerve','Saphenous nerve','Sural nerve','Deep fibular nerve'],0,'Tom Does Very Nice Hat: Nice = nerve.',8,null],
+['Which is the most medial tendon behind the medial malleolus?',['FHL','Tibialis posterior','FDL','Tibialis anterior'],1,'Tom = tibialis posterior.',8,null],
+['The ringed tendon belongs to a muscle in which compartment, supplied by which nerve?',['Lateral; superficial fibular nerve','Anterior; deep fibular nerve','Posterior; tibial nerve','Lateral; deep fibular nerve'],0,'Fibularis longus: lateral compartment, superficial fibular nerve; posterior/lateral under the fibular retinacula.',9,'10c'],
+['The ringed muscle is in sole layer 1. Which set forms the whole layer?',['Lumbricals, quadratus plantae, FDB','FHB, adductor hallucis, flexor digiti minimi brevis','Abductor hallucis, FDB, abductor digiti minimi','Interossei, adductor hallucis, FDB'],2,'Layer 1 has three muscles.',10,'11b'],
+['The ringed muscle is in layer 2 together with:',['Lumbricals, FDL and FHL tendons','Interossei and fibularis longus tendon','FHB and adductor hallucis','Abductor hallucis and FDB'],0,'Layer 2: lumbricals + quadratus plantae + FDL/FHL tendons.',11,'12k'],
+['The ringed muscle is in layer 3 together with:',['Lumbricals and quadratus plantae','Adductor hallucis, flexor digiti minimi brevis','Abductor digiti minimi, FDB, EDB','Plantar interossei only'],1,'Layer 3: FHB + flexor digiti minimi brevis + adductor hallucis.',12,'13b'],
+['The ringed muscle is in layer 4, which consists of:',['3 plantar + 4 dorsal interossei and two tendons','Lumbricals and FDL tendon','FHB and abductor hallucis','EDB, EHB and quadratus plantae'],0,'Interossei plus fibularis longus and tibialis posterior tendons.',12,'13d'],
+['The ringed artery continues on the dorsum as the:',['Lateral plantar artery','Fibular artery','Medial plantar artery','Dorsalis pedis artery'],3,'Anterior tibial a. becomes dorsalis pedis (pulse).',7,'8-3'],
+['The ringed nerve arises from:',['Deep fibular nerve','Tibial nerve','Sural nerve','Saphenous nerve'],1,'Tibial nerve divides into medial and lateral plantar nerves.',11,'12g'],
+['The ringed muscle everts the foot at the subtalar joint, together with:',['Two tibialis muscles','Gastrocnemius and soleus','The other two fibularis muscles','Extensor hallucis longus only'],2,'Eversion: 3 fibularis; inversion: 2 tibialis.',6,'7c'],
+['Which pair makes up the intrinsic muscles of the dorsum of the foot?',['Lumbricals and interossei','EHB and EDB','Abductor hallucis and FDB','Quadratus plantae and FHB'],1,'EDB + EHB.',7,null]];
+const DROP=['1f','1i','4e','5b','5d','7b','7d','8f','8g','12b','12c','12d','13e','13f'];
+const RN={'1a':'Biceps femoris, long head','1d':'Semitendinosus','4c':'Soleus','5a':'Tibialis posterior','5c':'Flexor hallucis longus','7a':'Fibularis longus','7c':'Fibularis brevis','8e':'Dorsal interossei (3 shown)','12a':'Lumbricals (4)','13d':'Plantar interossei (3)'};
+F.forEach(f=>{f[4]=f[4].filter(x=>!DROP.includes(x[0]));f[4].forEach(x=>{if(RN[x[0]])x[1]=RN[x[0]]})});
+const ALL=new Set(F.flatMap(f=>f[4].map(x=>x[0])));
+const LA={'1a':[[533,224],[553,507]],'1b':[[563,272]],'1c':[[530,328]],'1d':[[937,311],[937,616]],'1e':[[490,423]],'1g':[[1030,467]],'1h':[[1015,522]],'1j':[[929,692]],
+'2a':[[549,275]],'2b':[[816,367]],'2c':[[830,457]],'2d':[[547,487]],'3a':[[584,361]],'3b':[[932,350]],
+'4a':[[478,123]],'4b':[[921,127]],'4c':[[503,209],[475,412]],'4d':[[912,350]],'4f':[[899,619]],
+'5a':[[901,221]],'5c':[[534,385]],'5e':[[889,395]],
+'6a':[[574,305]],'6b':[[562,396]],'6c':[[956,456]],'6d':[[612,577]],'6e':[[924,683]],
+'7a':[[901,269]],'7c':[[585,398],[909,433]],'7e':[[929,531]],
+'8a':[[990,258]],'8b':[[382,366]],'8-1':[[905,345]],'8-2':[[640,307]],'8-3':[[893,300]],'8-4':[[913,313]],'8-5':[[548,329]],'8-6':[[550,408]],'8c':[[594,468]],'8d':[[895,467]],'8e':[[1058,558]],
+'9-1':[[497,348]],'9-2':[[535,398]],'9-3':[[980,443]],'9-4':[[970,421]],'9-5':[[978,395]],'9a':[[405,503]],
+'10a':[[460,447]],'10b':[[809,570]],'10c':[[368,588]],'10d':[[680,707]],
+'11a':[[872,122]],'11b':[[1104,215]],'11c':[[921,697]],
+'12a':[[433,285]],'12e':[[967,256]],'12f':[[967,326]],'12g':[[921,395]],'12h':[[500,394]],'12i':[[578,452]],'12j':[[944,462]],'12k':[[590,523]],
+'13a':[[935,338]],'13b':[[910,415]],'13c':[[468,424]],'13d':[[425,357]],'13g':[[483,528]],'13h':[[973,527]]};
+const NC=[[['1e','1h'],['1a','1d','1f','1g','1i','1c','1j'],0],[['2c']],[['3a','3b']],[],[['5a','5b','5c','5d','5e']],[['6b','6c','6d','6e']],[['7a','7b','7c','7d','7e']],[['8-1','8-2','8-3','8-4','8-5','8-6'],0,['8-3']],[['9-1','9-2','9-3','9-4','9-5']],[['10b','10c']],[['11a','11b','11c']],[['12a','12b','12c','12d','12k','12e','12j'],['12f','12g','12h','12i']],[['13a','13b','13c'],['13d','13e','13f','13g','13h']]];
+const masks = {"1":[[17.29,21.4,23.4,5.2],[19.41,29.6,20.75,2.8],[8.24,34.4,25.54,5.2],[57.18,34.4,24.73,2.8],[3.46,45.8,23.93,5.4],[67.82,54.0,29.79,2.6],[76.06,58.0,23.67,5.6],[17.55,62.6,23.67,5.6],[59.31,71.8,25.8,2.8],[57.71,81.6,18.89,3.0]],"2":[[21.54,30.4,20.22,2.8],[47.61,38.8,25.79,5.8],[12.23,53.0,23.67,5.6],[47.34,52.4,18.62,3.4]],"3":[[22.61,37.8,23.93,5.6],[61.44,36.8,23.93,5.6]],"4":[[0.0,9.2,32.6,5.6],[57.05,10.0,33.23,5.2],[11.91,22.4,16.93,3.0],[55.8,39.6,33.23,3.0],[8.78,47.4,16.93,3.0],[51.1,72.4,39.18,3.0]],"5":[[56.93,23.2,30.72,3.2],[15.96,40.6,26.51,5.4],[59.34,42.0,29.82,5.6]],"6":[[23.94,33.6,17.82,3.0],[24.47,44.8,25.0,3.2],[60.9,49.2,30.59,5.6],[24.73,61.6,27.4,8.4],[63.83,77.0,25.53,5.6]],"7":[[55.32,29.4,25.8,3.0],[28.99,42.2,14.1,5.4],[58.24,49.6,25.0,3.0],[61.97,58.8,24.47,5.6]],"8":[[63.47,25.0,23.61,5.6],[4.68,38.4,19.15,5.0],[19.6,51.2,22.27,5.8],[58.13,50.8,20.04,5.6],[0.0,58.2,44.54,31.6],[79.96,71.0,20.04,9.6]],"9":[[1.33,0.0,48.45,31.36],[20.89,56.8,22.22,4.15]],"10":[[72.0,14.58,21.56,12.8],[12.0,45.24,19.11,7.44],[40.0,60.71,28.22,7.74],[12.67,72.62,20.44,11.01],[39.78,86.61,17.33,7.44]],"11":[[42.67,17.35,20.44,4.12],[70.0,19.71,26.67,3.82],[43.56,85.59,25.77,4.12]],"12":[[2.14,31.6,18.18,2.8],[71.66,24.8,23.79,5.4],[71.39,34.0,23.26,5.4],[68.45,42.4,24.33,5.4],[68.18,50.4,26.21,5.4],[15.24,42.4,23.0,5.4],[20.86,49.4,23.79,5.6],[30.21,58.4,16.85,5.2]],"13":[[3.72,37.6,15.16,5.2],[66.76,35.0,15.42,5.8],[60.11,44.8,23.4,5.6],[6.12,45.8,21.01,5.8],[10.64,58.4,22.6,5.6],[63.83,58.2,27.13,5.6]]};
+
+const select = selector => document.querySelector(selector);
+const atlas = select('#atlas');
+const topics = select('#lab-topics');
+const questions = select('#lab-questions');
+const zoom = select('#lab6-zoom');
+const stateKey = 'vitanova:mss-labs-anatomy-06:v1';
+let reviewed = new Set();
+let mistakes = new Set();
+let quizMode = 'all';
+let answered = 0;
+let correct = 0;
+
+function figurePicture(index, target, study, enlarged = false) {
+  const [start, end] = X[index];
+  const width = end - start;
+  const percentX = x => (x - start) / width * 100;
+  const percentY = y => y / 8.19;
+  const mask = '<svg class="lab6-masks" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">' +
+    masks[index + 1].map(([x, y, w, h]) => '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '"/>').join('') +
+    '</svg>';
+  const markers = study ? F[index][4].map(([code, , , x, y]) =>
+    (LA[code] || [[x, y]]).map(([left, top]) => {
+      const position = Math.min(97, Math.max(3, percentX(left) + (left < x ? -2.6 : 2.6)));
+      return '<button type="button" class="lab6-pin" data-marker="' + code + '" aria-label="Show structure ' + code +
+        '" aria-controls="structure-' + code + '" aria-pressed="false" style="left:' + position + '%;top:' +
+        percentY(top) + '%">' + code + '</button>';
+    }).join('')
+  ).join('') : '';
+  const point = target && F[index][4].find(([code]) => code === target);
+  const ring = point ? '<span class="lab6-ring" aria-hidden="true" style="left:' + percentX(point[3]) +
+    '%;top:' + percentY(point[4]) + '%"></span>' : '';
+  const button = enlarged ? '' : '<button type="button" class="lab6-enlarge" data-enlarge="' + index +
+    '" data-target="' + (target || '') + '" data-study="' + study + '">Enlarge</button>';
+  return '<div class="lab6-media"><div class="lab6-picture' + (study ? ' lab6-atlas-picture' : '') + '" style="--ratio:' +
+    width / 819 + ';aspect-ratio:' + width + '/819"><img ' + (enlarged ? '' : 'loading="lazy" ') +
+    'src="assets/anatomy-lab-6/figure-' + String(index + 1).padStart(2, '0') + '.jpg" alt="' +
+    (study ? F[index][0] : point ? 'Specimen with a ring marking the target' : 'Quiz specimen') +
+    '">' + mask + markers + ring + '</div>' + button + '</div>';
+}
+
+function figureCard([title, caption, , kind, structures, notes], index) {
+  const keys = structures.map(([code, name, description]) =>
+    '<li id="structure-' + code + '"><input type="checkbox" data-reviewed="' + code +
+    '" aria-label="Mark structure ' + code + ' reviewed"><span class="lab6-code">' + code +
+    '</span><span class="lab6-name">' + name + '</span><button type="button" class="lab6-show" data-show="' +
+    code + '" aria-label="Show structure ' + code + ' on image">Show</button><span class="lab6-description">' +
+    description + '</span></li>'
+  ).join('');
+  const notesList = notes.map((note, noteIndex) => {
+    const codes = NC[index][noteIndex] && NC[index][noteIndex].filter(code => ALL.has(code));
+    return '<li>' + (codes?.length ? '<button type="button" class="lab6-note-target" data-show="' +
+      codes.join(',') + '">' + note + '</button>' : note) + '</li>';
+  }).join('');
+  return '<article class="lab6-panel lab6-figure" id="figure-' + index + '" data-kind="' + kind +
+    '"><div><div class="lab6-study-picture" style="--ratio:' + (X[index][1] - X[index][0]) / 819 + '">' +
+    figurePicture(index, null, true) + '</div><h3>' + title + '</h3><p class="lab6-caption">' +
+    caption + ' <span>(' + kind + ')</span></p></div><div><ul class="lab6-key">' + keys + '</ul>' +
+    (notesList ? '<div class="lab6-notes"><strong>Notes</strong><ul>' + notesList + '</ul></div>' : '') +
+    '</div></article>';
+}
+
+atlas.innerHTML = G.map((group, groupIndex) =>
+  '<section id="lab-group-' + groupIndex + '"><h2>' + group + '</h2>' +
+    F.map((figure, index) => figure[2] === groupIndex ? figureCard(figure, index) : '').join('') + '</section>'
+).join('');
+topics.innerHTML = G.map((group, index) => '<a href="#lab-group-' + index + '">' + group + '</a>').join('') +
+  '<a href="#notes">Lab notes</a><a href="#quiz" class="lab-quiz-link">Practical quiz</a>';
+select('#lab-notes').innerHTML = LN.map(([title, note]) =>
+  '<div class="lab6-panel"><h4>' + title + '</h4><div>' + note + '</div></div>'
+).join('');
+
+function updateProgress() {
+  const progress = select('#review-progress');
+  progress.max = ALL.size;
+  progress.value = reviewed.size;
+  select('#atlas-progress').textContent = reviewed.size + ' / ' + ALL.size + ' structures reviewed';
+}
+
+function persist() {
+  window.VitanovaStorage.write(stateKey, {reviewed: [...reviewed], mistakes: [...mistakes]});
+}
+
+function highlight(codes, scrollToMarker) {
+  atlas.querySelectorAll('.is-selected').forEach(item => item.classList.remove('is-selected'));
+  atlas.querySelectorAll('.lab6-pin[aria-pressed="true"]').forEach(pin => pin.setAttribute('aria-pressed', 'false'));
+  for (const code of codes) {
+    select('#structure-' + code).classList.add('is-selected', 'is-revealed');
+    atlas.querySelectorAll('[data-marker="' + code + '"]').forEach(pin => pin.setAttribute('aria-pressed', 'true'));
+  }
+  const target = scrollToMarker ? atlas.querySelector('[data-marker="' + codes[0] + '"]') :
+    select('#structure-' + codes[0]);
+  target.scrollIntoView({block: scrollToMarker ? 'center' : 'nearest'});
+}
+
+function filterFigures(kind) {
+  document.querySelectorAll('[data-filter]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.filter === kind));
+  });
+  atlas.querySelectorAll('[data-kind]').forEach(figure => {
+    figure.hidden = Boolean(kind && kind !== figure.dataset.kind);
+  });
+  [...atlas.children].forEach(group => {
+    group.hidden = !group.querySelector('[data-kind]:not([hidden])');
+    topics.querySelector('[href="#' + group.id + '"]').hidden = group.hidden;
+  });
+}
+
+select('#test-mode').addEventListener('change', event => {
+  document.body.classList.toggle('lab6-test', event.target.checked);
+  atlas.querySelectorAll('.is-revealed').forEach(item => item.classList.remove('is-revealed'));
+});
+select('#show-notes').addEventListener('change', event => {
+  document.body.classList.toggle('lab6-hide-notes', !event.target.checked);
+});
+document.querySelectorAll('[data-filter]').forEach(button => {
+  button.addEventListener('click', () => filterFigures(button.dataset.filter));
+});
+atlas.addEventListener('change', event => {
+  const checkbox = event.target.closest('[data-reviewed]');
+  if (!checkbox) return;
+  const code = checkbox.dataset.reviewed;
+  if (checkbox.checked) reviewed.add(code);
+  else reviewed.delete(code);
+  checkbox.closest('li').classList.toggle('is-reviewed', checkbox.checked);
+  persist();
+  updateProgress();
+});
+atlas.addEventListener('click', event => {
+  const pin = event.target.closest('[data-marker]');
+  const show = event.target.closest('[data-show]');
+  if (pin) highlight([pin.dataset.marker], false);
+  if (show) highlight(show.dataset.show.split(','), true);
+});
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-enlarge]');
+  if (!button) return;
+  const {enlarge, target, study} = button.dataset;
+  select('#lab6-zoom-image').innerHTML = figurePicture(Number(enlarge), target, study === 'true', true);
+  zoom.showModal();
+});
+zoom.addEventListener('click', event => {
+  const pin = event.target.closest('[data-marker]');
+  if (!pin) return;
+  zoom.close();
+  highlight([pin.dataset.marker], false);
+});
+
+function renderQuiz(mode = quizMode) {
+  quizMode = mode;
+  answered = correct = 0;
+  const items = Q.map((question, index) => ({question, index})).filter(item => mode === 'all' || mistakes.has(item.index));
+  questions.innerHTML = items.map(({question: [prompt, options, , explanation, figure, target], index}, displayed) =>
+    '<article class="lab6-panel q" data-question="' + index + '"><p class="lab6-prompt">' + (displayed + 1) +
+    '. ' + prompt + '</p>' + (target ? figurePicture(figure, target, false) : '<details><summary>View figure</summary>' +
+      figurePicture(figure, null, false) + '</details>') +
+    options.map((option, choice) => '<button type="button" class="o" data-choice="' + choice + '">' +
+      option + '</button>').join('') +
+    '<p class="lab6-feedback" hidden><strong></strong> ' + explanation +
+    ' <a href="#figure-' + figure + '" data-open-atlas>Open in atlas</a></p></article>'
+  ).join('');
+  if (!items.length) questions.textContent = 'No mistakes left to review.';
+  select('#quiz-all').hidden = mode === 'all';
+  select('#quiz-score').textContent = (mode === 'all' ? '' : 'Mistake review · ') + '0 correct · 0 / ' + items.length + ' answered';
+}
+
+questions.addEventListener('click', event => {
+  if (event.target.closest('[data-open-atlas]')) {
+    filterFigures('');
+    return;
+  }
+  const choice = event.target.closest('[data-choice]');
+  if (!choice) return;
+  const card = choice.closest('[data-question]');
+  const index = Number(card.dataset.question);
+  const answer = Q[index][2];
+  const picked = Number(choice.dataset.choice);
+  const success = picked === answer;
+  answered++;
+  if (success) {
+    correct++;
+    mistakes.delete(index);
+  } else {
+    mistakes.add(index);
+  }
+  card.querySelectorAll('[data-choice]').forEach(button => {
+    const option = Number(button.dataset.choice);
+    button.classList.toggle('ok', option === answer);
+    button.classList.toggle('no', !success && option === picked);
+    button.disabled = true;
+  });
+  const feedback = card.querySelector('.lab6-feedback');
+  feedback.querySelector('strong').textContent = success ? 'Correct.' : 'Incorrect.';
+  feedback.hidden = false;
+  select('#quiz-score').textContent = (quizMode === 'all' ? '' : 'Mistake review · ') +
+    correct + ' correct · ' + answered + ' / ' + questions.children.length + ' answered';
+  persist();
+  window.VitanovaLabAtlas.refreshReview();
+});
+select('#quiz-reset').addEventListener('click', () => renderQuiz());
+select('#quiz-all').addEventListener('click', () => renderQuiz('all'));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const stored = window.VitanovaStorage.read(stateKey, {}, value => window.VitanovaStorage.record(value) && Array.isArray(value.reviewed) && Array.isArray(value.mistakes));
+  reviewed = new Set((Array.isArray(stored.reviewed) ? stored.reviewed : []).filter(code => ALL.has(code)));
+  mistakes = new Set((Array.isArray(stored.mistakes) ? stored.mistakes : [])
+    .filter(index => Number.isInteger(index) && index >= 0 && index < Q.length));
+  for (const code of reviewed) {
+    const checkbox = select('[data-reviewed="' + code + '"]');
+    checkbox.checked = true;
+    checkbox.closest('li').classList.add('is-reviewed');
+  }
+  updateProgress();
+  renderQuiz();
+  window.VitanovaLabAtlas.addHeaderReview({
+    count: () => mistakes.size,
+    retry: () => renderQuiz('mistakes'),
+    quiz: select('#quiz')
+  });
+});
+</script>
+</body>
+</html>

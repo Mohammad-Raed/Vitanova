@@ -639,5 +639,19 @@ window.VitanovaLectures = [
     "file": "MSS-Pathology-Lab-2.html",
     "icon": "📘",
     "standalone": true
+  },
+  {
+    "id": "mss-labs-anatomy-06",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Anatomy",
+    "category": "mss-labs-anatomy",
+    "lectureLabel": "Lab 6",
+    "order": 6,
+    "title": "Anatomy Lab 6: Posterior Thigh, Leg & Foot",
+    "description": "Annotated cadaver and model images, lab notes, and a 21-question practical quiz.",
+    "file": "MSS-Anatomy-Lab-6.html",
+    "icon": "📘",
+    "standalone": true
   }
 ];
