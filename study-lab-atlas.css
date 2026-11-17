@@ -10,70 +10,62 @@ body.mss-lab-atlas {
   --lab-pin-gold: #ffe483;
 }
 
-.mss-lab-atlas main,
-.lab-header-inner {
-  max-width: 1240px;
+body.vn-lecture-page.mss-lab-atlas {
+  --vn-study-width: 1240px;
 }
 
-.lab-page-header {
-  background: var(--card);
-  border-bottom: 1px solid var(--ln);
+body.mss-lab-atlas > .vn-lecture-navigation {
+  padding-inline: max(12px, calc((100% - var(--vn-study-width)) / 2));
 }
 
-.lab-header-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 9px 14px;
-  margin-inline: auto;
-  padding: 12px 14px;
-}
-
-.lab-page-header h1 {
-  margin: 4px 0 0;
-  color: var(--tx);
-  font: 700 clamp(1.32rem, 2.5vw, 1.95rem)/1.2 Georgia, serif;
-}
-
-.lab-header-controls,
-.lab-section-links {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.lab-header-controls {
-  justify-content: flex-end;
-  color: var(--mu);
-  font-size: .78rem;
-}
-
-.lab-section-links {
-  grid-column: 1 / -1;
-}
-
-.lab-section-links a {
-  display: inline-flex;
-  align-items: center;
+.mss-lab-atlas .vn-lecture-navigation :is(.vn-bookmarks-link, .vn-redo-mistakes) {
   min-height: 32px;
-  padding: 3px 10px;
-  border: 1px solid var(--ln);
-  border-radius: 7px;
-  background: var(--soft);
+  padding: 5px 8px;
+  border-color: var(--ln);
   color: var(--pu);
-  font: 650 .84rem/1.3 system-ui, sans-serif;
-  text-decoration: none;
+  font: 650 .82rem/1.35 system-ui, sans-serif;
+  white-space: nowrap;
 }
 
-.lab-section-links a:is(:hover, :focus-visible) {
-  border-color: var(--pu);
+@media (max-width: 940px) {
+  body.mss-lab-atlas > .vn-lecture-navigation {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .mss-lab-atlas .vn-lecture-context {
+    order: 0;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+
+  .mss-lab-atlas .vn-lecture-controls {
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
 }
 
-.lab-section-links .lab-quiz-link {
-  border-color: var(--pu);
+body.mss-lab-atlas > .vn-lecture-hero .lab-quiz-progress:empty {
+  display: none;
+}
+
+body.mss-lab-atlas > nav.vn-lecture-topics a.vn-flashcards {
+  border-color: var(--ln);
+}
+
+body.mss-lab-atlas > nav.vn-lecture-topics a.lab-quiz-link {
   background: var(--pu);
+  border-color: var(--pu);
   color: var(--card);
+}
+
+body.mss-lab-atlas > nav.vn-lecture-topics a.lab-quiz-link:hover {
+  text-decoration: underline;
+}
+
+.mss-lab-atlas .vn-redo-mistakes:disabled {
+  cursor: default;
+  opacity: .55;
 }
 
 .mss-anatomy-atlas main > section > h2,
@@ -84,23 +76,6 @@ body.mss-lab-atlas {
 .mss-anatomy-atlas main > section > h2 {
   margin: 0 0 4px;
   font-size: clamp(1.16rem, 2vw, 1.45rem);
-}
-
-.lab-atlas-back {
-  flex: none;
-  color: var(--pu);
-  font-size: .82rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.lab-atlas-icon {
-  background: var(--card);
-  color: var(--tx);
-  border: 1px solid var(--ln);
-  border-radius: 8px;
-  padding: 5px 9px;
-  cursor: pointer;
 }
 
 .mss-pathology-atlas .figs {
@@ -369,12 +344,4 @@ body.mss-lab-atlas {
     width: min(100%, calc(clamp(225px, 62dvh, 470px) * var(--lab-ratio, 1)));
   }
 
-}
-
-@media (max-width: 440px) {
-  .lab-header-controls {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    max-width: 103px;
-  }
 }

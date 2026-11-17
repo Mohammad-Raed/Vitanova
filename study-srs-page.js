@@ -14,6 +14,7 @@ let selection = [], current = null, options = null, lastCard = null;
 let active = false, revealed = false, timer;
 const request = new URLSearchParams(location.search).get('lecture');
 const linked = Object.hasOwn(pages, request) ? pages[request] : null;
+const linkedExam = linked?.exam ?? (request?.includes('-mid-') ? 'mid' : 'final');
 const linkedOption = '@page';
 const lecture = byId('lecture'), topic = byId('topic'), exam = byId('exam'), origin = byId('origin');
 const lectureNames = ['Musculoskeletal development','Limb development','Gluteal region and thigh','Knee joint','Lumbar plexus','Thigh compartments','Sacral plexus and lower-limb nerves','Anterior and lateral leg','Posterior leg, popliteal fossa and foot','Lower-limb blood supply','Lower-limb nerve injuries'];
@@ -42,7 +43,7 @@ function materialsForExam() {
   lecture.replaceChildren(new Option('All in this exam',''));
   if (exam.value !== 'final') lecture.append(midGroup);
   if (exam.value !== 'mid') lecture.append(anatomyGroup, lectureGroup, labGroup);
-  if (linked && (!exam.value || (exam.value === 'mid') === request.includes('-mid-'))) {
+  if (linked && (!exam.value || exam.value === linkedExam)) {
     lecture.add(new Option(linked.label + ' · ' + linked.title, linkedOption), 1);
   }
   topics();
@@ -254,6 +255,7 @@ document.addEventListener('keydown', event => {
 if (linked) {
   const back = byId('return-to-lecture'), button = byId('start-linked');
   back.href = linked.file;
+  if (request.startsWith('mss-labs-')) back.textContent = '← Back to lab';
   back.hidden = false;
   button.hidden = false;
   button.textContent = 'Study ' + linked.label;
@@ -264,7 +266,7 @@ if (linked) {
   overview();
 }
 function openLinked() {
-  exam.value = request.includes('-mid-') ? 'mid' : 'final';
+  exam.value = linkedExam;
   materialsForExam();
   lecture.value = linkedOption;
   origin.value = '';

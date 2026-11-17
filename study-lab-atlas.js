@@ -78,12 +78,49 @@ window.VitanovaLabAtlas = (() => {
         }
       }, 0);
     }
-    if (!event.target.closest('[data-lab-theme]')) return;
-    const root = document.documentElement;
-    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
   }, true);
 
+  let refreshReview = () => {};
+  function addHeaderReview({count, retry, quiz}) {
+    const controls = document.querySelector('.vn-lecture-controls');
+    if (!controls) return;
+    const saved = document.createElement('a');
+    saved.className = 'vn-bookmarks-link';
+    saved.href = 'index.html#saved';
+    function refreshSaved() {
+      saved.textContent = `★ Saved (${window.VitanovaBookmarks.count()})`;
+    }
+    refreshSaved();
+    window.addEventListener('vitanova:bookmarks-changed', refreshSaved);
+    window.addEventListener('vitanova:storage-changed', refreshSaved);
+    window.addEventListener('pageshow', refreshSaved);
+
+    const redo = document.createElement('button');
+    redo.className = 'vn-redo-mistakes';
+    redo.type = 'button';
+    redo.setAttribute('aria-controls', quiz.id);
+    refreshReview = () => {
+      const mistakes = count();
+      redo.textContent = `Redo mistakes (${mistakes})`;
+      redo.disabled = !mistakes;
+    };
+    refreshReview();
+    redo.addEventListener('click', () => {
+      retry();
+      const heading = quiz.querySelector('h2');
+      heading.tabIndex = -1;
+      heading.focus({preventScroll: true});
+      quiz.scrollIntoView();
+    });
+    controls.before(saved, redo);
+
+    const flashcards = document.querySelector('.vn-lecture-topics .vn-flashcards');
+    if (flashcards) flashcards.setAttribute('aria-label', 'Flashcards related to this lab');
+  }
+
   return {
+    addHeaderReview,
+    refreshReview: () => refreshReview(),
     connect(root) {
       root.querySelectorAll('.lab-atlas-card').forEach(connect);
     }
