@@ -51,6 +51,273 @@ figcaption h4{margin:0;font-size:15px}.fd{color:var(--mut);margin:2px 0 4px}
 <link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1">
 <link rel="stylesheet" href="study-quiz.css">
 <link rel="stylesheet" href="study-lab-atlas.css?v=lab-header-1">
+<style>
+body.vn-lecture-page.mss-pathology-atlas {
+  --vn-study-width: 1100px;
+  --lab-gutter: clamp(14px, 3vw, 30px);
+  --lab-inset: max(var(--lab-gutter), calc((100% - var(--vn-study-width)) / 2));
+  --lab-card-pad: clamp(12px, 2vw, 18px);
+}
+
+body.mss-pathology-atlas > :is(.vn-lecture-navigation, .vn-lecture-hero, nav.vn-lecture-topics, main) {
+  padding-inline: var(--lab-inset);
+}
+
+.mss-pathology-atlas > .vn-lecture-navigation {
+  gap: 4px 6px;
+  padding-block: 5px;
+}
+
+body.mss-pathology-atlas > .vn-lecture-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-block: clamp(14px, 2vw, 22px);
+}
+
+body.mss-pathology-atlas > .vn-lecture-hero h1 {
+  margin-block: 3px 3px;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+}
+
+body.mss-pathology-atlas > .vn-lecture-hero .lab-quiz-progress {
+  margin: 0;
+  padding: 5px 11px;
+  border: 1px solid color-mix(in srgb, currentColor 32%, transparent);
+  border-radius: 8px;
+  font-size: .78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+body.mss-pathology-atlas > nav.vn-lecture-topics {
+  gap: 4px;
+  padding-block: 4px;
+  scroll-padding-inline: var(--lab-gutter);
+}
+
+body.mss-pathology-atlas > nav.vn-lecture-topics > a:first-child {
+  margin-inline-start: -8px;
+}
+
+body.mss-pathology-atlas > main {
+  max-width: none;
+  padding-block: 16px clamp(48px, 6vw, 76px);
+}
+
+.lab-reading-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px 20px;
+  margin-block-end: 18px;
+  color: var(--mut);
+  font-size: .86rem;
+}
+
+.lab-reading-tools p { margin: 0; }
+.lab-reading-tools label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.lab-reading-tools input { margin: 0; accent-color: var(--pri); }
+
+.mss-pathology-atlas main > section {
+  padding: 0;
+  margin: 0;
+  scroll-margin-top: 16px;
+}
+.mss-pathology-atlas main > section + section {
+  margin-block-start: clamp(28px, 4vw, 42px);
+}
+.mss-pathology-atlas main h2 {
+  margin: 0 0 12px;
+  padding-block-end: 7px;
+  border-bottom-width: 1px;
+  font-size: clamp(1.2rem, 2.4vw, 1.45rem);
+  line-height: 1.25;
+}
+.mss-pathology-atlas main .card {
+  margin: 0 0 12px;
+  padding: var(--lab-card-pad);
+  border-radius: 12px;
+}
+.lab-term-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-block-end: 9px;
+}
+.lab-term-tags .tag { margin: 0; }
+.mss-pathology-atlas .clin ul {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  padding-inline-start: 1.15em;
+}
+.mss-pathology-atlas .clin li { margin: 0; }
+
+.mss-pathology-atlas .figs {
+  --lab-figure-gap: clamp(16px, 3vw, 28px);
+  --lab-image-height: 245px;
+  container: lab-figures / inline-size;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin: 0;
+}
+.mss-pathology-atlas .lab-atlas-card {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 2fr);
+  align-items: center;
+  gap: 10px var(--lab-figure-gap);
+  padding: var(--lab-card-pad);
+  border-radius: 12px;
+}
+.mss-pathology-atlas .lab-atlas-picture {
+  width: min(100%, calc(var(--lab-image-height) * var(--lab-ratio, 1)));
+}
+.lab-specimen-pair {
+  display: grid;
+  gap: 10px;
+}
+@container lab-figures (min-width: 740px) {
+  .lab-specimen-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mss-pathology-atlas .lab-specimen-pair .lab-atlas-card {
+    /* Use the same image column width as a full-width specimen row. */
+    --lab-image-column: calc((100cqi - 2 * var(--lab-card-pad) - var(--lab-figure-gap) - 2px) * .9 / 2.9);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+  }
+  .lab-specimen-pair .lab-atlas-key { align-self: start; }
+  .mss-pathology-atlas .lab-specimen-pair .lab-atlas-picture {
+    width: min(100%, var(--lab-image-column), calc(var(--lab-image-height) * var(--lab-ratio, 1)));
+  }
+}
+.mss-pathology-atlas .lab-atlas-key h3 {
+  margin: 0;
+  line-height: 1.3;
+  font-size: 1.08rem;
+}
+.mss-pathology-atlas .lab-atlas-key .fd {
+  margin: 3px 0 0;
+  font-size: .9rem;
+  line-height: 1.45;
+}
+.mss-pathology-atlas .lab-atlas-card .nl {
+  margin-block-start: 9px;
+  padding: 0;
+  border: 1px solid var(--ln);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--card), var(--soft) 55%);
+}
+.mss-pathology-atlas .lab-atlas-card .nl > li {
+  position: relative;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  padding: 7px 9px;
+  line-height: 1.45;
+}
+.mss-pathology-atlas .lab-atlas-card .nl > li:first-child {
+  border-start-start-radius: 7px;
+  border-start-end-radius: 7px;
+}
+.mss-pathology-atlas .lab-atlas-card .nl > li:last-child {
+  border-end-start-radius: 7px;
+  border-end-end-radius: 7px;
+}
+.mss-pathology-atlas .lab-atlas-card .nl > li > i {
+  background: color-mix(in srgb, var(--soft), var(--pu) 12%);
+}
+.mss-pathology-atlas .lab-atlas-card .lab-show-marker {
+  position: absolute;
+  grid-column: auto;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.mss-pathology-atlas .lab-atlas-card .lab-show-marker:focus-visible {
+  outline: 2px solid var(--pri);
+  outline-offset: -2px;
+}
+.mss-pathology-atlas.hide-hs .lab-atlas-card .nl > li[data-g] {
+  cursor: default;
+}
+.mss-pathology-atlas.hide-hs .lab-atlas-card .nl > li.on {
+  background: transparent;
+}
+
+.mss-pathology-atlas #cheat .lab-table { padding: 0; }
+.lab-table table { font-size: .87rem; line-height: 1.4; }
+.lab-table :is(th, td) {
+  padding: 9px clamp(8px, 1.5vw, 16px);
+  border: 0;
+  border-bottom: 1px solid var(--ln);
+}
+.lab-table th { background: var(--soft); color: var(--tx); }
+.lab-table td:first-child { font-weight: 650; }
+.lab-table tr:last-child td { border-bottom: 0; }
+.lab-table tr:nth-child(odd) td {
+  background: color-mix(in srgb, var(--card), var(--soft) 32%);
+}
+
+.lab-quiz-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}
+.lab-quiz-summary .stat { margin: 0; line-height: 1.1; }
+.lab-quiz-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.lab-question {
+  display: grid;
+  gap: 10px;
+  align-items: start;
+}
+.lab-question h3 { margin: 0; font-size: 1.07rem; line-height: 1.4; }
+.lab-question small { color: var(--mut); }
+.lab-question .qimg { margin: 0; }
+.lab-question #op { display: grid; gap: 6px; min-width: 0; }
+.lab-question .opt { margin: 0; padding: 8px 11px; line-height: 1.45; }
+.lab-question #fb:empty { display: none; }
+.lab-question #fb :is(.exp, p) { margin: 8px 0 0; }
+
+@media (min-width: 760px) {
+  .lab-question:has(.qimg) {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    column-gap: 18px;
+  }
+  .lab-question > :is(small, h3, #fb) { grid-column: 1 / -1; }
+}
+@media (max-width: 1100px) {
+  body.mss-pathology-atlas > .vn-lecture-navigation { display: flex; flex-wrap: wrap; }
+  .mss-pathology-atlas .vn-lecture-context {
+    order: -1;
+    flex-basis: 100%;
+    justify-content: flex-start;
+  }
+  .mss-pathology-atlas .vn-lecture-controls {
+    flex-wrap: wrap;
+    margin-inline-start: 0;
+  }
+}
+@media (max-width: 620px) {
+  .mss-pathology-atlas .lab-atlas-card { grid-template-columns: minmax(0, 1fr); }
+  .mss-pathology-atlas .lab-atlas-picture {
+    width: min(100%, calc(215px * var(--lab-ratio, 1)));
+  }
+  .lab-reading-tools { margin-block-end: 12px; }
+  .lab-table table { font-size: .8rem; }
+}
+</style>
 <script defer src="study-data.js?v=mss-labs-atlas-1"></script>
 <script defer src="study-storage.js"></script>
 <script defer src="study-bookmarks.js"></script>
@@ -58,9 +325,11 @@ figcaption h4{margin:0;font-size:15px}.fd{color:var(--mut);margin:2px 0 4px}
 <script defer src="study-nav.js?v=lecture-first-paint-1"></script>
 </head><body class="vn-lecture-page mss-lab-atlas mss-pathology-atlas">
 <header class="vn-lecture-hero">
-  <small>Musculoskeletal System · Labs · Pathology</small>
-  <h1>Pathology Lab 2</h1>
-  <p>Skin lesions, histology, and skin and bone tumours.</p>
+  <div>
+    <small>Musculoskeletal System · Labs · Pathology</small>
+    <h1>Pathology Lab 2</h1>
+    <p>Skin lesions, histology, and skin and bone tumours.</p>
+  </div>
   <p class="lab-quiz-progress" id="sc"></p>
 </header>
 <nav class="vn-lecture-topics" aria-label="Lab sections">
@@ -184,10 +453,28 @@ function fig(k) {
     </figcaption>
   </figure>`;
 }
+function hasShortNotes(key) {
+  const notes = F[key].n;
+  return notes.length <= 2 && notes.reduce((length, [text]) => length + text.length, 0) <= 150;
+}
+function specimenRows(keys) {
+  const rows = [];
+  for (let index = 0; index < keys.length; index++) {
+    const key = keys[index];
+    const next = keys[index + 1];
+    if (next && hasShortNotes(key) && hasShortNotes(next)) {
+      rows.push(`<div class="lab-specimen-pair">${fig(key)}${fig(next)}</div>`);
+      index++;
+    } else {
+      rows.push(fig(key));
+    }
+  }
+  return rows.join('');
+}
 const tg=a=>a.map((x,i)=>`<span class="tag${i?'':' a'}">${x}</span>`).join('');
-const sect=s=>`<section id="${s[0]}"><h2>${s[2]}</h2><div class="card clin">${tg(s[3])}<ul>${s[4].map(p=>`<li>${p}</li>`).join('')}</ul></div><div class="figs">${s[5].map(fig).join('')}</div></section>`;
-const cheat=`<section id="cheat"><h2>Cheat-sheet</h2><div class="card"><table><tr><th>Entity</th><th>Clinical clue</th><th>Key image feature</th></tr><tr><td>SCC (from actinic keratosis)</td><td>Older patient, ear</td><td>Nests resembling squamous cells; keratin pearls</td></tr><tr><td>BCC</td><td>Older outdoor worker, face, telangiectasia</td><td>Peripheral palisading, clefting; solar elastosis</td></tr><tr><td>Melanoma</td><td>Enlarging mole, irregular border</td><td>Large cells, nucleoli, pigment in the dermis</td></tr><tr><td>Psoriasis</td><td>Silvery plaques, neck / hand</td><td>Parakeratosis, regular acanthosis, thin suprapapillary plates</td></tr><tr><td>Osteochondroma</td><td>25 y, distal femoral metaphysis</td><td>Blue-gray cartilage cap</td></tr><tr><td>Osteosarcoma</td><td>17 y, lytic + sclerotic, metaphysis</td><td>Atypical cells + new bone</td></tr><tr><td>Chondrosarcoma</td><td>51 y, ischium</td><td>Bulky blue-gray mass; atypical cells in cartilage</td></tr><tr><td>Ewing sarcoma</td><td>11 y, diaphysis, fever</td><td>Round blue cells; t(11;22)</td></tr><tr><td>Metastasis</td><td>75 y, back pain</td><td>Multiple vertebral lesions → find the primary</td></tr><tr><td>Lipoma / liposarcoma</td><td>Superficial arm / deep retroperitoneum</td><td>Encapsulated fat / lipoblasts</td></tr></table></div><div class="card clin"><b>Osteosarcoma vs Ewing sarcoma</b> (young patient, malignant bone tumor): osteosarcoma is sclerotic and metaphyseal; Ewing sarcoma is a fleshy, painful, tender, warm, swollen mass (can mimic cellulitis) with fever (constitutional symptoms) in the diaphysis. Osteosarcoma is less likely to cause these features.</div></section>`;
-function build(){$('#m').innerHTML=`<p class="sub">Hover or tap a numbered note to highlight the structure on the image (and vice versa); tap the image for a larger view.</p><div class="tools"><label><input type="checkbox" checked onchange="document.body.classList.toggle('hide-hs',!this.checked)"> Show structure markers</label></div>`+SECT.map(sect).join('')+cheat+`<section id="quiz"><div id="quizhead"></div></section><section id="review"><h2>Mistake review</h2><div id="rv"></div></section>`;$('#quizhead').innerHTML=quizHead();
+const sect=s=>`<section id="${s[0]}"><h2>${s[2]}</h2><div class="card clin"><div class="lab-term-tags">${tg(s[3])}</div><ul>${s[4].map(p=>`<li>${p}</li>`).join('')}</ul></div><div class="figs">${specimenRows(s[5])}</div></section>`;
+const cheat=`<section id="cheat"><h2>Cheat-sheet</h2><div class="card lab-table"><table><tr><th>Entity</th><th>Clinical clue</th><th>Key image feature</th></tr><tr><td>SCC (from actinic keratosis)</td><td>Older patient, ear</td><td>Nests resembling squamous cells; keratin pearls</td></tr><tr><td>BCC</td><td>Older outdoor worker, face, telangiectasia</td><td>Peripheral palisading, clefting; solar elastosis</td></tr><tr><td>Melanoma</td><td>Enlarging mole, irregular border</td><td>Large cells, nucleoli, pigment in the dermis</td></tr><tr><td>Psoriasis</td><td>Silvery plaques, neck / hand</td><td>Parakeratosis, regular acanthosis, thin suprapapillary plates</td></tr><tr><td>Osteochondroma</td><td>25 y, distal femoral metaphysis</td><td>Blue-gray cartilage cap</td></tr><tr><td>Osteosarcoma</td><td>17 y, lytic + sclerotic, metaphysis</td><td>Atypical cells + new bone</td></tr><tr><td>Chondrosarcoma</td><td>51 y, ischium</td><td>Bulky blue-gray mass; atypical cells in cartilage</td></tr><tr><td>Ewing sarcoma</td><td>11 y, diaphysis, fever</td><td>Round blue cells; t(11;22)</td></tr><tr><td>Metastasis</td><td>75 y, back pain</td><td>Multiple vertebral lesions → find the primary</td></tr><tr><td>Lipoma / liposarcoma</td><td>Superficial arm / deep retroperitoneum</td><td>Encapsulated fat / lipoblasts</td></tr></table></div><div class="card clin"><b>Osteosarcoma vs Ewing sarcoma</b> (young patient, malignant bone tumor): osteosarcoma is sclerotic and metaphyseal; Ewing sarcoma is a fleshy, painful, tender, warm, swollen mass (can mimic cellulitis) with fever (constitutional symptoms) in the diaphysis. Osteosarcoma is less likely to cause these features.</div></section>`;
+function build(){$('#m').innerHTML=`<div class="lab-reading-tools"><p>Select a numbered note or marker to highlight its match. Select an image to zoom.</p><label><input type="checkbox" checked onchange="document.body.classList.toggle('hide-hs',!this.checked)">Show structure markers</label></div>`+SECT.map(sect).join('')+cheat+`<section id="quiz"><div id="quizhead"></div></section><section id="review"><h2>Mistake review</h2><div id="rv"></div></section>`;$('#quizhead').innerHTML=quizHead();
 upd()}
 function upd(){const w=Object.keys(S.a).filter(i=>!S.a[i].ok),d=Object.keys(S.a).length;$('#sc').textContent=`Quiz ${d}/${Q.length}`;
 $('#rv').innerHTML=w.length?w.map(i=>{const q=Q[i];return `<div class="card"><b>${q.q}</b>${q.i?`<div class="qimg" onclick="lb('${q.i}',1)"><img src="${I[q.i]}" alt=""></div>`:''}<div class="exp"><b>Answer: ${q.o[0]}</b><br>${q.e}</div></div>`}).join('')+'<button class="btn" onclick="startQuiz(\'wrong\');$(\'#quiz\').scrollIntoView()">Practise missed questions</button>':'<p class="sub">No mistakes recorded yet.</p>';
@@ -218,15 +505,22 @@ document.addEventListener('keydown',e=>{if(e.key=='Escape')lbClose()});
 let qs=[],qi=0,mode='all';
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 function startQuiz(m){mode=m;let idx=Q.map((_,i)=>i);if(m=='img')idx=idx.filter(i=>Q[i].i);if(m=='wrong')idx=idx.filter(i=>S.a[i]&&!S.a[i].ok);if(m=='new')idx=idx.filter(i=>!S.a[i]);qs=shuf(idx);qi=0;drawQ()}
-const quizHead=()=>{const d=Object.keys(S.a).length,c=Object.values(S.a).filter(x=>x.ok).length;return `<h2>Practical quiz</h2><p class="sub">${Q.length} questions · ${Q.filter(q=>q.i).length} image-based · options reshuffle every time</p><div class="card"><div class="stat">${c}/${Q.length}</div>correct so far · ${d} answered<div style="margin-top:12px"><button class="btn" onclick="startQuiz('all')">All (shuffled)</button> <button class="btn alt" onclick="startQuiz('img')">Image questions</button> <button class="btn alt" onclick="startQuiz('new')">Unanswered</button> <button class="btn alt" onclick="startQuiz('wrong')">Missed only</button> <button class="btn alt" onclick="if(confirm('Reset progress?')){S={a:{}};save();$('#quizhead').innerHTML=quizHead();upd()}">Reset</button></div></div><div id="qa"></div>`};
+const quizHead=()=>{const d=Object.keys(S.a).length,c=Object.values(S.a).filter(x=>x.ok).length;return `<h2>Practical quiz</h2><p class="sub">${Q.length} questions · ${Q.filter(q=>q.i).length} image-based · options reshuffle every time</p><div class="card lab-quiz-summary"><div><div class="stat">${c}/${Q.length}</div>correct so far · ${d} answered</div><div class="lab-quiz-actions"><button class="btn" onclick="startQuiz('all')">All (shuffled)</button> <button class="btn alt" onclick="startQuiz('img')">Image questions</button> <button class="btn alt" onclick="startQuiz('new')">Unanswered</button> <button class="btn alt" onclick="startQuiz('wrong')">Missed only</button> <button class="btn alt" onclick="if(confirm('Reset progress?')){S={a:{}};save();$('#quizhead').innerHTML=quizHead();upd()}">Reset</button></div></div><div id="qa"></div>`};
 function drawQ(){const el=$('#qa');if(!qs.length){el.innerHTML='<div class="card">No questions in this set.</div>';return}
 if(qi>=qs.length){const c=qs.filter(i=>S.a[i]&&S.a[i].ok).length;el.innerHTML=`<div class="card"><h3>Set complete</h3><div class="stat">${c}/${qs.length}</div>${c<qs.length?'<button class="btn" onclick="startQuiz(\'wrong\')">Retry missed</button>':'Perfect!'}</div>`;upd();return}
 const n=qs[qi],q=Q[n],o=shuf(q.o.map((t,i)=>({t,ok:i==0})));
-el.innerHTML=`<div class="card"><small>Question ${qi+1} of ${qs.length}</small><h3 style="margin-top:4px">${q.q}</h3>${q.i?`<div class="qimg iw" onclick="lb('${q.i}',1)"><img src="${I[q.i]}" alt="question image"><span class="zoomhint">🔍 zoom</span></div>`:''}<div id="op">${o.map((x,j)=>`<button class="opt" data-ok="${x.ok?1:0}">${String.fromCharCode(65+j)}. ${x.t}</button>`).join('')}</div><div id="fb"></div></div>`;
+el.innerHTML=`<div class="card lab-question"><small>Question ${qi+1} of ${qs.length}</small><h3>${q.q}</h3>${q.i?`<div class="qimg iw" onclick="lb('${q.i}',1)"><img src="${I[q.i]}" alt="question image"><span class="zoomhint">🔍 zoom</span></div>`:''}<div id="op">${o.map((x,j)=>`<button class="opt" data-ok="${x.ok?1:0}">${String.fromCharCode(65+j)}. ${x.t}</button>`).join('')}</div><div id="fb"></div></div>`;
 document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const ok=b.dataset.ok=='1';document.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.ok=='1')x.classList.add('ok')});if(!ok)b.classList.add('no');S.a[n]={ok};save();upd();$('#fb').innerHTML=`<div class="exp"><b>${ok?'✔ Correct':'✘ Not quite'}</b> – ${q.e}</div><p><button class="btn" onclick="qi++;drawQ()">${qi+1<qs.length?'Next →':'Finish'}</button></p>`})}
 
 build();
 VitanovaLabAtlas.connect(document.querySelector("main"));
+document.querySelectorAll(".lab-show-marker").forEach(button => {
+  const note = button.parentElement;
+  const text = note.querySelector("span");
+  text.id = note.id + "-text";
+  button.setAttribute("aria-describedby", text.id);
+  button.textContent = "";
+});
 document.addEventListener('DOMContentLoaded', () => {
   VitanovaLabAtlas.addHeaderReview({
     count: () => Object.values(S.a).filter(answer => !answer.ok).length,
