@@ -83,6 +83,13 @@ async function main() {
     console.log('Portal routes, search, and completion checks passed.');
     let totalRendered = 0;
     for (const lecture of lectures) {
+      if (lecture.standalone) {
+        await goto('index.html#' + lecture.category);
+        await page.locator('.study-resource').getByRole('link', {name: lecture.title, exact: true}).click();
+        check(decodeURIComponent(new URL(page.url()).pathname).endsWith('/' + lecture.file), lecture.id + ': opens from the hub');
+        check(await page.locator('h1').first().isVisible(), lecture.id + ': original content renders');
+        continue;
+      }
       await goto(encodeURIComponent(lecture.file));
       await page.waitForFunction(() => document.querySelectorAll('.q').length > 0 && document.querySelectorAll('.q:not([data-vn-question-id])').length === 0);
       const expected = bank.filter(q => q.lectureId === lecture.id);

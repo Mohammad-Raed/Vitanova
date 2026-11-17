@@ -165,6 +165,8 @@ def category(system, exam, subject):
     return prefix if system.lower()==subject.lower() else prefix+'-'+slug(subject)
 
 def extract(lecture, source):
+    if lecture.get('standalone') is True:
+        return []
     page = Page(source)
     inline = '\n'.join(page.scripts)
     pattern = re.compile(r'\b(?:const|let|var)\s+(QZ|Q\d*|L\d+|D)\s*=\s*(?=[\[{])')

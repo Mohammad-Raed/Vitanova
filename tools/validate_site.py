@@ -77,7 +77,9 @@ def validate():
             errors.append(f'{item["id"]}: invalid lecture order')
         group = (item['system'], item['exam'], item['subject'], item['category'])
         grouped.setdefault(group, []).append(item)
-        if path.is_file():
+        if 'standalone' in item and type(item['standalone']) is not bool:
+            errors.append(f'{item["id"]}: standalone must be a boolean')
+        if path.is_file() and item.get('standalone') is not True:
             content = path.read_text(encoding='utf-8')
             for script in ('study-data.js', 'study-storage.js', 'study-bookmarks.js',
                            'study-questions-data.js', 'study-nav.js', 'study-quiz-enhance.js'):
@@ -146,7 +148,8 @@ def validate():
     print(f'PASS: {len(lectures)} lectures, {len(bank)} valid MCQs, {len(aliases)} legacy question aliases, '
           f'{len(html_files)} HTML files, {len(redirects)} redirects; local links and JavaScript syntax valid.')
     for lecture in lectures:
-        print(f'  {lecture["id"]}: {counts[lecture["id"]]} MCQs')
+        quiz = 'standalone quiz' if lecture.get('standalone') is True else f'{counts[lecture["id"]]} MCQs'
+        print(f'  {lecture["id"]}: {quiz}')
 
 
 if __name__ == '__main__':

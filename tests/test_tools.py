@@ -14,7 +14,7 @@ DATA=[['Which nerve?', ['Alpha','Beta'],1,'The original explanation.'],['Which v
 def lecture(data=DATA, title='Nerves and vessels', name='Q'):
     return '<!doctype html><html><head><title>MSS Midterm Anatomy Lectures 13-14</title></head><body><h1>'+title+'</h1><script>const '+name+'='+json.dumps(data)+';</script></body></html>'
 def args(path,**kw):
-    values=dict(file=str(path),system=None,exam=None,subject=None,lectures=None,title=None,description=None,id=None,dry_run=False)
+    values=dict(file=str(path),system=None,exam=None,subject=None,lectures=None,title=None,description=None,id=None,dry_run=False,standalone=False)
     values.update(kw)
     return argparse.Namespace(**values)
 
@@ -24,7 +24,7 @@ class ExtractionTests(unittest.TestCase):
         bank=build_bank()
         self.assertTrue(rows); self.assertTrue(bank)
         self.assertEqual(len(bank),len({q['id'] for q in bank}))
-        self.assertEqual(len(rows),len({q['lectureId'] for q in bank}))
+        self.assertEqual({row['id'] for row in rows if not row.get('standalone')}, {q['lectureId'] for q in bank})
         self.assertTrue(all(q['legacyIds'] for q in bank))
     def test_literal_comments_unicode_and_trailing_commas(self):
         self.assertEqual({'a':['x\n',"it's",3]},Literal("{/*ok*/a:['x\\n','it\\'s',3,],}").read())
@@ -85,6 +85,15 @@ class RegistrationTests(unittest.TestCase):
         before={p.name:p.read_bytes() for p in self.root.iterdir()}
         run(args(self.input,dry_run=True),self.root)
         self.assertEqual(before,{p.name:p.read_bytes() for p in self.root.iterdir()})
+    def test_standalone_registration_preserves_the_native_quiz(self):
+        original=lecture([{'q':'An original quiz question'}])
+        self.input.write_text(original,encoding='utf-8')
+        row,count,_=run(args(self.input,standalone=True),self.root)
+        self.assertTrue(row['standalone'])
+        self.assertEqual(0,count)
+        self.assertEqual(original,(self.root/row['file']).read_text(encoding='utf-8'))
+        self.assertEqual([],build_bank(self.root))
+        self.assertEqual([],run(args(self.input),self.root)[2])
     def test_ambiguity_blocks_without_writes(self):
         source=Path(self.temp.name)/'unknown.html';source.write_text(lecture().replace('MSS Midterm Anatomy Lectures 13-14','Nerves'))
         before={p.name:p.read_bytes() for p in self.root.iterdir()}

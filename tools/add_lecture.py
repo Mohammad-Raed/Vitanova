@@ -45,29 +45,37 @@ def metadata(source, filename, args):
     separator='–' if re.search(r'[-–]|\bto\b',label) and len(numbers)==2 else ' & '
     return dict(id=ident,system=system,exam=exam,subject=subject,category=cat,lectureLabel=('Lab ' if exam=='Labs' else 'Lecture ' if len(numbers)==1 else 'Lectures ')+separator.join(map(str,numbers)),order=numbers[0],title=title,description=description,file=filename,icon='📘')
 
+def prepare(source, row):
+    return source if row.get('standalone') else integrate_shared(source)
+
 def run(args, root=ROOT):
     path=Path(args.file).resolve()
     if not path.is_file() or path.suffix.lower()!='.html': raise ValueError('Input must be an existing HTML lecture')
     source=path.read_text(encoding='utf-8')
     rows=registry(root)
+    standalone=getattr(args,'standalone',False)
     existing=next((row for row in rows if (root/row['file']).resolve()==path or (args.id and row['id']==args.id)),None)
     if existing:
         row=dict(existing)
+        if standalone and not row.get('standalone'):
+            raise ValueError('The existing lecture is registered with shared study tools.')
         # A registered path is updated only for shared assets, preserving source content.
-        if path!=(root/row['file']).resolve() and integrate_shared(source)!=integrate_shared((root/row['file']).read_text(encoding='utf-8')):
+        if path!=(root/row['file']).resolve() and prepare(source,row)!=prepare((root/row['file']).read_text(encoding='utf-8'),row):
             raise ValueError('Permanent ID already belongs to different content. No files were changed.')
     else:
         row=metadata(source,path.name,args)
+        if standalone:
+            row['standalone']=True
         sameid=next((item for item in rows if item['id']==row['id']),None)
         if sameid:
-            if integrate_shared(source)!=integrate_shared((root/sameid['file']).read_text(encoding='utf-8')):
+            if (standalone and not sameid.get('standalone')) or prepare(source,sameid)!=prepare((root/sameid['file']).read_text(encoding='utf-8'),sameid):
                 raise ValueError('Lecture ID collision. Use a distinct --id. No files were changed.')
             row=dict(sameid); existing=sameid
         elif (root/row['file']).exists() and (root/row['file']).resolve()!=path:
             raise ValueError('Destination filename exists. No files were changed.')
         elif any(item['file']==row['file'] for item in rows):
             raise ValueError('Filename is already registered. No files were changed.')
-    output=integrate_shared(source)
+    output=prepare(source,row)
     # Parse and validate before writing anything. Never execute uploaded HTML/scripts.
     questions=extract(row,output)
     from urllib.parse import urlsplit, unquote
@@ -115,11 +123,13 @@ def main():
     parser.add_argument('--title')
     parser.add_argument('--description')
     parser.add_argument('--id',help='Permanent ID; keep this through title/filename changes')
+    parser.add_argument('--standalone',action='store_true',help='Keep the page’s original quiz and navigation')
     parser.add_argument('--dry-run',action='store_true')
     args=parser.parse_args()
     try:
         row,count,changes=run(args)
-        print(f"{row['title']} → {row['category']} ({count} MCQs)")
+        quiz='standalone quiz' if row.get('standalone') else f'{count} MCQs'
+        print(f"{row['title']} → {row['category']} ({quiz})")
         print(('Would change: ' if args.dry_run else 'Changed: ')+(', '.join(changes) or 'none (already integrated)'))
         if args.dry_run: print('Dry run: no files were changed.')
         print('Review metadata and run python3 tools/validate_site.py, then browser tests before publishing.')

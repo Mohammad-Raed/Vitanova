@@ -597,5 +597,33 @@ window.VitanovaLectures = [
     "description": "Bone matrix, cells, remodelling, mineral regulation and metabolic bone disorders.",
     "file": "MSS-Final-Biochemistry-Lecture-2-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "mss-labs-anatomy-04",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Anatomy",
+    "category": "mss-labs-anatomy",
+    "lectureLabel": "Lab 4",
+    "order": 4,
+    "title": "Anatomy Lab 4: Hand & Forearm",
+    "description": "Hand atlas and forearm practical with annotated specimens and a spotter quiz.",
+    "file": "MSS-Anatomy-Lab-4.html",
+    "icon": "📘",
+    "standalone": true
+  },
+  {
+    "id": "mss-labs-pathology-02",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Pathology",
+    "category": "mss-labs-pathology",
+    "lectureLabel": "Lab 2",
+    "order": 2,
+    "title": "Pathology Lab 2: Revision",
+    "description": "Annotated pathology specimens, a cheat sheet, and a practical quiz with mistake review.",
+    "file": "MSS-Pathology-Lab-2.html",
+    "icon": "📘",
+    "standalone": true
   }
 ];
