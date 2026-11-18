@@ -33,6 +33,7 @@ label{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr)}label selec
 <label>Lecture or lab<select id="lecture"><option value="">All materials</option></select></label>
 <label>Topic<select id="topic"></select></label>
 <label>Cards<select id="origin"><option value="">All cards</option><option value="anking">AnKing only</option><option value="original">Course cards only</option></select></label>
+<label>Cards per session<select id="session-size"><option value="">All available cards</option></select></label>
 <button id="start" type="button">Study Now</button><button id="start-linked" class="primary" type="button" hidden></button></div>
 <section class="panel" aria-label="Deck overview">
 <p class="meta" id="counts"></p>
@@ -50,4 +51,4 @@ label{min-width:0;max-width:100%;grid-template-columns:minmax(0,1fr)}label selec
 
 <footer>Progress is stored in this browser when storage is available. Slide references use PDF page numbers.
 </footer>
-</main><script src="study-srs.js"></script><script src="data/flashcards/course-deck.js?v=related-lab-decks"></script><script src="study-srs-page.js?v=related-lab-decks"></script></body></html>
+</main><script src="study-srs.js?v=session-size"></script><script src="data/flashcards/course-deck.js?v=related-lab-decks"></script><script src="study-srs-page.js?v=session-size"></script></body></html>

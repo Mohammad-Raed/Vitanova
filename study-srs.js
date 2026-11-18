@@ -82,7 +82,7 @@
   }
 
   // Switching decks or filters still counts toward the same daily new-card limit.
-  function queueFor(cards, data, now) {
+  function queueFor(cards, data, now, ignoreDailyLimits = false) {
     const learning = [], learningAhead = [], review = [], fresh = [];
     const budgets = new Map();
     let nextDue = Infinity;
@@ -99,6 +99,7 @@
     }
     const byDue = (a, b) => data.records[a.id].due - data.records[b.id].due;
     const reviewAvailable = card => {
+      if (ignoreDailyLimits) return true;
       if (!budgets.has(card.lecture)) {
         const stats = daily(data.decks[card.lecture] || {}, now);
         budgets.set(card.lecture, defaults.reviewLimit - stats.review);
@@ -115,12 +116,12 @@
       const timestamp = data.records[card.id].due;
       if (timestamp <= now) return reviewAvailable(card);
       const deck = data.decks[card.lecture] || {};
-      const budget = budgets.get(card.lecture) ?? (defaults.reviewLimit - daily(deck, now).review);
+      const budget = ignoreDailyLimits ? Infinity : (budgets.get(card.lecture) ?? defaults.reviewLimit - daily(deck, now).review);
       nextDue = Math.min(nextDue, budget <= 0 ? Math.max(timestamp, midnight(now)) : timestamp);
       return false;
     });
     const studiedToday = Object.values(data.decks).reduce((total, deck) => total + daily(deck, now).new, 0);
-    const available = fresh.slice(0, Math.max(0, defaults.newLimit - studiedToday));
+    const available = ignoreDailyLimits ? fresh : fresh.slice(0, Math.max(0, defaults.newLimit - studiedToday));
     if (available.length < fresh.length) nextDue = Math.min(nextDue, midnight(now));
     const availableNow = [...learning.sort(byDue), ...due, ...available];
     // Learn ahead only after exhausting due steps, due reviews and new cards.

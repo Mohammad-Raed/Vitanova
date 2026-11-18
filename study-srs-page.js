@@ -11,12 +11,15 @@ const store = {
 let data = core.load(store), storageFailed = false;
 let savedVersion = storageVersion();
 let selection = [], current = null, options = null, lastCard = null;
+let sessionCards = null;
+let sessionIgnoresDailyLimits = false;
 let active = false, revealed = false, timer;
 const request = new URLSearchParams(location.search).get('lecture');
 const linked = Object.hasOwn(pages, request) ? pages[request] : null;
 const linkedExam = linked?.exam ?? (request?.includes('-mid-') ? 'mid' : 'final');
 const linkedOption = '@page';
 const lecture = byId('lecture'), topic = byId('topic'), exam = byId('exam'), origin = byId('origin');
+const sessionSize = byId('session-size');
 const lectureNames = ['Musculoskeletal development','Limb development','Gluteal region and thigh','Knee joint','Lumbar plexus','Thigh compartments','Sacral plexus and lower-limb nerves','Anterior and lateral leg','Posterior leg, popliteal fossa and foot','Lower-limb blood supply','Lower-limb nerve injuries'];
 const materials = {
   ...{"mss-mid-anatomy-01-02": "Anatomy · Lectures 1 & 2 · Skull & TMJ", "mss-mid-anatomy-03-04": "Anatomy · Lectures 3 & 4 · Vertebral Column", "mss-mid-anatomy-05-06": "Anatomy · Lectures 5 & 6 · Upper Limb Bones & Joints", "mss-mid-anatomy-07-08": "Anatomy · Lectures 7 & 8 · Upper Limb Joints & Back Muscles", "mss-mid-anatomy-09-10": "Anatomy · Lectures 9 & 10 · Arm, Cubital Fossa & Brachial Plexus", "mss-mid-anatomy-11-12": "Anatomy · Lectures 11 & 12 · The Hand & The Forearm", "mss-mid-pharmacology-01-03": "Pharmacology · Lectures 1–3 · Psoriasis, Anti-Rheumatoid Drugs & Muscle Relaxants", "mss-mid-physiology-01-03": "Physiology · Lectures 1–3 · Muscle Physiology & Touch", "mss-mid-pathology-01-03": "Pathology · Lectures 1–3 · Skeletal Muscle, Bone Disease & Arthritis", "immunology-mid-01": "Immunology · Lecture 1 · Course Introduction", "mss-mid-microbiology-01-02": "Microbiology · Lectures 1 & 2 · Skin Infections & Anaerobes", "mss-mid-physiology-04": "Physiology · Lecture 4 · Somatic Reflexes", "mss-mid-anatomy-14-15": "Anatomy · Lectures 14 & 15 · Lower Limb Bones & Hip, SI and Foot Joints", "mss-mid-anatomy-13": "Anatomy · Lecture 13 · Nerve Injuries of the Upper Limb", "immunology-mid-02": "Immunology · Lecture 2 · Immunity Overview", "immunology-mid-03": "Immunology · Lecture 3 · Barriers & Microbial Sensing", "immunology-mid-04": "Immunology · Lecture 4 · Phagocytes & Inflammation", "immunology-mid-05": "Immunology · Lecture 5 · Innate Cells & Introduction to Adaptive Immunity", "mss-mid-physiology-03-04-full": "Physiology · Lectures 3–4 · Sensory Receptors, Touch and Spinal Reflexes — Full Explanation", "immunology-mid-06": "Immunology · Lecture 6 · Adaptive Immunity: From Recognition to Memory", "immunology-mid-07": "Immunology · Lecture 7 · Organisation, Lymph & Lymph Nodes", "immunology-mid-08": "Immunology · Lecture 8 · Spleen, MALT & Clinical Lymphatics"},
@@ -98,15 +101,35 @@ function overview() {
   byId('reset').disabled = !selection.length;
   byId('reset-status').textContent = '';
   active = false;
+  sessionCards = null;
+  sessionSize.replaceChildren(new Option('All available cards', ''));
+  for (let count = 1; count < selection.length; count++) {
+    sessionSize.add(new Option(String(count), String(count)));
+  }
+  sessionSize.disabled = selection.length < 2;
   current = options = lastCard = null;
   revealed = false;
   byId('study').hidden = true;
   tick();
 }
 function start() {
+  const count = Number(sessionSize.value);
+  sessionCards = null;
+  sessionIgnoresDailyLimits = Boolean(lecture.value || count);
+  if (count) {
+    const queue = studyQueue(Date.now());
+    const eligible = new Set([...queue.cards, ...queue.learningAhead]);
+    sessionCards = [...eligible].slice(0, count);
+  }
+  current = options = lastCard = null;
+  revealed = false;
   active = true;
   byId('study').hidden = false;
   tick(true);
+}
+function studyQueue(now) {
+  const ignoreDailyLimits = active ? sessionIgnoresDailyLimits : Boolean(lecture.value || sessionSize.value);
+  return core.queueFor(sessionCards ?? selection, data, now, ignoreDailyLimits);
 }
 function render(card) {
   const source = card ? (materials[card.lecture] || 'Anatomy ' + card.lecture) + ' · ' + card.topic + (card.pages ? ' · PDF pp. ' + card.pages : '') : '';
@@ -150,7 +173,7 @@ function render(card) {
 function tick(focus = false) {
   clearTimeout(timer);
   const now = Date.now();
-  const queue = core.queueFor(selection, data, now);
+  const queue = studyQueue(now);
   byId('counts').textContent = 'New ' + queue.new + ' · Learning ' + queue.learning + ' · To Review (Due) ' + queue.due;
   byId('start').disabled = !selection.length;
   if (active) {
@@ -193,7 +216,7 @@ function rate(rating) {
 function applyRating(rating) {
   const now = Date.now(), card = current;
   // Check eligibility again in case a different tab answered it or the limits changed.
-  const queue = core.queueFor(selection, data, now);
+  const queue = studyQueue(now);
   if (!queue.cards.includes(card) && !queue.learningAhead.includes(card)) return tick(true);
   const previous = historyFor(card), previousDeck = data.decks[card.lecture];
   const deck = {...previousDeck, settings: core.defaults};
@@ -232,6 +255,7 @@ byId('reset').onclick = () => {
 lecture.onchange = () => { topics(); overview(); };
 topic.onchange = overview;
 origin.onchange = overview;
+sessionSize.onchange = () => { if (!active) tick(); };
 exam.onchange = () => { materialsForExam(); overview(); };
 byId('start').onclick = start;
 byId('reveal').onclick = reveal;
@@ -259,7 +283,10 @@ if (linked) {
   back.hidden = false;
   button.hidden = false;
   button.textContent = 'Study ' + linked.label;
-  button.onclick = () => { openLinked(); start(); };
+  button.onclick = () => {
+    if (lecture.value !== linkedOption) openLinked();
+    start();
+  };
   openLinked();
 } else {
   materialsForExam();
