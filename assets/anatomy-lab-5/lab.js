@@ -7,6 +7,7 @@
   const topics = byId('lab-topics');
   const search = byId('figure-search');
   const filters = byId('figure-filters');
+  const labRevision = window.VitanovaLabAtlas.quizRevision("mss-labs-anatomy-05", questions.length);
   const quizList = byId('lab-questions');
   const zoom = byId('lab-zoom');
   const svgNamespace = 'http://www.w3.org/2000/svg';
@@ -337,6 +338,7 @@
     buttons.forEach((choice, choiceIndex) => choice.addEventListener('click', () => {
       const correct = options[choiceIndex].correct;
       answered++;
+      labRevision.record(index, correct, showingMistakes);
       if (correct) {
         score++;
         mistakes.delete(index);
@@ -356,15 +358,18 @@
     }));
     controls.append(...buttons, feedback);
     layout.append(controls);
-    return element('article', {class: 'q lab-panel', 'data-question': index}, prompt, layout);
+    const card = element('article', {class: 'q lab-panel', 'data-question': index}, prompt, layout);
+    labRevision.attach(card, index);
+    return card;
   }
 
   function renderQuiz(review = showingMistakes) {
     showingMistakes = review;
     answered = score = 0;
+    const pending = review ? new Set(labRevision.pending()) : null;
     const cards = [];
     questions.forEach((question, index) => {
-      if (!review || mistakes.has(index)) cards.push(questionCard(question, index, cards.length + 1));
+      if (!review || pending.has(index)) cards.push(questionCard(question, index, cards.length + 1));
     });
     questionCount = cards.length;
     quizList.replaceChildren(...cards);
@@ -392,8 +397,9 @@
   renderQuiz();
 
   document.addEventListener('DOMContentLoaded', () => {
+    labRevision.start(mistakes, () => renderQuiz(false));
     window.VitanovaLabAtlas.addHeaderReview({
-      count: () => mistakes.size,
+      count: () => labRevision.pending().length,
       retry: () => renderQuiz(true),
       quiz: byId('quiz')
     });

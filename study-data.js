@@ -326,6 +326,20 @@ window.VitanovaLectures = [
     "icon": "📘"
   },
   {
+    "id": "mss-final-physiology-02",
+    "system": "MSS",
+    "exam": "Final",
+    "subject": "Physiology",
+    "category": "mss-final-physiology",
+    "lectureLabel": "Lecture 2",
+    "order": 2,
+    "title": "Temperature and Pain Perception — Full Explanation",
+    "description": "Thermoreceptors, nociceptors, pain pathways, modulation, and management.",
+    "file": "MSS-Final-Physiology-Lecture-2-AI-Summary-MCQs.html",
+    "icon": "📘",
+    "standalone": true
+  },
+  {
     "id": "immunology-mid-06",
     "system": "Immunology",
     "exam": "Midterm",
