@@ -211,7 +211,8 @@ body.vn-lecture-page > .vn-lecture-hero :is(small,.k,.eyebrow,.vn-lecture-label)
 }
 body.vn-lecture-page > nav.vn-lecture-topics{
   box-sizing:border-box;position:static;inset:auto;z-index:auto;
-  display:flex;justify-content:flex-start;align-items:center;gap:4px;
+  display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:4px;
+  overflow:visible;white-space:normal;
   width:100%;max-width:none;margin:0;padding:5px max(12px,calc((100% - var(--vn-study-width))/2));
   border:0;border-bottom:1px solid var(--ln);border-radius:0;background:var(--card);
 }
@@ -226,4 +227,20 @@ body.vn-lecture-page > .vn-back-to-top{display:inline-flex}
 @media(max-width:480px){
   body.vn-lecture-page > main{padding-inline:12px}
   body.vn-lecture-page > nav.vn-lecture-topics a{min-height:40px}
+}
+
+/* Keep the breadcrumb together on wide screens and wrap the header in reading order. */
+body.vn-lecture-page > .vn-lecture-navigation{
+  display:flex;flex-wrap:wrap;
+  padding-inline:max(12px,calc((100% - 1440px)/2));
+}
+body.vn-lecture-page > .vn-lecture-navigation .vn-lecture-context{
+  flex:0 0 auto;max-width:100%;order:0;
+  justify-content:flex-start;overflow:visible;
+}
+body.vn-lecture-page > .vn-lecture-navigation .vn-lecture-controls{
+  flex-wrap:wrap;min-width:0;margin-inline-start:0;justify-content:flex-start;
+}
+@media(max-width:900px){
+  body.vn-lecture-page > .vn-lecture-navigation .vn-lecture-context{flex-basis:100%}
 }
