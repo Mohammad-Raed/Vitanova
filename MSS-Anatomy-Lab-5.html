@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MSS Anatomy Lab 5 | Thigh, Gluteal Region &amp; Lower Limb Bones</title>
+<script src="study-appearance-init.js"></script>
+<link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1">
+<link rel="stylesheet" href="study-quiz.css">
+<link rel="stylesheet" href="study-lab-atlas.css?v=lab-header-1">
+<link rel="stylesheet" href="assets/anatomy-lab-5/lab.css">
+<script defer src="study-data.js?v=mss-anatomy-lab-5"></script>
+<script defer src="study-storage.js"></script>
+<script defer src="study-bookmarks.js"></script>
+<script defer src="study-questions-data.js"></script>
+<script defer src="study-lab-atlas.js?v=lab-header-1"></script>
+<script defer src="assets/anatomy-lab-5/data.js"></script>
+<script defer src="assets/anatomy-lab-5/lab.js"></script>
+<script defer src="study-nav.js?v=lecture-first-paint-1"></script>
+</head>
+<body class="vn-lecture-page mss-lab-atlas lab-five">
+  <header class="vn-lecture-hero">
+    <small>Musculoskeletal System · Labs · Anatomy</small>
+    <h1>Anatomy Lab 5 – Thigh, Gluteal Region &amp; Lower Limb Bones</h1>
+    <p>Cadaver stations for the gluteal region, thigh and femoral triangle, followed by illustrations from the lower limb bones lecture.</p>
+  </header>
+  <nav class="vn-lecture-topics" aria-label="Lab sections" id="lab-topics"></nav>
+  <main>
+    <section class="lab-panel" aria-label="Atlas controls">
+      <div class="lab-toolbar">
+        <label><input type="checkbox" id="test-mode"> Self-test</label>
+        <label><input type="checkbox" id="notes-toggle" checked> Notes</label>
+        <label class="lab-search">Find a structure <input id="figure-search" type="search" placeholder="e.g. Piriformis"></label>
+        <div id="figure-filters" role="group" aria-label="Filter figures">
+          <button type="button" data-filter="" aria-pressed="true">All</button>
+          <button type="button" data-filter="Cadaver" aria-pressed="false">Cadaver</button>
+          <button type="button" data-filter="Bone figure" aria-pressed="false">Bones</button>
+        </div>
+        <div class="lab-progress">
+          <progress id="review-progress" aria-label="Structures reviewed"></progress>
+          <span id="review-count" aria-live="polite"></span>
+        </div>
+      </div>
+      <p class="lab-hint">Select a numbered marker to find its key entry. In Self-test, select a marker or Reveal to check your answer.</p>
+    </section>
+    <p class="lab-panel" id="no-results" role="status" hidden>No figures match your search and filter.</p>
+    <div id="atlas"></div>
+    <section id="quiz">
+      <h2>Practical quiz</h2>
+      <div class="lab-panel lab-toolbar">
+        <span id="quiz-score" role="status"></span>
+        <button type="button" id="quiz-reset">Reset quiz</button>
+        <button type="button" id="quiz-all" hidden>All questions</button>
+      </div>
+      <div id="lab-questions"></div>
+    </section>
+  </main>
+  <dialog id="lab-zoom" aria-labelledby="zoom-title">
+    <div class="zoom-header">
+      <h2 id="zoom-title">Enlarged figure</h2>
+      <form method="dialog"><button type="submit" autofocus>Close</button></form>
+    </div>
+    <div id="zoom-picture"></div>
+  </dialog>
+</body>
+</html>
+

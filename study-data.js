@@ -326,20 +326,6 @@ window.VitanovaLectures = [
     "icon": "📘"
   },
   {
-    "id": "mss-final-physiology-02",
-    "system": "MSS",
-    "exam": "Final",
-    "subject": "Physiology",
-    "category": "mss-final-physiology",
-    "lectureLabel": "Lecture 2",
-    "order": 2,
-    "title": "Thermal & Pain Perception",
-    "description": "Thermoreceptors, nociceptors, pain pathways, modulation, and management.",
-    "file": "MSS-Final-Physiology-Lecture-2-AI-Summary-MCQs.html",
-    "icon": "📘",
-    "standalone": true
-  },
-  {
     "id": "immunology-mid-06",
     "system": "Immunology",
     "exam": "Midterm",
@@ -637,6 +623,20 @@ window.VitanovaLectures = [
     "title": "Pathology Lab 2: Revision",
     "description": "Annotated pathology specimens, a cheat sheet, and a practical quiz with mistake review.",
     "file": "MSS-Pathology-Lab-2.html",
+    "icon": "📘",
+    "standalone": true
+  },
+  {
+    "id": "mss-labs-anatomy-05",
+    "system": "MSS",
+    "exam": "Labs",
+    "subject": "Anatomy",
+    "category": "mss-labs-anatomy",
+    "lectureLabel": "Lab 5",
+    "order": 5,
+    "title": "Anatomy Lab 5: Thigh, Gluteal Region & Lower Limb Bones",
+    "description": "Annotated cadaver specimens and bone figures, a structure checklist, and a 26-question practical quiz.",
+    "file": "MSS-Anatomy-Lab-5.html",
     "icon": "📘",
     "standalone": true
   },
