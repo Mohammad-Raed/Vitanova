@@ -8,7 +8,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-anatomy",
     "lectureLabel": "Lectures 1 & 2",
     "order": 1,
-    "title": "Skull & TMJ",
+    "title": "Skull & Temporomandibular Joint",
     "description": "Cranial bones, skull foramina, neonatal skull, and TMJ.",
     "file": "MSS-Midterm-Anatomy-Lectures-1-2-AI-Summary-MCQs.html",
     "icon": "🦴"
@@ -21,7 +21,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-anatomy",
     "lectureLabel": "Lectures 3 & 4",
     "order": 3,
-    "title": "Vertebral Column",
+    "title": "Vertebrae, Spinal Joints & Back Muscles",
     "description": "Vertebrae, spinal curves, ligaments, joints, and back muscles.",
     "file": "MSS-Midterm-Anatomy-Lectures-3-4-AI-Summary-MCQs.html",
     "icon": "🦴"
@@ -47,7 +47,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-anatomy",
     "lectureLabel": "Lectures 7 & 8",
     "order": 7,
-    "title": "Upper Limb Joints & Back Muscles",
+    "title": "Upper Limb Joints, Back Muscles & Axilla",
     "description": "Elbow, wrist, hand joints, back muscles, and axillary anatomy.",
     "file": "MSS-Midterm-Anatomy-Lectures-7-8-AI-Summary-MCQs.html",
     "icon": "💪"
@@ -60,7 +60,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-anatomy",
     "lectureLabel": "Lectures 9 & 10",
     "order": 9,
-    "title": "Arm, Cubital Fossa & Brachial Plexus",
+    "title": "Arm, Cubital Fossa, Axillary Vessels & Brachial Plexus",
     "description": "Arm muscles, cubital fossa, axillary vessels, and brachial plexus.",
     "file": "MSS-Midterm-Anatomy-Lectures-9-10-AI-Summary-MCQs.html",
     "icon": "💪"
@@ -73,7 +73,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-anatomy",
     "lectureLabel": "Lectures 11 & 12",
     "order": 11,
-    "title": "The Hand & The Forearm",
+    "title": "Hand & Forearm Anatomy",
     "description": "Hand and forearm muscles, nerves, arteries, and clinical anatomy.",
     "file": "MSS-Midterm-Anatomy-Lectures-11-12-AI-Summary-MCQs.html",
     "icon": "🖐️"
@@ -86,7 +86,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-pharmacology",
     "lectureLabel": "Lectures 1–3",
     "order": 1,
-    "title": "Psoriasis, Anti-Rheumatoid Drugs & Muscle Relaxants",
+    "title": "Drugs for Psoriasis & Rheumatoid Arthritis, and Muscle Relaxants",
     "description": "Psoriasis therapies, rheumatoid arthritis drugs, and skeletal muscle relaxants.",
     "file": "MSS-Midterm-Pharmacology-Lectures-1-3-AI-Summary-MCQs.html",
     "icon": "💊"
@@ -99,7 +99,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-physiology",
     "lectureLabel": "Lectures 1–3",
     "order": 1,
-    "title": "Muscle Physiology & Touch",
+    "title": "Muscle Contraction, Motor Units & Touch Receptors",
     "description": "Muscle contraction, motor units, neuromuscular transmission, and touch receptors.",
     "file": "MSS-Midterm-Physiology-Lectures-1-3-AI-Summary-MCQs.html",
     "icon": "❤️"
@@ -112,7 +112,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-pathology",
     "lectureLabel": "Lectures 1–3",
     "order": 1,
-    "title": "Skeletal Muscle, Bone Disease & Arthritis",
+    "title": "Muscle Disease, Bone Disease & Arthritis",
     "description": "Muscle disorders, bone disease, and inflammatory and degenerative arthritis.",
     "file": "MSS-Midterm-Pathology-Lectures-1-3-AI-Summary-MCQs.html",
     "icon": "🔬"
@@ -125,7 +125,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 1",
     "order": 1,
-    "title": "Course Introduction",
+    "title": "Immunology Course Overview & Assessment — Full explanation",
     "description": "Course structure, objectives, assessment, attendance, and study guidance.",
     "file": "Immunology-Midterm-Lecture-1-Foundations-High-Yield-Summary-MCQs.html",
     "icon": "🧬"
@@ -138,7 +138,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-microbiology",
     "lectureLabel": "Lectures 1 & 2",
     "order": 1,
-    "title": "Skin Infections & Anaerobes",
+    "title": "Bacterial Skin Infections & Anaerobes",
     "description": "Bacterial skin infections, virulence, anaerobic pathogens, and clinical management.",
     "file": "MSS-Midterm-Microbiology-Lectures-1-2-AI-Summary-MCQs.html",
     "icon": "🦠"
@@ -151,7 +151,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-physiology",
     "lectureLabel": "Lecture 4",
     "order": 4,
-    "title": "Somatic Reflexes",
+    "title": "Sensory Transduction & Spinal Reflexes",
     "description": "Sensory transduction, muscle spindles, spinal reflexes, and proprioception.",
     "file": "MSS-Midterm-Physiology-Lecture-4-AI-Summary-MCQs.html",
     "icon": "❤️"
@@ -164,7 +164,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-anatomy",
     "lectureLabel": "Lectures 14 & 15",
     "order": 14,
-    "title": "Lower Limb Bones & Hip, SI and Foot Joints",
+    "title": "Lower Limb Bones and Hip, Sacroiliac & Foot Joints",
     "description": "Pelvic and lower-limb bones, hip stability, sacroiliac and foot joints.",
     "file": "MSS-Midterm-Anatomy-Lectures-14-15-AI-Summary-MCQs.html",
     "icon": "🦴"
@@ -190,7 +190,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 2",
     "order": 2,
-    "title": "Immunity Overview",
+    "title": "Innate & Adaptive Immunity — Full explanation",
     "description": "Innate and adaptive immunity, humoral and cellular defence, memory, and tolerance.",
     "file": "Immunology-Midterm-Lecture-2-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -203,7 +203,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 3",
     "order": 3,
-    "title": "Barriers & Microbial Sensing",
+    "title": "Innate Immune Barriers & Microbial Sensing — Full explanation",
     "description": "Physical, chemical, and microbial barriers, pattern recognition, and microbial sensing.",
     "file": "Immunology-Midterm-Lecture-3-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -216,7 +216,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 4",
     "order": 4,
-    "title": "Phagocytes & Inflammation",
+    "title": "Phagocytosis, Inflammation & Complement — Full explanation",
     "description": "Phagocytosis, recruitment, microbial killing, inflammation, fever, and complement.",
     "file": "Immunology-Midterm-Lecture-4-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -229,7 +229,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 5",
     "order": 5,
-    "title": "Innate Cells & Introduction to Adaptive Immunity",
+    "title": "Cytokines, Innate Immune Cells & the B-Cell Receptor — Full explanation",
     "description": "Cytokines, innate cells, adaptive phases, and the B-cell receptor, with a separate note-taker bonus.",
     "file": "Immunology-Midterm-Lecture-5-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -242,7 +242,7 @@ window.VitanovaLectures = [
     "category": "mss-mid-physiology",
     "lectureLabel": "Lectures 3–4",
     "order": 3,
-    "title": "Sensory Receptors, Touch and Spinal Reflexes — Full Explanation",
+    "title": "Sensory Receptors, Touch & Spinal Reflexes — Full explanation",
     "description": "Full explanations for Lectures 3–4: touch and muscle receptors, somatic reflexes and somatosensory integration, with high-yield summaries, rapid recall and MCQs.",
     "file": "MSS-Midterm-Physiology-Lectures-3-4-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -294,7 +294,7 @@ window.VitanovaLectures = [
     "category": "mss-final-microbiology",
     "lectureLabel": "Lecture 1",
     "order": 1,
-    "title": "Skin Viruses",
+    "title": "Viral Skin Infections & Exanthems",
     "description": "Viral exanthems, herpesviruses, HPV, poxviruses and hand, foot and mouth disease.",
     "file": "MSS-Final-Microbiology-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -307,7 +307,7 @@ window.VitanovaLectures = [
     "category": "mss-final-pharmacology",
     "lectureLabel": "Lecture 1",
     "order": 1,
-    "title": "Acne Pharmacology",
+    "title": "Drugs for Acne & Rosacea",
     "description": "Acne treatments, mechanisms, adverse effects and rosacea.",
     "file": "MSS-Final-Pharmacology-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -320,7 +320,7 @@ window.VitanovaLectures = [
     "category": "mss-final-physiology",
     "lectureLabel": "Lecture 1",
     "order": 1,
-    "title": "Spinal Reflexes & Motor Patterns",
+    "title": "Spinal Reflexes, Muscle Tone & Walking — Full explanation",
     "description": "Spinal reflexes, motor neuron lesions, baclofen, and the control of walking.",
     "file": "MSS-Final-Physiology-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -333,7 +333,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 6",
     "order": 6,
-    "title": "Adaptive Immunity: From Recognition to Memory",
+    "title": "Adaptive Immunity: Antigen Recognition, Effector Responses & Memory — Full explanation",
     "description": "Antigen presentation, lymphocyte activation, effector responses, memory and vaccines.",
     "file": "Immunology-Midterm-Lecture-6-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -346,7 +346,7 @@ window.VitanovaLectures = [
     "category": "mss-labs-pathology",
     "lectureLabel": "Lab 1",
     "order": 1,
-    "title": "Pathology Lab 1: Muscle, Bone & Joints",
+    "title": "Pathology Lab 1: Muscle, Bone & Joint Pathology",
     "description": "27 original pathology figures with annotated findings and 29 practical questions.",
     "file": "MSS-Final-Pathology-Lab-1.html",
     "icon": "📘"
@@ -359,7 +359,7 @@ window.VitanovaLectures = [
     "category": "mss-labs-anatomy",
     "lectureLabel": "Lab 1",
     "order": 1,
-    "title": "Anatomy Lab 1: Skull & TMJ",
+    "title": "Anatomy Lab 1: Skull & Temporomandibular Joint",
     "description": "Skull and temporomandibular joint specimens, checklist tracking, and 20 practical spotters.",
     "file": "MSS-Anatomy-Lab-1.html",
     "icon": "📘"
@@ -372,7 +372,7 @@ window.VitanovaLectures = [
     "category": "mss-labs-anatomy",
     "lectureLabel": "Lab 2",
     "order": 2,
-    "title": "Anatomy Lab 2: Back Muscles and Vertebral Column",
+    "title": "Anatomy Lab 2: Back Muscles & Vertebral Column",
     "description": "Back muscles and vertebral column: numbered specimens, progress checklist and 24 practical spotters.",
     "file": "MSS-Anatomy-Lab-2.html",
     "icon": "📘"
@@ -385,7 +385,7 @@ window.VitanovaLectures = [
     "category": "mss-labs-anatomy",
     "lectureLabel": "Lab 3",
     "order": 3,
-    "title": "Anatomy Lab 3: Pectoral Region, Shoulder and Axilla",
+    "title": "Anatomy Lab 3: Pectoral Region, Shoulder & Axilla",
     "description": "Pectoral region, shoulder and axilla: numbered specimens, progress checklist and 23 practical spotters.",
     "file": "MSS-Anatomy-Lab-3.html",
     "icon": "📘"
@@ -437,7 +437,7 @@ window.VitanovaLectures = [
     "category": "mss-final-anatomy",
     "lectureLabel": "Lecture 9",
     "order": 9,
-    "title": "Posterior Leg & Popliteal Fossa (Parts 1 and 2)",
+    "title": "Posterior Leg & Popliteal Fossa",
     "description": "Part 1 covers the posterior compartment. Part 2 covers the popliteal fossa.",
     "file": "MSS-Final-Anatomy-Lecture-9-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -450,7 +450,7 @@ window.VitanovaLectures = [
     "category": "mss-final-anatomy",
     "lectureLabel": "Lecture 7",
     "order": 7,
-    "title": "Nerves of the Lower Limb II",
+    "title": "Sacral Plexus & Lower Limb Nerves",
     "description": "Sacral plexus, sciatic and plantar branches, sensory territories, and nerve injury localization with 22 MCQs.",
     "file": "MSS-Final-Anatomy-Lecture-7-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -463,7 +463,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 7",
     "order": 7,
-    "title": "Organisation, Lymph & Lymph Nodes",
+    "title": "Lymph Drainage, Lymphoid Organs & Lymph Node Function — Full explanation",
     "description": "Lymphatic organisation, lymph drainage, thymus, bone marrow, lymphocyte homing and lymph nodes.",
     "file": "Immunology-Midterm-Lecture-7.html",
     "icon": "📘"
@@ -476,7 +476,7 @@ window.VitanovaLectures = [
     "category": "immunology-mid",
     "lectureLabel": "Lecture 8",
     "order": 8,
-    "title": "Spleen, MALT & Clinical Lymphatics",
+    "title": "Spleen, Mucosal & Skin Immunity, and Clinical Lymphatics — Full explanation",
     "description": "Lymphadenopathy, spleen, asplenia, mucosal and skin immunity, and clinical lymphatics.",
     "file": "Immunology-Midterm-Lecture-8.html",
     "icon": "📘"
@@ -489,7 +489,7 @@ window.VitanovaLectures = [
     "category": "mss-final-anatomy",
     "lectureLabel": "Lecture 10",
     "order": 10,
-    "title": "Blood Supply of the Lower Limb",
+    "title": "Lower Limb Arteries, Veins & Pulses",
     "description": "Lower-limb vessels, collateral routes and pulse landmarks with 22 MCQs.",
     "file": "MSS-Final-Anatomy-Lecture-10-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -515,7 +515,7 @@ window.VitanovaLectures = [
     "category": "mss-final-biochemistry",
     "lectureLabel": "Lecture 1",
     "order": 1,
-    "title": "Biochemistry of Muscles",
+    "title": "Muscle Energy Metabolism",
     "description": "Muscle energy systems, fuel use, and metabolic regulation with 21 MCQs.",
     "file": "MSS-Final-Biochemistry-Lecture-1-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -541,7 +541,7 @@ window.VitanovaLectures = [
     "category": "mss-final-pharmacology",
     "lectureLabel": "Lecture 2",
     "order": 2,
-    "title": "Trichogenic and Antitrichogenic Agents",
+    "title": "Drugs for Hair Growth & Hair Reduction",
     "description": "Hair growth and reduction, drug mechanisms, adverse effects and 15 practice questions.",
     "file": "MSS-Final-Pharmacology-Lecture-2-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -593,7 +593,7 @@ window.VitanovaLectures = [
     "category": "mss-final-biochemistry",
     "lectureLabel": "Lecture 2",
     "order": 2,
-    "title": "Biochemistry of Bones",
+    "title": "Bone Matrix, Remodelling & Mineral Metabolism",
     "description": "Bone matrix, cells, remodelling, mineral regulation and metabolic bone disorders.",
     "file": "MSS-Final-Biochemistry-Lecture-2-AI-Summary-MCQs.html",
     "icon": "📘"
@@ -620,7 +620,7 @@ window.VitanovaLectures = [
     "category": "mss-labs-pathology",
     "lectureLabel": "Lab 2",
     "order": 2,
-    "title": "Pathology Lab 2: Revision",
+    "title": "Pathology Lab 2: Skin Pathology, Bone & Soft Tissue Tumours",
     "description": "Annotated pathology specimens, a cheat sheet, and a practical quiz with mistake review.",
     "file": "MSS-Pathology-Lab-2.html",
     "icon": "📘",
@@ -634,7 +634,7 @@ window.VitanovaLectures = [
     "category": "mss-labs-anatomy",
     "lectureLabel": "Lab 5",
     "order": 5,
-    "title": "Anatomy Lab 5: Thigh, Gluteal Region & Lower Limb Bones",
+    "title": "Anatomy Lab 5: Gluteal Region, Thigh & Lower Limb Bones",
     "description": "Annotated cadaver specimens and bone figures, a structure checklist, and a 26-question practical quiz.",
     "file": "MSS-Anatomy-Lab-5.html",
     "icon": "📘",

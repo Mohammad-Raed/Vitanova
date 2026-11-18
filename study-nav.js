@@ -50,7 +50,8 @@
     if(lecture)controls.append(link(label,encodeURIComponent(lecture.file),cls));
     else {const disabled=document.createElement('span');disabled.className=cls;disabled.textContent=label;disabled.setAttribute('aria-disabled','true');controls.append(disabled);}
   }
-  nav.append(link('✦ Vitanova','index.html','vn-home'),link('← Back to '+current.subject,'index.html#'+encodeURIComponent(current.category),'vn-subject'),context,controls);
+  const backLabel=current.exam==='Labs'?current.subject+' Lab':current.subject;
+  nav.append(link('✦ Vitanova','index.html','vn-home'),link('← Back to '+backLabel,'index.html#'+encodeURIComponent(current.category),'vn-subject'),context,controls);
   // Remove only the two obsolete hub buttons, leaving all original section navigation.
   document.querySelectorAll('a[href]').forEach(anchor=>{
     const label=anchor.textContent.trim();
