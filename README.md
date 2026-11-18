@@ -57,6 +57,7 @@ Run these from the repository root:
 
 ```sh
 python3 tools/validate_site.py
+node tools/build_lab_questions.cjs --check
 python3 tools/refresh_question_bank.py --check
 python3 -m unittest discover -s tests -p 'test_*.py'
 node --test tests/*.test.cjs

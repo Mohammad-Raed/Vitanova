@@ -13,6 +13,7 @@
     const meta=q=>window.VitanovaQuestionCatalog?.metadata(q)||registry.find(l=>l.id===q.lectureId);
     const sourceKey=q=>window.VitanovaQuestionCatalog?.sourceKey(q)||q.lectureId;
     const labFigure=q=>{
+      if(q.labImage)return `<a href="${esc(href(q))}" target="_blank" rel="noopener">View quiz image in lab ↗</a>`;
       const anatomyLab=/^mss-labs-anatomy-0([23])$/.exec(q.lectureId)?.[1];
       if(anatomyLab){
         const figure=/^Figure (0[1-9]|1\d|2[0-3]) — /.exec(q.question)?.[1];

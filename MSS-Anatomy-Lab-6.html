@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MSS Anatomy Lab 6 — Posterior Thigh, Leg &amp; Foot</title>
+<title>Anatomy Lab 6: Posterior Thigh, Leg &amp; Foot | Vitanova</title>
 <script src="study-appearance-init.js"></script>
 <link rel="stylesheet" href="study-shared.css?v=lecture-first-paint-1">
 <link rel="stylesheet" href="study-quiz.css">
@@ -11,9 +11,9 @@
 <script defer src="study-data.js?v=mss-anatomy-lab-6"></script>
 <script defer src="study-storage.js"></script>
 <script defer src="study-bookmarks.js"></script>
-<script defer src="study-questions-data.js"></script>
-<script defer src="study-nav.js?v=lecture-first-paint-1"></script>
-<script defer src="study-lab-atlas.js?v=lab-header-1"></script>
+<script defer src="study-questions-data.js"></script><script defer src="study-lab-questions-data.js"></script>
+<script defer src="study-nav.js?v=lab-back-link-1"></script>
+<script defer src="study-lab-atlas.js?v=lab-revision-1"></script>
 <style>
 [hidden]{display:none!important}
 html{scroll-padding-top:64px}
@@ -76,7 +76,7 @@ body.lab6-hide-notes .lab6-notes,body.lab6-test .lab6-notes{display:none}
 <body class="vn-lecture-page mss-lab-atlas">
 <header class="vn-lecture-hero">
   <small>Musculoskeletal System · Labs · Anatomy</small>
-  <h1>Anatomy Lab 6 — Posterior Thigh, Leg &amp; Foot</h1>
+  <h1>Anatomy Lab 6: Posterior Thigh, Leg &amp; Foot</h1>
   <p>Hamstrings, sciatic branches, leg compartments, ankle retinacula and the four layers of the sole.</p>
   <p class="lab-quiz-progress" id="atlas-progress"></p>
 </header>
@@ -250,6 +250,7 @@ const zoom = select('#lab6-zoom');
 const stateKey = 'vitanova:mss-labs-anatomy-06:v1';
 let reviewed = new Set();
 let mistakes = new Set();
+let labRevision;
 let quizMode = 'all';
 let answered = 0;
 let correct = 0;
@@ -392,7 +393,8 @@ zoom.addEventListener('click', event => {
 function renderQuiz(mode = quizMode) {
   quizMode = mode;
   answered = correct = 0;
-  const items = Q.map((question, index) => ({question, index})).filter(item => mode === 'all' || mistakes.has(item.index));
+  const pending = mode === 'all' ? null : new Set(labRevision.pending());
+  const items = Q.map((question, index) => ({question, index})).filter(item => mode === 'all' || pending.has(item.index));
   questions.innerHTML = items.map(({question: [prompt, options, , explanation, figure, target], index}, displayed) =>
     '<article class="lab6-panel q" data-question="' + index + '"><p class="lab6-prompt">' + (displayed + 1) +
     '. ' + prompt + '</p>' + (target ? figurePicture(figure, target, false) : '<details><summary>View figure</summary>' +
@@ -403,6 +405,7 @@ function renderQuiz(mode = quizMode) {
     ' <a href="#figure-' + figure + '" data-open-atlas>Open in atlas</a></p></article>'
   ).join('');
   if (!items.length) questions.textContent = 'No mistakes left to review.';
+  questions.querySelectorAll('[data-question]').forEach(card => labRevision.attach(card, Number(card.dataset.question)));
   select('#quiz-all').hidden = mode === 'all';
   select('#quiz-score').textContent = (mode === 'all' ? '' : 'Mistake review · ') + '0 correct · 0 / ' + items.length + ' answered';
 }
@@ -426,6 +429,7 @@ questions.addEventListener('click', event => {
   } else {
     mistakes.add(index);
   }
+  labRevision.record(index, success, quizMode === 'mistakes');
   card.querySelectorAll('[data-choice]').forEach(button => {
     const option = Number(button.dataset.choice);
     button.classList.toggle('ok', option === answer);
@@ -444,6 +448,7 @@ select('#quiz-reset').addEventListener('click', () => renderQuiz());
 select('#quiz-all').addEventListener('click', () => renderQuiz('all'));
 
 document.addEventListener('DOMContentLoaded', () => {
+  labRevision = window.VitanovaLabAtlas.quizRevision('mss-labs-anatomy-06', Q.length);
   const stored = window.VitanovaStorage.read(stateKey, {}, value => window.VitanovaStorage.record(value) && Array.isArray(value.reviewed) && Array.isArray(value.mistakes));
   reviewed = new Set((Array.isArray(stored.reviewed) ? stored.reviewed : []).filter(code => ALL.has(code)));
   mistakes = new Set((Array.isArray(stored.mistakes) ? stored.mistakes : [])
@@ -455,8 +460,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateProgress();
   renderQuiz();
+  labRevision.start(mistakes, () => renderQuiz('all'));
   window.VitanovaLabAtlas.addHeaderReview({
-    count: () => mistakes.size,
+    count: () => labRevision.pending().length,
     retry: () => renderQuiz('mistakes'),
     quiz: select('#quiz')
   });

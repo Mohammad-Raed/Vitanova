@@ -105,6 +105,8 @@ window.VitanovaLabAtlas = (() => {
       redo.disabled = !mistakes;
     };
     refreshReview();
+    window.addEventListener('vitanova:mistakes-changed', () => refreshReview());
+    window.addEventListener('vitanova:storage-changed', () => refreshReview());
     redo.addEventListener('click', () => {
       retry();
       const heading = quiz.querySelector('h2');
@@ -118,7 +120,70 @@ window.VitanovaLabAtlas = (() => {
     if (flashcards) flashcards.setAttribute('aria-label', 'Flashcards related to this lab');
   }
 
+  function quizRevision(lectureId, length) {
+    const ids = Array.from({length}, (_, index) => lectureId + '-quiz-' + (index + 1));
+    const bookmarks = () => window.VitanovaBookmarks;
+    const mistakes = () => window.VitanovaMistakes;
+
+    function pending() {
+      const records = mistakes().all();
+      return ids.flatMap((id, index) => records[id] && !records[id].mastered ? [index] : []);
+    }
+
+    function refreshSaved(button, id) {
+      const saved = bookmarks().has(id);
+      button.textContent = saved ? 'Saved question' : 'Save question';
+      button.setAttribute('aria-pressed', String(saved));
+    }
+
+    function attach(card, index) {
+      const id = ids[index];
+      card.id = 'mcq-' + id;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'vn-bookmark-toggle';
+      button.dataset.labBookmark = id;
+      button.addEventListener('click', () => bookmarks().set(id, !bookmarks().has(id)));
+      card.append(button);
+      if (bookmarks()) refreshSaved(button, id);
+    }
+
+    function start(previousMistakes, openQuiz) {
+      const records = mistakes().all();
+      for (const index of new Set(previousMistakes)) {
+        const id = ids[index];
+        if (id && !records[id]) mistakes().record(id, false);
+      }
+      const refresh = () => {
+        document.querySelectorAll('[data-lab-bookmark]').forEach(button => {
+          refreshSaved(button, button.dataset.labBookmark);
+        });
+      };
+      const open = () => {
+        const index = ids.findIndex(id => location.hash === '#mcq-' + id);
+        if (index < 0) return;
+        openQuiz(index);
+        document.getElementById('mcq-' + ids[index])?.scrollIntoView({block: 'center'});
+      };
+      refresh();
+      window.addEventListener('vitanova:bookmarks-changed', refresh);
+      window.addEventListener('vitanova:storage-changed', refresh);
+      window.addEventListener('pageshow', refresh);
+      window.addEventListener('hashchange', open);
+      requestAnimationFrame(open);
+    }
+
+    return {
+      attach, start, pending,
+      record(index, correct, revision) {
+        const id = ids[index];
+        mistakes().record(id, correct, revision || location.hash === '#mcq-' + id);
+      }
+    };
+  }
+
   return {
+    quizRevision,
     addHeaderReview,
     refreshReview: () => refreshReview(),
     connect(root) {
