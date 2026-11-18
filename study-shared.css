@@ -57,8 +57,8 @@ main,section,.card,.tbl,.g>*{min-width:0}
 @media(max-width:600px){.tl div{display:block}.tl div>b{min-width:0}.tl div>b:first-child{display:inline-block;min-width:24px;margin-right:8px}}
 
 /* Use the lecture’s original topic links as the only section bar. */
-.vn-lecture-page .vn-lecture-topics{display:flex;gap:4px;overflow-x:auto;white-space:nowrap;align-items:center;padding:5px max(12px,calc((100% - 1080px)/2));scrollbar-width:thin}
-.vn-lecture-page .vn-lecture-topics a{flex:none;padding:6px 9px;border-radius:7px;text-decoration:none;font:650 13px/1.45 system-ui,sans-serif}
+.vn-lecture-page .vn-lecture-topics{display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:5px max(12px,calc((100% - 1080px)/2))}
+.vn-lecture-page .vn-lecture-topics a{box-sizing:border-box;flex:none;max-width:100%;overflow-wrap:anywhere;padding:6px 9px;border-radius:7px;text-decoration:none;font:650 13px/1.45 system-ui,sans-serif}
 .vn-lecture-page .vn-lecture-topics a:hover,.vn-lecture-page .vn-lecture-topics a:focus-visible{background:var(--soft)}
 .vn-lecture-page .vn-lecture-topics a:focus-visible{outline-offset:-2px}
 
@@ -213,13 +213,12 @@ body.vn-lecture-page > nav.vn-lecture-topics{
   box-sizing:border-box;position:static;inset:auto;z-index:auto;
   display:flex;justify-content:flex-start;align-items:center;gap:4px;
   width:100%;max-width:none;margin:0;padding:5px max(12px,calc((100% - var(--vn-study-width))/2));
-  overflow-x:auto;overscroll-behavior-x:contain;scroll-padding-inline:12px;
   border:0;border-bottom:1px solid var(--ln);border-radius:0;background:var(--card);
 }
 body.vn-lecture-page > nav.vn-lecture-topics a{
   display:inline-flex;align-items:center;flex:none;min-height:36px;margin:0;padding:5px 9px;
   border:1px solid transparent;border-radius:7px;background:transparent;color:var(--pu);
-  font:650 .82rem/1.35 system-ui,sans-serif;text-decoration:none;white-space:nowrap;
+  font:650 .82rem/1.35 system-ui,sans-serif;text-decoration:none;max-width:100%;white-space:normal;overflow-wrap:anywhere;
 }
 body.vn-lecture-page > nav.vn-lecture-topics a:is(:hover,:focus-visible){background:var(--soft);border-color:var(--ln)}
 body.vn-lecture-page > main{box-sizing:border-box;width:100%;max-width:var(--vn-study-width);margin-inline:auto;padding-inline:16px}
