@@ -64,7 +64,7 @@
     while(key&&views[key]&&!ancestors.has(key)){ancestors.add(key);key=views[key].parent;}
     $('sidebar-systems').innerHTML=(views.home?.cards||[]).map(([title,,to,icon])=>{
       const list=descendants(to), completed=list.filter(done).length;
-      const paperSummary=['mss-past','mss-past-mid'].includes(to)&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
+      const paperSummary=to==='mss-past-final'?'Theory and practical recall':to==='mss-past-mid'&&window.VitanovaPastPapers?window.VitanovaPastPapers.questions.length+' recalled questions · repetitions retained':null;
       return `<a href="#${encodeURIComponent(to)}"${ancestors.has(to)?' aria-current="page"':''}><span class="sidebar-system-icon" aria-hidden="true">${esc(icon)}</span><span>${esc(title)}<small>${completed} / ${list.length} completed</small></span></a>`;
     }).join('');
   }
@@ -75,7 +75,7 @@
       const summary=views[to]?.checklist?'Midterm and Final views':paperSummary||(isLab(to)||list.length?`${resourceCount(list.length,isLab(to))}${list.length?' · '+completed+' completed':''}`:'Resources coming soon');
       return `<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">${esc(icon)}</div><span class="tag">${esc(tag)}</span></div><h3>${esc(title)}</h3><p>${esc(description)}</p><span class="category-progress">${summary}</span>${list.length?`<progress class="category-meter" max="${list.length}" value="${completed}" aria-label="${esc(title)}: ${completed} of ${resourceCount(list.length,isLab(to))} completed"></progress>`:''}<a class="action" href="#${encodeURIComponent(to)}">Explore <span aria-hidden="true">→</span></a></article>`;
     }).join('');
-    $('count').textContent=current==='mss-past'?'Midterm question collection':resourceCount(descendants(current).length,isLab(current));
+    $('count').textContent=current==='mss-past'?'Midterm and final question collections':resourceCount(descendants(current).length,isLab(current));
   }
   function render() {
     const requested=route(); current=views[requested]?requested:'home'; const view=views[current];
@@ -95,7 +95,12 @@
       shortcut.hidden=!show;
       shortcut.href=current.startsWith('mss-mid')?'#mss-checklist-mid':'#mss-checklist';
     }
-    if(view.checklist){window.VitanovaMSSChecklist?.render(cards,$('count'),view.checklist);}
+    if(current==='mss-past-final'){
+      $('lecture-filters').hidden=true;
+      $('page-subtitle').textContent='Practice final theory and practical recalls with explanations and cropped lab figures.';
+      $('count').textContent='Final question collection';
+      cards.innerHTML='<article class="card"><h3>Final and lab recalls</h3><a class="action" href="MSS-Final-Past-Papers.html">Start practice</a></article>';
+    } else if(view.checklist){window.VitanovaMSSChecklist?.render(cards,$('count'),view.checklist);}
     else if(view.pastPaper){window.VitanovaSaved.render(cards,$('count'),{collection:'past-paper'});}
     else if (view.category||current==='search') {
       const items=view.category?lectures.filter(l=>l.category===view.category):lectures;
