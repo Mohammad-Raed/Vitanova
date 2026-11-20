@@ -95,6 +95,14 @@
       shortcut.hidden=!show;
       shortcut.href=current.startsWith('mss-mid')?'#mss-checklist-mid':'#mss-checklist';
     }
+    document.querySelector('.study-review-shortcut')?.remove();
+    if(current==='mss-final-anatomy'){
+      const review=document.createElement('a');
+      review.className='study-review-shortcut';
+      review.href='MSS-Final-Anatomy-Review.html';
+      review.textContent='Open the high-yield anatomy review →';
+      $('page-subtitle').after(review);
+    }
     if(current==='mss-past-final'){
       $('lecture-filters').hidden=true;
       $('page-subtitle').textContent='Practice final theory and practical recalls with explanations and cropped lab figures.';
