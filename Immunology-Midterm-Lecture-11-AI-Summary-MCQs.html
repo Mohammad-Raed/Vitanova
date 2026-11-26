@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Immunology · Midterm · Lecture 11: Antigens, MHC and Antigen Presentation</title>
+<style>
+:root{--bg:#0c1426;--p:#16213a;--p2:#1c2a49;--tx:#e6ebf5;--mu:#9fb0cf;--ac:#8fa8ff;--th:#a7bcff;--thx:#14203d;--bd:#2b3a5e;--hn:#ffd166;--hb:#2d2610;--ex:#ffb27a;--ok:#4cc38a;--no:#ff6b6b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f4f6fb;--p:#fff;--p2:#eef2fb;--tx:#16213a;--mu:#51608a;--ac:#2f4fd0;--bd:#d3dbef;--hn:#8a5a00;--hb:#fff4d6;--ex:#b4540a}}
+:root[data-theme=light]{--bg:#f4f6fb;--p:#fff;--p2:#eef2fb;--tx:#16213a;--mu:#51608a;--ac:#2f4fd0;--bd:#d3dbef;--hn:#8a5a00;--hb:#fff4d6;--ex:#b4540a}
+*{box-sizing:border-box}html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.65 Georgia,'Times New Roman',serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--p);border-bottom:1px solid var(--bd);display:flex;gap:4px;overflow-x:auto;padding:8px 12px;font:600 13px system-ui,sans-serif}
+nav a{color:var(--ac);text-decoration:none;padding:6px 10px;border-radius:6px;white-space:nowrap}nav a:hover{background:var(--p2)}
+nav button{margin-left:auto;background:none;border:1px solid var(--bd);color:var(--tx);border-radius:6px;padding:4px 10px;cursor:pointer}
+header{background:linear-gradient(var(--p2),var(--bg));padding:40px 20px 24px;border-bottom:1px solid var(--bd)}
+.w{max-width:900px;margin:auto}h1{font-size:clamp(26px,5vw,42px);line-height:1.15;margin:0 0 8px}
+header p{color:var(--mu);margin:0;font-family:system-ui,sans-serif}
+main{max-width:900px;margin:auto;padding:8px 16px 60px}
+h2{font-size:28px;margin:52px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--bd);color:var(--ac)}h3{font-size:19px;margin:22px 0 6px}
+.pg{display:none}
+.box{background:var(--p);border:1px solid var(--bd);border-radius:12px;padding:6px 20px;margin:12px 0}
+.hand{background:var(--hb);border-left:4px solid var(--hn);border-radius:6px;padding:10px 14px;margin:12px 0;font-size:15px}
+.hand b:first-child{color:var(--hn);font-family:system-ui,sans-serif;font-size:13px;display:block}.hand b:first-child::before{content:"✎ "}
+.ex{display:inline-block;background:var(--p2);color:var(--ex);border-radius:99px;font:700 11px system-ui,sans-serif;padding:1px 9px;margin-right:4px}
+.key{color:var(--no);font-weight:700}
+.tw{overflow-x:auto;margin:12px 0;border:1px solid var(--bd);border-radius:10px}
+table{border-collapse:collapse;width:100%;font:14.5px/1.5 system-ui,sans-serif;min-width:520px}
+th{background:var(--th);color:var(--thx);text-align:left;padding:9px 12px}td{padding:9px 12px;border-top:1px solid var(--bd);vertical-align:top;background:var(--p)}
+ul{padding-left:22px}li{margin:4px 0}
+.sum li{margin:6px 0}
+.q{background:var(--p);border:1px solid var(--bd);border-radius:12px;padding:14px 18px;margin:14px 0;font-family:system-ui,sans-serif;font-size:15.5px}
+.q p{margin:0 0 10px;font-weight:600}
+.o{display:block;width:100%;text-align:left;background:var(--p2);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:9px 12px;margin:6px 0;cursor:pointer;font:inherit}
+.o:hover:not(:disabled){border-color:var(--ac)}.o.c{border-color:var(--ok);background:rgba(76,195,138,.18)}.o.x{border-color:var(--no);background:rgba(255,107,107,.18)}
+.e{display:none;margin-top:8px;color:var(--mu);font-size:14px}.q.d .e{display:block}
+#sc{position:sticky;top:52px;background:var(--p);border:1px solid var(--bd);border-radius:8px;padding:8px 14px;font:600 14px system-ui,sans-serif;display:flex;justify-content:space-between;align-items:center;z-index:4}
+#sc button{background:var(--ac);color:var(--thx);border:0;border-radius:6px;padding:5px 12px;font-weight:700;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+ol{list-style:none;padding:0}ol li{position:relative;background:var(--p);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:0 8px 8px 0;padding:9px 14px;margin:0 0 18px}ol li:not(:last-child)::after{content:"▼";position:absolute;left:12px;bottom:-17px;font-size:11px;color:var(--ac)}
+ul{list-style:none}ul>li{position:relative}ul>li::before{content:"";position:absolute;left:-16px;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.tw{box-shadow:0 1px 0 var(--bd)}tr:nth-child(even) td{background:var(--p2)}
+@media(min-width:1100px){body{padding-left:210px}nav{position:fixed;top:0;left:0;bottom:0;width:210px;flex-direction:column;overflow-y:auto;border-right:1px solid var(--bd);border-bottom:0;padding:16px 10px}nav button{margin:12px 0 0}#sc{top:12px}html{scroll-padding-top:20px}}
+</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+<nav><a href="#antigens">Antigens</a><a href="#epitopes">Epitopes</a><a href="#hapten">Haptens</a><a href="#adjuvant">Adjuvants</a><a href="#mhc">MHC</a><a href="#proc">Processing</a><a href="#restr">Restriction</a><a href="#apc">APCs</a><a href="#cd1">CD1/MR1</a><a href="#clin">Clinical</a><a href="#rev">Revision</a><a href="#quiz">Quiz</a><button id="th">Light/Dark</button></nav>
+<header><div class="w"><h1>Immunology Lecture 11: Antigens, MHC and Antigen Presentation</h1><p>Last lecture of the midterm. Content follows the uploaded slides (labelled “File 6” in the deck) and the handwritten notes. Highlighted boxes carry the handwritten annotations.</p></div></header>
+<main>
+<div class="hand"><b>Annotation · Lecture scope</b>Previous lecture: conditions an antigen needs to trigger a response. This lecture: antigen types and full MHC explanation (“first aid” material). Later lectures: immunoglobulins and complement, then immune deficiency syndromes and hypersensitivity reactions.</div>
+
+<h2 id="antigens">Types of antigen</h2><div class="pg">Slide 4</div>
+<p>An <b>antigen</b> is any substance recognised by lymphocytes. Types are named by their source relative to the host. Red-marked items are the ones stressed in the lecture.</p>
+<div class="tw"><table><tr><th>Type</th><th>Definition</th><th>Example</th></tr>
+<tr><td>Autoantigen</td><td>Self molecule, normally tolerated; <span class="key">the target in autoimmune disease</span></td><td>Thyroid peroxidase</td></tr>
+<tr><td>Alloantigen</td><td>Differs between individuals of <span class="key">the same species</span> (human to human)</td><td>ABO, Rh (transfusion); HLA (transplantation)</td></tr>
+<tr><td>Heteroantigen / heterophile</td><td>Shared or similar across unrelated species; cross-reacts</td><td><span class="key">Monospot test</span> in EBV (Epstein-Barr virus) infection</td></tr>
+<tr><td>Xenoantigen</td><td>From another species (animal to human)</td><td>α-Gal sugar on pig tissue</td></tr>
+<tr><td>Tumour antigen</td><td>Neoantigens created by mutation</td><td>Target of personalised cancer vaccines</td></tr>
+<tr><td>Superantigen</td><td>Bypasses the peptide groove and activates many T cells at once</td><td>TSST-1 (toxic shock)</td></tr>
+<tr><td>Allergen</td><td>Ordinary environmental protein that provokes IgE in susceptible people</td><td>Pollen, dust mite</td></tr></table></div>
+<div class="hand"><b>Annotation · Xenoantigen</b>Xenotransplantation: transplant of organs between different species. α-Gal: carbohydrate on pig cells; humans carry pre-existing antibodies against it → graft rejection. Gene editing removes α-Gal (first pig kidney transplants, 2024).</div>
+
+<h2 id="epitopes">Epitopes: valence, dominance, mimicry</h2><div class="pg">Slide 5</div>
+<p>The immune response is directed at a small part of the antigen, the <b>epitope</b>, not the whole organism. One antigen usually carries several epitopes. A microbe can have many antigens (cell wall, pili, flagella, DNA, RNA of viruses).</p>
+<ul><li><b class="key">B cells and T cells see different things.</b> Antibodies and BCRs bind <i>conformational</i> surface shapes; T cells see short <i>linear peptides</i> held by MHC.</li>
+<li><b>Valence</b>: number of epitopes on one antigen. High valence cross-links B-cell receptors strongly, which is one way B cells are activated.</li>
+<li><b>Immunodominance</b>: a few epitopes attract most of the response. If a virus mutates an immunodominant epitope, it escapes immunity (<i>immune escape</i>).</li>
+<li><b>Cryptic epitopes</b>: hidden inside the molecule until tissue damage or processing exposes them.</li>
+<li><b>Epitope spreading</b>: the response widens from one epitope to others as damage continues; typical of autoimmune disease.</li>
+<li><b>Cross-reactivity and molecular mimicry</b>: a microbial epitope resembling a self epitope can trigger disease. <span class="key">Rheumatic fever after streptococcal infection; Guillain-Barré syndrome after <i>Campylobacter</i></span>.</li>
+<li><b>Mapping epitopes</b>: peptide arrays and structural methods guide vaccine and antibody design.</li></ul>
+<div class="hand"><b>Annotation · Epitopes</b>Epitope: small part of the antigen that the response targets; one antigen may carry about 20. Response may focus on one or two (immunodominant); mutation there → immune escape. Epitope shared by several microorganisms → cross-reactivity → false-positive serological test. Mimicry examples (rheumatic fever, Guillain-Barré): marked important.</div>
+
+<h2 id="hapten">Haptens and drug-induced responses</h2><div class="pg">Slide 6</div>
+<ul><li><b class="key">A hapten is too small to be immunogenic alone</b> but becomes immunogenic when bound to a carrier protein (hapten + carrier → response).</li>
+<li>Once antibody exists, the free hapten can still be bound; this is how drug allergy tests work.</li>
+<li><b>Poison ivy</b>: urushiol binds skin proteins → T-cell-mediated contact dermatitis 24–72 h later (<b>type IV hypersensitivity</b>).</li></ul>
+<h3>Routes of drug reactions</h3>
+<div class="tw"><table><tr><th>Route</th><th>Mechanism</th></tr>
+<tr><td>Hapten</td><td>Penicillin binds proteins covalently → drug allergy</td></tr>
+<tr><td>Pro-hapten</td><td>A metabolite does the binding (example underlined: sulfonamides)</td></tr>
+<tr><td>p-i concept</td><td>Drug binds immune receptors directly; no protein carrier needed</td></tr>
+<tr><td>Altered repertoire</td><td>Drug sits in the HLA groove and changes which peptides are displayed</td></tr></table></div>
+<p>Clinical drug reactions are often HLA-restricted, so they can be screened for (next lectures).</p>
+<div class="hand"><b>Annotation · Drug routes</b>Altered repertoire leads directly to the MHC (next topic). Drug routes: marked for memorisation.</div>
+
+<h2 id="adjuvant">Adjuvants: turning an antigen into a vaccine</h2><div class="pg">Slides 7–8</div>
+<p>An <b>adjuvant</b> is a substance added to a vaccine that strengthens the immune response by improving the antigen’s immunogenicity.</p>
+<ul><li><b class="key">Why needed:</b> purified proteins are poorly immunogenic without an innate signal. A whole microorganism carries its own danger signals; a purified protein does not.</li>
+<li><b>Role:</b> the adjuvant acts like an alarm bell, alerting innate immunity, which in turn gives the appropriate activation signals for adaptive immunity. The antigen still needs the right epitope; an adjuvant <b>cannot rescue a poor antigen</b>.</li>
+<li><b>How they work:</b> (1) <b>depot effect</b>: antigen stays at the injection site for longer, so immune cells have prolonged access; (2) recruit and activate dendritic cells (the main APC) through pattern-recognition receptors (PRRs, e.g. TLR4, TLR9), which take the antigen to T lymphocytes.</li>
+<li><b>Trade-off:</b> reactogenicity. A sore arm and fever reflect innate activation.</li></ul>
+<div class="tw"><table><tr><th>Adjuvant</th><th>Composition / target</th><th>Use</th></tr>
+<tr><td>Alum</td><td>Aluminium salts; enhances antibody response (Th2-leaning)</td><td>Most childhood vaccines</td></tr>
+<tr><td>AS01</td><td>MPL (activates TLR4) + QS-21 (saponin from plants); enhances T-cell and antibody responses</td><td><span class="key">Shingles, malaria</span>; useful where cellular immunity is needed</td></tr>
+<tr><td>MF59</td><td>Squalene (oil-in-water lipid)</td><td>Influenza vaccines for older adults</td></tr>
+<tr><td>CpG 1018</td><td>Stimulates TLR9</td><td>Hepatitis B vaccine (stressed)</td></tr>
+<tr><td>Lipid nanoparticles</td><td>Carrier and adjuvant</td><td>mRNA vaccines (COVID-19)</td></tr></table></div>
+<div class="hand"><b>Annotation · Adjuvants</b>Mechanism of action differs between adjuvants. Reactogenicity = effects felt after a vaccine (sore arm, fever).</div>
+
+<h2 id="mhc">MHC (HLA): genetics and structure</h2><div class="pg">Slides 3, 8–10, 15, 19</div>
+<p>The <b>major histocompatibility complex (MHC)</b>, encoded by <b>HLA</b> (human leukocyte antigen) genes, presents antigen fragments to T cells and binds T-cell receptors (TCRs). It is <b>co-dominant</b> (both parental alleles expressed on every cell) and <b>polygenic</b> (several genes).</p>
+<ul><li><b>Location:</b> ~4-million-base cluster on chromosome 6p21, the most gene-dense region of the genome.</li>
+<li><b>Class I loci:</b> HLA-A, -B, -C (one letter). <b>Class II loci:</b> HLA-DP, -DQ, -DR (two letters). The subtypes are important in transplantation.</li>
+<li><b>Class III:</b> complement C4, C2, factor B and TNF; mainly complement; <i>not</i> presentation molecules.</li>
+<li>TAP and immunoproteasome (PSMB) genes also lie in the MHC and serve the class I pathway.</li>
+<li><b>Haplotype inheritance:</b> a whole set is inherited as a block from each parent → <b>25%</b> chance that two siblings match (0.5 × 0.5). <b>Linkage disequilibrium:</b> certain haplotypes are commoner than chance.</li></ul>
+<div class="hand"><b>Annotation · Haplotypes</b>Haplotype inheritance: used for identification (e.g. swapped newborns; handwriting partly unclear). MHC slides = most important part of the lecture.</div>
+<div class="tw"><table><tr><th>Feature</th><th>MHC class I</th><th>MHC class II</th></tr>
+<tr><td>Loci</td><td>HLA-A, B, C</td><td>HLA-DP, DQ, DR</td></tr>
+<tr><td>Chains</td><td>1 long (heavy) α chain with α1–α3 + 1 short (light) <b>β2-microglobulin</b> (chromosome 15, not MHC-encoded)</td><td>2 equal-length chains: α and β (both MHC-encoded)</td></tr>
+<tr><td>Groove</td><td>Formed by α1 + α2; <b>closed</b> at both ends → peptides of 8–10 amino acids</td><td>Formed by α1 + β1; <b>open</b> at both ends → peptides of 13–25 amino acids</td></tr>
+<tr><td>Expression</td><td>All nucleated cells (including APCs) and platelets; highest on lymphocytes, low in liver and muscle; absent on red cells</td><td>APCs only: dendritic cells, macrophages, Langerhans cells, B cells; thymic epithelium; activated human T cells. Inducible by IFN-γ</td></tr>
+<tr><td>Binds</td><td>TCR + <b>CD8</b> (α3 domain). CD8 × MHC 1 = 8</td><td>TCR + <b>CD4</b> (β2 domain). CD4 × MHC 2 = 8</td></tr>
+<tr><td>Presents</td><td>Endogenous antigens (viral, cytosolic, tumour) to CD8⁺ cytotoxic T cells</td><td>Exogenous antigens (e.g. bacterial) to CD4⁺ helper T cells</td></tr>
+<tr><td>Loading</td><td>In ER after TAP delivery</td><td>After release of invariant chain in an acidified endosome</td></tr>
+<tr><td>Associated protein</td><td>β2-microglobulin</td><td>Invariant chain</td></tr>
+<tr><td>Clinical link</td><td>Viral escape; tumour HLA loss; B27. HLA-A and -B weighted most in matching; serum β2m is a prognostic marker in myeloma</td><td>Coeliac (DQ2/DQ8), RA; most autoimmune HLA associations; transplant matching</td></tr></table></div>
+<div class="hand"><b>Annotation · Class I chains</b>Heavy chain = three α domains; light chain = β2-microglobulin. β2m: important role in lymphocyte activation.</div>
+
+<h2 id="proc">Antigen processing and presentation</h2><div class="pg">Slides 11–12, 16–17</div>
+<p>Rule: <b>endogenous → MHC I → CD8⁺ (viruses)</b>; <b>exogenous → MHC II → CD4⁺ T helper (extracellular pathogens)</b>. The best-known adaptive cell that attacks viruses is the cytotoxic CD8⁺ T cell.</p>
+<h3>Class I (endogenous) pathway</h3>
+<ol><li>Class I molecules are synthesised in the rough ER.</li>
+<li>Cytosolic proteins (viral, tumour or self) are degraded by the <b>proteasome</b> (IFN-γ switches in the immunoproteasome).</li>
+<li><b>TAP1/TAP2</b> (transporter associated with antigen processing) pump peptides into the ER.</li>
+<li><b class="key">ERAP</b> (ER aminopeptidase) trims peptides to the right length (marked important).</li>
+<li>Tapasin, calreticulin and ERp57 load the peptide onto class I + β2m.</li>
+<li>The complex travels via the Golgi to the surface and is shown to CD8⁺ T cells.</li></ol>
+<p><b>Failures:</b> TAP deficiency → <b>bare lymphocyte syndrome type I</b> (low MHC I). CMV, HSV and HIV block TAP or remove MHC I. Tumours lose HLA or β2m; <b>NK cells</b> then kill the MHC-low cell.</p>
+<h3>Class II (exogenous) pathway</h3>
+<ol><li>Class II is expressed mainly by dendritic cells, macrophages and B cells.</li>
+<li>Extracellular antigen is taken up by phagocytosis or endocytosis.</li>
+<li>Phagosomes fuse with lysosomes; acid proteases (cathepsins) degrade the antigen.</li>
+<li>Class II is made in the RER and moves via the Golgi toward endosomes.</li>
+<li>The <b>invariant chain</b> blocks the groove and prevents premature peptide binding (it acts like a lock). It is degraded, leaving <b>CLIP</b>, which <b>HLA-DM</b> (regulated by HLA-DO) exchanges for peptide, in the MIIC compartment.</li>
+<li>The complex goes to the surface for CD4⁺ T cells.</li></ol>
+<p><b class="key">Acidification is essential:</b> without lysosomal acidification, processing and loading would fail. <b>Autophagy</b> also delivers cytosolic protein to class II. <b>Cross-presentation:</b> cDC1 dendritic cells place external antigen on class I to prime CD8⁺ cells; essential for tumour and viral vaccines. <b>Bare lymphocyte syndrome type II</b> (CIITA/RFX defect) → no class II, no CD4 help.</p>
+
+<h2 id="restr">MHC restriction</h2><div class="pg">Slide 13</div>
+<ul><li><b>Experiment (Zinkernagel and Doherty, 1974; Nobel Prize 1996):</b> killer T cells from an infected mouse killed infected targets only if the MHC matched. Different MHC + infected → not killed; same MHC, uninfected → not killed.</li>
+<li><b>Conclusion:</b> T cells need both the right peptide and the right self-MHC.</li>
+<li>Consequences: (1) thymic selection must teach T cells to recognise self-MHC; (2) <b>alloreactivity</b>: 1–10% of T cells respond to a foreign MHC, so unmatched grafts are rejected quickly; (3) engineered T-cell therapies work only in patients with the matching HLA type.</li></ul>
+
+<h2 id="apc">Professional antigen-presenting cells</h2><div class="pg">Slide 14</div>
+<div class="tw"><table><tr><th>Cell</th><th>Capture</th><th>Where</th><th>Main job</th><th>B7</th></tr>
+<tr><td>Dendritic cell</td><td>Samples everything</td><td>Tissue → node</td><td>Only cell that primes naive T cells well</td><td>Very high</td></tr>
+<tr><td>Macrophage</td><td>Phagocytosis</td><td>Infection site</td><td>Presents to effector T cells, which arm them (Th1)</td><td>Inducible</td></tr>
+<tr><td>B cell</td><td>BCR, one antigen, very low concentration</td><td>Follicle border</td><td>Obtains T-cell help</td><td>Inducible</td></tr></table></div>
+<p><b>cDC1</b> cross-presents to CD8⁺ T cells (1 × 8 = 8); <b>cDC2</b> primes CD4⁺ helper T cells (2 × 4 = 8) (the “rule of 8”). <b>Non-professional presenters</b> are all other nucleated cells, which present on class I only; IFN-γ can induce class II on epithelium and endothelium.</p>
+<div class="hand"><b>Annotation · APCs</b>Clear, easy slide. Non-professional presenters = all cells other than these three.</div>
+
+<h2 id="cd1">Beyond peptides: CD1 and MR1</h2><div class="pg">Slide 15</div>
+<p>Not every antigen is a protein or peptide. CD1 and MR1 are antigen-presenting molecules distinct from MHC I and II.</p>
+<div class="tw"><table><tr><th>Molecule</th><th>Presents</th><th>To</th></tr>
+<tr><td>CD1 (class I-like; deep hydrophobic groove)</td><td>Lipids, glycolipids</td><td>—</td></tr>
+<tr><td>CD1a–c</td><td>Mycobacterial lipids (mycolic acid, lipoarabinomannan); relevant to TB</td><td>T cells</td></tr>
+<tr><td>CD1d</td><td>Glycolipids</td><td>iNKT cells → rapid IFN-γ and IL-4</td></tr>
+<tr><td>MR1 (MHC class I-related protein 1)</td><td>Bacterial and fungal vitamin B2 metabolites</td><td>MAIT cells (1–10% of blood T cells; rich in liver and gut)</td></tr></table></div>
+<p>CD1 and MR1 are <b class="key">non-polymorphic</b>: everyone presents the same lipids and metabolites, unlike HLA-A1, A2, A3, which differ between people. This suggests “HLA-independent” vaccines. These cells respond within hours (innate-like speed). iNKT and MAIT cells use semi-invariant TCRs.</p>
+
+<h2 id="clin">Applications, HLA in practice and case</h2><div class="pg">Slides 16–18</div>
+<h3>Designing antigens (2026)</h3>
+<ul><li><b>Structure-based design:</b> fusion proteins locked in the prefusion shape (RSV F, SARS-CoV-2 spike) expose the best neutralising epitopes.</li>
+<li><b>Epitope prediction:</b> sequence + HLA type → machine-learning prediction of binding. <b>Immunopeptidomics:</b> mass spectrometry of peptides eluted from MHC confirms what is presented.</li>
+<li>Personalised mRNA neoantigen vaccines (with anti-PD-1; phase 3); germline-targeting immunogens for HIV broadly neutralising antibodies; <b>tebentafusp</b> targets gp100 on HLA-A*02:01.</li></ul>
+<h3>HLA beyond transplantation</h3>
+<ul><li><b class="key">NK surveillance:</b> HLA-E and classical class I signal “healthy cell”; losing them triggers missing-self killing.</li>
+<li><b>Pregnancy:</b> HLA-G on trophoblast inhibits maternal NK cells.</li>
+<li><b class="key">Cancer escape:</b> loss of one HLA haplotype or of β2m prevents presentation and contributes to checkpoint-inhibitor failure.</li>
+<li><b>Transfusion:</b> donor anti-HLA antibodies cause TRALI (transfusion-related acute lung injury); patient anti-HLA antibodies cause platelet refractoriness, needing HLA-matched platelets.</li>
+<li><b>HIV:</b> B*57:01 and B*27:05 are enriched among controllers without treatment.</li></ul>
+<h3>Case: infant who cannot present to CD4⁺ T cells</h3>
+<p>7-month-old, consanguineous family: chronic diarrhoea (<i>Cryptosporidium</i>), failure to thrive, two pneumonias, oral candidiasis, no vaccine response. CD4⁺ 180/µL (low), CD8⁺ and B cells normal, IgG low, HLA-DR absent on B cells and monocytes.</p>
+<ul><li><b>Diagnosis:</b> combined immunodeficiency with low CD4 → MHC class II deficiency (bare lymphocyte syndrome II).</li>
+<li><b>Mechanism:</b> defect in a class II transcription factor (CIITA, RFX5, RFXANK, RFXAP) → no class II on any APC.</li>
+<li><b>Consequence:</b> poor CD4⁺ selection in the thymus and no T-cell help → no antibody.</li>
+<li><b>Treatment:</b> prophylaxis and immunoglobulin, then haematopoietic stem-cell transplantation; screen siblings.</li></ul>
+<div class="hand"><b>Annotation · Case</b>Case read aloud in lecture; immunodeficiency. Highlighted clues: <i>Cryptosporidium</i> diarrhoea, oral candidiasis, HLA-DR absent on B cells and monocytes.</div>
+
+<h2 id="rev">High-yield revision summary</h2>
+<div class="box sum"><ul>
+<li>Auto = self; allo = same species; xeno = other species; heterophile = cross-species (Monospot/EBV); superantigen bypasses the groove.</li>
+<li>Antibodies see conformational shapes; T cells see linear peptides + MHC.</li>
+<li>Epitope spreading = autoimmunity; mimicry = rheumatic fever (<i>Strep</i>), Guillain-Barré (<i>Campylobacter</i>).</li>
+<li>Hapten needs a carrier; urushiol = type IV; drug routes: hapten, pro-hapten, p-i, altered repertoire.</li>
+<li>Adjuvants: depot + innate signal; alum = antibody; AS01 = T cells (shingles, malaria); MF59 = squalene; CpG 1018 = TLR9 (hepatitis B).</li>
+<li>MHC on chromosome 6p21; class III = complement/TNF; siblings match 25%.</li>
+<li>Class I: α + β2m (chr 15), closed groove 8–10 aa, all nucleated cells, CD8. Class II: α + β, open groove 13–25 aa, APCs, CD4.</li>
+<li>Class I pathway: proteasome → TAP → ERAP → ER loading. Class II: invariant chain → CLIP → HLA-DM, needs acidification.</li>
+<li>TAP defect = BLS I; CIITA/RFX defect = BLS II (low CD4, no antibody).</li>
+<li>Dendritic cells prime naive T cells; cDC1 cross-presents to CD8; cDC2 primes CD4.</li>
+<li>CD1 = lipids; CD1d → iNKT; MR1 = vitamin B2 metabolites → MAIT; both non-polymorphic.</li>
+<li>Missing self (HLA-E, class I loss) → NK killing; HLA-G protects the fetus; patient anti-HLA → platelet refractoriness; donor anti-HLA → TRALI.</li></ul></div>
+
+<h2 id="quiz">Practice questions</h2>
+<div id="sc"><span id="st">Answered 0/18 · Score 0</span><button id="rs">Reshuffle</button></div>
+<div id="qs"></div>
+</main>
+<script>
+var Q=[
+["α-Gal sugar on pig tissue, removed by gene editing for kidney transplants, is which type of antigen?",["Xenoantigen","Alloantigen","Heterophile antigen","Autoantigen","Superantigen"],0,"It comes from another species. Alloantigens differ within the same species."],
+["Which test is based on heterophile antibodies?",["Coombs test","Monospot test in EBV infection","HLA high-resolution typing","Tetramer staining","Skin prick test"],1,"Heterophile antigens cross-react across unrelated species."],
+["Superantigens differ from conventional antigens because they:",["Require loading in the ER by TAP","Bind only B-cell receptors","Bypass the peptide groove and activate many T cells at once","Are presented by CD1d","Need an adjuvant"],2,"They link TCR and MHC outside the groove, activating a large fraction of T cells."],
+["Which statement correctly contrasts B- and T-cell recognition?",["B cells see linear peptides on MHC","Antibodies bind conformational shapes; T cells see linear peptides on MHC","T cells bind free soluble epitopes","Both need MHC","BCRs recognise only proteins"],1,"BCRs/antibodies bind native 3D shapes; TCRs see peptide + MHC."],
+["Immune response to one epitope widens to others as tissue damage continues. This is:",["Immunodominance","Molecular mimicry","Epitope spreading","Cross-presentation","Valence"],2,"Typical of autoimmune disease."],
+["Which pair is a molecular-mimicry association?",["Streptococcus and Guillain-Barré","Campylobacter and rheumatic fever","EBV and contact dermatitis","Campylobacter and Guillain-Barré","Streptococcus and TRALI"],3,"Rheumatic fever follows streptococcal infection; Guillain-Barré follows Campylobacter."],
+["A virus mutates its immunodominant epitope. The result is most likely:",["Immune escape","Epitope spreading","Increased valence","Hapten formation","Cross-presentation"],0,"Most of the response targeted that epitope, so mutation lets the virus evade it."],
+["A hapten elicits a primary response only when:",["It is metabolised in the liver","It is bound to a carrier protein","It binds IgE alone","It is mixed with alum","It is presented by CD1"],1,"A hapten is too small to be immunogenic alone."],
+["A drug sits in the HLA groove and changes the peptides displayed. This is the:",["Hapten mechanism","Pro-hapten mechanism","p-i concept","Altered repertoire mechanism","Superantigen mechanism"],3,"p-i is direct receptor binding; pro-hapten needs a metabolite."],
+["Poison ivy dermatitis appearing 24–72 h after exposure is:",["Type I hypersensitivity","Type II","Type III","Type IV (T-cell mediated)","Anaphylaxis"],3,"Urushiol is a hapten binding skin proteins; delayed T-cell reaction."],
+["Why are purified protein antigens poorly immunogenic alone?",["They cannot be endocytosed","They lack an innate danger signal to activate dendritic cells","They bind complement C4","They induce IgE","They are too large"],1,"Adjuvants supply the innate signal (PRR activation, depot effect)."],
+["Which statement about adjuvants is correct?",["Alum is used in shingles vaccines for strong T-cell responses","Reactogenicity reflects innate activation","LNPs are only physical carriers","A strong adjuvant can fix a wrong epitope","MF59 activates TLR9"],1,"AS01 (MPL + QS-21) is the shingles/malaria adjuvant; LNPs also act as adjuvants; CpG 1018 acts on TLR9."],
+["Which genes lie in the MHC class III region?",["HLA-A, B, C","HLA-DR, DQ, DP","C4, C2, factor B and TNF","TAP1/TAP2 only","β2-microglobulin"],2,"Class III encodes complement and TNF, not presenting molecules; β2m is on chromosome 15."],
+["Probability that two siblings from the same parents share both HLA haplotypes?",["12.5%","25%","50%","75%","100%"],1,"Four equally likely combinations; 0.5 × 0.5 = 25%."],
+["A 7-month-old has low CD4⁺ T cells, no vaccine response, oral candidiasis and HLA-DR absent on B cells. The defect is:",["TAP deficiency","CIITA/RFX class II transcription factor defect","β2-microglobulin deficiency","CD8 deficiency","Complement C4 deficiency"],1,"Bare lymphocyte syndrome II: no class II → poor CD4 selection → no T-cell help."],
+["Which step trims peptides to the proper length in the class I pathway?",["Tapasin","HLA-DM","ERAP","Cathepsin","Invariant chain"],2,"ERAP trims peptides in the ER; TAP transports them."],
+["How is the class II groove protected and loaded?",["Invariant chain blocks groove, leaving CLIP, which HLA-DM exchanges for peptide","TAP pumps peptides into the MIIC","ERAP trims peptides before CLIP leaves","HLA-DO locks CLIP permanently","β2m covers the groove"],0,"This occurs in acidified endosomes; acidification is essential."],
+["cDC1 cells prime naive CD8⁺ T cells against exogenous antigen by:",["Secreting IL-4","Cross-presentation on MHC class I","Using MR1","Presenting on MHC II","Bypassing MHC"],1,"Cross-presentation is essential for tumour and viral vaccines; cDC2 prime CD4⁺ cells."],
+["Which is a consequence of MHC restriction?",["Alloreactivity occurs in under 0.01% of T cells","Engineered T-cell therapies work only with the matching HLA type","T cells recognise peptide alone","Thymic selection is unnecessary","NK cells need peptide"],1,"T cells need peptide + self-MHC; 1–10% of T cells are alloreactive."],
+["Which statement about CD1 and MR1 is correct?",["Both are highly polymorphic","CD1d presents glycolipids to iNKT cells; MR1 presents vitamin B2 metabolites to MAIT cells","MR1 presents lipids to iNKT cells","MAIT cells are restricted to the thymus","CD1 presents short peptides"],1,"Both are non-polymorphic and act with innate-like speed."],
+["Which pairing is INCORRECT?",["Tebentafusp: gp100 on HLA-A*02:01","HLA-G on trophoblast inhibits maternal NK cells","B*57:01 enriched in HIV controllers","Donor anti-HLA antibodies cause platelet refractoriness","Loss of HLA-E/class I triggers missing-self NK killing"],3,"Patient anti-HLA antibodies cause platelet refractoriness; donor anti-HLA antibodies cause TRALI."],
+["A tumour loses β2-microglobulin. What follows?",["More class II expression","Failure of class I presentation to CD8⁺ T cells; NK cells may kill (missing self)","Better CD4 help","Enhanced cross-presentation","Class III activation"],1,"Without β2m, class I is not displayed."]
+];
+var qs=document.getElementById('qs'),st=document.getElementById('st'),n=0,sc=0;
+function sh(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function build(){qs.innerHTML='';n=0;sc=0;upd();Q.forEach(function(q,i){
+var d=document.createElement('div');d.className='q';var p=document.createElement('p');p.textContent=q[0];d.appendChild(p);
+var opts=sh(q[1].map(function(t,k){return{t:t,c:k===q[2]}}));
+opts.forEach(function(o){var b=document.createElement('button');b.className='o';b.textContent=o.t;b.onclick=function(){
+if(d.classList.contains('d'))return;d.classList.add('d');n++;
+var bs=d.querySelectorAll('.o');bs.forEach(function(x,k){x.disabled=true;if(opts[k].c)x.classList.add('c')});
+if(o.c)sc++;else b.classList.add('x');upd()};d.appendChild(b)});
+var e=document.createElement('div');e.className='e';e.textContent='Explanation: '+q[3];d.appendChild(e);qs.appendChild(d)})}
+function upd(){st.textContent='Answered '+n+'/'+Q.length+' · Score '+sc}
+document.getElementById('rs').onclick=build;build();
+document.getElementById('th').onclick=function(){var r=document.documentElement,l=matchMedia('(prefers-color-scheme: light)').matches;var cur=r.getAttribute('data-theme')||(l?'light':'dark');r.setAttribute('data-theme',cur==='light'?'dark':'light')};
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>

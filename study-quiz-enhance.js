@@ -16,16 +16,16 @@
     if (button.textContent !== text) button.textContent = text;
     button.title = saved ? 'Remove this bookmark' : 'Save this question for mixed revision';
   }
-  const optionSelector = 'button.o, .qt ~ button.opt';
+  const optionSelector = 'button.o, .qt ~ button.opt, .qcard button.opt';
   function enhance() {
-    document.querySelectorAll('.q:not([data-vn-question-id])').forEach((block) => {
-      const heading = block.querySelector('p, .qt'); const options = [...block.querySelectorAll(optionSelector)];
+    document.querySelectorAll('.q:not([data-vn-question-id]), .qcard:not([data-vn-question-id])').forEach((block) => {
+      const heading = block.querySelector('p, .qt, .qtext'); const options = [...block.querySelectorAll(optionSelector)];
       if (!heading || !options.length) return;
       const title = heading.cloneNode(true);
       title.querySelectorAll('.tag, .ty, .qn').forEach((tag) => tag.remove());
       const candidates = questions.get(stem(title.textContent)) || [];
       const raw = options.map((option) => {
-        if (!option.matches('.qt ~ button.opt')) return normalize(option.textContent);
+        if (!option.matches('.qt ~ button.opt, .qcard button.opt')) return normalize(option.textContent);
         const copy = option.cloneNode(true);
         copy.querySelector('.l')?.remove();
         return normalize(copy.textContent);
@@ -51,13 +51,13 @@
       }
       matched.set(block, { item, mapping });
       const button = document.createElement('button'); button.type = 'button'; button.className = 'vn-bookmark-toggle';
-      label(button, bookmarks.has(item.id)); button.setAttribute('aria-label', `Bookmark question: ${item.question}`);
+      label(button, bookmarks.has(item.id)); button.setAttribute('aria-label', 'Bookmark question: ' + item.question);
       button.addEventListener('click', (event) => { event.stopPropagation(); bookmarks.set(item.id, !bookmarks.has(item.id)); });
       block.classList.toggle('vn-is-bookmarked', bookmarks.has(item.id)); block.append(button);
     });
   }
   function refreshBookmarks() {
-    document.querySelectorAll('.q[data-vn-question-id]').forEach((block) => {
+    document.querySelectorAll('.q[data-vn-question-id], .qcard[data-vn-question-id]').forEach((block) => {
       const saved = bookmarks.has(block.dataset.vnQuestionId); block.classList.toggle('vn-is-bookmarked', saved);
       const button = block.querySelector('.vn-bookmark-toggle'); if (button) label(button, saved);
     });
@@ -86,15 +86,15 @@
     enhance(); addControls();
     // In-place quiz resets allow a fresh attempt without counting repeat clicks.
     document.addEventListener("vitanova:question-reset", (event) => {
-      if (event.target.matches?.(".q")) answered.delete(event.target);
+      if (event.target.matches?.(".q, .qcard")) answered.delete(event.target);
     });
     // Capture before native handlers mark their question as locked, without altering their score/reset flow.
     document.addEventListener('click', (event) => {
       const option = event.target.closest(optionSelector); if (!option) return;
-      const block = option.closest('.q'); const match = matched.get(block);
+      const block = option.closest('.q, .qcard'); const match = matched.get(block);
       if (!match || block.dataset.l || block.dataset.d || block.dataset.done) return;
       // The legacy Immunology quiz clears its done class and re-enables options on reset.
-      const legacy = option.matches('.qt ~ button.opt');
+      const legacy = option.matches('.qt ~ button.opt, .qcard button.opt');
       if (legacy ? block.classList.contains('done') : answered.has(block)) return;
       const index = [...block.querySelectorAll(optionSelector)].indexOf(option);
       if (index < 0 || option.disabled) return;
@@ -102,7 +102,7 @@
     }, true);
     let scheduled = false;
     const observer = new MutationObserver((entries) => {
-      if (!entries.some((entry) => [...entry.addedNodes].some((node) => node.nodeType === 1 && (node.matches('.q') || node.querySelector('.q'))))) return;
+      if (!entries.some((entry) => [...entry.addedNodes].some((node) => node.nodeType === 1 && (node.matches('.q, .qcard') || node.querySelector('.q, .qcard'))))) return;
       if (scheduled) return; scheduled = true;
       requestAnimationFrame(() => { scheduled = false; enhance(); });
     });

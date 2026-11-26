@@ -626,5 +626,44 @@ window.VitanovaLectures = [
     "file": "MSS-Pathology-Lab-2.html",
     "icon": "📘",
     "standalone": true
+  },
+  {
+    "id": "immunology-mid-09",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 9",
+    "order": 9,
+    "title": "Lymphocyte Maturation & Activation",
+    "description": "B- and T-lymphocyte development, central and peripheral tolerance, activation checkpoints, and clinical links.",
+    "file": "Immunology-Midterm-Lecture-9-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-10",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 10",
+    "order": 10,
+    "title": "Lymphocyte Activation, Plasma Cells & Antigens/MHC",
+    "description": "Lymphocyte activation, plasma-cell differentiation, superantigens, antigens, MHC, and practice questions from Files 5 and 6.",
+    "file": "Immunology-Midterm-Lecture-10-AI-Summary-MCQs.html",
+    "icon": "📘"
+  },
+  {
+    "id": "immunology-mid-11",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Lecture 11",
+    "order": 11,
+    "title": "Antigens, MHC & Antigen Presentation",
+    "description": "Antigens, epitopes, haptens, adjuvants, MHC structure, antigen-processing pathways, and clinical applications.",
+    "file": "Immunology-Midterm-Lecture-11-AI-Summary-MCQs.html",
+    "icon": "📘"
   }
 ];

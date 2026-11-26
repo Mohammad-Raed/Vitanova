@@ -177,12 +177,14 @@ def extract(lecture, source):
         for group, rows in groups:
             if not isinstance(rows,list): raise ValueError('Unsupported MCQ group '+str(group))
             for index,row in enumerate(rows):
-                if not isinstance(row,list) or (len(row) not in (4,5) or (len(row)==5 and not isinstance(row[4],str))) or not isinstance(row[0],str) or not isinstance(row[1],list):
+                if isinstance(row,dict):
+                    if not all(key in row for key in ('q','o','a','e')) or not isinstance(row['q'],str) or not isinstance(row['o'],list):
+                        raise ValueError('Unsupported MCQ record in '+lecture['file'])
+                    question, options, answer, explanation = row['q'], row['o'], row['a'], row['e']
+                elif isinstance(row,list) and (len(row) in (4,5) and (len(row)!=5 or isinstance(row[4],str))) and isinstance(row[0],str) and isinstance(row[1],list):
+                    question, options, answer, explanation = row[:4]
+                else:
                     raise ValueError('Unsupported MCQ record in '+lecture['file'])
-                question, options, answer, explanation = row[:4]
-                if len(options)<2 or not all(isinstance(x,str) and x.strip() for x in options): raise ValueError('Invalid answer options')
-                if not isinstance(answer,int) or isinstance(answer,bool) or not 0<=answer<len(options): raise ValueError('Invalid answer index')
-                if not isinstance(explanation,str): raise ValueError('Invalid explanation')
                 question, options, explanation = plain(question), [plain(x) for x in options], plain(explanation)
                 identity = json.dumps([lecture['id'],question,sorted(options),options[answer]],ensure_ascii=False,separators=(',',':'))
                 ident = lecture['id']+'-'+hashlib.sha256(identity.encode()).hexdigest()[:16]
