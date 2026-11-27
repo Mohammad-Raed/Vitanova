@@ -49,7 +49,7 @@
     }
     if(header.parentElement!==document.body)document.body.insertBefore(header,main);
   }
-  const trail=[[current.system,system],[current.exam,exam],[current.subject,current.category]];
+  const trail=[[current.system,system],[current.exam,exam],[current.subject,current.category]].filter((item,index,all)=>index===0||item[0]!==all[index-1][0]);
   for(const [label,route] of trail) {
     context.append(link(label,'index.html#'+encodeURIComponent(route),'vn-breadcrumb'));
     const separator=document.createElement('span');separator.className='vn-breadcrumb-separator';
@@ -62,8 +62,7 @@
     if(lecture)controls.append(link(label,encodeURIComponent(lecture.file),cls));
     else {const disabled=document.createElement('span');disabled.className=cls;disabled.textContent=label;disabled.setAttribute('aria-disabled','true');controls.append(disabled);}
   }
-  const backLabel=current.exam==='Labs'?current.subject+' Lab':current.subject;
-  nav.append(link('✦ Vitanova','index.html','vn-home'),link('← Back to '+backLabel,'index.html#'+encodeURIComponent(current.category),'vn-subject'),context,controls);
+  nav.append(link('✦ Vitanova','index.html','vn-home'),context,controls);
   // Remove only the two obsolete hub buttons, leaving all original section navigation.
   document.querySelectorAll('a[href]').forEach(anchor=>{
     const label=anchor.textContent.trim();
@@ -105,11 +104,6 @@
     window.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(track);},{passive:true});
   }
   document.querySelectorAll('.tbl').forEach(wrapper=>{wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label','Scrollable medical table');});
-  const toggle=document.createElement('button');toggle.className='vn-theme-toggle';toggle.type='button';toggle.setAttribute('aria-label','Toggle light and dark theme');
-  let theme;try{const raw=localStorage.getItem('vitanova:theme:v1');theme=['dark','light'].includes(raw)?raw:JSON.parse(raw);}catch{}
-  function apply(value){document.documentElement.dataset.theme=value;toggle.textContent=value==='dark'?'☀ Light':'☾ Dark';try{localStorage.setItem('vitanova:theme:v1',value);}catch{storage?.warning();}}
-  apply(document.documentElement.dataset.theme||(['dark','light'].includes(theme)?theme:window.matchMedia?.('(prefers-color-scheme: dark)').matches?'dark':'light'));
-  toggle.addEventListener('click',()=>apply(document.documentElement.dataset.theme==='dark'?'light':'dark'));controls.append(toggle);
   const top=document.createElement('a');top.className='vn-back-to-top';top.href='#';top.textContent='↑ Top';top.setAttribute('aria-label','Back to top');
   top.addEventListener('click',event=>{event.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
   document.body.append(top);
