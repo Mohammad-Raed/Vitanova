@@ -32,13 +32,13 @@ ul{padding-left:22px}li{margin:4px 0}
 .o{display:block;width:100%;text-align:left;background:var(--p2);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:9px 12px;margin:6px 0;cursor:pointer;font:inherit}
 .o:hover:not(:disabled){border-color:var(--ac)}.o.c{border-color:var(--ok);background:rgba(76,195,138,.18)}.o.x{border-color:var(--no);background:rgba(255,107,107,.18)}
 .e{display:none;margin-top:8px;color:var(--mu);font-size:14px}.q.d .e{display:block}
-#sc{position:sticky;top:52px;background:var(--p);border:1px solid var(--bd);border-radius:8px;padding:8px 14px;font:600 14px system-ui,sans-serif;display:flex;justify-content:space-between;align-items:center;z-index:4}
+#sc{position:relative;top:auto;background:var(--p);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;font:600 14px system-ui,sans-serif;display:flex;justify-content:space-between;align-items:center;z-index:1;margin:12px 0}
 #sc button{background:var(--ac);color:var(--thx);border:0;border-radius:6px;padding:5px 12px;font-weight:700;cursor:pointer}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 ol{list-style:none;padding:0}ol li{position:relative;background:var(--p);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:0 8px 8px 0;padding:9px 14px;margin:0 0 18px}ol li:not(:last-child)::after{content:"▼";position:absolute;left:12px;bottom:-17px;font-size:11px;color:var(--ac)}
 ul{list-style:none}ul>li{position:relative}ul>li::before{content:"";position:absolute;left:-16px;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--ac)}
 .tw{box-shadow:0 1px 0 var(--bd)}tr:nth-child(even) td{background:var(--p2)}
-@media(min-width:1100px){body{padding-left:210px}nav{position:fixed;top:0;left:0;bottom:0;width:210px;flex-direction:column;overflow-y:auto;border-right:1px solid var(--bd);border-bottom:0;padding:16px 10px}nav button{margin:12px 0 0}#sc{top:12px}html{scroll-padding-top:20px}}
+@media(min-width:1100px){body{padding-left:210px}nav{position:fixed;top:0;left:0;bottom:0;width:210px;flex-direction:column;overflow-y:auto;border-right:1px solid var(--bd);border-bottom:0;padding:16px 10px}nav button{margin:12px 0 0}html{scroll-padding-top:20px}}
 </style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
 <nav><a href="#antigens">Antigens</a><a href="#epitopes">Epitopes</a><a href="#hapten">Haptens</a><a href="#adjuvant">Adjuvants</a><a href="#mhc">MHC</a><a href="#proc">Processing</a><a href="#restr">Restriction</a><a href="#apc">APCs</a><a href="#cd1">CD1/MR1</a><a href="#clin">Clinical</a><a href="#rev">Revision</a><a href="#quiz">Quiz</a><button id="th">Light/Dark</button></nav>
 <header><div class="w"><h1>Immunology Lecture 11: Antigens, MHC and Antigen Presentation</h1><p>Last lecture of the midterm. Content follows the uploaded slides (labelled “File 6” in the deck) and the handwritten notes. Highlighted boxes carry the handwritten annotations.</p></div></header>
@@ -191,7 +191,7 @@ ul{list-style:none}ul>li{position:relative}ul>li::before{content:"";position:abs
 <li>Missing self (HLA-E, class I loss) → NK killing; HLA-G protects the fetus; patient anti-HLA → platelet refractoriness; donor anti-HLA → TRALI.</li></ul></div>
 
 <h2 id="quiz">Practice questions</h2>
-<div id="sc"><span id="st">Answered 0/18 · Score 0</span><button id="rs">Reshuffle</button></div>
+<div id="sc" class="vn-mcq-bar"><span id="st">Answered 0/18 · Score 0</span><button id="rs">Reshuffle</button></div>
 <div id="qs"></div>
 </main>
 <script>
