@@ -14,3 +14,14 @@
 .vn-storage-warning{margin:8px;padding:10px;border-radius:8px;background:#743c38;color:white;font:14px/1.4 system-ui,sans-serif}
 @media(max-width:640px){.vn-bookmarks-link{font-size:11px;padding:5px 8px}}
 .vn-redo-mistakes{font:inherit;border:1px solid #9e7acb;border-radius:9px;padding:8px 11px;color:inherit;background:transparent;cursor:pointer}.vn-redo-mistakes:focus-visible,.vn-bookmark-toggle:focus-visible{outline:3px solid #36bfaf;outline-offset:3px}.vn-storage-warning{margin:8px;padding:12px;border:1px solid #b79041;border-radius:8px;background:#fff0ca;color:#533a00;font:14px/1.6 system-ui,sans-serif}
+
+/* One compact in-flow progress bar for MCQ sections. */
+.vn-lecture-page .vn-mcq-bar,#sc.vn-mcq-bar{
+  position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;width:100%;
+  margin:12px 0;padding:10px 14px;border:1px solid var(--ln,var(--line,#39445a));
+  border-radius:10px;background:var(--card,var(--bg2,#172238));z-index:1;
+  box-shadow:none;font:600 14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.vn-lecture-page .vn-mcq-bar>span:first-child{margin-right:auto}
+.vn-lecture-page .vn-mcq-bar button{min-height:32px}
