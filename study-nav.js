@@ -49,7 +49,7 @@
     }
     if(header.parentElement!==document.body)document.body.insertBefore(header,main);
   }
-  const trail=[[current.system,system],[current.exam,exam],[current.subject,current.category]].filter((item,index,all)=>index===0||item[0]!==all[index-1][0]);
+  const trail=[[current.system,system],[current.exam,exam],[current.subject,current.category]].filter((item,index,all)=>index===0||!all.slice(0,index).some(previous=>previous[0]===item[0]));
   for(const [label,route] of trail) {
     context.append(link(label,'index.html#'+encodeURIComponent(route),'vn-breadcrumb'));
     const separator=document.createElement('span');separator.className='vn-breadcrumb-separator';
