@@ -272,3 +272,9 @@ body.vn-lecture-page > .vn-lecture-navigation .vn-lecture-controls{
   .vn-lecture-page .vn-lecture-navigation .vn-lecture-context{flex-basis:100%;order:3}
   .vn-lecture-page .vn-lecture-navigation .vn-lecture-controls{margin-left:auto}
 }
+
+/* Reset legacy fixed side navigation on lecture 11; the shared sidebar owns that role. */
+.vn-lecture-page>nav.vn-lecture-topics{
+  position:sticky;top:0;right:auto;bottom:auto;left:auto;width:100%;height:auto;
+  flex-direction:row;border-right:0;border-bottom:1px solid var(--ln);
+}
