@@ -24,7 +24,7 @@ mark{background:#6b5a10;color:#fff3b0;border-radius:4px;padding:0 3px}:root[data
 .o{display:block;width:100%;text-align:left;margin:5px 0}.o.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.o.no{background:var(--bad);color:#fff;border-color:var(--bad)}
 .exp{display:none;font-size:.92rem;margin-top:6px;padding:8px 12px;border-radius:8px;background:var(--bg)}.exp.s{display:block}
 .bar{position:relative;top:auto;background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;display:flex;gap:8px;align-items:center;z-index:1;margin:12px 0}.bar span{margin-right:auto;font-weight:600}
-</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css?v=compact-ui-1"><link rel="stylesheet" href="study-quiz.css?v=compact-ui-1"><link rel="stylesheet" href="study-saved.css"></head><body>
 <header><b>✦ Immunology · Midterm · Lecture 10</b><button class="on" data-l="l5">File 5 (activation)</button><button data-l="l6">File 6 (antigens)</button><button id="th">Theme</button></header>
 <main>
 
@@ -194,4 +194,4 @@ bar.children[2].onclick=()=>{ans=ok=0;qs.forEach(d=>{delete d.dataset.done;d.que
 build('q5',D.q5);build('q6',D.q6);
 document.querySelectorAll('header [data-l]').forEach(b=>b.onclick=()=>{document.querySelectorAll('header [data-l]').forEach(x=>x.classList.toggle('on',x==b));document.querySelectorAll('.lec').forEach(s=>s.classList.toggle('on',s.id==b.dataset.l));scrollTo(0,0)});
 document.getElementById('th').onclick=()=>{const r=document.documentElement,l=getComputedStyle(r).getPropertyValue('--bg').trim()=='#f6f7fc';r.dataset.theme=l?'dark':'light'};
-</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js?v=compact-ui-1"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
