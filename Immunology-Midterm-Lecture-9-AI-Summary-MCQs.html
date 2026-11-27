@@ -121,7 +121,7 @@ h2 + .pages,.pages + h2{margin-top:6px}
 .expl{display:none;margin-top:10px;padding:12px 14px;border-radius:12px;background:var(--card2);border-left:4px solid var(--accent);font-size:15px}
 .expl.show{display:block}
 .expl .v{font-weight:800}
-.score{position:sticky;bottom:0;background:var(--bg2);border-top:1px solid var(--line);padding:10px 22px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;z-index:30}
+.score{position:relative;top:auto;bottom:auto;background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;z-index:1;margin:12px 0}
 .score .grow{flex:1}
 .bar{height:8px;background:var(--card2);border-radius:99px;overflow:hidden;flex:1;min-width:120px}
 .bar i{display:block;height:100%;background:var(--ok);width:0}
@@ -516,7 +516,7 @@ h2 + .pages,.pages + h2{margin-top:6px}
 <div class="card" id="result"></div>
 </section>
 </main>
-<div class="score"><span id="scoreTxt"><b>0</b> / 0 answered</span><div class="bar"><i id="barFill"></i></div><span id="accTxt" class="sub"></span><button class="btn" id="resetBtn">Reset quiz</button></div>
+<div class="score vn-mcq-bar"><span id="scoreTxt"><b>0</b> / 0 answered</span><div class="bar"><i id="barFill"></i></div><span id="accTxt" class="sub"></span><button class="btn" id="resetBtn">Reset quiz</button></div>
 <a class="btn top" href="#">↑ Top</a>
 <script>
 (function(){
