@@ -39,7 +39,7 @@ ol{list-style:none;padding:0}ol li{position:relative;background:var(--p);border:
 ul{list-style:none}ul>li{position:relative}ul>li::before{content:"";position:absolute;left:-16px;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--ac)}
 .tw{box-shadow:0 1px 0 var(--bd)}tr:nth-child(even) td{background:var(--p2)}
 @media(min-width:1100px){body{padding-left:210px}nav{position:fixed;top:0;left:0;bottom:0;width:210px;flex-direction:column;overflow-y:auto;border-right:1px solid var(--bd);border-bottom:0;padding:16px 10px}nav button{margin:12px 0 0}html{scroll-padding-top:20px}}
-</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
+</style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css?v=compact-ui-1"><link rel="stylesheet" href="study-quiz.css?v=compact-ui-1"><link rel="stylesheet" href="study-saved.css"></head><body>
 <nav><a href="#antigens">Antigens</a><a href="#epitopes">Epitopes</a><a href="#hapten">Haptens</a><a href="#adjuvant">Adjuvants</a><a href="#mhc">MHC</a><a href="#proc">Processing</a><a href="#restr">Restriction</a><a href="#apc">APCs</a><a href="#cd1">CD1/MR1</a><a href="#clin">Clinical</a><a href="#rev">Revision</a><a href="#quiz">Quiz</a><button id="th">Light/Dark</button></nav>
 <header><div class="w"><h1>Immunology Lecture 11: Antigens, MHC and Antigen Presentation</h1><p>Last lecture of the midterm. Content follows the uploaded slides (labelled “File 6” in the deck) and the handwritten notes. Highlighted boxes carry the handwritten annotations.</p></div></header>
 <main>
@@ -232,4 +232,4 @@ var e=document.createElement('div');e.className='e';e.textContent='Explanation: 
 function upd(){st.textContent='Answered '+n+'/'+Q.length+' · Score '+sc}
 document.getElementById('rs').onclick=build;build();
 document.getElementById('th').onclick=function(){var r=document.documentElement,l=matchMedia('(prefers-color-scheme: light)').matches;var cur=r.getAttribute('data-theme')||(l?'light':'dark');r.setAttribute('data-theme',cur==='light'?'dark':'light')};
-</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
+</script><script src="study-data.js"></script><script src="study-storage.js"></script><script src="study-progress.js"></script><script src="study-bookmarks.js"></script><script src="study-questions-data.js"></script><script src="study-nav.js?v=compact-ui-1"></script><script src="study-saved.js"></script><script src="study-quiz-enhance.js"></script></body></html>
