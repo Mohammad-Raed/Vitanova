@@ -5,6 +5,7 @@
   let file; try{file=decodeURIComponent(location.pathname.split('/').pop()||'');}catch{return;}
   const current=lectures.find(item=>item.file===file);
   document.body.classList.add('vn-sidebar-page');
+  if(current?.system==='Immunology')document.body.classList.add('vn-immunology-lecture');
   const side=document.createElement('aside');side.className='vn-global-sidebar';side.setAttribute('aria-label','Vitanova study navigation');
   side.innerHTML='<div class="vn-global-brand"><a href="index.html">✦ Vitanova</a><button type="button" class="vn-global-hide" aria-label="Hide navigation" title="Hide navigation">‹</button></div><p class="vn-global-caption">YOUR STUDY SPACE</p><nav aria-label="Study tools"><a href="index.html#home">⌂ <span>Overview</span></a><a href="index.html#mss-checklist">☑ <span>MSS Checklist</span></a><a href="index.html#search">⌕ <span>Find a lecture</span></a><a href="index.html#saved">☆ <span>Saved questions</span></a><a href="index.html#mistakes">↻ <span>Redo mistakes</span></a><a href="flashcards.html">▤ <span>Flashcards</span></a><a href="index.html#backup">⇩ <span>Backup</span></a></nav><p class="vn-global-caption">YOUR SYSTEMS</p><nav aria-label="Study systems"><a href="index.html#mss">🦴 <span>MSS System</span></a><a href="index.html#immunology">🧬 <span>Immunology</span></a></nav>';
   const showSidebar=document.createElement('button');showSidebar.type='button';showSidebar.className='vn-global-show';showSidebar.textContent='›';showSidebar.setAttribute('aria-label','Show navigation');showSidebar.title='Show navigation';document.body.append(showSidebar);
@@ -35,13 +36,15 @@
   const system=slug(current.system);
   const exam=system+'-'+(current.exam==='Midterm'?'mid':slug(current.exam));
   const main=document.querySelector('main');
-  const header=document.querySelector('body > header')||main?.querySelector(':scope > .hero');
+  const header=document.querySelector('body > header')||document.querySelector('body > .hero')||main?.querySelector(':scope > .hero');
   const start=header||main;
   if(start&&!start.id)start.id='vn-lecture-start';
   if(header){
     header.classList.add('vn-lecture-hero');
     const heading=header.querySelector('h1');
-    if(heading&&!header.querySelector('small,.k,.eyebrow,.vn-lecture-label')){
+    if(current.system==='Immunology'){
+      header.querySelectorAll('p,.eyebrow,.vn-lecture-label').forEach(node=>node.remove());
+    }else if(heading&&!header.querySelector('small,.k,.eyebrow,.vn-lecture-label')){
       const label=document.createElement('p');
       label.className='vn-lecture-label';
       label.textContent=[current.system,current.exam,current.subject,current.lectureLabel].join(' · ');
@@ -104,6 +107,7 @@
     window.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(track);},{passive:true});
   }
   document.querySelectorAll('.tbl').forEach(wrapper=>{wrapper.tabIndex=0;wrapper.setAttribute('role','region');wrapper.setAttribute('aria-label','Scrollable medical table');});
+  document.querySelectorAll('a.top,button.top').forEach(node=>node.remove());
   const top=document.createElement('a');top.className='vn-back-to-top';top.href='#';top.textContent='↑ Top';top.setAttribute('aria-label','Back to top');
   top.addEventListener('click',event=>{event.preventDefault();window.scrollTo({top:0,behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
   document.body.append(top);
