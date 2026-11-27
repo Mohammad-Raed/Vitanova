@@ -17,6 +17,14 @@
   const railStyle=document.createElement('link');railStyle.rel='stylesheet';railStyle.href='study-sidebar.css?v=1';document.head.append(railStyle);
   if(!current)return;
   document.body.classList.add('vn-lecture-page');
+  const immunologyLecture=String(current.system||'').toLowerCase()==='immunology';
+  if(immunologyLecture){
+    document.body.classList.add('vn-immunology-lecture');
+    side.querySelectorAll('nav a').forEach(anchor=>{
+      const label=anchor.querySelector('span')?.textContent.trim()||anchor.textContent.trim();
+      anchor.title=label;anchor.setAttribute('aria-label',label);
+    });
+  }
   const storage=window.VitanovaStorage;
   function remember(section=location.hash) {
     const hash=/^#[a-zA-Z][\w:.-]*$/.test(section)?section:'';
@@ -90,6 +98,29 @@
     topics.set(id,target);
   }
   sectionBar.append(flashcards);
+  if(immunologyLecture){
+    let compactAt=Infinity,scrollFrame=0;
+    const updateCompactNavigation=()=>{
+      scrollFrame=0;
+      const compact=window.scrollY>=compactAt;
+      document.body.classList.toggle('vn-lecture-scrolled',compact);
+      document.documentElement.classList.toggle('vn-immunology-scrolled',compact);
+      if(compact){
+        const height=Math.round(nav.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--vn-sticky-nav-height',height+'px');
+      }
+    };
+    const measureCompactThreshold=()=>{
+      document.body.classList.remove('vn-lecture-scrolled');
+      document.documentElement.classList.remove('vn-immunology-scrolled');
+      compactAt=sectionBar.getBoundingClientRect().bottom+window.scrollY;
+      updateCompactNavigation();
+    };
+    const onScroll=()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(updateCompactNavigation);};
+    requestAnimationFrame(measureCompactThreshold);
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',measureCompactThreshold,{passive:true});
+  }
   if(topics.size){
     let frame=0,active=null;
     const track=()=>{
