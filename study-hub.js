@@ -153,6 +153,8 @@
   showSidebar.addEventListener('click',()=>setSidebarHidden(false));
   let sidebarPref;try{sidebarPref=localStorage.getItem('vitanova:sidebar-hidden:v1');}catch{}
   setSidebarHidden(sidebarPref==='true');
+  window.addEventListener('pageshow',()=>{let value;try{value=localStorage.getItem('vitanova:sidebar-hidden:v1');}catch{}if(value!==null)setSidebarHidden(value==='true');});
+  window.addEventListener('storage',event=>{if(event.key==='vitanova:sidebar-hidden:v1')setSidebarHidden(event.newValue==='true');});
 
   function setMenu(open){sidebar.classList.toggle('is-open',open);menuButton.setAttribute('aria-expanded',String(!mobileMenu.matches||open));}
   menuButton.addEventListener('click',()=>setMenu(!sidebar.classList.contains('is-open')));
