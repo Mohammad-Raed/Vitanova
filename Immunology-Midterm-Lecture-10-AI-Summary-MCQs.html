@@ -23,7 +23,7 @@ mark{background:#6b5a10;color:#fff3b0;border-radius:4px;padding:0 3px}:root[data
 .q{border:1px solid var(--ln);border-radius:12px;padding:12px 16px;margin:12px 0;background:var(--card)}.q p{margin:0 0 8px;font-weight:600}
 .o{display:block;width:100%;text-align:left;margin:5px 0}.o.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.o.no{background:var(--bad);color:#fff;border-color:var(--bad)}
 .exp{display:none;font-size:.92rem;margin-top:6px;padding:8px 12px;border-radius:8px;background:var(--bg)}.exp.s{display:block}
-.bar{position:sticky;top:calc(52px + env(safe-area-inset-top,0px));background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;display:flex;gap:8px;align-items:center;z-index:4}.bar span{margin-right:auto;font-weight:600}
+.bar{position:relative;top:auto;background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:10px 14px;display:flex;gap:8px;align-items:center;z-index:1;margin:12px 0}.bar span{margin-right:auto;font-weight:600}
 </style><script src="study-appearance-init.js"></script><link rel="stylesheet" href="study-shared.css"><link rel="stylesheet" href="study-quiz.css"><link rel="stylesheet" href="study-saved.css"></head><body>
 <header><b>✦ Immunology · Midterm · Lecture 10</b><button class="on" data-l="l5">File 5 (activation)</button><button data-l="l6">File 6 (antigens)</button><button id="th">Theme</button></header>
 <main>
@@ -183,7 +183,7 @@ const D={q5:[
 ["An elderly patient has chronic infection and cancer and a weak vaccine response. Factors involved:",["Age only","Route only","Age and general health","Antigen foreignness"],2,"Age plus malignancy/chronic infection reduce responses."]
 ]};
 function build(id,list){const el=document.getElementById(id);let ans=0,ok=0;
-const bar=document.createElement('div');bar.className='bar';bar.innerHTML='<span></span><button>Show all answers</button><button>Reset</button>';el.appendChild(bar);
+const bar=document.createElement('div');bar.className='bar vn-mcq-bar';bar.innerHTML='<span></span><button>Show all answers</button><button>Reset</button>';el.appendChild(bar);
 const sc=bar.firstChild,upd=()=>sc.textContent='Answered '+ans+'/'+list.length+' · Score '+ok;upd();
 const qs=list.map((x,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML='<p>'+(i+1)+'. '+x[0]+'</p>'+x[1].map((o,j)=>'<button class="o" data-j="'+j+'">'+'ABCDE'[j]+') '+o+'</button>').join('')+'<div class="exp"><b>Answer: '+'ABCDE'[x[2]]+'.</b> '+x[3]+'</div>';
 d.querySelectorAll('.o').forEach(b=>b.onclick=()=>pick(d,x,+b.dataset.j));el.appendChild(d);return d});
