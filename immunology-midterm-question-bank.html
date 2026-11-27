@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI MCQ's full midterm material · Vitanova</title>
+<style>
+:root{color-scheme:light dark;--bg:#f2f5f9;--card:#fff;--ink:#17243a;--muted:#4b5e75;--line:#d6dfe9;--blue:#2459a7;--soft:#e9f1fc;--ok:#16824b;--bad:#c33434}
+@media(prefers-color-scheme:dark){:root{--bg:#111827;--card:#192337;--ink:#eef4ff;--muted:#b8c6dd;--line:#34435e;--blue:#a8c8ff;--soft:#253754;--ok:#54d69a;--bad:#ff8d8d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,sans-serif}main{max-width:1000px;margin:auto;padding:22px clamp(12px,3vw,28px) 60px}a{color:var(--blue)}header{margin-bottom:20px}header p{margin:8px 0;color:var(--muted)}h1{font:700 clamp(1.8rem,5vw,2.8rem)/1.12 Georgia,serif;margin:.25em 0}.links,.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.links{margin-bottom:18px}.links a{padding:7px 11px;border:1px solid var(--line);border-radius:9px;background:var(--card);text-decoration:none;font-weight:650;font-size:.9rem}button,select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 12px}button{cursor:pointer;font-weight:650}button:hover{background:var(--soft)}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--blue);outline-offset:3px}.tools{position:sticky;top:0;z-index:4;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line)}.tools label{display:flex;gap:8px;align-items:center;font-weight:650;font-size:.9rem}.tools .spacer{flex:1}.status{margin:10px 0;color:var(--muted);font-size:.92rem}.progress{height:8px;width:100%;accent-color:var(--blue)}.question{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}.qmeta{color:var(--muted);font-size:.8rem;font-weight:700;letter-spacing:.02em}.stem{font-weight:650;margin:8px 0 12px}.option{display:flex;gap:10px;width:100%;text-align:left;margin:7px 0;background:var(--bg);font-weight:450}.option .letter{font-weight:800;color:var(--blue);min-width:1.4em}.option.correct{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,var(--card))}.option.incorrect{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--card))}.option:disabled{cursor:default}.feedback{margin:12px 0 0;padding:10px 12px;border-radius:9px;background:var(--soft)}.empty{padding:20px;background:var(--card);border-radius:12px;color:var(--muted)}footer{margin-top:26px;color:var(--muted);font-size:.85rem}
+</style></head><body><main>
+<div class="links"><a href="index.html">← Vitanova</a><a href="flashcards.html">Flashcards</a></div>
+<header><div class="qmeta">IMMUNOLOGY · MIDTERM · LECTURES 2–11</div><h1>AI MCQ's full midterm material</h1><p>Practise the complete Immunology midterm question bank. Choose a lecture or work through all 10 lectures together. Your score and progress update as you answer.</p></header>
+<div class="tools"><label for="lecture-filter">Lecture <select id="lecture-filter"><option value="all">All lectures (2–11)</option></select></label><button id="shuffle" type="button">Shuffle questions</button><button id="reset" type="button">Reset all answers</button><span class="spacer"></span></div>
+<p id="status" class="status" role="status" aria-live="polite"></p><progress id="progress" class="progress" value="0" max="1" aria-label="Question bank progress"></progress>
+<section id="questions" aria-label="Immunology midterm questions"></section><p id="empty" class="empty" hidden>No questions in this lecture.</p>
+<footer>Answers and explanations appear after each selection. Use Reset all answers to start another attempt.</footer>
+</main><script src="study-data.js"></script><script src="study-questions-data.js"></script><script>
+(function(){
+'use strict';
+const bank=(window.VitanovaQuestionBank||[]).filter(q=>/^immunology-mid-(0[2-9]|10|11)$/.test(q.lectureId));
+const lectures=(window.VitanovaLectures||[]).filter(l=>/^immunology-mid-(0[2-9]|10|11)$/.test(l.id)).sort((a,b)=>a.order-b.order);
+const filter=document.getElementById('lecture-filter'),list=document.getElementById('questions'),status=document.getElementById('status'),progress=document.getElementById('progress');
+const attempts=new Map();let order=bank.slice();
+for(const l of lectures){const option=document.createElement('option');option.value=l.id;option.textContent=l.lectureLabel+' · '+l.title;filter.append(option);}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function visible(){const id=filter.value;return order.filter(q=>id==='all'||q.lectureId===id);}
+function render(){
+ const items=visible();list.replaceChildren();document.getElementById('empty').hidden=items.length>0;
+ for(const q of items){const prior=attempts.get(q.id);
+  const lecture=lectures.find(l=>l.id===q.lectureId);
+  const card=document.createElement('article');card.className='question';
+  card.innerHTML='<div class="qmeta">'+esc(lecture?.lectureLabel||'Immunology')+' · '+esc(lecture?.title||'Midterm')+'</div><p class="stem">'+esc(q.question)+'</p>';
+  q.options.forEach((text,i)=>{const b=document.createElement('button');b.type='button';b.className='option';b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'.</span><span>'+esc(text)+'</span>';if(prior){b.disabled=true;if(i===q.answer)b.classList.add('correct');if(i===prior.choice&&!prior.correct)b.classList.add('incorrect');}b.addEventListener('click',()=>{if(attempts.has(q.id))return;const correct=i===q.answer;attempts.set(q.id,{choice:i,correct});card.querySelectorAll('.option').forEach((option,index)=>{option.disabled=true;if(index===q.answer)option.classList.add('correct');if(index===i&&!correct)option.classList.add('incorrect');});const explain=document.createElement('p');explain.className='feedback';explain.innerHTML='<strong>'+(correct?'Correct.':'Review this answer.')+'</strong> '+esc(q.explanation||'');card.append(explain);updateStats();});card.append(b);});
+  if(prior){const explain=document.createElement('p');explain.className='feedback';explain.innerHTML='<strong>'+(prior.correct?'Correct.':'Review this answer.')+'</strong> '+esc(q.explanation||'');card.append(explain);}
+  list.append(card);
+ }
+ updateStats(items);
+}
+function updateStats(items=visible()){let answered=0,correct=0;for(const q of items){const result=attempts.get(q.id);if(result){answered++;if(result.correct)correct++;}}status.textContent=items.length+' questions · '+answered+' answered · '+correct+' correct';progress.max=Math.max(1,items.length);progress.value=answered;}
+document.getElementById('reset').addEventListener('click',()=>{attempts.clear();render();window.scrollTo({top:0,behavior:'smooth'});});
+document.getElementById('shuffle').addEventListener('click',()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}render();});
+filter.addEventListener('change',render);
+render();
+})();
+</script></body></html>
