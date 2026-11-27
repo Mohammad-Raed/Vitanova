@@ -145,6 +145,15 @@
   window.addEventListener('storage',()=>{render();savedCount();});
   window.addEventListener('hashchange',()=>{query='';completion='all';$('lecture-search').value='';$('completion-filter').value='all';render();if(!(views[route()]?.pastPaper&&new URLSearchParams(location.hash.split('?')[1]||'').has('question'))){$('page-title').tabIndex=-1;$('page-title').focus({preventScroll:true});window.scrollTo(0,0);}});
   const menuButton=$('study-menu-toggle'),sidebar=document.querySelector('.study-sidebar'),mobileMenu=window.matchMedia('(max-width:900px)');
+  const hideSidebar=$('study-sidebar-hide'),showSidebar=document.createElement('button');
+  showSidebar.type='button';showSidebar.className='study-sidebar-show';showSidebar.textContent='›';showSidebar.setAttribute('aria-label','Show navigation');showSidebar.title='Show navigation';document.body.append(showSidebar);
+  function setSidebarHidden(hidden){document.querySelector('.hub-shell').classList.toggle('sidebar-hidden',hidden);showSidebar.hidden=!hidden;hideSidebar.setAttribute('aria-expanded',String(!hidden));try{localStorage.setItem('vitanova:sidebar-hidden:v1',String(hidden));}catch{}}
+  hideSidebar.setAttribute('aria-expanded','true');
+  hideSidebar.addEventListener('click',()=>setSidebarHidden(true));
+  showSidebar.addEventListener('click',()=>setSidebarHidden(false));
+  let sidebarPref;try{sidebarPref=localStorage.getItem('vitanova:sidebar-hidden:v1');}catch{}
+  setSidebarHidden(sidebarPref==='true');
+
   function setMenu(open){sidebar.classList.toggle('is-open',open);menuButton.setAttribute('aria-expanded',String(!mobileMenu.matches||open));}
   menuButton.addEventListener('click',()=>setMenu(!sidebar.classList.contains('is-open')));
   sidebar.addEventListener('click',event=>{if(event.target.closest('a[href^="#"]')&&mobileMenu.matches)setMenu(false);});
