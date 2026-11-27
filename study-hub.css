@@ -188,3 +188,10 @@ a.snapshot-card .snapshot-detail{color:var(--mint)}
 .study-sidebar-show{position:fixed;left:12px;top:12px;z-index:70;width:38px;height:38px;border:1px solid var(--line);border-radius:9px;background:var(--card);color:var(--txt);font-size:21px;cursor:pointer;box-shadow:0 4px 18px #0003}
 .study-sidebar-show[hidden]{display:none}
 @media(max-width:900px){.hub-shell.sidebar-hidden>.hub-workspace{min-width:0}}
+
+/* Keep a collapsed sidebar fully out of the home layout, including after page restore. */
+.hub-shell.sidebar-hidden{grid-template-columns:minmax(0,1fr)!important}
+.hub-shell.sidebar-hidden>.study-sidebar{
+  display:none!important;width:0!important;min-width:0!important;max-width:0!important;
+  padding:0!important;border:0!important;overflow:hidden!important;visibility:hidden!important;
+}
