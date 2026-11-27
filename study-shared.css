@@ -244,3 +244,31 @@ body.vn-lecture-page > .vn-lecture-navigation .vn-lecture-controls{
 @media(max-width:900px){
   body.vn-lecture-page > .vn-lecture-navigation .vn-lecture-context{flex-basis:100%}
 }
+
+/* Keep lecture chrome compact and avoid repeating controls already in the shared bar. */
+.vn-lecture-page .topbar{display:none!important}
+.vn-lecture-page header #th,.vn-lecture-page>nav #th{display:none!important}
+.vn-lecture-page .vn-lecture-navigation{
+  display:flex;flex-wrap:nowrap;align-items:center;gap:6px;min-height:44px;
+  overflow-x:auto;padding:5px 12px;scrollbar-width:thin;
+}
+.vn-lecture-page .vn-lecture-navigation .vn-lecture-context{
+  flex:1 1 auto;min-width:0;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap;
+}
+.vn-lecture-page .vn-lecture-navigation .vn-lecture-controls{flex:0 0 auto;margin-left:auto}
+.vn-lecture-page .vn-lecture-navigation .vn-home{flex:0 0 auto}
+.vn-lecture-page .vn-lecture-navigation .vn-subject{display:none}
+.vn-lecture-page .vn-lecture-navigation .vn-theme-toggle{display:none}
+.vn-lecture-page>nav.vn-lecture-topics{
+  display:flex;flex-wrap:nowrap;gap:4px;overflow-x:auto;white-space:nowrap;
+  padding:4px 12px;scrollbar-width:thin;
+}
+.vn-lecture-page>nav.vn-lecture-topics a{flex:0 0 auto}
+.vn-lecture-page .vn-lecture-hero{padding-block:24px 20px}
+.vn-lecture-page .vn-lecture-hero h1{font-size:clamp(27px,3.4vw,40px);line-height:1.12}
+.vn-lecture-page .vn-lecture-hero p{margin-block:4px}
+@media(max-width:720px){
+  .vn-lecture-page .vn-lecture-navigation{flex-wrap:wrap}
+  .vn-lecture-page .vn-lecture-navigation .vn-lecture-context{flex-basis:100%;order:3}
+  .vn-lecture-page .vn-lecture-navigation .vn-lecture-controls{margin-left:auto}
+}
