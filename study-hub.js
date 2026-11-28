@@ -113,7 +113,7 @@
       $('count').textContent='2 question resources';
       cards.innerHTML='<article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">📝</div><span class="tag">PAST PAPERS</span></div><h3>Immunology Midterm pastpapers.</h3><p>Practise the Immunology midterm past-paper questions.</p><a class="action" href="immunology-midterm-practice.html">Open past papers <span aria-hidden="true">→</span></a></article><article class="card category-card"><div class="card-top"><div class="icon" aria-hidden="true">✎</div><span class="tag">AI MCQS</span></div><h3>Immunology AI MCQ\'s full midterm material</h3><p>Study AI generated multiple choice questions across the midterm material.</p><a class="action" href="immunology-midterm-question-bank.html">Open AI question bank <span aria-hidden="true">→</span></a></article>';
     } else if(view.checklist){window.VitanovaMSSChecklist?.render(cards,$('count'),view.checklist);
-    else if(view.pastPaper){window.VitanovaSaved.render(cards,$('count'),{collection:'past-paper'});}
+    } else if(view.pastPaper){window.VitanovaSaved.render(cards,$('count'),{collection:'past-paper'});}
     else if (view.category||current==='search') {
       const items=view.category?lectures.filter(l=>l.category===view.category):lectures;
       if(view.category) {
