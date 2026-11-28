@@ -41,7 +41,7 @@ const K="imm-midterm-v2";let S={ans:{},bm:{},theme:"dark",last:0,shuf:false};
 try{Object.assign(S,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){}
 const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 const VN=window.VitanovaBookmarks;
-if(VN){QUIZ_DATA.forEach((_,i)=>{if(S.bm[i])VN.set(VQ[i],true);S.bm[i]=VN.has(VQ[i])})}
+if(VN){let migrated=false;try{migrated=localStorage.getItem("imm-midterm-v2-bookmarks-migrated")==="1"}catch{}if(!migrated){QUIZ_DATA.forEach((_,i)=>{if(S.bm[i])VN.set(VQ[i],true)});try{localStorage.setItem("imm-midterm-v2-bookmarks-migrated","1")}catch{}}QUIZ_DATA.forEach((_,i)=>S.bm[i]=VN.has(VQ[i]))}
 function toggleBookmark(i){if(VN){VN.set(VQ[i],!VN.has(VQ[i]));S.bm[i]=VN.has(VQ[i])}else S.bm[i]=!S.bm[i];save();prac()}
 window.addEventListener("vitanova:storage-changed",e=>{if(!e.detail?.external||!window.VitanovaBookmarks)return;QUIZ_DATA.forEach((_,i)=>S.bm[i]=window.VitanovaBookmarks.has(VQ[i]));save();if(document.querySelector("#app .opt"))prac();else home()});
 
