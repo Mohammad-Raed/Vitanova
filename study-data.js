@@ -665,5 +665,18 @@ window.VitanovaLectures = [
     "description": "Antigens, epitopes, haptens, adjuvants, MHC structure, antigen-processing pathways, and clinical applications.",
     "file": "Immunology-Midterm-Lecture-11-AI-Summary-MCQs.html",
     "icon": "📘"
+  },
+  {
+    "id": "immunology-midterm-practice",
+    "system": "Immunology",
+    "exam": "Midterm",
+    "subject": "Immunology",
+    "category": "immunology-mid",
+    "lectureLabel": "Midterm Practice",
+    "order": 6.5,
+    "title": "Immunology Midterm Question Bank",
+    "description": "Practice 363 questions across Lectures 1–6, core concepts, and past-paper sources. Save questions to your Vitanova revision list.",
+    "file": "immunology-midterm-practice.html",
+    "icon": "🧬"
   }
 ];
